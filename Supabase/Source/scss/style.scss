@@ -1,0 +1,329 @@
+//___libs scss___//
+@import "libs/swiper.min.scss";
+
+//___base scss___//
+@import "support/reset.scss";
+@import "support/fonts.scss";
+@import "support/vars.scss";
+@import "support/mixin.scss";
+@import "support/iconsfont.scss";
+@import "support/My-work.scss";
+
+@import "fonts.scss";
+
+//__Semi main___//
+
+// @import "support/fullscreen.scss";
+@import "support/preloader.scss";
+@import "support/popup.scss";
+
+//___main scss___//
+@import "main/header.scss";
+@import "main/footer.scss";
+@import "main/popup.scss";
+@import "main/welcome.scss";
+@import "main/benefits.scss";
+@import "main/API.scss";
+@import "main/integrates.scss";
+@import "main/dashboard.scss";
+@import "main/start.scss";
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  font-family: $main-ff;
+  font-weight: 400;
+  color: $text;
+  font-size: $font-size;
+  position: relative;
+
+  a {
+    color: $text;
+    font-family: $main-ff;
+  }
+}
+*.v {
+  opacity: 1;
+  transform: translate(0, 0) rotate(0);
+  transition: all 0.35s ease-in-out;
+}
+body {
+  position: relative;
+  background: $background;
+  transition: all 0.4s ease-out;
+
+  &.light {
+    transition: all 0.4s ease-out;
+    background: #fff !important;
+    color: rgb(104, 112, 118);
+    a {
+      color: rgb(104, 112, 118);
+      transition: all 0.4s ease-out;
+
+      font-family: $main-ff;
+    }
+  }
+  .wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    @media screen and (max-width: $mobile) {
+      overflow: hidden;
+    }
+  }
+  main {
+    position: relative;
+    flex: 1 1 auto;
+    z-index: 1;
+  }
+  &.hide {
+    overflow: hidden;
+  }
+  footer {
+    z-index: 1;
+  }
+}
+// copy
+#copy {
+  position: fixed;
+  color: $green;
+  padding: 0.8em;
+  border: 1px solid $dark-bg;
+  border-radius: 0.4em;
+  top: 0.5em;
+  z-index: 10;
+  background: $background;
+  letter-spacing: 0.1em;
+  right: -100%;
+  transition: right 0.5s ease;
+  h3 {
+    opacity: 0;
+    transform: translateX(2em);
+    transition: all 0.7s ease;
+  }
+  &.copied {
+    transition: right 0.5s ease;
+    right: 0.5em;
+    h3 {
+      transition: all 0.7s ease;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+//Need class
+.big-title {
+  @include adaptive_value("font-size", 48, 27);
+  line-height: 120%;
+  margin-bottom: 16/48 + em;
+  font-weight: bold;
+  color: #fff;
+  transition: all 0.4s ease-out;
+}
+.main-title {
+  @include adaptive_value("font-size", 36, 22);
+  line-height: 120%;
+  margin-bottom: 16/36 + em;
+  color: #fff;
+  transition: all 0.4s ease-out;
+}
+//dark
+body.light {
+  .big-title,
+  .main-title {
+    transition: all 0.4s ease-out;
+
+    color: #000;
+  }
+  .t-text,
+  .m-text,
+  .tiny-text {
+    transition: all 0.4s ease-out;
+
+    color: rgb(104, 112, 118);
+  }
+}
+//====
+.m-t-large {
+  @include adaptive_value("margin-top", 128, 72);
+}
+.m-b-large {
+  @include adaptive_value("margin-bottom", 128, 72);
+}
+.m-t-small {
+  @include adaptive_value("margin-top", 96, 54);
+}
+.m-b-small {
+  @include adaptive_value("margin-bottom", 96, 54);
+}
+.t-text {
+  @include adaptive_value("font-size", 14, 10);
+  line-height: 143%;
+}
+.m-text {
+  @include adaptive_value("font-size", 18, 14);
+  line-height: 156%;
+  margin-bottom: 16/18 + em;
+}
+.text-h {
+  line-height: 200% !important;
+}
+.grey {
+  color: $grey;
+}
+.w {
+  color: $white;
+}
+.s-title {
+  @include adaptive_value("font-size", 11, 7);
+  line-height: 145%;
+}
+.green-btn {
+  background: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  a,
+  span {
+    display: flex;
+    align-items: center;
+    line-height: 100%;
+    background: $green;
+    border-radius: 4px;
+    padding: 9/14 + em 17/14 + em;
+    color: #fff !important;
+    &:hover {
+      background: #1b7d59;
+    }
+  }
+}
+.white-icon {
+  @include adaptive_value("height", 32, 22);
+  @include adaptive_value("width", 32, 22);
+  @include adaptive_value("padding", 10, 7);
+  background: $white;
+  box-sizing: border-box;
+
+  .img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    img,
+    svg {
+      position: absolute;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.grey-icon {
+  background: $white;
+  @include adaptive_value("height", 32, 24);
+  @include adaptive_value("width", 32, 24);
+  border-radius: 6px;
+  .img {
+    width: 46%;
+    height: 46%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    img,
+    svg {
+      object-fit: cover;
+      object-position: center;
+      position: absolute !important;
+      width: 100%;
+      height: 100%;
+      top: 0;
+    }
+  }
+}
+body.light {
+  .grey-icon {
+    background: #c4c4c4;
+    transition: all 0.4s ease-out;
+
+    .img {
+      img,
+      svg {
+        path {
+          fill: #fff;
+          transition: all 0.4s ease-out;
+        }
+      }
+    }
+  }
+}
+.line {
+  height: 1px;
+  width: 100%;
+  background: $dark-bg;
+}
+
+*::selection {
+  color: #fff;
+  background: $green;
+}
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $green;
+  border-radius: 8px;
+  transition: 0.5s linear;
+  width: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  transition: 0.5s linear;
+  background: #0c9e68;
+}
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    box-shadow: 0 0 0px 1000px $background inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+//code
+.comm {
+  color: $code-grey;
+}
+.blue {
+  color: $code-blue;
+}
+.green {
+  color: $code-green;
+}
+.tiny-text {
+  @include adaptive_value("font-size", 12, 8);
+  line-height: 133%;
+}
+.img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  img,
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

@@ -1,0 +1,84 @@
+.popular {
+  color: $dark-grey;
+  @include adaptive_value("font-size", 100, 30);
+  margin-bottom: 1.4em;
+  &__container {
+    font-size: 0;
+    position: relative;
+  }
+  .button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    a {
+      padding: 22/22 + em 57/20 + em;
+    }
+  }
+  .tiny {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+.content-popular {
+  text-align: center;
+  &__title {
+    padding-top: 1em;
+    margin-bottom: 8/40 + em;
+  }
+
+  &__text {
+    margin-bottom: 50/20 + em;
+  }
+}
+.dishes-popular {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 65px;
+  @media screen and (max-width: 1024px) {
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    &__item {
+      flex: 1 1 50% !important;
+      max-width: 318px;
+    }
+    @media screen and (max-width: 1024px) {
+      gap: 25px;
+    }
+  }
+
+  &__item {
+    flex: 0 1 25%;
+    max-width: 318px;
+  }
+
+  &__img {
+    width: 100%;
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__title {
+    font-family: $second-ff;
+    @include adaptive_value("font-size", 30, 24);
+    line-height: 140%;
+    margin-top: 10/30 + em;
+    margin-bottom: 11/30 + em;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .line {
+    background: #dcdcdc;
+    margin: 0;
+  }
+  &__text {
+    margin-top: 15/20 + em;
+  }
+}

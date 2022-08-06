@@ -1,0 +1,14 @@
+.image {
+  @include adaptive_value("font-size", 100, 30);
+  width: 100%;
+  height: 6em;
+  position: relative;
+  margin-bottom: 1.4em;
+  img {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}

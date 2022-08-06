@@ -1,0 +1,41 @@
+<section id="contact" class="contact">
+   <div class="contact__container">
+      <div class="contact__content">
+         <div class="contact__title title">
+            <div class="tiny">reservation</div>
+            <h2>Book Your Table</h2>
+         </div>
+         <form action="#" method="post" class="contact__form">
+            <div class="contact__box-main">
+               <div class="contact__name input">
+                  <input name="name" type="text" minlength="1" maxlength="25" title="Your name" required>
+               </div>
+               <div class="contact__email input">
+                  <input name="email" type="email" minlength="8" title="Your email" required>
+               </div>
+            </div>
+            <div class="contact__box-description">
+               <div class="contact__person input">
+                  <input name="persons" type="number" min="1" max="100" title="Number of persons" required>
+               </div>
+               <div class="contact__time input">
+                  <input name="hours" type="number" min="01" max="24" title="Time" required>
+                  <span class="double">:</span>
+                  <input name="minutes" type="number" min="00" max="59" title="Time" required>
+               </div>
+               <div class="contact__date input">
+                  <input name="day" type="number" min="01" max="31" title="Day" required>
+                  <div class="point">.</div>
+                  <input name="day" type="number" min="01" max="12" title="Month" required>
+                  <div class="point">.</div>
+                  <input name="year" type="number" min="2022" max="2022" title="Year" required>
+               </div>
+            </div>
+
+            <div class="contact__btn">
+               <button type="submit">Book A Table</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</section>

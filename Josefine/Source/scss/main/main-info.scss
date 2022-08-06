@@ -1,0 +1,73 @@
+.info {
+  color: $dark-grey;
+  @include adaptive_value("font-size", 100, 30);
+  padding: 1em 0 0.6em 0;
+  background: $background;
+  overflow: hidden;
+  a {
+    color: $dark-grey;
+  }
+
+  &__box {
+    font-size: 0;
+    display: flex;
+    gap: 15px;
+  }
+
+  &__item {
+    flex: 0 1 33.333%;
+  }
+  @media screen and (max-width: $tablet) {
+    &__box {
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      gap: 30px;
+    }
+    &__item {
+      flex: 0 1 45%;
+      width: 400px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &__box {
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: $mini) {
+    &__box {
+      gap: 20px;
+    }
+    .item-info {
+      width: 280px;
+      &__content {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+.item-info {
+  display: inline-flex;
+  align-items: center;
+  &__img {
+    flex: 0 0 auto;
+    @include adaptive_value("font-size", 83, 52);
+    width: 1em !important;
+    height: 1em !important;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 20/83 + em;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font-family: $second-ff;
+    @include adaptive_value("font-size", 30, 24);
+    margin-bottom: 0.16em;
+  }
+}

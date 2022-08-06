@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/head.html',{ 'title':'Supabase'})
+
+<body>
+  @@include('html/support/preloader.html',{})
+
+  <div id="start" class="popup hide start">
+    <div class="popup__box start__box">
+      <div class="popup__close close-popup start__close">
+        <div class="close-popup__box">
+          <div class="close-popup__stick one"></div>
+          <div class="close-popup__stick two"></div>
+        </div>
+      </div>
+      <div class="start__title big-title">
+        <h2>How start?</h2>
+      </div>
+      <div class="popup__content start__content">
+        <div class="start__step step-start">
+          <div class="step-start__title main-title">1. LOREM</div>
+          <div class="line"></div>
+          <div class="step-start__text m-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+            inventore nihil aliquam animi sapiente obcaecati quaerat atque,
+            cupiditate distinctio illo eaque eligendi ex, quisquam eum non
+            optio molestias aperiam minus.
+          </div>
+          <button class="step-start__run green-btn">
+            <a href="#" class="close">Run</a>
+          </button>
+        </div>
+        <div class="start__step step-start">
+          <div class="step-start__title main-title">2. LOREM</div>
+          <div class="line"></div>
+          <div class="step-start__text m-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+            inventore nihil aliquam animi sapiente obcaecati quaerat atque,
+            cupiditate distinctio illo eaque eligendi ex, quisquam eum non
+            optio molestias aperiam minus.
+          </div>
+          <button class="step-start__run green-btn">
+            <a href="#" class="close">Run</a>
+          </button>
+        </div>
+        <div class="start__step step-start">
+          <div class="step-start__title main-title">3. LOREM</div>
+          <div class="line"></div>
+          <div class="step-start__text m-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+            inventore nihil aliquam animi sapiente obcaecati quaerat atque,
+            cupiditate distinctio illo eaque eligendi ex, quisquam eum non
+            optio molestias aperiam minus.
+          </div>
+          <button class="step-start__run green-btn">
+            <a href="#" class="close">Run</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="Sign-in" class="popup hide Sign-in">
+    <div class="popup__box Sign-in__box">
+      <div class="popup__close close-popup Sign-in__close">
+        <div class="close-popup__box">
+          <div class="close-popup__stick one"></div>
+          <div class="close-popup__stick two"></div>
+        </div>
+      </div>
+      <div class="Sign-in__title big-title">
+        <h2>Sign in</h2>
+      </div>
+      <div class="popup__content Sign-in__content">
+        <form action="#" method="POST" class="Sign-in__form">
+          <input type="email" name="email" class="Sign-in__email m-text" placeholder="Email" required />
+          <input type="password" autocomplete="on" name="password" class="Sign-in__password m-text" placeholder="password" required />
+          <button type="submit" class="Sign-in__submit green-btn m-text">
+            <a href="#" class="close">Submit</a>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="copy" class="main-title">
+    <h3>Code copy!</h3>
+  </div>
+
+  @@include('html/support/My-work.html',{})
+
+  <div class="wrapper">
+    @@include('html/header.html',{})
+    <main>
+      @@include('html/welcome.html',{})@@include('html/benefits.html',{})
+      @@include('html/dashboard.html',{}) @@include('html/API.html',{})
+      <div class="line"></div>
+      @@include('html/integrates.html',{}) @@include('html/start.html',{})
+    </main>
+    @@include('html/footer.html',{})
+  </div>
+  <script src="js/app.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+.contact {
+  color: #fff;
+  background-image: url(../img/interior/restourant2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include adaptive_value("padding", 140, 40, 2);
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  &__content {
+    display: inline-block;
+    @include adaptive_value("padding", 140, 40);
+    background: rgba(41, 46, 54, 95%);
+  }
+
+  &__title,
+  .tiny {
+    text-align: center;
+    color: #fff !important;
+  }
+  &__title {
+    position: relative;
+    padding-top: 1em;
+    margin-bottom: 38/40 + em;
+  }
+  .tiny {
+    line-height: 100%;
+    font-family: $main-ff;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  //================FORM=================
+
+  &__form {
+    @include adaptive_value("font-size", 22, 17);
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__box-main {
+    display: flex;
+    gap: 26/22 + em;
+    margin-bottom: 30/22 + em;
+    width: 100%;
+  }
+  &__name,
+  &__email {
+    flex: 0 1 50%;
+  }
+
+  &__name {
+    &::before {
+      content: "Name";
+    }
+  }
+
+  &__email {
+    &::before {
+      content: "Email";
+    }
+  }
+
+  &__box-description {
+    width: 100%;
+    display: flex;
+    gap: 23/22 + em;
+  }
+
+  &__person,
+  &__time,
+  &__date {
+    flex: 0 1 33%;
+  }
+  &__person {
+    &::before {
+      content: "Persons";
+    }
+  }
+
+  &__time {
+    display: flex;
+    align-items: center;
+    input:first-child {
+      text-align: end;
+    }
+    &::before {
+      content: "Timing";
+    }
+    .double {
+      opacity: 0;
+      transition: 0.4s;
+    }
+    &.focus .double {
+      opacity: 1;
+    }
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+    input {
+      text-align: center;
+      flex: 0 0 25%;
+    }
+    input:last-child {
+      flex: 0 0 50%;
+      text-align: start;
+      padding-left: 0.3em;
+    }
+    &::before {
+      content: "Date";
+    }
+    .point {
+      opacity: 0;
+      transition: 0.4s;
+    }
+    &.focus .point {
+      opacity: 1;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    overflow: hidden;
+    @include adaptive_value("font-size", 22, 17);
+    margin-top: 30/22 + em;
+    position: relative;
+
+    transition: background 0.8s ease;
+    background-image: linear-gradient(45deg, #fff 50%, transparent 50%);
+    background-position: 0;
+    background-size: 400%;
+    &:hover {
+      transition: background 0.8s ease;
+      background-position: 100%;
+      button {
+        transition: color 0.8s ease;
+        color: #fff;
+      }
+    }
+    button {
+      padding: 17/22 + em 54/22 + em;
+      border: 2px solid #fff;
+      transition: color 0.8s ease;
+      background: none;
+      margin: 0;
+      cursor: pointer;
+      font-size: 1em;
+      line-height: 150%;
+      text-align: center;
+      font-family: $main-ff;
+      color: #000;
+    }
+  }
+  .double {
+    padding: 0 0.2em;
+  }
+  @media screen and (max-width: 685px) {
+    &__person,
+    &__time {
+      flex: 0 1 30%;
+    }
+
+    &__date {
+      flex: 0 1 40%;
+    }
+    .input {
+      padding: 0 0.7em;
+
+      &::before {
+        left: 0.35em;
+      }
+    }
+  }
+  @media screen and (max-width: 685px) {
+    &__box-main,
+    &__box-description {
+      flex-direction: column;
+    }
+    &__box-description {
+    }
+    .input {
+      padding: 0 1em;
+
+      &::before {
+        left: 0.5em;
+      }
+    }
+  }
+}

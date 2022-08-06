@@ -1,0 +1,24 @@
+//Нужные значения
+$html-font-size: 16px;
+$browser-context: 16;
+//Значения макета
+$maxwidth_layout: 1920;
+$mobilewidth_layout: 320;
+$container_width: 1920;
+//слева и справа по 20 => 40
+$conatiner_padding: 128;
+$conatiner_padding_mobile: 48;
+
+$font-size: 22px;
+$main-ff: "Montserrat", sans-serif;
+//&display=swap если через плагин
+
+//Цвета
+$maincolor: #000;
+$secondcolor: #fff;
+$pink: #c22085;
+// брейк поинты
+$pc: em($container_width + $conatiner_padding);
+$tablet: em(991.98);
+$mobile: em(767.98);
+$tablet: em(479.98);

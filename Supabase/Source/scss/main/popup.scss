@@ -1,0 +1,100 @@
+.popup {
+  &__box {
+    background: $background;
+  }
+}
+
+.start {
+  max-height: 100vh;
+
+  &__box {
+    overflow: auto;
+
+    flex: 0 0 90%;
+    min-height: 400px;
+    max-height: 90vh;
+  }
+  &__title {
+    text-align: center;
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    @include adaptive_value("gap", 35, 20);
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+  .line {
+    @include adaptive_value("margin-bottom", 16, 10);
+  }
+
+  .step-start {
+    @media screen and (max-width: $mobile) {
+      max-width: 420px;
+      margin-bottom: 2em;
+    }
+
+    &__text {
+      margin-bottom: 2em !important;
+    }
+  }
+}
+
+.Sign-in {
+  &__title {
+    text-align: center;
+    margin-bottom: 1em !important;
+  }
+
+  &__content {
+    overflow: auto;
+
+    // min-height: 300px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+  &__box {
+    max-width: 50%;
+    min-width: 290px;
+  }
+  &__form {
+    min-height: 250px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    @include adaptive_value("padding", 35, 25, 2);
+    @include adaptive_value("gap", 20, 10);
+    align-items: center;
+    justify-content: center;
+  }
+  &__email,
+  &__password {
+    background: none;
+    border: 1px solid $dark-bg;
+    padding: 1.2em 1.5em;
+    box-sizing: border-box;
+    font-family: $main-ff;
+    color: $text !important;
+    min-width: 230px;
+    margin-bottom: 2em !important;
+  }
+
+  &__submit {
+    flex: 1 0 auto;
+
+    a {
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+}
+//light
+body.light {
+  .popup {
+    &__box {
+      background: #fff;
+    }
+  }
+}

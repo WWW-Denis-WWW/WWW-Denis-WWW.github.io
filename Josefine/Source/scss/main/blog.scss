@@ -1,0 +1,98 @@
+.blog {
+  @include adaptive_value("font-size", 100, 30);
+  margin-bottom: 1em;
+  &__container {
+    .tiny {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    font-style: 0;
+    position: relative;
+  }
+  &__content {
+    text-align: center;
+  }
+  &__title {
+    padding-top: 1em;
+    margin-bottom: 8/40 + em;
+  }
+  &__text {
+    margin-bottom: 2em;
+  }
+}
+.news-blog {
+  display: flex;
+  @include adaptive_value("gap", 50, 30);
+  @include adaptive_value("padding", 15, 10, 1);
+  @media screen and (max-width: 922px) {
+    flex-wrap: wrap;
+  }
+  &__preview {
+    position: relative;
+    width: 100%;
+    @include adaptive_value("height", 384, 220);
+    .button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-position: 0;
+      z-index: 2;
+      a {
+        padding: 20/22 + em 57/22 + em;
+        color: $dark-grey;
+      }
+      &:hover {
+        background-position: 100%;
+        a {
+          color: $light-yellow;
+        }
+      }
+    }
+    @include adaptive_value("margin-bottom", 50, 25);
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 65%);
+      z-index: 2;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &__content {
+    position: relative;
+    @include adaptive_value("padding", 46.5, 15, 1);
+  }
+  &__title {
+    @include adaptive_value("font-size", 30, 22, 0, 1);
+    margin-bottom: 24/30 + em;
+    line-height: 130%;
+  }
+  &__tiny-title {
+    @include adaptive_value("margin-bottom", 25, 20);
+    display: flex;
+    flex-wrap: wrap;
+    @include adaptive_value("gap", 30, 14);
+    .tiny {
+      left: 0;
+      transform: translateX(0);
+      position: relative;
+    }
+  }
+}

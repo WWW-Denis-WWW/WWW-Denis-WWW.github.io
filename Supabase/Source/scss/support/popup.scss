@@ -1,0 +1,82 @@
+.popup {
+  transition: all 0.5s ease;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 56;
+  opacity: 1;
+  &__box {
+    transform: translate(0, 0);
+    transition: all 0.5s ease;
+    @include procent("height", 1920, 1440);
+    flex: 0 0 76.666%;
+    background: #fff;
+    border: rem(3) solid $dark-bg;
+    border-radius: em(16);
+    position: relative;
+    overflow: hidden;
+    @include adaptive_value("padding", 30, 12);
+    display: flex;
+    flex-direction: column;
+  }
+  &__close {
+    border-radius: 50%;
+    @include adaptive_value("width", 40, 25);
+    @include adaptive_value("height", 40, 25);
+    margin-left: auto;
+  }
+  &__content {
+    flex: 1 1 100%;
+    @include adaptive_value("padding", 30, 15);
+  }
+  .close-popup {
+    display: flex;
+    justify-content: flex-end;
+    &__box {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: all 0.35s ease;
+      transform: rotate(0deg);
+    }
+    &__stick {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: em(3);
+      background: #000;
+      box-shadow: 0 0 rem(7) #000;
+      transition: all 0.35s ease;
+      &.one {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &.two {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+    &__box:hover {
+      transition: all 0.35s ease;
+      transform: rotate(90deg);
+      .close-popup__stick {
+        background: rgb(219, 40, 40);
+        box-shadow: 0 0 rem(9) rgb(219, 40, 40);
+      }
+    }
+  }
+  &.hide {
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: -1 !important;
+    .popup__box {
+      transform: translate(0, 100%) !important;
+      transition: all 0.5s ease;
+    }
+  }
+}

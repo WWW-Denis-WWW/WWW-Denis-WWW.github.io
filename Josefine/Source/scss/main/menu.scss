@@ -1,0 +1,154 @@
+@use "sass:math";
+.menu {
+  padding-top: 1em;
+  padding-bottom: 130/20 + em;
+  @include adaptive_value("font-size", 20, 10);
+  &__container {
+    display: flex;
+    gap: 49px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  &__preview {
+    flex: 0 0 491 * 100%/1360;
+  }
+  &__dishes {
+    flex: 0 0 818 * 100%/1360;
+    margin-top: 0px;
+  }
+}
+.preview {
+  margin-top: 3em;
+  @include adaptive_value("font-size", 20, 16);
+  &__title {
+    margin-bottom: 13/40 + em;
+  }
+
+  &__text {
+    margin-bottom: 45/20 + em;
+  }
+
+  &__img {
+    margin-bottom: 60px;
+    img {
+      object-fit: cover;
+      object-position: center;
+      height: 549px !important;
+      max-width: 100%;
+      width: auto !important;
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      padding: 20/22 + em 57/22 + em;
+    }
+  }
+}
+.dishes-menu {
+  &__section {
+    width: 100%;
+  }
+  &__title {
+    color: $dark-grey;
+    @include adaptive_value("font-size", 36, 24);
+    line-height: 150%;
+    font-family: $second-ff;
+    margin-bottom: 40/36 + em;
+    margin-top: 55/36 + em;
+  }
+}
+.dish {
+  display: flex;
+  @include adaptive_value("font-size", 36, 24);
+  margin-bottom: 50/36 + em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__img {
+    width: 84/36 + em;
+    height: 84/36 + em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__info {
+    @include adaptive_value("font-size", 30, 21);
+    margin-left: 20/30 + em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    color: $dark-grey;
+    font-family: $second-ff;
+    line-height: 140%;
+    margin-bottom: 1px;
+  }
+}
+.line {
+  background: $light-grey;
+  flex: 1 1 auto;
+  height: 2px;
+  align-self: flex-end;
+  @include adaptive_value("font-size", 36, 14);
+  margin: 0 10/36 + em 15/36 + em 10/36 + em;
+}
+.price {
+  position: relative;
+  top: 0.5em;
+  @include adaptive_value("font-size", 30, 24);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $dark-grey;
+  font-family: $second-ff;
+}
+@media screen and (max-width: 1352px) {
+  .menu {
+    &__container {
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    &__preview {
+      flex: 0 0 100%;
+    }
+
+    &__dishes {
+      flex: 0 0 100%;
+      margin-top: -25px;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .dish {
+    &__img {
+      display: none;
+    }
+    &__info {
+      margin-left: 0;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .line {
+    display: none;
+  }
+  .dish {
+    justify-content: space-between;
+    &__info {
+      margin-right: 20/30 + em;
+    }
+  }
+  .price {
+    top: 0;
+  }
+}

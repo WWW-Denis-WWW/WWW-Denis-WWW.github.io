@@ -1,0 +1,36 @@
+.start {
+  @include adaptive_value("padding-top", 128, 72);
+  @include adaptive_value("padding-bottom", 128, 72);
+
+  &__container {
+    &.v {
+      .start__title {
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: all 0.35s ease-in-out;
+      }
+      .start__btn {
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: all 0.35s ease-in-out 0.15s;
+      }
+    }
+  }
+
+  &__title {
+    opacity: 0;
+    transform: translate(0, 100%);
+    h2 {
+      span {
+        color: $grey-light;
+      }
+    }
+  }
+
+  &__btn {
+    opacity: 0;
+    transform: translate(0, 100%);
+    margin: 0 auto !important;
+    @include adaptive_value("margin-top", 48, 26, 0, 1);
+  }
+}
