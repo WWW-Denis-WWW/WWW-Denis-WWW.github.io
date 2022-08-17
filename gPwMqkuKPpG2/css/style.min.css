@@ -627,6 +627,48 @@ img {
   right: 0;
 }
 
+.titleone,
+.titletwo,
+.titlethree {
+  z-index: 1;
+  position: absolute;
+  background: #fff;
+}
+.titleone h2,
+.titletwo h2,
+.titlethree h2 {
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 53px;
+  line-height: 60px;
+  background: linear-gradient(to right, #004db4 20%, #3786ed 40%, #3786ed 60%, #004db4 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-animation: shine 1.4s linear infinite;
+  animation: shine 1.4s linear infinite;
+  -webkit-transition: color 0.4s linear;
+  -o-transition: color 0.4s linear;
+  transition: color 0.4s linear;
+}
+
+.titleone {
+  top: 4867px;
+  left: 158px;
+}
+
+.titletwo {
+  top: 6238px;
+  left: 158px;
+}
+
+.titlethree {
+  top: 7240px;
+  left: 158px;
+}
+
 .bg1 {
   width: 400px;
   height: 1500px;
