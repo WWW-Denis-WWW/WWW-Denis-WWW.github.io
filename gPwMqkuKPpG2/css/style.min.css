@@ -328,10 +328,6 @@ img {
   background: radial-gradient(48.99% 87.1% at 50% 50%, rgba(0, 77, 180, 0.1) 0%, rgba(5, 69, 155, 0.1) 26.56%, rgba(1, 45, 98, 0.1) 100%);
   backdrop-filter: blur(30px);
 }
-.card2:hover .box .img {
-  animation: none;
-  transition: all 0.3s ease;
-}
 .card2 .box {
   width: 100%;
   height: 100%;
@@ -340,6 +336,7 @@ img {
 }
 .card2 .box .img {
   transition: all 0.3s ease;
+  animation: anim2 0.8s linear infinite alternate;
   width: 214px;
   height: 160px;
   position: relative;
@@ -370,7 +367,10 @@ img {
 }
 @keyframes anim2 {
   0% {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(5px);
   }
 }
 .card2:nth-child(7) {
