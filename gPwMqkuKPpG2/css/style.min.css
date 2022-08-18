@@ -681,6 +681,8 @@ img {
 
 html,
 body {
+  margin: 0 auto;
+  max-width: 1904px;
   width: 100%;
   position: relative;
 }
