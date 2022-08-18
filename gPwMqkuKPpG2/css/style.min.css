@@ -248,6 +248,7 @@ img {
   z-index: 2;
   opacity: 0;
   animation: anim 0.7s linear infinite alternate;
+  display: none;
 }
 
 #brain {
