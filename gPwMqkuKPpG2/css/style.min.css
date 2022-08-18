@@ -247,7 +247,12 @@ img {
 #light {
   z-index: 2;
   opacity: 0;
-  animation: anim 0.35s linear infinite alternate;
+  animation: anim 0.7s linear infinite alternate;
+}
+
+#brain {
+  animation: anim 0.7s linear infinite alternate;
+  opacity: 0.6;
 }
 
 @keyframes anim {
