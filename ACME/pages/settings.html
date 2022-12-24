@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../css/header.css" />
     <link rel="stylesheet" type="text/css" href="../css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../css/input.css" />
     <link rel="stylesheet" type="text/css" href="../css/settings.css" />
     <link rel="stylesheet" type="text/css" href="../css/swiper.css" />
-    <link rel="stylesheet" type="text/css" href="../css/input.css" />
+    <link rel="stylesheet" type="text/css" href="../css/popup.css" />
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>Настройки</title>
@@ -17,6 +18,37 @@
 
 <body>
     <div class="wrapper">
+        <!-- 
+  data-popup="popup_one" class="popup_open"
+  элементы вызывающий попап должен иметь дата атрибут являющийся айдишником элемента
+  и класс показывающий что он является активатором попапа
+-->
+
+        <div class="popup hide" id="popup_remove">
+            <div class="popup__box remove">
+                <div class="popup__close close-popup">
+                    <div class="close-popup__box">
+                        <div class="close-popup__stick one"></div>
+                        <div class="close-popup__stick two"></div>
+                    </div>
+                </div>
+                <div class="popup__content remove">
+                    <div class="remove__title MainTitle">
+                        <h2>Удалить аккаунт?</h2>
+                    </div>
+                    <div class="remove__text MainText">
+                        <p>Весь сохраненый прогресс будет утерян!</p>
+                    </div>
+                    <div class="selects-slide__btn btn-selects " style="cursor: default;">
+                        <div class="btn-selects__box remove-btn close-popup" data-popup="popup_remove" style="cursor: pointer">
+                            <div class="btn-selects__content ">
+                                <span>Да, удалить аккаунт!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <header class="header a part">
             <div class="header__container">
                 <div class="header__backdrop"></div>
@@ -109,7 +141,7 @@
                     </div>
                 </div>
                 <div class="header__logo logo-header">
-                    <a class="logo-header__box" href="../index.html">
+                    <a class="logo-header__box" href="#">
                         <div class="logo-header__img img">
                             <img src="../img/icons/icons.svg#logo" alt="Logo">
                         </div>
@@ -297,368 +329,30 @@
                                                             </div>
                                                         </div>
                                                     </button>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide slide-swiper">
-                                            <div class="slide-swiper__left">
-                                                <div class="slide-swiper__title">
-                                                    <h2>Обучение</h2>
-                                                </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box ">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
-                                                        <div class="btn-selects__box">
-                                                            <div class="btn-selects__content">
-                                                                <span>Сохранить</span>
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                    </form>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="slide-swiper__right">
-                                                <div class="slide-swiper__title">
-                                                    <h2>Обучение</h2>
-                                                </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
-                                                        <div class="btn-selects__box">
-                                                            <div class="btn-selects__content">
-                                                                <span>Сохранить</span>
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide slide-swiper">
+                                        <div class="swiper-slide slide-swiper email">
                                             <div class="slide-swiper__left">
                                                 <div class="slide-swiper__title">
                                                     <h2>Email</h2>
                                                 </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
+                                                <form class="slide-swiper__selects selects-slide email">
+
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input" placeholder="Старая почта@bla.com" readonly></input>
                                                     </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input emailChange" placeholder="Новая почта"></input>
                                                     </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box ">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
+                                                    <button class="selects-slide__btn btn-selects submit" type="submit">
                                                         <div class="btn-selects__box">
                                                             <div class="btn-selects__content">
                                                                 <span>Сохранить</span>
                                                             </div>
                                                         </div>
                                                     </button>
-                                                    </form>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="slide-swiper__right">
-                                                <div class="slide-swiper__title">
-                                                    <h2>Email</h2>
-                                                </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
-                                                        <div class="btn-selects__box">
-                                                            <div class="btn-selects__content">
-                                                                <span>Сохранить</span>
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                    </form>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                         <div class="swiper-slide slide-swiper">
@@ -666,179 +360,25 @@
                                                 <div class="slide-swiper__title">
                                                     <h2>Пароль</h2>
                                                 </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
+                                                <form class="slide-swiper__selects selects-slide password">
+
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input password-setting" placeholder="Старый пароль"></input>
                                                     </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input password-setting" placeholder="Новый пароль"></input>
                                                     </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input passwordRepeatSetting" placeholder="Новый пароль"></input>
                                                     </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box ">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
+                                                    <button class="selects-slide__btn btn-selects submit" type="submit">
                                                         <div class="btn-selects__box">
                                                             <div class="btn-selects__content">
                                                                 <span>Сохранить</span>
                                                             </div>
                                                         </div>
                                                     </button>
-                                                    </form>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="slide-swiper__right">
-                                                <div class="slide-swiper__title">
-                                                    <h2>Пароль</h2>
-                                                </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
-                                                        <div class="btn-selects__box">
-                                                            <div class="btn-selects__content">
-                                                                <span>Сохранить</span>
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                    </form>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                         <div class="swiper-slide slide-swiper">
@@ -846,177 +386,15 @@
                                                 <div class="slide-swiper__title">
                                                     <h2>Удалить аккаунт</h2>
                                                 </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
+
+                                                <button class="selects-slide__btn btn-selects" type="submit">
+                                                    <div class="btn-selects__box remove-btn">
+                                                        <div class="btn-selects__content popup_open" data-popup="popup_remove">
+                                                            <span>Удалить аккаунт</span>
                                                         </div>
                                                     </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box ">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
-                                                        <div class="btn-selects__box">
-                                                            <div class="btn-selects__content">
-                                                                <span>Сохранить</span>
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div class="slide-swiper__right">
-                                                <div class="slide-swiper__title">
-                                                    <h2>Удалить аккаунт</h2>
-                                                </div>
-                                                <div class="slide-swiper__selects selects-slide">
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Отправка сообщений" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Язык интерфейса" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Разрешить уведомления" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Видимость профиля" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="selects-slide__box">
-                                                        <input type="text" class="selects-slide__dropdown" placeholder="Приглашения в игру" readonly></input>
-                                                        <div class="selects-slide__option">
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                            <div class="option">lorem, ipsum dolor.</div>
-                                                        </div>
-                                                        <div class="selects-slide__arrow">
-                                                            <div class="img">
-                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="selects-slide__btn btn-selects" type="submit">
-                                                        <div class="btn-selects__box">
-                                                            <div class="btn-selects__content">
-                                                                <span>Сохранить</span>
-                                                            </div>
-                                                        </div>
-                                                    </button>
-                                                    </form>
-                                                </div>
+                                                </button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -1025,6 +403,7 @@
                             </div>
                         </div>
             </section>
+
         </main>
         <footer class="footer a part">
             <div class="footer__container">
