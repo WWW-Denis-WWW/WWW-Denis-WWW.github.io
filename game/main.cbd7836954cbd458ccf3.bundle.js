@@ -15019,31 +15019,31 @@ const SceneCreater = preloader => {
     jungle6.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
     // cave 12
     let cave1 = new Scene(12);
-    cave1.addBackgroud("../assets/media/cave/eyes.png", "90%", "19%", "38%", "3%", _, "contain");
+    cave1.addBackgroud("./assets/media/cave/eyes.png", "90%", "19%", "38%", "3%", _, "contain");
 
     // cave 13
     let cave2 = new Scene(13);
-    cave2.addBackgroud("../assets/media/cave/eyes.png", "90%", "19%", "38%", "3%", _, "contain");
+    cave2.addBackgroud("./assets/media/cave/eyes.png", "90%", "19%", "38%", "3%", _, "contain");
     //cave 14
     let cave3 = new Scene(14);
-    cave3.addBackgroud("../assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
-    cave3.addCharacter("../assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-10%", 0, "contain");
-    cave3.addCharacter("../assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "2%", 0, "contain");
-    cave3.addCharacter("../assets/media/cave/characters/silly-lighter.png", _, "23%", "78%", "27%", "17%", 0, "contain");
+    cave3.addBackgroud("./assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
+    cave3.addCharacter("./assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-10%", 0, "contain");
+    cave3.addCharacter("./assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "2%", 0, "contain");
+    cave3.addCharacter("./assets/media/cave/characters/silly-lighter.png", _, "23%", "78%", "27%", "17%", 0, "contain");
     cave3.addDiv("ligth1", 1);
     //cave 14
     let cave4 = new Scene(15);
-    cave4.addBackgroud("../assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
-    cave4.addCharacter("../assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-10%", 0, "contain");
-    cave4.addCharacter("../assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "2%", 0, "contain");
-    cave4.addCharacter("../assets/media/cave/characters/silly-lighter.png", _, "23%", "78%", "27%", "17%", 0, "contain");
+    cave4.addBackgroud("./assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
+    cave4.addCharacter("./assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-10%", 0, "contain");
+    cave4.addCharacter("./assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "2%", 0, "contain");
+    cave4.addCharacter("./assets/media/cave/characters/silly-lighter.png", _, "23%", "78%", "27%", "17%", 0, "contain");
     cave4.addDiv("ligth1", 1);
     //cave 15
     let cave5 = new Scene(16);
-    cave5.addBackgroud("../assets/media/cave/bg4.jpg", _, _, _, _, _, _, "bottom");
-    cave5.addCharacter("../assets/media/cave/characters/silly-lighter1.png", _, "25%", "72%", "30%", "15%", 0, "contain");
-    cave5.addCharacter("../assets/media/cave/characters/drake-fear.png", "Drake1", "23%", "78%", "28%", "41%", 0, "contain");
-    cave5.addCharacter("../assets/media/characters/Helen.png", _, "25%", "72%", "29%", "68%", 0, "contain");
+    cave5.addBackgroud("./assets/media/cave/bg4.jpg", _, _, _, _, _, _, "bottom");
+    cave5.addCharacter("./assets/media/cave/characters/silly-lighter1.png", _, "25%", "72%", "30%", "15%", 0, "contain");
+    cave5.addCharacter("./assets/media/cave/characters/drake-fear.png", "Drake1", "23%", "78%", "28%", "41%", 0, "contain");
+    cave5.addCharacter("./assets/", _, "25%", "72%", "29%", "68%", 0, "contain");
     cave5.addDiv("ligth2", 1);
   }
 };
@@ -15104,8 +15104,23 @@ const Preloader = () => {
   })();
 };
 /* harmony default export */ var preloader = (Preloader);
-;// CONCATENATED MODULE: ./js/talk-updateer.js
+;// CONCATENATED MODULE: ./js/keyListener.js
+let isKeyListener = v => {
+  islisten = v;
+};
 let nextBtn = document.querySelector("#next");
+let islisten = true;
+window.addEventListener("keydown", keyDown);
+function keyDown(e) {
+  if (!islisten) return;
+  if (e.code == "Space" || e.code == "ArrowRight") {
+    nextBtn.click();
+  }
+}
+/* harmony default export */ var keyListener = (isKeyListener);
+;// CONCATENATED MODULE: ./js/talk-updateer.js
+
+let talk_updateer_nextBtn = document.querySelector("#next");
 let typed = new Typed(".talk .talk__text p", {
   strings: [""],
   typeSpeed: 10,
@@ -15113,7 +15128,9 @@ let typed = new Typed(".talk .talk__text p", {
   fadeOut: true,
   fadeOutDelay: 0,
   onComplete: () => {
-    nextBtn.classList.remove("hide");
+    keyListener(true);
+    talk_updateer_nextBtn.classList.remove("hide");
+    talk_updateer_nextBtn.disabled = false;
   }
 });
 let talkElement = document.querySelector(".talk");
@@ -15131,7 +15148,9 @@ function TalkUpdate(str, top, left, type) {
   typed.destroy();
   typed.strings = [str];
   typed.begin();
-  nextBtn.classList.add("hide");
+  talk_updateer_nextBtn.classList.add("hide");
+  talk_updateer_nextBtn.disabled = true;
+  keyListener(false);
 }
 /* harmony default export */ var talk_updateer = (TalkUpdate);
 ;// CONCATENATED MODULE: ./js/warn-btn.js
@@ -15410,6 +15429,8 @@ const TALKING_POSITIONS = {
 
 // Warning
 
+// key
+
 // Warning
 
 // script
@@ -15427,8 +15448,6 @@ const TALKING_POSITIONS = {
 scene_creater(preloader);
 warn_btn(sceneInit);
 function sceneInit() {
-  // let startScene = 0;
-  // removeScenes(startScene);
   let nowScene = 1,
     talkIndex = 0,
     nextBtn = document.querySelector("#next");
@@ -15496,7 +15515,9 @@ function fade() {
   let fadeEl = document.querySelector("#fade");
   fadeEl.classList.add("show");
   let nextBtn = document.querySelector("#next");
+  keyListener(false);
   nextBtn.classList.add("hide");
+  nextBtn.disabled = false;
   hideTalkEl();
   setTimeout(() => {
     fadeEl.classList.remove("show");
