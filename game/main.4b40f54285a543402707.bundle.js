@@ -35537,12 +35537,12 @@ function setActiveBtn() {
 // adaptive();
 scene_creater(preloader, talk_blockSetting);
 warn_btn(gameInit);
-let main_nowScene = 27,
+let main_nowScene = 1,
   talkIndex = 0,
   main_nextBtn = document.querySelector("#next");
 let nowTalk = null;
 function gameInit() {
-  removeScenes(27);
+  removeScenes(0);
   spineManager.checkScene(main_nowScene);
   talk_updateer(getDialog(main_nowScene, talkIndex), ...getSettingForThisScene(main_nowScene, talkIndex));
   main_nextBtn.addEventListener("click", () => {
