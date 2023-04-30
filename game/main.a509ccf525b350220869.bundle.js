@@ -2892,18 +2892,18 @@ const SceneCreater = (preloader, talkSet) => {
     let cave11 = new Scene(sceneCount);
     cave11.addBackgroud("./assets/media/cave/statue/bg.png");
     cave11.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "90%", "100%", "50%", _, "contain", _, "statue");
-    cave11.addCharacter("../assets/media/cave/characters/H-statue stand.png", "helena-stand", "100%", "75%", "105%", "36%", _, "contain");
-    cave11.addCharacter("../assets/media/cave/characters/drake-statue-stand.png", "drake-stand", "100%", "77%", "112%", "-34%", _, "contain");
+    cave11.addCharacter("./assets/media/cave/characters/H-statue stand.png", "helena-stand", "100%", "75%", "105%", "36%", _, "contain");
+    cave11.addCharacter("./assets/media/cave/characters/drake-statue-stand.png", "drake-stand", "100%", "77%", "112%", "-34%", _, "contain");
     // cave 23
     let cave12 = new Scene(sceneCount);
     cave12.addBackgroud("./assets/media/cave/statue/bg.png");
     cave12.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "90%", "100%", "50%", _, "contain", _, "statue");
-    cave12.addCharacter("../assets/media/cave/characters/H-statue stand.png", "helena-stand", "100%", "75%", "105%", "36%", _, "contain");
-    cave12.addCharacter("../assets/media/cave/characters/drake-statue-stand.png", "drake-stand", "100%", "77%", "112%", "-34%", _, "contain");
+    cave12.addCharacter("./assets/media/cave/characters/H-statue stand.png", "helena-stand", "100%", "75%", "105%", "36%", _, "contain");
+    cave12.addCharacter("./assets/media/cave/characters/drake-statue-stand.png", "drake-stand", "100%", "77%", "112%", "-34%", _, "contain");
     // cave 24
     let cave13 = new Scene(sceneCount);
     cave13.addBackgroud("./assets/media/cave/bg4.png", _, _, _, _, _, _, "bottom");
-    cave13.addCharacter("../assets/media/cave/characters/drake-fear-statue.png", "drake-scare", "100%", "103%", "100%", "-1%", _, "contain");
+    cave13.addCharacter("./assets/media/cave/characters/drake-fear-statue.png", "drake-scare", "100%", "103%", "100%", "-1%", _, "contain");
     // cave 25
     let cave14 = new Scene(sceneCount);
     cave14.addBackgroud("./assets/media/cave/statue/bg.png");
@@ -2913,7 +2913,7 @@ const SceneCreater = (preloader, talkSet) => {
     //cave 26
     let cave15 = new Scene(sceneCount);
     cave15.addBackgroud("./assets/media/cave/bg4.png", _, _, _, _, _, _, "bottom");
-    cave15.addCharacter("../assets/media/cave/characters/drake-fear-statue.png", "drake-scare", "100%", "103%", "100%", "-1%", _, "contain");
+    cave15.addCharacter("./assets/media/cave/characters/drake-fear-statue.png", "drake-scare", "100%", "103%", "100%", "-1%", _, "contain");
     //cave 27
     let cave16 = new Scene(sceneCount);
     cave16.addBackgroud("./assets/media/cave/statue/bg.png");
@@ -3295,7 +3295,7 @@ const TALKING_POSITIONS = {
   scene18: {
     modifyScene: {
       delayUpdate: 500,
-      delayTalk: 2150,
+      delayTalk: 2500,
       imgChange: [{
         target: "scene18",
         img1: {
@@ -35303,7 +35303,7 @@ const spineSettings = [{
     w: window.innerWidth,
     h: window.innerHeight,
     posY: 0,
-    posX: -200,
+    posX: -100,
     scale: 0.45,
     animLoop: true,
     gameScene: true
