@@ -3081,10 +3081,8 @@ let typed = new Typed(".talk .talk__text p", {
   fadeOutDelay: 0,
   onComplete: () => {
     keyListener(true);
-    if (typed.strings[0]) {
-      talk_updateer_nextBtn.classList.remove("hide");
-      talk_updateer_nextBtn.disabled = false;
-    }
+    talk_updateer_nextBtn.classList.remove("hide");
+    talk_updateer_nextBtn.disabled = false;
   }
 });
 let talkElement = document.querySelector(".talk");
@@ -3123,7 +3121,6 @@ const Warning = StartFunction => {
 // procent unit
 const TALKING_POSITIONS = [{
   modifyScene: {
-    firstScene: true,
     delayTalk: -1
   }
 }, {
@@ -3133,7 +3130,6 @@ const TALKING_POSITIONS = [{
     delayNext: 8000,
     delayUpdate: 1000,
     delayTalk: 0,
-    fadeEnd: 1000,
     anim: ["#scene2"]
   }
 }, {
@@ -35338,38 +35334,38 @@ const allSpine = [{
 }, {
   name: "Eyes",
   spine: spineEyes,
-  sceneStart: [12],
-  sceneEnd: [14]
+  sceneStart: [14],
+  sceneEnd: [15]
 }, {
   name: "H-transform",
   spine: spineHelenaT,
-  sceneStart: [27],
-  sceneEnd: [28]
-}, {
-  name: "Sucking",
-  spine: spineSucking,
-  sceneStart: [28],
-  sceneEnd: [29]
-}, {
-  name: "BoobJob",
-  spine: spineBoobJob,
   sceneStart: [29],
   sceneEnd: [30]
 }, {
-  name: "DoggyStyle",
-  spine: spineDoggyStyle,
+  name: "Sucking",
+  spine: spineSucking,
   sceneStart: [30],
   sceneEnd: [31]
 }, {
-  name: "Wallslam",
-  spine: spineWallslam,
+  name: "BoobJob",
+  spine: spineBoobJob,
   sceneStart: [31],
   sceneEnd: [32]
 }, {
+  name: "DoggyStyle",
+  spine: spineDoggyStyle,
+  sceneStart: [32],
+  sceneEnd: [33]
+}, {
+  name: "Wallslam",
+  spine: spineWallslam,
+  sceneStart: [33],
+  sceneEnd: [34]
+}, {
   name: "End",
   spine: spineEnd,
-  sceneStart: [32, 34],
-  sceneEnd: [33, 35]
+  sceneStart: [34, 36],
+  sceneEnd: [35, 37]
 }];
 
 ;// CONCATENATED MODULE: ./js/spineManager.js
@@ -35714,11 +35710,6 @@ let modifyScene = Talk.modifyScene;
 function gameInit() {
   // removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
-  if (modifyScene.firstScene) {
-    setTimeout(() => {
-      main_nextBtn.classList.remove("hide");
-    }, 3000);
-  }
   main_nextBtn.addEventListener("click", () => {
     talkIndex++;
     nowTalk = getDialog(main_nowScene, talkIndex);
@@ -35742,7 +35733,7 @@ function gameInit() {
         setTimeout(() => {
           updateScene();
         }, modifyScene.delayUpdate);
-        if (!modifyScene.next && delayTalk != -1) {
+        if (!modifyScene.next) {
           setTimeout(() => {
             talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
           }, modifyScene.delayTalk);
@@ -35775,16 +35766,8 @@ function addModifyScene(modifyObj) {
   }
   if (modifyObj.next) {
     setTimeout(() => {
-      if (modifyObj.fadeEnd) {
-        fade();
-        setTimeout(() => {
-          updateScene();
-          talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
-        }, 1000);
-      } else {
-        updateScene();
-        talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
-      }
+      updateScene();
+      talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     }, modifyObj.delayNext);
   }
   if (modifyObj.gameEnd) {
