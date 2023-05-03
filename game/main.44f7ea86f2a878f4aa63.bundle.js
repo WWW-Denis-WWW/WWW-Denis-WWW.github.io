@@ -3566,10 +3566,14 @@ const TALKING_POSITIONS = [{
 ;// CONCATENATED MODULE: ./js/spineSceneAdap.js
 const adaptive = () => {
   let spineScene = document.querySelector(".spine__scene");
-  spineScene.style.transform = `scale(${(window.innerWidth / 1920).toFixed(2)})`;
+  spineScene.style.transform = `scale(${(getContainerWidth() / 1920).toFixed(2)})`;
   window.addEventListener("resize", () => {
-    spineScene.style.transform = `scale(${(window.innerWidth / 1920).toFixed(2)})`;
+    spineScene.style.transform = `scale(${(getContainerWidth() / 1920).toFixed(2)})`;
   });
+  function getContainerWidth() {
+    let containerWidth = document.querySelector("#container").getBoundingClientRect().width;
+    return containerWidth;
+  }
 };
 /* harmony default export */ var spineSceneAdap = (adaptive);
 ;// CONCATENATED MODULE: ../node_modules/@pixi/constants/dist/esm/constants.mjs
@@ -21038,30 +21042,8 @@ class Application {
       width,
       height,
       view: this.view,
-      // resolution: window.devicePixelRatio,
-      // autoDensity: true,
       backgroundAlpha: 0 // раскоменти, чтобы убрать черный фон за спайном
     });
-
-    console.log(this.renderer.screen.width);
-    console.log(this.view.width);
-    // this.stage.scale.x = 0.5;
-    // this.stage.scale.y = 0.5;
-
-    // this.stage.setTransform(
-    //   this.view.width / 2,
-    //   this.view.height / 2,
-    //   0.5,
-    //   0.5
-    // );
-    // this.stage.transform.position.x = 100;
-
-    // this.view.style.position = "absolute";
-    // this.view.style.top = "0";
-    // this.view.style.left = "0";
-    // this.view.style.transform = "traslate(-50%,-50%) ";
-
-    // this.stage.scale.set(0.5, 0.5);
   }
 
   /** вызывается каждый кадр, рисует содержимое приложения во view */
@@ -35255,7 +35237,7 @@ const create = _ref => {
    * stage это что-то типо Div, но внутри PIXI
    * в данном случае мы просто добавляем в него спайн
    */
-
+  // spine.alpha = 1;
   app.stage.addChild(spine);
 
   /**
@@ -35273,7 +35255,7 @@ const create = _ref => {
     spine.stateData.setMix("3", "1", 0.5);
     spine.stateData.setMix("3", "2", 0.5);
     spine.stateData.setMix("3", "4", 0.5);
-    spine.stateData.setMix("4", "5", 0.5);
+    spine.stateData.setMix("4", "5", 1);
   }
   spine.state.addListener({
     complete: () => {
@@ -35527,16 +35509,16 @@ function changeAnimation(spineName, animationName) {
 
 let _ = undefined;
 let spineAnimInfo = [{
-  scene: 28,
+  scene: 30,
   name: "Sucking"
 }, {
-  scene: 29,
+  scene: 31,
   name: "BoobJob"
 }, {
-  scene: 30,
+  scene: 32,
   name: "DoggyStyle"
 }, {
-  scene: 31,
+  scene: 33,
   name: "Wallslam"
 }];
 let progress, gameMode, unlockStage, timer, scene, setedAnim;
@@ -35714,9 +35696,11 @@ function gameInit() {
     talkIndex++;
     nowTalk = getDialog(main_nowScene, talkIndex);
     if (nowTalk) {
+      // get dialog
       talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     } else {
-      if (main_nowScene + 1 == 36) return;
+      // change scene
+      if (main_nowScene == 38) return;
       Talk = talk_blockSetting[main_nowScene];
       let isGameScene = Talk.gameScene;
       modifyScene = Talk.modifyScene;
