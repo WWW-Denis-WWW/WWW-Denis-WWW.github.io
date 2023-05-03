@@ -2576,7 +2576,7 @@ var __webpack_exports__ = {};
 "use strict";
 
 ;// CONCATENATED MODULE: ./js/dialog.js
-const talks = [[""], [""], ["Finally! Remind me to take a helicopter for the next trip, Sully.", "I’d rather avoid meeting pirates and fixing that damn engine every hour."], ["I’m too old for all this crap, Nate.", "This time we better get lucky and find something valuable."], ["Come on guys, we shouldn’t argue and complain.", "Look how beautiful it is here."], ["Sorry for that. Just getting sick of pointless adventures.", "I owe a lot of money to serious people. And they aren’t kidding anymore."], ["Don’t worry, old man. This campaign will bring us to jackpot for sure.", "But we gotta hurry. Roman is gonna be here in a couple hours.", "Let’s go!"], ["I’ve already seen this tree!", "We are going round and round in circles, Nate!"], ["I don’t understand!", "The entrance is supposed to be right here."], ["I’m kinda tired.", "You figure out, which direction we should go. I need a rest."], ["Way to go, girl!", "I told you, Nate. This lady is a pure diamond!"], ["I must admit the truth.", "Not bad for a journalist, Elena."], ["We are running out of time, boys!", "I want to see, what’s hidden inside. Let’s roll!"], ["Never thought I’d say it.", "You wanna smoke your cigar, Sully?", "I can’t see a thing."], ["Just a moment."], ["Damn that was close!"], ["It’s a dead end.", "Let’s move back the same way."], ["Maybe we missed something."], ["Look what I’ve found! Could be useful."], ["I can’t believe we found it.", "The definition of «gorgeous»!", "There it is, ladies and gentlemen."], ["Let me introduce… The famous El Whorado."], ["Alright. I’ll quickly get back to the boat.", "We definitely need some equipment to transport this giant."], ["You two! Don’t do anything stupid."], ["Yes, sir!", "Oh please. Everything is under control, Sully."], ["Okay, he is gone. Let’s open this thing!", "What? No! We have no idea, what’s inside.", "It can be dangerous, Elena.", "Oh don’t be such a pussy! I’m so excited!"], ["Wait!!!"], [""], ["Well, I was wrong. It is not under control from now."], ["Time to have some fun!"], [], [], [], [], ["Damn..."], ["Whata hell is going on there???"], ["Well now we know what statue is", "...what just happened there?"], ["I wouldn’t say this adventure was pointless", "Totally agreed!", "Get me back to normal, you idiots!", "Arghhh!!!"]];
+const talks = [[""], [""], ["Finally! Remind me to take a helicopter for the next trip, Sully.", "I’d rather avoid meeting pirates and fixing that damn engine every hour."], ["I’m too old for all this crap, Nate.", "This time we better get lucky and find something valuable."], ["Come on guys, we shouldn’t argue and complain.", "Look how beautiful it is here."], ["Sorry for that. Just getting sick of pointless adventures.", "I owe a lot of money to serious people. And they aren’t kidding anymore."], ["Don’t worry, old man. This campaign will bring us to jackpot for sure.", "But we gotta hurry. Roman is gonna be here in a couple hours.", "Let’s go!"], ["I’ve already seen this tree!", "We are going round and round in circles, Nate!"], ["I don’t understand!", "The entrance is supposed to be right here."], ["I’m kinda tired.", "You figure out, which direction we should go. I need a rest."], ["Way to go, girl!", "I told you, Nate. This lady is a pure diamond!"], ["I must admit the truth.", "Not bad for a journalist, Elena."], ["We are running out of time, boys!", "I want to see, what’s hidden inside. Let’s roll!"], ["Never thought I’d say it.", "You wanna smoke your cigar, Sully?", "I can’t see a thing.", "Just a moment."], ["Damn that was close!"], ["It’s a dead end.", "Let’s move back the same way."], ["Maybe we missed something."], ["Look what I’ve found! Could be useful."], ["I can’t believe we found it.", "The definition of «gorgeous»!", "There it is, ladies and gentlemen."], ["Let me introduce… The famous El Whorado."], ["Alright. I’ll quickly get back to the boat.", "We definitely need some equipment to transport this giant."], ["You two! Don’t do anything stupid."], ["Yes, sir!", "Oh please. Everything is under control, Sully."], ["Okay, he is gone. Let’s open this thing!", "What? No! We have no idea, what’s inside.", "It can be dangerous, Elena.", "Oh don’t be such a pussy! I’m so excited!"], ["Wait!!!"], [""], ["Well, I was wrong. It is not under control from now."], ["Time to have some fun!"], [], [], [], [], ["Damn..."], ["Whata hell is going on there???"], ["Well now we know what statue is", "...what just happened there?"], ["I wouldn’t say this adventure was pointless", "Totally agreed!", "Get me back to normal, you idiots!", "Arghhh!!!"]];
 /* harmony default export */ var dialog = (talks);
 ;// CONCATENATED MODULE: ./js/images.js
 const images_images = ["./assets/media/characters/Helen-sit-scare.png", "./assets/media/characters/Helen-sit-smile.png", "./assets/media/cave/SurpriseCloseUp.png", "./assets/media/cave/statue/statue1.png", "./assets/media/cave/statue/SmokeViolet.png", "./assets/media/cave/characters/HelenOpeningStatueFront.png"];
@@ -2727,18 +2727,29 @@ const SceneCreater = preloader => {
   }
 
   // Создаем лого предлоадера
-  function setPreloaderGif() {
-    let logo = new Image();
-    logo.src = "./assets/animation/logo.gif";
-    document.querySelector("#preloader_gif").appendChild(logo);
-    logo.addEventListener("load", () => {
-      createScenes();
-      preloadImg();
-      preloader();
+  function logoPreloading() {
+    let logoGif = new Image(),
+      logoWatermark = new Image(),
+      logoLoadedCount = 0;
+    logoGif.src = "./assets/animation/logo.gif";
+    logoWatermark.src = "../assets/media/logo.png";
+    document.querySelector("#preloader_gif").appendChild(logoGif);
+    document.querySelector("#watermark-logo").appendChild(logoWatermark);
+    [logoGif, logoWatermark].forEach((logo, i, arr) => {
+      logo.addEventListener("load", () => {
+        logoLoadedCount++;
+        if (logoLoadedCount == arr.length) {
+          initScene();
+        }
+      });
     });
   }
-  setPreloaderGif();
-
+  logoPreloading();
+  function initScene() {
+    createScenes();
+    preloadImg();
+    preloader();
+  }
   // Создаем сцены
   function createScenes() {
     // start scene
@@ -2845,10 +2856,6 @@ const SceneCreater = preloader => {
     jungle6.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
     // cave 12
     let cave1 = new Scene(sceneCount);
-
-    // cave 13
-    let cave2 = new Scene(sceneCount);
-
     //cave 14
     let cave3 = new Scene(sceneCount);
     cave3.addBackgroud("./assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
@@ -3007,7 +3014,8 @@ const Preloader = () => {
     media = Array.from(document.querySelectorAll("img , video")),
     audio = Array.from(document.querySelectorAll("audio")),
     procentEl = document.querySelector("#loadProcent"),
-    allElCount = media.length - 1,
+    allElCount = media.length - 2,
+    // не берем в счет logoGig и logoWatermark *scene-creater.js*
     loadedElements = 0,
     procentValue = 0;
   function listenLoads() {
@@ -3075,7 +3083,7 @@ function keyDown(e) {
 let talk_updateer_nextBtn = document.querySelector("#next");
 let typed = new Typed(".talk .talk__text p", {
   strings: [""],
-  typeSpeed: 10,
+  typeSpeed: 20,
   showCursor: false,
   fadeOut: true,
   fadeOutDelay: 0,
@@ -3125,7 +3133,7 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
-    fadeStart: true,
+    fadeStart: 1200,
     next: true,
     delayNext: 8000,
     delayUpdate: 1000,
@@ -3194,7 +3202,7 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
-    fadeStart: true,
+    fadeStart: 1200,
     delayTalk: 2000,
     delayUpdate: 1000
   },
@@ -3221,18 +3229,18 @@ const TALKING_POSITIONS = [{
   }
 }, {
   talk1: {
-    top: 38,
-    left: 45,
-    type: "cl"
+    top: 24,
+    left: 29.5,
+    type: "bc"
   },
   talk2: {
-    top: 38,
-    left: 45,
-    type: "cl"
+    top: 24,
+    left: 29.5,
+    type: "bc"
   }
 }, {
   modifyScene: {
-    fadeStart: true,
+    fadeStart: 1200,
     delayUpdate: 1000,
     delayTalk: 7000,
     anim: [".Helena-sit-anim", ".stone-anim", ".door-anime"],
@@ -3276,18 +3284,18 @@ const TALKING_POSITIONS = [{
   }
 }, {
   talk1: {
-    top: 37,
-    left: 40,
-    type: "bl"
+    top: 36,
+    left: 28,
+    type: "bс"
   },
   talk2: {
-    top: 37,
-    left: 40,
-    type: "bl"
+    top: 36,
+    left: 28,
+    type: "bс"
   }
 }, {
   modifyScene: {
-    fadeStart: true,
+    fadeStart: 1200,
     delayUpdate: 1000,
     delayTalk: 2000
   },
@@ -3305,9 +3313,8 @@ const TALKING_POSITIONS = [{
     top: 20,
     left: 64,
     type: "none"
-  }
-}, {
-  talk1: {
+  },
+  talk4: {
     top: 20,
     left: 18,
     type: "none"
@@ -3424,7 +3431,7 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
-    fadeStart: true,
+    fadeStart: 1200,
     delayTalk: 2000,
     delayUpdate: 1000
   },
@@ -3495,7 +3502,7 @@ const TALKING_POSITIONS = [{
 }, {
   modifyScene: {
     delayUpdate: 0,
-    delayTalk: 7500
+    delayTalk: 10500
   },
   talk1: {
     top: 67,
@@ -3537,7 +3544,7 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
-    fadeStart: true,
+    fadeStart: 1200,
     delayTalk: 2000,
     delayUpdate: 1000
   },
@@ -3567,12 +3574,18 @@ const TALKING_POSITIONS = [{
 const adaptive = () => {
   let spineScene = document.querySelector(".spine__scene");
   spineScene.style.transform = `scale(${(getContainerWidth() / 1920).toFixed(2)})`;
+  setTalkSize();
   window.addEventListener("resize", () => {
     spineScene.style.transform = `scale(${(getContainerWidth() / 1920).toFixed(2)})`;
+    setTalkSize();
   });
   function getContainerWidth() {
     let containerWidth = document.querySelector("#container").getBoundingClientRect().width;
     return containerWidth;
+  }
+  function setTalkSize() {
+    let talkBlock = document.querySelector(".talk");
+    talkBlock.style.fontSize = 30 * (getContainerWidth() / 1920) + "px";
   }
 };
 /* harmony default export */ var spineSceneAdap = (adaptive);
@@ -35109,7 +35122,7 @@ var assets_spine_end_skeleton_namespaceObject = JSON.parse('{"skeleton":{"hash":
 
 
 
-
+// import * as PIXI from "pixi.js";
 // Eye
 
 
@@ -35149,6 +35162,9 @@ const loadSpineJson = (dataURI, dataJson, atlas) => {
   const spineTextureAtlas = new TextureAtlas(atlas, (line, callback) => {
     callback(baseTexture);
   });
+
+  // spineTextureAtlas.pages[0].baseTexture.alphaMode = PIXI.ALPHA_MODES.PMA;
+
   const spineAtlasAttachmentLoader = new AtlasAttachmentLoader(spineTextureAtlas);
   const spineSkeletonJson = new SkeletonJson(spineAtlasAttachmentLoader);
   const spineData = spineSkeletonJson.readSkeletonData(dataJson);
@@ -35321,23 +35337,23 @@ const allSpine = [{
 }, {
   name: "H-transform",
   spine: spineHelenaT,
-  sceneStart: [29],
-  sceneEnd: [30]
+  sceneStart: [28],
+  sceneEnd: [29]
 }, {
   name: "Sucking",
   spine: spineSucking,
-  sceneStart: [30],
-  sceneEnd: [31]
+  sceneStart: [29],
+  sceneEnd: [30]
 }, {
   name: "BoobJob",
   spine: spineBoobJob,
-  sceneStart: [31],
-  sceneEnd: [32]
+  sceneStart: [30],
+  sceneEnd: [31]
 }, {
   name: "DoggyStyle",
   spine: spineDoggyStyle,
-  sceneStart: [32],
-  sceneEnd: [33]
+  sceneStart: [31],
+  sceneEnd: [32]
 }, {
   name: "Wallslam",
   spine: spineWallslam,
@@ -35370,7 +35386,7 @@ const spineSettings = [{
     animName: "animation",
     w: 1920,
     h: 1080,
-    posY: 150,
+    posY: 200,
     posX: 600,
     scale: 0.6,
     animLoop: false
@@ -35509,16 +35525,16 @@ function changeAnimation(spineName, animationName) {
 
 let _ = undefined;
 let spineAnimInfo = [{
-  scene: 30,
+  scene: 29,
   name: "Sucking"
 }, {
-  scene: 31,
+  scene: 30,
   name: "BoobJob"
 }, {
-  scene: 32,
+  scene: 31,
   name: "DoggyStyle"
 }, {
-  scene: 33,
+  scene: 32,
   name: "Wallslam"
 }];
 let progress, gameMode, unlockStage, timer, scene, setedAnim;
@@ -35553,7 +35569,7 @@ function updateProgressIfCan() {
   }
 }
 function increaseProgress() {
-  progress += 2;
+  progress += 1.05;
   progressBar.style.height = progress + "%";
   checkStage();
   updateProgressIfCan();
@@ -35679,8 +35695,8 @@ function setActiveBtn() {
 //Main script
 js_sound();
 js_fullscreen();
-spineSceneAdap();
 screenResolution();
+spineSceneAdap();
 scene_creater(preloader);
 warn_btn(gameInit);
 let main_nowScene = 1,
@@ -35690,7 +35706,7 @@ let nowTalk = null;
 let Talk = talk_blockSetting[main_nowScene - 1];
 let modifyScene = Talk.modifyScene;
 function gameInit() {
-  // removeScenes(1); //для тестов
+  removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
   main_nextBtn.addEventListener("click", () => {
     talkIndex++;
@@ -35714,14 +35730,6 @@ function gameInit() {
         addModifyScene(modifyScene);
         hideNext();
         hideTalkEl();
-        setTimeout(() => {
-          updateScene();
-        }, modifyScene.delayUpdate);
-        if (!modifyScene.next) {
-          setTimeout(() => {
-            talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
-          }, modifyScene.delayTalk);
-        }
       } else {
         updateScene();
         talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
@@ -35738,7 +35746,7 @@ function updateScene() {
 }
 function addModifyScene(modifyObj) {
   if (modifyObj.fadeStart) {
-    fade();
+    fade(modifyObj.fadeStart);
   }
   if (modifyObj.anim) {
     modifyObj.anim.forEach(className => {
@@ -35753,6 +35761,17 @@ function addModifyScene(modifyObj) {
       updateScene();
       talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     }, modifyObj.delayNext);
+  } else {
+    setTimeout(() => {
+      talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
+    }, modifyScene.delayTalk);
+  }
+  if (modifyScene.delayUpdate) {
+    setTimeout(() => {
+      updateScene();
+    }, modifyScene.delayUpdate);
+  } else {
+    updateScene();
   }
   if (modifyObj.gameEnd) {
     hideGameInterface();
@@ -35785,14 +35804,14 @@ function hideNext() {
   main_nextBtn.classList.add("hide");
   main_nextBtn.disabled = true;
 }
-function fade() {
+function fade(time) {
   let fadeEl = document.querySelector("#fade");
   fadeEl.classList.add("show");
   hideNext();
   hideTalkEl();
   setTimeout(() => {
     fadeEl.classList.remove("show");
-  }, 1200);
+  }, time);
 }
 function hideTalkEl() {
   let talkElement = document.querySelector(".talk");
