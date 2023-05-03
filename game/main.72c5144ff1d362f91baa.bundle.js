@@ -2732,7 +2732,7 @@ const SceneCreater = preloader => {
       logoWatermark = new Image(),
       logoLoadedCount = 0;
     logoGif.src = "./assets/animation/logo.gif";
-    logoWatermark.src = "../assets/media/logo.png";
+    logoWatermark.src = "./assets/media/logo.png";
     document.querySelector("#preloader_gif").appendChild(logoGif);
     document.querySelector("#watermark-logo").appendChild(logoWatermark);
     [logoGif, logoWatermark].forEach((logo, i, arr) => {
@@ -35716,7 +35716,7 @@ function gameInit() {
       talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     } else {
       // change scene
-      if (main_nowScene == 38) return;
+
       Talk = talk_blockSetting[main_nowScene];
       let isGameScene = Talk.gameScene;
       modifyScene = Talk.modifyScene;
