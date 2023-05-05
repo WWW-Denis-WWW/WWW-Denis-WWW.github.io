@@ -2576,10 +2576,10 @@ var __webpack_exports__ = {};
 "use strict";
 
 ;// CONCATENATED MODULE: ./js/dialog.js
-const talks = [[""], [""], ["Finally! Remind me to take a helicopter for the next trip, Sully.", "I’d rather avoid meeting pirates and fixing that damn engine every hour."], ["I’m too old for all this crap, Nate.", "This time we better get lucky and find something valuable."], ["Come on guys, we shouldn’t argue and complain.", "Look how beautiful it is here."], ["Sorry for that. Just getting sick of pointless adventures.", "I owe a lot of money to serious people. And they aren’t kidding anymore."], ["Don’t worry, old man. This campaign will bring us to jackpot for sure.", "But we gotta hurry. Roman is gonna be here in a couple hours.", "Let’s go!"], ["I’ve already seen this tree!", "We are going round and round in circles, Nate!"], ["I don’t understand!", "The entrance is supposed to be right here."], ["I’m kinda tired.", "You figure out, which direction we should go. I need a rest."], ["Way to go, girl!", "I told you, Nate. This lady is a pure diamond!"], ["I must admit the truth.", "Not bad for a journalist, Elena."], ["We are running out of time, boys!", "I want to see, what’s hidden inside. Let’s roll!"], ["Never thought I’d say it.", "You wanna smoke your cigar, Sully?", "I can’t see a thing.", "Just a moment."], ["Damn that was close!"], ["It’s a dead end.", "Let’s move back the same way."], ["Maybe we missed something."], ["Look what I’ve found! Could be useful."], ["I can’t believe we found it.", "The definition of «gorgeous»!", "There it is, ladies and gentlemen."], ["Let me introduce… The famous El Whorado."], ["Alright. I’ll quickly get back to the boat.", "We definitely need some equipment to transport this giant."], ["You two! Don’t do anything stupid."], ["Yes, sir!", "Oh please. Everything is under control, Sully."], ["Okay, he is gone. Let’s open this thing!", "What? No! We have no idea, what’s inside.", "It can be dangerous, Elena.", "Oh don’t be such a pussy! I’m so excited!"], ["Wait!!!"], [""], ["Well, I was wrong. It is not under control from now."], ["Time to have some fun!"], [], [], [], [], ["Damn..."], ["Whata hell is going on there???"], ["Well now we know what statue is", "...what just happened there?"], ["I wouldn’t say this adventure was pointless", "Totally agreed!", "Get me back to normal, you idiots!", "Arghhh!!!"]];
+const talks = [[""], [""], ["Finally! Remind me to take a helicopter for the next trip, Sully.", "I’d rather avoid meeting pirates and fixing that damn engine every hour."], ["I’m too old for all this crap, Nate.", "This time we better get lucky and find something valuable."], ["Come on guys, we shouldn’t argue and complain.", "Look how beautiful it is here."], ["Sorry for that. Just getting sick of pointless adventures.", "I owe a lot of money to serious people. And they aren’t kidding anymore."], ["Don’t worry, old man. This campaign will bring us to jackpot for sure.", "But we gotta hurry. Roman is gonna be here in a couple hours.", "Let’s go!"], ["I’ve already seen this tree!", "We are going round and round in circles, Nate!", "I don’t understand!", "The entrance is supposed to be right here.", "I’m kinda tired.", "You figure out, which direction we should go. I need a rest."], ["Way to go, girl!", "I told you, Nate. This lady is a pure diamond!", "I must admit the truth.", "Not bad for a journalist, Elena.", "We are running out of time, boys!", "I want to see, what’s hidden inside. Let’s roll!"], ["Never thought I’d say it.", "You wanna smoke your cigar, Sully?", "I can’t see a thing.", "Just a moment."], ["Damn that was close!", "It’s a dead end.", "Let’s move back the same way."], ["Maybe we missed something."], ["Look what I’ve found! Could be useful."], [""], ["I can’t believe we found it.", "The definition of «gorgeous»!", "There it is, ladies and gentlemen."], ["Let me introduce… The famous El Whorado."], ["Alright. I’ll quickly get back to the boat.", "We definitely need some equipment to transport this giant."], ["You two! Don’t do anything stupid."], ["Yes, sir!", "Oh please. Everything is under control, Sully."], ["Okay, he is gone. Let’s open this thing!", "What? No! We have no idea, what’s inside.", "It can be dangerous, Elena.", "Oh don’t be such a pussy! I’m so excited!"], ["Wait!!!"], [""], ["Well, I was wrong. It is not under control from now."], ["Time to have some fun!"], [], [], [], [], ["Damn..."], ["Whata hell is going on there???"], ["Well now we know what statue is", "...what just happened there?"], ["I wouldn’t say this adventure was pointless", "Totally agreed!", "Get me back to normal, you idiots!", "Arghhh!!!"]];
 /* harmony default export */ var dialog = (talks);
 ;// CONCATENATED MODULE: ./js/images.js
-const images_images = ["./assets/media/characters/Helen-sit-scare.png", "./assets/media/characters/Helen-sit-smile.png", "./assets/media/cave/SurpriseCloseUp.png", "./assets/media/cave/statue/statue1.png", "./assets/media/cave/statue/SmokeViolet.png", "./assets/media/cave/characters/HelenOpeningStatueFront.png"];
+const images_images = ["./assets/media/characters/Helen-sit-scare.png", "./assets/media/characters/Helen-sit-smile.png", "./assets/media/cave/SurpriseCloseUp.png", "./assets/media/cave/statue/statue2.png", "./assets/media/cave/statue/SmokeViolet.png", "./assets/media/cave/characters/HelenOpeningStatueFront.png"];
 /* harmony default export */ var js_images = (images_images);
 ;// CONCATENATED MODULE: ./js/preloadImg.js
 
@@ -2789,87 +2789,31 @@ const SceneCreater = preloader => {
     jungle1.addBackgroud("./assets/media/jungle/jungle-bg.png", _, _, _, _, 1, _, "bottom");
     jungle1.addBackgroud("./assets/media/jungle/forest.png", _, _, _, _, 5, _, "bottom");
     jungle1.addBackgroud("./assets/media/jungle/gress.png", "100%", "20%", "83%", "0%", 5, "contain");
-    jungle1.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "14.5%", "70%");
     jungle1.addBackgroud("./assets/media/jungle/wall.png", "41%", "60%", "13%", "65%");
     jungle1.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain");
     jungle1.addBackgroud("./assets/media/jungle/green.png", "18%", "25%", "69.5%", "31%", 3, "contain");
     jungle1.addCharacter("./assets/media/characters/drake-compas.png", "Drake1", "21%", "107%", "5%", "53%", 4, "contain");
     jungle1.addCharacter("./assets/media/characters/Helen.png", "Helen", "21%", "107%", "12%", "30%", 4, "contain");
     jungle1.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
-    // jungle 7
     let jungle2 = new Scene(sceneCount);
     jungle2.addBackgroud("./assets/media/jungle/jungle-bg.png", _, _, _, _, 1, _, "bottom");
     jungle2.addBackgroud("./assets/media/jungle/forest.png", _, _, _, _, 5, _, "bottom");
     jungle2.addBackgroud("./assets/media/jungle/gress.png", "100%", "20%", "83%", "0%", 5, "contain");
-    jungle2.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "14.5%", "70%");
-    jungle2.addBackgroud("./assets/media/jungle/wall.png", "41%", "60%", "13%", "65%");
-    jungle2.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain");
+    jungle2.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "24.5%", "70%");
+    jungle2.addBackgroud("./assets/media/jungle/wall.png", "41%", "60%", "13%", "65%", _, _, _, "door-anime");
+    jungle2.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain", _, "stone-anim");
     jungle2.addBackgroud("./assets/media/jungle/green.png", "18%", "25%", "69.5%", "31%", 3, "contain");
     jungle2.addCharacter("./assets/media/characters/drake-compas.png", "Drake1", "21%", "107%", "5%", "53%", 4, "contain");
-    jungle2.addCharacter("./assets/media/characters/Helen.png", "Helen", "21%", "107%", "12%", "30%", 4, "contain");
+    jungle2.addCharacter("./assets/media/characters/Helen-sit.png", "Helena-sit-anim", "21%", "107%", "12%", "32%", 4, "contain");
     jungle2.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
-    //jungle 8
-    let jungle3 = new Scene(sceneCount);
-    jungle3.addBackgroud("./assets/media/jungle/jungle-bg.png", _, _, _, _, 1, _, "bottom");
-    jungle3.addBackgroud("./assets/media/jungle/forest.png", _, _, _, _, 5, _, "bottom");
-    jungle3.addBackgroud("./assets/media/jungle/gress.png", "100%", "20%", "83%", "0%", 5, "contain");
-    jungle3.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "14.5%", "70%");
-    jungle3.addBackgroud("./assets/media/jungle/wall.png", "41%", "60%", "13%", "65%");
-    jungle3.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain");
-    jungle3.addBackgroud("./assets/media/jungle/green.png", "18%", "25%", "69.5%", "31%", 3, "contain");
-    jungle3.addCharacter("./assets/media/characters/drake-compas.png", "Drake1", "21%", "107%", "5%", "53%", 4, "contain");
-    jungle3.addCharacter("./assets/media/characters/Helen.png", "Helen", "21%", "107%", "12%", "30%", 4, "contain");
-    jungle3.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
-    // jungle 9
-    let jungle4 = new Scene(sceneCount);
-    jungle4.addBackgroud("./assets/media/jungle/jungle-bg.png", _, _, _, _, 1, _, "bottom");
-    jungle4.addBackgroud("./assets/media/jungle/forest.png", _, _, _, _, 5, _, "bottom");
-    jungle4.addBackgroud("./assets/media/jungle/gress.png", "100%", "20%", "83%", "0%", 5, "contain");
-    jungle4.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "14.5%", "70%");
-    jungle4.addBackgroud("./assets/media/jungle/wall.png", "41%", "60%", "13%", "65%", _, _, _, "door-anime");
-    jungle4.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain", _, "stone-anim");
-    jungle4.addBackgroud("./assets/media/jungle/green.png", "18%", "25%", "69.5%", "31%", 3, "contain");
-    jungle4.addCharacter("./assets/media/characters/drake-compas.png", "Drake1", "21%", "107%", "5%", "53%", 4, "contain");
-    jungle4.addCharacter("./assets/media/characters/Helen-sit.png", "Helena-sit-anim", "21%", "107%", "12%", "32%", 4, "contain");
-    jungle4.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
-    //jungle 10
-    let jungle5 = new Scene(sceneCount);
-    jungle5.addBackgroud("./assets/media/jungle/jungle-bg.png", _, _, _, _, 1, _, "bottom");
-    jungle5.addBackgroud("./assets/media/jungle/forest.png", _, _, _, _, 5, _, "bottom");
-    jungle5.addBackgroud("./assets/media/jungle/gress.png", "100%", "20%", "83%", "0%", 5, "contain");
-    jungle5.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "14.5%", "70%");
-    jungle5.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain", _, "stone-animated");
-    jungle5.addBackgroud("./assets/media/jungle/green.png", "18%", "25%", "69.5%", "31%", 3, "contain");
-    jungle5.addCharacter("./assets/media/characters/drake-compas.png", "Drake1", "21%", "107%", "5%", "53%", 4, "contain");
-    jungle5.addCharacter("./assets/media/characters/Helen-sit-smile.png", "Helena-sit-animated", "21%", "107%", "12%", "32%", 4, "contain");
-    jungle5.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
-    // jungle 11
-    let jungle6 = new Scene(sceneCount);
-    jungle6.addBackgroud("./assets/media/jungle/jungle-bg.png", _, _, _, _, 1, _, "bottom");
-    jungle6.addBackgroud("./assets/media/jungle/forest.png", _, _, _, _, 5, _, "bottom");
-    jungle6.addBackgroud("./assets/media/jungle/gress.png", "100%", "20%", "83%", "0%", 5, "contain");
-    jungle6.addBackgroud("./assets/media/jungle/tonnel.png", "32%", "51%", "14.5%", "70%");
-    jungle6.addBackgroud("./assets/media/jungle/stone.png", "100%", "20%", "66.5%", "-10%", 2, "contain", _, "stone-animated");
-    jungle6.addBackgroud("./assets/media/jungle/green.png", "18%", "25%", "69.5%", "31%", 3, "contain");
-    jungle6.addCharacter("./assets/media/characters/drake-compas.png", "Drake1", "21%", "107%", "5%", "53%", 4, "contain");
-    jungle6.addCharacter("./assets/media/characters/Helen-sit-smile.png", "Helena-sit-animated", "21%", "107%", "12%", "32%", 4, "contain");
-    jungle6.addCharacter("./assets/media/characters/sally-big.png", "Sally", "21%", "107%", "4%", "-2%", 4, "contain");
-    // cave 12
     let cave1 = new Scene(sceneCount);
-    //cave 14
     let cave3 = new Scene(sceneCount);
     cave3.addBackgroud("./assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
-    cave3.addCharacter("./assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-10%", 0, "contain");
-    cave3.addCharacter("./assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "2%", 0, "contain");
+    cave3.addCharacter("./assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-6%", 0, "contain");
+    cave3.addCharacter("./assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "5%", 0, "contain");
     cave3.addCharacter("./assets/media/cave/characters/silly-lighter.png", _, "23%", "78%", "27%", "17%", 0, "contain");
     cave3.addDiv("ligth1", 1);
-    //cave 15
-    let cave4 = new Scene(sceneCount);
-    cave4.addBackgroud("./assets/media/cave/bg1.png", _, _, _, _, _, _, "bottom");
-    cave4.addCharacter("./assets/media/cave/characters/helena-fear.png", _, "25%", "78%", "27%", "-10%", 0, "contain");
-    cave4.addCharacter("./assets/media/cave/characters/drake-fear.png", _, "23%", "78%", "28%", "2%", 0, "contain");
-    cave4.addCharacter("./assets/media/cave/characters/silly-lighter.png", _, "23%", "78%", "27%", "17%", 0, "contain");
-    cave4.addDiv("ligth1", 1);
+
     //cave 16
     let cave5 = new Scene(sceneCount);
     cave5.addBackgroud("./assets/media/cave/bg2.png", _, _, _, _, _, _, "bottom");
@@ -2882,10 +2826,12 @@ const SceneCreater = preloader => {
     // cave 18
     let cave7 = new Scene(sceneCount);
     cave7.addBackgroud("./assets/media/cave/scene18.png", _, _, _, _, _, _, "bottom", "scene18");
+    let cave = new Scene(sceneCount);
+    cave.addBackgroud("./assets/media/cave/SurpriseCloseUp.png", _, _, _, _, _, _, "bottom", "scene18");
     // cave 19
     let cave8 = new Scene(sceneCount);
     cave8.addBackgroud("./assets/media/cave/statue/bg.png");
-    cave8.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "90%", "100%", "50%", _, "contain", _, "statue");
+    cave8.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "96.5%", "100%", "50%", _, "contain", _, "statue");
     //cave 20
     let cave9 = new Scene(sceneCount);
     cave9.addBackgroud("./assets/media/cave/bg3.png", _, _, _, _, _, _
@@ -3065,22 +3011,63 @@ const Preloader = () => {
 };
 /* harmony default export */ var preloader = (Preloader);
 ;// CONCATENATED MODULE: ./js/keyListener.js
+
 let isKeyListener = v => {
   islisten = v;
 };
-let nextBtn = document.querySelector("#next");
 let islisten = true;
 window.addEventListener("keydown", keyDown);
 function keyDown(e) {
   if (!islisten) return;
   if (e.code == "Space" || e.code == "ArrowRight") {
-    nextBtn.click();
+    change_btns.activeBtn.click();
   }
 }
 /* harmony default export */ var keyListener = (isKeyListener);
+;// CONCATENATED MODULE: ./js/change-btns.js
+
+let continueBtn = document.querySelector(".continue-btn");
+let nextBtn = document.querySelector(".next-btn");
+const change_btns_button = {
+  btnBox: document.querySelector("#change-btn"),
+  activeBtn: nextBtn,
+  hideBtn,
+  showBtn,
+  changeBtn,
+  clickCallback
+};
+function hideBtn() {
+  keyListener(false);
+  change_btns_button.btnBox.classList.add("hide");
+  change_btns_button.activeBtn.disabled = true;
+}
+function showBtn() {
+  keyListener(true);
+  change_btns_button.btnBox.classList.remove("hide");
+  change_btns_button.activeBtn.disabled = false;
+}
+function changeBtn(btnType) {
+  if (btnType === "continue" && change_btns_button.activeBtn != continueBtn) {
+    change_btns_button.activeBtn = continueBtn;
+    change_btns_button.btnBox.classList.remove("next");
+    setTimeout(() => change_btns_button.btnBox.classList.add("continue"), 200);
+  } else if (btnType === "next" && change_btns_button.activeBtn != nextBtn) {
+    change_btns_button.activeBtn = nextBtn;
+    change_btns_button.btnBox.classList.remove("continue");
+    setTimeout(() => change_btns_button.btnBox.classList.add("next"), 200);
+  }
+}
+function clickCallback(func) {
+  continueBtn.addEventListener("click", () => {
+    if (change_btns_button.activeBtn == continueBtn) func();
+  });
+  nextBtn.addEventListener("click", () => {
+    if (change_btns_button.activeBtn == nextBtn) func();
+  });
+}
+/* harmony default export */ var change_btns = (change_btns_button);
 ;// CONCATENATED MODULE: ./js/talk-updateer.js
 
-let talk_updateer_nextBtn = document.querySelector("#next");
 let typed = new Typed(".talk .talk__text p", {
   strings: [""],
   typeSpeed: 20,
@@ -3088,9 +3075,7 @@ let typed = new Typed(".talk .talk__text p", {
   fadeOut: true,
   fadeOutDelay: 0,
   onComplete: () => {
-    keyListener(true);
-    talk_updateer_nextBtn.classList.remove("hide");
-    talk_updateer_nextBtn.disabled = false;
+    change_btns.showBtn();
   }
 });
 let talkElement = document.querySelector(".talk");
@@ -3108,9 +3093,7 @@ function TalkUpdate(str, top, left, type) {
   typed.destroy();
   typed.strings = [str];
   typed.begin();
-  talk_updateer_nextBtn.classList.add("hide");
-  talk_updateer_nextBtn.disabled = true;
-  keyListener(false);
+  change_btns.hideBtn();
 }
 /* harmony default export */ var talk_updateer = (TalkUpdate);
 ;// CONCATENATED MODULE: ./js/warn-btn.js
@@ -3126,6 +3109,12 @@ const Warning = StartFunction => {
 };
 /* harmony default export */ var warn_btn = (Warning);
 ;// CONCATENATED MODULE: ./js/talk-blockSetting.js
+// fadeStart время жизни fade
+// delayUpdate: время через которое обновить сцену
+// delayTalk: время через которое начать диалог
+// anim: массив селекторов которым присвоится класс anim
+// imgChange: массив обновляемых изображение
+
 // procent unit
 const TALKING_POSITIONS = [{
   modifyScene: {
@@ -3141,6 +3130,9 @@ const TALKING_POSITIONS = [{
     anim: ["#scene2"]
   }
 }, {
+  modifyScene: {
+    btn: "continue"
+  },
   talk1: {
     top: 17,
     left: 37,
@@ -3185,6 +3177,9 @@ const TALKING_POSITIONS = [{
     type: "cl"
   }
 }, {
+  modifyScene: {
+    btnEnd: "next"
+  },
   talk1: {
     top: 39,
     left: 47,
@@ -3204,55 +3199,58 @@ const TALKING_POSITIONS = [{
   modifyScene: {
     fadeStart: 1200,
     delayTalk: 2000,
-    delayUpdate: 1000
+    delayUpdate: 1000,
+    btn: "continue",
+    btnEnd: "next"
   },
   talk1: {
     top: 28,
-    left: 15,
+    left: 13,
     type: "cl"
   },
   talk2: {
     top: 28,
-    left: 15,
+    left: 13,
     type: "cl"
-  }
-}, {
-  talk1: {
+  },
+  talk3: {
     top: 27,
     left: 70,
     type: "cl"
   },
-  talk2: {
+  talk4: {
     top: 27,
     left: 70,
     type: "cl"
-  }
-}, {
-  talk1: {
-    top: 24,
-    left: 29.5,
+  },
+  talk5: {
+    top: 20,
+    left: 27.5,
     type: "bc"
   },
-  talk2: {
-    top: 24,
-    left: 29.5,
+  talk6: {
+    top: 20,
+    left: 27.5,
     type: "bc"
   }
 }, {
   modifyScene: {
-    fadeStart: 1200,
-    delayUpdate: 1000,
-    delayTalk: 7000,
-    anim: [".Helena-sit-anim", ".stone-anim", ".door-anime"],
+    btn: "continue",
+    btnEnd: "next",
+    // отдельно менять еще тайминги в anim.scss для этого слайда
+    fadeStart: 4200,
+    delayUpdate: 4000,
+    delayTalk: 12000,
+    anim: [".Helena-sit-anim", ".stone-anim", ".door-anime", "#scene9"],
     imgChange: [{
       target: "Helena-sit-anim",
       img1: {
         src: "./assets/media/characters/Helen-sit-scare.png",
-        delay: 3000
+        delay: 6000
       },
       img2: {
         src: "./assets/media/characters/Helen-sit-smile.png",
-        delay: 6000
+        delay: 11000
       }
     }]
   },
@@ -3267,128 +3265,125 @@ const TALKING_POSITIONS = [{
     type: "cl"
   },
   talk3: {
-    top: 31,
-    left: 13,
-    type: "cl"
-  }
-}, {
-  talk1: {
     top: 27,
     left: 70,
     type: "cl"
   },
-  talk2: {
+  talk4: {
     top: 27,
     left: 70,
     type: "cl"
-  }
-}, {
-  talk1: {
-    top: 36,
-    left: 28,
-    type: "bс"
   },
-  talk2: {
-    top: 36,
-    left: 28,
-    type: "bс"
+  talk5: {
+    top: 33,
+    left: 26,
+    type: "bc"
+  },
+  talk6: {
+    top: 33,
+    left: 26,
+    type: "bc"
   }
 }, {
   modifyScene: {
+    btn: "continue",
     fadeStart: 1200,
     delayUpdate: 1000,
     delayTalk: 2000
   },
   talk1: {
-    top: 20,
+    top: 25,
     left: 64,
-    type: "none"
+    type: "bc"
   },
   talk2: {
-    top: 20,
+    top: 25,
     left: 64,
-    type: "none"
+    type: "bc"
   },
   talk3: {
-    top: 20,
+    top: 25,
     left: 64,
-    type: "none"
+    type: "bc"
   },
   talk4: {
+    top: 25,
+    left: 4,
+    type: "bc"
+  }
+}, {
+  modifyScene: {
+    btnEnd: "next"
+  },
+  talk1: {
+    top: 19.5,
+    left: 4,
+    type: "bl"
+  },
+  talk2: {
+    top: 19.5,
+    left: 4,
+    type: "bl"
+  },
+  talk3: {
+    top: 20.5,
+    left: 14,
+    type: "bl"
+  }
+}, {
+  modifyScene: {
+    btn: "continue",
+    btnEnd: "next",
+    fadeStart: 4200,
+    delayUpdate: 3000,
+    delayTalk: 5000
+  },
+  talk1: {
     top: 20,
-    left: 18,
-    type: "none"
-  }
-}, {
-  talk1: {
-    top: 16.5,
-    left: 1,
-    type: "bl"
-  },
-  talk2: {
-    top: 16.5,
-    left: 1,
-    type: "bl"
-  }
-}, {
-  talk1: {
-    top: 16.5,
-    left: 12,
-    type: "bl"
-  },
-  talk2: {
-    top: 16.5,
-    left: 12,
-    type: "bl"
-  }
-}, {
-  talk1: {
-    top: 16,
     left: 52,
     type: "bl"
   },
   talk2: {
-    top: 16,
+    top: 20,
     left: 52,
     type: "bl"
   }
 }, {
   talk1: {
-    top: 24,
-    left: 48,
-    type: "bl"
-  },
-  talk2: {
-    top: 24,
+    top: 27,
     left: 48,
     type: "bl"
   }
 }, {
   modifyScene: {
-    delayUpdate: 500,
-    delayTalk: 2500,
-    imgChange: [{
-      target: "scene18",
-      img1: {
-        src: "./assets/media/cave/SurpriseCloseUp.png",
-        delay: 2000
-      }
-    }]
+    btn: "next"
+  },
+  talk1: {
+    top: 0,
+    left: 0,
+    type: "none"
+  }
+}, {
+  modifyScene: {
+    btn: "continue",
+    fadeStart: 1200,
+    delayUpdate: 1000,
+    delayTalk: 2000
   },
   talk1: {
     top: 72,
-    left: 38,
-    type: "none"
+    left: 36,
+    type: "tc"
   },
   talk2: {
-    top: 72,
-    left: 72,
-    type: "none"
+    top: 68,
+    left: 63,
+    type: "tc"
   },
   talk3: {
-    top: 72,
+    top: 66,
     left: 8,
-    type: "none"
+    type: "tc"
   }
 }, {
   talk1: {
@@ -3398,61 +3393,65 @@ const TALKING_POSITIONS = [{
   }
 }, {
   talk1: {
-    top: 20,
-    left: 38,
+    top: 26,
+    left: 36,
     type: "bc"
   },
   talk2: {
-    top: 20,
-    left: 38,
+    top: 23,
+    left: 36,
     type: "bc"
   }
 }, {
   talk1: {
-    top: 20,
+    top: 26,
     left: 8,
     type: "bl"
   },
   talk2: {
-    top: 20,
+    top: 26,
     left: 8,
-    type: "bl"
-  }
-}, {
-  talk1: {
-    top: 20,
-    left: 67,
-    type: "br"
-  },
-  talk2: {
-    top: 20,
-    left: 18,
     type: "bl"
   }
 }, {
   modifyScene: {
-    fadeStart: 1200,
-    delayTalk: 2000,
-    delayUpdate: 1000
+    btnEnd: "next"
   },
   talk1: {
-    top: 20,
-    left: 67,
+    top: 23,
+    left: 63,
     type: "br"
   },
   talk2: {
-    top: 20,
-    left: 18,
+    top: 22,
+    left: 16,
+    type: "bl"
+  }
+}, {
+  modifyScene: {
+    btn: "continue",
+    fadeStart: 4200,
+    delayUpdate: 3000,
+    delayTalk: 5000
+  },
+  talk1: {
+    top: 22,
+    left: 63,
+    type: "br"
+  },
+  talk2: {
+    top: 22,
+    left: 16,
     type: "bl"
   },
   talk3: {
-    top: 20,
-    left: 18,
+    top: 22,
+    left: 16,
     type: "bl"
   },
   talk4: {
-    top: 20,
-    left: 67,
+    top: 22,
+    left: 63,
     type: "br"
   }
 }, {
@@ -3470,7 +3469,7 @@ const TALKING_POSITIONS = [{
     imgChange: [{
       target: "statue-trap2",
       img1: {
-        src: "./assets/media/cave/statue/statue1.png",
+        src: "./assets/media/cave/statue/statue2.png",
         delay: 2000
       }
     }, {
@@ -3501,6 +3500,7 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
+    btn: "next",
     delayUpdate: 0,
     delayTalk: 10500
   },
@@ -3519,7 +3519,8 @@ const TALKING_POSITIONS = [{
   gameScene: true
 }, {
   modifyScene: {
-    gameEnd: true
+    gameEnd: true,
+    btn: "continue"
   },
   talk1: {
     top: 54,
@@ -3532,6 +3533,9 @@ const TALKING_POSITIONS = [{
     type: "bc"
   }
 }, {
+  modifyScene: {
+    btnEnd: "next"
+  },
   talk1: {
     top: 54,
     left: 67,
@@ -3544,6 +3548,7 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
+    btn: "continue",
     fadeStart: 1200,
     delayTalk: 2000,
     delayUpdate: 1000
@@ -21041,6 +21046,8 @@ function Application_toPrimitive(input, hint) { if (typeof input !== "object" ||
 // import { Container } from "@pixi/display";
 
 
+// import * as PIXI from "pixi.js";
+
 extensions.add(BatchRenderer);
 class Application {
   /** DOM элемент */
@@ -35115,7 +35122,7 @@ var end_skeleton_namespaceObject = __webpack_require__.p + "assets/spine/end/ske
 ;// CONCATENATED MODULE: ./assets/spine/end/skeleton.atlas
 var end_skeleton_atlas_namespaceObject = "\nskeleton.png\nsize: 1924,1084\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nshoot cum 19-04 sprites with shadow\n  rotate: false\n  xy: 2, 2\n  size: 1920, 1080\n  orig: 1920, 1080\n  offset: 0, 0\n  index: -1\n";
 ;// CONCATENATED MODULE: ./assets/spine/end/skeleton.json
-var assets_spine_end_skeleton_namespaceObject = JSON.parse('{"skeleton":{"hash":"2axeSpt/zuxUq8VLG0jYfNMI2MM","spine":"3.8.75","x":-871.16,"y":-419,"width":1737.16,"height":1011.29,"images":"","audio":""},"bones":[{"name":"root"},{"name":"shoot cum 19-04 sprites with shadow","parent":"root","length":43.07,"rotation":17.45,"x":319.97,"y":121.45},{"name":"shoot cum 19-04 sprites with shadow2","parent":"root","length":55.79,"rotation":81.53,"x":-406.73,"y":42.79},{"name":"shoot cum 19-04 sprites with shadow3","parent":"root","length":26.48,"rotation":-118.5,"x":-144.46,"y":336.37},{"name":"shoot cum 19-04 sprites with shadow4","parent":"root","length":27.53,"rotation":-52.85,"x":124.59,"y":403.26},{"name":"shoot cum 19-04 sprites with shadow6","parent":"shoot cum 19-04 sprites with shadow2","length":63.71,"rotation":6.46,"x":0.41,"y":-55.79}],"slots":[{"name":"shoot cum 19-04 sprites with shadow","bone":"shoot cum 19-04 sprites with shadow6","attachment":"shoot cum 19-04 sprites with shadow"}],"skins":[{"name":"default","attachments":{"shoot cum 19-04 sprites with shadow":{"shoot cum 19-04 sprites with shadow":{"type":"mesh","uvs":[0.77429,0.06362,0.78631,0.08376,0.78945,0.10311,0.78924,0.12613,0.78233,0.16282,0.78017,0.19726,0.77955,0.20072,0.77365,0.23894,0.767,0.3125,0.77179,0.39052,0.78537,0.44697,0.78884,0.48019,0.78867,0.48214,0.80711,0.53869,0.83761,0.61607,0.83607,0.61143,0.86082,0.63875,0.88113,0.71075,0.92695,0.79031,0.94698,0.82884,0.99319,0.9212,1,0.92889,1,1,0.8962,1,0.89292,0.96273,0.8675,0.93045,0.86362,0.93466,0.87616,0.99389,0.88865,1,0.75911,1,0.73612,0.86226,0.72949,0.84303,0.72345,0.81085,0.72288,0.78952,0.72103,0.7786,0.71308,0.74505,0.69417,0.69084,0.67286,0.67042,0.66802,0.67979,0.68997,0.77186,0.70524,0.91934,0.71323,0.94703,0.73418,0.99106,0.73443,1,0.67673,1,0.64926,0.88442,0.63798,0.84257,0.62486,0.77199,0.62422,0.76396,0.60721,0.72294,0.59533,0.68452,0.588,0.63866,0.57515,0.59343,0.5754,0.54255,0.58506,0.48929,0.61126,0.42938,0.61646,0.4137,0.60431,0.39076,0.58932,0.38117,0.58229,0.38395,0.56505,0.37758,0.55465,0.36638,0.54164,0.41102,0.52719,0.42189,0.51681,0.44135,0.50709,0.43929,0.50887,0.4607,0.50453,0.47171,0.50303,0.51603,0.48671,0.52808,0.50921,0.57946,0.51038,0.59011,0.49992,0.64333,0.49445,0.70655,0.48366,0.74351,0.46765,0.7796,0.46555,0.8106,0.4591,0.85897,0.45802,0.86429,0.41879,0.88472,0.39904,0.88668,0.37106,0.9005,0.35152,0.92377,0.36519,0.96959,0.36929,1,0.09523,1,0.10053,0.97174,0.12898,0.8961,0.14538,0.86505,0.16962,0.82949,0.18048,0.81834,0.1981,0.77518,0.20285,0.76748,0.22375,0.75171,0.24419,0.74433,0.24969,0.73469,0.25536,0.6986,0.25492,0.67179,0.25981,0.65015,0.24442,0.62806,0.22942,0.59679,0.21444,0.54876,0.21316,0.48344,0.22284,0.43308,0.22695,0.41653,0.23024,0.38279,0.23657,0.37316,0.27747,0.34905,0.29856,0.34504,0.31948,0.34621,0.33522,0.35863,0.33971,0.35041,0.33263,0.31046,0.32775,0.2632,0.32554,0.21682,0.32474,0.164,0.33892,0.15007,0.36606,0.15823,0.40716,0.17709,0.40653,0.18394,0.43228,0.20024,0.43491,0.2016,0.44274,0.18027,0.44312,0.16163,0.4532,0.17464,0.4743,0.19305,0.48023,0.16947,0.48406,0.17108,0.48247,0.18966,0.49504,0.18808,0.49641,0.20298,0.50342,0.22019,0.51285,0.21902,0.52506,0.23479,0.52991,0.22835,0.53379,0.19884,0.54344,0.17856,0.56662,0.15003,0.57415,0.14936,0.57905,0.13141,0.58601,0.13748,0.60636,0.12189,0.6116,0.13028,0.61609,0.13471,0.62824,0.1351,0.64193,0.16109,0.64484,0.17111,0.66594,0.15618,0.67903,0.14382,0.71138,0.09948,0.73675,0.07487,0.24907,0.3961,0.44931,0.68269,0.26556,0.63423,0.29679,0.645,0.3131,0.6392,0.31776,0.67318,0.32569,0.71544,0.34527,0.75688,0.37557,0.7834,0.40587,0.79169,0.43803,0.7776,0.45295,0.75439,0.48394,0.6229,0.47982,0.58827,0.46612,0.54414,0.44275,0.51298,0.41803,0.49574,0.38604,0.49214,0.35938,0.50881,0.35,0.38177,0.36071,0.40784,0.36956,0.44137,0.37375,0.4691,0.37257,0.50056,0.69117,0.57842,0.76882,0.47918,0.68989,0.41758,0.61589,0.2736,0.60976,0.28174,0.60444,0.29247,0.61093,0.29183,0.61526,0.28543,0.47222,0.33336,0.48369,0.33941,0.49504,0.35219,0.48836,0.35219,0.47739,0.35196,0.47336,0.34681,0.44002,0.30674,0.44868,0.31322,0.45114,0.32127,0.44189,0.32004,0.43933,0.31847,0.64512,0.27893,0.61356,0.31503,0.65387,0.25504,0.65543,0.33281,0.61387,0.21893,0.45256,0.36402,0.43694,0.33524,0.48764,0.37855,0.44555,0.40678,0.47667,0.27449,0.44096,0.23351,0.53032,0.3156,0.37823,0.25649,0.40017,0.35574,0.42152,0.40318,0.42648,0.39539,0.40321,0.34629,0.40661,0.26099,0.44506,0.27106,0.43988,0.30153,0.43948,0.34201,0.43609,0.31859,0.43727,0.28248],"triangles":[210,206,211,213,216,212,190,189,213,190,213,212,213,215,216,189,215,213,190,192,189,215,211,216,183,203,184,188,183,184,205,185,184,185,186,184,187,184,186,210,211,215,206,119,211,210,207,206,216,204,212,204,216,211,189,193,215,200,210,215,185,205,62,205,184,203,65,186,185,201,187,186,67,201,186,192,190,191,190,212,203,191,190,203,183,191,203,199,191,183,180,205,134,61,205,180,179,198,178,179,180,198,180,179,181,182,179,178,180,181,195,58,180,195,13,35,12,177,8,9,176,177,9,176,9,10,55,177,175,175,177,176,176,10,11,12,176,11,176,12,36,55,56,177,177,197,8,56,197,177,13,14,35,14,33,34,34,35,14,17,14,16,15,16,14,36,175,176,37,175,36,12,35,36,31,32,33,14,17,33,48,38,39,38,51,37,37,51,175,175,54,55,114,115,116,206,113,117,113,206,112,111,112,206,206,207,111,170,111,207,204,124,125,192,193,189,214,200,215,193,214,215,192,214,193,210,214,209,214,210,200,214,192,191,214,191,199,209,214,199,202,209,199,208,209,202,167,208,202,172,207,208,128,129,130,130,125,128,130,203,125,187,188,184,63,185,62,205,203,133,133,134,205,60,61,180,137,138,136,138,198,136,57,58,195,134,198,180,138,139,140,143,140,142,54,175,53,175,52,53,71,164,70,72,163,71,166,167,202,165,166,69,152,165,164,152,164,163,152,166,165,167,168,208,166,152,167,174,168,167,173,172,208,168,173,208,108,151,107,170,108,110,151,108,169,173,169,172,174,173,168,169,170,171,169,171,172,174,169,173,105,106,151,104,105,151,174,156,169,155,153,169,153,100,101,100,153,99,98,99,153,156,174,158,174,152,158,96,156,157,95,96,157,85,86,87,87,84,85,82,90,94,89,90,82,95,157,158,158,94,95,158,157,156,84,87,82,82,94,158,152,160,159,80,159,160,80,160,79,81,159,80,73,163,72,152,163,73,74,152,73,162,152,74,161,152,162,75,162,74,75,161,162,76,161,75,77,161,76,77,79,161,78,79,77,43,44,42,44,40,41,33,30,31,30,33,17,30,26,29,29,26,27,25,17,18,25,26,17,25,18,19,24,25,19,23,24,20,24,19,20,20,21,22,23,20,22,26,30,17,29,27,28,40,45,39,47,48,39,46,47,39,45,46,39,44,45,40,44,41,42,50,51,38,49,50,38,48,49,38,51,52,175,161,160,152,79,160,161,152,159,158,81,158,159,82,158,81,82,83,84,90,91,93,91,92,93,90,93,94,88,89,82,87,88,82,156,155,169,154,153,155,154,96,97,98,153,154,154,97,98,96,154,156,154,155,156,101,151,153,151,101,102,151,169,153,151,103,104,103,151,102,152,174,167,151,106,107,169,108,170,110,108,109,110,111,170,171,170,207,172,171,207,164,165,69,71,163,164,164,69,70,67,69,166,2,0,1,0,3,150,2,3,0,145,143,144,198,140,143,198,145,146,198,146,196,7,197,148,4,5,149,6,7,148,7,8,197,5,6,149,4,150,3,6,148,149,196,146,147,178,198,196,194,178,196,182,178,194,181,179,182,195,181,182,148,197,196,194,196,197,195,194,197,194,195,182,197,57,195,56,57,197,148,196,147,145,198,143,4,149,150,142,140,141,198,138,140,136,198,134,58,60,180,59,60,58,136,134,135,62,205,61,131,132,133,68,69,67,65,185,63,64,65,63,67,65,66,65,67,186,203,130,131,203,131,133,128,126,127,125,126,128,203,212,204,203,204,125,166,202,67,199,183,188,199,188,187,199,187,201,202,199,201,201,67,202,124,204,121,121,204,120,204,211,120,207,210,209,208,207,209,122,123,124,122,124,121,211,119,120,206,117,119,119,117,118,116,117,114,117,113,114],"vertices":[1,2,667.15,-749.27,1,1,2,649.03,-775.3,1,1,2,629.26,-784.34,1,1,2,604.6,-787.59,1,1,2,563.46,-780.33,1,1,2,526.06,-781.69,1,1,2,522.19,-781.06,1,1,2,479.69,-775.94,1,2,2,399.23,-775.02,0.98712,1,154.71,163.17,0.01288,2,2,317.25,-796.53,0.88054,1,138.23,80.03,0.11946,2,2,260.78,-831.3,0.9159,1,144.81,14.04,0.0841,2,2,226.28,-843.16,0.92676,1,140.41,-22.17,0.07324,2,2,224.15,-843.16,0.92756,1,139.47,-24.09,0.07244,2,2,168.96,-887.17,0.97275,1,154.93,-92.96,0.02725,1,2,94.92,-957.41,1,1,2,99.44,-953.75,1,1,2,77.26,-1005.1,1,1,2,6.1,-1055.11,1,1,2,-65.93,-1154.78,1,1,2,-101.43,-1198.95,1,1,2,-187.01,-1301.4,1,1,2,-193.31,-1315.56,1,1,2,-269.27,-1326.88,1,1,2,-298.62,-1129.76,1,1,2,-259.74,-1117.6,1,1,2,-232.44,-1064.19,1,1,2,-238.05,-1057.48,1,1,2,-297.77,-1090.73,1,1,2,-300.76,-1115.41,1,1,2,-337.4,-869.42,1,1,2,-196.76,-803.84,1,1,2,-178.1,-788.19,1,2,2,-145.43,-771.6,0.99715,1,-86.44,-325.22,0.00285,1,2,-122.8,-767.13,1,1,2,-111.66,-761.88,1,1,2,-78.08,-741.45,1,1,2,-25.51,-696.91,1,1,2,-9.73,-653.19,1,1,2,-21.11,-645.48,1,2,2,-113.25,-701.82,0.99644,1,-135.13,-265.77,0.00356,1,2,-266.47,-754.28,1,1,2,-293.79,-773.85,1,1,2,-334.9,-820.66,1,1,2,-344.38,-822.55,1,1,2,-360.7,-712.96,1,1,2,-245,-642.42,1,1,2,-203.49,-614.33,1,1,2,-131.8,-578.2,1,1,2,-123.41,-575.69,1,1,2,-84.4,-536.87,1,1,2,-46.72,-508.2,1,1,2,0.2,-486.98,1,1,2,44.87,-455.38,1,1,2,99.29,-447.76,1,1,2,158.93,-457.63,1,2,2,230.33,-497.86,0.96508,1,-168.4,132.4,0.03492,2,2,248.54,-505.23,0.96566,1,-153.81,145.56,0.03434,1,2,269.62,-478.51,1,1,2,275.63,-448.52,1,1,2,270.67,-435.61,1,1,2,272.59,-401.86,1,1,2,281.61,-380.32,1,1,2,230.26,-362.73,1,1,2,214.55,-337,1,1,2,190.83,-320.39,1,1,2,190.29,-301.61,1,1,2,167.91,-308.39,1,1,2,154.92,-301.9,1,1,2,107.15,-306.11,1,1,2,89.67,-277.03,1,1,2,41.14,-327.94,1,1,2,30.1,-331.85,1,1,2,-29.7,-320.45,1,1,2,-98.79,-320.13,1,1,2,-141.32,-305.5,1,1,2,-184.4,-280.84,1,1,2,-218.11,-281.78,1,1,2,-271.6,-277.24,1,1,2,-277.59,-276.04,1,1,2,-310.51,-204.79,1,1,2,-318.19,-167.6,1,1,2,-340.87,-116.65,1,1,2,-371.25,-83.26,1,1,2,-416.34,-116.49,1,1,2,-447.65,-129.13,1,1,2,-525.17,391.33,1,1,2,-493.48,385.76,1,1,2,-404.63,343.76,1,1,2,-366.83,317.57,1,1,2,-321.98,277.19,1,1,2,-307,258.34,1,1,2,-255.91,231.75,1,1,2,-246.35,223.94,1,1,2,-223.59,186.77,1,1,2,-209.92,149.12,1,1,2,-198.08,140.22,1,1,2,-157.92,135.19,1,1,2,-129.4,140.29,1,2,2,-104.9,134.45,0.95187,5,-83.23,200.88,0.04813,2,2,-85.66,167.19,0.94536,5,-60.43,231.25,0.05464,2,2,-56.5,200.65,0.92978,5,-27.68,261.21,0.07022,2,2,-9.44,236.74,0.92798,5,23.14,291.78,0.07202,2,2,59.98,249.56,0.93895,5,93.56,296.71,0.06105,2,2,116.51,239.19,0.86563,5,148.57,280.04,0.13437,2,2,135.35,234.02,0.84167,5,166.71,272.78,0.15833,2,2,172.33,233.13,0.88262,5,203.34,267.74,0.11738,2,2,184.4,222.65,0.869,5,214.16,255.97,0.131,2,2,221.73,148.82,0.89542,5,242.94,178.4,0.10458,2,2,231.98,109.39,0.93315,5,248.69,138.07,0.06685,2,2,236.65,69.48,0.96549,5,248.84,97.89,0.03451,2,2,227.83,37.62,0.96448,5,236.49,67.22,0.03552,2,2,237.89,30.39,0.98992,5,245.67,58.91,0.01008,1,2,278.55,50.2,1,1,2,327.66,66.98,1,1,2,376.58,78.56,1,1,2,432.77,88.49,1,1,2,451.67,63.78,1,1,2,450.62,10.94,1,1,2,442.11,-70.12,1,1,2,434.61,-70.02,1,1,2,424.47,-121.5,1,1,2,423.77,-126.73,1,1,2,448.77,-138.19,1,1,2,468.79,-135.95,1,1,2,457.75,-157.17,1,1,2,444.04,-200.16,1,1,2,470.92,-207.68,1,1,2,470.27,-215.19,1,1,2,449.97,-215.13,1,1,2,455.22,-238.77,1,1,2,439.69,-243.72,1,1,2,423.28,-259.77,1,1,2,427.21,-277.5,1,1,2,413.81,-303.2,1,1,2,422.07,-311.38,1,1,2,454.68,-314.06,1,1,2,479.07,-329.15,1,1,2,516.11,-368.64,1,1,2,518.96,-382.83,1,1,2,539.51,-389.27,1,1,2,535,-403.46,1,1,2,557.41,-439.63,1,1,2,549.93,-450.91,1,1,2,546.47,-460.14,1,1,2,549.49,-483.28,1,1,2,525.59,-513.41,1,1,2,515.71,-520.54,1,1,2,537.63,-558.23,1,1,2,554.54,-581.13,1,1,2,611.06,-635.49,1,1,2,644.52,-679.76,1,2,2,163.44,195.27,0.76,5,190.25,231.12,0.24,2,2,-86.07,-230.61,0.76,5,-105.6,-163.98,0.24,2,2,-86.28,126.06,0.90777,5,-65.66,190.45,0.09223,2,2,-88.95,65.04,0.8971,5,-75.19,130.12,0.1029,2,2,-78.14,34.98,0.88,5,-67.83,99.03,0.12,2,2,-113.11,20.72,0.85147,5,-104.19,88.8,0.14853,2,2,-156.02,-1.05,0.89361,5,-149.27,71.99,0.10639,2,2,-194.74,-44.82,0.91919,5,-192.68,32.86,0.08081,2,2,-214.5,-106.58,0.98481,5,-219.26,-26.28,0.01519,2,2,-214.78,-165.44,0.93217,5,-226.16,-84.74,0.06783,2,2,-190.64,-224.28,0.91545,5,-208.79,-145.92,0.08455,2,2,-161.63,-248.92,0.92939,5,-182.74,-173.66,0.07061,2,2,-12.41,-286.85,0.9665,5,-38.73,-228.15,0.0335,2,2,23.43,-273.53,0.95669,5,-1.63,-218.95,0.04331,2,2,66.69,-240.49,0.96223,5,45.08,-190.99,0.03777,2,2,93.37,-191.14,0.98129,5,77.14,-144.95,0.01871,2,2,104.79,-141.46,0.94361,5,94.08,-96.87,0.05639,2,2,99.58,-80.13,0.88,5,95.81,-35.35,0.12,2,2,74.24,-32.16,0.88,5,76.02,15.17,0.12,2,2,207.29,5.87,0.9479,5,212.51,37.98,0.0521,2,2,182.47,-18.62,0.93191,5,185.09,16.45,0.06809,2,2,149.16,-40.75,0.91025,5,149.5,-1.8,0.08975,2,2,120.72,-53.12,0.88,5,119.85,-10.89,0.12,2,2,86.78,-55.9,0.88,5,85.81,-9.83,0.12,1,2,93.72,-673.33,1,2,2,221.7,-804.98,0.90845,1,104.06,-9.6,0.09155,2,2,265.18,-645.3,0.85851,1,-20.56,99.3,0.14149,2,2,398.04,-481.87,0.864,4,32.4,-19.67,0.136,2,2,387.61,-471.51,0.832,4,32.29,-34.36,0.168,2,2,374.65,-463.13,0.864,4,35.37,-49.49,0.136,1,2,377.17,-475.34,1,1,2,385.23,-482.54,1,2,2,293.57,-218.54,0.816,3,30.59,14.37,0.184,2,2,290.35,-241.28,0.68349,3,25.83,36.84,0.31651,2,2,279.92,-264.86,0.82827,3,27.56,62.56,0.17173,2,2,278.03,-252.17,0.89798,3,33.68,51.29,0.10202,1,2,275.17,-231.31,1,1,2,279.53,-222.83,1,2,2,312.9,-153.14,0.752,3,34.83,-53.69,0.248,2,2,308.43,-170.62,0.768,3,33.04,-35.74,0.232,2,2,300.53,-176.58,0.944,3,38.42,-27.44,0.056,1,2,299.22,-158.81,1,1,2,300.18,-153.7,1,1,2,400.63,-538.22,1,2,2,353.13,-484.02,0.99101,4,65.42,-50.26,0.00899,1,2,428.62,-551.03,1,1,2,345.98,-566.37,1,1,2,455.88,-469.32,1,1,2,255.27,-186.07,1,1,2,281.59,-151.84,1,2,2,249.69,-255.02,0.99035,3,61.23,63.67,0.00965,1,2,207.6,-179.57,1,1,2,357.94,-217.7,1,1,2,391.51,-143.32,1,2,2,329.06,-326.06,0.95605,3,-37.67,103.24,0.04395,2,2,349.16,-27.84,0.96681,3,45.56,-183.83,0.03319,1,2,249.29,-85.27,1,1,2,204.65,-133.36,1,1,2,214.38,-141.54,1,2,2,260.29,-89.55,0.97877,3,107.92,-95.42,0.02123,2,2,352.49,-82.48,0.90915,3,23.72,-133.64,0.09085,2,2,352.71,-157.14,0.89038,3,-2.06,-63.57,0.10962,2,2,318.84,-152.2,0.77175,3,31.46,-56.61,0.22825,1,2,275.08,-157.74,1,2,2,299.15,-147.58,0.9957,3,51.55,-54.21,0.0043,2,2,338.35,-144.17,0.84295,3,15.87,-70.83,0.15705],"hull":151,"edges":[0,300,0,2,2,4,4,6,6,8,10,12,12,14,14,16,16,18,18,20,20,22,22,24,24,26,26,28,28,30,30,32,32,34,34,36,36,38,38,40,40,42,42,44,44,46,46,48,48,50,50,52,52,54,54,56,56,58,58,60,60,62,62,64,64,66,66,68,68,70,70,72,72,74,74,76,76,78,78,80,80,82,82,84,84,86,86,88,88,90,90,92,92,94,94,96,96,98,98,100,100,102,102,104,104,106,106,108,108,110,110,112,112,114,114,116,116,118,118,120,120,122,122,124,124,126,126,128,128,130,130,132,132,134,134,136,136,138,138,140,140,142,144,146,146,148,148,150,150,152,152,154,154,156,156,158,158,160,160,162,162,164,164,166,166,168,168,170,170,172,172,174,174,176,176,178,178,180,180,182,182,184,184,186,186,188,188,190,190,192,192,194,194,196,196,198,198,200,200,202,202,204,204,206,206,208,208,210,210,212,212,214,214,216,216,218,218,220,220,222,222,224,224,226,226,228,228,230,230,232,232,234,234,236,236,238,238,240,240,242,242,244,244,246,246,248,248,250,250,252,252,254,254,256,256,258,258,260,260,262,262,264,264,266,266,268,268,270,270,272,272,274,274,276,276,278,278,280,280,282,282,284,284,286,286,288,288,290,290,292,292,294,294,296,296,298,298,300,8,10,196,306,306,308,308,310,310,312,312,314,314,316,316,318,318,320,320,322,322,324,324,150,142,144,144,326,326,328,328,330,330,332,332,334,334,336,220,340,340,342,342,344,344,346,336,348,348,338,346,348,356,358,358,360,360,362,362,364,364,356,366,368,368,370,370,372,372,374,374,376,376,366,378,380,380,382,382,384,384,386,386,378,412,414,414,416,416,418,418,420,420,422,422,412,424,426,426,378,386,428,428,430,430,432],"width":1920,"height":1080}}}}],"animations":{"animation":{"bones":{"shoot cum 19-04 sprites with shadow3":{"translate":[{},{"time":0.3333,"x":-11.66,"y":-21.47},{"time":0.5,"x":-24.24,"y":-44.64},{"time":0.6667,"x":7.67,"y":14.13},{"time":2.6667}]},"shoot cum 19-04 sprites with shadow4":{"translate":[{},{"time":0.3333,"x":-11.9,"y":15.71},{"time":1.1667},{"time":1.3333,"x":36.64,"y":-48.37},{"time":1.5,"x":6.83,"y":-9.01},{"time":2.6667}]},"shoot cum 19-04 sprites with shadow":{"translate":[{},{"time":1,"x":4.08,"y":92.41},{"time":2.6667}]},"shoot cum 19-04 sprites with shadow6":{"translate":[{},{"time":1.6333,"x":68.53,"y":44.75},{"time":2.6667}]}}}}}');
+var assets_spine_end_skeleton_namespaceObject = JSON.parse('{"skeleton":{"hash":"2axeSpt/zuxUq8VLG0jYfNMI2MM","spine":"3.8.7","x":-871.16,"y":-419,"width":1737.16,"height":1011.29,"images":"","audio":""},"bones":[{"name":"root"},{"name":"shoot cum 19-04 sprites with shadow","parent":"root","length":43.07,"rotation":17.45,"x":319.97,"y":121.45},{"name":"shoot cum 19-04 sprites with shadow2","parent":"root","length":55.79,"rotation":81.53,"x":-406.73,"y":42.79},{"name":"shoot cum 19-04 sprites with shadow3","parent":"root","length":26.48,"rotation":-118.5,"x":-144.46,"y":336.37},{"name":"shoot cum 19-04 sprites with shadow4","parent":"root","length":27.53,"rotation":-52.85,"x":124.59,"y":403.26},{"name":"shoot cum 19-04 sprites with shadow6","parent":"shoot cum 19-04 sprites with shadow2","length":63.71,"rotation":6.46,"x":0.41,"y":-55.79}],"slots":[{"name":"shoot cum 19-04 sprites with shadow","bone":"shoot cum 19-04 sprites with shadow6","attachment":"shoot cum 19-04 sprites with shadow"}],"skins":[{"name":"default","attachments":{"shoot cum 19-04 sprites with shadow":{"shoot cum 19-04 sprites with shadow":{"type":"mesh","uvs":[0.77429,0.06362,0.78631,0.08376,0.78945,0.10311,0.78924,0.12613,0.78233,0.16282,0.78017,0.19726,0.77955,0.20072,0.77365,0.23894,0.767,0.3125,0.77179,0.39052,0.78537,0.44697,0.78884,0.48019,0.78867,0.48214,0.80711,0.53869,0.83761,0.61607,0.83607,0.61143,0.86082,0.63875,0.88113,0.71075,0.92695,0.79031,0.94698,0.82884,0.99319,0.9212,1,0.92889,1,1,0.8962,1,0.89292,0.96273,0.8675,0.93045,0.86362,0.93466,0.87616,0.99389,0.88865,1,0.75911,1,0.73612,0.86226,0.72949,0.84303,0.72345,0.81085,0.72288,0.78952,0.72103,0.7786,0.71308,0.74505,0.69417,0.69084,0.67286,0.67042,0.66802,0.67979,0.68997,0.77186,0.70524,0.91934,0.71323,0.94703,0.73418,0.99106,0.73443,1,0.67673,1,0.64926,0.88442,0.63798,0.84257,0.62486,0.77199,0.62422,0.76396,0.60721,0.72294,0.59533,0.68452,0.588,0.63866,0.57515,0.59343,0.5754,0.54255,0.58506,0.48929,0.61126,0.42938,0.61646,0.4137,0.60431,0.39076,0.58932,0.38117,0.58229,0.38395,0.56505,0.37758,0.55465,0.36638,0.54164,0.41102,0.52719,0.42189,0.51681,0.44135,0.50709,0.43929,0.50887,0.4607,0.50453,0.47171,0.50303,0.51603,0.48671,0.52808,0.50921,0.57946,0.51038,0.59011,0.49992,0.64333,0.49445,0.70655,0.48366,0.74351,0.46765,0.7796,0.46555,0.8106,0.4591,0.85897,0.45802,0.86429,0.41879,0.88472,0.39904,0.88668,0.37106,0.9005,0.35152,0.92377,0.36519,0.96959,0.36929,1,0.09523,1,0.10053,0.97174,0.12898,0.8961,0.14538,0.86505,0.16962,0.82949,0.18048,0.81834,0.1981,0.77518,0.20285,0.76748,0.22375,0.75171,0.24419,0.74433,0.24969,0.73469,0.25536,0.6986,0.25492,0.67179,0.25981,0.65015,0.24442,0.62806,0.22942,0.59679,0.21444,0.54876,0.21316,0.48344,0.22284,0.43308,0.22695,0.41653,0.23024,0.38279,0.23657,0.37316,0.27747,0.34905,0.29856,0.34504,0.31948,0.34621,0.33522,0.35863,0.33971,0.35041,0.33263,0.31046,0.32775,0.2632,0.32554,0.21682,0.32474,0.164,0.33892,0.15007,0.36606,0.15823,0.40716,0.17709,0.40653,0.18394,0.43228,0.20024,0.43491,0.2016,0.44274,0.18027,0.44312,0.16163,0.4532,0.17464,0.4743,0.19305,0.48023,0.16947,0.48406,0.17108,0.48247,0.18966,0.49504,0.18808,0.49641,0.20298,0.50342,0.22019,0.51285,0.21902,0.52506,0.23479,0.52991,0.22835,0.53379,0.19884,0.54344,0.17856,0.56662,0.15003,0.57415,0.14936,0.57905,0.13141,0.58601,0.13748,0.60636,0.12189,0.6116,0.13028,0.61609,0.13471,0.62824,0.1351,0.64193,0.16109,0.64484,0.17111,0.66594,0.15618,0.67903,0.14382,0.71138,0.09948,0.73675,0.07487,0.24907,0.3961,0.44931,0.68269,0.26556,0.63423,0.29679,0.645,0.3131,0.6392,0.31776,0.67318,0.32569,0.71544,0.34527,0.75688,0.37557,0.7834,0.40587,0.79169,0.43803,0.7776,0.45295,0.75439,0.48394,0.6229,0.47982,0.58827,0.46612,0.54414,0.44275,0.51298,0.41803,0.49574,0.38604,0.49214,0.35938,0.50881,0.35,0.38177,0.36071,0.40784,0.36956,0.44137,0.37375,0.4691,0.37257,0.50056,0.69117,0.57842,0.76882,0.47918,0.68989,0.41758,0.61589,0.2736,0.60976,0.28174,0.60444,0.29247,0.61093,0.29183,0.61526,0.28543,0.47222,0.33336,0.48369,0.33941,0.49504,0.35219,0.48836,0.35219,0.47739,0.35196,0.47336,0.34681,0.44002,0.30674,0.44868,0.31322,0.45114,0.32127,0.44189,0.32004,0.43933,0.31847,0.64512,0.27893,0.61356,0.31503,0.65387,0.25504,0.65543,0.33281,0.61387,0.21893,0.45256,0.36402,0.43694,0.33524,0.48764,0.37855,0.44555,0.40678,0.47667,0.27449,0.44096,0.23351,0.53032,0.3156,0.37823,0.25649,0.40017,0.35574,0.42152,0.40318,0.42648,0.39539,0.40321,0.34629,0.40661,0.26099,0.44506,0.27106,0.43988,0.30153,0.43948,0.34201,0.43609,0.31859,0.43727,0.28248],"triangles":[210,206,211,213,216,212,190,189,213,190,213,212,213,215,216,189,215,213,190,192,189,215,211,216,183,203,184,188,183,184,205,185,184,185,186,184,187,184,186,210,211,215,206,119,211,210,207,206,216,204,212,204,216,211,189,193,215,200,210,215,185,205,62,205,184,203,65,186,185,201,187,186,67,201,186,192,190,191,190,212,203,191,190,203,183,191,203,199,191,183,180,205,134,61,205,180,179,198,178,179,180,198,180,179,181,182,179,178,180,181,195,58,180,195,13,35,12,177,8,9,176,177,9,176,9,10,55,177,175,175,177,176,176,10,11,12,176,11,176,12,36,55,56,177,177,197,8,56,197,177,13,14,35,14,33,34,34,35,14,17,14,16,15,16,14,36,175,176,37,175,36,12,35,36,31,32,33,14,17,33,48,38,39,38,51,37,37,51,175,175,54,55,114,115,116,206,113,117,113,206,112,111,112,206,206,207,111,170,111,207,204,124,125,192,193,189,214,200,215,193,214,215,192,214,193,210,214,209,214,210,200,214,192,191,214,191,199,209,214,199,202,209,199,208,209,202,167,208,202,172,207,208,128,129,130,130,125,128,130,203,125,187,188,184,63,185,62,205,203,133,133,134,205,60,61,180,137,138,136,138,198,136,57,58,195,134,198,180,138,139,140,143,140,142,54,175,53,175,52,53,71,164,70,72,163,71,166,167,202,165,166,69,152,165,164,152,164,163,152,166,165,167,168,208,166,152,167,174,168,167,173,172,208,168,173,208,108,151,107,170,108,110,151,108,169,173,169,172,174,173,168,169,170,171,169,171,172,174,169,173,105,106,151,104,105,151,174,156,169,155,153,169,153,100,101,100,153,99,98,99,153,156,174,158,174,152,158,96,156,157,95,96,157,85,86,87,87,84,85,82,90,94,89,90,82,95,157,158,158,94,95,158,157,156,84,87,82,82,94,158,152,160,159,80,159,160,80,160,79,81,159,80,73,163,72,152,163,73,74,152,73,162,152,74,161,152,162,75,162,74,75,161,162,76,161,75,77,161,76,77,79,161,78,79,77,43,44,42,44,40,41,33,30,31,30,33,17,30,26,29,29,26,27,25,17,18,25,26,17,25,18,19,24,25,19,23,24,20,24,19,20,20,21,22,23,20,22,26,30,17,29,27,28,40,45,39,47,48,39,46,47,39,45,46,39,44,45,40,44,41,42,50,51,38,49,50,38,48,49,38,51,52,175,161,160,152,79,160,161,152,159,158,81,158,159,82,158,81,82,83,84,90,91,93,91,92,93,90,93,94,88,89,82,87,88,82,156,155,169,154,153,155,154,96,97,98,153,154,154,97,98,96,154,156,154,155,156,101,151,153,151,101,102,151,169,153,151,103,104,103,151,102,152,174,167,151,106,107,169,108,170,110,108,109,110,111,170,171,170,207,172,171,207,164,165,69,71,163,164,164,69,70,67,69,166,2,0,1,0,3,150,2,3,0,145,143,144,198,140,143,198,145,146,198,146,196,7,197,148,4,5,149,6,7,148,7,8,197,5,6,149,4,150,3,6,148,149,196,146,147,178,198,196,194,178,196,182,178,194,181,179,182,195,181,182,148,197,196,194,196,197,195,194,197,194,195,182,197,57,195,56,57,197,148,196,147,145,198,143,4,149,150,142,140,141,198,138,140,136,198,134,58,60,180,59,60,58,136,134,135,62,205,61,131,132,133,68,69,67,65,185,63,64,65,63,67,65,66,65,67,186,203,130,131,203,131,133,128,126,127,125,126,128,203,212,204,203,204,125,166,202,67,199,183,188,199,188,187,199,187,201,202,199,201,201,67,202,124,204,121,121,204,120,204,211,120,207,210,209,208,207,209,122,123,124,122,124,121,211,119,120,206,117,119,119,117,118,116,117,114,117,113,114],"vertices":[1,2,667.15,-749.27,1,1,2,649.03,-775.3,1,1,2,629.26,-784.34,1,1,2,604.6,-787.59,1,1,2,563.46,-780.33,1,1,2,526.06,-781.69,1,1,2,522.19,-781.06,1,1,2,479.69,-775.94,1,2,2,399.23,-775.02,0.98712,1,154.71,163.17,0.01288,2,2,317.25,-796.53,0.88054,1,138.23,80.03,0.11946,2,2,260.78,-831.3,0.9159,1,144.81,14.04,0.0841,2,2,226.28,-843.16,0.92676,1,140.41,-22.17,0.07324,2,2,224.15,-843.16,0.92756,1,139.47,-24.09,0.07244,2,2,168.96,-887.17,0.97275,1,154.93,-92.96,0.02725,1,2,94.92,-957.41,1,1,2,99.44,-953.75,1,1,2,77.26,-1005.1,1,1,2,6.1,-1055.11,1,1,2,-65.93,-1154.78,1,1,2,-101.43,-1198.95,1,1,2,-187.01,-1301.4,1,1,2,-193.31,-1315.56,1,1,2,-269.27,-1326.88,1,1,2,-298.62,-1129.76,1,1,2,-259.74,-1117.6,1,1,2,-232.44,-1064.19,1,1,2,-238.05,-1057.48,1,1,2,-297.77,-1090.73,1,1,2,-300.76,-1115.41,1,1,2,-337.4,-869.42,1,1,2,-196.76,-803.84,1,1,2,-178.1,-788.19,1,2,2,-145.43,-771.6,0.99715,1,-86.44,-325.22,0.00285,1,2,-122.8,-767.13,1,1,2,-111.66,-761.88,1,1,2,-78.08,-741.45,1,1,2,-25.51,-696.91,1,1,2,-9.73,-653.19,1,1,2,-21.11,-645.48,1,2,2,-113.25,-701.82,0.99644,1,-135.13,-265.77,0.00356,1,2,-266.47,-754.28,1,1,2,-293.79,-773.85,1,1,2,-334.9,-820.66,1,1,2,-344.38,-822.55,1,1,2,-360.7,-712.96,1,1,2,-245,-642.42,1,1,2,-203.49,-614.33,1,1,2,-131.8,-578.2,1,1,2,-123.41,-575.69,1,1,2,-84.4,-536.87,1,1,2,-46.72,-508.2,1,1,2,0.2,-486.98,1,1,2,44.87,-455.38,1,1,2,99.29,-447.76,1,1,2,158.93,-457.63,1,2,2,230.33,-497.86,0.96508,1,-168.4,132.4,0.03492,2,2,248.54,-505.23,0.96566,1,-153.81,145.56,0.03434,1,2,269.62,-478.51,1,1,2,275.63,-448.52,1,1,2,270.67,-435.61,1,1,2,272.59,-401.86,1,1,2,281.61,-380.32,1,1,2,230.26,-362.73,1,1,2,214.55,-337,1,1,2,190.83,-320.39,1,1,2,190.29,-301.61,1,1,2,167.91,-308.39,1,1,2,154.92,-301.9,1,1,2,107.15,-306.11,1,1,2,89.67,-277.03,1,1,2,41.14,-327.94,1,1,2,30.1,-331.85,1,1,2,-29.7,-320.45,1,1,2,-98.79,-320.13,1,1,2,-141.32,-305.5,1,1,2,-184.4,-280.84,1,1,2,-218.11,-281.78,1,1,2,-271.6,-277.24,1,1,2,-277.59,-276.04,1,1,2,-310.51,-204.79,1,1,2,-318.19,-167.6,1,1,2,-340.87,-116.65,1,1,2,-371.25,-83.26,1,1,2,-416.34,-116.49,1,1,2,-447.65,-129.13,1,1,2,-525.17,391.33,1,1,2,-493.48,385.76,1,1,2,-404.63,343.76,1,1,2,-366.83,317.57,1,1,2,-321.98,277.19,1,1,2,-307,258.34,1,1,2,-255.91,231.75,1,1,2,-246.35,223.94,1,1,2,-223.59,186.77,1,1,2,-209.92,149.12,1,1,2,-198.08,140.22,1,1,2,-157.92,135.19,1,1,2,-129.4,140.29,1,2,2,-104.9,134.45,0.95187,5,-83.23,200.88,0.04813,2,2,-85.66,167.19,0.94536,5,-60.43,231.25,0.05464,2,2,-56.5,200.65,0.92978,5,-27.68,261.21,0.07022,2,2,-9.44,236.74,0.92798,5,23.14,291.78,0.07202,2,2,59.98,249.56,0.93895,5,93.56,296.71,0.06105,2,2,116.51,239.19,0.86563,5,148.57,280.04,0.13437,2,2,135.35,234.02,0.84167,5,166.71,272.78,0.15833,2,2,172.33,233.13,0.88262,5,203.34,267.74,0.11738,2,2,184.4,222.65,0.869,5,214.16,255.97,0.131,2,2,221.73,148.82,0.89542,5,242.94,178.4,0.10458,2,2,231.98,109.39,0.93315,5,248.69,138.07,0.06685,2,2,236.65,69.48,0.96549,5,248.84,97.89,0.03451,2,2,227.83,37.62,0.96448,5,236.49,67.22,0.03552,2,2,237.89,30.39,0.98992,5,245.67,58.91,0.01008,1,2,278.55,50.2,1,1,2,327.66,66.98,1,1,2,376.58,78.56,1,1,2,432.77,88.49,1,1,2,451.67,63.78,1,1,2,450.62,10.94,1,1,2,442.11,-70.12,1,1,2,434.61,-70.02,1,1,2,424.47,-121.5,1,1,2,423.77,-126.73,1,1,2,448.77,-138.19,1,1,2,468.79,-135.95,1,1,2,457.75,-157.17,1,1,2,444.04,-200.16,1,1,2,470.92,-207.68,1,1,2,470.27,-215.19,1,1,2,449.97,-215.13,1,1,2,455.22,-238.77,1,1,2,439.69,-243.72,1,1,2,423.28,-259.77,1,1,2,427.21,-277.5,1,1,2,413.81,-303.2,1,1,2,422.07,-311.38,1,1,2,454.68,-314.06,1,1,2,479.07,-329.15,1,1,2,516.11,-368.64,1,1,2,518.96,-382.83,1,1,2,539.51,-389.27,1,1,2,535,-403.46,1,1,2,557.41,-439.63,1,1,2,549.93,-450.91,1,1,2,546.47,-460.14,1,1,2,549.49,-483.28,1,1,2,525.59,-513.41,1,1,2,515.71,-520.54,1,1,2,537.63,-558.23,1,1,2,554.54,-581.13,1,1,2,611.06,-635.49,1,1,2,644.52,-679.76,1,2,2,163.44,195.27,0.76,5,190.25,231.12,0.24,2,2,-86.07,-230.61,0.76,5,-105.6,-163.98,0.24,2,2,-86.28,126.06,0.90777,5,-65.66,190.45,0.09223,2,2,-88.95,65.04,0.8971,5,-75.19,130.12,0.1029,2,2,-78.14,34.98,0.88,5,-67.83,99.03,0.12,2,2,-113.11,20.72,0.85147,5,-104.19,88.8,0.14853,2,2,-156.02,-1.05,0.89361,5,-149.27,71.99,0.10639,2,2,-194.74,-44.82,0.91919,5,-192.68,32.86,0.08081,2,2,-214.5,-106.58,0.98481,5,-219.26,-26.28,0.01519,2,2,-214.78,-165.44,0.93217,5,-226.16,-84.74,0.06783,2,2,-190.64,-224.28,0.91545,5,-208.79,-145.92,0.08455,2,2,-161.63,-248.92,0.92939,5,-182.74,-173.66,0.07061,2,2,-12.41,-286.85,0.9665,5,-38.73,-228.15,0.0335,2,2,23.43,-273.53,0.95669,5,-1.63,-218.95,0.04331,2,2,66.69,-240.49,0.96223,5,45.08,-190.99,0.03777,2,2,93.37,-191.14,0.98129,5,77.14,-144.95,0.01871,2,2,104.79,-141.46,0.94361,5,94.08,-96.87,0.05639,2,2,99.58,-80.13,0.88,5,95.81,-35.35,0.12,2,2,74.24,-32.16,0.88,5,76.02,15.17,0.12,2,2,207.29,5.87,0.9479,5,212.51,37.98,0.0521,2,2,182.47,-18.62,0.93191,5,185.09,16.45,0.06809,2,2,149.16,-40.75,0.91025,5,149.5,-1.8,0.08975,2,2,120.72,-53.12,0.88,5,119.85,-10.89,0.12,2,2,86.78,-55.9,0.88,5,85.81,-9.83,0.12,1,2,93.72,-673.33,1,2,2,221.7,-804.98,0.90845,1,104.06,-9.6,0.09155,2,2,265.18,-645.3,0.85851,1,-20.56,99.3,0.14149,2,2,398.04,-481.87,0.864,4,32.4,-19.67,0.136,2,2,387.61,-471.51,0.832,4,32.29,-34.36,0.168,2,2,374.65,-463.13,0.864,4,35.37,-49.49,0.136,1,2,377.17,-475.34,1,1,2,385.23,-482.54,1,2,2,293.57,-218.54,0.816,3,30.59,14.37,0.184,2,2,290.35,-241.28,0.68349,3,25.83,36.84,0.31651,2,2,279.92,-264.86,0.82827,3,27.56,62.56,0.17173,2,2,278.03,-252.17,0.89798,3,33.68,51.29,0.10202,1,2,275.17,-231.31,1,1,2,279.53,-222.83,1,2,2,312.9,-153.14,0.752,3,34.83,-53.69,0.248,2,2,308.43,-170.62,0.768,3,33.04,-35.74,0.232,2,2,300.53,-176.58,0.944,3,38.42,-27.44,0.056,1,2,299.22,-158.81,1,1,2,300.18,-153.7,1,1,2,400.63,-538.22,1,2,2,353.13,-484.02,0.99101,4,65.42,-50.26,0.00899,1,2,428.62,-551.03,1,1,2,345.98,-566.37,1,1,2,455.88,-469.32,1,1,2,255.27,-186.07,1,1,2,281.59,-151.84,1,2,2,249.69,-255.02,0.99035,3,61.23,63.67,0.00965,1,2,207.6,-179.57,1,1,2,357.94,-217.7,1,1,2,391.51,-143.32,1,2,2,329.06,-326.06,0.95605,3,-37.67,103.24,0.04395,2,2,349.16,-27.84,0.96681,3,45.56,-183.83,0.03319,1,2,249.29,-85.27,1,1,2,204.65,-133.36,1,1,2,214.38,-141.54,1,2,2,260.29,-89.55,0.97877,3,107.92,-95.42,0.02123,2,2,352.49,-82.48,0.90915,3,23.72,-133.64,0.09085,2,2,352.71,-157.14,0.89038,3,-2.06,-63.57,0.10962,2,2,318.84,-152.2,0.77175,3,31.46,-56.61,0.22825,1,2,275.08,-157.74,1,2,2,299.15,-147.58,0.9957,3,51.55,-54.21,0.0043,2,2,338.35,-144.17,0.84295,3,15.87,-70.83,0.15705],"hull":151,"edges":[0,300,0,2,2,4,4,6,6,8,10,12,12,14,14,16,16,18,18,20,20,22,22,24,24,26,26,28,28,30,30,32,32,34,34,36,36,38,38,40,40,42,42,44,44,46,46,48,48,50,50,52,52,54,54,56,56,58,58,60,60,62,62,64,64,66,66,68,68,70,70,72,72,74,74,76,76,78,78,80,80,82,82,84,84,86,86,88,88,90,90,92,92,94,94,96,96,98,98,100,100,102,102,104,104,106,106,108,108,110,110,112,112,114,114,116,116,118,118,120,120,122,122,124,124,126,126,128,128,130,130,132,132,134,134,136,136,138,138,140,140,142,144,146,146,148,148,150,150,152,152,154,154,156,156,158,158,160,160,162,162,164,164,166,166,168,168,170,170,172,172,174,174,176,176,178,178,180,180,182,182,184,184,186,186,188,188,190,190,192,192,194,194,196,196,198,198,200,200,202,202,204,204,206,206,208,208,210,210,212,212,214,214,216,216,218,218,220,220,222,222,224,224,226,226,228,228,230,230,232,232,234,234,236,236,238,238,240,240,242,242,244,244,246,246,248,248,250,250,252,252,254,254,256,256,258,258,260,260,262,262,264,264,266,266,268,268,270,270,272,272,274,274,276,276,278,278,280,280,282,282,284,284,286,286,288,288,290,290,292,292,294,294,296,296,298,298,300,8,10,196,306,306,308,308,310,310,312,312,314,314,316,316,318,318,320,320,322,322,324,324,150,142,144,144,326,326,328,328,330,330,332,332,334,334,336,220,340,340,342,342,344,344,346,336,348,348,338,346,348,356,358,358,360,360,362,362,364,364,356,366,368,368,370,370,372,372,374,374,376,376,366,378,380,380,382,382,384,384,386,386,378,412,414,414,416,416,418,418,420,420,422,422,412,424,426,426,378,386,428,428,430,430,432],"width":1920,"height":1080}}}}],"animations":{"animation":{"bones":{"shoot cum 19-04 sprites with shadow3":{"translate":[{},{"time":0.3333,"x":-11.66,"y":-21.47},{"time":0.5,"x":-24.24,"y":-44.64},{"time":0.6667,"x":7.67,"y":14.13},{"time":2.6667}]},"shoot cum 19-04 sprites with shadow4":{"translate":[{},{"time":0.3333,"x":-11.9,"y":15.71},{"time":1.1667},{"time":1.3333,"x":36.64,"y":-48.37},{"time":1.5,"x":6.83,"y":-9.01},{"time":2.6667}]},"shoot cum 19-04 sprites with shadow":{"translate":[{},{"time":1,"x":4.08,"y":92.41},{"time":2.6667}]},"shoot cum 19-04 sprites with shadow6":{"translate":[{},{"time":1.6333,"x":68.53,"y":44.75},{"time":2.6667}]}}}}}');
 ;// CONCATENATED MODULE: ./js/SpineScript/index.js
 
 
@@ -35124,6 +35131,7 @@ var assets_spine_end_skeleton_namespaceObject = JSON.parse('{"skeleton":{"hash":
 
 // import * as PIXI from "pixi.js";
 // Eye
+
 
 
 
@@ -35162,9 +35170,6 @@ const loadSpineJson = (dataURI, dataJson, atlas) => {
   const spineTextureAtlas = new TextureAtlas(atlas, (line, callback) => {
     callback(baseTexture);
   });
-
-  // spineTextureAtlas.pages[0].baseTexture.alphaMode = PIXI.ALPHA_MODES.PMA;
-
   const spineAtlasAttachmentLoader = new AtlasAttachmentLoader(spineTextureAtlas);
   const spineSkeletonJson = new SkeletonJson(spineAtlasAttachmentLoader);
   const spineData = spineSkeletonJson.readSkeletonData(dataJson);
@@ -35332,38 +35337,39 @@ const allSpine = [{
 }, {
   name: "Eyes",
   spine: spineEyes,
-  sceneStart: [14],
-  sceneEnd: [15]
+  sceneStart: [10],
+  sceneEnd: [11]
 }, {
   name: "H-transform",
   spine: spineHelenaT,
-  sceneStart: [28],
-  sceneEnd: [29]
+  sceneStart: [24],
+  //-5
+  sceneEnd: [25]
 }, {
   name: "Sucking",
   spine: spineSucking,
-  sceneStart: [29],
-  sceneEnd: [30]
+  sceneStart: [25],
+  sceneEnd: [26]
 }, {
   name: "BoobJob",
   spine: spineBoobJob,
-  sceneStart: [30],
-  sceneEnd: [31]
+  sceneStart: [26],
+  sceneEnd: [27]
 }, {
   name: "DoggyStyle",
   spine: spineDoggyStyle,
-  sceneStart: [31],
-  sceneEnd: [32]
+  sceneStart: [27],
+  sceneEnd: [28]
 }, {
   name: "Wallslam",
   spine: spineWallslam,
-  sceneStart: [33],
-  sceneEnd: [34]
+  sceneStart: [28],
+  sceneEnd: [29]
 }, {
   name: "End",
   spine: spineEnd,
-  sceneStart: [34, 36],
-  sceneEnd: [35, 37]
+  sceneStart: [29, 31],
+  sceneEnd: [30, 32]
 }];
 
 ;// CONCATENATED MODULE: ./js/spineManager.js
@@ -35523,18 +35529,19 @@ function changeAnimation(spineName, animationName) {
 
 ;// CONCATENATED MODULE: ./js/gameMechanics.js
 
+
 let _ = undefined;
 let spineAnimInfo = [{
-  scene: 29,
+  scene: 25,
   name: "Sucking"
 }, {
-  scene: 30,
+  scene: 26,
   name: "BoobJob"
 }, {
-  scene: 31,
+  scene: 27,
   name: "DoggyStyle"
 }, {
-  scene: 32,
+  scene: 28,
   name: "Wallslam"
 }];
 let progress, gameMode, unlockStage, timer, scene, setedAnim;
@@ -35645,11 +35652,9 @@ function disabledAllBtns() {
   btns.forEach(btn => btn.disabled = true);
 }
 function sceneEnd() {
-  let nextBtn = document.querySelector("#next");
   setAnim("4", false);
   setTimeout(() => {
-    nextBtn.classList.remove("hide");
-    nextBtn.disabled = false;
+    change_btns.showBtn();
   }, 2000);
   disabledAllBtns();
 }
@@ -35692,6 +35697,7 @@ function setActiveBtn() {
 
 // initGameMechanics
 
+
 //Main script
 js_sound();
 js_fullscreen();
@@ -35700,42 +35706,45 @@ spineSceneAdap();
 scene_creater(preloader);
 warn_btn(gameInit);
 let main_nowScene = 1,
-  talkIndex = 0,
-  main_nextBtn = document.querySelector("#next");
+  talkIndex = 0;
 let nowTalk = null;
 let Talk = talk_blockSetting[main_nowScene - 1];
 let modifyScene = Talk.modifyScene;
 function gameInit() {
-  removeScenes(1); //для тестов
+  // removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
-  main_nextBtn.addEventListener("click", () => {
-    talkIndex++;
-    nowTalk = getDialog(main_nowScene, talkIndex);
-    if (nowTalk) {
-      // get dialog
-      talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
-    } else {
-      // change scene
+  change_btns.clickCallback(changeScene);
+}
+function changeScene() {
+  talkIndex++;
+  nowTalk = getDialog(main_nowScene, talkIndex);
+  if (nowTalk) {
+    // get dialog
+    talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
+  } else {
+    // change scene
 
-      Talk = talk_blockSetting[main_nowScene];
-      let isGameScene = Talk.gameScene;
-      modifyScene = Talk.modifyScene;
-      if (isGameScene) {
-        hideNext();
-        hideTalkEl();
-        updateScene();
-        main_showGameInterface();
-        initGameMechanics(main_nowScene);
-      } else if (modifyScene) {
-        addModifyScene(modifyScene);
-        hideNext();
-        hideTalkEl();
-      } else {
-        updateScene();
-        talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
-      }
+    Talk = talk_blockSetting[main_nowScene];
+    let isGameScene = Talk.gameScene;
+    modifyScene = Talk.modifyScene;
+    if (isGameScene) {
+      change_btns.hideBtn();
+      hideTalkEl();
+      updateScene();
+      main_showGameInterface();
+      initGameMechanics(main_nowScene);
+    } else if (modifyScene) {
+      addModifyScene(modifyScene);
+      change_btns.hideBtn();
+      hideTalkEl();
+    } else {
+      updateScene();
+      talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     }
-  });
+  }
+  if (nowTalk && !getDialog(main_nowScene, talkIndex + 1) && modifyScene?.btnEnd) {
+    change_btns.changeBtn(modifyScene.btnEnd);
+  }
 }
 function updateScene() {
   removeScene(main_nowScene);
@@ -35759,6 +35768,10 @@ function addModifyScene(modifyObj) {
   if (modifyObj.next) {
     setTimeout(() => {
       updateScene();
+      let btn = talk_blockSetting[main_nowScene - 1]?.modifyScene?.btn;
+      if (btn) {
+        change_btns.changeBtn(btn);
+      }
       talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     }, modifyObj.delayNext);
   } else {
@@ -35772,6 +35785,9 @@ function addModifyScene(modifyObj) {
     }, modifyScene.delayUpdate);
   } else {
     updateScene();
+  }
+  if (modifyObj.btn && !modifyObj.next) {
+    change_btns.changeBtn(modifyObj.btn);
   }
   if (modifyObj.gameEnd) {
     hideGameInterface();
@@ -35799,15 +35815,10 @@ function animScene(selector) {
     document.querySelector(selector).classList.add("anim");
   }, 1000);
 }
-function hideNext() {
-  keyListener(false);
-  main_nextBtn.classList.add("hide");
-  main_nextBtn.disabled = true;
-}
 function fade(time) {
   let fadeEl = document.querySelector("#fade");
   fadeEl.classList.add("show");
-  hideNext();
+  change_btns.hideBtn();
   hideTalkEl();
   setTimeout(() => {
     fadeEl.classList.remove("show");
