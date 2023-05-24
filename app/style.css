@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    /* padding: 20px; */
+}
+
+.app {
+    position: relative;
+}
+
+.img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+}
+
+.road-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+
+.road__main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.road__main .road {
+    height: 1%;
+    width: 0%;
+    top: 0%;
+    left: 0%;
+    transform: translateY(-50%);
+}
+
+.select_road {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 999;
+}
+
+.road {
+    position: absolute;
+    background: #000;
+    border-radius: 10px;
+    transition: width .3s linear .1s;
+}
+
+.road-start,
+.road-end {
+    position: absolute;
+    background: #000;
+    border-radius: 10px;
+    height: 0;
+    width: 0%;
+    top: 0%;
+    left: 0%;
+}
+
+
+.road-start {
+    transition: height .1s linear 0s;
+}
+
+.road-end {
+    transition: height .1s linear .6s;
+
+}
+
+.end-arrow {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
