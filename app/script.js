@@ -162,6 +162,7 @@ let startK;
 let endK;
 
 createBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   if (
     startK == document.querySelector("#select-start").value &&
     endK == document.querySelector("#select-end").value
@@ -169,7 +170,6 @@ createBtn.addEventListener("click", (e) => {
     return;
   } else {
     resetSize();
-    e.preventDefault();
     startK = document.querySelector("#select-start").value;
     endK = document.querySelector("#select-end").value;
     if (startK == endK) {
