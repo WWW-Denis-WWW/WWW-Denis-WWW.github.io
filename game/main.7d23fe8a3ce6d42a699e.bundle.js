@@ -35787,13 +35787,13 @@ spineSceneAdap();
 SceneCreater(preloader);
 warn_btn(gameInit);
 // [24] main spine scene
-let main_nowScene = 24,
+let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = null;
 let Talk = talk_blockSetting[main_nowScene - 1];
 let modifyScene = Talk.modifyScene;
 function gameInit() {
-  removeScenes(24); //для тестов
+  removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
   change_btns.clickCallback(changeScene);
 }
