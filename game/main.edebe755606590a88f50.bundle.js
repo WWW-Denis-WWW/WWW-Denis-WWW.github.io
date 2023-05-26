@@ -2862,10 +2862,10 @@ function allScenesCreate() {
   let cave14 = new Scene(sceneCount);
   cave14.addBackgroud("./assets/media/cave/statue/bg.webp");
   cave14.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "110%", "100%", "50%", _, "contain", _, "statue-trap2");
-  cave14.addBackgroud("../assets/media/cave/statue/statue2.png", "100%", "110%", "100%", "50%", _, "contain", _, "statue-trap3");
-  cave14.addBackgroud("../assets/media/cave/statue/SmokeViolet.png", "100%", "38%", "27%", "61%", 2, "contain", _, "smoke-img");
+  cave14.addBackgroud("./assets/media/cave/statue/statue2.png", "100%", "110%", "100%", "50%", _, "contain", _, "statue-trap3");
+  cave14.addBackgroud("./assets/media/cave/statue/SmokeViolet.png", "100%", "38%", "27%", "61%", 2, "contain", _, "smoke-img");
   cave14.addCharacter("./assets/media/cave/characters/HelenOpeningStatueBack.png", "helena-trapB", "100%", "73%", "100%", "50%", 1, "contain");
-  cave14.addCharacter("../assets/media/cave/characters/HelenOpeningStatueFront.webp", "helena-trapF", "100%", "73%", "100%", "50%", 1, "contain");
+  cave14.addCharacter("./assets/media/cave/characters/HelenOpeningStatueFront.webp", "helena-trapF", "100%", "73%", "100%", "50%", 1, "contain");
   //cave 26
   let cave15 = new Scene(sceneCount);
   cave15.addBackgroud("./assets/media/cave/bg4.png", _, _, _, _, _, _, "bottom");
