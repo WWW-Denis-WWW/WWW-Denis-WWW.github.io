@@ -2528,6 +2528,18 @@ module.exports = {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	!function() {
 /******/ 		__webpack_require__.g = (function() {
@@ -2538,6 +2550,11 @@ module.exports = {
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
@@ -2578,11 +2595,17 @@ var __webpack_exports__ = {};
 !function() {
 "use strict";
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "P": function() { return /* binding */ replayGame; },
+  "M": function() { return /* binding */ replayPose; }
+});
+
 ;// CONCATENATED MODULE: ./js/dialog.js
 const talks = [[""], [""], ["Finally! Remind me to take a helicopter for the next trip, Sully.", "I’d rather avoid meeting pirates and fixing that damn engine every hour."], ["I’m too old for all this crap, Nate.", "This time we better get lucky and find something valuable."], ["Come on guys, we shouldn’t argue and complain.", "Look how beautiful it is here."], ["Sorry for that. Just getting sick of pointless adventures.", "I owe a lot of money to serious people. And they aren’t kidding anymore."], ["Don’t worry, old man. This campaign will bring us to jackpot for sure.", "But we gotta hurry. Roman is gonna be here in a couple hours.", "Let’s go!"], ["I’ve already seen this tree!", "We are going round and round in circles, Nate!", "I don’t understand!", "The entrance is supposed to be right here.", "I’m kinda tired.", "You figure out, which direction we should go. I need a rest."], ["Way to go, girl!", "I told you, Nate. This lady is a pure diamond!", "I must admit the truth.", "Not bad for a journalist, Elena.", "We are running out of time, boys!", "I want to see, what’s hidden inside. Let’s roll!"], ["Never thought I’d say it.", "You wanna smoke your cigar, Sully?", "I can’t see a thing.", "Just a moment."], ["Damn that was close!", "It’s a dead end.", "Let’s move back the same way."], ["Maybe we missed something."], ["Look what I’ve found! Could be useful."], [""], ["I can’t believe we found it.", "The definition of «gorgeous»!", "There it is, ladies and gentlemen."], ["Let me introduce… The famous El Whorado."], ["Alright. I’ll quickly get back to the boat.", "We definitely need some equipment to transport this giant."], ["You two! Don’t do anything stupid."], ["Yes, sir!", "Oh please. Everything is under control, Sully."], ["Okay, he is gone. Let’s open this thing!", "What? No! We have no idea, what’s inside.", "It can be dangerous, Elena.", "Oh don’t be such a pussy! I’m so excited!"], ["Wait!!!"], [""], ["Well, I was wrong. It is not under control from now."], ["Time to have some fun!"], [], [], [], [], ["Damn..."], ["Whata hell is going on there???"], ["Well now we know what statue is", "...what just happened there?"], ["I wouldn’t say this adventure was pointless", "Totally agreed!", "Get me back to normal, you idiots!", "Arghhh!!!"]];
 /* harmony default export */ var dialog = (talks);
 ;// CONCATENATED MODULE: ./js/images.js
-const preloadImages = ["./assets/media/characters/Helen-sit-scare.png", "./assets/media/characters/Helen-sit-smile.png", "./assets/media/cave/statue/statue2.png", "./assets/media/cave/statue/SmokeViolet.png", "./assets/media/cave/characters/HelenOpeningStatueFront.webp"];
+const preloadImages = ["./assets/media/characters/Helen-sit-scare.png", "./assets/media/characters/Helen-sit-smile.png", "./assets/media/characters/drake-surprise-right.png", "./assets/media/characters/drake-smile-right.png", "./assets/media/jungle/characters/sally-big-surprise.png", "./assets/media/jungle/characters/sally-big-smile.png"];
 /* harmony default export */ var js_images = (preloadImages);
 ;// CONCATENATED MODULE: ./js/preloadImg.js
 
@@ -2723,6 +2746,9 @@ class Scene {
     this.scene.appendChild(div);
   }
 }
+function resetSceneCount() {
+  sceneCount = 1;
+}
 function allScenesCreate() {
   let beachStart = new Scene(sceneCount);
   beachStart.addBackgroud("./assets/media/beach/beach.jpg");
@@ -2836,8 +2862,10 @@ function allScenesCreate() {
   let cave14 = new Scene(sceneCount);
   cave14.addBackgroud("./assets/media/cave/statue/bg.webp");
   cave14.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "110%", "100%", "50%", _, "contain", _, "statue-trap2");
-  cave14.addBackgroud("./assets/media/1.png", "100%", "38%", "27%", "61%", 2, "contain", _, "smoke-img");
+  cave14.addBackgroud("../assets/media/cave/statue/statue2.png", "100%", "110%", "100%", "50%", _, "contain", _, "statue-trap3");
+  cave14.addBackgroud("../assets/media/cave/statue/SmokeViolet.png", "100%", "38%", "27%", "61%", 2, "contain", _, "smoke-img");
   cave14.addCharacter("./assets/media/cave/characters/HelenOpeningStatueBack.png", "helena-trapB", "100%", "73%", "100%", "50%", 1, "contain");
+  cave14.addCharacter("../assets/media/cave/characters/HelenOpeningStatueFront.webp", "helena-trapF", "100%", "73%", "100%", "50%", 1, "contain");
   //cave 26
   let cave15 = new Scene(sceneCount);
   cave15.addBackgroud("./assets/media/cave/bg4.png", _, _, _, _, _, _, "bottom");
@@ -2846,15 +2874,10 @@ function allScenesCreate() {
   let cave16 = new Scene(sceneCount);
   cave16.addBackgroud("./assets/media/cave/statue/bg.webp");
   cave16.addBackgroud("./assets/media/cave/statue/statue.png", "100%", "110%", "100%", "50%", _, "contain", _, "statue-trap2");
-  // sex
-  let sex1 = new Scene(sceneCount);
-  sex1.addBackgroud("./assets/media/cave/bg4.png", "109%", _, _, _, _, _, "bottom");
-  let sex2 = new Scene(sceneCount);
-  sex2.addBackgroud("./assets/media/cave/floor.png");
-  let sex3 = new Scene(sceneCount);
-  sex3.addBackgroud("./assets/media/cave/bg4.png", "109%", _, _, _, _, _, "bottom");
-  let sex4 = new Scene(sceneCount);
-  sex4.addBackgroud("./assets/media/cave/colonn.png", _, _, _, _, _, _, "bottom");
+  createSexScene(sceneCount);
+  createSexScene(sceneCount);
+  createSexScene(sceneCount);
+  createSexScene(sceneCount);
   // end 32
   let endSex1 = new Scene(sceneCount);
   endSex1.addBackgroud("./assets/media/cave/floor.png");
@@ -2880,6 +2903,23 @@ function allScenesCreate() {
   cave18.addCharacter("./assets/media/cave/characters/drake-statue-stand.png", "Drake1", "100%", "77%", "37%", "25%", _, "contain");
   cave18.addCharacter("./assets/media/cave/characters/Helen-dressed.png", _, "100%", "109%", "35%", "-2%", _, "contain");
 }
+function createSexScene(sceneId) {
+  // sex
+  if (sceneId == 25) {
+    let sex1 = new Scene(sceneId);
+    sex1.addBackgroud("./assets/media/cave/bg4.png", "109%", _, _, _, _, _, "bottom");
+  } else if (sceneId == 26) {
+    let sex2 = new Scene(sceneId);
+    sex2.addBackgroud("./assets/media/cave/floor.png");
+  } else if (sceneId == 27) {
+    let sex3 = new Scene(sceneId);
+    sex3.addBackgroud("./assets/media/cave/bg4.png", "109%", _, _, _, _, _, "bottom");
+  } else if (sceneId == 28) {
+    let sex4 = new Scene(sceneId);
+    sex4.addBackgroud("./assets/media/cave/colonn.png", _, _, _, _, _, _, "bottom");
+  }
+}
+
 ;// CONCATENATED MODULE: ./js/scene-creater.js
 
 
@@ -2973,8 +3013,8 @@ const Preloader = () => {
     media = Array.from(document.querySelectorAll("img , video")),
     audio = Array.from(document.querySelectorAll("audio")),
     procentEl = document.querySelector("#loadProcent"),
-    allElCount = media.length - 2,
-    // не берем в счет logoGig и logoWatermark *scene-creater.js*
+    allElCount = media.length - 3,
+    // не берем в счет logoGig и logoWatermark и logo в конце *scene-creater.js*
     loadedElements = 0,
     procentValue = 0;
   function listenLoads() {
@@ -3264,7 +3304,7 @@ const TALKING_POSITIONS = [{
       target: "Helena-sit-anim",
       img1: {
         src: "./assets/media/characters/Helen-sit-scare.png",
-        delay: 6000
+        delay: 5000
       },
       img2: {
         src: "./assets/media/characters/Helen-sit-smile.png",
@@ -3274,7 +3314,7 @@ const TALKING_POSITIONS = [{
       target: "Drake-changeImg",
       img1: {
         src: "./assets/media/characters/drake-surprise-right.png",
-        delay: 6000
+        delay: 5000
       },
       img2: {
         src: "./assets/media/characters/drake-smile-right.png",
@@ -3284,7 +3324,7 @@ const TALKING_POSITIONS = [{
       target: "Sally-changeImg",
       img1: {
         src: "./assets/media/jungle/characters/sally-big-surprise.png",
-        delay: 6000
+        delay: 5000
       },
       img2: {
         src: "./assets/media/jungle/characters/sally-big-smile.png",
@@ -3504,26 +3544,7 @@ const TALKING_POSITIONS = [{
     delayNext: 3000,
     delayUpdate: 0,
     delayTalk: 0,
-    imgChange: [{
-      target: "statue-trap2",
-      img1: {
-        src: "./assets/media/cave/statue/statue2.png",
-        delay: 2000
-      }
-    }, {
-      target: "helena-trapB",
-      img1: {
-        src: "./assets/media/cave/characters/HelenOpeningStatueFront.webp",
-        delay: 2000,
-        changeClass: "helena-trapF"
-      }
-    }, {
-      target: "smoke-img",
-      img1: {
-        src: "./assets/media/cave/statue/SmokeViolet.png",
-        delay: 2500
-      }
-    }]
+    anim: [".helena-trapB", ".statue-trap2", ".statue-trap3", ".smoke-img", ".helena-trapF"]
   },
   talk1: {
     top: 0,
@@ -35502,7 +35523,7 @@ function checkScene(nowSceneId) {
         spine: spineAnim
       });
     }
-    if (spine.sceneEnd.includes(nowScene)) {
+    if (spine.sceneEnd.includes(nowScene) || nowScene == "end") {
       deleteSpine(spine.name);
     }
   });
@@ -35546,7 +35567,6 @@ function changeAnimation(spineName, animationName) {
         complete: e => {
           if (e.animation.name == "4") {
             spineObj.spine.spine.state.setAnimation(0, "5", true);
-            console.log("set");
           }
         }
       });
@@ -35590,7 +35610,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == "autoplay") {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 50);
+    timer = setInterval(increaseProgress, 400);
     autoplay();
     return;
   }
@@ -35717,9 +35737,7 @@ function hideTalkEl() {
   talkElement.classList.remove("talking");
 }
 function animScene(selector) {
-  setTimeout(() => {
-    document.querySelector(selector).classList.add("anim");
-  }, 1000);
+  document.querySelector(selector).classList.add("anim");
 }
 function changeClassImgBox(target, imgObj) {
   target.closest(".characters-scene__item").classList.add(imgObj.changeClass);
@@ -35732,6 +35750,7 @@ function changeImg(imgChangeSettingArr) {
       setTimeout(() => {
         target.src = imgObj.src;
         target.addEventListener("load", () => {
+          console.log("load", target);
           if (imgObj.changeClass) {
             changeClassImgBox(target, imgObj);
           }
@@ -35748,6 +35767,36 @@ function fade(time) {
     fadeEl.classList.remove("show");
   }, time);
 }
+
+;// CONCATENATED MODULE: ./js/endScreen.js
+
+const endScreen = {
+    showEndScreen,
+    hideEndScreen
+  },
+  endScreenEl = document.querySelector("#EndScreen"),
+  watermarkEl = document.querySelector(".watermark"),
+  replayBtn = document.querySelector("#replay-game-btn"),
+  endScreenBtnsPose = Array.from(document.querySelectorAll(".play-need-pose"));
+function showEndScreen() {
+  endScreenEl.classList.add("show");
+  watermarkEl.classList.add("hide");
+}
+function hideEndScreen() {
+  endScreenEl.classList.remove("show");
+  watermarkEl.classList.remove("hide");
+}
+function playAgain() {
+  replayGame();
+  hideEndScreen();
+}
+replayBtn.addEventListener("click", playAgain);
+endScreenBtnsPose.forEach(btn => {
+  btn.addEventListener("click", () => {
+    hideEndScreen();
+    replayPose(+btn.dataset.pose);
+  });
+});
 
 ;// CONCATENATED MODULE: ./js/main.js
 // styles
@@ -35777,7 +35826,11 @@ function fade(time) {
 
 // button
 
+// all scene count
+
 // edit scene functions
+
+
 
 //Main script
 js_sound();
@@ -35786,12 +35839,14 @@ screenResolution();
 spineSceneAdap();
 SceneCreater(preloader);
 warn_btn(gameInit);
+
 // [24] main spine scene
 let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = null;
 let Talk = talk_blockSetting[main_nowScene - 1];
 let modifyScene = Talk.modifyScene;
+let isReplayPose = false;
 function gameInit() {
   removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
@@ -35805,7 +35860,20 @@ function changeScene() {
     talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
   } else {
     // change scene
-
+    if (sceneCount === main_nowScene + 1) {
+      endScreen.showEndScreen();
+      change_btns.hideBtn();
+      main_nowScene = "end";
+      spineManager.checkScene(main_nowScene);
+      return;
+    } else if (isReplayPose) {
+      endScreen.showEndScreen();
+      editFunctions_hideGameInterface();
+      change_btns.hideBtn();
+      main_nowScene = "end";
+      spineManager.checkScene(main_nowScene);
+      return;
+    }
     Talk = talk_blockSetting[main_nowScene];
     let isGameScene = Talk.gameScene;
     modifyScene = Talk.modifyScene;
@@ -35882,6 +35950,30 @@ function getSettingForThisScene(idScene, indexTalk) {
   let setting = talk_blockSetting[idScene - 1][`talk${indexTalk + 1}`];
   return [setting.top, setting.left, setting.type];
 }
+function replayGame() {
+  main_nowScene = 1;
+  talkIndex = 0;
+  nowTalk = null;
+  Talk = talk_blockSetting[main_nowScene - 1];
+  modifyScene = Talk.modifyScene;
+  change_btns.showBtn();
+  removeScenes(sceneCount);
+  hideTalkEl();
+  resetSceneCount();
+  allScenesCreate();
+  spineManager.checkScene(main_nowScene);
+  isReplayPose = false;
+}
+function replayPose(scene) {
+  main_nowScene = scene;
+  removeScenes(sceneCount);
+  hideTalkEl();
+  spineManager.checkScene(main_nowScene);
+  initGameMechanics(main_nowScene);
+  createSexScene(scene);
+  isReplayPose = true;
+}
+
 }();
 /******/ })()
 ;
