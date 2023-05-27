@@ -35181,7 +35181,6 @@ var assets_spine_end_skeleton_namespaceObject = JSON.parse('{"skeleton":{"hash":
 
 
 
-
 // Eye
 
 
@@ -35218,9 +35217,7 @@ var assets_spine_end_skeleton_namespaceObject = JSON.parse('{"skeleton":{"hash":
 //
 
 const loadSpineJson = (dataURI, dataJson, atlas) => {
-  const baseTexture = new core_BaseTexture.from(dataURI, {
-    // alphaMode: ALPHA_MODES.UNPACK,
-  });
+  const baseTexture = new core_BaseTexture.from(dataURI);
   textures.push(baseTexture);
   const spineTextureAtlas = new base_es_TextureAtlas(atlas, (line, callback) => {
     callback(baseTexture);
@@ -35298,11 +35295,7 @@ const create = _ref => {
   spine.state.setAnimation(0, animName, animLoop);
   app.stage.addChild(spine);
   let container = document.querySelector(idCon);
-  if (container) {
-    container.appendChild(app.view);
-  } else {
-    console.log("блок не найден");
-  }
+  container.appendChild(app.view);
   if (gameScene && spine.state && spine.state.data) showGameInterface();
   apps.push(app);
   return {
@@ -35837,7 +35830,6 @@ function gameInit() {
   removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
   change_btns.clickCallback(changeScene);
-  endScreen.showEndScreen();
 }
 function changeScene() {
   talkIndex++;
