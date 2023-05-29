@@ -48,34 +48,25 @@ body {
     height: 100%;
 }
 
-.road__main .road {
-    height: 1%;
+.road__main .road1,
+.road__main .road2 {
+    height: 0%;
     width: 0%;
     top: 0%;
     left: 0%;
-    transform: translateY(-50%);
-}
-
-.select_road {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    z-index: 999;
+    /* transition: width .3s linear .1s, height .1s linear .1s; */
 }
 
 .road {
     position: absolute;
     background: #000;
     border-radius: 10px;
-    transition: width .3s linear .1s;
+
 }
 
 .road-start,
 .road-end {
-    position: absolute;
-    background: #000;
-    border-radius: 10px;
-    height: 0;
+    height: 0%;
     width: 0%;
     top: 0%;
     left: 0%;
@@ -83,16 +74,56 @@ body {
 
 
 .road-start {
-    transition: height .1s linear 0s;
+    /* transition: height .1s linear 0s, width .1s linear 0s; */
 }
 
 .road-end {
-    transition: height .1s linear .6s;
+    /* transition: height .1s linear .6, width .1s linear .6s; */
 
 }
 
-.end-arrow {
-    width: 100%;
-    height: 100%;
-    position: relative;
+/* select */
+.select_road {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 999;
+    background: #00000061;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: cursive;
+
+}
+
+.select_road form {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.select_road form button {
+    padding: 5px;
+}
+
+#floor-change {
+    font-size: 24px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    padding: 5px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    background: #fff;
+    cursor: pointer;
+    transition: visibility 0 linear 1.6s;
+    visibility: hidden;
+
+}
+
+#floor-change.show {
+    visibility: visible;
 }

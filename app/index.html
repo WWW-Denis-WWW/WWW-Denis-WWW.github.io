@@ -12,61 +12,106 @@
 <body>
     <div class="select_road">
         <form>
-            <label>Start:</label>
-            <select id="select-start">
-                <option value="111">111</option>
-                <option value="112">112</option>
-                <option value="113">113</option>
-                <option value="114">114</option>
-                <option value="115">115</option>
-                <option value="116">116</option>
-                <option value="117">117</option>
-                <option value="118">118</option>
-                <option value="119">119</option>
-                <option value="120">120</option>
-                <option value="121">121</option>
-                <option value="122">122</option>
-                <option value="123">123</option>
-                <option value="125">125</option>
-                <option value="127">127</option>
-            </select>
-            <label>End:</label>
-            <select id="select-end">
-                <option value="111">111</option>
-                <option value="112">112</option>
-                <option value="113">113</option>
-                <option value="114">114</option>
-                <option value="115">115</option>
-                <option value="116">116</option>
-                <option value="117">117</option>
-                <option value="118">118</option>
-                <option value="119">119</option>
-                <option value="120">120</option>
-                <option value="121">121</option>
-                <option value="122">122</option>
-                <option value="123">123</option>
-                <option value="125">125</option>
-                <option value="127">127</option>
-            </select>
+            <div class="startS">
+                <label>Start:</label>
+                <select id="select-start">
+                    <option value="111">111</option>
+                    <option value="112">112</option>
+                    <option value="113">113</option>
+                    <option value="114">114</option>
+                    <option value="115">115</option>
+                    <option value="116">116</option>
+                    <option value="117">117</option>
+                    <option value="118">118</option>
+                    <option value="119">119</option>
+                    <option value="120">120</option>
+                    <option value="121">121</option>
+                    <option value="122">122</option>
+                    <option value="123">123</option>
+                    <option value="125">125</option>
+                    <option value="127">127</option>
+                    <option value="201">201</option>
+                    <option value="202">202</option>
+                    <option value="203">203</option>
+                    <option value="204">204</option>
+                    <option value="205">205</option>
+                    <option value="207">207</option>
+                    <option value="211">211</option>
+                    <option value="212">212</option>
+                    <option value="213">213</option>
+                    <option value="214">214</option>
+                    <option value="2151">215a</option>
+                    <option value="2152">215б</option>
+                    <option value="216">216</option>
+                    <option value="220">220</option>
+                    <option value="222">222</option>
+                    <option value="224">224</option>
+                    <option value="2171">217a</option>
+                    <option value="2172">217б</option>
+                    <!-- <option value="219">219</option> -->
+                </select>
+            </div>
+            <div class="endS">
+                <label>End:</label>
+                <select id="select-end">
+                    <option value="111">111</option>
+                    <option value="112">112</option>
+                    <option value="113">113</option>
+                    <option value="114">114</option>
+                    <option value="115">115</option>
+                    <option value="116">116</option>
+                    <option value="117">117</option>
+                    <option value="118">118</option>
+                    <option value="119">119</option>
+                    <option value="120">120</option>
+                    <option value="121">121</option>
+                    <option value="122">122</option>
+                    <option value="123">123</option>
+                    <option value="125">125</option>
+                    <option value="127">127</option>
+                    <option value="201">201</option>
+                    <option value="202">202</option>
+                    <option value="203">203</option>
+                    <option value="204">204</option>
+                    <option value="205">205</option>
+                    <option value="207">207</option>
+                    <option value="211">211</option>
+                    <option value="212">212</option>
+                    <option value="213">213</option>
+                    <option value="214">214</option>
+                    <option value="2151">215a</option>
+                    <option value="2152">215б</option>
+                    <option value="216">216</option>
+                    <option value="220">220</option>
+                    <option value="222">222</option>
+                    <option value="224">224</option>
+                    <option value="2171">217a</option>
+                    <option value="2172">217б</option>
+                    <!-- <option value="219">219</option> -->
+                </select>
+            </div>
+
             <button id="create-road">Создать путь</button>
         </form>
     </div>
     <div class="app">
         <div class="img">
-            <img src="./floors/6-1.svg" alt="6-1">
+            <img id="floor-img" src="./floors/6-1.svg">
         </div>
         <div class="road-box">
             <div class="road__main">
-                <div class="road"></div>
-
-            </div>
-            <div class="road-start"></div>
-            <div class="road-end">
-                <div class="end-arrow"></div>
+                <div class="road1 road"></div>
+                <div class="road2 road"></div>
+                <div class="road3 road"></div>
+                <div class="road-start road"></div>
+                <div class="road-end road"></div>
             </div>
         </div>
     </div>
+    <button id="floor-change">Next floor</button>
 </body>
-<script src="script.js" defer></script>
+<script src="script.js" defer type="module"></script>
+<script src="resolution.js" defer type="module"></script>
+<script src="selectRoad.js" defer type="module"></script>
 
 </html>
