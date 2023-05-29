@@ -2656,7 +2656,6 @@ function preloadAll() {
 /* harmony default export */ var preloadImg = (PreloadImg);
 ;// CONCATENATED MODULE: ./js/allScene.js
 let sceneCount = 1,
-  _ = undefined,
   maxSceneCount = 100;
 class Scene {
   scene = null;
@@ -2685,15 +2684,18 @@ class Scene {
     this.scene = scene;
   }
   // Добавление фона к сцене
-  addBackgroud(src) {
-    let w = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '100%';
-    let h = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '100%';
-    let top = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '0';
-    let left = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '0';
-    let zIndex = arguments.length > 5 ? arguments[5] : undefined;
-    let objectFit = arguments.length > 6 ? arguments[6] : undefined;
-    let objectPosition = arguments.length > 7 ? arguments[7] : undefined;
-    let name = arguments.length > 8 ? arguments[8] : undefined;
+  addBackgroud(_ref) {
+    let {
+      src,
+      w = '100%',
+      h = '100%',
+      t = '0',
+      l = '0',
+      zIndex,
+      objectFit,
+      objectPosition,
+      name
+    } = _ref;
     let backgroundItem = document.createElement('div'),
       imgBox = document.createElement('div'),
       img = document.createElement('img');
@@ -2702,8 +2704,8 @@ class Scene {
     img.src = src;
     backgroundItem.style.width = `${w}`;
     backgroundItem.style.height = `${h}`;
-    backgroundItem.style.left = `${left}`;
-    backgroundItem.style.top = `${top}`;
+    backgroundItem.style.left = `${l}`;
+    backgroundItem.style.top = `${t}`;
     if (zIndex) backgroundItem.style.zIndex = zIndex;
     if (objectFit) img.style.objectFit = objectFit;
     if (objectPosition) img.style.objectPosition = objectPosition;
@@ -2713,14 +2715,18 @@ class Scene {
     this.scene.querySelector('.background-scene').appendChild(backgroundItem);
   }
   // Добавление персонажей к сцене
-  addCharacter(src, name) {
-    let w = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '100%';
-    let h = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '100%';
-    let top = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '0';
-    let left = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : '0';
-    let zIndex = arguments.length > 6 ? arguments[6] : undefined;
-    let objectFit = arguments.length > 7 ? arguments[7] : undefined;
-    let objectPosition = arguments.length > 8 ? arguments[8] : undefined;
+  addCharacter(_ref2) {
+    let {
+      src,
+      name,
+      w = '100%',
+      h = '100%',
+      t = '0',
+      l = '0',
+      zIndex,
+      objectFit,
+      objectPosition
+    } = _ref2;
     let CharacterItem = document.createElement('div'),
       imgBox = document.createElement('div'),
       img = document.createElement('img');
@@ -2729,8 +2735,8 @@ class Scene {
     img.src = src;
     CharacterItem.style.width = `${w}`;
     CharacterItem.style.height = `${h}`;
-    CharacterItem.style.left = `${left}`;
-    CharacterItem.style.top = `${top}`;
+    CharacterItem.style.left = `${l}`;
+    CharacterItem.style.top = `${t}`;
     if (name) CharacterItem.classList.add(name);
     if (zIndex) CharacterItem.style.zIndex = zIndex;
     if (objectFit) img.style.objectFit = objectFit;
@@ -2751,177 +2757,646 @@ function resetSceneCount() {
 }
 function allScenesCreate() {
   let beachStart = new Scene(sceneCount);
-  beachStart.addBackgroud('./assets/media/beach/beach.jpg');
+  beachStart.addBackgroud({
+    src: './assets/media/beach/beach.jpg'
+  });
   let beachStart1 = new Scene(sceneCount);
-  beachStart1.addBackgroud('./assets/media/beach/beach2.png');
-  beachStart1.addBackgroud('./assets/media/beach/boating-watercraft.png', '121%', '70%', '-5%', '-41%');
-  beachStart1.addCharacter('./assets/media/characters/Drake.png', 'Drake', '35%', '70%', '4%', '30%', _, 'contain');
-  // 1
+  beachStart1.addBackgroud({
+    src: './assets/media/beach/beach2.png'
+  });
+  beachStart1.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.png',
+    w: '121%',
+    h: '70%',
+    t: '-5%',
+    l: '-41%'
+  });
+  beachStart1.addCharacter({
+    src: './assets/media/characters/Drake.png',
+    name: 'Drake',
+    w: '35%',
+    h: '70%',
+    t: '4%',
+    l: '30%',
+    objectFit: 'contain'
+  });
   let beach1 = new Scene(sceneCount);
-  beach1.addBackgroud('./assets/media/beach/bg1.jpg', _, _, _, _, _, _, 'bottom');
-  beach1.addBackgroud('./assets/media/beach/boating-watercraft.png', '145%', '70%', '40%', '-60%');
-  beach1.addCharacter('./assets/media/characters/Drake.png', 'Drake', '35%', '100%', '30%', '20%', _, 'contain');
-  // 2
+  beach1.addBackgroud({
+    src: './assets/media/beach/bg1.jpg',
+    objectPosition: 'bottom'
+  });
+  beach1.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.png',
+    w: '145%',
+    h: '70%',
+    t: '40%',
+    l: '-60%'
+  });
+  beach1.addCharacter({
+    src: './assets/media/characters/Drake.png',
+    name: 'Drake',
+    w: '35%',
+    t: '30%',
+    l: '20%',
+    objectFit: 'contain'
+  });
   let beach2 = new Scene(sceneCount);
-  beach2.addBackgroud('./assets/media/beach/bg1.jpg', '180%', '180%', '-50%', '-25%', _);
-  beach2.addBackgroud('./assets/media/beach/boating-watercraft.png', '200%', '200%', '-30%', '-50%');
-  beach2.addCharacter('./assets/media/characters/Sulli-sit.png', 'Sulli', '110%', '110%', '10%', '-5%', _, 'contain');
+  beach2.addBackgroud({
+    src: './assets/media/beach/bg1.jpg',
+    w: '180%',
+    h: '180%',
+    t: '-50%',
+    l: '-25%'
+  });
+  beach2.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.png',
+    w: '200%',
+    h: '200%',
+    t: '-30%',
+    l: '-50%'
+  });
+  beach2.addCharacter({
+    src: './assets/media/characters/Sulli-sit.png',
+    name: 'Sulli',
+    w: '110%',
+    h: '110%',
+    t: '10%',
+    l: '-5%',
+    objectFit: 'contain'
+  });
   let beach3 = new Scene(sceneCount);
-  // 3
-  beach3.addBackgroud('./assets/media/beach/bg1.jpg', '158%', '150%', '-49%', '0');
-  beach3.addBackgroud('./assets/media/beach/boating-watercraft.png', '200%', '200%', '-30%', '-11%', '1');
-  beach3.addCharacter('./assets/media/characters/Helena-no-bg.png', 'Helena', '89%', '87%', '20%', '-13%', _, 'contain');
-  //4
+  beach3.addBackgroud({
+    src: './assets/media/beach/bg1.jpg',
+    w: '158%',
+    h: '150%',
+    t: '-49%'
+  });
+  beach3.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.png',
+    w: '200%',
+    h: '200%',
+    t: '-30%',
+    l: '-11%',
+    zIndex: '1'
+  });
+  beach3.addCharacter({
+    src: './assets/media/characters/Helena-no-bg.png',
+    name: 'Helena',
+    w: '89%',
+    h: '87%',
+    t: '20%',
+    l: '-13%',
+    objectFit: 'contain'
+  });
   let beach4 = new Scene(sceneCount);
-  beach4.addBackgroud('./assets/media/beach/bg1.jpg', '180%', '180%', '-50%', '-25%', _);
-  beach4.addBackgroud('./assets/media/beach/boating-watercraft.png', '200%', '200%', '-30%', '-50%');
-  beach4.addCharacter('./assets/media/characters/Sulli-sit-2.png', 'Sulli', '104%', '93%', '20%', '-5%', _, 'contain');
-  // 5
+  beach4.addBackgroud({
+    src: './assets/media/beach/bg1.jpg',
+    w: '180%',
+    h: '180%',
+    t: '-50%',
+    l: '-25%'
+  });
+  beach4.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.png',
+    w: '200%',
+    h: '200%',
+    t: '-30%',
+    l: '-50%'
+  });
+  beach4.addCharacter({
+    src: './assets/media/characters/Sulli-sit-2.png',
+    name: 'Sulli',
+    w: '104%',
+    h: '93%',
+    t: '20%',
+    l: '-5%',
+    objectFit: 'contain'
+  });
   let beach5 = new Scene(sceneCount);
-  beach5.addBackgroud('./assets/media/beach/bg1.jpg', _, _, _, _, _, _, 'bottom');
-  beach5.addBackgroud('./assets/media/beach/boating-watercraft.png', '145%', '70%', '40%', '-60%');
-  beach5.addCharacter('./assets/media/characters/drake-compas.png', 'Drake', '40%', '107%', '30%', '20%', _, 'contain');
-  // jungle 6
+  beach5.addBackgroud({
+    src: './assets/media/beach/bg1.jpg',
+    objectPosition: 'bottom'
+  });
+  beach5.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.png',
+    w: '145%',
+    h: '70%',
+    t: '40%',
+    l: '-60%'
+  });
+  beach5.addCharacter({
+    src: './assets/media/characters/drake-compas.png',
+    name: 'Drake',
+    w: '40%',
+    h: '107%',
+    t: '30%',
+    l: '20%',
+    objectFit: 'contain'
+  });
   let jungle1 = new Scene(sceneCount);
-  jungle1.addBackgroud('./assets/media/jungle/jungle-bg.webp', _, _, _, _, 1, _, 'bottom');
-  jungle1.addBackgroud('./assets/media/jungle/forest.webp', _, _, _, _, 5, _, 'bottom');
-  jungle1.addBackgroud('./assets/media/jungle/gress.webp', '100%', '20%', '83%', '0%', 5, 'contain');
-  jungle1.addBackgroud('./assets/media/jungle/wall.webp', '41%', '60%', '13%', '65%');
-  jungle1.addBackgroud('./assets/media/jungle/stone.webp', '100%', '20%', '66.5%', '-10%', 2, 'contain');
-  jungle1.addBackgroud('./assets/media/jungle/green.webp', '18%', '25%', '69.5%', '31%', 3, 'contain');
-  jungle1.addCharacter('./assets/media/characters/drake-compas.png', 'Drake1', '21%', '107%', '5%', '53%', 4, 'contain');
-  jungle1.addCharacter('./assets/media/characters/Helen.png', 'Helen', '21%', '107%', '12%', '30%', 4, 'contain');
-  jungle1.addCharacter('./assets/media/characters/sally-big.png', 'Sally', '21%', '107%', '4%', '-2%', 4, 'contain');
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/jungle-bg.webp',
+    zIndex: 1,
+    objectPosition: 'bottom'
+  });
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/forest.webp',
+    zIndex: 5,
+    objectPosition: 'bottom'
+  });
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/gress.webp',
+    h: '20%',
+    t: '83%',
+    zIndex: 5,
+    objectFit: 'contain'
+  });
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/wall.webp',
+    w: '41%',
+    h: '60%',
+    t: '13%',
+    l: '65%'
+  });
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/stone.webp',
+    h: '20%',
+    t: '66.5%',
+    l: '-10%',
+    zIndex: 2,
+    objectFit: 'contain'
+  });
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/green.webp',
+    w: '18%',
+    h: '25%',
+    t: '69.5%',
+    l: '31%',
+    zIndex: 3,
+    objectFit: 'contain'
+  });
+  jungle1.addCharacter({
+    src: './assets/media/characters/drake-compas.png',
+    name: 'Drake1',
+    w: '21%',
+    h: '107%',
+    t: '5%',
+    l: '53%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
+  jungle1.addCharacter({
+    src: './assets/media/characters/Helen.png',
+    name: 'Helen',
+    w: '21%',
+    h: '107%',
+    t: '12%',
+    l: '30%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
+  jungle1.addCharacter({
+    src: './assets/media/characters/sally-big.png',
+    name: 'Sally',
+    w: '21%',
+    h: '107%',
+    t: '4%',
+    l: '-2%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
   let jungle2 = new Scene(sceneCount);
-  jungle2.addBackgroud('./assets/media/jungle/jungle-bg.webp', _, _, _, _, 1, _, 'bottom');
-  jungle2.addBackgroud('./assets/media/jungle/forest.webp', _, _, _, _, 5, _, 'bottom');
-  jungle2.addBackgroud('./assets/media/jungle/gress.webp', '100%', '20%', '83%', '0%', 5, 'contain');
-  jungle2.addBackgroud('./assets/media/jungle/tonnel.webp', '32%', '51%', '24.5%', '70%');
-  jungle2.addBackgroud('./assets/media/jungle/wall.webp', '41%', '60%', '13%', '65%', _, _, _, 'door-anime');
-  jungle2.addBackgroud('./assets/media/jungle/stone.webp', '100%', '20%', '66.5%', '-10%', 2, 'contain', _, 'stone-anim');
-  jungle2.addBackgroud('./assets/media/jungle/green.webp', '18%', '25%', '69.5%', '31%', 3, 'contain');
-  jungle2.addCharacter('./assets/media/characters/drake-compas.png', 'Drake-changeImg', '21%', '107%', '5%', '53%', 4, 'contain');
-  jungle2.addCharacter('./assets/media/characters/Helen-sit.png', 'Helena-sit-anim', '21%', '107%', '12%', '32%', 4, 'contain');
-  jungle2.addCharacter('./assets/media/characters/sally-big.png', 'Sally-changeImg', '21%', '107%', '4%', '-2%', 4, 'contain');
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/jungle-bg.webp',
+    zIndex: 1,
+    objectPosition: 'bottom'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/forest.webp',
+    zIndex: 5,
+    objectPosition: 'bottom'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/gress.webp',
+    h: '20%',
+    t: '83%',
+    zIndex: 5,
+    objectFit: 'contain'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/tonnel.webp',
+    w: '32%',
+    h: '51%',
+    t: '24.5%',
+    l: '70%'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/wall.webp',
+    w: '41%',
+    h: '60%',
+    t: '13%',
+    l: '65%',
+    name: 'door-anime'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/stone.webp',
+    h: '20%',
+    t: '66.5%',
+    l: '-10%',
+    zIndex: 2,
+    objectFit: 'contain',
+    name: 'stone-anim'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/green.webp',
+    w: '18%',
+    h: '25%',
+    t: '69.5%',
+    l: '31%',
+    zIndex: 3,
+    objectFit: 'contain'
+  });
+  jungle2.addCharacter({
+    src: './assets/media/characters/drake-compas.png',
+    name: 'Drake-changeImg',
+    w: '21%',
+    h: '107%',
+    t: '5%',
+    l: '53%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
+  jungle2.addCharacter({
+    src: './assets/media/characters/Helen-sit.png',
+    name: 'Helena-sit-anim',
+    w: '21%',
+    h: '107%',
+    t: '12%',
+    l: '32%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
+  jungle2.addCharacter({
+    src: './assets/media/characters/sally-big.png',
+    name: 'Sally-changeImg',
+    w: '21%',
+    h: '107%',
+    t: '4%',
+    l: '-2%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
   let cave1 = new Scene(sceneCount);
   let cave3 = new Scene(sceneCount);
-  cave3.addBackgroud('./assets/media/cave/bg1.png', _, _, _, _, _, _, 'bottom');
-  cave3.addCharacter('./assets/media/cave/characters/helena-fear.png', _, '25%', '78%', '27%', '-6%', 0, 'contain');
-  cave3.addCharacter('./assets/media/cave/characters/drake-fear.png', _, '23%', '78%', '28%', '5%', 0, 'contain');
-  cave3.addCharacter('./assets/media/cave/characters/silly-lighter.png', _, '23%', '78%', '27%', '17%', 0, 'contain');
+  cave3.addBackgroud({
+    src: './assets/media/cave/bg1.png',
+    objectPosition: 'bottom'
+  });
+  cave3.addCharacter({
+    src: './assets/media/cave/characters/helena-fear.png',
+    w: '25%',
+    h: '78%',
+    t: '27%',
+    l: '-6%',
+    zIndex: 0,
+    objectFit: 'contain'
+  });
+  cave3.addCharacter({
+    src: './assets/media/cave/characters/drake-fear.png',
+    w: '23%',
+    h: '78%',
+    t: '28%',
+    l: '5%',
+    zIndex: 0,
+    objectFit: 'contain'
+  });
+  cave3.addCharacter({
+    src: './assets/media/cave/characters/silly-lighter.png',
+    w: '23%',
+    h: '78%',
+    t: '27%',
+    l: '17%',
+    zIndex: 0,
+    objectFit: 'contain'
+  });
   cave3.addDiv('ligth1', 1);
-
-  //cave 16
   let cave5 = new Scene(sceneCount);
-  cave5.addBackgroud('./assets/media/cave/bg2.png', _, _, _, _, _, _, 'bottom');
-  cave5.addCharacter('./assets/media/cave/characters/silly-lighter1.png', _, '25%', '72%', '30%', '15%', 0, 'contain');
-  cave5.addCharacter('./assets/media/cave/characters/drake-fear.png', 'Drake1', '23%', '78%', '28%', '41%', 0, 'contain');
-  cave5.addCharacter('./assets/media/characters/Helen.png', _, '25%', '72%', '29%', '68%', 0, 'contain');
+  cave5.addBackgroud({
+    src: './assets/media/cave/bg2.png',
+    objectPosition: 'bottom'
+  });
+  cave5.addCharacter({
+    src: './assets/media/cave/characters/silly-lighter1.png',
+    w: '25%',
+    h: '72%',
+    t: '30%',
+    l: '15%',
+    zIndex: 0,
+    objectFit: 'contain'
+  });
+  cave5.addCharacter({
+    src: './assets/media/cave/characters/drake-fear.png',
+    name: 'Drake1',
+    w: '23%',
+    h: '78%',
+    t: '28%',
+    l: '41%',
+    zIndex: 0,
+    objectFit: 'contain'
+  });
+  cave5.addCharacter({
+    src: './assets/media/characters/Helen.png',
+    w: '25%',
+    h: '72%',
+    t: '29%',
+    l: '68%',
+    zIndex: 0,
+    objectFit: 'contain'
+  });
   // cave 17
   let cave6 = new Scene(sceneCount);
-  cave6.addBackgroud('./assets/media/cave/scene17.png', _, _, _, _, _, _, 'bottom');
+  cave6.addBackgroud({
+    src: './assets/media/cave/scene17.png',
+    objectPosition: 'bottom'
+  });
   // cave 18
   let cave7 = new Scene(sceneCount);
-  cave7.addBackgroud('./assets/media/cave/scene18.png', _, _, _, _, _, _, 'bottom', 'scene18');
+  cave7.addBackgroud({
+    src: './assets/media/cave/scene18.png',
+    objectPosition: 'bottom',
+    name: 'scene18'
+  });
   let cave = new Scene(sceneCount);
-  cave.addBackgroud('./assets/media/cave/SurpriseCloseUp.png', _, _, _, _, _, _, 'bottom', 'scene18');
+  cave.addBackgroud({
+    src: './assets/media/cave/SurpriseCloseUp.png',
+    objectPosition: 'bottom',
+    name: 'scene18'
+  });
   // cave 19
   let cave8 = new Scene(sceneCount);
-  cave8.addBackgroud('./assets/media/cave/statue/bg.webp');
-  cave8.addBackgroud('./assets/media/cave/statue/statue.png', '100%', '96.5%', '100%', '50%', _, 'contain', _, 'statue');
+  cave8.addBackgroud({
+    src: './assets/media/cave/statue/bg.webp'
+  });
+  cave8.addBackgroud({
+    src: './assets/media/cave/statue/statue.png',
+    h: '96.5%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue'
+  });
   //cave 20
   let cave9 = new Scene(sceneCount);
-  cave9.addBackgroud('./assets/media/cave/bg3.png', _, _, _, _, _, _
-  // "bottom"
-  );
-
-  cave9.addCharacter('./assets/media/cave/characters/silly-after-statue.png', 'silly-after-statue', '100%', '64%', '100%', '46%', _, 'contain');
+  cave9.addBackgroud({
+    src: './assets/media/cave/bg3.png'
+  });
+  cave9.addCharacter({
+    src: './assets/media/cave/characters/silly-after-statue.png',
+    name: 'silly-after-statue',
+    h: '64%',
+    t: '100%',
+    l: '46%',
+    objectFit: 'contain'
+  });
   //cave 21
   let cave10 = new Scene(sceneCount);
-  cave10.addBackgroud('./assets/media/cave/bg3.png', _, _, _, _, _, _
-  // "bottom"
-  );
-
-  cave10.addCharacter('./assets/media/characters/sally-big.png', 'big-silly-after', '100%', '109%', '33%', '-41%', _, 'contain');
+  cave10.addBackgroud({
+    src: './assets/media/cave/bg3.png'
+  });
+  cave10.addCharacter({
+    src: './assets/media/characters/sally-big.png',
+    name: 'big-silly-after',
+    h: '109%',
+    t: '33%',
+    l: '-41%',
+    objectFit: 'contain'
+  });
   // cave 22
   let cave11 = new Scene(sceneCount);
-  cave11.addBackgroud('./assets/media/cave/statue/bg.webp');
-  cave11.addBackgroud('./assets/media/cave/statue/statue.png', '100%', '90%', '100%', '50%', _, 'contain', _, 'statue');
-  cave11.addCharacter('./assets/media/cave/characters/H-statue-stand.png', 'helena-stand', '100%', '75%', '105%', '36%', _, 'contain');
-  cave11.addCharacter('./assets/media/cave/characters/drake-statue-stand.png', 'drake-stand', '100%', '77%', '112%', '-34%', _, 'contain');
+  cave11.addBackgroud({
+    src: './assets/media/cave/statue/bg.webp'
+  });
+  cave11.addBackgroud({
+    src: './assets/media/cave/statue/statue.png',
+    h: '90%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue'
+  });
+  cave11.addCharacter({
+    src: './assets/media/cave/characters/H-statue-stand.png',
+    name: 'helena-stand',
+    h: '75%',
+    t: '105%',
+    l: '36%',
+    objectFit: 'contain'
+  });
+  cave11.addCharacter({
+    src: './assets/media/cave/characters/drake-statue-stand.png',
+    name: 'drake-stand',
+    h: '77%',
+    t: '112%',
+    l: '-34%',
+    objectFit: 'contain'
+  });
   // cave 23
   let cave12 = new Scene(sceneCount);
-  cave12.addBackgroud('./assets/media/cave/statue/bg.webp');
-  cave12.addBackgroud('./assets/media/cave/statue/statue.png', '100%', '90%', '100%', '50%', _, 'contain', _, 'statue');
-  cave12.addCharacter('./assets/media/cave/characters/H-statue-stand.png', 'helena-stand', '100%', '75%', '105%', '36%', _, 'contain');
-  cave12.addCharacter('./assets/media/cave/characters/drake-statue-stand.png', 'drake-stand', '100%', '77%', '112%', '-34%', _, 'contain');
+  cave12.addBackgroud({
+    src: './assets/media/cave/statue/bg.webp'
+  });
+  cave12.addBackgroud({
+    src: './assets/media/cave/statue/statue.png',
+    h: '90%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue'
+  });
+  cave12.addCharacter({
+    src: './assets/media/cave/characters/H-statue-stand.png',
+    name: 'helena-stand',
+    h: '75%',
+    t: '105%',
+    l: '36%',
+    objectFit: 'contain'
+  });
+  cave12.addCharacter({
+    src: './assets/media/cave/characters/drake-statue-stand.png',
+    name: 'drake-stand',
+    h: '77%',
+    t: '112%',
+    l: '-34%',
+    objectFit: 'contain'
+  });
   // cave 24
   let cave13 = new Scene(sceneCount);
-  cave13.addBackgroud('./assets/media/beach/beach.jpg', _, _, _, _, _, _, _, 'lizard-big-bg');
+  cave13.addBackgroud({
+    src: './assets/media/beach/beach.jpg',
+    name: 'lizard-big-bg'
+  });
   // cave 25
   let cave14 = new Scene(sceneCount);
-  cave14.addBackgroud('./assets/media/cave/statue/bg.webp');
-  cave14.addBackgroud('./assets/media/cave/statue/statue.png', '100%', '110%', '100%', '50%', _, 'contain', _, 'statue-trap2');
-  cave14.addBackgroud('./assets/media/cave/statue/statue2.png', '100%', '110%', '100%', '50%', _, 'contain', _, 'statue-trap3');
-  cave14.addBackgroud('./assets/media/cave/statue/SmokeViolet.png', '100%', '38%', '27%', '61%', 2, 'contain', _, 'smoke-img');
-  cave14.addCharacter('./assets/media/cave/characters/HelenOpeningStatueBack.png', 'helena-trapB', '100%', '73%', '100%', '50%', 1, 'contain');
-  cave14.addCharacter('./assets/media/cave/characters/HelenOpeningStatueFront.webp', 'helena-trapF', '100%', '73%', '100%', '50%', 1, 'contain');
-  //cave 26
+  cave14.addBackgroud({
+    src: './assets/media/cave/statue/bg.webp'
+  });
+  cave14.addBackgroud({
+    src: './assets/media/cave/statue/statue.png',
+    h: '110%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue-trap2'
+  });
+  cave14.addBackgroud({
+    src: './assets/media/cave/statue/statue2.png',
+    h: '110%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue-trap3'
+  });
+  cave14.addBackgroud({
+    src: './assets/media/cave/statue/SmokeViolet.png',
+    h: '38%',
+    t: '27%',
+    l: '61%',
+    zIndex: 2,
+    objectFit: 'contain',
+    name: 'smoke-img'
+  });
+  cave14.addCharacter({
+    src: './assets/media/cave/characters/HelenOpeningStatueBack.png',
+    name: 'helena-trapB',
+    h: '73%',
+    t: '100%',
+    l: '50%',
+    zIndex: 1,
+    objectFit: 'contain'
+  });
+  cave14.addCharacter({
+    src: './assets/media/cave/characters/HelenOpeningStatueFront.webp',
+    name: 'helena-trapF',
+    h: '73%',
+    t: '100%',
+    l: '50%',
+    zIndex: 1,
+    objectFit: 'contain'
+  });
   let cave15 = new Scene(sceneCount);
-  cave15.addBackgroud('./assets/media/cave/bg4.png', _, _, _, _, _, _, 'bottom');
-  cave15.addCharacter('./assets/media/cave/characters/drake-fear-statue.png', 'drake-scare', '100%', '103%', '100%', '-1%', _, 'contain');
-  //cave 27
+  cave15.addBackgroud({
+    src: './assets/media/cave/bg4.png',
+    objectPosition: 'bottom'
+  });
+  cave15.addCharacter({
+    src: './assets/media/cave/characters/drake-fear-statue.png',
+    name: 'drake-scare',
+    h: '103%',
+    t: '100%',
+    l: '-1%',
+    objectFit: 'contain'
+  });
   let cave16 = new Scene(sceneCount);
-  cave16.addBackgroud('./assets/media/cave/statue/bg.webp');
-  cave16.addBackgroud('./assets/media/cave/statue/statue.png', '100%', '110%', '100%', '50%', _, 'contain', _, 'statue-trap2');
+  cave16.addBackgroud({
+    src: './assets/media/cave/statue/bg.webp'
+  });
+  cave16.addBackgroud({
+    src: './assets/media/cave/statue/statue.png',
+    h: '110%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue-trap2'
+  });
   createSexScene(sceneCount);
   createSexScene(sceneCount);
   createSexScene(sceneCount);
   createSexScene(sceneCount);
-  // end 32
   let endSex1 = new Scene(sceneCount);
-  endSex1.addBackgroud('./assets/media/cave/floor.png');
-  endSex1.addBackgroud('./assets/media/cave/cum.png');
-  // end 32
-
-  //cave 33
+  endSex1.addBackgroud({
+    src: './assets/media/cave/floor.png'
+  });
+  endSex1.addBackgroud({
+    src: './assets/media/cave/cum.png'
+  });
   let cave17 = new Scene(sceneCount);
-  cave17.addBackgroud('./assets/media/cave/bg3.png', _, _, _, _, _, _
-  // "bottom"
-  );
-
-  cave17.addCharacter('./assets/media/cave/characters/silly-after-sex.png', 'big-silly-after', '100%', '67%', '33%', '-2%', _, 'contain');
-  //end 34
+  cave17.addBackgroud({
+    src: './assets/media/cave/bg3.png'
+  });
+  cave17.addCharacter({
+    src: './assets/media/cave/characters/silly-after-sex.png',
+    name: 'big-silly-after',
+    h: '67%',
+    t: '33%',
+    l: '-2%',
+    objectFit: 'contain'
+  });
   let endSex2 = new Scene(sceneCount);
-  endSex2.addBackgroud('./assets/media/cave/floor.png');
-  endSex2.addBackgroud('./assets/media/cave/cum.png');
+  endSex2.addBackgroud({
+    src: './assets/media/cave/floor.png'
+  });
+  endSex2.addBackgroud({
+    src: './assets/media/cave/cum.png'
+  });
   let endSex3 = new Scene(sceneCount);
-  endSex3.addBackgroud('./assets/media/cave/floor.png');
-  endSex3.addBackgroud('./assets/media/cave/cum.png');
-  //end 35
+  endSex3.addBackgroud({
+    src: './assets/media/cave/floor.png'
+  });
+  endSex3.addBackgroud({
+    src: './assets/media/cave/cum.png'
+  });
   let cave18 = new Scene(sceneCount);
-  cave18.addBackgroud('./assets/media/cave/bg3.png', _, _, _, _, _, _
-  // "bottom"
-  );
-
-  cave18.addCharacter('./assets/media/cave/characters/sally-big-smile.png', _, '100%', '100%', '34%', '-27%', _, 'contain');
-  cave18.addCharacter('./assets/media/cave/characters/drake-statue-stand.png', 'Drake1', '100%', '77%', '37%', '25%', _, 'contain');
-  cave18.addCharacter('./assets/media/cave/characters/Helen-dressed.png', _, '100%', '109%', '35%', '-2%', _, 'contain');
+  cave18.addBackgroud({
+    src: './assets/media/cave/bg3.png'
+  });
+  cave18.addCharacter({
+    src: './assets/media/cave/characters/sally-big-smile.png',
+    t: '34%',
+    l: '-27%',
+    objectFit: 'contain'
+  });
+  cave18.addCharacter({
+    src: './assets/media/cave/characters/drake-statue-stand.png',
+    name: 'Drake1',
+    h: '77%',
+    t: '37%',
+    l: '25%',
+    objectFit: 'contain'
+  });
+  cave18.addCharacter({
+    src: './assets/media/cave/characters/Helen-dressed.png',
+    h: '109%',
+    t: '35%',
+    l: '-2%',
+    objectFit: 'contain'
+  });
 }
 function createSexScene(sceneId) {
-  // sex
   if (sceneId == 25) {
     let sex1 = new Scene(sceneId);
-    sex1.addBackgroud('./assets/media/cave/bg4.png', '109%', _, _, _, _, _, 'bottom');
+    sex1.addBackgroud({
+      src: './assets/media/cave/bg4.png',
+      w: '109%',
+      objectPosition: 'bottom'
+    });
   } else if (sceneId == 26) {
     let sex2 = new Scene(sceneId);
-    sex2.addBackgroud('./assets/media/cave/floor.png');
+    sex2.addBackgroud({
+      src: './assets/media/cave/floor.png'
+    });
   } else if (sceneId == 27) {
     let sex3 = new Scene(sceneId);
-    sex3.addBackgroud('./assets/media/cave/bg4.png', '109%', _, _, _, _, _, 'bottom');
+    sex3.addBackgroud({
+      src: './assets/media/cave/bg4.png',
+      w: '109%',
+      objectPosition: 'bottom'
+    });
   } else if (sceneId == 28) {
     let sex4 = new Scene(sceneId);
-    sex4.addBackgroud('./assets/media/cave/colonn.png', _, _, _, _, _, _, 'bottom');
+    sex4.addBackgroud({
+      src: './assets/media/cave/colonn.png',
+      objectPosition: 'bottom'
+    });
   }
 }
 
@@ -35524,7 +35999,7 @@ function checkScene(nowSceneId) {
       let spineAnim = create({
         spineDate: spine.spine,
         idCon: `#${spine.name}`,
-        ...getNeedSetting(spine.name, nowScene)
+        ...getNeedSetting(spine.name)
       });
       addedSpine.push({
         name: spine.name,
@@ -35540,7 +36015,11 @@ function deleteSpine(spineName) {
   addedSpine.forEach((spineObj, i) => {
     if (spineObj.name === spineName) {
       addedSpine.splice(i, 1);
-      spineObj.spine.spine.destroy(true);
+      spineObj.spine.spine.destroy({
+        texture: false,
+        baseTexture: false,
+        children: true
+      });
       spineObj.spine.app.view.remove(true);
       DestroyRenderer(spineObj.spine.app);
       let spineBox = document.querySelector(`#${spineName}`);
@@ -35554,7 +36033,7 @@ function createContainer(spineName) {
   container.id = spineName;
   spineScene.appendChild(container);
 }
-function getNeedSetting(SpineName, nowScene) {
+function getNeedSetting(SpineName) {
   let result = null;
   spineSettings.forEach(setting => {
     if (setting.name === SpineName) {
@@ -35589,40 +36068,40 @@ function changeAnimation(spineName, animationName) {
 ;// CONCATENATED MODULE: ./js/gameMechanics.js
 
 
-let gameMechanics_ = undefined;
+let _ = undefined;
 let spineAnimInfo = [{
   scene: 25,
-  name: "Sucking"
+  name: 'Sucking'
 }, {
   scene: 26,
-  name: "BoobJob"
+  name: 'BoobJob'
 }, {
   scene: 27,
-  name: "DoggyStyle"
+  name: 'DoggyStyle'
 }, {
   scene: 28,
-  name: "Wallslam"
+  name: 'Wallslam'
 }];
 let progress, gameMode, unlockStage, timer, scene, setedAnim;
-let progressBar = document.querySelector("#progress-game");
-let btns = Array.from(document.querySelectorAll(".gameBtn"));
+let progressBar = document.querySelector('#progress-game');
+let btns = Array.from(document.querySelectorAll('.gameBtn'));
 function initGameMechanics(sceneId) {
   scene = sceneId;
   progress = 0;
-  gameMode = unlockStage = setedAnim = "1";
+  gameMode = unlockStage = setedAnim = '1';
   setActiveBtn();
   disabledBtns();
   listenBtn();
   updateProgressIfCan();
 }
 function updateProgressIfCan() {
-  if (gameMode == "autoplay") {
+  if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 50);
     autoplay();
     return;
   }
-  if (gameMode == "4") {
+  if (gameMode == '4') {
     clearInterval(timer);
     return;
   }
@@ -35635,19 +36114,19 @@ function updateProgressIfCan() {
 }
 function increaseProgress() {
   progress += 1.05;
-  progressBar.style.height = progress + "%";
+  progressBar.style.height = progress + '%';
   checkStage();
   updateProgressIfCan();
 }
 function checkStage() {
   if (progress >= 100 && progress > 66) {
     btns[3].disabled = false;
-    if (gameMode == "autoplay") {
-      setAnim("4", false);
+    if (gameMode == 'autoplay') {
+      setAnim('4', false);
       sceneEnd();
     }
-    unlockStage = "4";
-    gameMode = "4";
+    unlockStage = '4';
+    gameMode = '4';
   } else if (progress >= 66 && progress > 33) {
     unlockStage = 3;
     btns[2].disabled = false;
@@ -35658,44 +36137,44 @@ function checkStage() {
   setActiveBtn();
 }
 function autoplay() {
-  if (progress >= 66 && progress > 33 && setedAnim != "3") {
-    setAnim("3");
-    setedAnim = "3";
-  } else if (progress >= 33 && progress < 66 && setedAnim != "2") {
-    setedAnim = "2";
-    setAnim("2");
+  if (progress >= 66 && progress > 33 && setedAnim != '3') {
+    setAnim('3');
+    setedAnim = '3';
+  } else if (progress >= 33 && progress < 66 && setedAnim != '2') {
+    setedAnim = '2';
+    setAnim('2');
   }
 }
 function setAnim(animName) {
   let notEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   spineAnimInfo.forEach(anim => {
     if (anim.scene == scene) {
-      spineManager.changeAnimation(anim.name, animName, gameMechanics_, gameMechanics_, gameMechanics_, notEnd);
+      spineManager.changeAnimation(anim.name, animName, _, _, _, notEnd);
     }
   });
 }
 function updateStage(mode) {
-  if (mode == "4") {
+  if (mode == '4') {
     sceneEnd();
     return;
   }
   if (gameMode != mode) {
     gameMode = mode;
     setActiveBtn();
-    if (gameMode != "autoplay") setAnim(gameMode);
+    if (gameMode != 'autoplay') setAnim(gameMode);
     updateProgressIfCan();
   }
 }
 function listenBtn() {
   btns.forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener('click', () => {
       updateStage(btn.dataset.mode);
     });
   });
 }
 function disabledBtns() {
   btns.forEach(btn => {
-    if (btn.dataset.mode != "1" && btn.dataset.mode != "autoplay") {
+    if (btn.dataset.mode != '1' && btn.dataset.mode != 'autoplay') {
       btn.disabled = true;
     } else {
       btn.disabled = false;
@@ -35706,7 +36185,7 @@ function disabledAllBtns() {
   btns.forEach(btn => btn.disabled = true);
 }
 function sceneEnd() {
-  setAnim("4", false);
+  setAnim('4', false);
   setTimeout(() => {
     change_btns.showBtn();
   }, 2000);
@@ -35714,41 +36193,41 @@ function sceneEnd() {
 }
 function setActiveBtn() {
   btns.forEach(btn => {
-    if (btn.dataset.mode == gameMode && !btn.classList.contains("active")) {
-      btn.classList.add("active");
-    } else if (btn.dataset.mode != gameMode && btn.classList.contains("active")) {
-      btn.classList.remove("active");
+    if (btn.dataset.mode == gameMode && !btn.classList.contains('active')) {
+      btn.classList.add('active');
+    } else if (btn.dataset.mode != gameMode && btn.classList.contains('active')) {
+      btn.classList.remove('active');
     }
   });
 }
 
 ;// CONCATENATED MODULE: ./js/editFunctions.js
 function editFunctions_hideGameInterface() {
-  let gameInterface = document.querySelector(".gameInterface");
-  gameInterface.classList.remove("show");
+  let gameInterface = document.querySelector('.gameInterface');
+  gameInterface.classList.remove('show');
 }
 function removeScene(id) {
   let delEl = document.querySelector(`#scene${id}`);
-  let container = document.querySelector("#container");
+  let container = document.querySelector('#container');
   if (delEl) container.removeChild(delEl);
 }
 function removeScenes(count) {
   if (!count) return;
   for (let i = 1; i < count; i++) {
     let delEl = document.querySelector(`#scene${i}`);
-    let container = document.querySelector("#container");
+    let container = document.querySelector('#container');
     if (delEl) container.removeChild(delEl);
   }
 }
 function hideTalkEl() {
-  let talkElement = document.querySelector(".talk");
-  talkElement.classList.remove("talking");
+  let talkElement = document.querySelector('.talk');
+  talkElement.classList.remove('talking');
 }
 function animScene(selector) {
-  document.querySelector(selector).classList.add("anim");
+  document.querySelector(selector).classList.add('anim');
 }
 function changeClassImgBox(target, imgObj) {
-  target.closest(".characters-scene__item").classList.add(imgObj.changeClass);
+  target.closest('.characters-scene__item').classList.add(imgObj.changeClass);
 }
 function changeImg(imgChangeSettingArr) {
   imgChangeSettingArr.forEach(setting => {
@@ -35757,8 +36236,7 @@ function changeImg(imgChangeSettingArr) {
       let imgObj = setting[`img${i}`];
       setTimeout(() => {
         target.src = imgObj.src;
-        target.addEventListener("load", () => {
-          console.log("load", target);
+        target.addEventListener('load', () => {
           if (imgObj.changeClass) {
             changeClassImgBox(target, imgObj);
           }
@@ -35768,11 +36246,11 @@ function changeImg(imgChangeSettingArr) {
   });
 }
 function fade(time) {
-  let fadeEl = document.querySelector("#fade");
-  fadeEl.classList.add("show");
+  let fadeEl = document.querySelector('#fade');
+  fadeEl.classList.add('show');
   hideTalkEl();
   setTimeout(() => {
-    fadeEl.classList.remove("show");
+    fadeEl.classList.remove('show');
   }, time);
 }
 
@@ -35859,7 +36337,9 @@ function gameInit() {
   removeScenes(1); //для тестов
   spineManager.checkScene(main_nowScene);
   change_btns.clickCallback(changeScene);
+  // endScreen.showEndScreen()
 }
+
 function changeScene() {
   talkIndex++;
   nowTalk = getDialog(main_nowScene, talkIndex);
@@ -35955,7 +36435,6 @@ function getDialog(idScene, indexTalk) {
   return dialog[idScene - 1][indexTalk];
 }
 function getSettingForThisScene(idScene, indexTalk) {
-  console.log(idScene, talk_blockSetting);
   let setting = talk_blockSetting[idScene - 1][`talk${indexTalk + 1}`];
   return [setting.top, setting.left, setting.type];
 }
