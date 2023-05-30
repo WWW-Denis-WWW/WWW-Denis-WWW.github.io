@@ -1,4 +1,4 @@
-export const floors = {
+const floors = {
 	1: {
 		floor: 1,
 		infoMainLine: {
@@ -358,3 +358,21 @@ export const floors = {
 		],
 	},
 }
+const floorsPath = {
+	1: {
+		path: './floors/6-1.svg',
+	},
+	2: {
+		path: './floors/6-2.svg',
+	},
+	3: {
+		path: './floors/6-3.svg',
+	},
+	4: {
+		path: './floors/6-4.svg',
+	},
+	5: {
+		path: './floors/6-5.svg',
+	},
+}
+export { floors, floorsPath }

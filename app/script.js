@@ -1,6 +1,6 @@
 import resolution from './resolution.js'
 import { resetSize } from './selectRoad.js'
-import { floors } from './floors.js'
+import { floors, floorsPath } from './floors.js'
 import { fill } from './fill-select.js'
 fill()
 resolution()
@@ -9,23 +9,8 @@ const endEl = document.querySelector('.road-end')
 const startEl = document.querySelector('.road-start')
 const changeFloorBtn = document.querySelector('#floor-change')
 const floorImg = document.querySelector('#floor-img')
-const floorsPath = {
-	1: {
-		path: './floors/6-1.svg',
-	},
-	2: {
-		path: './floors/6-2.svg',
-	},
-	3: {
-		path: './floors/6-3.svg',
-	},
-	4: {
-		path: './floors/6-4.svg',
-	},
-	5: {
-		path: './floors/6-5.svg',
-	},
-}
+
+let drowFloors = []
 let secondFloor = {
 	floor: null,
 	nearStaircase: null,
@@ -48,7 +33,7 @@ const pointsStyle = {
 }
 
 function draw(from, to) {
-	console.log(from, to)
+	drowFloors = []
 	let [sortedFrom, sortedTo] = [from, to].sort()
 	nowFloor = getfloorNumber(from)
 	setFloorImg(nowFloor)
@@ -68,6 +53,7 @@ function draw(from, to) {
 		drawStart(nearStaircase)
 		drawMainLine(nearStaircase, startPoint, floors[nowFloor])
 		drawEnd(startPoint)
+
 		secondFloor.floor = getfloorNumber(to)
 		secondFloor.nearStaircase = getStaircase(
 			startPoint,
