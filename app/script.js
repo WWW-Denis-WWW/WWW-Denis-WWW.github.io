@@ -1,6 +1,8 @@
 import resolution from './resolution.js'
 import { resetSize } from './selectRoad.js'
 import { floors } from './floors.js'
+import { fill } from './fill-select.js'
+fill()
 resolution()
 
 const endEl = document.querySelector('.road-end')

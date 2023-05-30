@@ -9,12 +9,14 @@ html,
 body {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* overflow: hidden; */
 
     /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
 }
 
 .app {
@@ -84,6 +86,7 @@ body {
 
 /* select */
 .select_road {
+    display: none;
     position: absolute;
     top: 50px;
     left: 50px;

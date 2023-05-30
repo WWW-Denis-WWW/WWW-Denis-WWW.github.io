@@ -1,0 +1,82 @@
+header {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 15px;
+    border-bottom: 1px solid #000;
+}
+
+.header-btns {
+    display: flex;
+    gap: 20px;
+
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 0 20px 0 0;
+
+}
+
+.sideBar {
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #000;
+    padding: 10px 0;
+
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.map {
+    width: 75%;
+    padding: 0 20px;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sideBar__show-floor,
+.sideBar__geo {
+    display: flex;
+    padding: 0 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.sideBar__geo {
+    justify-content: end;
+}
+
+.sideBar__show-floor,
+.sideBar__geo h3 {
+    width: 100%;
+}
+
+.sideBar__road {
+    padding: 10px;
+    height: 100%;
+}
+
+.sideBar__road .road-side-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.sideBar__road .road-side-bar span {
+    font-weight: bold;
+}
