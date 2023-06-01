@@ -14,14 +14,18 @@ createBtn.addEventListener('click', e => {
 	e.preventDefault()
 	selectStartValue = document.querySelector('#select-start').value
 	selectEndValue = document.querySelector('#select-end').value
-	if (selectStartValue === selectEndValue) {
+	if (
+		selectStartValue === selectEndValue ||
+		isNaN(+selectStartValue) ||
+		isNaN(+selectStartValue)
+	) {
 		alert('А так нельзя')
 		return
 	} else {
 		resetSize()
-		startK = selectStartValue
-		endK = selectEndValue
-		draw(+startK, +endK)
+		startK = +selectStartValue
+		endK = +selectEndValue
+		draw(startK, endK)
 	}
 })
 function resetSize() {

@@ -5,6 +5,7 @@ const resolution = () => {
 		const wrapper = document.querySelector('.wrapper')
 		const width = wrapper.getBoundingClientRect().width
 		const height = wrapper.getBoundingClientRect().height
+
 		if (width / 16 > height / 9) {
 			app.style.width = `${(height / 9) * 16}px`
 			app.style.height = `${height}px`

@@ -5,6 +5,12 @@ const floors = {
 			1: {
 				axis: 'x',
 				className: '.road__main .road1',
+				cross: [1],
+			},
+			2: {
+				cross: [1],
+				axis: 'y',
+				className: '.road__main .road2',
 			},
 		},
 		infoStaircase: {
@@ -19,6 +25,19 @@ const floors = {
 				l: 83,
 				type: 'b',
 				mainLine: 1,
+			},
+			3: {
+				t: 16,
+				l: 18,
+				type: 'r',
+				mainLine: 2,
+				cross: [1],
+			},
+		},
+		crossroads: {
+			1: {
+				t: 73.7,
+				l: 18,
 			},
 		},
 		roads: [
@@ -164,12 +183,6 @@ const floors = {
 			},
 		},
 		infoStaircase: {
-			3: {
-				t: 15,
-				l: 12,
-				type: 'r',
-				mainLine: 1,
-			},
 			1: {
 				t: 74.7,
 				l: 26,
@@ -181,6 +194,12 @@ const floors = {
 				l: 84,
 				type: 'b',
 				mainLine: 2,
+			},
+			3: {
+				t: 15,
+				l: 12.5,
+				type: 'r',
+				mainLine: 1,
 			},
 		},
 		crossroads: {
@@ -200,7 +219,7 @@ const floors = {
 				l: 12.5,
 				type: 'l',
 				mainLine: 1,
-				nearStaircase: 1,
+				nearStaircase: 3,
 			},
 			{
 				t: 39.7,
@@ -208,7 +227,7 @@ const floors = {
 				l: 12.5,
 				type: 'r',
 				mainLine: 1,
-				nearStaircase: 1,
+				nearStaircase: 3,
 			},
 			{
 				t: 53.7,
@@ -357,22 +376,81 @@ const floors = {
 			},
 		],
 	},
+	3: {
+		floor: 3,
+		infoMainLine: {
+			1: {
+				axis: 'y',
+				className: '.road__main .road1',
+				cross: [1],
+			},
+			2: {
+				cross: [1, 2],
+				axis: 'x',
+				className: '.road__main .road2',
+			},
+		},
+		infoStaircase: {
+			1: {
+				t: 70.7,
+				l: 23,
+				type: 'b',
+				mainLine: 2,
+			},
+			2: {
+				t: 74.7,
+				l: 84,
+				type: 'b',
+				mainLine: 2,
+			},
+			3: {
+				t: 17,
+				l: 11,
+				type: 'r',
+				mainLine: 1,
+			},
+		},
+		crossroads: {
+			1: {
+				t: 70.7,
+				l: 11,
+			},
+		},
+		roads: [
+			{
+				t: 29,
+				k: 301,
+				l: 11,
+				type: 'l',
+				mainLine: 1,
+				nearStaircase: 3,
+			},
+			{
+				t: 27.5,
+				k: 302,
+				l: 11,
+				type: 'r',
+				mainLine: 1,
+				nearStaircase: 3,
+			},
+		],
+	},
 }
 const floorsPath = {
 	1: {
-		path: './floors/6-1.svg',
+		path: './img/floors/6-1.svg',
 	},
 	2: {
-		path: './floors/6-2.svg',
+		path: './img/floors/6-2.svg',
 	},
 	3: {
-		path: './floors/6-3.svg',
+		path: './img/floors/6-3.svg',
 	},
 	4: {
-		path: './floors/6-4.svg',
+		path: './img/floors/6-4.svg',
 	},
 	5: {
-		path: './floors/6-5.svg',
+		path: './img/floors/6-5.svg',
 	},
 }
 export { floors, floorsPath }

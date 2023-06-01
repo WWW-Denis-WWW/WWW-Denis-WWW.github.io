@@ -9,10 +9,6 @@ const cabinetsForFloors = {
 			text: 111,
 		},
 		{
-			value: 111,
-			text: 111,
-		},
-		{
 			value: 112,
 			text: 112,
 		},
@@ -147,5 +143,17 @@ const cabinetsForFloors = {
 			text: '217б',
 		},
 	],
+	3: [
+		{
+			value: 301,
+			text: 301,
+		},
+		{
+			value: 302,
+			text: 302,
+		},
+	],
+	4: [],
+	5: [],
 }
 export { frames, floorsForFrames, cabinetsForFloors }

@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Road</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
@@ -19,41 +18,43 @@
     </header>
     <main class="container">
         <div class="sideBar">
-            <div class="sideBar__show-floor" id="show-floor">
+            <form class="sideBar__show-floor select-form" id="show-floor">
                 <h3>Просмотр этажа</h3>
-                <select name="frame" class="frame">
-                </select>
-                <select name="floors" class="floors">
-
-                </select>
-                <button id="show-floor-btn">Показать</button>
-            </div>
+                <div class="select-block">
+                    <select name="frame" class="frame">
+                    </select>
+                    <select name="floors" class="floors">
+                    </select>
+                </div>
+                <button id="show-floor-btn" class="btn-select-form">Показать</button>
+            </form>
             <div class="sideBar__geo">
                 <h3>Определить местоположние</h3>
                 <button>Показать</button>
             </div>
             <div class="sideBar__road">
-                <div id="road1" class="road-side-bar">
+                <form class="select-form">
                     <span>Откуда</span>
-                    <select name="frame" class="frame"></select>
-                    <select name="floors" class="floors"></select>
-                    <select name="cabinet" class="cabinets" id="select-start"></select>
-                </div>
-                <div id="road2" class="road-side-bar">
+                    <div id="road1" class="road-side-bar select-block">
+                        <select name="frame" class="frame"></select>
+                        <select name="floors" class="floors"></select>
+                        <select name="cabinet" class="cabinets" id="select-start"></select>
+                    </div>
                     <span>Куда</span>
-                    <select name="frame" class="frame"></select>
-                    <select name="floors" class="floors"></select>
-                    <select name="cabinet" class="cabinets" id="select-end"></select>
-                </div>
-                <button id="create-road">Создать путь</button>
-                <div class="road-add"></div>
+                    <div id="road2" class="road-side-bar select-block">
+                        <select name="frame" class="frame"></select>
+                        <select name="floors" class="floors"></select>
+                        <select name="cabinet" class="cabinets" id="select-end"></select>
+                    </div>
+                    <button id="create-road" class="btn-select-form">Создать путь</button>
+                </form>
             </div>
         </div>
         <div class="map">
             <div class="wrapper">
                 <div class="app">
                     <div class="img">
-                        <img id="floor-img" src="./floors/6-1.svg">
+                        <img id="floor-img" src="./img/floors/6-3.svg">
                     </div>
                     <div class="road-box">
                         <div class="road__main">
@@ -66,31 +67,11 @@
                     </div>
                 </div>
             </div>
-            <button id="floor-change">Next floor</button>
+            <button id="prev-btn">Предыдущий этаж</button>
+            <button id="next-btn">Следующий этаж</button>
         </div>
-
     </main>
-    <!--
-    <div class="app">
-        <div class="img">
-            <img id="floor-img" src="./floors/6-1.svg">
-        </div>
-        <div class="road-box">
-            <div class="road__main">
-                <div class="road1 road"></div>
-                <div class="road2 road"></div>
-                <div class="road3 road"></div>
-                <div class="road-start road"></div>
-                <div class="road-end road"></div>
-            </div>
-        </div>
-    </div>
-    <button id="floor-change">Next floor</button> -->
 </body>
-<script src="script.js" defer type="module"></script>
-<script src="show-floor.js" defer type="module"></script>
-<script src="resolution.js" defer type="module"></script>
-<script src="selectRoad.js" defer type="module"></script>
-<script src="fill-select.js" defer type="module"></script>
+<script src="./js/script.js" defer type="module"></script>
 
 </html>

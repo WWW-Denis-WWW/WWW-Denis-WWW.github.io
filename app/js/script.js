@@ -1,21 +1,19 @@
 import resolution from './resolution.js'
 import { resetSize } from './selectRoad.js'
-import { floors, floorsPath } from './floors.js'
-import { fill } from './fill-select.js'
+import { floors, floorsPath } from './data/floors.js'
+import { fill } from './select.js'
+import { changePath } from './show-floor.js'
 fill()
 resolution()
 
 const endEl = document.querySelector('.road-end')
 const startEl = document.querySelector('.road-start')
-const changeFloorBtn = document.querySelector('#floor-change')
+const nextFloorBtn = document.querySelector('#next-btn')
+const prevFloorBtn = document.querySelector('#prev-btn')
 const floorImg = document.querySelector('#floor-img')
 
-let drowFloors = []
-let secondFloor = {
-	floor: null,
-	nearStaircase: null,
-	to: null,
-}
+let drawedFloors = []
+let nowDrawFloor = 0
 let nowFloor = null
 const mainLineStyle = {
 	w: 0.6,
@@ -33,7 +31,8 @@ const pointsStyle = {
 }
 
 function draw(from, to) {
-	drowFloors = []
+	nowDrawFloor = 0
+	drawedFloors = []
 	let [sortedFrom, sortedTo] = [from, to].sort()
 	nowFloor = getfloorNumber(from)
 	setFloorImg(nowFloor)
@@ -50,17 +49,23 @@ function draw(from, to) {
 		endPoint = getPointInfo(to)
 		startPoint = getPointInfo(from)
 		nearStaircase = getStaircase(startPoint, floors[nowFloor])
+
 		drawStart(nearStaircase)
 		drawMainLine(nearStaircase, startPoint, floors[nowFloor])
 		drawEnd(startPoint)
 
-		secondFloor.floor = getfloorNumber(to)
-		secondFloor.nearStaircase = getStaircase(
-			startPoint,
-			floors[getfloorNumber(to)]
-		)
-		secondFloor.to = endPoint
-		showChangeBtn()
+		drawedFloors.push({
+			start: nearStaircase,
+			end: startPoint,
+			floor: nowFloor,
+		})
+
+		drawedFloors.push({
+			start: getStaircase(startPoint, floors[getfloorNumber(to)]),
+			end: endPoint,
+			floor: getfloorNumber(to),
+		})
+		showNeedBtn()
 	}
 }
 function drawStart(startPoint) {
@@ -153,7 +158,6 @@ function setLineSize(el, setting) {
 	}
 }
 function setPosition(el, setting) {
-	console.log()
 	if (setting.type == 't') {
 		el.style.top = setting.t + mainLineStyle.h + '%'
 		el.style.left = setting.l + '%'
@@ -168,30 +172,42 @@ function setPosition(el, setting) {
 		el.style.left = setting.l + '%'
 	}
 }
-function showChangeBtn() {
-	changeFloorBtn.classList.add('show')
-}
+
 function setFloorImg(floorNumber) {
 	floorImg.src = floorsPath[floorNumber].path
 }
-function hideChangeBtn() {
-	changeFloorBtn.classList.remove('show')
+function showNeedBtn() {
+	if (nowDrawFloor == drawedFloors.length - 1) {
+		nextFloorBtn.classList.remove('show')
+		prevFloorBtn.classList.add('show')
+	} else if (nowDrawFloor == 0) {
+		prevFloorBtn.classList.remove('show')
+		nextFloorBtn.classList.add('show')
+	}
 }
-// changeFloorBtn.addEventListener(click)
-function changePath(floorNumber) {
-	floorImg.src = floorsPath[floorNumber].path
+function hideChangeBtns() {
+	nextFloorBtn.classList.remove('show')
+	prevFloorBtn.classList.remove('show')
 }
-changeFloorBtn.addEventListener('click', () => {
+
+nextFloorBtn.addEventListener('click', () => {
 	resetSize()
-	changePath(secondFloor.floor)
-	drawStart(secondFloor.nearStaircase)
-	console.log(secondFloor)
-	drawMainLine(
-		secondFloor.nearStaircase,
-		secondFloor.to,
-		floors[secondFloor.floor]
-	)
-	drawEnd(secondFloor.to)
-	hideChangeBtn()
+	if (nowDrawFloor !== drawedFloors) nowDrawFloor++
+	let nextFloor = drawedFloors[nowDrawFloor]
+	changePath(nextFloor.floor)
+	drawStart(nextFloor.start)
+	drawMainLine(nextFloor.start, nextFloor.end, floors[nextFloor.floor])
+	drawEnd(nextFloor.end)
+	showNeedBtn()
 })
-export { draw }
+prevFloorBtn.addEventListener('click', () => {
+	resetSize()
+	nowDrawFloor--
+	let nextFloor = drawedFloors[nowDrawFloor]
+	changePath(nextFloor.floor)
+	drawStart(nextFloor.start)
+	drawMainLine(nextFloor.start, nextFloor.end, floors[nextFloor.floor])
+	drawEnd(nextFloor.end)
+	showNeedBtn()
+})
+export { draw, hideChangeBtns }
