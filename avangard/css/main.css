@@ -6596,8 +6596,13 @@ th {
   color: #1f1e1c;
   border: none;
   border-bottom: solid 2px #1f1e1c;
+  transition: border .4s ease;
   max-width: 100%;
   box-sizing: border-box;
+}
+
+.m-header__search-input:focus {
+  border-bottom: solid 2px #E12728;
 }
 
 .m-header__search-input::placeholder {
