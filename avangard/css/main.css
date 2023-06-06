@@ -6675,6 +6675,13 @@ th {
   height: 100%;
 }
 
+.content-card__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .content-card__text,
 .content-card__link {
   font-family: "Open Sans",
@@ -6699,7 +6706,7 @@ th {
 
 
 .content-card__link {
-  margin-top: 1rem;
+  margin-top: .5rem;
   display: block;
   text-decoration: underline;
 }
@@ -6707,4 +6714,21 @@ th {
 .card .card__border img {
   width: 100%;
   height: 100%;
+}
+
+.cards__box {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem -0.625rem;
+  gap: 4.5rem 2rem;
+}
+
+.cards__box .card__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 30%;
 }
