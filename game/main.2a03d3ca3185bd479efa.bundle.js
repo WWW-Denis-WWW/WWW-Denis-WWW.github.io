@@ -2602,7 +2602,7 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 ;// CONCATENATED MODULE: ./js/dialog.js
-const talks = [[''], [''], ['Finally! Remind me to take a helicopter for the next trip, Salli.', 'I’d rather avoid meeting pirates and fixing that damn engine every hour.'], ['I’m too old for all this crap, Nath.', 'This time we better get lucky and find something valuable.'], ['Come on guys, we shouldn’t argue and complain.', 'Look how beautiful it is here.'], ['Sorry for that. Just getting sick of pointless adventures.', 'I owe a lot of money to serious people. And they aren’t kidding anymore.'], ['Don’t worry, old man. This campaign will bring us to jackpot for sure.', 'But we gotta hurry. Roman is gonna be here in a couple hours.', 'Let’s go!'], ['I’ve already seen this tree!', 'We are going round and round in circles, Nath!', 'I don’t understand!', 'The entrance is supposed to be right here.', 'I’m kinda tired.', 'You figure out, which direction we should go. I need a rest.'], ['Way to go, girl!', 'I told you, Nath. This lady is a pure diamond!', 'I must admit the truth.', 'Not bad for a journalist, Helena.', 'We are running out of time, boys!', 'I want to see, what’s hidden inside. Let’s roll!'], ['Never thought I’d say it.', 'You wanna smoke your cigar, Salli?', 'I can’t see a thing.', 'Just a moment.'], ['Damn that was close!', 'It’s a dead end.', 'Let’s move back the same way.'], ['Maybe we missed something.'], ['Look what I’ve found! Could be useful.'], [''], ['I can’t believe we found it.', 'The definition of «gorgeous»!', 'There it is, ladies and gentlemen.'], ['Let me introduce… The famous El Whorado.'], ['Alright. I’ll quickly get back to the boat.', 'We definitely need some equipment to transport this giant.'], ['You two! Don’t do anything stupid.'], ['Yes, sir!', 'Oh please. Everything is under control, Salli.'], ['Okay, he is gone. Let’s open this thing!', 'What? No! We have no idea, what’s inside.', 'It can be dangerous, Helena.', 'Oh don’t be such a pussy! I’m so excited!'], ['Wait!!!'], [''], ['Well, I was wrong. It is not under control from now.'], ['Time to have some fun!'], [], [], [], [], ['Damn...'], ['Whata hell is going on there???'], ['Well now we know what statue is'], ['...what just happened there?'], ['I wouldn’t say this adventure was pointless', 'Totally agreed!', 'Get me back to normal, you idiots!', 'Arghhh!!!']];
+const talks = [[''], [''], ['Finally! Remind me to take a helicopter for the next trip, Salli.', 'I’d rather avoid meeting pirates and fixing that damn engine every hour.'], ['I’m too old for all this crap, Nath.', 'This time we better get lucky and find something valuable.'], ['Come on guys, we shouldn’t argue and complain.', 'Look how beautiful it is here.'], ['Sorry for that. Just getting sick of pointless adventures.', 'I owe a lot of money to serious people. And they aren’t kidding anymore.'], ['Don’t worry, old man. This campaign will bring us to jackpot for sure.', 'But we gotta hurry. Roman is gonna be here in a couple hours.', 'Let’s go!'], ['I’ve already seen this tree!', 'We are going round and round in circles, Nath!', 'I don’t understand!', 'The entrance is supposed to be right here.', 'I’m kinda tired.', 'You figure out, which direction we should go. I need a rest.'], ['Way to go, girl!', 'I told you, Nath. This lady is a pure diamond!', 'I must admit the truth.', 'Not bad for a journalist, Helena.', 'We are running out of time, boys!', 'I want to see, what’s hidden inside. Let’s roll!'], ['Never thought I’d say it.', 'You wanna smoke your cigar, Salli?', 'I can’t see a thing.', 'Just a moment.'], ['Damn that was close!', 'It’s a dead end.', 'Let’s move back the same way.'], ['Maybe we missed something.'], ['Look what I’ve found! Could be useful.'], [''], ['I can’t believe we found it.', 'The definition of «gorgeous»!', 'There it is, ladies and gentlemen.'], ['Let me introduce… The famous El Whorado.'], ['Alright. I’ll quickly get back to the boat.', 'We definitely need some equipment to transport this giant.'], ['You two! Don’t do anything stupid.'], ['Yes, sir!', 'Oh please. Everything is under control, Salli.'], ['Okay, he is gone. Let’s open this thing!'], ['What? No! We have no idea, what’s inside.', 'It can be dangerous, Helena.', 'Oh don’t be such a pussy! I’m so excited!'], ['Wait!!!'], [''], ['Well, I was wrong. It is not under control from now.'], ['Time to have some fun!'], [], [], [], [], ['Damn...'], ['What the hell is going on here?'], ['Well, at least we know this statue is cursed'], ['...what just happened here?'], ['I wouldn’t say this adventure was pointless', 'Totally agreed!', 'Get me back to normal, you idiots!', 'Arghhh!!!']];
 /* harmony default export */ var dialog = (talks);
 ;// CONCATENATED MODULE: ./js/images.js
 const preloadImages = ["./assets/media/characters/Helen-sit-scare.png", "./assets/media/characters/Helen-sit-smile.png", "./assets/media/characters/drake-surprise-right.png", "./assets/media/characters/drake-smile-right.png", "./assets/media/jungle/characters/sally-big-surprise.png", "./assets/media/jungle/characters/sally-big-smile.png"];
@@ -3045,6 +3045,7 @@ function allScenesCreate() {
     objectPosition: 'bottom',
     name: 'scene18'
   });
+
   // cave 19
   let cave8 = new Scene(sceneCount);
   cave8.addBackgroud({
@@ -3074,6 +3075,18 @@ function allScenesCreate() {
     src: './assets/media/cave/statue/bg.webp'
   });
   cave11.addBackgroud({
+    src: './assets/media/cave/statue/statue.png',
+    h: '90%',
+    t: '100%',
+    l: '50%',
+    objectFit: 'contain',
+    name: 'statue'
+  });
+  let cave2 = new Scene(sceneCount);
+  cave2.addBackgroud({
+    src: './assets/media/cave/statue/bg.webp'
+  });
+  cave2.addBackgroud({
     src: './assets/media/cave/statue/statue.png',
     h: '90%',
     t: '100%',
@@ -3200,26 +3213,26 @@ function allScenesCreate() {
   });
 }
 function createSexScene(sceneId) {
-  if (sceneId == 25) {
+  if (sceneId == 26) {
     let sex1 = new Scene(sceneId);
     sex1.addBackgroud({
       src: './assets/media/cave/bg4.png',
       w: '109%',
       objectPosition: 'bottom'
     });
-  } else if (sceneId == 26) {
+  } else if (sceneId == 27) {
     let sex2 = new Scene(sceneId);
     sex2.addBackgroud({
       src: './assets/media/cave/floor.png'
     });
-  } else if (sceneId == 27) {
+  } else if (sceneId == 28) {
     let sex3 = new Scene(sceneId);
     sex3.addBackgroud({
       src: './assets/media/cave/bg4.png',
       w: '109%',
       objectPosition: 'bottom'
     });
-  } else if (sceneId == 28) {
+  } else if (sceneId == 29) {
     let sex4 = new Scene(sceneId);
     sex4.addBackgroud({
       src: './assets/media/cave/colonn.png',
@@ -3477,7 +3490,7 @@ const Warning = StartFunction => {
   }
 };
 /* harmony default export */ var warn_btn = (Warning);
-;// CONCATENATED MODULE: ./js/talk-blockSetting.js
+;// CONCATENATED MODULE: ./js/sceneSettings.js
 // fadeStart время жизни fade
 // delayUpdate: время через которое обновить сцену
 // delayTalk: время через которое начать диалог
@@ -3492,8 +3505,9 @@ const TALKING_POSITIONS = [{
 }, {
   modifyScene: {
     fadeStart: 1200,
+    fadeNext: 1200,
     next: true,
-    delayNext: 8000,
+    delayNext: 7000,
     delayUpdate: 1000,
     delayTalk: 0,
     anim: ['#scene2']
@@ -3573,22 +3587,22 @@ const TALKING_POSITIONS = [{
     btnEnd: 'next'
   },
   talk1: {
-    top: 28,
-    left: 10,
+    top: 22,
+    left: 11,
     type: 'cl'
   },
   talk2: {
-    top: 28,
-    left: 10,
+    top: 22,
+    left: 11,
     type: 'cl'
   },
   talk3: {
-    top: 27,
+    top: 22,
     left: 70,
     type: 'cl'
   },
   talk4: {
-    top: 27,
+    top: 22,
     left: 70,
     type: 'cl'
   },
@@ -3644,13 +3658,13 @@ const TALKING_POSITIONS = [{
     }]
   },
   talk1: {
-    top: 31,
-    left: 13,
+    top: 24,
+    left: 11,
     type: 'cl'
   },
   talk2: {
-    top: 31,
-    left: 13,
+    top: 24,
+    left: 11,
     type: 'cl'
   },
   talk3: {
@@ -3782,16 +3796,21 @@ const TALKING_POSITIONS = [{
   }
 }, {
   talk1: {
-    top: 26,
+    top: 22.5,
     left: 36,
     type: 'bc'
   },
   talk2: {
-    top: 23,
+    top: 22.5,
     left: 36,
     type: 'bc'
   }
 }, {
+  modifyScene: {
+    fadeStart: 1200,
+    delayUpdate: 1000,
+    delayTalk: 2000
+  },
   talk1: {
     top: 26,
     left: 8,
@@ -3827,6 +3846,12 @@ const TALKING_POSITIONS = [{
     top: 22,
     left: 63,
     type: 'br'
+  }
+}, {
+  talk1: {
+    top: 22,
+    left: 16,
+    type: 'bl'
   },
   talk2: {
     top: 22,
@@ -3834,11 +3859,6 @@ const TALKING_POSITIONS = [{
     type: 'bl'
   },
   talk3: {
-    top: 22,
-    left: 16,
-    type: 'bl'
-  },
-  talk4: {
     top: 22,
     left: 63,
     type: 'br'
@@ -3851,10 +3871,8 @@ const TALKING_POSITIONS = [{
   }
 }, {
   modifyScene: {
-    next: true,
-    delayNext: 3000,
-    delayUpdate: 0,
-    delayTalk: 0,
+    btn: 'continue',
+    delayTalk: 3500,
     anim: ['.helena-trapB', '.statue-trap2', '.statue-trap3', '.smoke-img', '.helena-trapF']
   },
   talk1: {
@@ -3880,6 +3898,8 @@ const TALKING_POSITIONS = [{
     type: 'none'
   }
 }, {
+  gameFade: 1200,
+  gameDelayUpdate: 1000,
   gameScene: true
 }, {
   gameScene: true
@@ -3889,6 +3909,9 @@ const TALKING_POSITIONS = [{
   gameScene: true
 }, {
   modifyScene: {
+    fadeStart: 1200,
+    delayUpdate: 1000,
+    delayTalk: 2000,
     gameEnd: true,
     btn: 'continue'
   },
@@ -3947,7 +3970,7 @@ const TALKING_POSITIONS = [{
     type: 'bc'
   }
 }];
-/* harmony default export */ var talk_blockSetting = (TALKING_POSITIONS);
+/* harmony default export */ var sceneSettings = (TALKING_POSITIONS);
 ;// CONCATENATED MODULE: ../node_modules/@pixi/constants/dist/esm/constants.mjs
 /*!
  * @pixi/constants - v6.5.9
@@ -35708,12 +35731,12 @@ const spineEnd = loadSpineJson2(end_skeleton_namespaceObject, spineDataEnd);
 const allSpine = [{
   name: 'Lizard',
   spine: spineLizard,
-  sceneStart: [1, 21],
-  sceneEnd: [2, 22]
+  sceneStart: [1, 22],
+  sceneEnd: [2, 23]
 }, {
   name: 'all',
   spine: spineAll,
-  sceneStart: [3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 18, 19, 20, 23, 30, 33],
+  sceneStart: [3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 18, 19, 20, 21, 24, 31, 34],
   sceneEnd: [4]
 }, {
   name: 'Torch',
@@ -35723,33 +35746,33 @@ const allSpine = [{
 }, {
   name: 'H-transform',
   spine: spineHelenaT,
-  sceneStart: [24],
-  sceneEnd: [25]
-}, {
-  name: 'Sucking',
-  spine: spineSucking,
   sceneStart: [25],
   sceneEnd: [26]
 }, {
-  name: 'BoobJob',
-  spine: spineBoobJob,
+  name: 'Sucking',
+  spine: spineSucking,
   sceneStart: [26],
   sceneEnd: [27]
 }, {
-  name: 'DoggyStyle',
-  spine: spineDoggyStyle,
+  name: 'BoobJob',
+  spine: spineBoobJob,
   sceneStart: [27],
   sceneEnd: [28]
 }, {
-  name: 'Wallslam',
-  spine: spineWallslam,
+  name: 'DoggyStyle',
+  spine: spineDoggyStyle,
   sceneStart: [28],
   sceneEnd: [29]
 }, {
+  name: 'Wallslam',
+  spine: spineWallslam,
+  sceneStart: [29],
+  sceneEnd: [30]
+}, {
   name: 'End',
   spine: spineEnd,
-  sceneStart: [29, 31, 32],
-  sceneEnd: [30, 32, 33]
+  sceneStart: [30, 32, 33],
+  sceneEnd: [31, 33, 34]
 }];
 
 ;// CONCATENATED MODULE: ./js/spinesSettings.js
@@ -36133,7 +36156,36 @@ const spinesDescription = [{
         }
       }]
     },
-    23: {
+    21: {
+      w: 1366,
+      h: 768,
+      spineSettings: [{
+        spineSetting: {
+          animName: '1',
+          posX: 1060,
+          posY: 1085,
+          scale: 0.6,
+          randomStart: true
+        },
+        attachment: {
+          slotName: 'sally big',
+          attachmentName: 'CaveScene/H-b3-statue stand'
+        }
+      }, {
+        spineSetting: {
+          animName: '1',
+          posX: 220,
+          posY: 1060,
+          scale: 0.53,
+          randomStart: true
+        },
+        attachment: {
+          slotName: 'sally big',
+          attachmentName: 'block 3/d-bl3-fear'
+        }
+      }]
+    },
+    24: {
       w: 1366,
       h: 768,
       spineSettings: [{
@@ -36149,7 +36201,7 @@ const spinesDescription = [{
         }
       }]
     },
-    30: {
+    31: {
       w: 1366,
       h: 768,
       spineSettings: [{
@@ -36166,7 +36218,7 @@ const spinesDescription = [{
         }
       }]
     },
-    33: {
+    34: {
       w: 1366,
       h: 768,
       spineSettings: [{
@@ -36282,24 +36334,7 @@ const spinesDescription = [{
 }, {
   name: 'End',
   individualScenesSetting: {
-    29: {
-      w: 1366,
-      h: 768,
-      spineSettings: [{
-        spineSetting: {
-          animName: 'animation',
-          posY: 460,
-          posX: 755,
-          scale: 0.75,
-          animLoop: true
-        },
-        attachment: {
-          slotName: 'shoot cum 19-04 sprites with shadow',
-          attachmentName: 'shoot cum 19-04 sprites with shadow'
-        }
-      }]
-    },
-    31: {
+    30: {
       w: 1366,
       h: 768,
       spineSettings: [{
@@ -36317,6 +36352,23 @@ const spinesDescription = [{
       }]
     },
     32: {
+      w: 1366,
+      h: 768,
+      spineSettings: [{
+        spineSetting: {
+          animName: 'animation',
+          posY: 460,
+          posX: 755,
+          scale: 0.75,
+          animLoop: true
+        },
+        attachment: {
+          slotName: 'shoot cum 19-04 sprites with shadow',
+          attachmentName: 'shoot cum 19-04 sprites with shadow'
+        }
+      }]
+    },
+    33: {
       w: 1366,
       h: 768,
       spineSettings: [{
@@ -36350,7 +36402,7 @@ const spinesDescription = [{
         }
       }]
     },
-    21: {
+    22: {
       w: 1366,
       h: 768,
       spineSettings: [{
@@ -36409,6 +36461,7 @@ function generateSpine(spine) {
       spine: spineAnim
     });
   } else if (description?.individualScenesSetting) {
+    console.log(description.individualScenesSetting[nowScene], nowScene, description.individualScenesSetting);
     let settings = description.individualScenesSetting[nowScene],
       spineArray = [],
       app = createApp({
@@ -36494,7 +36547,6 @@ function destroySpine(spine) {
   });
 }
 function createContainer(spineName) {
-  console.log(nowScene);
   let spineScene = document.querySelector(`.scene__spine${nowScene}`);
   let container = document.createElement('div');
   container.id = spineName;
@@ -36786,8 +36838,8 @@ warn_btn(gameInit);
 let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = null;
-let Talk = talk_blockSetting[main_nowScene - 1];
-let modifyScene = Talk.modifyScene;
+let nowSetting = sceneSettings[main_nowScene - 1];
+let modifyScene = nowSetting.modifyScene;
 let isReplayPose = false;
 function gameInit() {
   removeScenes(1); //для тестов
@@ -36818,14 +36870,15 @@ function changeScene() {
       spineManager.checkScene(main_nowScene);
       return;
     }
-    Talk = talk_blockSetting[main_nowScene];
-    let isGameScene = Talk.gameScene;
-    modifyScene = Talk.modifyScene;
+    nowSetting = sceneSettings[main_nowScene];
+    let isGameScene = nowSetting.gameScene;
+    modifyScene = nowSetting.modifyScene;
     if (isGameScene) {
       change_btns.hideBtn();
       hideTalkEl();
-      updateScene();
+      setTimeout(updateScene, nowSetting.gameDelayUpdate);
       initGameMechanics(main_nowScene);
+      if (nowSetting.gameFade) fade(nowSetting.gameFade);
     } else if (modifyScene) {
       addModifyScene(modifyScene);
       change_btns.hideBtn();
@@ -36835,8 +36888,8 @@ function changeScene() {
       talk_updateer(nowTalk, ...getSettingForThisScene(main_nowScene, talkIndex));
     }
   }
-  if (nowTalk && !getDialog(main_nowScene, talkIndex + 1) && modifyScene?.btnEnd) {
-    change_btns.changeBtn(modifyScene.btnEnd);
+  if (nowTalk && !getDialog(main_nowScene, talkIndex + 1)) {
+    if (modifyScene?.btnEnd) change_btns.changeBtn(modifyScene.btnEnd);
   }
 }
 function updateScene() {
@@ -36860,9 +36913,14 @@ function addModifyScene(modifyObj) {
     changeImg(modifyObj.imgChange);
   }
   if (modifyObj.next) {
+    if (modifyObj.fadeNext) {
+      setTimeout(() => {
+        fade(modifyObj.fadeNext);
+      }, modifyObj.delayNext - modifyObj.fadeNext);
+    }
     setTimeout(() => {
       updateScene();
-      let btn = talk_blockSetting[main_nowScene - 1]?.modifyScene?.btn;
+      let btn = sceneSettings[main_nowScene - 1]?.modifyScene?.btn;
       if (btn) {
         change_btns.changeBtn(btn);
       }
@@ -36891,15 +36949,15 @@ function getDialog(idScene, indexTalk) {
   return dialog[idScene - 1][indexTalk];
 }
 function getSettingForThisScene(idScene, indexTalk) {
-  let setting = talk_blockSetting[idScene - 1][`talk${indexTalk + 1}`];
+  let setting = sceneSettings[idScene - 1][`talk${indexTalk + 1}`];
   return [setting.top, setting.left, setting.type];
 }
 function replayGame() {
   main_nowScene = 1;
   talkIndex = 0;
   nowTalk = null;
-  Talk = talk_blockSetting[main_nowScene - 1];
-  modifyScene = Talk.modifyScene;
+  nowSetting = sceneSettings[main_nowScene - 1];
+  modifyScene = nowSetting.modifyScene;
   change_btns.showBtn();
   removeScenes(sceneCount);
   hideTalkEl();
