@@ -3290,7 +3290,7 @@ function preloadSounds() {
 
 ;// CONCATENATED MODULE: ./js/sound/sound.js
 
-let sound = {
+let sound_sound = {
   playAudio,
   pauseAudio,
   onVolumeSound,
@@ -3315,7 +3315,7 @@ function playAudio(_ref) {
   let audio = getAudio(audioName);
   audio.volume = off ? 0 : volume;
   if (volume !== 1) addVolumes(audioName, volume);
-  if (isLoop) audio.loop = true;
+  if (autoplay) audio.autoplay = true;
   audio.currentTime = startTime;
   if (endTime) setEndTime(audio, startTime, endTime, isLoop);
   setTimeout(() => {
@@ -3388,10 +3388,10 @@ let soundAction = () => {
   function soundModeChange() {
     soundFlag = !soundFlag;
     if (soundFlag) {
-      sound.onVolumeSound();
+      sound_sound.onVolumeSound();
       soundBlock.classList.add('on');
     } else {
-      sound.offVolumeSound();
+      sound_sound.offVolumeSound();
       soundBlock.classList.remove('on');
     }
   }
@@ -3453,7 +3453,6 @@ const Preloader = uploadedImages => {
       procentValue = 100;
       setTimeout(hidePreloader, 500);
       removeListener();
-      playStartSound();
     } else {
       procentValue = (loadedElements / allElCount * 100).toFixed(0);
     }
@@ -3471,13 +3470,6 @@ const Preloader = uploadedImages => {
   (function initPreloader() {
     listenLoads();
   })();
-  function playStartSound() {
-    sound.playAudio({
-      audioName: 'вступление',
-      volume: 0.2,
-      isLoop: true
-    });
-  }
 };
 /* harmony default export */ var preloader = (Preloader);
 ;// CONCATENATED MODULE: ../node_modules/typed.js/dist/typed.module.js
@@ -3575,15 +3567,23 @@ function TalkUpdate(str, top, left, type) {
 /* harmony default export */ var talk_updateer = (TalkUpdate);
 ;// CONCATENATED MODULE: ./js/warn-btn.js
 const Warning = StartFunction => {
-  let btn = document.querySelector("#warn-btn"),
-    warning = document.querySelector(".warning");
-  btn.addEventListener("click", closeWarning);
+  let btn = document.querySelector('#warn-btn'),
+    warning = document.querySelector('.warning');
+  btn.addEventListener('click', closeWarning);
   function closeWarning() {
-    warning.classList.add("hide");
-    btn.removeEventListener("click", closeWarning);
+    warning.classList.add('hide');
+    btn.removeEventListener('click', closeWarning);
+    playStartSound();
     StartFunction();
   }
 };
+function playStartSound() {
+  sound.playAudio({
+    audioName: 'вступление',
+    volume: 0.2,
+    isLoop: true
+  });
+}
 /* harmony default export */ var warn_btn = (Warning);
 ;// CONCATENATED MODULE: ./js/sceneSettings.js
 const TALKING_POSITIONS = [{
@@ -37035,7 +37035,7 @@ function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
     timer = setInterval(increaseProgress, 50);
-    autoplay();
+    gameMechanics_autoplay();
     return;
   }
   if (gameMode == '4') {
@@ -37068,7 +37068,7 @@ function checkStage() {
   }
   setActiveBtn();
 }
-function autoplay() {
+function gameMechanics_autoplay() {
   if (unlockStage == 4) {
     sceneEnd();
   } else if (progress >= 66 && progress > 33 && setedAnim != '3') {
@@ -37148,7 +37148,7 @@ function setSoundForGameMode(mode) {
   let audioArrSetting = needSounds[mode || gameMode];
   Object.values(needSounds).forEach(audioSettingArr => {
     audioSettingArr.forEach(audioSetting => {
-      sound.pauseAudio({
+      sound_sound.pauseAudio({
         audioName: audioSetting.audioName
       });
     });
@@ -37156,14 +37156,14 @@ function setSoundForGameMode(mode) {
   audioArrSetting.forEach(audioSetting => {
     let timeout = setTimeout(() => {
       if (audioSetting.spacePlay) {
-        sound.playAudio(audioSetting);
+        sound_sound.playAudio(audioSetting);
         let timer = setInterval(() => {
-          sound.playAudio(audioSetting);
+          sound_sound.playAudio(audioSetting);
         }, audioSetting.spacePlay);
         timersSpacePlay.push(timer);
         return;
       }
-      sound.playAudio(audioSetting);
+      sound_sound.playAudio(audioSetting);
     }, audioSetting.spaceDelay);
     timeoutsSpace.push(timeout);
     if (audioSetting.spaceDuration) spaceDuration(audioSetting.spaceDuration);
@@ -37351,7 +37351,7 @@ function playChainSounds(soundArr) {
     }
     return;
   }
-  let audio = sound.playAudio(soundArr[index]);
+  let audio = sound_sound.playAudio(soundArr[index]);
   audio.addEventListener('ended', () => {
     playChainSounds(soundArr, index + 1, next);
   });
@@ -37372,7 +37372,7 @@ function changeScene() {
       endScreen.showEndScreen();
       change_btns.hideBtn();
       main_nowScene = 'end';
-      sound.pauseAudio({
+      sound_sound.pauseAudio({
         audioName: 'капли в пещере'
       });
       spineManager.checkScene(main_nowScene);
@@ -37489,7 +37489,7 @@ function replayGame() {
   spineManager.checkScene(main_nowScene);
   isReplayPose = false;
   editFunctions_hideGameInterface();
-  sound.playAudio({
+  sound_sound.playAudio({
     audioName: 'вступление',
     volume: 0.2,
     isLoop: true
@@ -37513,10 +37513,10 @@ function getSoundForThisTalk(idScene, indexTalk) {
   return getSoundSetting;
 }
 function playSounds(audioPlaySettingArr) {
-  audioPlaySettingArr.forEach(audioSetting => sound.playAudio(audioSetting));
+  audioPlaySettingArr.forEach(audioSetting => sound_sound.playAudio(audioSetting));
 }
 function pauseSounds(audioPauseSettingArr) {
-  audioPauseSettingArr.forEach(audioSetting => sound.pauseAudio(audioSetting));
+  audioPauseSettingArr.forEach(audioSetting => sound_sound.pauseAudio(audioSetting));
 }
 
 }();
