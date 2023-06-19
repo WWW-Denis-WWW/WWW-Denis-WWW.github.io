@@ -3283,7 +3283,7 @@ function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
       name: soundName,
-      audio: new Audio(`../../assets/audio/${soundName}.mp3`)
+      audio: new Audio(`./../../assets/audio/${soundName}.mp3`)
     });
   });
 }
