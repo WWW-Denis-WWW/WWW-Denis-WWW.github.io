@@ -37313,7 +37313,7 @@ SceneCreater(preloader);
 warn_btn(gameInit);
 
 // [24] main spine scene
-let main_nowScene = 29,
+let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
@@ -37375,6 +37375,9 @@ function changeScene() {
       main_nowScene = 'end';
       sound.pauseAudio({
         audioName: 'капли в пещере'
+      });
+      sound.pauseAudio({
+        audioName: 'экшн'
       });
       spineManager.checkScene(main_nowScene);
       return;
@@ -37495,6 +37498,9 @@ function replayGame() {
     volume: 0.2,
     isLoop: true
   });
+  sound.pauseAudio({
+    audioName: 'экшн'
+  });
 }
 function replayPose(scene) {
   main_nowScene = scene;
@@ -37506,6 +37512,11 @@ function replayPose(scene) {
   spineManager.checkScene('end');
   spineManager.checkScene(main_nowScene);
   initGameMechanics(main_nowScene);
+  sound.playAudio({
+    audioName: 'экшн',
+    volume: 0.025,
+    isLoop: true
+  });
   isReplayPose = true;
 }
 function getSoundForThisTalk(idScene, indexTalk) {
