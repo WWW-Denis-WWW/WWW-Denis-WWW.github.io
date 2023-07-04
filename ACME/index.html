@@ -5,13 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="css/fonts.css" />
-  <link rel="stylesheet" type="text/css" href="css/header.css" />
   <link rel="stylesheet" type="text/css" href="css/footer.css" />
   <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <link rel="stylesheet" type="text/css" href="css/header.css" />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
   <link rel="shortcut icon" href="" type="image/x-icon" />
-  <title>ACME</title>
+  <title>Главная</title>
 </head>
 
 <body>
@@ -31,6 +30,14 @@
             <div class="menu-burger__box">
               <div class="menu-burger__background"></div>
               <ul class="menu-burger__list">
+                <a href="./pages/blog.html" class="menu-burger__item">
+                  <div class="menu-burger__icon">
+                    <div class="img">
+                      <img src="img/icons/icons.svg#blog" alt="Blog">
+                    </div>
+                  </div>
+                  <span>Блог</span>
+                </a>
                 <a href="./pages/chess.html" class="menu-burger__item">
                   <div class="menu-burger__icon">
                     <div class="img">
@@ -39,7 +46,7 @@
                   </div>
                   <span>Играть как гость</span>
                 </a>
-                <a href="./pages/settings.html" class="menu-burger__item">
+                <a href="#" class="menu-burger__item">
                   <div class="menu-burger__icon">
                     <div class="img">
                       <img src="img/icons/icons.svg#setting" alt="">
@@ -54,14 +61,14 @@
                     </div>
                   </div> <span>О сайте</span>
                 </a>
-                <a href="pages/signup.html" class="menu-burger__item signup">
+                <a href="./pages/signup.html" class="menu-burger__item signup">
                   <div class="menu-burger__icon">
                     <div class="img">
                       <img src="img/icons/icons.svg#signup" alt="">
                     </div>
                   </div> <span>Регистрация</span>
                 </a>
-                <a href="pages/login.html" class="menu-burger__item login">
+                <a href="./pages/login.html" class="menu-burger__item login">
                   <div class="menu-burger__icon">
                     <div class="img">
                       <img src="img/icons/icons.svg#person" alt="">
@@ -74,7 +81,7 @@
 
         </div>
         <div class="header__logo logo-header">
-          <a class="logo-header__box" href="">
+          <a class="logo-header__box" href="#">
             <div class="logo-header__img img">
               <img src="img/icons/icons.svg#logo" alt="Logo">
             </div>
@@ -83,10 +90,10 @@
         <div class="header__buttons buttons-header">
           <div class="buttons-header__box">
             <button class="buttons-header__btn buttons-header__signUp">
-              <a href="pages/signup.html">Регистрация</a>
+              <a href="./pages/signup.html">Регистрация</a>
             </button>
             <button class="buttons-header__btn buttons-header__login">
-              <a href="pages/login.html">Вход</a>
+              <a href="./pages/login.html">Вход</a>
             </button>
           </div>
         </div>
@@ -104,20 +111,17 @@
                 <p>Сервис для игры в шахматы. Описание сервиса. Описание сервиса. Описание сервиса. Описание сервиса. Описание сервиса. Описание сервиса. Описание сервиса.</p>
               </div>
               <button class="left-welcome__btn " style="--d:0.45s">
-                <a href="./pages/chess.html">Попробовать сервис</a>
+                <a href="#">Попробовать сервис</a>
               </button>
             </div>
           </div>
           <div class="welcome__right a part">
             <div class="img">
-              <picture>
-                <source srcset="img/preview.webp" type="image/webp"><img src="img/preview.jpg" alt="Preview">
-              </picture>
+              <img src="img/preview.jpg" alt="Preview">
             </div>
           </div>
         </div>
       </section>
-
     </main>
     <footer class="footer a part">
       <div class="footer__container">
@@ -167,7 +171,9 @@
       </div>
     </footer>
   </div>
+
   <script src="js/index.js"></script>
+
 </body>
 
 </html>
