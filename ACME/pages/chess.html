@@ -13,13 +13,13 @@
   <link rel="shortcut icon" href="" type="image/x-icon" />
   <title>Партия</title>
 </head>
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="../js/chessboard-1.0.0.min.js"></script>
 
-
 <body>
     <div class="wrapper">
-        
+        <!-- {'search':'новости'} {'search':'игроков'} -->
         <header class="header a part">
   <div class="header__container">
     <div class="header__backdrop"></div>
@@ -35,6 +35,22 @@
         <div class="menu-burger__box">
           <div class="menu-burger__background"></div>
           <ul class="menu-burger__list">
+            <a href="#" class="menu-burger__item" id="play-white" >
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/chesspieces/wikipedia/wK.png" alt="">
+                </div>
+              </div>
+              <span>Играть за белых</span>
+            </a>
+            <a href="#" class="menu-burger__item" id="play-black" >
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/chesspieces/wikipedia/bK.png" alt="">
+                </div>
+              </div>
+              <span>Играть за черных</span>
+            </a>
             <a href="#" class="menu-burger__item">
               <div class="menu-burger__icon">
                 <div class="img">
@@ -110,10 +126,6 @@
         <div class="img">
             <picture><source srcset="../img/background.webp" type="image/webp"><img src="../img/background.jpg" alt="background"></picture>
         </div>
-    </div>
-    <div class="chess__GameMenu">
-        <button id="play-white" data-color="w">Играть за белых</button>
-        <button id="play-black" data-color="b">Играть за черных</button>
     </div>
     <!-- Эти блоки появляються при уменьшении экрана   -->
     <div class="chess__moves-headline moves-headline">
