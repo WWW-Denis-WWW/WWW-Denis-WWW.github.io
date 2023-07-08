@@ -19,6 +19,7 @@
 
 <body>
     <div class="wrapper">
+        <!-- {'search':'новости'} {'search':'игроков'} -->
         <header class="header a part">
             <div class="header__container">
                 <div class="header__backdrop"></div>
@@ -28,87 +29,61 @@
                         <div class="burger-header__stick"></div>
                         <div class="burger-header__stick"></div>
                         <div class="burger-header__stick"></div>
+
                     </div>
                     <div class="burger-header__menu menu-burger">
                         <div class="menu-burger__box">
                             <div class="menu-burger__background"></div>
                             <ul class="menu-burger__list">
-                                <a href="#" class="menu-burger__item profile">
+                                <a href="#" class="menu-burger__item">
                                     <div class="menu-burger__icon">
                                         <div class="img">
-                                            <img src="../img/icons/icons.svg#person" alt="Profile">
+                                            <img src="../img/icons/icons.svg#blog" alt="Blog">
                                         </div>
                                     </div>
-                                    <span>Профиль</span>
+                                    <span>Блог</span>
                                 </a>
                                 <a href="#" class="menu-burger__item">
                                     <div class="menu-burger__icon">
                                         <div class="img">
-                                            <img src="../img/icons/icons.svg#setting" alt="Setting">
+                                            <img src="../img/icons/icons.svg#play-btn" alt="Play">
+                                        </div>
+                                    </div>
+                                    <span>Играть как гость</span>
+                                </a>
+                                <a href="#" class="menu-burger__item">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#setting" alt="">
                                         </div>
                                     </div>
                                     <span>Настройки</span>
                                 </a>
-
-                                <!--  -->
-                                <a href="#" class="menu-burger__item notifications">
-                                    <div class="menu-burger__icon">
-                                        <div class="img">
-                                            <img src="../img/icons/icons.svg#notifications" alt="notifications">
-                                        </div>
-                                    </div>
-                                    <span>Уведомления</span>
-                                </a>
-                                <a href="#" class="menu-burger__item crown">
-                                    <div class="menu-burger__icon">
-                                        <div class="img">
-                                            <img src="../img/icons/icons.svg#crown" alt="">
-                                        </div>
-                                    </div>
-                                    <span>Достижения</span>
-                                </a>
-                                <a href="#" class="menu-burger__item light">
-                                    <div class="menu-burger__icon">
-                                        <div class="img">
-                                            <img src="../img/icons/icons.svg#light" alt="">
-                                        </div>
-                                    </div>
-                                    <span>История игр</span>
-                                </a>
-                                <!--  -->
                                 <a href="#" class="menu-burger__item">
                                     <div class="menu-burger__icon">
                                         <div class="img">
-                                            <img src="../img/icons/icons.svg#info" alt="info">
+                                            <img src="../img/icons/icons.svg#info" alt="">
                                         </div>
                                     </div> <span>О сайте</span>
                                 </a>
-                                <a href="#" class="menu-burger__item">
+                                <a href="#" class="menu-burger__item signup">
                                     <div class="menu-burger__icon">
                                         <div class="img">
-                                            <img src="../img/icons/icons.svg#exit" alt="exit">
+                                            <img src="../img/icons/icons.svg#signup" alt="">
                                         </div>
-                                    </div><span>Выход</span>
+                                    </div> <span>Регистрация</span>
                                 </a>
-                                <div class="menu-burger__item search">
-                                    <input class="search-header__input" type="text" name="search" placeholder="Поиск игроков">
-                                    <div class="search-header__icon">
+                                <a href="#" class="menu-burger__item login">
+                                    <div class="menu-burger__icon">
                                         <div class="img">
-                                            <img src="../img/icons/icons.svg#search-white" alt="search">
+                                            <img src="../img/icons/icons.svg#person" alt="">
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> <span>Вход</span>
+                                </a>
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="header__search search-header">
-                    <input class="search-header__input" type="text" name="search" placeholder="Поиск игроков">
-                    <div class="search-header__icon">
-                        <div class="img">
-                            <img src="../img/icons/icons.svg#search" alt="search">
-                        </div>
-                    </div>
+
                 </div>
                 <div class="header__logo logo-header">
                     <a class="logo-header__box" href="#">
@@ -117,36 +92,13 @@
                         </div>
                     </a>
                 </div>
-                <div class="header__buttons2 buttons-header2">
-                    <div class="buttons-header2__box">
-                        <button class="buttons-header2__btn">
-                            <a href="#" class="buttons-header2__link notifications">
-                                <div class="img">
-                                    <object data="../img/icons/icons.svg#notifications" type="image/svg+xml"></object>
-                                </div>
-                            </a>
-                            <a href="#" id="notifications">3</a>
+                <div class="header__buttons buttons-header">
+                    <div class="buttons-header__box">
+                        <button class="buttons-header__btn buttons-header__signUp">
+                            <a href="#">Регистрация</a>
                         </button>
-                        <button class="buttons-header2__btn">
-                            <a href="#" class="buttons-header2__link crown">
-                                <div class="img">
-                                    <object data="../img/icons/icons.svg#crown" type="image/svg+xml"></object>
-                                </div>
-                            </a>
-                        </button>
-                        <button class="buttons-header2__btn">
-                            <a href="#" class="buttons-header2__link light">
-                                <div class="img">
-                                    <object data="../img/icons/icons.svg#light" type="image/svg+xml"></object>
-                                </div>
-                            </a>
-                        </button>
-                        <button class="buttons-header2__btn">
-                            <a href="#" class="buttons-header2__link person">
-                                <div class="img">
-                                    <object data="../img/icons/icons.svg#person" type="image/svg+xml"></object>
-                                </div>
-                            </a>
+                        <button class="buttons-header__btn buttons-header__login">
+                            <a href="#">Вход</a>
                         </button>
                     </div>
                 </div>
@@ -161,7 +113,33 @@
                         </picture>
                     </div>
                 </div>
-
+                <div class="chess__GameMenu">
+                    <button id="play-white" data-color="w">Играть за белых</button>
+                    <button id="play-black" data-color="b">Играть за черных</button>
+                </div>
+                <!-- <div class="chess__selectPieceBackdrop"></div>
+    <div class="chess__selectPiece selectPiece-chess">
+        <div class="selectPiece-chess__piece">
+            <div class="img">
+                <picture><source srcset="../img/chesspieces/wikipedia/bB.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/bB.png" alt=""></picture>
+            </div>
+        </div>
+        <div class="selectPiece-chess__piece">
+            <div class="img">
+                <picture><source srcset="../img/chesspieces/wikipedia/bB.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/bB.png" alt=""></picture>
+            </div>
+        </div>
+        <div class="selectPiece-chess__piece">
+            <div class="img">
+                <picture><source srcset="../img/chesspieces/wikipedia/bB.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/bB.png" alt=""></picture>
+            </div>
+        </div>
+        <div class="selectPiece-chess__piece">
+            <div class="img">
+                <picture><source srcset="../img/chesspieces/wikipedia/bB.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/bB.png" alt=""></picture>
+            </div>
+        </div>
+    </div> -->
                 <!-- Эти блоки появляються при уменьшении экрана   -->
                 <div class="chess__moves-headline moves-headline">
                     <div class="moves-headline__title">Партия</div>
@@ -283,7 +261,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!--  -->
                 <div class="chess__controlls controlls-chess">
                     <button class="controlls-chess__start">
@@ -499,11 +476,8 @@
 
                 </div>
             </section>
-
-
         </main>
     </div>
-
     <script src="../js/chess.js"></script>
 </body>
 
