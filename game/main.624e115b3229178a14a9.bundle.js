@@ -2950,16 +2950,16 @@ function allScenesCreate() {
     zIndex: 3,
     objectFit: 'contain'
   });
-  // jungle2.addCharacter({
-  // 	src: './assets/media/characters/drake-compas.webp',
-  // 	name: 'Drake-changeImg',
-  // 	w: '21%',
-  // 	h: '107%',
-  // 	t: '5%',
-  // 	l: '53%',
-  // 	zIndex: 4,
-  // 	objectFit: 'contain',
-  // })
+  jungle2.addCharacter({
+    src: './assets/media/characters/drake-compas.webp',
+    name: 'Drake-changeImg',
+    w: '21%',
+    h: '107%',
+    t: '5%',
+    l: '53%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
   jungle2.addCharacter({
     src: './assets/media/characters/Helen-sit.webp',
     name: 'Helena-sit-anim',
@@ -3773,6 +3773,16 @@ const TALKING_POSITIONS = [{
       },
       img2: {
         src: './assets/media/characters/Helen-sit-smile.webp',
+        delay: 14000
+      }
+    }, {
+      target: 'Drake-changeImg',
+      img1: {
+        src: './assets/media/characters/drake-surprise-right.webp',
+        delay: 5000
+      },
+      img2: {
+        src: './assets/media/characters/drake-smile-right.webp',
         delay: 14000
       }
     }]
@@ -36248,32 +36258,35 @@ const spinesDescription = [{
           attachmentName: 'sally big3',
           delay: 12000
         }]
-      }, {
-        spineSetting: {
-          animName: '1',
-          posX: 890,
-          posY: 710,
-          scale: 0.34,
-          flip: true,
-          randomStart: true,
-          removeDelay: 12000
-        },
-        attachment: {
-          slotName: 'sally big',
-          attachmentName: 'drake compas'
-        },
-        ChangeAttachment: [{
-          slotName: 'sally big',
-          attachmentName: 'block 3/drake surprise right',
-          delay: 3000
-        }
-        // {
-        //     slotName: 'sally big',
-        //     attachmentName: 'drake smile right',
-        //     delay: 12000
-        // }
-        ]
-      }]
+      }
+      // {
+      //     spineSetting: {
+      //         animName: '1',
+      //         posX: 890,
+      //         posY: 710,
+      //         scale: 0.34,
+      //         flip: true,
+      //         randomStart: true,
+      //         removeDelay: 12000,
+      //     },
+      //     attachment: {
+      //         slotName: 'sally big',
+      //         attachmentName: 'drake compas',
+      //     },
+      //     ChangeAttachment: [
+      //         {
+      //             slotName: 'sally big',
+      //             attachmentName: 'block 3/drake surprise right',
+      //             delay: 3000
+      //         },
+      //         // {
+      //         //     slotName: 'sally big',
+      //         //     attachmentName: 'drake smile right',
+      //         //     delay: 12000
+      //         // }
+      //     ]
+      // },
+      ]
     },
 
     10: {
@@ -36587,18 +36600,20 @@ const spinesDescription = [{
       }]
     }
   }
-}, {
-  name: 'smileDrake',
-  setting: {
-    animName: '1',
-    posX: 605,
-    posY: 725,
-    scale: 0.34,
-    flip: true,
-    randomStart: true,
-    delay: 12000
-  }
-}, {
+},
+// {
+//     name: 'smileDrake',
+//     setting: {
+//         animName: '1',
+//         posX: 605,
+//         posY: 725,
+//         scale: 0.34,
+//         flip:true,
+//         randomStart: true,
+//         delay:12000,
+//     }
+// },
+{
   name: 'Torch',
   setting: {
     animName: '1',
