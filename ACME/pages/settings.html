@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="../css/header.css" />
+    <link rel="stylesheet" type="text/css" href="../css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../css/input.css" />
+    <link rel="stylesheet" type="text/css" href="../css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="../css/swiper.css" />
+    <link rel="stylesheet" type="text/css" href="../css/popup.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>Настройки</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 
+  data-popup="popup_one" class="popup_open"
+  элементы вызывающий попап должен иметь дата атрибут являющийся айдишником элемента
+  и класс показывающий что он является активатором попапа
+-->
+
+        <div class="popup hide" id="popup_remove">
+            <div class="popup__box remove">
+                <div class="popup__close close-popup">
+                    <div class="close-popup__box">
+                        <div class="close-popup__stick one"></div>
+                        <div class="close-popup__stick two"></div>
+                    </div>
+                </div>
+                <div class="popup__content remove">
+                    <div class="remove__title MainTitle">
+                        <h2>Удалить аккаунт?</h2>
+                    </div>
+                    <div class="remove__text MainText">
+                        <p>Весь сохраненый прогресс будет утерян!</p>
+                    </div>
+                    <div class="selects-slide__btn btn-selects " style="cursor: default;">
+                        <div class="btn-selects__box remove-btn close-popup" data-popup="popup_remove" style="cursor: pointer">
+                            <div class="btn-selects__content ">
+                                <span>Да, удалить аккаунт!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="header a part">
+            <div class="header__container">
+                <div class="header__backdrop"></div>
+                <div class="header__burger burger-header">
+                    <div class="burger-header__backgroud"></div>
+                    <div class="burger-header__box">
+                        <div class="burger-header__stick"></div>
+                        <div class="burger-header__stick"></div>
+                        <div class="burger-header__stick"></div>
+                    </div>
+                    <div class="burger-header__menu menu-burger">
+                        <div class="menu-burger__box">
+                            <div class="menu-burger__background"></div>
+                            <ul class="menu-burger__list">
+                                <a href="./profile.html" class="menu-burger__item profile">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#person" alt="Profile">
+                                        </div>
+                                    </div>
+                                    <span>Профиль</span>
+                                </a>
+                                <a href="./settings.html" class="menu-burger__item">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#setting" alt="Setting">
+                                        </div>
+                                    </div>
+                                    <span>Настройки</span>
+                                </a>
+
+                                <!--  -->
+                                <a href="#" class="menu-burger__item notifications">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#notifications" alt="notifications">
+                                        </div>
+                                    </div>
+                                    <span>Уведомления</span>
+                                </a>
+                                <a href="#" class="menu-burger__item crown">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#crown" alt="">
+                                        </div>
+                                    </div>
+                                    <span>Достижения</span>
+                                </a>
+                                <a href="#" class="menu-burger__item light">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#light" alt="">
+                                        </div>
+                                    </div>
+                                    <span>История игр</span>
+                                </a>
+                                <!--  -->
+                                <a href="#" class="menu-burger__item">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#info" alt="info">
+                                        </div>
+                                    </div> <span>О сайте</span>
+                                </a>
+                                <a href="../index.html" class="menu-burger__item">
+                                    <div class="menu-burger__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#exit" alt="exit">
+                                        </div>
+                                    </div><span>Выход</span>
+                                </a>
+                                <div class="menu-burger__item search">
+                                    <input class="search-header__input" type="text" name="search" placeholder="Поиск игроков">
+                                    <div class="search-header__icon">
+                                        <div class="img">
+                                            <img src="../img/icons/icons.svg#search-white" alt="search">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__search search-header">
+                    <input class="search-header__input" type="text" name="search" placeholder="Поиск игроков">
+                    <div class="search-header__icon">
+                        <div class="img">
+                            <img src="../img/icons/icons.svg#search" alt="search">
+                        </div>
+                    </div>
+                </div>
+                <div class="header__logo logo-header">
+                    <a class="logo-header__box" href="#">
+                        <div class="logo-header__img img">
+                            <img src="../img/icons/icons.svg#logo" alt="Logo">
+                        </div>
+                    </a>
+                </div>
+                <div class="header__buttons2 buttons-header2">
+                    <div class="buttons-header2__box">
+                        <button class="buttons-header2__btn">
+                            <a href="#" class="buttons-header2__link notifications">
+                                <div class="img">
+                                    <object data="../img/icons/icons.svg#notifications" type="image/svg+xml"></object>
+                                </div>
+                            </a>
+                            <a href="#" id="notifications">3</a>
+                        </button>
+                        <button class="buttons-header2__btn">
+                            <a href="#" class="buttons-header2__link crown">
+                                <div class="img">
+                                    <object data="../img/icons/icons.svg#crown" type="image/svg+xml"></object>
+                                </div>
+                            </a>
+                        </button>
+                        <button class="buttons-header2__btn">
+                            <a href="#" class="buttons-header2__link light">
+                                <div class="img">
+                                    <object data="../img/icons/icons.svg#light" type="image/svg+xml"></object>
+                                </div>
+                            </a>
+                        </button>
+                        <button class="buttons-header2__btn">
+                            <a href="./profile.html" class="buttons-header2__link person">
+                                <div class="img">
+                                    <object data="../img/icons/icons.svg#person" type="image/svg+xml"></object>
+                                </div>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <section class="settings">
+                <div class="settings__background">
+                    <div class="img">
+                        <picture>
+                            <source srcset="../img/background.webp" type="image/webp"><img src="../img/background.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+                <div class="settings__container">
+                    <div class="settings__title">
+                        <h1>Настройки</h1>
+                    </div>
+                    <div class="settings__content content-settings">
+                        <div class="content-settings__list">
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="content-settings__settings">
+                            <div class="content-settings__slider slider">
+                                <div class="swiper">
+                                    <div class="swiper-wrapper ">
+                                        <div class="swiper-slide slide-swiper">
+                                            <div class="slide-swiper__left">
+                                                <div class="slide-swiper__title">
+                                                    <h2>Основные</h2>
+                                                </div>
+                                                <div class="slide-swiper__selects selects-slide">
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__input" placeholder="Имя пользователя"></input>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__dropdown" name="yes" placeholder="Отправка сообщений" readonly title="Отправка сообщений"></input>
+                                                        <div class="selects-slide__option">
+                                                            <div class="option" data-value="yes">Разрешена</div>
+                                                            <div class="option" data-value="no">Запрещена</div>
+                                                        </div>
+                                                        <div class="selects-slide__arrow">
+                                                            <div class="img">
+                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__dropdown" name="ru" placeholder="Язык интерфейса" readonly title="Язык интерфейса"></input>
+                                                        <div class="selects-slide__option">
+                                                            <div class="option" data-value="ru">Русский</div>
+                                                            <div class="option" data-value="en">English</div>
+                                                        </div>
+                                                        <div class="selects-slide__arrow">
+                                                            <div class="img">
+                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__dropdown" name="yes" placeholder="Разрешить уведомления" readonly title="Разрешить уведомления"></input>
+                                                        <div class="selects-slide__option">
+                                                            <div class="option" data-value="yes">Да</div>
+                                                            <div class="option" data-value="no">Нет</div>
+                                                        </div>
+                                                        <div class="selects-slide__arrow">
+                                                            <div class="img">
+                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__dropdown" name="open" placeholder="Видимость профиля" readonly title="Видимость профиля"></input>
+                                                        <div class="selects-slide__option">
+                                                            <div class="option" data-value="open">Открытый</div>
+                                                            <div class="option" data-value="close">Закрытый</div>
+                                                        </div>
+                                                        <div class="selects-slide__arrow">
+                                                            <div class="img">
+                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="selects-slide__box ">
+                                                        <input type="text" class="selects-slide__dropdown" name="all" placeholder="Приглашения в игру" readonly title="Приглашения в игру"></input>
+                                                        <div class="selects-slide__option">
+                                                            <div class="option" data-value="all">Да, для всех пользователей</div>
+                                                            <div class="option" data-value="friends">Да, только для друзей</div>
+                                                            <div class="option" data-value="nobody">Никому</div>
+                                                        </div>
+                                                        <div class="selects-slide__arrow">
+                                                            <div class="img">
+                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__dropdown" name="1" placeholder="Ваш часовой пояс" readonly></input>
+                                                        <div class="selects-slide__option">
+                                                            <div class="option__box">
+                                                                <div class="option" data-value="1">UTC+1</div>
+                                                                <div class="option" data-value="2">UTC+2</div>
+                                                                <div class="option" data-value="3">UTC+3</div>
+                                                                <div class="option" data-value="4">UTC+4</div>
+                                                                <div class="option" data-value="5">UTC+5</div>
+                                                                <div class="option" data-value="6">UTC+6</div>
+                                                                <div class="option" data-value="7">UTC+7</div>
+                                                                <div class="option" data-value="8">UTC+8</div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="selects-slide__arrow">
+                                                            <div class="img">
+                                                                <img src="../img/icons/icons.svg#arrow-setting" alt="arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="selects-slide__btn btn-selects" type="submit">
+                                                        <div class="btn-selects__box">
+                                                            <div class="btn-selects__content">
+                                                                <span>Сохранить</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="slide-swiper__right">
+                                                <div class="slide-swiper__title">
+                                                    <h2>Рейтинг</h2>
+                                                </div>
+                                                <div class="slide-swiper__selects selects-slide">
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__input" placeholder="ФИДЕ" readonly></input>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__input" placeholder="Рейтинг: 1000" readonly></input>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__input" placeholder="ФШР" readonly></input>
+                                                    </div>
+                                                    <div class="selects-slide__box">
+                                                        <input type="text" class="selects-slide__input" placeholder="Рейтинг: 1000" readonly></input>
+                                                    </div>
+
+                                                    <button class="selects-slide__btn btn-selects" type="submit">
+                                                        <div class="btn-selects__box">
+                                                            <div class="btn-selects__content">
+                                                                <span>Сохранить</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide slide-swiper email">
+                                            <div class="slide-swiper__left">
+                                                <div class="slide-swiper__title">
+                                                    <h2>Email</h2>
+                                                </div>
+                                                <form class="slide-swiper__selects selects-slide email">
+
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input" placeholder="Старая почта@bla.com" readonly></input>
+                                                    </div>
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input emailChange" placeholder="Новая почта"></input>
+                                                    </div>
+                                                    <button class="selects-slide__btn btn-selects submit" type="submit">
+                                                        <div class="btn-selects__box">
+                                                            <div class="btn-selects__content">
+                                                                <span>Сохранить</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide slide-swiper">
+                                            <div class="slide-swiper__left">
+                                                <div class="slide-swiper__title">
+                                                    <h2>Пароль</h2>
+                                                </div>
+                                                <form class="slide-swiper__selects selects-slide password">
+
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input password-setting" placeholder="Старый пароль"></input>
+                                                    </div>
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input password-setting" placeholder="Новый пароль"></input>
+                                                    </div>
+                                                    <div class="selects-slide__box stretch">
+                                                        <input type="text" class="selects-slide__input passwordRepeatSetting" placeholder="Новый пароль"></input>
+                                                    </div>
+                                                    <button class="selects-slide__btn btn-selects submit" type="submit">
+                                                        <div class="btn-selects__box">
+                                                            <div class="btn-selects__content">
+                                                                <span>Сохранить</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide slide-swiper">
+                                            <div class="slide-swiper__left">
+                                                <div class="slide-swiper__title">
+                                                    <h2>Удалить аккаунт</h2>
+                                                </div>
+
+                                                <button class="selects-slide__btn btn-selects" type="submit">
+                                                    <div class="btn-selects__box remove-btn">
+                                                        <div class="btn-selects__content popup_open" data-popup="popup_remove">
+                                                            <span>Удалить аккаунт</span>
+                                                        </div>
+                                                    </div>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+            </section>
+
+        </main>
+        <footer class="footer a part">
+            <div class="footer__container">
+                <ul class="footer__list list-footer">
+                    <li class="list-footer__item">
+                        <a href="#">About Us</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Blog</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Careers</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Newsletter</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Leaderboards</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">MoveTrainer®</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Science</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Roadmap</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Podcast</a>
+                    </li>
+                </ul>
+                <ul class="footer__list list-footer">
+                    <li class="list-footer__item">
+                        <a href="#">Cookie Preferences</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Privacy</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Terms</a>
+                    </li>
+                    <li class="list-footer__item">
+                        <a href="#">Need Help?</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script src="../js/settings.js"></script>
+</body>
+
+</html>

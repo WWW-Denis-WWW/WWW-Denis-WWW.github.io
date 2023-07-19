@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+  <link rel="stylesheet" type="text/css" href="../css/header.css" />
+  <link rel="stylesheet" type="text/css" href="../css/footer.css" />
+  <link rel="stylesheet" type="text/css" href="../css/input.css" />
+  <link rel="stylesheet" type="text/css" href="../css/login.css" />
+  <link rel="stylesheet" type="text/css" href="../css/main.css" />
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+
+  <title>Вход</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header a part">
+      <div class="header__container">
+        <div class="header__backdrop"></div>
+        <div class="header__burger burger-header">
+          <div class="burger-header__backgroud"></div>
+          <div class="burger-header__box">
+            <div class="burger-header__stick"></div>
+            <div class="burger-header__stick"></div>
+            <div class="burger-header__stick"></div>
+
+          </div>
+          <div class="burger-header__menu menu-burger">
+            <div class="menu-burger__box">
+              <div class="menu-burger__background"></div>
+              <ul class="menu-burger__list">
+                <a href="./chess.html" class="menu-burger__item">
+                  <div class="menu-burger__icon">
+                    <div class="img">
+                      <img src="../img/icons/icons.svg#play-btn" alt="Play">
+                    </div>
+                  </div>
+                  <span>Играть как гость</span>
+                </a>
+                <a href="./settings.html" class="menu-burger__item">
+                  <div class="menu-burger__icon">
+                    <div class="img">
+                      <img src="../img/icons/icons.svg#setting" alt="">
+                    </div>
+                  </div>
+                  <span>Настройки</span>
+                </a>
+                <a href="#" class="menu-burger__item">
+                  <div class="menu-burger__icon">
+                    <div class="img">
+                      <img src="../img/icons/icons.svg#info" alt="">
+                    </div>
+                  </div> <span>О сайте</span>
+                </a>
+                <a href="./signup.html" class="menu-burger__item signup">
+                  <div class="menu-burger__icon">
+                    <div class="img">
+                      <img src="../img/icons/icons.svg#signup" alt="">
+                    </div>
+                  </div>
+                  <span>Регистрация</span>
+                </a>
+                <a href="./login.html" class="menu-burger__item login">
+                  <div class="menu-burger__icon">
+                    <div class="img">
+                      <img src="../img/icons/icons.svg#person" alt="">
+                    </div>
+                  </div> <span>Вход</span>
+                </a>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="header__logo logo-header">
+          <a class="logo-header__box" href="../index.html">
+            <div class="logo-header__img img">
+              <img src="../img/icons/icons.svg#logo" alt="Logo">
+            </div>
+          </a>
+        </div>
+        <div class="header__buttons buttons-header">
+          <div class="buttons-header__box">
+            <button class="buttons-header__btn buttons-header__signUp">
+              <a href="./signup.html">Регистрация</a>
+            </button>
+            <button class="buttons-header__btn buttons-header__login">
+              <a href="./login.html">Вход</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="login">
+        <div class="login__container">
+          <div class="login__left left-login a part">
+            <div class="left-login__content">
+              <div class="left-login__title MainTitle" style="--d:0.1s">
+                <h1>Вход</h1>
+              </div>
+              <div class="left-login__text MainText" style="--d:0.2s">
+                <p>Добро пожаловать на сервис! Войдите в свой аккаунт.</p>
+              </div>
+              <div class="left-login__form login-from">
+                <div class="login-from__box" style="--d:0.3s">
+                  <input type="text" class="login-from__login " placeholder="Логин" minlength="2" maxlength="28" required>
+                </div>
+                <div class="login-from__box" style="--d:0.4s" minlength="8" maxlength="200" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+                  <input type="text" class="login-from__password " placeholder="Пароль">
+                </div>
+                <div class="login-from__box" style="--d:0.5s">
+                  <button type="submit" disabled class="login-from__submit">
+                    <span>Вход</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="login__right right-login a part">
+            <div class="img">
+              <picture>
+                <source srcset="../img/horse_back.webp" type="image/webp"><img src="../img/horse_back.jpg" alt="ACME">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer a part">
+      <div class="footer__container">
+        <ul class="footer__list list-footer">
+          <li class="list-footer__item">
+            <a href="#">About Us</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Blog</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Careers</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Newsletter</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Leaderboards</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">MoveTrainer®</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Science</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Roadmap</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Podcast</a>
+          </li>
+        </ul>
+        <ul class="footer__list list-footer">
+          <li class="list-footer__item">
+            <a href="#">Cookie Preferences</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Privacy</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Terms</a>
+          </li>
+          <li class="list-footer__item">
+            <a href="#">Need Help?</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <script src="../js/login.js"></script>
+</body>
+
+</html>
