@@ -3279,7 +3279,7 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end'];
+let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
@@ -37015,9 +37015,7 @@ let soundForScene = {
       audioName: 'churn2',
       isLoop: true
     }, {
-      audioName: 'стоны',
-      startTime: 18.7,
-      endTime: 19,
+      audioName: ['3-1стон', '3-2стон', '3-3стон'],
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 700
@@ -37027,9 +37025,7 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 400
     }, {
-      audioName: 'стоны',
-      startTime: 18.7,
-      endTime: 19,
+      audioName: ['3-1стон', '3-2стон', '3-3стон'],
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 700
@@ -37038,9 +37034,7 @@ let soundForScene = {
       audioName: 'wetfuck4',
       spacePlay: 1000
     }, {
-      audioName: 'стоны',
-      startTime: 19.5,
-      endTime: 19.75,
+      audioName: ['3-1стон', '3-2стон', '3-3стон'],
       volume: 0.6,
       spacePlay: 1000
     }],
@@ -37061,9 +37055,7 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 800
     }, {
-      audioName: 'стоны',
-      startTime: 4.4,
-      endTime: 5,
+      audioName: ['4-1стон', '4-2стон', '4-3стон'],
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 800
@@ -37073,7 +37065,7 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 700
     }, {
-      audioName: 'стоны',
+      audioName: ['4-1стон', '4-2стон', '4-3стон'],
       startTime: 4.4,
       endTime: 5,
       volume: 0.6,
@@ -37085,7 +37077,7 @@ let soundForScene = {
       spacePlay: 1000,
       spaceDelay: 200
     }, {
-      audioName: 'стоны',
+      audioName: ['4-1стон', '4-2стон', '4-3стон'],
       startTime: 4.4,
       endTime: 5,
       volume: 0.6,
@@ -37237,26 +37229,51 @@ function setSoundForGameMode(mode) {
   let audioArrSetting = needSounds[mode || gameMode];
   Object.values(needSounds).forEach(audioSettingArr => {
     audioSettingArr.forEach(audioSetting => {
-      sound.pauseAudio({
-        audioName: audioSetting.audioName
-      });
+      if (Array.isArray(audioSetting.audioName)) {
+        audioSetting.audioName.forEach(audioName => sound.pauseAudio({
+          audioName
+        }));
+      } else {
+        sound.pauseAudio({
+          audioName: audioSetting.audioName
+        });
+      }
     });
   });
   audioArrSetting.forEach(audioSetting => {
+    if (Array.isArray(audioSetting.audioName)) {
+      playGameAudio(audioSetting, true);
+    } else {
+      playGameAudio(audioSetting);
+    }
+  });
+  function playGameAudio(audioSetting) {
+    let random = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    let prevAudioName;
     let timeout = setTimeout(() => {
       if (audioSetting.spacePlay) {
-        sound.playAudio(audioSetting);
+        let randomAudioName = getRandomAudioName(audioSetting.audioName);
+        random ? sound.playAudio({
+          ...audioSetting,
+          audioName: randomAudioName
+        }) : sound.playAudio(audioSetting);
+        prevAudioName = randomAudioName;
         let timer = setInterval(() => {
-          sound.playAudio(audioSetting);
+          let randomAudioName = getRandomAudioName(audioSetting.audioName, prevAudioName);
+          random ? sound.playAudio({
+            ...audioSetting,
+            audioName: randomAudioName
+          }) : sound.playAudio(audioSetting);
+          prevAudioName = randomAudioName;
         }, audioSetting.spacePlay);
         timersSpacePlay.push(timer);
-        return;
+      } else {
+        sound.playAudio(audioSetting);
       }
-      sound.playAudio(audioSetting);
     }, audioSetting.spaceDelay);
     timeoutsSpace.push(timeout);
     if (audioSetting.spaceDuration) spaceDuration(audioSetting.spaceDuration);
-  });
+  }
   function spaceDuration(duration) {
     setTimeout(() => {
       clearTimeoutSpaces();
@@ -37274,6 +37291,16 @@ function setSoundForGameMode(mode) {
       clearInterval(timer);
     });
     timersSpacePlay = [];
+  }
+  function getRandomAudioName(audioNamesArr, prevAudioName) {
+    let audioName = audioNamesArr[randomInteger(0, audioNamesArr.length - 1)];
+    if (audioName === prevAudioName) return getRandomAudioName(audioNamesArr, prevAudioName);
+    return audioName;
+  }
+  function randomInteger(min, max) {
+    // получить случайное число от (min-0.5) до (max+0.5)
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
   }
 }
 
@@ -37439,7 +37466,7 @@ screenResolution();
 SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
-let main_nowScene = 1,
+let main_nowScene = 28,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
@@ -37540,7 +37567,6 @@ function updateScene() {
   nowTalk = getDialog(main_nowScene, talkIndex);
 }
 function setSetting() {
-  console.log();
   if (modifyScene) modify(modifyScene);
   if (soundScene) setSound(soundScene);
   if (isGameScene) {
