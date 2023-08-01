@@ -37115,7 +37115,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 50);
+    timer = setInterval(increaseProgress, 400);
     autoplay();
     return;
   }
@@ -37466,7 +37466,7 @@ screenResolution();
 SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
-let main_nowScene = 28,
+let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
