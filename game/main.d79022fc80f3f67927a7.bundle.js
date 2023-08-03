@@ -3279,7 +3279,7 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон'];
+let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
@@ -3361,6 +3361,7 @@ function pauseAudio(_ref2) {
     audioName,
     decrease = 0
   } = _ref2;
+  console.log(audioName);
   let audio = allSounds.find(sound => sound.name === audioName).audio;
   if (decrease) {
     decreaseVolume(decrease, audio);
@@ -37015,7 +37016,7 @@ let soundForScene = {
       audioName: 'churn2',
       isLoop: true
     }, {
-      audioName: ['3-1стон', '3-2стон', '3-3стон'],
+      audioName: '3-1стон',
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 700
@@ -37025,16 +37026,21 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 400
     }, {
-      audioName: ['3-1стон', '3-2стон', '3-3стон'],
+      audioName: '3-2-1стон',
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 700
+    }, {
+      audioName: '3-2-2стон',
+      volume: 0.6,
+      spacePlay: 2000,
+      spaceDelay: 1700
     }],
     3: [{
       audioName: 'wetfuck4',
       spacePlay: 1000
     }, {
-      audioName: ['3-1стон', '3-2стон', '3-3стон'],
+      audioName: '3-3стон',
       volume: 0.6,
       spacePlay: 1000
     }],
@@ -37115,7 +37121,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 50);
     autoplay();
     return;
   }
@@ -37466,7 +37472,7 @@ screenResolution();
 SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
-let main_nowScene = 1,
+let main_nowScene = 28,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
