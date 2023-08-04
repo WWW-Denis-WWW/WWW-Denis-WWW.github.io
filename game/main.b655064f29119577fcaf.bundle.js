@@ -37017,7 +37017,7 @@ let soundForScene = {
       isLoop: true
     }, {
       audioName: '3-1стон',
-      volume: 0.6,
+      volume: 0.4,
       spacePlay: 2000,
       spaceDelay: 700
     }],
@@ -37026,22 +37026,17 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 400
     }, {
-      audioName: '3-2-1стон',
-      volume: 0.6,
+      audioName: ['3-2-1стон', '3-2-2стон'],
+      volume: 0.4,
       spacePlay: 2000,
       spaceDelay: 700
-    }, {
-      audioName: '3-2-2стон',
-      volume: 0.6,
-      spacePlay: 2000,
-      spaceDelay: 1700
     }],
     3: [{
       audioName: 'wetfuck4',
       spacePlay: 1000
     }, {
       audioName: '3-3стон',
-      volume: 0.6,
+      volume: 0.4,
       spacePlay: 1000
     }],
     4: [{
