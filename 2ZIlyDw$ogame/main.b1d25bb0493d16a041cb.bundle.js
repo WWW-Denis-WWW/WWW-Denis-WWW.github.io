@@ -3279,7 +3279,7 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон'];
+let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон', '4-2-2стон', '4-2-1стон'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
@@ -37057,7 +37057,7 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 800
     }, {
-      audioName: ['4-1стон', '4-2стон', '4-3стон'],
+      audioName: '4-1стон',
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 800
@@ -37067,9 +37067,7 @@ let soundForScene = {
       spacePlay: 2000,
       spaceDelay: 700
     }, {
-      audioName: ['4-1стон', '4-2стон', '4-3стон'],
-      startTime: 4.4,
-      endTime: 5,
+      audioName: ['4-2-1стон', '4-2-2стон'],
       volume: 0.6,
       spacePlay: 2000,
       spaceDelay: 700
@@ -37079,9 +37077,7 @@ let soundForScene = {
       spacePlay: 1000,
       spaceDelay: 200
     }, {
-      audioName: ['4-1стон', '4-2стон', '4-3стон'],
-      startTime: 4.4,
-      endTime: 5,
+      audioName: ['3-3-1стон', '3-3-2стон'],
       volume: 0.6,
       spacePlay: 1000,
       spaceDelay: 200
