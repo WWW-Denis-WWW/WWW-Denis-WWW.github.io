@@ -9,8 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/input.css" />
     <link rel="stylesheet" type="text/css" href="../css/chessboard-1.0.0.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/chess.css" />
-    <link rel="stylesheet" type="text/css" href="../css/main.css" />
-  <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />  <link rel="shortcut icon" href="" type="image/x-icon" />
   <title>Партия</title>
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -39,7 +38,7 @@
             <a href="#" class="menu-burger__item" id="play-white" >
               <div class="menu-burger__icon">
                 <div class="img">
-                  <img src="../img/chesspieces/wikipedia/wK.png" alt="">
+                  <picture><source srcset="../img/chesspieces/wikipedia/wK.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/wK.png" alt=""></picture>
                 </div>
               </div>
               <span>Играть за белых</span>
@@ -47,7 +46,7 @@
             <a href="#" class="menu-burger__item" id="play-black" >
               <div class="menu-burger__icon">
                 <div class="img">
-                  <img src="../img/chesspieces/wikipedia/bK.png" alt="">
+                  <picture><source srcset="../img/chesspieces/wikipedia/bK.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/bK.png" alt=""></picture>
                 </div>
               </div>
               <span>Играть за черных</span>
@@ -123,9 +122,25 @@
 </header>
         <main class="main">
             <section class="chess" id="chess">
+    <div class="chess__popup popup-chess">
+        <div class="popup-chess__container">
+            <h2 class="popup-chess__title">Выберите сложность бота</h2>
+            
+            <div class="popup-chess__level">
+                <div class="popup-chess__arrow decrease">
+                    <div id="lvlDown" class="arrow"></div>
+                </div>
+                <input id="inputLevel" placeholder="0" type="number" maxlength="2" max="20" min="0">
+                <div class="popup-chess__arrow increase">
+                    <div id="lvlUp" class="arrow"></div>
+                </div>
+            </div>
+            <button id="startPlay" class="popup-chess__btn">Играть</button>
+        </div>
+    </div>
     <div class="chess__background">
         <div class="img">
-            <picture><source srcset="../img/background.webp" type="image/webp"><img src="../img/background.jpg" alt="background"></picture>
+            <picture><source srcset="img/background.webp" type="image/webp"><img src="img/background.jpg" alt="background"></picture>
         </div>
     </div>
     <!-- Эти блоки появляються при уменьшении экрана   -->
@@ -155,7 +170,7 @@
             <div class="chat-chess__footer">
                 <div class="chat-chess__emoji">
                     <div class="img">
-                        <img src="../img/icons/icons.svg#emoji" alt="chat-chess">
+                        <img src="img/icons/icons.svg#emoji" alt="chat-chess">
                     </div>
                 </div>
                 <div class="chat-chess__input">
@@ -163,7 +178,7 @@
                 </div>
                 <div class="chat-chess__send">
                     <div class="img">
-                        <img src="../img/icons/icons.svg#send" alt="send">
+                        <img src="img/icons/icons.svg#send" alt="send">
                     </div>
                 </div>
             </div>
@@ -173,7 +188,7 @@
     <button class="chess__chat-openbtn chat-openbtn">
         <div class="chat-openbtn__box">
             <div class="img">
-                <img src="../img/icons/icons.svg#chat" alt="chat">
+                <img src="img/icons/icons.svg#chat" alt="chat">
             </div>
         </div>
     </button>
@@ -182,12 +197,12 @@
             <div class="playersMobile__box">
                 <div class="playersMobile__avatar">
                     <div class="img">
-                        <picture><source srcset="../img/expl-avatar.webp" type="image/webp"><img src="../img/expl-avatar.jpg" alt="avatar"></picture>
+                        <picture><source srcset="img/expl-avatar.webp" type="image/webp"><img src="img/expl-avatar.jpg" alt="avatar"></picture>
                     </div>
                 </div>
                 <div class="playersMobile__flag">
                     <div class="img">
-                        <img src="../img/icons/icons.svg#germany" alt="flag">
+                        <img src="img/icons/icons.svg#germany" alt="flag">
                     </div>
                     <div class="playersMobile__country">
                         <span>Germany</span>
@@ -214,12 +229,12 @@
             <div class="playersMobile__box">
                 <div class="playersMobile__avatar">
                     <div class="img">
-                        <picture><source srcset="../img/avatar.webp" type="image/webp"><img src="../img/avatar.jpg" alt="avatar"></picture>
+                        <picture><source srcset="img/avatar.webp" type="image/webp"><img src="img/avatar.jpg" alt="avatar"></picture>
                     </div>
                 </div>
                 <div class="playersMobile__flag">
                     <div class="img">
-                        <img src="../img/icons/icons.svg#germany" alt="flag">
+                        <img src="img/icons/icons.svg#germany" alt="flag">
                     </div>
                     <div class="playersMobile__country">
                         <span>Germany</span>
@@ -249,28 +264,28 @@
     <div class="chess__controlls controlls-chess">
         <button class="controlls-chess__start">
             <div class="img">
-                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                <img src="img/icons/icons.svg#arrow-player" alt="start">
             </div>
             <div class="img">
-                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                <img src="img/icons/icons.svg#arrow-player" alt="start">
             </div>
         </button>
         <button class="controlls-chess__prev">
             <div class="img">
-                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                <img src="img/icons/icons.svg#arrow-player" alt="start">
             </div>
         </button>
         <button class="controlls-chess__next">
             <div class="img">
-                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                <img src="img/icons/icons.svg#arrow-player" alt="start">
             </div>
         </button>
         <button class="controlls-chess__end">
             <div class="img">
-                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                <img src="img/icons/icons.svg#arrow-player" alt="start">
             </div>
             <div class="img">
-                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                <img src="img/icons/icons.svg#arrow-player" alt="start">
             </div>
         </button>
     </div>
@@ -279,13 +294,13 @@
             <div class="players-chess__player">
                 <div class="players-chess__avatar">
                     <div class="img">
-                        <picture><source srcset="../img/expl-avatar.webp" type="image/webp"><img src="../img/expl-avatar.jpg" alt="avatar"></picture>
+                        <picture><source srcset="img/expl-avatar.webp" type="image/webp"><img src="img/expl-avatar.jpg" alt="avatar"></picture>
                     </div>
                 </div>
                 <div class="players-chess__info ">
                     <div class="players-chess__flag">
                         <div class="img">
-                            <img src="../img/icons/icons.svg#germany" alt="germany">
+                            <img src="img/icons/icons.svg#germany" alt="germany">
                         </div>
                         <div class="players-chess__country">
                             <span>Germany</span>
@@ -322,13 +337,13 @@
             <div class="players-chess__player">
                 <div class="players-chess__avatar">
                     <div class="img">
-                        <picture><source srcset="../img/avatar.webp" type="image/webp"><img src="../img/avatar.jpg" alt="avatar"></picture>
+                        <picture><source srcset="img/avatar.webp" type="image/webp"><img src="img/avatar.jpg" alt="avatar"></picture>
                     </div>
                 </div>
                 <div class="players-chess__info ">
                     <div class="players-chess__flag">
                         <div class="img">
-                            <img src="../img/icons/icons.svg#germany" alt="germany">
+                            <img src="img/icons/icons.svg#germany" alt="germany">
                         </div>
                         <div class="players-chess__country">
                             <span>Germany</span>
@@ -365,13 +380,19 @@
         </div>
         <div class="chess__board board-chess">
             <div class="board-chess__wrapper">
-                <div class="board-chess__board" id="board">
+
+                <div class="board-chess__board" >
+                    <div class="board-chess__box">
+                        <div id="board"></div>
+                        <svg id="shapes" viewBox="-4 -4 8 8">
+                            <defs><marker id="arrowEnd" orient="auto" markerWidth="4" markerHeight="8" refX="2.05" refY="2" ><path d="M0,0 V4 L3,2 Z" fill="#7979C5"></path></marker></defs>
+                            <g>
+                            </g>
+                        </svg>
+                    </div>
+
                 </div>
-                <svg id="shapes" viewBox="-4 -4 8 8">
-                    <defs><marker id="arrowEnd" orient="auto" markerWidth="4" markerHeight="8" refX="2.05" refY="2" ><path d="M0,0 V4 L3,2 Z" fill="#7979C5"></path></marker></defs>
-                    <g>
-                    </g>
-                </svg>
+
             </div>
         </div>
         <div class="chess__right-side right-side ">
@@ -379,7 +400,7 @@
                 <div class="moves-side__header header-moves">
                     <div class="header-moves__icon">
                         <div class="img">
-                            <img src="../img/icons/icons.svg#horse" alt="">
+                            <img src="img/icons/icons.svg#horse" alt="">
                         </div>
                     </div>
                     <div class="header-moves__title">Партия</div>
@@ -393,28 +414,28 @@
                     <div class="controller-moves__box">
                         <button class="controller-moves__start">
                             <div class="img">
-                                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                                <img src="img/icons/icons.svg#arrow-player" alt="start">
                             </div>
                             <div class="img">
-                                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                                <img src="img/icons/icons.svg#arrow-player" alt="start">
                             </div>
                         </button>
                         <button class="controller-moves__prev">
                             <div class="img">
-                                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                                <img src="img/icons/icons.svg#arrow-player" alt="start">
                             </div>
                         </button>
                         <button class="controller-moves__next">
                             <div class="img">
-                                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                                <img src="img/icons/icons.svg#arrow-player" alt="start">
                             </div>
                         </button>
                         <button class="controller-moves__end">
                             <div class="img">
-                                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                                <img src="img/icons/icons.svg#arrow-player" alt="start">
                             </div>
                             <div class="img">
-                                <img src="../img/icons/icons.svg#arrow-player" alt="start">
+                                <img src="img/icons/icons.svg#arrow-player" alt="start">
                             </div>
                         </button>
                     </div>
@@ -441,7 +462,7 @@
                 <div class="chat-side__footer">
                     <div class="chat-side__emoji">
                         <div class="img">
-                            <img src="../img/icons/icons.svg#emoji" alt="emoji">
+                            <img src="img/icons/icons.svg#emoji" alt="emoji">
                         </div>
                     </div>
                     <div class="chat-side__input">
@@ -450,7 +471,7 @@
                     <div class="chat-side__btn">
                         <button>
                             <div class="img">
-                                <img src="../img/icons/icons.svg#send" alt="send">
+                                <img src="img/icons/icons.svg#send" alt="send">
                             </div>
                         </button>
                     </div>
