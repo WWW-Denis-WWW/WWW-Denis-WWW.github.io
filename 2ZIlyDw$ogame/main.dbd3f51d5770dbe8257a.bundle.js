@@ -37058,7 +37058,7 @@ let soundForScene = {
       spaceDelay: 800
     }, {
       audioName: '4-1стон',
-      volume: 0.6,
+      volume: 0.4,
       spacePlay: 2000,
       spaceDelay: 800
     }],
@@ -37068,7 +37068,7 @@ let soundForScene = {
       spaceDelay: 700
     }, {
       audioName: ['4-2-1стон', '4-2-2стон'],
-      volume: 0.6,
+      volume: 0.4,
       spacePlay: 2000,
       spaceDelay: 700
     }],
@@ -37078,7 +37078,7 @@ let soundForScene = {
       spaceDelay: 200
     }, {
       audioName: ['3-3-1стон', '3-3-2стон'],
-      volume: 0.6,
+      volume: 0.4,
       spacePlay: 1000,
       spaceDelay: 200
     }],
@@ -37464,7 +37464,7 @@ screenResolution();
 SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
-let main_nowScene = 28,
+let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
@@ -37705,3 +37705,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
+//# sourceMappingURL=main.dbd3f51d5770dbe8257a.bundle.js.map
