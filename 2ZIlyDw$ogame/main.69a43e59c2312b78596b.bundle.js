@@ -37113,7 +37113,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 50);
+    timer = setInterval(increaseProgress, 400);
     autoplay();
     return;
   }
@@ -37705,4 +37705,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.dbd3f51d5770dbe8257a.bundle.js.map
+//# sourceMappingURL=main.69a43e59c2312b78596b.bundle.js.map
