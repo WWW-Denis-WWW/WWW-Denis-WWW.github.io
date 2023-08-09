@@ -3502,11 +3502,17 @@ const Preloader = uploadedImages => {
     percentValue = 0;
   function listenLoads() {
     media.forEach(el => {
-      el.addEventListener('load', loaded);
+      el.addEventListener('load', () => {
+        console.log(el);
+        loaded();
+      });
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('canplaythrough', loaded);
+      el.audio.addEventListener('canplaythrough', () => {
+        console.log(el);
+        loaded();
+      });
       el.audio.addEventListener('error', loaded);
     });
   }
@@ -3525,6 +3531,7 @@ const Preloader = uploadedImages => {
     });
   }
   function countPercent() {
+    console.log(allElCount, loadedElements);
     if (allElCount === loadedElements) {
       percentValue = 100;
       setTimeout(hidePreloaderProgress, 500);
@@ -37705,4 +37712,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.69a43e59c2312b78596b.bundle.js.map
+//# sourceMappingURL=main.a340fea8e7d01386f3a0.bundle.js.map
