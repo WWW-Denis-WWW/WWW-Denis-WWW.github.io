@@ -3286,6 +3286,7 @@ function preloadSounds() {
     audio.src = `./assets/audio/${soundName}.mp3`;
     audio.controls = true;
     audio.type = 'audio/mpeg';
+
     // let audio = new Audio(`./assets/audio/${soundName}.mp3`)
     // audio.type = 'audio/mp3'
     allSounds.push({
@@ -3516,7 +3517,7 @@ const Preloader = uploadedImages => {
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('canplaythrough', () => {
+      el.audio.addEventListener('progress', () => {
         console.log(el);
         loaded();
       });
@@ -37719,4 +37720,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.ada305378d6092536dc9.bundle.js.map
+//# sourceMappingURL=main.2cbc494c989d5fa1b0b0.bundle.js.map
