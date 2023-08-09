@@ -3282,13 +3282,7 @@ const allSounds = [];
 let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон', '4-2-2стон', '4-2-1стон'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
-    let audio = document.createElement('audio');
-    audio.src = `./assets/audio/${soundName}.mp3`;
-    audio.controls = true;
-    audio.type = 'audio/mpeg';
-
-    // let audio = new Audio(`./assets/audio/${soundName}.mp3`)
-    // audio.type = 'audio/mp3'
+    let audio = new Audio(`./assets/audio/${soundName}.mp3`);
     allSounds.push({
       name: soundName,
       audio: audio
@@ -3517,7 +3511,7 @@ const Preloader = uploadedImages => {
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('progress', () => {
+      el.audio.addEventListener('canplay', () => {
         console.log(el);
         loaded();
       });
@@ -37720,4 +37714,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.2cbc494c989d5fa1b0b0.bundle.js.map
+//# sourceMappingURL=main.0c2f5ca698f4c7dedc4c.bundle.js.map
