@@ -3283,7 +3283,7 @@ let allSoundsName = ['вступление', 'дверца в статуе', 'Д
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     let audio = new Audio(`./assets/audio/${soundName}.mp3`);
-    audio.type = 'audio/mp3';
+    // audio.type = 'audio/mp3'
     allSounds.push({
       name: soundName,
       audio: audio
@@ -37715,4 +37715,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.8e3dfcdd84e38fe21f13.bundle.js.map
+//# sourceMappingURL=main.ecffb02d814f5b27baad.bundle.js.map
