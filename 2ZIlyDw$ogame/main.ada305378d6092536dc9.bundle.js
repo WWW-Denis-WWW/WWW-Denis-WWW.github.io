@@ -3285,7 +3285,7 @@ function preloadSounds() {
     let audio = document.createElement('audio');
     audio.src = `./assets/audio/${soundName}.mp3`;
     audio.controls = true;
-    audio.type = 'audio/mp3';
+    audio.type = 'audio/mpeg';
     // let audio = new Audio(`./assets/audio/${soundName}.mp3`)
     // audio.type = 'audio/mp3'
     allSounds.push({
@@ -37719,4 +37719,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.3cc76605d479d8e82051.bundle.js.map
+//# sourceMappingURL=main.ada305378d6092536dc9.bundle.js.map
