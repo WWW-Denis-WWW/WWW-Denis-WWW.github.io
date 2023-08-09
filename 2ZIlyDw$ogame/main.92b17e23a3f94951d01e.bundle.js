@@ -3511,7 +3511,7 @@ const Preloader = uploadedImages => {
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('canplay', () => {
+      el.audio.addEventListener('progress', () => {
         console.log(el);
         loaded();
       });
@@ -37714,4 +37714,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.0c2f5ca698f4c7dedc4c.bundle.js.map
+//# sourceMappingURL=main.92b17e23a3f94951d01e.bundle.js.map
