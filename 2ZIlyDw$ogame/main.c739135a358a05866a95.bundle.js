@@ -37122,7 +37122,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 50);
     autoplay();
     return;
   }
@@ -37473,7 +37473,7 @@ screenResolution();
 SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
-let main_nowScene = 1,
+let main_nowScene = 26,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
@@ -37714,4 +37714,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.92b17e23a3f94951d01e.bundle.js.map
+//# sourceMappingURL=main.c739135a358a05866a95.bundle.js.map
