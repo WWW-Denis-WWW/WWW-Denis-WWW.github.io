@@ -35968,7 +35968,7 @@ SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
 let scenesName = ['startScene'];
-let main_nowScene = 11,
+let main_nowScene = 1,
   talkIndex = 0,
   sceneNameIndex = 0,
   nowSceneName = scenesName[sceneNameIndex],
