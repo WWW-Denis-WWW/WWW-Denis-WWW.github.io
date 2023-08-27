@@ -3528,7 +3528,7 @@ const Preloader = uploadedImages => {
       el.removeEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.removeEventListener('canplaythrough', loaded);
+      el.audio.removeEventListener('progress', loaded);
       el.audio.removeEventListener('error', loaded);
     });
   }
@@ -3545,6 +3545,9 @@ const Preloader = uploadedImages => {
     setPercentValue();
   }
   function setPercentValue() {
+    if (percentValue > 100) {
+      percentValue = 100;
+    }
     percentEl.textContent = percentValue;
     preloaderProgressBg.style.width = `${percentValue}%`;
   }
@@ -37714,4 +37717,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.c739135a358a05866a95.bundle.js.map
+//# sourceMappingURL=main.aa6e706952fdfb1754cd.bundle.js.map
