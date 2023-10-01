@@ -2646,13 +2646,11 @@ function preloadAll() {
 /* harmony default export */ var preloadImg = (PreloadImg);
 ;// CONCATENATED MODULE: ./js/spineSceneAdap.js
 const adaptive = () => {
-  let spineScenes = document.querySelectorAll('.spine-scene');
+  let spineScenes = document.querySelector('#spines');
   setScale();
   window.addEventListener('resize', setScale);
   function setScale() {
-    spineScenes.forEach(spineScene => {
-      spineScene.style.transform = `scale(${(getContainerWidth() / 1350).toFixed(2)})`;
-    });
+    spineScenes.style.transform = `scale(${(getContainerWidth() / 1350).toFixed(2)})`;
     setSize();
   }
   function getContainerWidth() {
@@ -34914,6 +34912,7 @@ const tryStart = () => {
 };
 const create = _ref => {
   let {
+    app,
     spineDate,
     animName,
     idCon,
@@ -34927,7 +34926,6 @@ const create = _ref => {
     flip,
     delay
   } = _ref;
-  const app = new Application(w, h);
   const spine = new Spine(spineDate);
   console.log('spine', spine);
   if (gameScene) hideGameInterface();
@@ -34958,6 +34956,10 @@ function createApp(_ref2) {
   container.appendChild(app.view);
   apps.push(app);
   return app;
+}
+function clearApp(app) {
+  console.log('clear App');
+  app.stage.removeChildren();
 }
 function addSpineToApp(_ref3) {
   let {
@@ -35371,8 +35373,7 @@ const spinesDescription = [{
           animName: 'idle',
           posX: 250,
           posY: 940,
-          scale: 0.5,
-          flip: true
+          scale: 0.5
         },
         attachment: [{
           slotName: 'Isabell/isa dressed 03-04',
@@ -35406,8 +35407,7 @@ const spinesDescription = [{
           animName: 'idle',
           posX: 250,
           posY: 940,
-          scale: 0.5,
-          flip: true
+          scale: 0.5
         },
         attachment: [{
           slotName: 'Isabell/isa dressed 03-04',
@@ -35441,8 +35441,7 @@ const spinesDescription = [{
           animName: 'idle',
           posX: 250,
           posY: 940,
-          scale: 0.5,
-          flip: true
+          scale: 0.5
         },
         attachment: [{
           slotName: 'Isabell/isa dressed 03-04',
@@ -35476,8 +35475,7 @@ const spinesDescription = [{
           animName: 'idle',
           posX: 250,
           posY: 940,
-          scale: 0.5,
-          flip: true
+          scale: 0.5
         },
         attachment: [{
           slotName: 'Isabell/isa dressed 03-04',
@@ -35511,8 +35509,7 @@ const spinesDescription = [{
           animName: 'idle',
           posX: 250,
           posY: 940,
-          scale: 0.5,
-          flip: true
+          scale: 0.5
         },
         attachment: [{
           slotName: 'Isabell/isa dressed 03-04',
@@ -35546,8 +35543,7 @@ const spinesDescription = [{
           animName: 'idle',
           posX: 250,
           posY: 940,
-          scale: 0.5,
-          flip: true
+          scale: 0.5
         },
         attachment: [{
           slotName: 'Isabell/isa dressed 03-04',
@@ -36621,23 +36617,27 @@ const spinesDescription = [{
 
 
 let addedSpine = [];
-let nowScene;
+let nowScene, app;
 const spineManager = {
   checkScene,
   changeAnimation,
   getSpine
 };
+function createSpineApp() {
+  app = createApp({
+    w: 1366,
+    h: 768,
+    idCon: `#spines .spines__box`
+  });
+}
+createSpineApp();
 function checkScene(nowSceneId) {
   let sceneName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   nowScene = nowSceneId;
   allSpine.forEach(spine => {
-    if (nowScene === 'end') {
-      deleteSpine(spine.name);
+    if (nowScene === 'clear') {
+      clearApp(app);
     } else if (spine.sceneStart.includes(nowScene) && spine.sceneName === sceneName) {
-      addIdContainer(spine.name);
-      if (spine.sceneEnd.includes(nowScene)) {
-        deleteSpine(spine.name);
-      }
       generateSpine(spine);
     }
   });
@@ -36651,6 +36651,7 @@ function generateSpine(spine) {
   }
 }
 function baseSettingSpine(spine, description) {
+  clearApp(app);
   let spineAnim = createSpine(spine, description.setting);
   addedSpine.push({
     name: spine.name,
@@ -36659,22 +36660,18 @@ function baseSettingSpine(spine, description) {
 }
 function individualSettingSpine(spine, description) {
   let settings = description.individualScenesSetting[nowScene],
-    spineArray = [],
-    app = createApp({
-      w: settings.w,
-      h: settings.h,
-      idCon: `#${spine.name}`
-    });
+    spineArray = [];
+  clearApp(app);
   settings.spineSettings.forEach(settingsForSpine => {
     let attachment = settingsForSpine.attachment;
     let delayCrete = settingsForSpine.spineSetting.delay;
     let addedSpine;
     if (delayCrete) {
       setTimeout(() => {
-        addSpine(app, spine, addedSpine, settingsForSpine, attachment);
+        addSpine(spine, addedSpine, settingsForSpine, attachment);
       }, delayCrete);
     } else {
-      addSpine(app, spine, addedSpine, settingsForSpine, attachment);
+      addSpine(spine, addedSpine, settingsForSpine, attachment);
     }
   });
   addedSpine.push({
@@ -36685,7 +36682,7 @@ function individualSettingSpine(spine, description) {
     }
   });
 }
-function addSpine(app, spine, addedSpine, spineSetting, attachmentArr) {
+function addSpine(spine, addedSpine, spineSetting, attachmentArr) {
   console.log(spineSetting.spineSetting);
   addedSpine = addSpineToApp({
     app,
@@ -36717,21 +36714,15 @@ function changeAttachment(ChangeAttachmentSettings, addedSpine) {
 }
 function createSpine(spine, setting) {
   return create({
+    app,
     spineDate: spine.spine,
-    idCon: `#${spine.name}`,
+    idCon: `#spines .spines__box`,
     ...setting
   });
 }
-function deleteSpine(spineName) {
-  addedSpine.forEach((spineObj, i) => {
-    if (spineObj.name === spineName) {
-      clearSpine(spineObj, i);
-    }
-  });
-}
+function deleteSpine(spineName) {}
 function clearSpine(spineObj, i) {
-  let spine = spineObj.spine.spine,
-    app = spineObj.spine.app;
+  let spine = spineObj.spine.spine;
   addedSpine.splice(i, 1);
   if (Array.isArray(spine)) {
     spine.forEach(spine => {
@@ -36740,8 +36731,6 @@ function clearSpine(spineObj, i) {
   } else {
     destroySpine(spine);
   }
-  app.view.remove();
-  DestroyRenderer(app);
 }
 function destroySpine(spine) {
   spine.destroy({
@@ -36838,16 +36827,29 @@ function zoom(_ref) {
     y,
     fastZoom
   } = _ref;
+  console.log('zoom');
   let scenes = document.querySelector(`#scenes`);
-  if (fastZoom) scenes.classList.add('fastZoom');
-  scenes.style.scale = 1;
+  let canvas = document.querySelector(`#spines canvas`);
+  if (fastZoom) {
+    scenes.classList.add('fastZoom');
+    canvas.classList.add('fastZoom');
+  }
   scenes.style.scale = scale;
   scenes.style.transformOrigin = `${x}% ${y}%`;
-  setTimeout(() => scenes.classList.remove('fastZoom'));
+  canvas.style.scale = scale;
+  canvas.style.transformOrigin = `${x}% ${y}%`;
+  setTimeout(() => {
+    scenes.classList.remove('fastZoom');
+    canvas.classList.remove('fastZoom');
+  });
 }
-function fullZoom() {
-  let scenes = document.querySelector(`#scenes`);
-  scenes.style.scale = 1;
+function fullZoom(delay) {
+  setTimeout(() => {
+    let scenes = document.querySelector(`#scenes`);
+    let canvas = document.querySelector(`#spines canvas`);
+    canvas.style.scale = 1;
+    scenes.style.scale = 1;
+  }, delay || 0);
 }
 
 ;// CONCATENATED MODULE: ./js/map/map.js
@@ -36867,7 +36869,7 @@ function resetMap() {
   passedLocationIndexes = [5];
   let items = document.querySelectorAll('.map__item');
   items.forEach(item => {
-    if (+item.dataset.item === 5) item.classList.add('passed');
+    +item.dataset.item === 5 ? item.classList.add('passed') : item.classList.remove('passed');
   });
 }
 function ListenClickOnMapItems() {
@@ -37102,11 +37104,19 @@ const TALKING_POSITIONS = {
     modifyScene: {
       delayTalk: 5000,
       btn: 'continue',
-      anim: ['.scene1-textBlock']
+      anim: ['.scene1-textBlock'],
+      zoom: {
+        scale: 1.5,
+        x: 100,
+        y: 0,
+        fastZoom: true
+      }
     },
     talks: []
   }, {
     modifyScene: {
+      fullZoom: true,
+      fullZoomDelay: 1000,
       delayTalk: 5000,
       anim: ['.startScene2']
     },
@@ -38150,10 +38160,11 @@ function createItem(_ref) {
   img.style.width = w + '%';
   img.style.cursor = 'pointer';
   img.style.filter = 'drop-shadow(0px 0px 7px #fff)';
+  img.style.zIndex = '202';
   addItem(main_nowScene, img);
 }
 function addItem(nowScene, img) {
-  let scene = document.querySelector(`#scene${nowScene}`);
+  let scene = document.querySelector(`#container`);
   img.onclick = () => {
     img.classList.add('clickedItem');
     setTimeout(() => {
@@ -38229,7 +38240,7 @@ let sexScenes = {
     scene: 10
   }
 };
-let main_nowScene = 1,
+let main_nowScene = 10,
   talkIndex = 0,
   sceneNameIndex = 0,
   nowSceneName = scenesName[sceneNameIndex],
@@ -38306,17 +38317,18 @@ function changeScene() {
     if (sceneCount === main_nowScene + 1 && nowSceneName === 'endScene') {
       endScreen.showEndScreen();
       change_btns.hideBtn();
-      main_nowScene = 'end';
-      // pauseSoundAtEnd()
       hideTalkEl();
-      spineManager.checkScene(main_nowScene, nowSceneName);
+      // nowScene = 'end'
+      // pauseSoundAtEnd()
+
+      // spineManager.checkScene(nowScene, nowSceneName)
       return;
     } else if (isReplayPose) {
       endScreen.showEndScreen();
       editFunctions_hideGameInterface();
       change_btns.hideBtn();
-      main_nowScene = 'end';
-      spineManager.checkScene(main_nowScene, nowSceneName);
+      // nowScene = 'end'
+      // spineManager.checkScene(nowScene, nowSceneName)
       return;
     }
     updateSettings();
@@ -38420,7 +38432,7 @@ function modify(modifyObj) {
     zoom(modifyObj.zoom);
   }
   if (modifyObj.fullZoom) {
-    fullZoom();
+    fullZoom(modifyObj?.fullZoomDelay);
   }
 }
 function getDialog(sceneName, sceneNum, index) {
@@ -38440,12 +38452,12 @@ function replayGame() {
   nowSetting = sceneSettings[nowSceneName][main_nowScene - 1];
   modifyScene = nowSetting.modifyScene;
   resetMap();
-  change_btns.showBtn();
+  change_btns.hideBtn();
   removeAllScene();
   hideTalkEl();
   resetSceneCount();
   gameInit();
-  spineManager.checkScene('end');
+  spineManager.checkScene('clear');
   spineManager.checkScene(main_nowScene, nowSceneName);
   isReplayPose = false;
   editFunctions_hideGameInterface();
