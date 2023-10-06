@@ -3502,17 +3502,14 @@ const Preloader = uploadedImages => {
     loadedElements = 0,
     percentValue = 0;
   function listenLoads() {
-    console.log(audio.length);
     media.forEach(el => {
       el.addEventListener('load', () => {
-        console.log(el);
         loaded();
       });
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
       el.audio.addEventListener('progress', () => {
-        console.log(el);
         loaded();
       });
       el.audio.addEventListener('error', loaded);
@@ -3533,7 +3530,6 @@ const Preloader = uploadedImages => {
     });
   }
   function countPercent() {
-    console.log(allElCount, loadedElements);
     if (allElCount === loadedElements) {
       percentValue = 100;
       setTimeout(hidePreloaderProgress, 500);
@@ -3554,6 +3550,7 @@ const Preloader = uploadedImages => {
   function hidePreloaderProgress() {
     preloader.classList.add('hideProgress');
   }
+
   // init
   ;
   (function initPreloader() {
@@ -4156,14 +4153,17 @@ const TALKING_POSITIONS = [{
   sound: {
     pause: [{
       audioName: 'капли в пещере'
-    }],
-    play: [{
-      audioName: 'экшн',
-      isLoop: true,
-      volume: 0.045,
-      delay: 1000
     }]
+    // play: [
+    // 	{
+    // 		audioName: 'экшн',
+    // 		isLoop: true,
+    // 		volume: 0.045,
+    // 		delay: 1000,
+    // 	},
+    // ],
   },
+
   gameFade: 1200,
   gameDelayUpdate: 1000,
   gameScene: true
@@ -37416,7 +37416,7 @@ endScreenBtnsPose.forEach(btn => {
 const playInit = () => {
   const playBtn = document.querySelector('.preloader__play');
   function play() {
-    playStartSound();
+    // playStartSound()
     showWarnBtn();
     hidePreloader();
   }
@@ -37717,4 +37717,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.aa6e706952fdfb1754cd.bundle.js.map
+//# sourceMappingURL=main.2a049b0528e29c82ba8c.bundle.js.map
