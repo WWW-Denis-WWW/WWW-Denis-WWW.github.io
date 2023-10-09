@@ -38429,7 +38429,7 @@ let sexScenes = {
     scene: 10
   }
 };
-let main_nowScene = 10,
+let main_nowScene = 1,
   talkIndex = 0,
   sceneNameIndex = 0,
   nowSceneName = scenesName[sceneNameIndex],
