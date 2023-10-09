@@ -3100,7 +3100,7 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = [];
+let allSoundsName = ['грустная', 'веселая', 'Экшн', 'одеваются'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
@@ -3108,6 +3108,7 @@ function preloadSounds() {
       audio: new Audio(`./assets/audio/${soundName}.mp3`)
     });
   });
+  console.log(allSounds);
 }
 
 ;// CONCATENATED MODULE: ./js/sound/sound.js
@@ -3122,6 +3123,7 @@ let sound_sound = {
 let soundsVolume = {};
 let off = false;
 function getAudio(audioName) {
+  console.log(audioName, allSounds);
   return allSounds.find(sound => sound.name === audioName).audio;
 }
 function isPausedAudio(audioName) {
@@ -36852,7 +36854,49 @@ function fullZoom(delay) {
   }, delay || 0);
 }
 
+;// CONCATENATED MODULE: ./js/sound/audioModes.js
+
+function baseSound() {
+  if (sound_sound.isPausedAudio('грустная')) {
+    sound_sound.playAudio({
+      audioName: 'грустная',
+      volume: 0.05,
+      isLoop: true
+    });
+  }
+  if (!sound_sound.isPausedAudio('веселая')) {
+    sound_sound.pauseAudio({
+      audioName: 'веселая'
+    });
+  }
+}
+function offBaseSound() {
+  if (!sound.isPausedAudio('грустная')) {
+    sound.pauseAudio({
+      audioName: 'грустная'
+    });
+  }
+  if (!sound.isPausedAudio('веселая')) {
+    sound.pauseAudio({
+      audioName: 'веселая'
+    });
+  }
+}
+function sexSceneBackgroundSound() {
+  sound_sound.playAudio({
+    audioName: 'Экшн',
+    volume: 0.05,
+    isLoop: true
+  });
+}
+function offSexSceneBackgroundSound() {
+  if (!sound_sound.isPausedAudio('Экшн')) sound_sound.pauseAudio({
+    audioName: 'Экшн'
+  });
+}
+
 ;// CONCATENATED MODULE: ./js/map/map.js
+
 
 
 
@@ -36863,6 +36907,7 @@ function showMap() {
   removeElementsLastScene();
   map_map.classList.add('show');
   ListenClickOnMapItems();
+  baseSound();
 }
 function resetMap() {
   passedLocationCount = 0;
@@ -36995,14 +37040,19 @@ const Preloader = uploadedImages => {
     percentEl = document.querySelector('#loadPercent'),
     allElCount = media.length - uploadedImages.length + audio.length,
     loadedElements = 0,
-    percentValue = 0;
+    percentValue = 0
+    // init
+  ;
+  (function initPreloader() {
+    listenLoads();
+  })();
   function listenLoads() {
     media.forEach(el => {
       el.addEventListener('load', loaded);
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('process', loaded);
+      el.audio.addEventListener('canplaythrough', loaded);
       el.audio.addEventListener('error', loaded);
     });
   }
@@ -37038,11 +37088,6 @@ const Preloader = uploadedImages => {
   function hidePreloaderProgress() {
     preloader.classList.add('hideProgress');
   }
-  // init
-  ;
-  (function initPreloader() {
-    listenLoads();
-  })();
 };
 /* harmony default export */ var preloader = (Preloader);
 ;// CONCATENATED MODULE: ../node_modules/typed.js/dist/typed.module.js
@@ -37244,6 +37289,16 @@ const TALKING_POSITIONS = {
     }]
   }],
   butchery: [{
+    sound: {
+      pause: [{
+        audioName: 'грустная'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       btn: 'continue',
@@ -37317,6 +37372,13 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
+    sound: {
+      play: [{
+        audioName: 'одеваются',
+        startTime: 0.3,
+        endTime: 1
+      }]
+    },
     modifyScene: {
       fullZoom: true,
       delayTalk: 3000,
@@ -37332,11 +37394,31 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
+    sound: {
+      pause: [{
+        audioName: 'веселая'
+      }],
+      play: [{
+        audioName: 'Экшн',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     gameFade: 1200,
     gameDelayUpdate: 1000,
     gameScene: true,
     talks: []
   }, {
+    sound: {
+      pause: [{
+        audioName: 'Экшн'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       fadeStart: 2000,
       delayUpdate: 1000,
@@ -37370,6 +37452,16 @@ const TALKING_POSITIONS = {
     }]
   }],
   milk: [{
+    sound: {
+      pause: [{
+        audioName: 'грустная'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       btn: 'continue',
@@ -37386,6 +37478,13 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
+    sound: {
+      play: [{
+        audioName: 'одеваются',
+        startTime: 0.3,
+        endTime: 1
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       fullZoom: true
@@ -37461,11 +37560,31 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
+    sound: {
+      pause: [{
+        audioName: 'веселая'
+      }],
+      play: [{
+        audioName: 'Экшн',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     gameFade: 1200,
     gameDelayUpdate: 1000,
     gameScene: true,
     talks: []
   }, {
+    sound: {
+      pause: [{
+        audioName: 'Экшн'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       fadeStart: 2000,
       delayUpdate: 1000,
@@ -37498,6 +37617,16 @@ const TALKING_POSITIONS = {
     }]
   }],
   bakery: [{
+    sound: {
+      pause: [{
+        audioName: 'грустная'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       btn: 'continue',
@@ -37554,6 +37683,13 @@ const TALKING_POSITIONS = {
       type: 'br'
     }]
   }, {
+    sound: {
+      play: [{
+        audioName: 'одеваются',
+        startTime: 0.3,
+        endTime: 1
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       fullZoom: true,
@@ -37565,11 +37701,31 @@ const TALKING_POSITIONS = {
       type: 'br'
     }]
   }, {
+    sound: {
+      pause: [{
+        audioName: 'веселая'
+      }],
+      play: [{
+        audioName: 'Экшн',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     gameFade: 1200,
     gameDelayUpdate: 1000,
     gameScene: true,
     talks: []
   }, {
+    sound: {
+      pause: [{
+        audioName: 'Экшн'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       fadeStart: 2000,
       delayUpdate: 1000,
@@ -37598,6 +37754,16 @@ const TALKING_POSITIONS = {
     }]
   }],
   fish: [{
+    sound: {
+      pause: [{
+        audioName: 'грустная'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       btn: 'continue',
@@ -37691,6 +37857,13 @@ const TALKING_POSITIONS = {
       type: 'br'
     }]
   }, {
+    sound: {
+      play: [{
+        audioName: 'одеваются',
+        startTime: 0.3,
+        endTime: 1
+      }]
+    },
     modifyScene: {
       delayTalk: 3000,
       fullZoom: true,
@@ -37710,11 +37883,31 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
+    sound: {
+      pause: [{
+        audioName: 'веселая'
+      }],
+      play: [{
+        audioName: 'Экшн',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     gameFade: 1200,
     gameDelayUpdate: 1000,
     gameScene: true,
     talks: []
   }, {
+    sound: {
+      pause: [{
+        audioName: 'Экшн'
+      }],
+      play: [{
+        audioName: 'веселая',
+        volume: 0.05,
+        isLoop: true
+      }]
+    },
     modifyScene: {
       fadeStart: 2000,
       delayUpdate: 1000,
@@ -38070,21 +38263,16 @@ endScreenBtnsPose.forEach(btn => {
 
 
 
-
-
 const playAudioInit = () => {
   const playBtn = document.querySelector('.preloader__play');
   function play() {
-    playStartSound();
     showWarnBtn();
     hidePreloader();
+    baseSound();
   }
   function hidePreloader() {
     let preloader = document.querySelector('#preloader');
     preloader.classList.add('hide');
-  }
-  function playStartSound() {
-    // sound.playAudio({ audioName: 'вступление', volume: 0.2, isLoop: true })
   }
   playBtn.addEventListener('click', () => {
     play();
@@ -38214,6 +38402,7 @@ function checkItem(itemName) {
 
 
 
+
 //Main script
 sound_soundAction();
 js_fullscreen();
@@ -38327,6 +38516,8 @@ function changeScene() {
       endScreen.showEndScreen();
       editFunctions_hideGameInterface();
       change_btns.hideBtn();
+      offSexSceneBackgroundSound();
+      baseSound();
       // nowScene = 'end'
       // spineManager.checkScene(nowScene, nowSceneName)
       return;
@@ -38462,6 +38653,7 @@ function replayGame() {
   isReplayPose = false;
   editFunctions_hideGameInterface();
   fade(1000, true);
+  baseSound();
 }
 function replayPose(sexScene) {
   main_nowScene = sexScenes[sexScene].scene;
@@ -38472,6 +38664,7 @@ function replayPose(sexScene) {
   hideTalkEl();
   createSexScene(nowSceneName);
   spineManager.checkScene('end');
+  sexSceneBackgroundSound();
   spineManager.checkScene(main_nowScene, nowSceneName);
   initGameMechanics(main_nowScene, nowSceneName);
   isReplayPose = true;
