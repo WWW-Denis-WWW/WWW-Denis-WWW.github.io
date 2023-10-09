@@ -36938,6 +36938,7 @@ function changeAnimation(spineName, animationName) {
       return;
     }
     if (spineObj.name === spineName && animationName !== '4') {
+      console.log(spineObj.spine.spine.state.data.skeletonData.animations[animationName]);
       spineObj.spine.spine.state.setAnimation(0, animationName, loop);
       console.log(spineObj.spine.spine.state.tracks[0].animationEnd);
     }
@@ -36972,7 +36973,8 @@ let soundForScene = {
     }],
     2: [{
       audioName: 'Suckles_02',
-      isLoop: true
+      spacePlay: 3000,
+      spaceDelay: 500
     }],
     3: [{
       audioName: 'Sucking Faster_02',
@@ -37533,17 +37535,13 @@ function changeScene() {
     if (sceneCount === main_nowScene + 1) {
       endScreen.showEndScreen();
       change_btns.hideBtn();
-      main_nowScene = 'end';
       pauseSoundAtEnd();
       hideTalkEl();
-      spineManager.checkScene(main_nowScene);
       return;
     } else if (isReplayPose) {
       endScreen.showEndScreen();
       editFunctions_hideGameInterface();
       change_btns.hideBtn();
-      main_nowScene = 'end';
-      spineManager.checkScene(main_nowScene);
       return;
     }
     updateSettings();
@@ -37717,4 +37715,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.2a049b0528e29c82ba8c.bundle.js.map
+//# sourceMappingURL=main.17e17ec87beb56ea032d.bundle.js.map
