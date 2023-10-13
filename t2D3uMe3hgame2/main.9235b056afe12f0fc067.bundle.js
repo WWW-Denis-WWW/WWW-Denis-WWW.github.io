@@ -3100,7 +3100,7 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['грустная', 'веселая', 'Экшн', 'одеваются'];
+let allSoundsName = ['грустная', 'веселая', 'Экшн', 'одеваются', 'wetfuck1', 'churn2', 'wetfuck4', 'end', '4-1стон', '3-3-2стон', '3-3-1стон', 'Suckles_02', 'Suckles_01', 'Sucking Faster_02'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
@@ -3123,7 +3123,6 @@ let sound_sound = {
 let soundsVolume = {};
 let off = false;
 function getAudio(audioName) {
-  console.log(audioName, allSounds);
   return allSounds.find(sound => sound.name === audioName).audio;
 }
 function isPausedAudio(audioName) {
@@ -3165,7 +3164,7 @@ function setDurationAndDecrease(audio, audioName, duration, decrease) {
 }
 function setLoop(audio, startTime) {
   audio.onended = () => {
-    console.log(audio, 'play');
+    // console.log(audio, 'play')
     audio.currentTime = startTime;
     audio.play();
   };
@@ -3218,6 +3217,7 @@ function offVolumeSound() {
 function addVolumes(audioName, volume) {
   soundsVolume[audioName] = volume;
 }
+
 // window.addEventListener('blur')
 
 ;// CONCATENATED MODULE: ./js/sound/soundAction.js
@@ -34929,7 +34929,6 @@ const create = _ref => {
     delay
   } = _ref;
   const spine = new Spine(spineDate);
-  console.log('spine', spine);
   if (gameScene) hideGameInterface();
   spine.stateData.defaultMix = 0.25;
   spine.position.set(posX, posY);
@@ -34937,7 +34936,6 @@ const create = _ref => {
   if (flip) spine.scale.x = -scale;
   spine.state.setAnimation(0, animName, animLoop);
   app.stage.addChild(spine);
-  console.log(spine.state.tracks[0].animationEnd);
   let container = document.querySelector(idCon);
   setTimeout(() => container.appendChild(app.view), delay);
   if (gameScene && spine.state && spine.state.data) showGameInterface();
@@ -34960,7 +34958,6 @@ function createApp(_ref2) {
   return app;
 }
 function clearApp(app) {
-  console.log('clear App');
   app.stage.removeChildren();
 }
 function addSpineToApp(_ref3) {
@@ -36685,7 +36682,6 @@ function individualSettingSpine(spine, description) {
   });
 }
 function addSpine(spine, addedSpine, spineSetting, attachmentArr) {
-  console.log(spineSetting.spineSetting);
   addedSpine = addSpineToApp({
     app,
     spineDate: spine.spine,
@@ -36742,7 +36738,6 @@ function destroySpine(spine) {
   });
 }
 function addIdContainer(spineName) {
-  console.log(nowScene);
   let spineScene = document.querySelector(`.scene__spine${nowScene} .spine__box`);
   spineScene.id = spineName;
 }
@@ -36750,7 +36745,6 @@ function changeAnimation(spineName, animationName) {
   let loop = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
   addedSpine.forEach(spineObj => {
     if (spineObj.name !== spineName) return;
-    console.log(spineObj);
     let animations = spineObj.spine.spine.state.data.skeletonData.animations;
     spineObj.spine.spine.state.setAnimation(0, animationName, loop);
     if (animationName === '3' || animationName === '4' && animations.length === 5) {
@@ -36758,7 +36752,7 @@ function changeAnimation(spineName, animationName) {
     } else {
       spineObj.spine.spine.state.timeScale = 1;
     }
-    console.log(spineObj.spine.spine.state.tracks[0].animationEnd);
+    console.log(spineObj.spine.spine.state.data.skeletonData.animations[+animationName - 1]);
   });
 }
 function getSpine(name) {
@@ -36829,7 +36823,6 @@ function zoom(_ref) {
     y,
     fastZoom
   } = _ref;
-  console.log('zoom');
   let scenes = document.querySelector(`#scenes`);
   let canvas = document.querySelector(`#spines canvas`);
   if (fastZoom) {
@@ -36871,13 +36864,13 @@ function baseSound() {
   }
 }
 function offBaseSound() {
-  if (!sound.isPausedAudio('грустная')) {
-    sound.pauseAudio({
+  if (!sound_sound.isPausedAudio('грустная')) {
+    sound_sound.pauseAudio({
       audioName: 'грустная'
     });
   }
-  if (!sound.isPausedAudio('веселая')) {
-    sound.pauseAudio({
+  if (!sound_sound.isPausedAudio('веселая')) {
+    sound_sound.pauseAudio({
       audioName: 'веселая'
     });
   }
@@ -36890,7 +36883,7 @@ function sexSceneBackgroundSound() {
   });
 }
 function offSexSceneBackgroundSound() {
-  if (!sound_sound.isPausedAudio('Экшн')) sound_sound.pauseAudio({
+  sound_sound.pauseAudio({
     audioName: 'Экшн'
   });
 }
@@ -37478,13 +37471,6 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
-    sound: {
-      play: [{
-        audioName: 'одеваются',
-        startTime: 0.3,
-        endTime: 1
-      }]
-    },
     modifyScene: {
       delayTalk: 3000,
       fullZoom: true
@@ -37549,6 +37535,13 @@ const TALKING_POSITIONS = {
       type: 'bl'
     }]
   }, {
+    sound: {
+      play: [{
+        audioName: 'одеваются',
+        startTime: 0.3,
+        endTime: 1
+      }]
+    },
     modifyScene: {
       fullZoom: true,
       delayTalk: 3000,
@@ -38004,10 +37997,151 @@ let spineAnimInfo = [{
   sceneName: 'fish',
   name: 'fishVaginal'
 }];
+let soundForScene = {
+  butchery: {
+    1: [{
+      audioName: 'wetfuck4',
+      spacePlay: 2000,
+      spaceDelay: 600
+    }],
+    2: [{
+      audioName: '4-1стон',
+      spacePlay: 2000,
+      spaceDelay: 700,
+      volume: 0.4
+    }, {
+      audioName: 'wetfuck4',
+      spacePlay: 2000,
+      spaceDelay: 600
+    }],
+    3: [{
+      audioName: 'wetfuck4',
+      spacePlay: 1666.700005531311 / 1.75,
+      spaceDelay: 200
+    }, {
+      audioName: ['3-3-1стон', '3-3-2стон'],
+      spacePlay: 1666.700005531311 / 1.75,
+      spaceDelay: 300,
+      volume: 0.4
+    }],
+    4: [{
+      audioName: 'wetfuck1',
+      spacePlay: 600,
+      spaceDelay: 200,
+      spaceDuration: 1400
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 2,
+      isLoop: true,
+      duration: 2000,
+      delay: 1400
+    }]
+  },
+  milk: {
+    1: [{
+      audioName: 'churn2',
+      spacePlay: 2000,
+      spaceDelay: 600
+    }],
+    2: [{
+      audioName: 'Suckles_02',
+      spacePlay: 2000,
+      spaceDelay: 400
+    }],
+    3: [{
+      audioName: 'Suckles_01',
+      spacePlay: 2000 / 1.75,
+      spaceDelay: 400
+    }, {
+      audioName: 'Suckles_02',
+      spacePlay: 2000 / 1.75,
+      spaceDelay: 800
+    }],
+    4: [{
+      audioName: 'Sucking Faster_02',
+      startTime: 1.17,
+      endTime: 2,
+      spacePlay: 2000 / 1.75,
+      spaceDelay: 300
+    }],
+    5: [{
+      audioName: 'Sucking Faster_02',
+      startTime: 1.17,
+      endTime: 2,
+      spacePlay: 1200,
+      spaceDelay: 200,
+      spaceDuration: 1500
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 2,
+      isLoop: true,
+      duration: 2000,
+      delay: 1700
+    }]
+  },
+  bakery: {
+    1: [{
+      audioName: 'wetfuck4',
+      spacePlay: 2000,
+      spaceDelay: 1200
+    }],
+    2: [{
+      audioName: 'wetfuck4',
+      spacePlay: 1333.299994468689,
+      spaceDelay: 600
+    }],
+    3: [{
+      audioName: 'wetfuck1',
+      spacePlay: 1500 / 1.75,
+      spaceDelay: 800
+    }],
+    4: [{
+      audioName: 'end',
+      startTime: 1,
+      endTime: 2,
+      isLoop: true,
+      duration: 3000,
+      delay: 200
+    }]
+  },
+  fish: {
+    1: [{
+      audioName: 'churn2',
+      spacePlay: 2000,
+      spaceDelay: 1200
+    }],
+    2: [{
+      audioName: 'churn2',
+      spacePlay: 2000,
+      spaceDelay: 400
+    }],
+    3: [{
+      audioName: 'wetfuck4',
+      spacePlay: 1666.700005531311 / 1.75,
+      spaceDelay: 350
+    }],
+    4: [{
+      audioName: 'wetfuck4',
+      startTime: 1.17,
+      endTime: 2,
+      spacePlay: 600,
+      spaceDelay: 200,
+      spaceDuration: 1400
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 2,
+      isLoop: true,
+      duration: 2000,
+      delay: 1700
+    }]
+  }
+};
 let timersSpacePlay = [],
   timeoutsSpace = [],
   needGameBtns = [];
-let soundForScene = {};
 let progress, gameMode, unlockStage, timer, scene, sceneName, setedAnim, animationsLength;
 let progressBar = document.querySelector('#progress-game');
 let btns = Array.from(document.querySelectorAll('.gameBtn'));
@@ -38048,7 +38182,7 @@ function getSpineAnimInfo(scene) {
   return spineAnimInfo.find(item => item.scene === scene && item.sceneName === sceneName);
 }
 function updateProgressIfCan() {
-  if (gameMode == 'autoplay') {
+  if (gameMode === 'autoplay') {
     clearInterval(timer);
     timer = setInterval(increaseProgress, 50);
     autoplay();
@@ -38080,17 +38214,6 @@ function checkStage() {
       break;
     }
   }
-
-  // if (progress >= 100 && progress > 66) {
-  //     btns[3].disabled = false
-  //     unlockStage = 4
-  // } else if (progress >= 66 && progress > 33) {
-  //     unlockStage      = 3
-  //     btns[2].disabled = false
-  // } else if (progress >= 33) {
-  //     unlockStage      = 2
-  //     btns[1].disabled = false
-  // }
   setActiveBtn();
 }
 function autoplay() {
@@ -38098,29 +38221,18 @@ function autoplay() {
     let stageProgress = 100 / (needGameBtns.length - 1) * i;
     let nextStageProgress = 100 / (needGameBtns.length - 1) * (i + 1);
     if (unlockStage === animationsLength) {
-      return sceneEnd();
+      return sceneEnd(animationsLength);
     }
     if (progress >= stageProgress && progress < nextStageProgress && setedAnim != i + 1) {
       setedAnim = `${i + 1}`;
-      // setSoundForGameMode(i)
+      setSoundForGameMode(i + 1);
       setAnim(setedAnim);
       break;
     }
   }
-  // else if (progress >= 66 && progress > 33 && setedAnim != '3') {
-  //     setedAnim = '3'
-  //     setSoundForGameMode(3)
-  //     setAnim(setedAnim)
-  // } else if (progress >= 33 && progress < 66 && setedAnim != '2') {
-  //     setedAnim = '2'
-  //     setSoundForGameMode(2)
-  //     setAnim(setedAnim)
-  // }
 }
-
 function setAnim(animName) {
   let notEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  console.log(animName, notEnd);
   spineAnimInfo.forEach(anim => {
     if (anim.scene == scene) {
       spineManager.changeAnimation(anim.name, animName, notEnd);
@@ -38129,12 +38241,13 @@ function setAnim(animName) {
 }
 function updateStage(mode) {
   if (mode == animationsLength) {
-    sceneEnd();
+    sceneEnd(animationsLength);
     return;
   }
   if (gameMode != mode) {
     gameMode = mode;
     setActiveBtn();
+    console.log(unlockStage, mode);
     if (gameMode != 'autoplay') {
       setSoundForGameMode();
       setAnim(gameMode);
@@ -38161,11 +38274,10 @@ function disabledBtns() {
 function disabledAllBtns() {
   btns.forEach(btn => btn.disabled = true);
 }
-function sceneEnd() {
+function sceneEnd(stage) {
   clearInterval(timer);
   setAnim(`${animationsLength}`, false);
-
-  // setSoundForGameMode(4)
+  setSoundForGameMode(stage);
   setTimeout(() => {
     change_btns.showBtn();
   }, 2000);
@@ -38181,33 +38293,57 @@ function setActiveBtn() {
   });
 }
 function setSoundForGameMode(mode) {
-  return;
   if (timeoutsSpace.length) clearTimeoutSpaces();
   if (timersSpacePlay.length) clearTimers();
-  let needSounds = soundForScene[scene];
+  let needSounds = soundForScene[sceneName];
   let audioArrSetting = needSounds[mode || gameMode];
   Object.values(needSounds).forEach(audioSettingArr => {
     audioSettingArr.forEach(audioSetting => {
-      sound_sound.pauseAudio({
-        audioName: audioSetting.audioName
-      });
+      if (Array.isArray(audioSetting.audioName)) {
+        audioSetting.audioName.forEach(audioName => sound_sound.pauseAudio({
+          audioName
+        }));
+      } else {
+        sound_sound.pauseAudio({
+          audioName: audioSetting.audioName
+        });
+      }
     });
   });
   audioArrSetting.forEach(audioSetting => {
+    if (Array.isArray(audioSetting.audioName)) {
+      playGameAudio(audioSetting, true);
+    } else {
+      playGameAudio(audioSetting);
+    }
+  });
+  function playGameAudio(audioSetting) {
+    let random = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    let prevAudioName;
     let timeout = setTimeout(() => {
       if (audioSetting.spacePlay) {
-        sound_sound.playAudio(audioSetting);
+        let randomAudioName = getRandomAudioName(audioSetting.audioName);
+        random ? sound_sound.playAudio({
+          ...audioSetting,
+          audioName: randomAudioName
+        }) : sound_sound.playAudio(audioSetting);
+        prevAudioName = randomAudioName;
         let timer = setInterval(() => {
-          sound_sound.playAudio(audioSetting);
+          let randomAudioName = getRandomAudioName(audioSetting.audioName, prevAudioName);
+          random ? sound_sound.playAudio({
+            ...audioSetting,
+            audioName: randomAudioName
+          }) : sound_sound.playAudio(audioSetting);
+          prevAudioName = randomAudioName;
         }, audioSetting.spacePlay);
         timersSpacePlay.push(timer);
-        return;
+      } else {
+        sound_sound.playAudio(audioSetting);
       }
-      sound_sound.playAudio(audioSetting);
     }, audioSetting.spaceDelay);
     timeoutsSpace.push(timeout);
     if (audioSetting.spaceDuration) spaceDuration(audioSetting.spaceDuration);
-  });
+  }
   function spaceDuration(duration) {
     setTimeout(() => {
       clearTimeoutSpaces();
@@ -38225,6 +38361,16 @@ function setSoundForGameMode(mode) {
       clearInterval(timer);
     });
     timersSpacePlay = [];
+  }
+  function getRandomAudioName(audioNamesArr, prevAudioName) {
+    let audioName = audioNamesArr[randomInteger(0, audioNamesArr.length - 1)];
+    if (audioName === prevAudioName) return getRandomAudioName(audioNamesArr, prevAudioName);
+    return audioName;
+  }
+  function randomInteger(min, max) {
+    // получить случайное число от (min-0.5) до (max+0.5)
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
   }
 }
 
@@ -38509,7 +38655,6 @@ function changeScene() {
       hideTalkEl();
       // nowScene = 'end'
       // pauseSoundAtEnd()
-
       // spineManager.checkScene(nowScene, nowSceneName)
       return;
     } else if (isReplayPose) {
@@ -38562,9 +38707,7 @@ function setSetting() {
   }
 }
 function updateSettings() {
-  console.log(sceneSettings, nowSceneName, main_nowScene);
   nowSetting = sceneSettings[nowSceneName][main_nowScene];
-  console.log(nowSetting);
   isGameScene = nowSetting.gameScene;
   modifyScene = nowSetting.modifyScene;
   soundScene = nowSetting.sound;
@@ -38630,7 +38773,6 @@ function getDialog(sceneName, sceneNum, index) {
   return assets_dialog[sceneName][sceneNum - 1][index];
 }
 function getSettingForThisTalk(sceneName, idScene, indexTalk) {
-  console.log(sceneName, idScene, indexTalk);
   let talkSetting = sceneSettings[sceneName][idScene - 1][`talks`][indexTalk];
   return talkSetting ? [talkSetting.top, talkSetting.left, talkSetting.type] : [];
 }
@@ -38642,6 +38784,7 @@ function replayGame() {
   nowTalk = getDialog(nowSceneName, main_nowScene, talkIndex);
   nowSetting = sceneSettings[nowSceneName][main_nowScene - 1];
   modifyScene = nowSetting.modifyScene;
+  isGameScene = nowSetting.gameScene;
   resetMap();
   change_btns.hideBtn();
   removeAllScene();
@@ -38653,6 +38796,7 @@ function replayGame() {
   isReplayPose = false;
   editFunctions_hideGameInterface();
   fade(1000, true);
+  offSexSceneBackgroundSound();
   baseSound();
 }
 function replayPose(sexScene) {
@@ -38664,8 +38808,9 @@ function replayPose(sexScene) {
   hideTalkEl();
   createSexScene(nowSceneName);
   spineManager.checkScene('end');
-  sexSceneBackgroundSound();
   spineManager.checkScene(main_nowScene, nowSceneName);
+  offBaseSound();
+  sexSceneBackgroundSound();
   initGameMechanics(main_nowScene, nowSceneName);
   isReplayPose = true;
 }
