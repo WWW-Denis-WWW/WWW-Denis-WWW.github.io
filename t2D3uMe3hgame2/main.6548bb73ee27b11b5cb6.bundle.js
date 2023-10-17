@@ -3100,7 +3100,7 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['грустная', 'веселая', 'Экшн', 'одеваются', 'wetfuck1', 'churn2', 'wetfuck4', 'end', '4-1стон', '3-3-2стон', '3-3-1стон', 'Suckles_02', 'Suckles_01', 'Sucking Faster_02'];
+let allSoundsName = ['грустная', 'веселая', 'Экшн', 'одеваются', 'wetfuck1', 'churn2', 'wetfuck4', 'end', '4-1стон', '3-1стон', '3-3-2стон', '3-3-1стон', 'Suckles_02', 'Suckles_01', 'Sucking Faster_02'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     allSounds.push({
@@ -38008,7 +38008,7 @@ let soundForScene = {
       audioName: '4-1стон',
       spacePlay: 2000,
       spaceDelay: 700,
-      volume: 0.4
+      volume: 0.3
     }, {
       audioName: 'wetfuck4',
       spacePlay: 2000,
@@ -38022,7 +38022,7 @@ let soundForScene = {
       audioName: ['3-3-1стон', '3-3-2стон'],
       spacePlay: 1666.700005531311 / 1.75,
       spaceDelay: 300,
-      volume: 0.4
+      volume: 0.3
     }],
     4: [{
       audioName: 'wetfuck1',
@@ -38052,10 +38052,12 @@ let soundForScene = {
     3: [{
       audioName: 'Suckles_01',
       spacePlay: 2000 / 1.75,
+      volume: 0.7,
       spaceDelay: 400
     }, {
       audioName: 'Suckles_02',
       spacePlay: 2000 / 1.75,
+      volume: 0.7,
       spaceDelay: 800
     }],
     4: [{
@@ -38116,9 +38118,19 @@ let soundForScene = {
       audioName: 'churn2',
       spacePlay: 2000,
       spaceDelay: 400
+    }, {
+      audioName: '3-1стон',
+      volume: 0.3,
+      spacePlay: 2000,
+      spaceDelay: 700
     }],
     3: [{
       audioName: 'wetfuck4',
+      spacePlay: 1666.700005531311 / 1.75,
+      spaceDelay: 350
+    }, {
+      audioName: ['3-3-1стон', '3-3-2стон'],
+      volume: 0.3,
       spacePlay: 1666.700005531311 / 1.75,
       spaceDelay: 350
     }],
