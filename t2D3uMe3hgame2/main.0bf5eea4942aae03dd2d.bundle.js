@@ -38008,7 +38008,7 @@ let soundForScene = {
       audioName: '4-1стон',
       spacePlay: 2000,
       spaceDelay: 700,
-      volume: 0.3
+      volume: 0.15
     }, {
       audioName: 'wetfuck4',
       spacePlay: 2000,
@@ -38022,7 +38022,7 @@ let soundForScene = {
       audioName: ['3-3-1стон', '3-3-2стон'],
       spacePlay: 1666.700005531311 / 1.75,
       spaceDelay: 300,
-      volume: 0.3
+      volume: 0.15
     }],
     4: [{
       audioName: 'wetfuck1',
@@ -38120,7 +38120,7 @@ let soundForScene = {
       spaceDelay: 400
     }, {
       audioName: '3-1стон',
-      volume: 0.3,
+      volume: 0.15,
       spacePlay: 2000,
       spaceDelay: 700
     }],
@@ -38130,7 +38130,7 @@ let soundForScene = {
       spaceDelay: 350
     }, {
       audioName: ['3-3-1стон', '3-3-2стон'],
-      volume: 0.3,
+      volume: 0.15,
       spacePlay: 1666.700005531311 / 1.75,
       spaceDelay: 350
     }],
