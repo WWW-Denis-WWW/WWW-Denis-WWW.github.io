@@ -2632,13 +2632,11 @@ function preloadAll() {
 /* harmony default export */ var preloadImg = (PreloadImg);
 ;// CONCATENATED MODULE: ./js/spineSceneAdap.js
 const adaptive = () => {
-  let spineScenes = document.querySelectorAll('.spine-scene');
+  let spineScene = document.querySelector('#spines');
   setScale();
   window.addEventListener('resize', setScale);
   function setScale() {
-    spineScenes.forEach(spineScene => {
-      spineScene.style.transform = `scale(${(getContainerWidth() / 1350).toFixed(2)})`;
-    });
+    spineScene.style.transform = `scale(${(getContainerWidth() / 1350).toFixed(2)})`;
     setTalkSize();
   }
   function getContainerWidth() {
@@ -2651,38 +2649,67 @@ const adaptive = () => {
   }
 };
 /* harmony default export */ var spineSceneAdap = (adaptive);
+;// CONCATENATED MODULE: ./js/onSpine/onSpine.js
+let onSpineElements = [];
+let onSpineBox = document.querySelector('#onSpine .onSpine__box');
+function checkOnSpineScene(nowScene) {
+  console.log(nowScene, onSpineElements);
+  onSpineElements.forEach(elInfo => {
+    if (elInfo.scene == nowScene) {
+      showEl(elInfo.el);
+    } else {
+      hideEl(elInfo.el);
+    }
+  });
+}
+function addOnSpineEl(el, scene) {
+  onSpineBox.appendChild(el);
+  onSpineElements.push({
+    el,
+    scene
+  });
+}
+function clearOnSpineElements() {
+  onSpineElements = [];
+  onSpineBox.innerHTML = '';
+}
+function showEl(el) {
+  if (!el.classList.contains('show')) el.classList.add('show');
+}
+function hideEl(el) {
+  if (el.classList.contains('show')) el.classList.remove('show');
+}
+
 ;// CONCATENATED MODULE: ./js/allScene.js
+
 
 let sceneCount = 1,
   maxSceneCount = 100;
 class Scene {
   scene = null;
-  spine = null;
   constructor(id) {
     this.id = id;
     sceneCount++;
     this.sceneInitDOM();
   }
+
   // Создание каркаса сцены
   sceneInitDOM() {
     let container = document.querySelector('#container'),
       scene = document.createElement('div'),
       background = document.createElement('div'),
       characters = document.createElement('div');
-    this.spine = document.createElement('div');
     scene.id = `scene${this.id}`;
     scene.classList.add('scene');
-    this.spine.classList.add(`scene__spine${sceneCount - 1}`, 'spine-scene');
     background.classList.add('scene__background', 'background-scene');
     characters.classList.add('scene__characters', 'characters-scene');
     scene.style.zIndex = maxSceneCount - this.id;
-    this.spine.style.zIndex = 0;
     scene.appendChild(background);
     scene.appendChild(characters);
-    scene.appendChild(this.spine);
     container.appendChild(scene);
     this.scene = scene;
   }
+
   // Добавление фона к сцене
 
   addBackgroud(_ref) {
@@ -2695,7 +2722,8 @@ class Scene {
       zIndex,
       objectFit,
       objectPosition,
-      name
+      name,
+      onSpine
     } = _ref;
     let backgroundItem = document.createElement('div'),
       imgBox = document.createElement('div'),
@@ -2713,8 +2741,13 @@ class Scene {
     if (name) backgroundItem.classList.add(name);
     imgBox.appendChild(img);
     backgroundItem.appendChild(imgBox);
-    this.scene.querySelector('.background-scene').appendChild(backgroundItem);
+    if (onSpine) {
+      addOnSpineEl(backgroundItem, onSpine);
+    } else {
+      this.scene.querySelector('.background-scene').appendChild(backgroundItem);
+    }
   }
+
   // Добавление персонажей к сцене
   addCharacter(_ref2) {
     let {
@@ -2746,14 +2779,15 @@ class Scene {
     CharacterItem.appendChild(imgBox);
     this.scene.querySelector('.characters-scene').appendChild(CharacterItem);
   }
-  addDiv(className, zIndex) {
+  addDiv(className, zIndex, onSpine) {
     let div = document.createElement('div');
     div.classList.add(className);
     if (zIndex) div.style.zIndex = zIndex;
-    this.scene.appendChild(div);
-  }
-  setSpineIndex(index) {
-    this.spine.style.zIndex = index;
+    if (onSpine) {
+      addOnSpineEl(div, onSpine);
+    } else {
+      this.scene.appendChild(div);
+    }
   }
 }
 function resetSceneCount() {
@@ -2763,224 +2797,76 @@ function setSceneCount(count) {
   sceneCount = count;
 }
 function allScenesCreate() {
-  let beachStart = new Scene(sceneCount);
-  beachStart.addBackgroud({
-    src: './assets/media/beach/beach.webp'
+  beach();
+  jungle();
+  cave();
+  createSexScene(sceneCount);
+  createSexScene(sceneCount);
+  createSexScene(sceneCount);
+  createSexScene(sceneCount);
+  endSex();
+}
+function endSex() {
+  let endSex1 = new Scene(sceneCount);
+  endSex1.addBackgroud({
+    src: './assets/media/cave/floor.webp'
   });
-  let beachStart1 = new Scene(sceneCount);
-  beachStart1.addBackgroud({
-    src: './assets/media/beach/beach2.webp'
+  endSex1.addBackgroud({
+    src: './assets/media/cave/cum.webp'
   });
-  beachStart1.addBackgroud({
-    src: './assets/media/beach/boating-watercraft.webp',
-    w: '121%',
-    h: '70%',
-    t: '-5%',
-    l: '-41%'
+  let cave17 = new Scene(sceneCount);
+  cave17.addBackgroud({
+    src: './assets/media/cave/bg3.webp'
   });
-  beachStart1.addCharacter({
-    src: './assets/media/characters/Drake.webp',
-    name: 'Drake',
-    w: '35%',
-    h: '70%',
-    t: '4%',
-    l: '30%',
-    objectFit: 'contain'
+  let endSex2 = new Scene(sceneCount);
+  endSex2.addBackgroud({
+    src: './assets/media/cave/floor.webp'
   });
-  let beach1 = new Scene(sceneCount);
-  beach1.addBackgroud({
-    src: './assets/media/beach/bg1.webp',
-    objectPosition: 'bottom'
+  endSex2.addBackgroud({
+    src: './assets/media/cave/cum.webp'
   });
-  beach1.addBackgroud({
-    src: './assets/media/beach/boating-watercraft.webp',
-    w: '145%',
-    h: '70%',
-    t: '40%',
-    l: '-60%'
+  let endSex3 = new Scene(sceneCount);
+  endSex3.addBackgroud({
+    src: './assets/media/cave/floor.webp'
   });
-  let beach2 = new Scene(sceneCount);
-  beach2.addBackgroud({
-    src: './assets/media/beach/bg1.webp',
-    w: '180%',
-    h: '180%',
-    t: '-50%',
-    l: '-25%'
+  endSex3.addBackgroud({
+    src: './assets/media/cave/cum.webp'
   });
-  beach2.addBackgroud({
-    src: './assets/media/beach/boating-watercraft.webp',
-    w: '200%',
-    h: '200%',
-    t: '-30%',
-    l: '-50%'
+  let cave18 = new Scene(sceneCount);
+  cave18.addBackgroud({
+    src: './assets/media/cave/bg3.webp'
   });
-  let beach3 = new Scene(sceneCount);
-  beach3.addBackgroud({
-    src: './assets/media/beach/bg1.webp',
-    w: '158%',
-    h: '150%',
-    t: '-49%'
-  });
-  beach3.addBackgroud({
-    src: './assets/media/beach/boating-watercraft.webp',
-    w: '200%',
-    h: '200%',
-    t: '-30%',
-    l: '-11%',
-    zIndex: '1'
-  });
-  let beach4 = new Scene(sceneCount);
-  beach4.addBackgroud({
-    src: './assets/media/beach/bg1.webp',
-    w: '180%',
-    h: '180%',
-    t: '-50%',
-    l: '-25%'
-  });
-  beach4.addBackgroud({
-    src: './assets/media/beach/boating-watercraft.webp',
-    w: '200%',
-    h: '200%',
-    t: '-30%',
-    l: '-50%'
-  });
-  let beach5 = new Scene(sceneCount);
-  beach5.addBackgroud({
-    src: './assets/media/beach/bg1.webp',
-    objectPosition: 'bottom'
-  });
-  beach5.addBackgroud({
-    src: './assets/media/beach/boating-watercraft.webp',
-    w: '145%',
-    h: '70%',
-    t: '40%',
-    l: '-60%'
-  });
-  let jungle1 = new Scene(sceneCount);
-  jungle1.setSpineIndex(4);
-  jungle1.addBackgroud({
-    src: './assets/media/jungle/jungle-bg.webp',
-    zIndex: 1,
-    objectPosition: 'bottom'
-  });
-  jungle1.addBackgroud({
-    src: './assets/media/jungle/forest.webp',
-    zIndex: 5,
-    objectPosition: 'bottom'
-  });
-  jungle1.addBackgroud({
-    src: './assets/media/jungle/gress.webp',
-    h: '20%',
-    t: '83%',
-    zIndex: 5,
-    objectFit: 'contain'
-  });
-  jungle1.addBackgroud({
-    src: './assets/media/jungle/wall.webp',
-    w: '41%',
-    h: '60%',
-    t: '13%',
-    l: '65%'
-  });
-  jungle1.addBackgroud({
-    src: './assets/media/jungle/stone.webp',
-    h: '20%',
-    t: '66.5%',
-    l: '-10%',
-    zIndex: 2,
-    objectFit: 'contain'
-  });
-  jungle1.addBackgroud({
-    src: './assets/media/jungle/green.webp',
-    w: '18%',
-    h: '25%',
-    t: '69.5%',
-    l: '31%',
-    zIndex: 3,
-    objectFit: 'contain'
-  });
-  let jungle2 = new Scene(sceneCount);
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/jungle-bg.webp',
-    zIndex: 1,
-    objectPosition: 'bottom'
-  });
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/forest.webp',
-    zIndex: 5,
-    objectPosition: 'bottom'
-  });
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/gress.webp',
-    h: '20%',
-    t: '83%',
-    zIndex: 5,
-    objectFit: 'contain'
-  });
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/tonnel.webp',
-    w: '32%',
-    h: '51%',
-    t: '24.5%',
-    l: '70%'
-  });
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/wall.webp',
-    w: '41%',
-    h: '60%',
-    t: '13%',
-    l: '65%',
-    name: 'door-anime'
-  });
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/stone.webp',
-    h: '20%',
-    t: '66.5%',
-    l: '-10%',
-    zIndex: 2,
-    objectFit: 'contain',
-    name: 'stone-anim'
-  });
-  jungle2.addBackgroud({
-    src: './assets/media/jungle/green.webp',
-    w: '18%',
-    h: '25%',
-    t: '69.5%',
-    l: '31%',
-    zIndex: 3,
-    objectFit: 'contain'
-  });
-  jungle2.addCharacter({
-    src: './assets/media/characters/drake-compas.webp',
-    name: 'Drake-changeImg',
-    w: '21%',
-    h: '107%',
-    t: '5%',
-    l: '53%',
-    zIndex: 4,
-    objectFit: 'contain'
-  });
-  jungle2.addCharacter({
-    src: './assets/media/characters/Helen-sit.webp',
-    name: 'Helena-sit-anim',
-    w: '21%',
-    h: '107%',
-    t: '12%',
-    l: '32%',
-    zIndex: 4,
-    objectFit: 'contain'
-  });
-  // jungle2.addCharacter({
-  // 	src: './assets/media/characters/sally-big.webp',
-  // 	name: 'Sally-changeImg',
-  // 	w: '21%',
-  // 	h: '107%',
-  // 	t: '4%',
-  // 	l: '-2%',
-  // 	zIndex: 4,
-  // 	objectFit: 'contain',
-  // })
-  jungle2.setSpineIndex(4);
+}
+function createSexScene(sceneId) {
+  if (sceneId === 26) {
+    let sex1 = new Scene(sceneId);
+    sex1.addBackgroud({
+      src: './assets/media/cave/bg4.webp',
+      w: '109%',
+      objectPosition: 'bottom'
+    });
+  } else if (sceneId === 27) {
+    let sex2 = new Scene(sceneId);
+    sex2.addBackgroud({
+      src: './assets/media/cave/floor.webp'
+    });
+  } else if (sceneId === 28) {
+    let sex3 = new Scene(sceneId);
+    sex3.addBackgroud({
+      src: './assets/media/cave/bg4.webp',
+      w: '109%',
+      objectPosition: 'bottom'
+    });
+  } else if (sceneId === 29) {
+    let sex4 = new Scene(sceneId);
+    sex4.addBackgroud({
+      src: './assets/media/cave/colonn.webp',
+      objectPosition: 'bottom'
+    });
+  }
+  spineSceneAdap();
+}
+function cave() {
   let cave1 = new Scene(sceneCount);
   let cave3 = new Scene(sceneCount);
   cave3.addBackgroud({
@@ -2996,7 +2882,7 @@ function allScenesCreate() {
     zIndex: 0,
     objectFit: 'contain'
   });
-  cave3.addDiv('ligth1', 1);
+  cave3.addDiv('ligth1', 1, 11);
   let cave5 = new Scene(sceneCount);
   cave5.addBackgroud({
     src: './assets/media/cave/bg2.webp',
@@ -3155,68 +3041,225 @@ function allScenesCreate() {
     objectFit: 'contain',
     name: 'statue-trap2'
   });
-  createSexScene(sceneCount);
-  createSexScene(sceneCount);
-  createSexScene(sceneCount);
-  createSexScene(sceneCount);
-  let endSex1 = new Scene(sceneCount);
-  endSex1.addBackgroud({
-    src: './assets/media/cave/floor.webp'
+}
+function jungle() {
+  let jungle1 = new Scene(sceneCount);
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/jungle-bg.webp',
+    zIndex: 1,
+    objectPosition: 'bottom'
   });
-  endSex1.addBackgroud({
-    src: './assets/media/cave/cum.webp'
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/forest.webp',
+    zIndex: 5,
+    objectPosition: 'bottom',
+    onSpine: 8,
+    name: 'willShake'
   });
-  let cave17 = new Scene(sceneCount);
-  cave17.addBackgroud({
-    src: './assets/media/cave/bg3.webp'
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/gress.webp',
+    h: '20%',
+    t: '83%',
+    zIndex: 5,
+    objectFit: 'contain',
+    onSpine: 8,
+    name: 'willShake'
   });
-  let endSex2 = new Scene(sceneCount);
-  endSex2.addBackgroud({
-    src: './assets/media/cave/floor.webp'
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/wall.webp',
+    w: '41%',
+    h: '60%',
+    t: '13%',
+    l: '65%'
   });
-  endSex2.addBackgroud({
-    src: './assets/media/cave/cum.webp'
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/stone.webp',
+    h: '20%',
+    t: '66.5%',
+    l: '-10%',
+    zIndex: 2,
+    objectFit: 'contain'
   });
-  let endSex3 = new Scene(sceneCount);
-  endSex3.addBackgroud({
-    src: './assets/media/cave/floor.webp'
+  jungle1.addBackgroud({
+    src: './assets/media/jungle/green.webp',
+    w: '18%',
+    h: '25%',
+    t: '69.5%',
+    l: '31%',
+    zIndex: 3,
+    objectFit: 'contain'
   });
-  endSex3.addBackgroud({
-    src: './assets/media/cave/cum.webp'
+  let jungle2 = new Scene(sceneCount);
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/jungle-bg.webp',
+    zIndex: 1,
+    objectPosition: 'bottom'
   });
-  let cave18 = new Scene(sceneCount);
-  cave18.addBackgroud({
-    src: './assets/media/cave/bg3.webp'
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/forest.webp',
+    zIndex: 5,
+    objectPosition: 'bottom',
+    name: 'willShake',
+    onSpine: 9
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/gress.webp',
+    h: '20%',
+    t: '83%',
+    zIndex: 5,
+    objectFit: 'contain',
+    name: 'willShake',
+    onSpine: 9
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/tonnel.webp',
+    w: '32%',
+    h: '51%',
+    t: '24.5%',
+    l: '70%'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/wall.webp',
+    w: '41%',
+    h: '60%',
+    t: '13%',
+    l: '65%',
+    name: 'door-anime'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/stone.webp',
+    h: '20%',
+    t: '66.5%',
+    l: '-10%',
+    zIndex: 2,
+    objectFit: 'contain',
+    name: 'stone-anim'
+  });
+  jungle2.addBackgroud({
+    src: './assets/media/jungle/green.webp',
+    w: '18%',
+    h: '25%',
+    t: '69.5%',
+    l: '31%',
+    zIndex: 3,
+    objectFit: 'contain'
+  });
+  jungle2.addCharacter({
+    src: './assets/media/characters/drake-compas.webp',
+    name: 'Drake-changeImg',
+    w: '21%',
+    h: '107%',
+    t: '5%',
+    l: '53%',
+    zIndex: 4,
+    objectFit: 'contain'
+  });
+  jungle2.addCharacter({
+    src: './assets/media/characters/Helen-sit.webp',
+    name: 'Helena-sit-anim',
+    w: '21%',
+    h: '107%',
+    t: '12%',
+    l: '32%',
+    zIndex: 4,
+    objectFit: 'contain'
   });
 }
-function createSexScene(sceneId) {
-  if (sceneId === 26) {
-    let sex1 = new Scene(sceneId);
-    sex1.addBackgroud({
-      src: './assets/media/cave/bg4.webp',
-      w: '109%',
-      objectPosition: 'bottom'
-    });
-  } else if (sceneId === 27) {
-    let sex2 = new Scene(sceneId);
-    sex2.addBackgroud({
-      src: './assets/media/cave/floor.webp'
-    });
-  } else if (sceneId === 28) {
-    let sex3 = new Scene(sceneId);
-    sex3.addBackgroud({
-      src: './assets/media/cave/bg4.webp',
-      w: '109%',
-      objectPosition: 'bottom'
-    });
-  } else if (sceneId === 29) {
-    let sex4 = new Scene(sceneId);
-    sex4.addBackgroud({
-      src: './assets/media/cave/colonn.webp',
-      objectPosition: 'bottom'
-    });
-  }
-  spineSceneAdap();
+function beach() {
+  let beachStart1 = new Scene(sceneCount);
+  beachStart1.addBackgroud({
+    src: './assets/media/beach/beach.webp'
+  });
+  let beachStart2 = new Scene(sceneCount);
+  beachStart2.addBackgroud({
+    src: './assets/media/beach/beach2.webp'
+  });
+  beachStart2.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.webp',
+    w: '121%',
+    h: '70%',
+    t: '-5%',
+    l: '-41%'
+  });
+  beachStart2.addCharacter({
+    src: './assets/media/characters/Drake.webp',
+    name: 'Drake',
+    w: '35%',
+    h: '70%',
+    t: '4%',
+    l: '30%',
+    objectFit: 'contain'
+  });
+  let beachStart3 = new Scene(sceneCount);
+  beachStart3.addBackgroud({
+    src: './assets/media/beach/bg1.webp',
+    objectPosition: 'bottom'
+  });
+  beachStart3.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.webp',
+    w: '145%',
+    h: '70%',
+    t: '40%',
+    l: '-60%'
+  });
+  let beachStart4 = new Scene(sceneCount);
+  beachStart4.addBackgroud({
+    src: './assets/media/beach/bg1.webp',
+    w: '180%',
+    h: '180%',
+    t: '-50%',
+    l: '-25%'
+  });
+  beachStart4.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.webp',
+    w: '200%',
+    h: '200%',
+    t: '-30%',
+    l: '-50%'
+  });
+  let beachStart5 = new Scene(sceneCount);
+  beachStart5.addBackgroud({
+    src: './assets/media/beach/bg1.webp',
+    w: '158%',
+    h: '150%',
+    t: '-49%'
+  });
+  beachStart5.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.webp',
+    w: '200%',
+    h: '200%',
+    t: '-30%',
+    l: '-11%',
+    zIndex: '1',
+    onSpine: 5
+  });
+  let beachStart6 = new Scene(sceneCount);
+  beachStart6.addBackgroud({
+    src: './assets/media/beach/bg1.webp',
+    w: '180%',
+    h: '180%',
+    t: '-50%',
+    l: '-25%'
+  });
+  beachStart6.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.webp',
+    w: '200%',
+    h: '200%',
+    t: '-30%',
+    l: '-50%'
+  });
+  let beachStart7 = new Scene(sceneCount);
+  beachStart7.addBackgroud({
+    src: './assets/media/beach/bg1.webp',
+    objectPosition: 'bottom'
+  });
+  beachStart7.addBackgroud({
+    src: './assets/media/beach/boating-watercraft.webp',
+    w: '145%',
+    h: '70%',
+    t: '40%',
+    l: '-60%'
+  });
 }
 
 ;// CONCATENATED MODULE: ./js/scene-creater.js
@@ -3329,7 +3372,6 @@ function playAudio(_ref) {
     setLoop(audio, startTime);
   }
   setTimeout(() => {
-    console.log(audio, 'play');
     audio.play();
     setDurationAndDecrease(audio, audioName, duration, decrease);
   }, delay);
@@ -3343,7 +3385,6 @@ function setDurationAndDecrease(audio, audioName, duration, decrease) {
 }
 function setLoop(audio, startTime) {
   audio.onended = () => {
-    console.log(audio, 'play');
     audio.currentTime = startTime;
     audio.play();
   };
@@ -3362,7 +3403,6 @@ function pauseAudio(_ref2) {
     audioName,
     decrease = 0
   } = _ref2;
-  console.log(audioName);
   let audio = allSounds.find(sound => sound.name === audioName).audio;
   if (decrease) {
     decreaseVolume(decrease, audio);
@@ -3469,6 +3509,7 @@ function showBtn() {
   change_btns_button.activeBtn.disabled = false;
 }
 function changeBtn(btnType) {
+  console.log(btnType);
   if (btnType === 'continue' && change_btns_button.activeBtn != continueBtn) {
     change_btns_button.activeBtn = continueBtn;
     change_btns_button.btnBox.classList.remove('next');
@@ -3738,12 +3779,12 @@ const TALKING_POSITIONS = [{
   },
   talk1: {
     top: 22,
-    left: 11,
+    left: 12,
     type: 'cl'
   },
   talk2: {
     top: 22,
-    left: 11,
+    left: 12,
     type: 'cl'
   },
   talk3: {
@@ -3757,7 +3798,7 @@ const TALKING_POSITIONS = [{
     type: 'cl'
   },
   talk5: {
-    top: 20,
+    top: 24,
     left: 27.5,
     type: 'bc'
   },
@@ -3775,16 +3816,20 @@ const TALKING_POSITIONS = [{
     delayUpdate: 2000,
     delayTalk: 14000,
     anim: ['.Helena-sit-anim', '.stone-anim', '.door-anime', '#scene9'],
+    shake: {
+      delay: 5000,
+      transition: 5000
+    },
     imgChange: [{
       target: 'Helena-sit-anim',
       img1: {
         src: './assets/media/characters/Helen-sit-scare.webp',
         delay: 5000
-      },
-      img2: {
-        src: './assets/media/characters/Helen-sit-smile.webp',
-        delay: 14000
       }
+      // img2: {
+      // 	src: './assets/media/characters/Helen-sit-smile.webp',
+      // 	delay: 14000,
+      // },
     }, {
       target: 'Drake-changeImg',
       img1: {
@@ -3810,12 +3855,12 @@ const TALKING_POSITIONS = [{
   },
   talk1: {
     top: 24,
-    left: 11,
+    left: 13,
     type: 'cl'
   },
   talk2: {
     top: 24,
-    left: 11,
+    left: 13,
     type: 'cl'
   },
   talk3: {
@@ -4153,17 +4198,14 @@ const TALKING_POSITIONS = [{
   sound: {
     pause: [{
       audioName: 'капли в пещере'
+    }],
+    play: [{
+      audioName: 'экшн',
+      isLoop: true,
+      volume: 0.045,
+      delay: 1000
     }]
-    // play: [
-    // 	{
-    // 		audioName: 'экшн',
-    // 		isLoop: true,
-    // 		volume: 0.045,
-    // 		delay: 1000,
-    // 	},
-    // ],
   },
-
   gameFade: 1200,
   gameDelayUpdate: 1000,
   gameScene: true
@@ -35945,6 +35987,7 @@ const tryStart = () => {
 };
 const create = _ref => {
   let {
+    app,
     spineDate,
     animName,
     idCon,
@@ -35958,7 +36001,6 @@ const create = _ref => {
     flip,
     delay
   } = _ref;
-  const app = new Application(w, h);
   const spine = new Spine(spineDate);
   if (gameScene) hideGameInterface();
   spine.stateData.defaultMix = 0.25;
@@ -35967,7 +36009,6 @@ const create = _ref => {
   if (flip) spine.scale.x = -scale;
   spine.state.setAnimation(0, animName, animLoop);
   app.stage.addChild(spine);
-  console.log(spine.state.tracks[0].animationEnd);
   let container = document.querySelector(idCon);
   setTimeout(() => container.appendChild(app.view), delay);
   if (gameScene && spine.state && spine.state.data) showGameInterface();
@@ -35977,6 +36018,9 @@ const create = _ref => {
     app
   };
 };
+function clearApp(app) {
+  app.stage.removeChildren();
+}
 function createApp(_ref2) {
   let {
     idCon,
@@ -36029,7 +36073,7 @@ function addSpineToApp(_ref3) {
   if (gameScene && spine.state && spine.state.data) showGameInterface();
   return spine;
 }
-function DestroyRenderer(app) {
+function SpineScript_DestroyRenderer(app) {
   const index = apps.indexOf(app);
   if (index !== -1) {
     apps.splice(index, 1);
@@ -36065,17 +36109,17 @@ const allSpine = [{
   name: 'all',
   spine: spineAll,
   sceneStart: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 18, 19, 20, 21, 24, 31, 34],
-  sceneEnd: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 19, 20, 21, 22, 25, 32, 35]
+  sceneEnd: [15]
 }, {
   name: 'smileDrake',
   spine: spineSmileDrake,
   sceneStart: [9],
-  sceneEnd: [10]
+  sceneEnd: []
 }, {
   name: 'Torch',
   spine: spineTorch,
   sceneStart: [17],
-  sceneEnd: [18]
+  sceneEnd: []
 }, {
   name: 'H-transform',
   spine: spineHelenaT,
@@ -36105,7 +36149,7 @@ const allSpine = [{
   name: 'End',
   spine: spineEnd,
   sceneStart: [30, 32, 33],
-  sceneEnd: [31, 33, 34]
+  sceneEnd: []
 }];
 
 ;// CONCATENATED MODULE: ./js/spinesSettings.js
@@ -36240,9 +36284,9 @@ const spinesDescription = [{
       spineSettings: [{
         spineSetting: {
           animName: '1',
-          posX: 507,
-          posY: 700,
-          scale: 0.27,
+          posX: 497,
+          posY: 715,
+          scale: 0.29,
           randomStart: true,
           delay: 12000
         },
@@ -36799,19 +36843,26 @@ const spinesDescription = [{
 
 
 let addedSpine = [];
-let nowScene;
+let nowScene, app;
 const spineManager = {
   checkScene,
   changeAnimation
 };
+function createSpineApp() {
+  app = createApp({
+    w: 1366,
+    h: 768,
+    idCon: `#spines .spines__box`
+  });
+}
+createSpineApp();
 function checkScene(nowSceneId) {
   nowScene = nowSceneId;
+  if (nowScene === 'clear') return clearApp(app);
   allSpine.forEach(spine => {
-    if (spine.sceneEnd.includes(nowScene) || nowScene === 'end') {
-      deleteSpine(spine.name);
-    }
-    if (spine.sceneStart.includes(nowScene)) {
-      createContainer(spine.name);
+    if (spine.sceneEnd.includes(nowScene)) {
+      clearApp(app);
+    } else if (spine.sceneStart.includes(nowScene)) {
       generateSpine(spine);
     }
   });
@@ -36825,6 +36876,7 @@ function generateSpine(spine) {
   }
 }
 function baseSettingSpine(spine, description) {
+  clearApp(app);
   let spineAnim = createSpine(spine, description.setting);
   addedSpine.push({
     name: spine.name,
@@ -36833,22 +36885,18 @@ function baseSettingSpine(spine, description) {
 }
 function individualSettingSpine(spine, description) {
   let settings = description.individualScenesSetting[nowScene],
-    spineArray = [],
-    app = createApp({
-      w: settings.w,
-      h: settings.h,
-      idCon: `#${spine.name}`
-    });
+    spineArray = [];
+  clearApp(app);
   settings.spineSettings.forEach(settingsForSpine => {
     let attachment = settingsForSpine.attachment;
     let delayCrete = settingsForSpine.spineSetting.delay;
     let addedSpine;
     if (delayCrete) {
       setTimeout(() => {
-        addSpine(app, spine, addedSpine, settingsForSpine, attachment);
+        addSpine(spine, addedSpine, settingsForSpine, attachment);
       }, delayCrete);
     } else {
-      addSpine(app, spine, addedSpine, settingsForSpine, attachment);
+      addSpine(spine, addedSpine, settingsForSpine, attachment);
     }
   });
   addedSpine.push({
@@ -36859,7 +36907,7 @@ function individualSettingSpine(spine, description) {
     }
   });
 }
-function addSpine(app, spine, addedSpine, spineSetting, attachment) {
+function addSpine(spine, addedSpine, spineSetting, attachment) {
   console.log(spineSetting.spineSetting);
   addedSpine = addSpineToApp({
     app,
@@ -36883,8 +36931,9 @@ function changeAttachment(ChangeAttachmentSettings, addedSpine) {
 }
 function createSpine(spine, setting) {
   return create({
+    app,
     spineDate: spine.spine,
-    idCon: `#${spine.name}`,
+    idCon: `#spines .spines__box`,
     ...setting
   });
 }
@@ -36938,7 +36987,6 @@ function changeAnimation(spineName, animationName) {
       return;
     }
     if (spineObj.name === spineName && animationName !== '4') {
-      console.log(spineObj.spine.spine.state.data.skeletonData.animations[animationName]);
       spineObj.spine.spine.state.setAnimation(0, animationName, loop);
       console.log(spineObj.spine.spine.state.tracks[0].animationEnd);
     }
@@ -36973,8 +37021,7 @@ let soundForScene = {
     }],
     2: [{
       audioName: 'Suckles_02',
-      spacePlay: 3000,
-      spaceDelay: 500
+      isLoop: true
     }],
     3: [{
       audioName: 'Sucking Faster_02',
@@ -37370,6 +37417,24 @@ function fade(time, fast) {
     usingEl.classList.remove('show');
   }, time);
 }
+function shake(_ref) {
+  let {
+    delay,
+    transition
+  } = _ref;
+  const onSpineEl = document.querySelector('#onSpine');
+  const spineEl = document.querySelector('.spines__box');
+  [onSpineEl, spineEl].forEach(el => {
+    setTimeout(() => addShakeClass(el), delay);
+  });
+  function addShakeClass(el) {
+    el.classList.add('shaking');
+    setTimeout(() => removeShakeClass(el), transition);
+  }
+  function removeShakeClass(el) {
+    el.classList.remove('shaking');
+  }
+}
 
 ;// CONCATENATED MODULE: ./js/endScreen.js
 
@@ -37418,7 +37483,7 @@ endScreenBtnsPose.forEach(btn => {
 const playInit = () => {
   const playBtn = document.querySelector('.preloader__play');
   function play() {
-    // playStartSound()
+    playStartSound();
     showWarnBtn();
     hidePreloader();
   }
@@ -37471,6 +37536,7 @@ const playInit = () => {
 
 
 
+
 //Main script
 sound_soundAction();
 js_fullscreen();
@@ -37478,7 +37544,7 @@ screenResolution();
 SceneCreater(preloader);
 Warning(gameInit);
 play_btn();
-let main_nowScene = 26,
+let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
@@ -37487,6 +37553,7 @@ let soundScene = nowSetting.sound;
 let isGameScene = nowSetting.gameScene;
 let isReplayPose = false;
 function gameInit() {
+  checkOnSpineScene(main_nowScene);
   removeScenes(main_nowScene); //для тестов
   spineManager.checkScene(main_nowScene);
   change_btns.clickCallback(changeScene);
@@ -37532,16 +37599,21 @@ function changeScene() {
     talk_updateer(nowTalk, ...getSettingForThisTalk(main_nowScene, talkIndex));
   } else {
     // change scene
+
     if (sceneCount === main_nowScene + 1) {
       endScreen.showEndScreen();
       change_btns.hideBtn();
+      main_nowScene = 'end';
       pauseSoundAtEnd();
       hideTalkEl();
+      spineManager.checkScene(main_nowScene);
       return;
     } else if (isReplayPose) {
       endScreen.showEndScreen();
       editFunctions_hideGameInterface();
       change_btns.hideBtn();
+      main_nowScene = 'end';
+      spineManager.checkScene(main_nowScene);
       return;
     }
     updateSettings();
@@ -37570,6 +37642,7 @@ function changeScene() {
 function updateScene() {
   removeScene(main_nowScene);
   main_nowScene++;
+  checkOnSpineScene(main_nowScene);
   spineManager.checkScene(main_nowScene);
   talkIndex = 0;
   nowTalk = getDialog(main_nowScene, talkIndex);
@@ -37636,6 +37709,7 @@ function modify(modifyObj) {
   if (modifyObj.gameEnd) {
     editFunctions_hideGameInterface();
   }
+  if (modifyObj.shake) shake(modifyObj.shake);
 }
 function getDialog(idScene, indexTalk) {
   return dialog[idScene - 1][indexTalk];
@@ -37652,9 +37726,11 @@ function replayGame() {
   modifyScene = nowSetting.modifyScene;
   change_btns.showBtn();
   removeScenes(sceneCount);
+  clearOnSpineElements();
   hideTalkEl();
   resetSceneCount();
   allScenesCreate();
+  checkOnSpineScene(main_nowScene);
   spineManager.checkScene('end');
   spineManager.checkScene(main_nowScene);
   isReplayPose = false;
@@ -37715,4 +37791,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.17e17ec87beb56ea032d.bundle.js.map
+//# sourceMappingURL=main.17e98b3d96af287d7e49.bundle.js.map
