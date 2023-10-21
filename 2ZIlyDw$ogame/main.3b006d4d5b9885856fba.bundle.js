@@ -37640,9 +37640,9 @@ function changeScene() {
   }
 }
 function updateScene() {
+  checkOnSpineScene(main_nowScene + 1);
   removeScene(main_nowScene);
   main_nowScene++;
-  checkOnSpineScene(main_nowScene);
   spineManager.checkScene(main_nowScene);
   talkIndex = 0;
   nowTalk = getDialog(main_nowScene, talkIndex);
@@ -37791,4 +37791,4 @@ function pauseSoundAtEnd() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.17e98b3d96af287d7e49.bundle.js.map
+//# sourceMappingURL=main.3b006d4d5b9885856fba.bundle.js.map
