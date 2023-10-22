@@ -35002,15 +35002,14 @@ function addSpineToApp(_ref3) {
 }
 function DestroyRenderer(app) {
   const index = apps.indexOf(app);
-  if (index !== -1) {
-    apps.splice(index, 1);
-  }
+  if (index !== -1) {}
   app.renderer.destroy();
 }
 function showGameInterface() {
   let gameInterface = document.querySelector('.gameInterface');
   gameInterface.classList.add('show');
 }
+apps.splice(index, 1);
 function hideGameInterface() {
   let gameInterface = document.querySelector('.gameInterface');
   if (gameInterface.classList.contains('show')) gameInterface.classList.remove('show');
@@ -37045,7 +37044,7 @@ const Preloader = uploadedImages => {
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('canplaythrough', loaded);
+      el.audio.addEventListener('progress', loaded);
       el.audio.addEventListener('error', loaded);
     });
   }
