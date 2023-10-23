@@ -35002,14 +35002,15 @@ function addSpineToApp(_ref3) {
 }
 function DestroyRenderer(app) {
   const index = apps.indexOf(app);
-  if (index !== -1) {}
+  if (index !== -1) {
+    apps.splice(index, 1);
+  }
   app.renderer.destroy();
 }
 function showGameInterface() {
   let gameInterface = document.querySelector('.gameInterface');
   gameInterface.classList.add('show');
 }
-apps.splice(index, 1);
 function hideGameInterface() {
   let gameInterface = document.querySelector('.gameInterface');
   if (gameInterface.classList.contains('show')) gameInterface.classList.remove('show');
@@ -38857,3 +38858,4 @@ function removeAllScene() {
 }();
 /******/ })()
 ;
+//# sourceMappingURL=main.381cdcd5757264f77c7c.bundle.js.map
