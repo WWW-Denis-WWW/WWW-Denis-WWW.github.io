@@ -37041,11 +37041,15 @@ const Preloader = uploadedImages => {
   })();
   function listenLoads() {
     media.forEach(el => {
-      el.addEventListener('load', loaded);
+      el.addEventListener('load', loaded, {
+        once: true
+      });
       el.addEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.addEventListener('progress', loaded);
+      el.audio.addEventListener('progress', loaded, {
+        once: true
+      });
       el.audio.addEventListener('error', loaded);
     });
   }
@@ -37070,7 +37074,7 @@ const Preloader = uploadedImages => {
       removeListener();
       change_btns.hideBtn();
     } else {
-      percentValue = (loadedElements / allElCount * 100).toFixed(0);
+      percentValue = Math.min(100, loadedElements / allElCount * 100).toFixed(0);
     }
     setPercentValue();
   }
@@ -38858,4 +38862,4 @@ function removeAllScene() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.381cdcd5757264f77c7c.bundle.js.map
+//# sourceMappingURL=main.2f397c063401c372c0a5.bundle.js.map
