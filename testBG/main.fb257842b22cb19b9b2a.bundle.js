@@ -35364,10 +35364,9 @@ const TALKING_POSITIONS = {
       delayTalk: 5000,
       btn: 'continue',
       zoom: {
-        scale: 1.5,
+        scale: 4.5,
         x: 80,
-        y: 50,
-        fastZoom: true
+        y: 50
       }
     },
     talks: []
@@ -35383,7 +35382,7 @@ const TALKING_POSITIONS = {
       delayTalk: 5000,
       btn: 'continue',
       zoom: {
-        scale: 1.5,
+        scale: 3,
         x: 20,
         y: 50
       }
@@ -36215,4 +36214,4 @@ function removeAllScene() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.7e2cae05a5d917b0fae2.bundle.js.map
+//# sourceMappingURL=main.fb257842b22cb19b9b2a.bundle.js.map
