@@ -1,0 +1,225 @@
+.video-one {
+    padding-bottom: 5rem;
+}
+
+.video-one__heading {
+    border-bottom: 1px rgba(167, 168, 170, 0.15) solid;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 62rem) {
+    .video-one__heading {
+        padding-bottom: 1.5rem;
+    }
+}
+
+.video-one__top {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.video-one__go-back {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: inherit;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.video-one__go-back svg {
+    color: #E12728;
+    margin-right: 1rem;
+    height: 0.75rem;
+    width: 1.375rem;
+}
+
+.video-one__date {
+    color: #A7A8AA;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+@media screen and (max-width: 48rem) {
+    .video-one__date {
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+}
+
+.video-one__content {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 2.3;
+    margin-top: 3rem;
+}
+
+@media screen and (max-width: 62rem) {
+    .video-one__content {
+        margin-top: 2rem;
+        font-size: 1rem;
+        line-height: 2;
+    }
+}
+
+.video-one__content p + p {
+    margin-top: 3rem;
+}
+
+@media screen and (max-width: 62rem) {
+    .video-one__content p + p {
+        margin-top: 2rem;
+    }
+}
+
+.video-one__title {
+    font-size: 2.625rem;
+    line-height: 1.14;
+    margin-bottom: 1.5rem;
+    font-family: "Bebas Neue Cyrillic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media screen and (max-width: 62rem) {
+    .video-one__title {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .video-one__title {
+        font-size: 2rem;
+    }
+}
+
+.video-one__player {
+    /*min-height: 35rem;*/
+
+}
+
+.video-one__player .video-js {
+    width: 100%;
+
+}
+
+.video-one__player .vjs-poster img {
+    object-fit: cover;
+}
+.video-one__player .video-js .vjs-big-play-button{
+    border: none !important;
+    background: none !important;
+    font-size: 10em !important;
+}
+
+.video-one__image {
+    max-height: 30rem;
+    height: 45vw;
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.video-one__image img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.video-one__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 3rem;
+}
+
+@media screen and (max-width: 62rem) {
+    .video-one__bottom {
+        justify-content: center;
+    }
+}
+
+.video-one__share {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 48rem) {
+    .video-one__share {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+.video-one__share span {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+}
+
+.video-one__social-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 48rem) {
+    .video-one__social-list {
+        margin-top: 1rem;
+    }
+}
+
+.video-one__social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 1.5rem;
+}
+
+.video-one__social-item a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 1px #A7A8AA solid;
+    transition: all 0.3s;
+    color: #E12728;
+}
+
+.video-one__social-item a:hover {
+    color: #fff;
+    background: #E12728;
+    border-color: #E12728;
+}
+
+.video-one__social-item svg {
+    display: block;
+    height: 1rem;
+    width: 1rem;
+}
+
+.video-one__social-item svg.i-ig,
+.video-one__social-item svg.i-tt,
+.video-one__social-item svg.i-fb {
+    height: 0.75rem;
+    width: 0.75rem;
+}
