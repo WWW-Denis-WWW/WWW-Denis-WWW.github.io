@@ -37063,7 +37063,7 @@ const Preloader = uploadedImages => {
       el.removeEventListener('error', loaded);
     });
     audio.forEach(el => {
-      el.audio.removeEventListener('process', loaded);
+      el.audio.removeEventListener('canplaythrough', loaded, false);
       el.audio.removeEventListener('error', loaded);
     });
   }
@@ -38511,6 +38511,7 @@ function createItem(_ref) {
   img.style.cursor = 'pointer';
   img.style.filter = 'drop-shadow(0px 0px 7px #fff)';
   img.style.zIndex = '202';
+  img.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)';
   addItem(main_nowScene, img);
 }
 function addItem(nowScene, img) {
@@ -38862,4 +38863,4 @@ function removeAllScene() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.2f397c063401c372c0a5.bundle.js.map
+//# sourceMappingURL=main.512ca1f537606df72584.bundle.js.map
