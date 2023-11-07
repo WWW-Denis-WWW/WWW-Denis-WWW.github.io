@@ -2795,15 +2795,15 @@ function createStartScenes() {
   let sceneName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'startScene';
   let scene1 = new Scene(sceneCount, sceneName);
   scene1.addBackgroud({
-    src: './assets/img/img.jpg'
+    src: './assets/img/img.png'
   });
   let scene2 = new Scene(sceneCount, sceneName);
   scene2.addBackgroud({
-    src: './assets/img/img.jpg'
+    src: './assets/img/img.png'
   });
   let scene3 = new Scene(sceneCount, sceneName);
   scene3.addBackgroud({
-    src: './assets/img/img.jpg'
+    src: './assets/img/img.png'
   });
 }
 function resetSceneCount() {
@@ -35365,8 +35365,8 @@ const TALKING_POSITIONS = {
       btn: 'continue',
       zoom: {
         scale: 4.5,
-        x: 80,
-        y: 50
+        x: 95,
+        y: 40
       }
     },
     talks: []
@@ -35383,7 +35383,7 @@ const TALKING_POSITIONS = {
       btn: 'continue',
       zoom: {
         scale: 3,
-        x: 20,
+        x: 10,
         y: 50
       }
     },
@@ -36214,4 +36214,4 @@ function removeAllScene() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.fb257842b22cb19b9b2a.bundle.js.map
+//# sourceMappingURL=main.9be98d1854352bfa1729.bundle.js.map
