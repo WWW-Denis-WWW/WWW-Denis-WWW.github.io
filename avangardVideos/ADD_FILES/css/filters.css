@@ -1,0 +1,95 @@
+.video-filters {
+    margin-top: 0.8125em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.video-filters__select-box {
+    display: flex;
+    gap: 1em;
+}
+
+.video-filters__select {
+}
+
+.select-filter {
+    width: 12em;
+}
+
+.select-filter.show .select-filter__options {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.select-filter__value {
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+}
+
+.select-filter__value::after {
+    content: '';
+    display: block;
+    width: 0.5em;
+    height: 0.5em;
+    border-bottom: #000 solid 2px;
+    border-left: #000 solid 2px;
+    position: absolute;
+    right: 0.8125em;
+    top: 40%;
+    translate: 0 -50%;
+    rotate: -45deg;
+    border-radius: 0px 0px 0px 2px;
+}
+
+.select-filter__options-container {
+    position: relative;
+    width: 100%;
+    margin-top: .5em;
+}
+
+.select-filter__options {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+    padding: 0 !important;
+    transition: all .3s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.select-filter__option {
+    font-weight: 600;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #E12728;
+    cursor: pointer;
+}
+
+.select-filter__option.selected {
+    background: rgba(225, 39, 40, 0.3);
+}
+
+.select-filter__option:hover {
+    background: rgba(225, 39, 40, 0.3);
+}
+
+.select-filter__option:last-child {
+    border-bottom: none;
+}
+
+.video-filters__search {
+}
+
+.video-filters__search input, .select-filter__value, .select-filter__options {
+    box-sizing: border-box;
+    padding: 0.3125em 1em;
+    border: 1px solid #E12728;
+    font-size: 0.875em;
+    color: #000;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.video-filters__search input::placeholder {
+    color: #000;
+}

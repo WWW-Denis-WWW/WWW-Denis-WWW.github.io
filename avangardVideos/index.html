@@ -36,6 +36,8 @@
     <script src="js/common.js"></script>
     <!--    add files видео-->
     <link rel="stylesheet" href="ADD_FILES/css/video-list.css">
+    <link rel="stylesheet" href="ADD_FILES/css/filters.css">
+    <script src="ADD_FILES/js/select.js" defer></script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -369,6 +371,49 @@
             </div>
         </div>
         <div class="container">
+            <div class="video-filters">
+                <div class="video-filters__select-box">
+                    <div class="video-filters__select select-filter">
+                        <div class="select-filter__value"></div>
+                        <div class="select-filter__options-container">
+                            <div class="select-filter__options">
+                                <div class="select-filter__option selected">События</div>
+                                <div class="select-filter__option">Открытия</div>
+                                <div class="select-filter__option">Забытия</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-filters__select select-filter">
+                        <div class="select-filter__value"></div>
+                        <div class="select-filter__options-container">
+                            <div class="select-filter__options">
+                                <div class="select-filter__option selected">Самые новые</div>
+                                <div class="select-filter__option">Самые старые</div>
+                                <div class="select-filter__option">Самые средние</div>
+                                <div class="select-filter__option">Самые самые</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-filters__select select-filter">
+                        <div class="select-filter__value"></div>
+                        <div class="select-filter__options-container">
+                            <div class="select-filter__options">
+                                <div class="select-filter__option selected">7 дней</div>
+                                <div class="select-filter__option">6 дней</div>
+                                <div class="select-filter__option">5 дней</div>
+                                <div class="select-filter__option">4 дней</div>
+                                <div class="select-filter__option">3 дней</div>
+                                <div class="select-filter__option">2 дней</div>
+                                <div class="select-filter__option">1 дней</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-filters__search">
+                    <input type="text" placeholder="Поиск">
+                </div>
+            </div>
             <!-- video el-->
             <div class="video-list__grid js-video-list">
                 <div class="video-list__item">
