@@ -19,6 +19,7 @@
 .select-filter.show .select-filter__options {
     opacity: 1;
     pointer-events: all;
+
 }
 
 .select-filter__value {
@@ -57,6 +58,8 @@
     transition: all .3s;
     opacity: 0;
     pointer-events: none;
+    max-height: 10rem;
+    overflow-y: auto;
 }
 
 .select-filter__option {
@@ -92,4 +95,35 @@
 
 .video-filters__search input::placeholder {
     color: #000;
+}
+
+@media screen and (max-width: 62rem) {
+    .video-filters {
+        flex-direction: column;
+    }
+
+    .video-filters__search input {
+        width: 100%;
+    }
+
+    .video-filters__select-box {
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .video-filters {
+        max-width: 28rem;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .video-filters__select-box {
+        flex-direction: column;
+        gap: 0.1rem
+    }
+
+    .select-filter {
+        width: 100%;
+    }
 }
