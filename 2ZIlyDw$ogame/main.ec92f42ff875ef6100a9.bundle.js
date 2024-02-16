@@ -3473,7 +3473,8 @@ let fullscreen = () => {
   fullscreenBlock = document.querySelector(".settings .fullscreen");
   fullscreenBlock.addEventListener("click", fullscreenModeChange);
   function fullscreenModeChange() {
-    if (document.fullscreenElement) {
+    let fullscreenEl = document.fullscreenElement && document.fullscreenElement !== null || document.webkitFullscreenElement && document.webkitFullscreenElement !== null || document.mozFullScreenElement && document.mozFullScreenElement !== null || document.msFullscreenElement && document.msFullscreenElement !== null;
+    if (fullscreenEl) {
       exitFullscreen();
     } else {
       goFullscreen();
