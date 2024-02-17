@@ -3326,9 +3326,16 @@ let allSoundsName = ['вступление', 'дверца в статуе', 'Д
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     let audio = new Audio(`./assets/audio/${soundName}.mp3`);
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let source = audioCtx.createMediaElementSource(audio);
+    let gainNode = audioCtx.createGain();
+    source.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
     allSounds.push({
       name: soundName,
-      audio: audio
+      audio: audio,
+      source: source,
+      gainNode: gainNode
     });
   });
 }
@@ -3345,12 +3352,12 @@ let sound = {
 let soundsVolume = {};
 let off = false;
 let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-function getAudio(audioName) {
-  return allSounds.find(sound => sound.name === audioName).audio;
+function getSound(audioName) {
+  return allSounds.find(sound => sound.name === audioName);
 }
 function isPausedAudio(audioName) {
-  let audio = getAudio(audioName);
-  return audio.paused;
+  let sound = getSound(audioName);
+  return sound.audio.paused;
 }
 function playAudio(_ref) {
   let {
@@ -3363,20 +3370,20 @@ function playAudio(_ref) {
     decrease = 0,
     duration
   } = _ref;
-  let audio = getAudio(audioName);
-  audio.volume = off ? 0 : volume;
+  let sound = getSound(audioName);
+  sound.gainNode.gain.value = off ? 0 : volume;
   if (volume !== 1) addVolumes(audioName, volume);
-  audio.currentTime = startTime;
+  sound.audio.currentTime = startTime;
   if (endTime) {
-    setTime(audio, startTime, endTime, isLoop);
+    setTime(sound.audio, startTime, endTime, isLoop);
   } else if (isLoop) {
-    setLoop(audio, startTime);
+    setLoop(sound.audio, startTime);
   }
   setTimeout(() => {
-    audio.play();
-    setDurationAndDecrease(audio, audioName, duration, decrease);
+    sound.audio.play();
+    setDurationAndDecrease(sound.audio, audioName, duration, decrease);
   }, delay);
-  return audio;
+  return sound.audio;
 }
 function setDurationAndDecrease(audio, audioName, duration, decrease) {
   if (duration) setTimeout(() => pauseAudio({
@@ -3415,7 +3422,7 @@ function onVolumeSound() {
   off = false;
   allSounds.forEach(sound => {
     let isHaveVolume = (sound.name in soundsVolume);
-    setVolume(sound.audio, isHaveVolume ? soundsVolume[sound.name] : 1);
+    setVolume(sound, isHaveVolume ? soundsVolume[sound.name] : 1);
   });
 }
 function decreaseVolume(duration, audio) {
@@ -3433,17 +3440,18 @@ function decreaseVolume(duration, audio) {
 }
 function offVolumeSound() {
   off = true;
-  allSounds.forEach(sound => setVolume(sound.audio, 0));
+  allSounds.forEach(sound => setVolume(sound, 0));
 }
 function addVolumes(audioName, volume) {
   soundsVolume[audioName] = volume;
 }
-function setVolume(audio, volume) {
-  let source = audioCtx.createMediaElementSource(audio);
-  let gainNode = audioCtx.createGain();
-  gainNode.gain.value = volume;
-  source.disconnect();
-  gainNode.disconnect();
+function setVolume(sound, volume) {
+  sound.gainNode.gain.value = volume;
+  // let source = audioCtx.createMediaElementSource(audio);
+  // let gainNode        = audioCtx.createGain();
+  // gainNode.gain.value = volume;
+  // source.disconnect();
+  // gainNode.disconnect();
 }
 
 // window.addEventListener('blur')
@@ -3467,183 +3475,17 @@ let soundAction = () => {
   }
 };
 /* harmony default export */ var sound_soundAction = (soundAction);
-;// CONCATENATED MODULE: ../node_modules/screenfull/index.js
-/* eslint-disable promise/prefer-await-to-then */
-
-const methodMap = [
-	[
-		'requestFullscreen',
-		'exitFullscreen',
-		'fullscreenElement',
-		'fullscreenEnabled',
-		'fullscreenchange',
-		'fullscreenerror',
-	],
-	// New WebKit
-	[
-		'webkitRequestFullscreen',
-		'webkitExitFullscreen',
-		'webkitFullscreenElement',
-		'webkitFullscreenEnabled',
-		'webkitfullscreenchange',
-		'webkitfullscreenerror',
-
-	],
-	// Old WebKit
-	[
-		'webkitRequestFullScreen',
-		'webkitCancelFullScreen',
-		'webkitCurrentFullScreenElement',
-		'webkitCancelFullScreen',
-		'webkitfullscreenchange',
-		'webkitfullscreenerror',
-
-	],
-	[
-		'mozRequestFullScreen',
-		'mozCancelFullScreen',
-		'mozFullScreenElement',
-		'mozFullScreenEnabled',
-		'mozfullscreenchange',
-		'mozfullscreenerror',
-	],
-	[
-		'msRequestFullscreen',
-		'msExitFullscreen',
-		'msFullscreenElement',
-		'msFullscreenEnabled',
-		'MSFullscreenChange',
-		'MSFullscreenError',
-	],
-];
-
-const nativeAPI = (() => {
-	if (typeof document === 'undefined') {
-		return false;
-	}
-
-	const unprefixedMethods = methodMap[0];
-	const returnValue = {};
-
-	for (const methodList of methodMap) {
-		const exitFullscreenMethod = methodList?.[1];
-		if (exitFullscreenMethod in document) {
-			for (const [index, method] of methodList.entries()) {
-				returnValue[unprefixedMethods[index]] = method;
-			}
-
-			return returnValue;
-		}
-	}
-
-	return false;
-})();
-
-const eventNameMap = {
-	change: nativeAPI.fullscreenchange,
-	error: nativeAPI.fullscreenerror,
-};
-
-// eslint-disable-next-line import/no-mutable-exports
-let screenfull = {
-	// eslint-disable-next-line default-param-last
-	request(element = document.documentElement, options) {
-		return new Promise((resolve, reject) => {
-			const onFullScreenEntered = () => {
-				screenfull.off('change', onFullScreenEntered);
-				resolve();
-			};
-
-			screenfull.on('change', onFullScreenEntered);
-
-			const returnPromise = element[nativeAPI.requestFullscreen](options);
-
-			if (returnPromise instanceof Promise) {
-				returnPromise.then(onFullScreenEntered).catch(reject);
-			}
-		});
-	},
-	exit() {
-		return new Promise((resolve, reject) => {
-			if (!screenfull.isFullscreen) {
-				resolve();
-				return;
-			}
-
-			const onFullScreenExit = () => {
-				screenfull.off('change', onFullScreenExit);
-				resolve();
-			};
-
-			screenfull.on('change', onFullScreenExit);
-
-			const returnPromise = document[nativeAPI.exitFullscreen]();
-
-			if (returnPromise instanceof Promise) {
-				returnPromise.then(onFullScreenExit).catch(reject);
-			}
-		});
-	},
-	toggle(element, options) {
-		return screenfull.isFullscreen ? screenfull.exit() : screenfull.request(element, options);
-	},
-	onchange(callback) {
-		screenfull.on('change', callback);
-	},
-	onerror(callback) {
-		screenfull.on('error', callback);
-	},
-	on(event, callback) {
-		const eventName = eventNameMap[event];
-		if (eventName) {
-			document.addEventListener(eventName, callback, false);
-		}
-	},
-	off(event, callback) {
-		const eventName = eventNameMap[event];
-		if (eventName) {
-			document.removeEventListener(eventName, callback, false);
-		}
-	},
-	raw: nativeAPI,
-};
-
-Object.defineProperties(screenfull, {
-	isFullscreen: {
-		get: () => Boolean(document[nativeAPI.fullscreenElement]),
-	},
-	element: {
-		enumerable: true,
-		get: () => document[nativeAPI.fullscreenElement] ?? undefined,
-	},
-	isEnabled: {
-		enumerable: true,
-		// Coerce to boolean in case of old WebKit.
-		get: () => Boolean(document[nativeAPI.fullscreenEnabled]),
-	},
-});
-
-if (!nativeAPI) {
-	screenfull = {isEnabled: false};
-}
-
-/* harmony default export */ var node_modules_screenfull = (screenfull);
-
 ;// CONCATENATED MODULE: ./js/fullscreen.js
-
 let fullscreen = () => {
   let fullscreenBlock;
   fullscreenBlock = document.querySelector(".settings .fullscreen");
   fullscreenBlock.addEventListener("click", fullscreenModeChange);
   function fullscreenModeChange() {
-    // let fullscreenEl = (document.fullscreenElement && document.fullscreenElement !== null) ||
-    //     (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-    //     (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-    //     (document.msFullscreenElement && document.msFullscreenElement !== null);
-    if (node_modules_screenfull.isFullscreen) {
-      node_modules_screenfull.exit();
+    let fullscreenEl = document.fullscreenElement && document.fullscreenElement !== null || document.webkitFullscreenElement && document.webkitFullscreenElement !== null || document.mozFullScreenElement && document.mozFullScreenElement !== null || document.msFullscreenElement && document.msFullscreenElement !== null;
+    if (fullscreenEl) {
+      exitFullscreen();
     } else {
-      node_modules_screenfull.request();
+      goFullscreen();
     }
   }
 };
