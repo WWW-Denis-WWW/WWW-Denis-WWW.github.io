@@ -3411,12 +3411,12 @@ function pauseAudio(_ref2) {
     audioName,
     decrease = 0
   } = _ref2;
-  let audio = allSounds.find(sound => sound.name === audioName).audio;
+  let sound = allSounds.find(sound => sound.name === audioName);
   if (decrease) {
-    decreaseVolume(decrease, audio);
+    decreaseVolume(decrease, sound);
     return;
   }
-  audio.pause();
+  sound.audio.pause();
 }
 function onVolumeSound() {
   off = false;
@@ -3425,16 +3425,16 @@ function onVolumeSound() {
     setVolume(sound, isHaveVolume ? soundsVolume[sound.name] : 1);
   });
 }
-function decreaseVolume(duration, audio) {
-  let decreaseStep = audio.volume / (duration / 1000 * 60);
-  let currentVolume = audio.volume;
+function decreaseVolume(duration, sound) {
+  let decreaseStep = sound.gainNode.gain.value / (duration / 1000 * 60);
+  let currentVolume = sound.gainNode.gain.value;
   let decreaseInterval = setInterval(() => {
     currentVolume -= decreaseStep;
     if (currentVolume <= 0) {
       clearInterval(decreaseInterval);
-      audio.pause();
+      sound.audio.pause();
     } else {
-      audio.volume = currentVolume;
+      setVolume(sound, currentVolume);
     }
   }, 1000 / 60);
 }
@@ -3454,7 +3454,6 @@ function setVolume(sound, volume) {
   // gainNode.disconnect();
 }
 
-// window.addEventListener('blur')
 
 ;// CONCATENATED MODULE: ./js/sound/soundAction.js
 
@@ -3480,6 +3479,10 @@ let fullscreen = () => {
   let fullscreenBlock;
   fullscreenBlock = document.querySelector(".settings .fullscreen");
   fullscreenBlock.addEventListener("click", fullscreenModeChange);
+  // if (/iPhone/i.test(navigator.userAgent)) {
+  //     fullscreenBlock.remove()
+  // }
+
   function fullscreenModeChange() {
     let fullscreenEl = document.fullscreenElement && document.fullscreenElement !== null || document.webkitFullscreenElement && document.webkitFullscreenElement !== null || document.mozFullScreenElement && document.mozFullScreenElement !== null || document.msFullscreenElement && document.msFullscreenElement !== null;
     if (fullscreenEl) {

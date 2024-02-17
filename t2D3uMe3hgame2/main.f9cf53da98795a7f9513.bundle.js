@@ -2611,10 +2611,10 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./js/assets/dialog.js
 const dialog = {
   startScene: [[''], ['It’s only afternoon, but I’ve already done so much.', 'Just need 15 minutes to have a rest. I’m sick of this farm and all this work!'], ['Carlos!!! Where the hell are you?', 'Get here you little bastard!'], ['I’ll be right there, Ramona!'], ['I hate that bitch!'], ['When I call you, get your ass here immediately! Understand me?', 'Sorry Ramona, I just finished plowing the field and decided to take a break.'], ['Decided to take a break?! You rest when I say so!', 'You live under my roof, so appreciate it, lazy fool!', 'Yes, ma\'am. It won\'t happen again.'], ['That’s better. Now go to town and get some food for the dinner.', 'We have guests coming in a few hours. Here is a basket.', '[JS]hide'], ['You still here???', 'But I don’t have any money. How do you expect me to buy food?', 'Well, this is not my problem. It will be a lesson for you. Hurry up, idiot!'], ['Someday I will have my revenge, but now I have to solve this problem.', 'What can I offer for food instead of money?'], ['Oh… Think I know what to do']],
-  butchery: [['Good day to you, lady Isabella! How are you?'], ['Look, who is here! Haven’t seen you for a while, handsome.', 'How is your bitchy stepmom? What brings you here?', 'I need to buy some meat and sausage, but Ramona didn’t give me money.', 'Well, I heard some rumors about you. Actually all the town heard about it.', 'What are you talking about?', 'I haven’t done anything bad. I’m a good guy!', 'I’m sure you are. Those are really nice rumors', 'We can make a deal. You said you need sausage, so do I.', 'Wha… what do you mean, Isabella?'], ['Just take your pants off, show me your dick!'], ['To be honest, that was my plan from the beginning!', 'Holy shit! What a monster. Get here NOW!'], [], ['That was incredible, Carlos. You are not just a guy, you are a man!', 'Here you go, deal is a deal', '[JS]hide'], ['Thank you! I gotta go now, still need more products to «buy»']],
+  butchery: [['Good day to you, lady Isabella! How are you?'], ['Look, who is here! Haven’t seen you for a while, handsome.', 'How is your bitchy stepmom? What brings you here?', 'I need to buy some meat and sausage, but Ramona didn’t give me money.', 'Well, I heard some rumors about you. Actually all the town heard about it.', 'What are you talking about?', 'I haven’t done anything bad. I’m a good guy!', 'I’m sure you are. Those are really nice rumors.', 'We can make a deal. You said you need sausage, so do I.', 'Wha… what do you mean, Isabella?'], ['Just take your pants off, show me your dick!'], ['To be honest, that was my plan from the beginning!', 'Holy shit! What a monster. Get here NOW!'], [], ['That was incredible, Carlos. You are not just a guy, you are a man!', 'Here you go, deal is a deal.', '[JS]hide'], ['Thank you! I gotta go now, still need more products to «buy»']],
   milk: [['Louisa! Maria! So glad to see you, how is business?'], ['Oh my God! It’s Carlos!', 'What a surprise! We haven’t seen you since school graduation.', 'Yeah, I was very busy on my farm… I mean our farm.', 'No time for fun and meeting old friends. Sorry for it, ladies.', 'You don’t have to lie to us, Carlos. We heard about your stupid stepmom.', 'You’re here now, so never mind. Business is fine, opening another shop in neighbor town.', 'So what’s the purpose of your visit?'], ['Well… I need some milk, but I have nothing to pay you with.', 'Actually, there is one thing I might offer you.'], ['You know what. We remember all the good things and how you helped us at school.'], ['And since you don’t have any fun, we will give you a payback. How about a fantastic blowjob from both of us?'], ['This is exactly what I wanted to offer! Should we start, girls?'], [], ['What a package, Carlos! Also take this little gift from us.', '[JS]hide', 'That was so awesome, man! Come back any time, we’ll try something new with your giant.'], ['Thanks a lot! I’ll see you around, ladies.']],
   bakery: [['Excuse me… My name is Carlos, I’m looking for Dolores.', 'She is the best baker in town and I need to find her.'], ['Hello, sweetheart. Today is your lucky day, because I am Dolores. Pleased to meet you, Carlos.', 'That is so nice to hear about my reputation, honey. Especially from such a young and good-looking man.', 'Nice to meet you too! I couldn’t even guess that the best baker in town is such a beautiful woman!', 'I would like to buy some bread and cookies, if it’s okay.'], ['You sound like a true gentleman, Carlos. And you definitely deserve more than bread and cookies.'], ['Don’t be afraid, come here. I will give you something that you never forget, darling.'], [], ['You have to be proud of yourself. Such a nice person with such a huge cock. Here is your second reward.', '[JS]hide', 'Come back later, my dear boy. I’m sure we’ll become best friends with benefits.', 'I’m sure about it too. Thank you and keep in touch, Dolores!']],
-  fish: [['Good day to you, milady! How delightful it is here.', 'I haven’t been to docks for a while. The sea view is just fantastic!'], ['Are you talking to me, shithead? Buy fish and shut the hell up or get lost.'], ['Esmeralda doesn’t waste time on nerds like you.'], ['What a rude girl. Another bitch on my way.', 'I’m gonna give her a lesson that she’ll never forget'], ['Dear Esmeralda, sorry for bothering. Can I buy some fish?'], ['Oh, you’re still here? My fish is quite expensive.', 'Show me the money first, or I’ll kick your ass in front of everyone'], ['I don’t want my ass being kicked. How about we make a fair trade?', 'I got no money, but let me show you something better.'], ['You are such a loser! I don’t trade, asshole. No money, no fish.'], ['Wait, what is it??? Is this thing real?!', 'Guess now I don’t look like a loser?', 'Get ready for our «trade», bitch. I’ll punish you for your dirty mouth!'], [], ['Maybe I’m so rude to people, because I don’t get laid often enough.', 'Thank you for that sex, what’s your name?'], ['It’s Carlos. I might help you with your problem.', 'Later, Esmeralda! I have to go now, but prepare for another lesson.', 'Don’t forget the fish, Carlos! You truly deserved it.', '[JS]hide', 'Come back soon! We will try something new and I promise to be a good girl.']],
+  fish: [['Good day to you, milady! How delightful it is here.', 'I haven’t been to docks for a while. The sea view is just fantastic!'], ['Are you talking to me, shithead? Buy fish and shut the hell up or get lost.'], ['Esmeralda doesn’t waste time on nerds like you.'], ['What a rude girl. Another bitch on my way.', 'I’m gonna give her a lesson that she’ll never forget'], ['Dear Esmeralda, sorry for bothering. Can I buy some fish?'], ['Oh, you’re still here? My fish is quite expensive.', 'Show me the money first, or I’ll kick your ass in front of everyone.'], ['I don’t want my ass being kicked. How about we make a fair trade?', 'I got no money, but let me show you something better.'], ['You are such a loser! I don’t trade, asshole. No money, no fish.'], ['Wait, what is it??? Is this thing real?!', 'Guess now I don’t look like a loser?', 'Get ready for our «trade», bitch. I’ll punish you for your dirty mouth!'], [], ['Maybe I’m so rude to people, because I don’t get laid often enough.', 'Thank you for that sex, what’s your name?'], ['It’s Carlos. I might help you with your problem.', 'Later, Esmeralda! I have to go now, but prepare for another lesson.', 'Don’t forget the fish, Carlos! You truly deserved it.', '[JS]hide', 'Come back soon! We will try something new and I promise to be a good girl.']],
   endScene: [['[JS]hide', 'I can tell this was the best day of my life.'], ['Carlos! Get here immediately, you piece of shit!', 'But the day is not over yet. Let’s see what else might happen.']]
 };
 /* harmony default export */ var assets_dialog = (dialog);
@@ -3103,12 +3103,19 @@ const allSounds = [];
 let allSoundsName = ['грустная', 'веселая', 'Экшн', 'одеваются', 'wetfuck1', 'churn2', 'wetfuck4', 'end', '4-1стон', '3-1стон', '3-3-2стон', '3-3-1стон', 'Suckles_02', 'Suckles_01', 'Sucking Faster_02'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
+    let audio = new Audio(`./assets/audio/${soundName}.mp3`);
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let source = audioCtx.createMediaElementSource(audio);
+    let gainNode = audioCtx.createGain();
+    source.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
     allSounds.push({
       name: soundName,
-      audio: new Audio(`./assets/audio/${soundName}.mp3`)
+      audio: audio,
+      source: source,
+      gainNode: gainNode
     });
   });
-  console.log(allSounds);
 }
 
 ;// CONCATENATED MODULE: ./js/sound/sound.js
@@ -3122,12 +3129,12 @@ let sound_sound = {
 };
 let soundsVolume = {};
 let off = false;
-function getAudio(audioName) {
-  return allSounds.find(sound => sound.name === audioName).audio;
+function getSound(audioName) {
+  return allSounds.find(sound => sound.name === audioName);
 }
 function isPausedAudio(audioName) {
-  let audio = getAudio(audioName);
-  return audio.paused;
+  let sound = getSound(audioName);
+  return sound.audio.paused;
 }
 function playAudio(_ref) {
   let {
@@ -3140,21 +3147,21 @@ function playAudio(_ref) {
     decrease = 0,
     duration
   } = _ref;
-  let audio = getAudio(audioName);
-  audio.volume = off ? 0 : volume;
+  let sound = getSound(audioName);
+  setVolume(sound, off ? 0 : volume);
   if (volume !== 1) addVolumes(audioName, volume);
-  audio.currentTime = startTime;
+  sound.audio.currentTime = startTime;
   if (endTime) {
-    setTime(audio, startTime, endTime, isLoop);
+    setTime(sound.audio, startTime, endTime, isLoop);
   } else if (isLoop) {
-    setLoop(audio, startTime);
+    setLoop(sound.audio, startTime);
   }
   setTimeout(() => {
-    console.log(audio, 'play');
-    audio.play();
-    setDurationAndDecrease(audio, audioName, duration, decrease);
+    console.log(sound.audio, 'play');
+    sound.audio.play();
+    setDurationAndDecrease(sound.audio, audioName, duration, decrease);
   }, delay);
-  return audio;
+  return sound.audio;
 }
 function setDurationAndDecrease(audio, audioName, duration, decrease) {
   if (duration) setTimeout(() => pauseAudio({
@@ -3194,28 +3201,36 @@ function onVolumeSound() {
   off = false;
   allSounds.forEach(sound => {
     let isHaveVolume = (sound.name in soundsVolume);
-    sound.audio.volume = isHaveVolume ? soundsVolume[sound.name] : 1;
+    setVolume(sound, isHaveVolume ? soundsVolume[sound.name] : 1);
   });
 }
-function decreaseVolume(duration, audio) {
-  let decreaseStep = audio.volume / (duration / 1000 * 60);
-  let currentVolume = audio.volume;
+function decreaseVolume(duration, sound) {
+  let decreaseStep = sound.gainNode.gain.value / (duration / 1000 * 60);
+  let currentVolume = sound.gainNode.gain.value;
   let decreaseInterval = setInterval(() => {
     currentVolume -= decreaseStep;
     if (currentVolume <= 0) {
       clearInterval(decreaseInterval);
-      audio.pause();
+      sound.audio.pause();
     } else {
-      audio.volume = currentVolume;
+      setVolume(sound, currentVolume);
     }
   }, 1000 / 60);
 }
 function offVolumeSound() {
   off = true;
-  allSounds.forEach(sound => sound.audio.volume = 0);
+  allSounds.forEach(sound => setVolume(sound, 0));
 }
 function addVolumes(audioName, volume) {
   soundsVolume[audioName] = volume;
+}
+function setVolume(sound, volume) {
+  sound.gainNode.gain.value = volume;
+  // let source = audioCtx.createMediaElementSource(audio);
+  // let gainNode        = audioCtx.createGain();
+  // gainNode.gain.value = volume;
+  // source.disconnect();
+  // gainNode.disconnect();
 }
 
 // window.addEventListener('blur')
@@ -3244,14 +3259,42 @@ let fullscreen = () => {
   let fullscreenBlock;
   fullscreenBlock = document.querySelector(".settings .fullscreen");
   fullscreenBlock.addEventListener("click", fullscreenModeChange);
+  // if (/iPhone/i.test(navigator.userAgent)) {
+  //     fullscreenBlock.remove()
+  // }
+
   function fullscreenModeChange() {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
+    let fullscreenEl = document.fullscreenElement && document.fullscreenElement !== null || document.webkitFullscreenElement && document.webkitFullscreenElement !== null || document.mozFullScreenElement && document.mozFullScreenElement !== null || document.msFullscreenElement && document.msFullscreenElement !== null;
+    if (fullscreenEl) {
+      exitFullscreen();
     } else {
-      document.documentElement.requestFullscreen();
+      goFullscreen();
     }
   }
 };
+function goFullscreen() {
+  let docEl = document.documentElement;
+  if (docEl.requestFullscreen) {
+    docEl.requestFullscreen();
+  } else if (docEl.msRequestFullscreen) {
+    docEl.msRequestFullscreen();
+  } else if (docEl.mozRequestFullScreen) {
+    docEl.mozRequestFullScreen();
+  } else if (docEl.webkitRequestFullscreen) {
+    docEl.webkitRequestFullscreen();
+  }
+}
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.msexitFullscreen) {
+    document.msexitFullscreen();
+  } else if (document.mozexitFullscreen) {
+    document.mozexitFullscreen();
+  } else if (document.webkitexitFullscreen) {
+    document.webkitexitFullscreen();
+  }
+}
 /* harmony default export */ var js_fullscreen = (fullscreen);
 ;// CONCATENATED MODULE: ./js/keyListener.js
 
@@ -38200,7 +38243,7 @@ function getSpineAnimInfo(scene) {
 function updateProgressIfCan() {
   if (gameMode === 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 50);
+    timer = setInterval(increaseProgress, 400);
     autoplay();
     return;
   }
@@ -38863,4 +38906,3 @@ function removeAllScene() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.512ca1f537606df72584.bundle.js.map
