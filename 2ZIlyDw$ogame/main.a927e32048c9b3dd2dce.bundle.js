@@ -3487,10 +3487,9 @@ let fullscreen = () => {
   fullscreenBlock = document.querySelector(".settings .fullscreen");
   fullscreenIcon = document.querySelector(".settings .fullscreen .fullscreen__icon object");
   fullscreenBlock.addEventListener("click", fullscreenModeChange);
-  // if (/iPhone/i.test(navigator.userAgent)) {
-  //     fullscreenBlock.remove()
-  // }
-
+  if (/iPhone/i.test(navigator.userAgent)) {
+    fullscreenBlock.remove();
+  }
   function fullscreenModeChange() {
     let fullscreenEl = document.fullscreenElement && document.fullscreenElement !== null || document.webkitFullscreenElement && document.webkitFullscreenElement !== null || document.mozFullScreenElement && document.mozFullScreenElement !== null || document.msFullscreenElement && document.msFullscreenElement !== null;
     if (fullscreenEl) {

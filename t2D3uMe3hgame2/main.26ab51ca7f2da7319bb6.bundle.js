@@ -3239,8 +3239,10 @@ function addAllSoundGain() {
 ;// CONCATENATED MODULE: ./js/sound/soundAction.js
 
 let soundAction = () => {
-  let soundBlock, soundFlag;
+  let soundBlock, soundFlag, iconOff, iconOn;
   soundBlock = document.querySelector('.settings .sound');
+  iconOff = document.querySelector('.settings .sound .sound__off object');
+  iconOn = document.querySelector('.settings .sound .sound__on object');
   soundFlag = true;
   soundBlock.addEventListener('click', soundModeChange);
   function soundModeChange() {
@@ -3248,28 +3250,32 @@ let soundAction = () => {
     if (soundFlag) {
       sound_sound.onVolumeSound();
       soundBlock.classList.add('on');
+      iconOn.data = "./assets/img/icons/sound-on.svg";
     } else {
       sound_sound.offVolumeSound();
       soundBlock.classList.remove('on');
+      iconOff.data = "./assets/img/icons/sound-off.svg";
     }
   }
 };
 /* harmony default export */ var sound_soundAction = (soundAction);
 ;// CONCATENATED MODULE: ./js/fullscreen.js
 let fullscreen = () => {
-  let fullscreenBlock;
+  let fullscreenBlock, fullscreenIcon;
   fullscreenBlock = document.querySelector(".settings .fullscreen");
+  fullscreenIcon = document.querySelector(".settings .fullscreen .fullscreen__icon object");
   fullscreenBlock.addEventListener("click", fullscreenModeChange);
-  // if (/iPhone/i.test(navigator.userAgent)) {
-  //     fullscreenBlock.remove()
-  // }
-
+  if (/iPhone/i.test(navigator.userAgent)) {
+    fullscreenBlock.remove();
+  }
   function fullscreenModeChange() {
     let fullscreenEl = document.fullscreenElement && document.fullscreenElement !== null || document.webkitFullscreenElement && document.webkitFullscreenElement !== null || document.mozFullScreenElement && document.mozFullScreenElement !== null || document.msFullscreenElement && document.msFullscreenElement !== null;
     if (fullscreenEl) {
       exitFullscreen();
+      fullscreenIcon.data = './assets/img/icons/goFullScreen.svg';
     } else {
       goFullscreen();
+      fullscreenIcon.data = './assets/img/icons/goNormalScreen.svg';
     }
   }
 };
@@ -38547,21 +38553,19 @@ function createItem(_ref) {
   } = _ref;
   let img = document.createElement('img');
   img.src = src;
-  img.style.position = 'absolute';
   img.style.left = l + '%';
   img.style.top = t + '%';
   img.style.height = h + '%';
   img.style.width = w + '%';
-  img.style.cursor = 'pointer';
-  img.style.filter = 'drop-shadow(0px 0px 7px #fff)';
-  img.style.zIndex = '202';
   img.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)';
+  img.classList.add('clickItem');
+  setTimeout(() => img.classList.add('show'));
   addItem(main_nowScene, img);
 }
 function addItem(nowScene, img) {
   let scene = document.querySelector(`#container`);
   img.onclick = () => {
-    img.classList.add('clickedItem');
+    img.classList.add('clicked');
     setTimeout(() => {
       img.remove();
       changeScene();
