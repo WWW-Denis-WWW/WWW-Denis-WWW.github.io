@@ -2855,7 +2855,7 @@ const adaptive = () => {
   setScale();
   window.addEventListener('resize', setScale);
   function setScale() {
-    spineScenes.style.transform = `scale(${(getContainerWidth() / 1350).toFixed(2)})`;
+    spineScenes.style.transform = `scale(${(getContainerWidth() / 1920).toFixed(2)})`;
     setSize();
   }
   function getContainerWidth() {
@@ -20754,7 +20754,9 @@ class Application {
       width,
       height,
       view: this.view,
-      backgroundAlpha: 0 // раскоменти, чтобы убрать черный фон за спайном
+      backgroundAlpha: 0,
+      // resolution: window.devicePixelRatio,
+      antialias: true
     });
   }
 
@@ -67306,14 +67308,12 @@ const spinesDescription = [{
   name: 'markHome',
   individualScenesSetting: {
     1: {
-      w: 1366,
-      h: 768,
       spineSettings: [{
         spineSetting: {
           animName: 'block_01_idle_1',
-          posX: 1025,
-          posY: 540,
-          scale: 0.45
+          posX: 1200,
+          posY: 980,
+          scale: 0.8
         }
       }]
     }
@@ -67331,8 +67331,8 @@ const spineManager = {
 };
 function createSpineApp() {
   app = createApp({
-    w: 1366,
-    h: 768,
+    w: 1920,
+    h: 1080,
     idCon: `#spines .spines__box`
   });
 }
@@ -67818,13 +67818,7 @@ const TALKING_POSITIONS = {
   startScene: [{
     modifyScene: {
       delayTalk: 5000,
-      btn: 'continue',
-      zoom: {
-        scale: 1.5,
-        x: 100,
-        y: 0,
-        fastZoom: true
-      }
+      btn: 'continue'
     },
     talks: []
   }]
