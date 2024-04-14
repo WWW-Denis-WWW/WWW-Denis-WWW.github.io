@@ -3874,13 +3874,15 @@ function showWarnBtn() {
 
 ;// CONCATENATED MODULE: ./js/Settings/sceneSettings.js
 let sceneSettings_markRoom = [{
-  sound: {
-    play: [{
-      audioName: 'bg1',
-      volume: 0.04,
-      isLoop: true
-    }]
-  },
+  // sound: {
+  //     play: [
+  //         {
+  //             audioName: 'bg1',
+  //             volume: 0.04,
+  //             isLoop: true
+  //         }
+  //     ]
+  // },
   modifyScene: {
     // delayTalk: 8000,
     btn: 'next',
@@ -69389,8 +69391,18 @@ endScreenBtnsPose.forEach(btn => {
 
 ;// CONCATENATED MODULE: ./js/sound/audioModes.js
 
-function baseSound() {}
-function offBaseSound() {}
+function baseSound() {
+  sound.playAudio({
+    audioName: 'bg1',
+    volume: 0.04,
+    isLoop: true
+  });
+}
+function offBaseSound() {
+  sound.pauseAudio({
+    audioName: 'bg1'
+  });
+}
 function sexSceneBackgroundSound() {
   sound.playAudio({
     audioName: 'bg3',
