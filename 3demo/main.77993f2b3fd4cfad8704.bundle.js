@@ -3047,10 +3047,10 @@ function createStartScenes() {
   let sceneName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'startScene';
   let scene1 = new Scene(sceneCount, sceneName);
   scene1.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene1.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 1,
     w: '40%',
     l: '10%',
@@ -3058,7 +3058,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene1.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 1,
     w: '40%',
     l: '42%',
@@ -3068,10 +3068,10 @@ function createStartScenes() {
   scene1.addDiv('scene1-textBlock', 1, 1, '<p>Here is Mark. A 22-year-old gamer. The real life doesn<span>’</span>t bother him at all. No job, no friends and, of course, no girlfriend. Seems like nothing is going to change, but<span>…</span></p>');
   let scene2 = new Scene(sceneCount, sceneName);
   scene2.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene2.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 2,
     w: '40%',
     l: '10%',
@@ -3079,7 +3079,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene2.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 2,
     w: '40%',
     l: '42%',
@@ -3089,10 +3089,10 @@ function createStartScenes() {
   scene2.addDiv('scene2-textBlock', 1, 2, '<p>Here is Mark. A 22-year-old gamer. The real life doesn<span>’</span>t bother him at all. No job, no friends and, of course, no girlfriend. Seems like nothing is going to change, but<span>…</span></p>');
   let scene3 = new Scene(sceneCount, sceneName);
   scene3.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene3.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 3,
     w: '40%',
     l: '10%',
@@ -3100,7 +3100,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene3.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 3,
     w: '40%',
     l: '42%',
@@ -3109,10 +3109,10 @@ function createStartScenes() {
   });
   let scene4 = new Scene(sceneCount, sceneName);
   scene4.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene4.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 4,
     w: '40%',
     l: '10%',
@@ -3120,7 +3120,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene4.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 4,
     w: '40%',
     l: '42%',
@@ -3129,10 +3129,10 @@ function createStartScenes() {
   });
   let scene5 = new Scene(sceneCount, sceneName);
   scene5.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene5.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 5,
     w: '40%',
     l: '10%',
@@ -3140,7 +3140,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene5.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 5,
     w: '40%',
     l: '42%',
@@ -3149,10 +3149,10 @@ function createStartScenes() {
   });
   let scene6 = new Scene(sceneCount, sceneName);
   scene6.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene6.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 6,
     w: '40%',
     l: '10%',
@@ -3160,7 +3160,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene6.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 6,
     w: '40%',
     l: '42%',
@@ -3169,10 +3169,10 @@ function createStartScenes() {
   });
   let scene7 = new Scene(sceneCount, sceneName);
   scene7.addBackgroud({
-    src: './assets/img/scenes/markRoom.png'
+    src: './assets/img/scenes/markRoom.webp'
   });
   scene7.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 7,
     w: '40%',
     l: '10%',
@@ -3180,7 +3180,7 @@ function createStartScenes() {
     objectFit: 'contain'
   });
   scene7.addBackgroud({
-    src: './assets/img/items/computer.png',
+    src: './assets/img/items/computer.webp',
     onSpine: 7,
     w: '40%',
     l: '42%',
@@ -3192,47 +3192,47 @@ function createTownScenes() {
   let sceneName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'startScene';
   let scene8 = new Scene(sceneCount, sceneName);
   scene8.addBackgroud({
-    src: './assets/img/scenes/street.png'
+    src: './assets/img/scenes/street.webp'
   });
   let scene9 = new Scene(sceneCount, sceneName);
   scene9.addBackgroud({
-    src: './assets/img/scenes/street.png'
+    src: './assets/img/scenes/street.webp'
   });
   let scene10 = new Scene(sceneCount, sceneName);
   scene10.addBackgroud({
-    src: './assets/img/scenes/homeAlexa.png'
+    src: './assets/img/scenes/homeAlexa.webp'
   });
   let scene11 = new Scene(sceneCount, sceneName);
   scene11.addBackgroud({
-    src: './assets/img/scenes/homeAlexaStreet.png'
+    src: './assets/img/scenes/homeAlexaStreet.webp'
   });
   let scene12 = new Scene(sceneCount, sceneName);
   scene12.addBackgroud({
-    src: './assets/img/scenes/homeAlexa.png'
+    src: './assets/img/scenes/homeAlexa.webp'
   });
   let scene13 = new Scene(sceneCount, sceneName);
   scene13.addBackgroud({
-    src: './assets/img/scenes/homeAlexa.png'
+    src: './assets/img/scenes/homeAlexa.webp'
   });
   let scene14 = new Scene(sceneCount, sceneName);
   scene14.addBackgroud({
-    src: './assets/img/scenes/homeAlexaStreet.png'
+    src: './assets/img/scenes/homeAlexaStreet.webp'
   });
   let scene15 = new Scene(sceneCount, sceneName);
   scene15.addBackgroud({
-    src: './assets/img/scenes/homeAlexa.png'
+    src: './assets/img/scenes/homeAlexa.webp'
   });
   let scene16 = new Scene(sceneCount, sceneName);
   scene16.addBackgroud({
-    src: './assets/img/scenes/homeAlexa.png'
+    src: './assets/img/scenes/homeAlexa.webp'
   });
   let scene17 = new Scene(sceneCount, sceneName);
   scene17.addBackgroud({
-    src: './assets/img/scenes/roomAlexa.png'
+    src: './assets/img/scenes/roomAlexa.webp'
   });
   let scene18 = new Scene(sceneCount, sceneName);
   scene18.addBackgroud({
-    src: './assets/img/scenes/roomAlexa.png'
+    src: './assets/img/scenes/roomAlexa.webp'
   });
 }
 function sexScenes() {
@@ -3243,10 +3243,10 @@ function sexScenes() {
   let scene22 = new Scene(sceneCount, sceneName);
   let scene23 = new Scene(sceneCount, sceneName);
   scene23.addBackgroud({
-    src: './assets/img/scenes/final.png'
+    src: './assets/img/scenes/final.webp'
   });
   scene23.addBackgroud({
-    src: './assets/img/items/Medved.png',
+    src: './assets/img/items/Medved.webp',
     rotate: -35,
     w: '114%',
     l: '52%',
@@ -68861,10 +68861,7 @@ let spineAnimInfo = [{
 }];
 let soundForScene = {
   19: {
-    1: [{
-      audioName: 'churn2',
-      spacePlay: 2300
-    }],
+    1: [],
     2: [{
       audioName: 'churn2',
       spacePlay: 2333.3001136779785,
@@ -68892,8 +68889,14 @@ let soundForScene = {
   20: {
     1: [{
       audioName: 'churn2',
+      endTime: 0.8,
       spacePlay: 3666.6998863220215,
-      spaceDelay: 600
+      spaceDelay: 400
+    }, {
+      audioName: 'churn2',
+      endTime: 1,
+      spacePlay: 3666.6998863220215,
+      spaceDelay: 1800
     }],
     2: [{
       audioName: 'Suckles_02',
@@ -68936,13 +68939,13 @@ let soundForScene = {
       spaceDelay: 1200
     }, {
       audioName: '4-1стон',
-      volume: 0.4,
+      volume: 0.2,
       spacePlay: 3333.3001136779785 / 2,
       spaceDelay: 400
     }],
     3: [{
       audioName: ['3-3-1стон', '3-3-2стон'],
-      volume: 0.4,
+      volume: 0.2,
       spacePlay: 1000,
       spaceDelay: 200
     }, {
@@ -68965,7 +68968,7 @@ let soundForScene = {
       endTime: 2,
       isLoop: true,
       duration: 1700,
-      delay: 2500
+      delay: 2800
     }]
   },
   22: {
@@ -68975,7 +68978,7 @@ let soundForScene = {
     }],
     2: [{
       audioName: '3-1стон',
-      volume: 0.4,
+      volume: 0.2,
       spacePlay: 2000,
       spaceDelay: 700
     }, {
@@ -68989,7 +68992,7 @@ let soundForScene = {
       spaceDelay: 200
     }, {
       audioName: ['3-2-1стон', '3-2-2стон'],
-      volume: 0.4,
+      volume: 0.2,
       spacePlay: 2000,
       spaceDelay: 700
     }],
@@ -69007,7 +69010,7 @@ let soundForScene = {
       endTime: 2,
       isLoop: true,
       duration: 1800,
-      delay: 1700
+      delay: 2000
     }]
   }
 };
@@ -69618,7 +69621,7 @@ let main_sexScenes = {
     scene: 22
   }
 };
-let main_nowScene = 1,
+let main_nowScene = 22,
   sceneNameIndex = 0,
   talkIndex = 0,
   nowSceneName = scenesName[sceneNameIndex],
