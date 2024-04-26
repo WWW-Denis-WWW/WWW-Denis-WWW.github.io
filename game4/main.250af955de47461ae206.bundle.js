@@ -3038,24 +3038,24 @@ function createStartScenes() {
   let sceneName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'startScene';
   let scene1 = new Scene(sceneCount, sceneName);
   scene1.addBackgroud({
-    src: '../assets/img/scenes/polygon.png'
+    src: './assets/img/scenes/polygon.png'
   });
   scene1.addDiv('scene1-textBlock', 1, 1, '<p>Meanwhile at a secret spy training facility</p>');
   let scene2 = new Scene(sceneCount, sceneName);
   scene2.addBackgroud({
-    src: '../assets/img/scenes/target.jpg'
+    src: './assets/img/scenes/target.jpg'
   });
   scene2.addBackgroud({
-    src: '../assets/img/1.webp',
+    src: './assets/img/1.webp',
     name: 'target'
   });
   let scene3 = new Scene(sceneCount, sceneName);
   scene3.addBackgroud({
-    src: '../assets/img/scenes/polygon2.png'
+    src: './assets/img/scenes/polygon2.png'
   });
   let scene4 = new Scene(sceneCount, sceneName);
   scene4.addBackgroud({
-    src: '../assets/img/scenes/polygon3.png'
+    src: './assets/img/scenes/polygon3.png'
   });
 }
 function resetSceneCount() {
