@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="../css/header.css" />
+    <link rel="stylesheet" type="text/css" href="../css/input.css" />
+    <link rel="stylesheet" type="text/css" href="../css/chessboard-1.0.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/notation.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <title>Мини игра</title>
+</head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="../js/chessboard-1.0.0.js"></script>
+<link rel="stylesheet" href="../files/chessboard-1.0.0.min.css">
+
+<body>
+  <div class="wrapper">
+    <!-- {'search':'новости'} {'search':'игроков'} -->
+    <header class="header a part">
+  <div class="header__container">
+    <div class="header__backdrop"></div>
+    <div class="header__burger burger-header">
+      <div class="burger-header__backgroud"></div>
+      <div class="burger-header__box">
+        <div class="burger-header__stick"></div>
+        <div class="burger-header__stick"></div>
+        <div class="burger-header__stick"></div>
+
+      </div>
+      <div class="burger-header__menu menu-burger">
+        <div class="menu-burger__box">
+          <div class="menu-burger__background"></div>
+          <ul class="menu-burger__list">
+            <a href="#" class="menu-burger__item" id="play-white" >
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <picture><source srcset="../img/chesspieces/wikipedia/wK.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/wK.png" alt=""></picture>
+                </div>
+              </div>
+              <span>Играть за белых</span>
+            </a>
+            <a href="#" class="menu-burger__item" id="play-black" >
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <picture><source srcset="../img/chesspieces/wikipedia/bK.webp" type="image/webp"><img src="../img/chesspieces/wikipedia/bK.png" alt=""></picture>
+                </div>
+              </div>
+              <span>Играть за черных</span>
+            </a>
+            <a href="#" class="menu-burger__item">
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/icons/icons.svg#blog" alt="Blog">
+                </div>
+              </div>
+              <span>Блог</span>
+            </a>
+            <a href="#" class="menu-burger__item">
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/icons/icons.svg#play-btn" alt="Play">
+                </div>
+              </div>
+              <span>Играть как гость</span>
+            </a>
+            <a href="#" class="menu-burger__item">
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/icons/icons.svg#setting" alt="">
+                </div>
+              </div>
+              <span>Настройки</span>
+            </a>
+            <a href="#" class="menu-burger__item">
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/icons/icons.svg#info" alt="">
+                </div>
+              </div> <span>О сайте</span>
+            </a>
+            <a href="#" class="menu-burger__item signup">
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/icons/icons.svg#signup" alt="">
+                </div>
+              </div> <span>Регистрация</span>
+            </a>
+            <a href="#" class="menu-burger__item login">
+              <div class="menu-burger__icon">
+                <div class="img">
+                  <img src="../img/icons/icons.svg#person" alt="">
+                </div>
+              </div> <span>Вход</span>
+            </a>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="header__logo logo-header">
+      <a class="logo-header__box" href="#">
+        <div class="logo-header__img img">
+          <img src="../img/icons/icons.svg#logo" alt="Logo">
+        </div>
+      </a>
+    </div>
+    <div class="header__buttons buttons-header">
+      <div class="buttons-header__box">
+        <button class="buttons-header__btn buttons-header__signUp">
+          <a href="#">Регистрация</a>
+        </button>
+        <button class="buttons-header__btn buttons-header__login">
+          <a href="#">Вход</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+    <main class="main">
+      <section class="chess" id="chess">
+    <div class="chess__background">
+        <div class="img">
+            <picture><source srcset="../img/background.webp" type="image/webp"><img src="../img/background.jpg" alt="background"></picture>
+        </div>
+    </div>
+    <div class="chess__container">
+        <div class="chess__left left-chess hide">
+            <div class="left-chess__score">
+                <div>Ваш счёт:</div>
+                <div id="score">0</div>
+            </div>
+            <div class="left-chess__bestResults bestResults-left">
+                <h3 class="bestResults-left__title">Лучшие результаты</h3>
+                <div class="bestResults-left__results">
+                    <table>
+                        <thead>
+                        <tr class="bestResults-left__subTitles">
+                            <th>Место</th>
+                            <th>Ник</th>
+                            <th>Результат</th>
+                            <th>Дата</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Денис</td>
+                            <td>999</td>
+                            <td>30.11.22</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Сергей</td>
+                            <td>800</td>
+                            <td>28.10.22</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Дима</td>
+                            <td>700</td>
+                            <td>10.10.22</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="chess__board board-chess">
+            <div class="board-chess__wrapper">
+                <div class="board-chess__nowSquare hide"></div>
+                <div class="board-chess__board">
+                    <div class="board-chess__box">
+                        <div id="board"></div>
+                        <svg id="shapes" viewBox="-4 -4 8 8">
+                            <defs>
+                                <marker id="arrowEnd" orient="auto" markerWidth="4" markerHeight="8" refX="2.05" refY="2">
+                                    <path d="M0,0 V4 L3,2 Z" fill="#7979C5"></path>
+                                </marker>
+                            </defs>
+                            <g>
+                            </g>
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="chess__right right-chess hide">
+            <div class="right-chess__time time-chess">
+                <div class="time-chess__title">До конца осталось:</div>
+                <div class="time-chess__time">
+                    <div class="time-chess__num">0</div>
+                    <div class="time-chess__num">0</div>
+                    <div class="time-chess__colon"></div>
+                    <div class="time-chess__num">0</div>
+                    <div class="time-chess__num">0</div>
+                </div>
+            </div>
+            <div class="right-chess__moveHistory moveHistory-chess">
+                <div class="moveHistory-chess__block">
+                    <h3 class="moveHistory-chess__title">История ходов</h3>
+                    <div class="moveHistory-chess__goTop hide">
+                        <div class="img">
+                            <img src="../img/icons/icons.svg#arrowNotation" alt="arrow">
+                        </div>
+                    </div>
+                    <div class="moveHistory-chess__box">
+                        <div class="moveHistory-chess__wrapper"></div>
+                    </div>
+                    <div class="moveHistory-chess__goBottom hide">
+                        <div class="img">
+                            <img src="../img/icons/icons.svg#arrowNotation" alt="arrow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chess__settingsPopup settingsPopup-chess hide">
+        <div class="settingsPopup-chess__box">
+            <h2 class="settingsPopup-chess__title">Выберите параметры:</h2>
+            <div class="settingsPopup-chess__difficulty difficulty-settingsPopup">
+                <div class="difficulty-settingsPopup__level select" data-level="1">
+                    <div class="starSelect img">
+                        <picture><source srcset="../img/notation/star.webp" type="image/webp"><img src="../img/notation/star.png" alt="star"></picture>
+                    </div>
+                    Легкий
+                </div>
+                <div class="difficulty-settingsPopup__level" data-level="2">
+                    <div class="starSelect img">
+                        <picture><source srcset="../img/notation/star.webp" type="image/webp"><img src="../img/notation/star.png" alt="star"></picture>
+                    </div>
+                    Нормальный
+                </div>
+                <div class="difficulty-settingsPopup__level" data-level="3">
+                    <div class="starSelect img">
+                        <picture><source srcset="../img/notation/star.webp" type="image/webp"><img src="../img/notation/star.png" alt="star"></picture>
+                    </div>
+                    Сложный
+                </div>
+            </div>
+            <div class="settingsPopup-chess__side settingsPopup-side">
+                <div class="settingsPopup-side__color select" data-orientation="white">
+                    <div class="starSelect img">
+                        <picture><source srcset="../img/notation/star.webp" type="image/webp"><img src="../img/notation/star.png" alt="star"></picture>
+                    </div>
+                    Белые
+                </div>
+                <div class="settingsPopup-side__color" data-orientation="black">
+                    <div class="starSelect img">
+                        <picture><source srcset="../img/notation/star.webp" type="image/webp"><img src="../img/notation/star.png" alt="star"></picture>
+                    </div>
+                    Черные
+                </div>
+            </div>
+            <button id="play" class="settingsPopup-chess__play">Играть</button>
+        </div>
+    </div>
+    <div class="chess__resultPopup resultPopup-chess hide">
+        <div class="resultPopup-chess__box">
+            <h3 class="resultPopup-chess__title">Ваш результат</h3>
+            <div class="resultPopup-chess__results">
+                <div class="resultPopup-chess__nick">
+                    <div>Ник:</div>
+                    <div id="resultNick"></div>
+                </div>
+                <div class="resultPopup-chess__level">
+                    <div>Сложность:</div>
+                    <div id="resultLevel"></div>
+                </div>
+                <div class="resultPopup-chess__rightMove">
+                    <div>Правильных ходов:</div>
+                    <div id="resultRightMove"></div>
+                </div>
+                <div class="resultPopup-chess__wrongMove">
+                    <div>Неправильных ходов:</div>
+                    <div id="resultWrongMove"></div>
+                </div>
+                <div class="resultPopup-chess__result">
+                    <div>Общий результат:</div>
+                    <div id="allResult"></div>
+                </div>
+            </div>
+            <button id="playAgain" class="resultPopup-chess__playAgain">Попробовать снова</button>
+        </div>
+    </div>
+</section>
+    </main>
+  </div>
+
+    <script src="../js/notation.js"></script>
+</body>
+
+</html>
