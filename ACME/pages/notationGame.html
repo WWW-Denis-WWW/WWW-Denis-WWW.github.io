@@ -4,16 +4,11 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="../css/header.css" />
-    <link rel="stylesheet" type="text/css" href="../css/input.css" />
-    <link rel="stylesheet" type="text/css" href="../css/chessboard-1.0.0.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/notation.css" />
-    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+  <link rel="stylesheet" type="text/css" href="../css/notation.css" />
   <link rel="shortcut icon" href="" type="image/x-icon" />
   <title>Мини игра</title>
 </head>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js?_v=20240510201623"></script>
 <script src="../js/chessboard-1.0.0.js"></script>
 <link rel="stylesheet" href="../files/chessboard-1.0.0.min.css">
 
@@ -121,7 +116,102 @@
   </div>
 </header>
     <main class="main">
-      <section class="chess" id="chess">
+      <header class="miniHeader">
+    <div class="miniHeader__container">
+        <button class="miniHeader__signIn">Вход</button>
+        <button class="miniHeader__results off">Лучшие результаты</button>
+    </div>
+</header>
+
+<div class="signInPopup hide">
+    <div class="signInPopup__content">
+        <div class="signInPopup__close">
+            <div class="signInPopup__closeBox"></div>
+        </div>
+        <div class="signInPopup__title">Вход</div>
+        <form action="#" class="signInPopup__form" method="post">
+            <div>
+                <label>
+                    <input type="text" name="login" placeholder="Пользователь"/>
+                </label>
+            </div>
+            <div class="signInPopup__password">
+                <label>
+                    <input id="passwordSignIn" type="password" name="password" placeholder="Пароль"/>
+                </label>
+                <div class="signInPopup__passwordToggle hidePas">
+                    <div class="signInPopup__hidePassword">
+                        <div class="img">
+                            <img src="../img/icons/icons.svg#passwordHide" alt="password hide">
+                        </div>
+                    </div>
+                    <div class="signInPopup__showPassword">
+                        <div class="img">
+                            <img src="../img/icons/icons.svg#passwordShow" alt="password show">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit">Войти</button>
+        </form>
+        <a href="#" class="signInPopup__signUp">Зарегистрироваться</a>
+    </div>
+</div>
+<div class="bestResultPopup hide">
+    <div class="bestResultPopup__content">
+        <div class="bestResultPopup__close">
+            <div class="bestResultPopup__closeBox"></div>
+        </div>
+        <h3 class="bestResultPopup__title">Лучшие результаты</h3>
+        <div class="bestResultPopup__results">
+            <table>
+                <thead>
+                <tr class="bestResultPopup__subTitles">
+                    <th>Место</th>
+                    <th>Ник</th>
+                    <th>Результат</th>
+                    <th>Дата</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Очень Длинный Никнейм</td>
+                    <td>130</td>
+                    <td>30.11.22</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Сергей</td>
+                    <td>101</td>
+                    <td>28.10.22</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Дима</td>
+                    <td>87</td>
+                    <td>10.10.22</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<section class="chess" id="chess">
+    <div class="chess__mobTop mobTop-chess">
+        <div class="mobTop-chess__score">
+            <div>Ваш счет:</div>
+            <div id="mobScore"></div>
+        </div>
+        <div class="mobTop-chess__time">
+            <div id="mobTime">
+                <span>00</span>
+                <div></div>
+                <span>00</span>
+            </div>
+        </div>
+    </div>
     <div class="chess__background">
         <div class="img">
             <picture><source srcset="../img/background.webp" type="image/webp"><img src="../img/background.jpg" alt="background"></picture>
@@ -148,20 +238,20 @@
                         <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Денис</td>
-                            <td>999</td>
+                            <td>Очень Длинный Никнейм</td>
+                            <td>130</td>
                             <td>30.11.22</td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Сергей</td>
-                            <td>800</td>
+                            <td>101</td>
                             <td>28.10.22</td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>Дима</td>
-                            <td>700</td>
+                            <td>87</td>
                             <td>10.10.22</td>
                         </tr>
                         </tbody>
@@ -289,11 +379,27 @@
             <button id="playAgain" class="resultPopup-chess__playAgain">Попробовать снова</button>
         </div>
     </div>
+    <div class="chess__mobBottom mobBottom-chess">
+        <div class="mobBottom-chess__text">История ходов:</div>
+        <div class="mobBottom-chess__history">
+            <div class="mobBottom-chess__arrow"></div>
+            <div class="mobBottom-chess__moves">
+
+            </div>
+            <div class="mobBottom-chess__arrow"></div>
+        </div>
+        <div class="mobBottom-chess__navArrows">
+            <div class="mobBottom-chess__startArrow"></div>
+            <div class="mobBottom-chess__leftArrow"></div>
+            <div class="mobBottom-chess__rightArrow"></div>
+            <div class="mobBottom-chess__endArrow"></div>
+        </div>
+    </div>
 </section>
     </main>
   </div>
 
-    <script src="../js/notation.js"></script>
+  <script src="../js/notation.js"></script>
 </body>
 
 </html>
