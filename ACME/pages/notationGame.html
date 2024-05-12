@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="../css/notation.css" />
-  <link rel="shortcut icon" href="" type="image/x-icon" />
-  <title>Мини игра</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/notation.css" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>Мини игра</title>
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js?_v=20240510201623"></script>
 <script src="../js/chessboard-1.0.0.js"></script>
@@ -122,7 +122,6 @@
         <button class="miniHeader__results off">Лучшие результаты</button>
     </div>
 </header>
-
 <div class="signInPopup hide">
     <div class="signInPopup__content">
         <div class="signInPopup__close">
@@ -313,6 +312,9 @@
     </div>
     <div class="chess__settingsPopup settingsPopup-chess hide">
         <div class="settingsPopup-chess__box">
+            <div class="settingsPopup-chess__close">
+                <div class="settingsPopup-chess__closeBox"></div>
+            </div>
             <h2 class="settingsPopup-chess__title">Выберите параметры:</h2>
             <div class="settingsPopup-chess__difficulty difficulty-settingsPopup">
                 <div class="difficulty-settingsPopup__level select" data-level="1">
@@ -353,6 +355,9 @@
     </div>
     <div class="chess__resultPopup resultPopup-chess hide">
         <div class="resultPopup-chess__box">
+            <div class="resultPopup-chess__close">
+                <div class="resultPopup-chess__closeBox"></div>
+            </div>
             <h3 class="resultPopup-chess__title">Ваш результат</h3>
             <div class="resultPopup-chess__results">
                 <div class="resultPopup-chess__nick">
