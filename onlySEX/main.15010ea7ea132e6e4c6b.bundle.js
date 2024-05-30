@@ -37509,7 +37509,7 @@ endScreenBtnsPose.forEach(btn => {
 const playInit = () => {
   const playBtn = document.querySelector('.preloader__play');
   function play() {
-    playStartSound();
+    // playStartSound()
     showWarnBtn();
     hidePreloader();
   }
