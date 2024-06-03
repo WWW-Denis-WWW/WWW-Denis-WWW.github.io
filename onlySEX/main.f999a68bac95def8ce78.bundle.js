@@ -37200,7 +37200,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 40);
     autoplay();
     return;
   }
@@ -37210,7 +37210,7 @@ function updateProgressIfCan() {
   }
   if (gameMode == unlockStage) {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 40);
   } else {
     clearInterval(timer);
   }
