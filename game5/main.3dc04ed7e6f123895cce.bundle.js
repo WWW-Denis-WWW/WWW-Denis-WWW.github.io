@@ -69645,7 +69645,7 @@ function sayRandomPhrase(isHit) {
   }
   if (phrase === lastPhrase) return sayRandomPhrase(isHit);
   lastPhrase = phrase;
-  talk_updateer(phrase, 15, 53, 'cl', false);
+  talk_updateer(phrase, 15, 53, 'cl', true);
 }
 
 ;// CONCATENATED MODULE: ./js/main.js
