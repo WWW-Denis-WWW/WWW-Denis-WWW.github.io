@@ -1,6 +1,13 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 775:
+/***/ (function() {
+
+
+
+/***/ }),
+
 /***/ 106:
 /***/ (function(module) {
 
@@ -2528,6 +2535,18 @@ module.exports = {
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -2816,10 +2835,8 @@ __webpack_require__.d(runtime_4_1_es_namespaceObject, {
 });
 
 ;// CONCATENATED MODULE: ./js/assets/dialog.js
-let markRoom = [[''], ['Okay this is not funny. We were supposed to start the session 1 hour ago!', 'It is time to destroy aliens! Where is my teammate?', 'That guy is never late. What could have happened?'], ['Finally! He is online. And he is texting me.'], ['Hey, buddy! Sorry for this delay', 'At least u r here. Let’s start', 'I’m afraid, it’s not possible', 'What do u mean?', 'Something happened to my connection settings this morning', 'I’m able to stay online, but can’t join the servers to play', 'Shit, sounds horrible, did u try to reload?', 'Tried everything, but u know what', 'How about you come over and help? Beer’s on me', 'I’m not sure it’s a good idea', 'Come on man. We live in the same town and it’s a good opportunity to finally meet'], ['It’s kinda creepy. But we’ve been playing together and chatting for more than a year.', 'Oh fuck it. I haven’t been outside for a while.'], ['I guess… Okay, I will help u fix internet and beer issue', 'Awesome! Here is the address…'], ['Hope he won’t lock me in his basement!']];
-let town = [['This is the address, but there must be something wrong. The house is too nice.', 'Maybe he’s got a big family. Anyway let’s find it out.'], ['']];
 const dialog = {
-  startScene: [...markRoom, ...town]
+  startScene: [[''], [''], [''], [''], ['Well, now it’s kinda awkward. The party where I don’t know anyone.', 'Seems like they are a very friendly team of co-workers. I wish I could join them.', 'At least the drinks are nice… Oh now they are playing beer pong… My favorite game.', 'It’s my turn now!!!', 'Dude, you’ve scored 2 in a row!', 'Come on girl! You gotta drink it all!'], ['The party is officially over and everyone’s gone.', 'Somehow I got drunk by myself in the corner. What an idiot!', 'How am I supposed to play beer pong without a partner?'], ['I can keep you company… If you don’t mind.'], [''], ['But you have to teach me the rules of the game first.', 'What do you think about that, handsome?']]
 };
 /* harmony default export */ var assets_dialog = (dialog);
 ;// CONCATENATED MODULE: ./js/assets/images.js
@@ -2849,39 +2866,33 @@ function preloadAll() {
 }
 /* harmony default export */ var preloadImg = (PreloadImg);
 ;// CONCATENATED MODULE: ./js/spineSceneAdap.js
-const adaptive = () => {
+const spineSceneAdap_adaptive = () => {
   let spineScenes = document.querySelector('#spines');
   setScale();
   window.addEventListener('resize', setScale);
   function setScale() {
-    spineScenes.style.transform = `scale(${(getContainerWidth() / 1900).toFixed(2)})`;
+    spineScenes.style.transform = `scale(${(getContainerWidth() / 1930).toFixed(2)})`;
     setSize();
-    setSizeForChat();
   }
   function getContainerWidth() {
     let containerWidth = document.querySelector('#container').getBoundingClientRect().width;
     return containerWidth;
   }
-  function setMapTitleSize() {
-    document.querySelectorAll('.map__title').forEach(title => {
-      title.style.fontSize = 30 * (getContainerWidth() / 1920) + 'px';
-    });
-  }
   function setSize() {
+    let container = document.querySelector('#container');
     let talkBlock = document.querySelector('.talk');
+    let warn = document.querySelector('.warning');
+    let phone = document.querySelector('.phoneRotateWarn');
     let textBlocks = document.querySelectorAll('[class*="-textBlock"]');
-    textBlocks.forEach(block => block.style.fontSize = 30 * (getContainerWidth() / 1920) + 'px');
-    talkBlock.style.fontSize = 30 * (getContainerWidth() / 1920) + 'px';
-    setMapTitleSize();
-  }
-  function setSizeForChat() {
-    let chat = document.querySelector('.gameChat__box');
-    let chatTitle = document.querySelector('.gameChat__title ');
-    chat.style.fontSize = 30 * (getContainerWidth() / 1920) + 'px';
-    chatTitle.style.fontSize = 30 * (getContainerWidth() / 1920) + 'px';
+    let size = 30 * (getContainerWidth() / 1920) + 'px';
+    textBlocks.forEach(block => block.style.fontSize = size);
+    talkBlock.style.fontSize = size;
+    container.style.fontSize = size;
+    warn.style.fontSize = size;
+    if (phone) phone.style.fontSize = size;
   }
 };
-/* harmony default export */ var spineSceneAdap = (adaptive);
+/* harmony default export */ var spineSceneAdap = (spineSceneAdap_adaptive);
 ;// CONCATENATED MODULE: ./js/onSpine/onSpine.js
 let onSpineElements = [];
 let onSpineBox = document.querySelector('#onSpine .onSpine__box');
@@ -2918,7 +2929,7 @@ function hideEl(el) {
 let sceneCount = 1,
   maxSceneCount = 200;
 let scenesCreaters = {
-  0: allScene
+  0: createStartScenes
 };
 class Scene {
   scene = null;
@@ -3039,162 +3050,47 @@ class Scene {
 }
 function allScene() {
   createStartScenes();
-  createTownScenes();
 }
 function createStartScenes() {
   let sceneName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'startScene';
   let scene1 = new Scene(sceneCount, sceneName);
   scene1.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
+    src: './assets/img/1.webp'
   });
-  scene1.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 1,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene1.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 1,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene1.addDiv('scene1-textBlock', 1, 1, '<p>Here is Mark. A 22-year-old gamer. The real life doesn<span>’</span>t bother him at all. No job, no friends and, of course, no girlfriend. Seems like nothing is going to change, but<span>…</span></p>');
+  scene1.addDiv('scene1-textBlock', 1, 1, '<p>Looks like they are having a good time. And there is a reason! The company celebrates 25<sup>th</sup> anniversary, and who knows, maybe it<span>’</span>s a lucky day for someone. So, let<span>’</span>s take a look inside.</p>');
   let scene2 = new Scene(sceneCount, sceneName);
   scene2.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
+    src: './assets/img/scenes/bg2.jpg'
   });
-  scene2.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 2,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene2.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 2,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene2.addDiv('scene2-textBlock', 1, 2, '<p>Here is Mark. A 22-year-old gamer. The real life doesn<span>’</span>t bother him at all. No job, no friends and, of course, no girlfriend. Seems like nothing is going to change, but<span>…</span></p>');
   let scene3 = new Scene(sceneCount, sceneName);
   scene3.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
-  });
-  scene3.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 3,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene3.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 3,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
+    src: './assets/img/scenes/bg2.jpg'
   });
   let scene4 = new Scene(sceneCount, sceneName);
   scene4.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
+    src: './assets/img/scenes/bg2.jpg'
   });
-  scene4.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 4,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene4.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 4,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
-  });
+  scene4.addDiv('scene3-textBlock', 1, 4, '<p>This is Simon. He became a member of the company a couple weeks ago and feels lonely at the party. Simon is a very good person, but he is also very shy. Let<span>’</span>s see what happens.</p>');
   let scene5 = new Scene(sceneCount, sceneName);
   scene5.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
+    src: './assets/img/scenes/bg2.jpg'
   });
-  scene5.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 5,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
+  scene5.addDiv('scene5-textBlock', 1, 5, '<p>This is Simon. He became a member of the company a couple weeks ago and feels lonely at the party. Simon is a very good person, but he is also very shy. Let<span>’</span>s see what happens.</p>');
+  let scene56 = new Scene(sceneCount, sceneName);
+  scene56.addBackgroud({
+    src: './assets/img/scenes/bg3.jpg'
   });
-  scene5.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 5,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
+  let scene565 = new Scene(sceneCount, sceneName);
+  scene565.addBackgroud({
+    src: './assets/img/scenes/bg3.jpg'
   });
   let scene6 = new Scene(sceneCount, sceneName);
   scene6.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
-  });
-  scene6.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 6,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene6.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 6,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
+    src: './assets/img/scenes/bg4.jpg'
   });
   let scene7 = new Scene(sceneCount, sceneName);
   scene7.addBackgroud({
-    src: './assets/img/scenes/markRoom.webp'
-  });
-  scene7.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 7,
-    w: '40%',
-    l: '10%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-  scene7.addBackgroud({
-    src: './assets/img/items/computer.webp',
-    onSpine: 7,
-    w: '40%',
-    l: '42%',
-    t: '29%',
-    objectFit: 'contain'
-  });
-}
-function createTownScenes() {
-  let sceneName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'startScene';
-  let scene8 = new Scene(sceneCount, sceneName);
-  scene8.addBackgroud({
-    src: './assets/img/scenes/street.webp'
-  });
-  let scene9 = new Scene(sceneCount, sceneName);
-  scene9.addBackgroud({
-    src: './assets/img/scenes/street.webp'
+    src: './assets/img/scenes/bg4.jpg'
   });
 }
 function allScene_resetSceneCount() {
@@ -3202,6 +3098,10 @@ function allScene_resetSceneCount() {
 }
 function setSceneCount(count) {
   sceneCount = count;
+}
+function createSexScene(sceneName) {
+  let scene = new Scene(sceneCount, sceneName);
+  adaptive();
 }
 
 ;// CONCATENATED MODULE: ./js/scene-creater.js
@@ -3244,45 +3144,7 @@ const SceneCreater = preloader => {
   }
 };
 
-;// CONCATENATED MODULE: ./js/gameChat.js
-let gameChat = document.querySelector('.gameChat');
-let chatBlock = document.querySelector('.gameChat__wrapper');
-function showChat() {
-  if (!gameChat.classList.contains('show')) gameChat.classList.add('show');
-}
-function hideChat() {
-  gameChat.classList.remove('show');
-}
-function addMessageBlock() {
-  let chatBlock = document.querySelector('.gameChat__box');
-  chatBlock.innerHTML += '<div class="gameChat__message"><div id="gameChat__nick" class="gameChat__nick"></div><div id="gameChat__text" class="gameChat__text"></div></div>';
-}
-function clearChat() {
-  let chatBlock = document.querySelector('.gameChat__box');
-  chatBlock.innerHTML = '';
-}
-function removeActiveMessage() {
-  let messageText = document?.querySelector('#gameChat__text');
-  let messageNick = document?.querySelector('#gameChat__nick');
-  if (!messageText && !messageNick) return;
-  messageText.id = '';
-  messageNick.id = '';
-}
-function updateScroll() {
-  let message = document.querySelector('#gameChat__text');
-  let observer = new MutationObserver(setScroll);
-  observer.observe(message, {
-    childList: true,
-    subtree: true,
-    characterDataOldValue: true
-  });
-}
-function setScroll() {
-  chatBlock.scrollTop = chatBlock.scrollHeight;
-}
-
 ;// CONCATENATED MODULE: ./js/screenResolution.js
-
 let resolution = () => {
   const main = document.querySelector("#container");
   function setResolution() {
@@ -3297,15 +3159,12 @@ let resolution = () => {
     }
   }
   setResolution();
-  window.addEventListener("resize", () => {
-    setResolution();
-    setScroll();
-  });
+  window.addEventListener("resize", setResolution);
 };
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['bg1', 'bg2', 'keyboard', 'call', 'openingDoor'];
+let allSoundsName = ['bg1', 'bg2', 'bg3', 'crowd'];
 function preloadSounds() {
   allSoundsName.forEach(soundName => {
     let audio = new Audio(`./assets/audio/${soundName}.mp3`);
@@ -3344,25 +3203,22 @@ function playAudio(_ref) {
     volume = 1,
     delay = 0,
     decrease = 0,
-    duration,
-    repeatCount = 1,
-    repeatSpace = 0
+    duration
   } = _ref;
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     addAllSoundGain();
   }
   let sound = getSound(audioName);
-  setVolume(sound, off ? 0 : volume);
-  if (volume !== 1) addVolumes(audioName, volume);
-  sound.audio.currentTime = startTime;
-  if (endTime) {
-    setTime(sound.audio, startTime, endTime, isLoop);
-  } else if (isLoop) {
-    setLoop(sound.audio, startTime);
-  }
   setTimeout(() => {
-    console.log(sound.audio, 'play');
+    setVolume(sound, off ? 0 : volume);
+    if (volume !== 1) addVolumes(audioName, volume);
+    sound.audio.currentTime = startTime;
+    if (endTime) {
+      setTime(sound.audio, startTime, endTime, isLoop);
+    } else if (isLoop) {
+      setLoop(sound.audio, startTime);
+    }
     sound.audio.play();
     setDurationAndDecrease(sound.audio, audioName, duration, decrease);
   }, delay);
@@ -3376,7 +3232,6 @@ function setDurationAndDecrease(audio, audioName, duration, decrease) {
 }
 function setLoop(audio, startTime) {
   audio.onended = () => {
-    // console.log(audio, 'play')
     audio.currentTime = startTime;
     audio.play();
   };
@@ -3530,34 +3385,7 @@ function keyDown(e) {
   }
 }
 /* harmony default export */ var keyListener = (isKeyListener);
-;// CONCATENATED MODULE: ./js/btns/map-btn.js
-function deleteBtn() {
-  document.querySelector('button.map-btn').remove();
-}
-function showMapBtn() {
-  createBtn();
-  setTimeout(() => {
-    document.querySelector('button.map-btn').classList.add('show');
-  }, 1000);
-}
-function btnHandler(btn) {
-  btn.addEventListener('click', () => {
-    deleteBtn();
-    showMap();
-  });
-}
-function createBtn() {
-  let container = document.querySelector('#container');
-  let btn = document.createElement('button');
-  btn.classList.add('pink-btn');
-  btn.classList.add('map-btn');
-  btn.innerText = 'map';
-  btnHandler(btn);
-  container.appendChild(btn);
-}
-
 ;// CONCATENATED MODULE: ./js/change-btns.js
-
 
 let continueBtn = document.querySelector('.continue-btn');
 let nextBtn = document.querySelector('.next-btn');
@@ -3588,14 +3416,6 @@ function changeBtn(btnType) {
     change_btns_button.activeBtn = nextBtn;
     change_btns_button.btnBox.classList.remove('continue');
     setTimeout(() => change_btns_button.btnBox.classList.add('next'), 200);
-  } else if (btnType === 'map') {
-    change_btns_button.activeBtn = 'map';
-    hideBtn();
-    change_btns_button.btnBox.classList.add('map');
-    showMapBtn();
-  }
-  if (btnType !== 'map' && change_btns_button.btnBox.classList.contains('map')) {
-    change_btns_button.btnBox.classList.remove('map');
   }
 }
 function clickCallback(func) {
@@ -3680,8 +3500,6 @@ function t(){return t=Object.assign?Object.assign.bind():function(t){for(var s=1
 ;// CONCATENATED MODULE: ./js/talk-updateer.js
 
 
-
-
 let typed = new i('.talk .talk__text p', {
   strings: [''],
   typeSpeed: 20,
@@ -3689,28 +3507,15 @@ let typed = new i('.talk .talk__text p', {
   fadeOut: true,
   fadeOutDelay: 0,
   onComplete: e => {
-    if (e.strings[0] !== '[JS]hide' && change_btns.activeBtn !== 'map') change_btns.showBtn();
+    if (e.strings[0] !== '[JS]hide' && !isGamePhrase) change_btns.showBtn();
   }
 });
-let gameTyped;
-function updateGameChatEl() {
-  gameTyped = new i('.gameChat #gameChat__text', {
-    strings: [''],
-    typeSpeed: 20,
-    showCursor: false,
-    fadeOut: true,
-    fadeOutDelay: 0,
-    onComplete: e => {
-      if (e.strings[0] !== '[JS]hide' && change_btns.activeBtn !== 'map') change_btns.showBtn();
-      sound_sound.pauseAudio({
-        audioName: 'keyboard'
-      });
-    }
-  });
-}
 let talkElement = document.querySelector('.talk');
 let lastType = null;
+let isGamePhrase = false;
 function TalkUpdate(str, top, left, type) {
+  let gamePhrase = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+  isGamePhrase = gamePhrase;
   if (talkElement.classList.contains('talking')) talkElement.classList.remove('talking');
   if (lastType) talkElement.classList.remove(`${lastType}`);
   if (str !== '' && str !== '[JS]hide') {
@@ -3727,31 +3532,7 @@ function TalkUpdate(str, top, left, type) {
   typed.begin();
   change_btns.hideBtn();
 }
-function chatTalkUpdate(str, type) {
-  removeActiveMessage();
-  addMessageBlock();
-  updateGameChatEl();
-  updateScroll();
-  let nick = document.querySelector('#gameChat__nick');
-  nick.classList.add('show');
-  if (type === 'mark') {
-    nick.textContent = 'mark-soul-ripper:';
-    nick.classList.add('mark');
-    sound_sound.playAudio({
-      audioName: 'keyboard',
-      isLoop: true,
-      volume: 1
-    });
-  } else if (type === 'alexa') {
-    nick.textContent = 'monster_killer69:';
-    nick.classList.add('alexa');
-  }
-  gameTyped.destroy();
-  gameTyped.strings = [str];
-  gameTyped.begin();
-  change_btns.hideBtn();
-}
-
+/* harmony default export */ var talk_updateer = (TalkUpdate);
 ;// CONCATENATED MODULE: ./js/btns/warn-btn.js
 let btn = document.querySelector('#warn-btn'),
   warning = document.querySelector('.warning');
@@ -3769,162 +3550,197 @@ function showWarnBtn() {
 }
 
 ;// CONCATENATED MODULE: ./js/Settings/sceneSettings.js
-let sceneSettings_markRoom = [{
-  modifyScene: {
-    delayTalk: 8000,
-    btn: 'next',
-    anim: ['.scene1-textBlock']
-  },
-  talks: []
-}, {
-  modifyScene: {
-    btn: 'continue',
-    delayTalk: 1000,
-    anim: ['.scene2-textBlock']
-  },
-  talks: [{
-    top: 10,
-    left: 15,
-    type: 'cr'
-  }, {
-    top: 10,
-    left: 15,
-    type: 'cr'
-  }, {
-    top: 10,
-    left: 15,
-    type: 'cr'
-  }]
-}, {
-  talks: [{
-    top: 10,
-    left: 15,
-    type: 'cr'
-  }]
-}, {
-  modifyScene: {
-    delayTalk: 2000,
-    gameChat: true
-  },
-  talks: [{
-    type: 'alexa'
-  }, {
-    type: 'mark'
-  }, {
-    type: 'alexa'
-  }, {
-    type: 'mark'
-  }, {
-    type: 'alexa'
-  }, {
-    type: 'alexa'
-  }, {
-    type: 'mark'
-  }, {
-    type: 'alexa'
-  }, {
-    type: 'alexa'
-  }, {
-    type: 'mark'
-  }, {
-    type: 'alexa'
-  }]
-}, {
-  modifyScene: {
-    delayTalk: 1000
-  },
-  talks: [{
-    top: 10,
-    left: 10,
-    type: 'thinkL'
-  }, {
-    top: 10,
-    left: 10,
-    type: 'thinkL'
-  }]
-}, {
-  modifyScene: {
-    gameChat: true,
-    delayTalk: 1000
-  },
-  talks: [{
-    type: 'mark'
-  }, {
-    type: 'alexa'
-  }]
-}, {
-  modifyScene: {
-    gameChat: false,
-    delayTalk: 1000,
-    btnEnd: 'next'
-  },
-  talks: [{
-    top: 10,
-    left: 10,
-    type: 'thinkL'
-  }]
-}];
-let sceneSettings_town = [{
-  sound: {
-    pause: [{
-      audioName: 'bg1'
-    }],
-    play: [{
-      audioName: 'bg2',
-      volume: 0.05,
-      isLoop: true
-    }]
-  },
-  modifyScene: {
-    fadeStart: 2100,
-    delayUpdate: 2000,
-    delayTalk: 3000,
-    btn: 'continue',
-    btnEnd: 'next'
-  },
-  talks: [{
-    top: 4,
-    left: 22,
-    type: 'thinkR'
-  }, {
-    top: 10,
-    left: 22,
-    type: 'thinkR'
-  }]
-}, {
-  sound: {
-    play: [{
-      audioName: 'call',
-      delay: 3700
-    }]
-  },
-  modifyScene: {
-    fadeStart: 2100,
-    delayUpdate: 2000,
-    next: true,
-    delayNext: 9000,
-    delayTalk: 0,
-    fadeNext: 2100
-  },
-  talks: []
-}, {
-  modifyScene: {
-    delayTalk: 4000,
-    btn: 'continue',
-    btnEnd: 'next'
-  },
-  talks: [{
-    top: 13,
-    left: 58,
-    type: 'cl'
-  }, {
-    top: 13,
-    left: 58,
-    type: 'cl'
-  }]
-}];
 const TALKING_POSITIONS = {
-  startScene: [...sceneSettings_markRoom, ...sceneSettings_town]
+  startScene: [{
+    modifyScene: {
+      delayTalk: 10500,
+      btn: 'next'
+    },
+    talks: []
+  }, {
+    sound: {
+      play: [{
+        audioName: 'bg2',
+        volume: 0.08,
+        isLoop: true,
+        delay: 1050
+      }, {
+        audioName: 'crowd',
+        volume: 0.12,
+        startTime: 3.4,
+        isLoop: true,
+        delay: 1050
+      }],
+      pause: [{
+        audioName: 'bg1',
+        decrease: 1050
+      }]
+    },
+    modifyScene: {
+      fadeStart: 2100,
+      delayUpdate: 1050,
+      next: true,
+      delayNext: 3000,
+      delayTalk: 0,
+      zoom: {
+        x: 95,
+        y: 78,
+        scale: 1.2,
+        delay: 1000,
+        fastZoom: true
+      }
+    },
+    talks: []
+  }, {
+    modifyScene: {
+      next: true,
+      delayNext: 3000,
+      zoom: {
+        x: 0,
+        y: 52,
+        scale: 1.2,
+        delay: 2000,
+        smooth: true
+      },
+      btn: 'continue'
+    },
+    talks: []
+  }, {
+    modifyScene: {
+      delayTalk: 8000,
+      zoom: {
+        x: 0,
+        y: 65,
+        scale: 1.9,
+        delay: 1000,
+        smooth: true
+      },
+      btn: 'continue'
+    },
+    talks: []
+  }, {
+    modifyScene: {
+      delayTalk: 1000,
+      btnEnd: 'next'
+    },
+    talks: [{
+      top: 4,
+      left: 19,
+      type: 'thinkRC'
+    }, {
+      top: 4,
+      left: 19,
+      type: 'thinkRC'
+    }, {
+      top: 4,
+      left: 19,
+      type: 'thinkRC'
+    }, {
+      top: 32,
+      left: 60,
+      type: 'cr'
+    }, {
+      top: 15,
+      left: 73,
+      type: 'cr'
+    }, {
+      top: 50,
+      left: 73,
+      type: 'cr'
+    }]
+  }, {
+    sound: {
+      play: [{
+        audioName: 'bg3',
+        volume: 0.08,
+        isLoop: true,
+        delay: 1500
+      }],
+      pause: [{
+        audioName: 'bg2',
+        decrease: 1500
+      }, {
+        audioName: 'crowd',
+        decrease: 1500
+      }]
+    },
+    modifyScene: {
+      fadeStart: 3000,
+      delayTalk: 2500,
+      delayUpdate: 1500,
+      btn: 'continue',
+      rolling: {
+        text: '2 hours later',
+        duration: 1250,
+        delay: 1000
+      },
+      zoom: {
+        x: 0,
+        y: 0,
+        scale: 1,
+        fastZoom: true,
+        delay: 1500
+      }
+    },
+    talks: [{
+      top: 14,
+      left: 47,
+      type: 'cl'
+    }, {
+      top: 14,
+      left: 47,
+      type: 'cl'
+    }, {
+      top: 14,
+      left: 47,
+      type: 'cl'
+    }]
+  }, {
+    modifyScene: {
+      delayTalk: 2000
+    },
+    talks: [{
+      top: 25,
+      left: 2,
+      type: 'cl'
+    }]
+  }, {
+    modifyScene: {
+      fadeStart: 2000,
+      next: true,
+      delayNext: 2000,
+      delayUpdate: 1000,
+      delayTalk: 0,
+      zoom: {
+        x: 40,
+        y: 100,
+        scale: 2.3,
+        fastZoom: true,
+        delay: 1000
+      }
+    },
+    talks: []
+  }, {
+    modifyScene: {
+      delayTalk: 5500,
+      zoom: {
+        x: 40,
+        y: 30,
+        scale: 2.3,
+        smooth: true,
+        transitionDuration: 5
+      }
+    },
+    talks: [{
+      top: 21,
+      left: 59,
+      type: 'cl'
+    }, {
+      top: 21,
+      left: 59,
+      type: 'cl'
+    }]
+  }]
 };
 /* harmony default export */ var sceneSettings = (TALKING_POSITIONS);
 ;// CONCATENATED MODULE: ../node_modules/@pixi/constants/dist/esm/constants.mjs
@@ -21387,9 +21203,7 @@ class Application {
       width,
       height,
       view: this.view,
-      backgroundAlpha: 0,
-      // resolution: window.devicePixelRatio,
-      antialias: true
+      backgroundAlpha: 0 // раскоменти, чтобы убрать черный фон за спайном
     });
   }
 
@@ -67750,24 +67564,30 @@ const getSpineRuntime_getSpineRuntime = data => {
     return runtime_4_1_es_namespaceObject;
   }
 };
-;// CONCATENATED MODULE: ./assets/spine/MarkHome/markHome.png
-var markHome_namespaceObject = __webpack_require__.p + "assets/spine/MarkHome/markHome.png";
-;// CONCATENATED MODULE: ./assets/spine/MarkHome/markHome.atlas
-var markHome_atlas_namespaceObject = "\nblock_01_mark.png\nsize: 1024,1024\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbelok_1\n  rotate: true\n  xy: 384, 53\n  size: 39, 18\n  orig: 39, 18\n  offset: 0, 0\n  index: -1\nbelok_2\n  rotate: true\n  xy: 595, 48\n  size: 40, 19\n  orig: 40, 19\n  offset: 0, 0\n  index: -1\nblik_1\n  rotate: true\n  xy: 15, 2\n  size: 12, 9\n  orig: 12, 9\n  offset: 0, 0\n  index: -1\nblik_2\n  rotate: true\n  xy: 26, 3\n  size: 11, 8\n  orig: 11, 8\n  offset: 0, 0\n  index: -1\nbrows_1\n  rotate: true\n  xy: 595, 90\n  size: 52, 16\n  orig: 52, 16\n  offset: 0, 0\n  index: -1\nbrows_2\n  rotate: false\n  xy: 378, 125\n  size: 52, 17\n  orig: 52, 17\n  offset: 0, 0\n  index: -1\nbrush_L\n  rotate: false\n  xy: 218, 14\n  size: 164, 100\n  orig: 164, 100\n  offset: 0, 0\n  index: -1\nbrush_R\n  rotate: false\n  xy: 432, 42\n  size: 161, 100\n  orig: 161, 100\n  offset: 0, 0\n  index: -1\nclosed_eye_L\n  rotate: false\n  xy: 282, 119\n  size: 41, 23\n  orig: 41, 23\n  offset: 0, 0\n  index: -1\nclosed_eye_R\n  rotate: false\n  xy: 282, 119\n  size: 41, 23\n  orig: 41, 23\n  offset: 0, 0\n  index: -1\near_L\n  rotate: true\n  xy: 156, 116\n  size: 26, 64\n  orig: 26, 64\n  offset: 0, 0\n  index: -1\near_R\n  rotate: true\n  xy: 155, 84\n  size: 28, 61\n  orig: 28, 61\n  offset: 0, 0\n  index: -1\neyebrows_angry_L\n  rotate: false\n  xy: 222, 119\n  size: 58, 23\n  orig: 58, 23\n  offset: 0, 0\n  index: -1\neyebrows_angry_R\n  rotate: false\n  xy: 325, 124\n  size: 51, 18\n  orig: 51, 18\n  offset: 0, 0\n  index: -1\nface\n  rotate: false\n  xy: 624, 78\n  size: 195, 296\n  orig: 195, 296\n  offset: 0, 0\n  index: -1\nface_folds\n  rotate: false\n  xy: 384, 94\n  size: 30, 29\n  orig: 30, 29\n  offset: 0, 0\n  index: -1\nglasses\n  rotate: false\n  xy: 2, 16\n  size: 205, 60\n  orig: 205, 60\n  offset: 0, 0\n  index: -1\nhair\n  rotate: true\n  xy: 630, 779\n  size: 243, 184\n  orig: 243, 184\n  offset: 0, 0\n  index: -1\nhair_background\n  rotate: false\n  xy: 821, 97\n  size: 194, 276\n  orig: 194, 276\n  offset: 0, 0\n  index: -1\nhand_L\n  rotate: true\n  xy: 2, 144\n  size: 230, 620\n  orig: 230, 620\n  offset: 0, 0\n  index: -1\nhand_R\n  rotate: false\n  xy: 821, 375\n  size: 158, 647\n  orig: 158, 647\n  offset: 0, 0\n  index: -1\nlips\n  rotate: false\n  xy: 69, 85\n  size: 84, 27\n  orig: 84, 27\n  offset: 0, 0\n  index: -1\nlips_angry\n  rotate: false\n  xy: 69, 114\n  size: 85, 28\n  orig: 85, 28\n  offset: 0, 0\n  index: -1\nneck\n  rotate: true\n  xy: 630, 548\n  size: 229, 160\n  orig: 229, 160\n  offset: 0, 0\n  index: -1\nnose\n  rotate: true\n  xy: 2, 90\n  size: 52, 65\n  orig: 52, 65\n  offset: 0, 0\n  index: -1\npupil_1\n  rotate: true\n  xy: 2, 2\n  size: 12, 11\n  orig: 12, 11\n  offset: 0, 0\n  index: -1\npupil_2\n  rotate: true\n  xy: 2, 2\n  size: 12, 11\n  orig: 12, 11\n  offset: 0, 0\n  index: -1\nrainbow_1\n  rotate: true\n  xy: 420, 17\n  size: 23, 18\n  orig: 23, 18\n  offset: 0, 0\n  index: -1\nrainbow_2\n  rotate: true\n  xy: 400, 14\n  size: 23, 17\n  orig: 23, 17\n  offset: 0, 0\n  index: -1\nt-shirt\n  rotate: false\n  xy: 2, 376\n  size: 626, 646\n  orig: 626, 646\n  offset: 0, 0\n  index: -1\nveko_1\n  rotate: true\n  xy: 416, 82\n  size: 41, 14\n  orig: 41, 14\n  offset: 0, 0\n  index: -1\nveko_2\n  rotate: true\n  xy: 595, 7\n  size: 39, 14\n  orig: 39, 14\n  offset: 0, 0\n  index: -1\nveko_bottom_L\n  rotate: true\n  xy: 404, 39\n  size: 41, 14\n  orig: 41, 14\n  offset: 0, 0\n  index: -1\nveko_bottom_R\n  rotate: true\n  xy: 384, 10\n  size: 41, 14\n  orig: 41, 14\n  offset: 0, 0\n  index: -1\n";
-;// CONCATENATED MODULE: ./assets/spine/MarkHome/markHome.json
-var spine_MarkHome_markHome_namespaceObject = JSON.parse('{"skeleton":{"hash":"akTTLEgizdv18HQDMYlbLk7EfgE","spine":"3.8.75","x":-463.65,"y":38.06,"width":809,"height":1160,"images":"./images/","audio":""},"bones":[{"name":"block_01_mark"},{"name":"mark","parent":"block_01_mark"},{"name":"t-shirt","parent":"mark","length":293.57,"rotation":89.64,"x":15.8,"y":168.52},{"name":"chest","parent":"t-shirt","length":289.85,"rotation":0.55,"x":293.57},{"name":"bone","parent":"chest","x":289.85,"transform":"noScale"},{"name":"neck","parent":"bone","length":113.85,"rotation":0.36,"x":0.18,"y":0.3},{"name":"face","parent":"neck","length":85.48,"rotation":0.01,"x":171.19,"y":1.71},{"name":"bone2","parent":"bone","length":202,"rotation":-99.39},{"name":"bone3","parent":"bone","length":220,"rotation":101.55},{"name":"hand_R","parent":"bone2","length":327.33,"rotation":-66.32,"x":201.5,"y":-0.27},{"name":"hand_R2","parent":"hand_R","length":292.85,"rotation":-29.81,"x":325.82,"y":-0.06},{"name":"brush_R","parent":"mark","length":59.33,"rotation":-124.86,"x":219.09,"y":122.52},{"name":"bone4","parent":"bone3","length":293.1,"rotation":67.59,"x":219.53,"y":0.05},{"name":"bone5","parent":"bone4","length":283.38,"rotation":-9.4,"x":293.1},{"name":"brush_L","parent":"mark","length":36.4,"rotation":-129.96,"x":-351.27,"y":152.3},{"name":"eye_L","parent":"face","length":6.85,"rotation":-2.4,"x":85.88,"y":49.42},{"name":"eye_R","parent":"face","length":6.41,"rotation":-0.55,"x":85.66,"y":-43.62},{"name":"eyebrows_angry_L","parent":"eye_L","length":45.58,"rotation":-104.2,"x":29.54,"y":20},{"name":"eyebrows_angry_R","parent":"eye_R","length":38.68,"rotation":102.35,"x":25.93,"y":-20.27},{"name":"brows_1","parent":"eye_L","length":43.29,"rotation":-85.41,"x":36.2,"y":23.42},{"name":"brows_2","parent":"eye_R","length":45.05,"rotation":85.93,"x":34.95,"y":-26.66},{"name":"face_folds","parent":"face","x":119.31,"y":-3.3},{"name":"blik_2","parent":"eye_L","x":13.65,"y":-0.02},{"name":"blik_1","parent":"eye_R","x":12.16,"y":-0.37},{"name":"veko_3","parent":"eye_L","length":6.1,"rotation":-178.15,"x":27.4,"y":-0.08},{"name":"veko_2","parent":"eye_R","length":4.67,"rotation":-180,"x":24.47,"y":-0.55},{"name":"veko_bottom_R","parent":"eye_R","rotation":90,"x":-0.47,"y":-2.57},{"name":"veko_bottom_L","parent":"eye_L","rotation":90,"x":0.45,"y":-0.32}],"slots":[{"name":"hand_R","bone":"hand_R","attachment":"hand_R"},{"name":"brush_R","bone":"brush_R","attachment":"brush_R"},{"name":"hand_L","bone":"bone4","attachment":"hand_L"},{"name":"brush_L","bone":"brush_L","attachment":"brush_L"},{"name":"neck","bone":"neck","attachment":"neck"},{"name":"t-shirt","bone":"t-shirt","attachment":"t-shirt"},{"name":"ear_R","bone":"face","attachment":"ear_R"},{"name":"ear_L","bone":"face","attachment":"ear_L"},{"name":"hair_background","bone":"face"},{"name":"belok_2","bone":"eye_L","attachment":"belok_2"},{"name":"belok_1","bone":"eye_R","attachment":"belok_1"},{"name":"rainbow_2","bone":"blik_2","attachment":"rainbow_2"},{"name":"rainbow_1","bone":"blik_1","attachment":"rainbow_1"},{"name":"pupil_2","bone":"blik_2","attachment":"pupil_2"},{"name":"pupil_1","bone":"blik_1","attachment":"pupil_1"},{"name":"blik_2","bone":"blik_2","attachment":"blik_2"},{"name":"blik_1","bone":"blik_1","attachment":"blik_1"},{"name":"face","bone":"face","attachment":"face"},{"name":"brows_2","bone":"brows_2","attachment":"brows_2"},{"name":"brows_1","bone":"brows_1","attachment":"brows_1"},{"name":"veko_2","bone":"veko_2","attachment":"veko_2"},{"name":"veko_1","bone":"veko_3","attachment":"veko_1"},{"name":"veko_bottom_R","bone":"veko_bottom_R"},{"name":"veko_bottom_L","bone":"veko_bottom_L"},{"name":"closed_eye_L","bone":"eye_L","attachment":"closed_eye_L"},{"name":"closed_eye_R","bone":"eye_R","attachment":"closed_eye_R"},{"name":"lips","bone":"face","attachment":"lips"},{"name":"lips_angry","bone":"face"},{"name":"face_folds","bone":"face_folds"},{"name":"eyebrows_angry_L","bone":"eyebrows_angry_L"},{"name":"eyebrows_angry_R","bone":"eyebrows_angry_R"},{"name":"hair","bone":"face","attachment":"hair"},{"name":"nose","bone":"face","attachment":"nose"},{"name":"glasses","bone":"face","attachment":"glasses"}],"skins":[{"name":"default","attachments":{"lips":{"lips":{"x":2.3,"y":1.24,"rotation":-90.55,"width":84,"height":27}},"hand_R":{"hand_R":{"type":"mesh","uvs":[0.45472,0,0.78876,0.2341,1,0.53613,1,0.64152,0.46659,1,0.41812,1,0.00184,0.94168,0.38449,0.58968,0.39074,0.51639,0.03371,0.22436,0.32715,0],"triangles":[4,5,6,3,4,6,7,8,2,7,2,3,6,7,3,9,0,1,0,9,10,2,8,1,8,9,1],"vertices":[1,9,-12,48.13,1,1,9,147.84,61.38,1,2,9,345.4,44.87,0.97615,10,-5.36,48.72,0.02385,2,9,411.42,27.83,0.26342,10,60.4,66.76,0.73658,1,11,-2.29,49.56,1,1,11,2.09,43.28,1,1,11,8.73,-32.26,1,1,10,53.79,-35.9,1,2,9,308.98,-45.15,0.15613,10,7.8,-47.49,0.84387,1,9,111.93,-52.56,1,1,9,-17.04,28.61,1],"hull":11,"edges":[0,20,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16,16,18,18,20],"width":158,"height":647}},"blik_2":{"blik_2":{"x":-0.5,"y":7.47,"rotation":-88.15,"width":11,"height":8}},"veko_1":{"veko_1":{"x":7,"y":-0.98,"rotation":90,"width":41,"height":14}},"veko_2":{"veko_2":{"x":6.25,"y":0.39,"rotation":90,"width":39,"height":14}},"brush_L":{"brush_L":{"x":54.58,"y":6.08,"rotation":129.96,"width":164,"height":100}},"t-shirt":{"t-shirt":{"type":"mesh","uvs":[0.68855,0,0.69486,0,0.78835,0.03224,0.86732,0.0832,0.94402,0.21394,1,0.44189,0.99873,0.45597,0.78776,0.5027,0.81758,1,0.81549,0.99857,0.36913,0.99846,0.32391,1,0.15408,0.9833,0.18929,0.9734,0.2058,0.53332,0.09808,0.49512,0,0.46034,0,0.45638,0.02215,0.3926,0.07124,0.17843,0.13261,0.10298,0.26433,0.03879,0.33513,0.01157,0.50476,0.08171,0.19762,0.50858,0.21238,0.40202],"triangles":[6,7,5,7,3,4,5,7,4,15,24,14,24,15,25,15,17,18,15,18,25,15,16,17,18,19,25,19,20,25,25,21,23,21,22,23,25,20,21,3,7,23,2,23,0,3,23,2,2,0,1,25,23,7,14,24,25,7,14,25,12,13,11,10,11,14,10,7,9,8,9,7,11,13,14,10,14,7],"vertices":[2,7,105.84,76.05,0.76,5,56.85,-117.48,0.24,2,7,109.74,76.68,0.808,5,56.82,-121.43,0.192,2,7,170.84,65.49,0.99677,9,-72.54,-1.67,0.00323,2,7,224.91,40.9,0.57665,9,-28.31,37.97,0.42335,1,9,65.47,63.36,1,3,2,358.05,-310.28,0.0001,3,61.52,-310.88,0.00014,9,216.81,60.5,0.99976,3,2,348.95,-309.54,0.00011,3,52.43,-310.06,0.00014,9,225.42,57.45,0.99975,4,2,317.93,-177.67,0.24487,3,22.66,-177.89,0.20829,7,219.11,-234.57,0.00097,9,221.65,-77.97,0.54587,2,2,-3.2,-198.37,0.99931,9,537.37,-140.17,0.00069,2,2,-2.29,-197.05,0.99928,9,536.16,-141.2,0.00072,2,2,-3.98,82.36,0.99786,12,508.43,229.78,0.00214,2,2,-5.16,110.66,0.99579,12,514.65,202.14,0.00421,2,2,4.96,217.04,0.99119,12,523.74,95.67,0.00881,2,2,11.5,195.04,0.99056,12,513.37,116.14,0.00944,1,2,295.85,186.5,1,1,12,220.32,2.81,1,1,12,209.62,-61.69,1,1,12,207.1,-62.17,1,1,12,164.04,-56.17,1,2,8,275.77,1.08,0.01165,12,22.39,-51.6,0.98835,2,8,228.25,-38.83,0.77586,12,-32.62,-22.88,0.22414,1,8,139.08,-62.66,1,1,8,92.11,-70.87,1,3,3,295.2,-1.61,0.24541,7,0.72,5.54,0.46414,8,-2.65,-4.92,0.29045,4,2,311.79,191.72,0.23671,3,20.05,191.54,0.16906,8,241.67,225.99,0.01183,12,217.33,65.65,0.5824,4,2,380.69,182.92,0.18292,3,88.86,182.08,0.13065,8,218.63,160.47,0.2357,12,147.97,61.98,0.45074],"hull":24,"edges":[0,46,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16,16,18,18,20,20,22,22,24,24,26,26,28,32,34,34,36,36,38,38,40,40,42,42,44,44,46,28,30,30,32,48,30,48,50,50,28],"width":626,"height":646}},"glasses":{"glasses":{"x":102.76,"y":-3.22,"rotation":-90.55,"width":205,"height":60}},"brush_R":{"brush_R":{"x":48.7,"y":-9.64,"rotation":124.86,"width":161,"height":100}},"eyebrows_angry_R":{"eyebrows_angry_R":{"x":20.11,"y":1.44,"rotation":167.65,"width":51,"height":18}},"nose":{"nose":{"x":65.3,"y":0.14,"rotation":-90.55,"width":52,"height":65}},"belok_1":{"belok_1":{"x":12.22,"y":-0.94,"rotation":-90,"width":39,"height":18}},"belok_2":{"belok_2":{"x":13.39,"y":-0.05,"rotation":-88.15,"width":40,"height":19}},"eyebrows_angry_L":{"eyebrows_angry_L":{"x":23.31,"y":-1.4,"rotation":16.04,"width":58,"height":23}},"rainbow_2":{"rainbow_2":{"x":0.26,"y":-0.51,"rotation":-88.15,"width":23,"height":17}},"hair":{"hair":{"x":182.77,"y":-2.99,"rotation":-90.55,"width":243,"height":184}},"blik_1":{"blik_1":{"x":-0.44,"y":6.93,"rotation":-90,"width":12,"height":9}},"neck":{"neck":{"type":"mesh","uvs":[0.58901,0.11443,0.77435,0.0047,0.77085,0.39709,0.90495,0.58888,0.99999,0.62536,1,0.70034,0.78911,0.96226,0.5563,0.99999,0.37437,1,0.15731,0.90366,0.00001,0.72451,0.00407,0.64516,0.11095,0.54473,0.16802,0.37147,0.15375,0.01368,0.36662,0.10217,0.46667,0.70018],"triangles":[5,3,4,7,16,6,5,6,3,7,8,16,8,9,16,9,10,12,2,0,1,16,15,0,13,14,15,6,2,3,10,11,12,12,13,16,13,15,16,16,0,2,9,12,16,16,2,6],"vertices":[1,6,-29.31,-30.84,1,1,6,-12.16,-73.45,1,1,5,96.26,-70.34,1,2,5,65.29,-100.76,0.61968,7,87.93,81.54,0.38032,1,7,110.35,79.26,1,1,7,112.27,67.42,1,1,7,71.3,18.32,1,1,7,19.65,3.83,1,1,8,21.08,-5.02,1,1,8,66.61,-30.22,1,1,8,96.05,-65.61,1,2,5,58.23,105.62,0.65339,8,92.56,-77.85,0.34661,1,5,74.07,80.99,1,1,5,101.67,67.66,1,1,6,-12.24,68.68,1,1,6,-26.87,20.07,1,3,5,48.43,-0.23,0.496,8,-9.37,-47.7,0.24998,7,-8.29,47.9,0.25402],"hull":16,"edges":[2,4,8,10,10,12,12,14,14,16,16,18,18,20,20,22,26,28,28,30,4,6,6,8,22,24,24,26,2,0,0,30],"width":229,"height":160}},"pupil_1":{"pupil_1":{"x":-0.44,"y":-0.57,"rotation":-90,"width":12,"height":11}},"pupil_2":{"pupil_2":{"x":-0.26,"y":-0.03,"rotation":-88.15,"width":12,"height":11}},"lips_angry":{"lips_angry":{"x":-0.19,"y":1.77,"rotation":-90.55,"width":85,"height":28}},"ear_L":{"ear_L":{"x":74.23,"y":97.56,"rotation":-90.55,"width":26,"height":64}},"veko_bottom_L":{"veko_bottom_L":{"x":0.35,"y":-2.47,"rotation":-178.15,"width":41,"height":14}},"rainbow_1":{"rainbow_1":{"x":1.06,"y":-0.57,"rotation":-90,"width":23,"height":18}},"ear_R":{"ear_R":{"x":67.81,"y":-102.39,"rotation":-90.55,"width":28,"height":61}},"veko_bottom_R":{"veko_bottom_R":{"x":0.73,"y":-1.84,"rotation":-180,"width":41,"height":14}},"hair_background":{"hair_background":{"x":83.76,"y":-3.54,"rotation":-90.55,"width":194,"height":276}},"brows_1":{"brows_1":{"x":21.35,"y":2.43,"rotation":-2.74,"width":52,"height":16}},"brows_2":{"brows_2":{"x":21.94,"y":-2.21,"rotation":-175.93,"width":52,"height":17}},"face_folds":{"face_folds":{"x":-0.05,"y":-1.08,"rotation":-90.55,"width":30,"height":29}},"closed_eye_R":{"closed_eye_R":{"type":"mesh","uvs":[0.34107,0.04292,0.65786,0.042,0.98042,0.32904,0.97526,0.61135,0.89646,0.81103,0.78026,0.95734,0.54249,0.95725,0.27424,0.95714,0.12889,0.77835,0,0.61979,0,0.50189,0.08016,0.27592],"triangles":[3,1,2,8,9,10,8,11,0,8,10,11,4,1,3,7,8,0,6,0,1,5,6,1,7,0,6,4,5,1],"vertices":[24.23,6.08,24.25,-6.91,17.65,-20.13,11.16,-19.92,6.57,-16.69,3.2,-11.93,3.2,-2.18,3.21,8.82,7.32,14.78,10.96,20.06,13.68,20.06,18.87,16.78],"hull":12,"edges":[0,22,0,2,2,4,4,6,18,20,20,22,10,12,12,14,14,16,16,18,6,8,8,10],"width":41,"height":23}},"closed_eye_L":{"closed_eye_L":{"type":"mesh","uvs":[0,0.34342,0.3903,0,0.60956,0,1,0.3452,1,0.46401,0.95735,0.64335,0.89923,0.81425,0.78067,0.95692,0.56254,0.95807,0.33073,0.9593,0.20181,0.85741,0.07491,0.75713,0,0.47692],"triangles":[5,2,3,10,12,0,4,5,3,10,11,12,6,2,5,0,1,10,7,2,6,8,1,2,8,2,7,9,10,1,8,9,1],"vertices":[17.81,21.11,26.22,5.37,26.51,-3.62,19.09,-19.87,16.36,-19.96,12.18,-18.35,8.18,-16.09,4.74,-11.34,4.43,-2.4,4.09,7.1,6.26,12.46,8.4,17.73,14.74,21.01],"hull":13,"edges":[0,24,0,2,2,4,4,6,6,8,8,10,22,24,14,16,16,18,18,20,20,22,10,12,12,14],"width":41,"height":23}},"face":{"face":{"x":87.26,"y":-4.07,"rotation":-90.55,"width":195,"height":296}},"hand_L":{"hand_L":{"type":"mesh","uvs":[0.76619,0,0.7832,0.02262,1,0.26998,1,0.3166,0.78913,0.54099,0.60792,0.73382,0.32033,0.99147,0.0002,0.92665,0.23878,0.66411,0.44577,0.43634,0.53542,0.26288,0.64762,0.04575,0.7423,0],"triangles":[6,7,5,7,8,5,5,8,4,8,9,4,4,9,3,9,10,3,10,2,3,2,11,1,2,10,11,11,12,1,12,0,1],"vertices":[1,12,-16.8,-23.24,1,1,12,-3.75,-16.8,1,1,12,137.73,60.61,1,1,12,166.13,65.96,1,2,12,311.83,44.07,0.46218,13,11.28,46.54,0.53782,1,13,137.88,48.43,1,1,14,10.08,48.61,1,1,14,26.56,-33.64,1,3,12,410.29,-66.18,0.46556,13,126.43,-46.15,0.06989,14,-133.44,-96.11,0.46455,2,12,262.7,-45.55,0.86947,13,-22.55,-49.91,0.13053,2,12,153.19,-45.21,0.92744,13,-130.65,-67.46,0.07256,1,12,16.12,-44.79,1,1,12,-15.79,-28.64,1],"hull":13,"edges":[0,24,0,2,2,4,4,6,10,12,12,14,22,24,6,8,8,10,14,16,16,18,18,20,20,22],"width":230,"height":620}}}}],"animations":{"block_01_idle_1":{"slots":{"closed_eye_L":{"attachment":[{"name":null},{"time":2.4333,"name":"closed_eye_L"},{"time":2.6,"name":null},{"time":5.0333,"name":"closed_eye_L"},{"time":5.2,"name":null}]},"veko_bottom_R":{"attachment":[{"time":2.4333,"name":"veko_bottom_R"},{"time":2.6333,"name":null},{"time":5.0333,"name":"veko_bottom_R"},{"time":5.2333,"name":null}]},"closed_eye_R":{"attachment":[{"name":null},{"time":2.4333,"name":"closed_eye_R"},{"time":2.6,"name":null},{"time":5.0333,"name":"closed_eye_R"},{"time":5.2,"name":null}]},"veko_bottom_L":{"attachment":[{"time":2.4333,"name":"veko_bottom_L"},{"time":2.6333,"name":null},{"time":5.0333,"name":"veko_bottom_L"},{"time":5.2333,"name":null}]}},"bones":{"t-shirt":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1,"angle":-0.21,"curve":0.25,"c3":0.75},{"time":2,"curve":0.25,"c3":0.75},{"time":3,"angle":-0.21,"curve":0.25,"c3":0.75},{"time":4,"curve":0.25,"c3":0.75},{"time":5,"angle":-0.21,"curve":0.25,"c3":0.75},{"time":6}]},"chest":{"rotate":[{"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333},{"time":1.0333,"angle":-0.21,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.0333},{"time":3.0333,"angle":-0.21,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.0333},{"time":5.0333,"angle":-0.21,"curve":0.248,"c3":0.736,"c4":0.94},{"time":6}],"scale":[{"y":1.001,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.0333,"y":1.1,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2,"y":1.001,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.0333,"curve":0.25,"c3":0.75},{"time":3.0333,"y":1.1,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4,"y":1.001,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.0333,"curve":0.25,"c3":0.75},{"time":5.0333,"y":1.1,"curve":0.248,"c3":0.736,"c4":0.94},{"time":6,"y":1.001}]},"neck":{"rotate":[{"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.0667,"angle":-0.21,"curve":0.246,"c3":0.723,"c4":0.88},{"time":2,"curve":0.352,"c2":0.65,"c3":0.687},{"time":2.0667,"curve":0.25,"c3":0.75},{"time":3.0667,"angle":-0.21,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4,"curve":0.352,"c2":0.65,"c3":0.687},{"time":4.0667,"curve":0.25,"c3":0.75},{"time":5.0667,"angle":-0.21,"curve":0.246,"c3":0.723,"c4":0.88},{"time":6}]},"face":{"rotate":[{"angle":-0.05,"curve":0.36,"c2":0.64,"c3":0.695},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.1,"angle":-1.1,"curve":0.245,"c3":0.711,"c4":0.83},{"time":2,"angle":-0.05,"curve":0.36,"c2":0.64,"c3":0.695},{"time":2.1,"curve":0.25,"c3":0.75},{"time":3.1,"angle":-1.1,"curve":0.245,"c3":0.711,"c4":0.83},{"time":4,"angle":-0.05,"curve":0.36,"c2":0.64,"c3":0.695},{"time":4.1,"curve":0.25,"c3":0.75},{"time":5.1,"angle":-1.1,"curve":0.245,"c3":0.711,"c4":0.83},{"time":6,"angle":-0.05}]},"bone3":{"rotate":[{"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.0333,"angle":-2.4,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.0333,"curve":0.25,"c3":0.75},{"time":3.0333,"angle":-2.4,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.0333,"curve":0.25,"c3":0.75},{"time":5.0333,"angle":-2.4,"curve":0.248,"c3":0.736,"c4":0.94},{"time":6,"angle":-0.03}]},"bone2":{"rotate":[{"angle":0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333},{"time":1.0333,"angle":2.4,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2,"angle":0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.0333},{"time":3.0333,"angle":2.4,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4,"angle":0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.0333},{"time":5.0333,"angle":2.4,"curve":0.248,"c3":0.736,"c4":0.94},{"time":6,"angle":0.03}]},"bone5":{"rotate":[{"angle":0.09,"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.0667,"angle":3.74,"curve":0.246,"c3":0.723,"c4":0.88},{"time":2,"angle":0.09,"curve":0.352,"c2":0.65,"c3":0.687},{"time":2.0667,"curve":0.25,"c3":0.75},{"time":3.0667,"angle":3.74,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4,"angle":0.09,"curve":0.352,"c2":0.65,"c3":0.687},{"time":4.0667,"curve":0.25,"c3":0.75},{"time":5.0667,"angle":3.74,"curve":0.246,"c3":0.723,"c4":0.88},{"time":6,"angle":0.09}]},"hand_R2":{"rotate":[{"angle":-0.05,"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.0667,"angle":-2.15,"curve":0.246,"c3":0.723,"c4":0.88},{"time":2,"angle":-0.05,"curve":0.352,"c2":0.65,"c3":0.687},{"time":2.0667,"curve":0.25,"c3":0.75},{"time":3.0667,"angle":-2.15,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4,"angle":-0.05,"curve":0.352,"c2":0.65,"c3":0.687},{"time":4.0667,"curve":0.25,"c3":0.75},{"time":5.0667,"angle":-2.15,"curve":0.246,"c3":0.723,"c4":0.88},{"time":6,"angle":-0.05}]},"bone4":{"rotate":[{"angle":0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.0667},{"time":1.0667,"angle":1.2,"curve":0.246,"c3":0.723,"c4":0.88},{"time":2,"angle":0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":2.0667},{"time":3.0667,"angle":1.2,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4,"angle":0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":4.0667},{"time":5.0667,"angle":1.2,"curve":0.246,"c3":0.723,"c4":0.88},{"time":6,"angle":0.03}]},"hand_R":{"rotate":[{"angle":-0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.0667},{"time":1.0667,"angle":-1.2,"curve":0.246,"c3":0.723,"c4":0.88},{"time":2,"angle":-0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":2.0667},{"time":3.0667,"angle":-1.2,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4,"angle":-0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":4.0667},{"time":5.0667,"angle":-1.2,"curve":0.246,"c3":0.723,"c4":0.88},{"time":6,"angle":-0.03}]},"veko_bottom_R":{"rotate":[{"time":2.4},{"time":2.5,"angle":1.2,"curve":"stepped"},{"time":2.5333,"angle":1.2},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"angle":1.2,"curve":"stepped"},{"time":5.1333,"angle":1.2},{"time":5.2333}],"translate":[{"time":2.4},{"time":2.5,"x":7.32,"y":-0.01,"curve":"stepped"},{"time":2.5333,"x":7.32,"y":-0.01},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"x":7.32,"y":-0.01,"curve":"stepped"},{"time":5.1333,"x":7.32,"y":-0.01},{"time":5.2333}]},"veko_bottom_L":{"rotate":[{"time":2.4},{"time":2.5,"angle":-2.4,"curve":"stepped"},{"time":2.5333,"angle":-2.4},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"angle":-2.4,"curve":"stepped"},{"time":5.1333,"angle":-2.4},{"time":5.2333}],"translate":[{"time":2.4},{"time":2.5,"x":7.23,"curve":"stepped"},{"time":2.5333,"x":7.23},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"x":7.23,"curve":"stepped"},{"time":5.1333,"x":7.23},{"time":5.2333}]},"brows_1":{"rotate":[{"time":2.4},{"time":2.5,"angle":-3.6,"curve":"stepped"},{"time":2.5333,"angle":-3.6},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"angle":-3.6,"curve":"stepped"},{"time":5.1333,"angle":-3.6},{"time":5.2333}]},"blik_1":{"translate":[{"time":2.4},{"time":2.5,"x":-0.81,"curve":"stepped"},{"time":2.5333,"x":-0.81},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"x":-0.81,"curve":"stepped"},{"time":5.1333,"x":-0.81},{"time":5.2333}]},"blik_2":{"translate":[{"time":2.4},{"time":2.5,"x":-0.81,"curve":"stepped"},{"time":2.5333,"x":-0.81},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"x":-0.81,"curve":"stepped"},{"time":5.1333,"x":-0.81},{"time":5.2333}]},"brows_2":{"rotate":[{"time":2.4},{"time":2.5,"angle":2.4,"curve":"stepped"},{"time":2.5333,"angle":2.4},{"time":2.6333,"curve":"stepped"},{"time":5},{"time":5.1,"angle":2.4,"curve":"stepped"},{"time":5.1333,"angle":2.4},{"time":5.2333}]}},"deform":{"default":{"closed_eye_L":{"closed_eye_L":[{"time":2.4333,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798]},{"time":2.5,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374],"curve":"stepped"},{"time":2.5333,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374]},{"time":2.6,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798],"curve":"stepped"},{"time":5.0333,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798]},{"time":5.1,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374],"curve":"stepped"},{"time":5.1333,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374]},{"time":5.2,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798]}]},"closed_eye_R":{"closed_eye_R":[{"time":2.4333,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593]},{"time":2.5,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933],"curve":"stepped"},{"time":2.5333,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933]},{"time":2.6,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593],"curve":"stepped"},{"time":5.0333,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593]},{"time":5.1,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933],"curve":"stepped"},{"time":5.1333,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933]},{"time":5.2,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593]}]}}}},"block_01_idle_2":{"slots":{"lips_angry":{"attachment":[{"name":"lips_angry"}]},"closed_eye_L":{"attachment":[{"name":null},{"time":0.8333,"name":"closed_eye_L"},{"time":1,"name":null},{"time":3.2333,"name":"closed_eye_L"},{"time":3.4,"name":null}]},"eyebrows_angry_L":{"attachment":[{"name":"eyebrows_angry_L"}]},"face_folds":{"attachment":[{"name":"face_folds"}]},"brows_2":{"attachment":[{"name":null}]},"brows_1":{"attachment":[{"name":null}]},"closed_eye_R":{"attachment":[{"name":null},{"time":0.8333,"name":"closed_eye_R"},{"time":1,"name":null},{"time":3.2333,"name":"closed_eye_R"},{"time":3.4,"name":null}]},"lips":{"attachment":[{"name":null}]},"veko_bottom_R":{"attachment":[{"time":0.8333,"name":"veko_bottom_R"},{"time":1.0333,"name":null},{"time":3.2333,"name":"veko_bottom_R"},{"time":3.4333,"name":null}]},"veko_bottom_L":{"attachment":[{"time":0.8333,"name":"veko_bottom_L"},{"time":1.0333,"name":null},{"time":3.2333,"name":"veko_bottom_L"},{"time":3.4333,"name":null}]},"eyebrows_angry_R":{"attachment":[{"name":"eyebrows_angry_R"}]}},"bones":{"t-shirt":{"rotate":[{"curve":0.25,"c3":0.75},{"time":0.7,"angle":-0.21,"curve":0.25,"c3":0.75},{"time":1.5667,"curve":0.25,"c3":0.75},{"time":2.2667,"angle":-0.21,"curve":0.25,"c3":0.75},{"time":3.1333,"curve":0.25,"c3":0.75},{"time":3.8333,"angle":-0.21,"curve":0.25,"c3":0.75},{"time":4.7}]},"chest":{"rotate":[{"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333},{"time":0.7333,"angle":-0.79,"curve":0.248,"c3":0.736,"c4":0.94},{"time":1.5667,"curve":0.344,"c2":0.66,"c3":0.677},{"time":1.6},{"time":2.3,"angle":-0.79,"curve":0.248,"c3":0.736,"c4":0.94},{"time":3.1333,"curve":0.344,"c2":0.66,"c3":0.677},{"time":3.1667},{"time":3.8667,"angle":-0.79,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.7}],"scale":[{"y":1.001,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":0.7333,"y":1.1,"curve":0.248,"c3":0.736,"c4":0.94},{"time":1.5667,"y":1.001,"curve":0.344,"c2":0.66,"c3":0.677},{"time":1.6,"curve":0.25,"c3":0.75},{"time":2.3,"y":1.1,"curve":0.248,"c3":0.736,"c4":0.94},{"time":3.1333,"y":1.001,"curve":0.344,"c2":0.66,"c3":0.677},{"time":3.1667,"curve":0.25,"c3":0.75},{"time":3.8667,"y":1.1,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.7,"y":1.001}]},"neck":{"rotate":[{"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":0.7667,"angle":-1.02,"curve":0.246,"c3":0.723,"c4":0.88},{"time":1.5667,"curve":0.352,"c2":0.65,"c3":0.687},{"time":1.6333,"curve":0.25,"c3":0.75},{"time":2.3333,"angle":-1.02,"curve":0.246,"c3":0.723,"c4":0.88},{"time":3.1333,"curve":0.352,"c2":0.65,"c3":0.687},{"time":3.2,"curve":0.25,"c3":0.75},{"time":3.9,"angle":-1.02,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4.7}]},"face":{"rotate":[{"angle":-0.05,"curve":0.36,"c2":0.64,"c3":0.695},{"time":0.1,"curve":0.25,"c3":0.75},{"time":0.8,"angle":-2.28,"curve":0.245,"c3":0.711,"c4":0.83},{"time":1.5667,"angle":-0.05,"curve":0.36,"c2":0.64,"c3":0.695},{"time":1.6667,"curve":0.25,"c3":0.75},{"time":2.3667,"angle":-2.28,"curve":0.245,"c3":0.711,"c4":0.83},{"time":3.1333,"angle":-0.05,"curve":0.36,"c2":0.64,"c3":0.695},{"time":3.2333,"curve":0.25,"c3":0.75},{"time":3.9333,"angle":-2.28,"curve":0.245,"c3":0.711,"c4":0.83},{"time":4.7,"angle":-0.05}]},"bone3":{"rotate":[{"angle":-0.12,"curve":0.344,"c2":0.45,"c3":0.677,"c4":0.78},{"time":0.0333,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":0.7667,"angle":-4.8,"curve":0.248,"c3":0.736,"c4":0.94},{"time":1.6,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":1.6333,"curve":0.25,"c3":0.75},{"time":2.3333,"angle":-4.8,"curve":0.248,"c3":0.736,"c4":0.94},{"time":3.1667,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":3.2,"curve":0.25,"c3":0.75},{"time":3.9,"angle":-4.8,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.7,"angle":-0.12}]},"bone2":{"rotate":[{"angle":0.12,"curve":0.344,"c2":0.45,"c3":0.677,"c4":0.78},{"time":0.0333,"angle":0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0667},{"time":0.7667,"angle":4.8,"curve":0.248,"c3":0.736,"c4":0.94},{"time":1.6,"angle":0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":1.6333},{"time":2.3333,"angle":4.8,"curve":0.248,"c3":0.736,"c4":0.94},{"time":3.1667,"angle":0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":3.2},{"time":3.9,"angle":4.8,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.7,"angle":0.12}]},"bone5":{"rotate":[{"angle":0.02,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":0.7333,"angle":7.34,"curve":0.246,"c3":0.723,"c4":0.88},{"time":1.5333,"angle":0.09,"curve":0.352,"c2":0.65,"c3":0.687},{"time":1.6,"curve":0.25,"c3":0.75},{"time":2.3,"angle":7.34,"curve":0.246,"c3":0.723,"c4":0.88},{"time":3.1,"angle":0.09,"curve":0.352,"c2":0.65,"c3":0.687},{"time":3.1667,"curve":0.25,"c3":0.75},{"time":3.8667,"angle":7.34,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4.6333,"angle":0.28,"curve":0.342,"c2":0.4,"c3":0.676,"c4":0.74},{"time":4.6667,"angle":0.09,"curve":0.342,"c2":0.44,"c3":0.676,"c4":0.77},{"time":4.7,"angle":0.02}]},"hand_R2":{"rotate":[{"angle":-0.01,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":0.7333,"angle":-3.35,"curve":0.246,"c3":0.723,"c4":0.88},{"time":1.5333,"angle":-0.05,"curve":0.352,"c2":0.65,"c3":0.687},{"time":1.6,"curve":0.25,"c3":0.75},{"time":2.3,"angle":-3.35,"curve":0.246,"c3":0.723,"c4":0.88},{"time":3.1,"angle":-0.05,"curve":0.352,"c2":0.65,"c3":0.687},{"time":3.1667,"curve":0.25,"c3":0.75},{"time":3.8667,"angle":-3.35,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4.6333,"angle":-0.14,"curve":0.342,"c2":0.4,"c3":0.676,"c4":0.74},{"time":4.6667,"angle":-0.05,"curve":0.342,"c2":0.44,"c3":0.676,"c4":0.77},{"time":4.7,"angle":-0.01}]},"bone4":{"rotate":[{"angle":0.09,"curve":0.342,"c2":0.4,"c3":0.676,"c4":0.74},{"time":0.0333,"angle":0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.1},{"time":0.8,"angle":2.4,"curve":0.246,"c3":0.723,"c4":0.88},{"time":1.6,"angle":0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":1.6667},{"time":2.3667,"angle":2.4,"curve":0.246,"c3":0.723,"c4":0.88},{"time":3.1667,"angle":0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":3.2333},{"time":3.9333,"angle":2.4,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4.7,"angle":0.09}]},"hand_R":{"rotate":[{"angle":-0.09,"curve":0.342,"c2":0.4,"c3":0.676,"c4":0.74},{"time":0.0333,"angle":-0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":0.1},{"time":0.8,"angle":-2.4,"curve":0.246,"c3":0.723,"c4":0.88},{"time":1.6,"angle":-0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":1.6667},{"time":2.3667,"angle":-2.4,"curve":0.246,"c3":0.723,"c4":0.88},{"time":3.1667,"angle":-0.03,"curve":0.352,"c2":0.65,"c3":0.687},{"time":3.2333},{"time":3.9333,"angle":-2.4,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4.7,"angle":-0.09}]},"brows_1":{"rotate":[{"time":0.8},{"time":0.9,"angle":-3.6,"curve":"stepped"},{"time":0.9333,"angle":-3.6},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"angle":-3.6,"curve":"stepped"},{"time":3.3333,"angle":-3.6},{"time":3.4333}]},"brows_2":{"rotate":[{"time":0.8},{"time":0.9,"angle":2.4,"curve":"stepped"},{"time":0.9333,"angle":2.4},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"angle":2.4,"curve":"stepped"},{"time":3.3333,"angle":2.4},{"time":3.4333}]},"eyebrows_angry_R":{"rotate":[{"time":0.8},{"time":0.9,"angle":2.4,"curve":"stepped"},{"time":0.9333,"angle":2.4},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"angle":2.4,"curve":"stepped"},{"time":3.3333,"angle":2.4},{"time":3.4333}]},"eyebrows_angry_L":{"rotate":[{"time":0.8},{"time":0.9,"angle":-2.4,"curve":"stepped"},{"time":0.9333,"angle":-2.4},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"angle":-2.4,"curve":"stepped"},{"time":3.3333,"angle":-2.4},{"time":3.4333}]},"veko_bottom_R":{"rotate":[{"time":0.8},{"time":0.9,"angle":1.2,"curve":"stepped"},{"time":0.9333,"angle":1.2},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"angle":1.2,"curve":"stepped"},{"time":3.3333,"angle":1.2},{"time":3.4333}],"translate":[{"time":0.8},{"time":0.9,"x":7.32,"y":-0.01,"curve":"stepped"},{"time":0.9333,"x":7.32,"y":-0.01},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"x":7.32,"y":-0.01,"curve":"stepped"},{"time":3.3333,"x":7.32,"y":-0.01},{"time":3.4333}]},"blik_2":{"translate":[{"time":0.8},{"time":0.9,"x":-0.81,"curve":"stepped"},{"time":0.9333,"x":-0.81},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"x":-0.81,"curve":"stepped"},{"time":3.3333,"x":-0.81},{"time":3.4333}]},"veko_bottom_L":{"rotate":[{"time":0.8},{"time":0.9,"angle":-2.4,"curve":"stepped"},{"time":0.9333,"angle":-2.4},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"angle":-2.4,"curve":"stepped"},{"time":3.3333,"angle":-2.4},{"time":3.4333}],"translate":[{"time":0.8},{"time":0.9,"x":7.23,"curve":"stepped"},{"time":0.9333,"x":7.23},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"x":7.23,"curve":"stepped"},{"time":3.3333,"x":7.23},{"time":3.4333}]},"blik_1":{"translate":[{"time":0.8},{"time":0.9,"x":-0.81,"curve":"stepped"},{"time":0.9333,"x":-0.81},{"time":1.0333,"curve":"stepped"},{"time":3.2},{"time":3.3,"x":-0.81,"curve":"stepped"},{"time":3.3333,"x":-0.81},{"time":3.4333}]}},"deform":{"default":{"closed_eye_L":{"closed_eye_L":[{"time":0.8333,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798]},{"time":0.9,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374],"curve":"stepped"},{"time":0.9333,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374]},{"time":1,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798],"curve":"stepped"},{"time":3.2333,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798]},{"time":3.3,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374],"curve":"stepped"},{"time":3.3333,"vertices":[2.12787,0.06791,0.8656,0.0272,0.86554,0.02721,2.1344,0.06812,2.57104,0.08221,3.23022,0.10348,3.85815,0.12373,4.38269,0.14066,4.3869,0.14079,4.39142,0.14093,4.01691,0.12886,3.64838,0.11697,2.61853,0.08374]},{"time":3.4,"offset":6,"vertices":[2.40631,0.79795,2.04059,0.96616,3.52069,-0.24658,8.78674,2.6776,14.12036,4.24017,15.40253,2.17634,15.09918,1.19194,12.77734,-0.50758,5.97351,-0.88798]}]},"closed_eye_R":{"closed_eye_R":[{"time":0.8333,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593]},{"time":0.9,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933],"curve":"stepped"},{"time":0.9333,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933]},{"time":1,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593],"curve":"stepped"},{"time":3.2333,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593]},{"time":3.3,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933],"curve":"stepped"},{"time":3.3333,"vertices":[0.26544,0.00024,0.26202,0.00024,1.32635,0.00025,2.37305,0.00024,3.1134,0.00025,3.65588,0.00027,3.65552,0.00026,3.65515,0.00026,2.99225,0.00026,2.40442,0.00026,1.96722,0.00025,1.12933]},{"time":3.4,"offset":8,"vertices":[7.27594,1.90428,12.85181,3.94422,15.02783,2.17633,13.80396,0.20432,8.09186,-0.33964,-0.88403,-0.47587,-1.76801,-0.13593]}]}}}}}}');
-;// CONCATENATED MODULE: ./assets/spine/street/mark/mark.png
-var mark_namespaceObject = __webpack_require__.p + "assets/spine/street/mark/mark.png";
-;// CONCATENATED MODULE: ./assets/spine/street/mark/mark.atlas
-var mark_atlas_namespaceObject = "\nblock_02_mark.png\nsize: 1024,1024\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbelok 1\n  rotate: false\n  xy: 116, 105\n  size: 14, 12\n  orig: 14, 12\n  offset: 0, 0\n  index: -1\nbelok 2\n  rotate: true\n  xy: 101, 51\n  size: 23, 12\n  orig: 23, 12\n  offset: 0, 0\n  index: -1\nblik 1\n  rotate: true\n  xy: 148, 2\n  size: 7, 5\n  orig: 7, 5\n  offset: 0, 0\n  index: -1\nblik 2\n  rotate: false\n  xy: 155, 3\n  size: 8, 6\n  orig: 8, 6\n  offset: 0, 0\n  index: -1\nbrow 1\n  rotate: false\n  xy: 116, 119\n  size: 15, 9\n  orig: 15, 9\n  offset: 0, 0\n  index: -1\nbrow 2\n  rotate: false\n  xy: 70, 74\n  size: 29, 12\n  orig: 29, 12\n  offset: 0, 0\n  index: -1\nclosed eye 1\n  rotate: false\n  xy: 116, 92\n  size: 14, 11\n  orig: 14, 11\n  offset: 0, 0\n  index: -1\nclosed eye 2\n  rotate: true\n  xy: 70, 49\n  size: 23, 12\n  orig: 23, 12\n  offset: 0, 0\n  index: -1\near\n  rotate: false\n  xy: 2, 5\n  size: 24, 39\n  orig: 24, 39\n  offset: 0, 0\n  index: -1\nface\n  rotate: false\n  xy: 112, 467\n  size: 132, 159\n  orig: 132, 159\n  offset: 0, 0\n  index: -1\nglasses\n  rotate: true\n  xy: 112, 351\n  size: 114, 32\n  orig: 114, 32\n  offset: 0, 0\n  index: -1\nhair\n  rotate: true\n  xy: 200, 211\n  size: 148, 140\n  orig: 148, 140\n  offset: 0, 0\n  index: -1\nhand left\n  rotate: false\n  xy: 2, 337\n  size: 108, 289\n  orig: 108, 289\n  offset: 0, 0\n  index: -1\nhand right\n  rotate: false\n  xy: 2, 46\n  size: 66, 289\n  orig: 66, 289\n  offset: 0, 0\n  index: -1\nlips\n  rotate: false\n  xy: 70, 88\n  size: 32, 13\n  orig: 32, 13\n  offset: 0, 0\n  index: -1\nneck\n  rotate: false\n  xy: 146, 361\n  size: 84, 104\n  orig: 84, 104\n  offset: 0, 0\n  index: -1\nnose\n  rotate: true\n  xy: 70, 103\n  size: 25, 44\n  orig: 25, 44\n  offset: 0, 0\n  index: -1\npupil 1\n  rotate: false\n  xy: 175, 3\n  size: 5, 6\n  orig: 5, 6\n  offset: 0, 0\n  index: -1\npupil 2\n  rotate: true\n  xy: 165, 3\n  size: 6, 8\n  orig: 6, 8\n  offset: 0, 0\n  index: -1\nrainbow 1\n  rotate: false\n  xy: 137, 338\n  size: 9, 11\n  orig: 9, 11\n  offset: 0, 0\n  index: -1\nrainbow 2\n  rotate: false\n  xy: 115, 56\n  size: 12, 12\n  orig: 12, 12\n  offset: 0, 0\n  index: -1\nshorts\n  rotate: true\n  xy: 70, 130\n  size: 205, 128\n  orig: 205, 128\n  offset: 0, 0\n  index: -1\nt-shirt\n  rotate: false\n  xy: 2, 628\n  size: 236, 394\n  orig: 236, 394\n  offset: 0, 0\n  index: -1\nt-shirt_shoulder_L\n  rotate: true\n  xy: 134, 11\n  size: 117, 170\n  orig: 117, 170\n  offset: 0, 0\n  index: -1\nt-shirt_shoulder_R\n  rotate: true\n  xy: 28, 6\n  size: 38, 104\n  orig: 38, 104\n  offset: 0, 0\n  index: -1\nveko 1_1\n  rotate: false\n  xy: 112, 338\n  size: 23, 11\n  orig: 23, 11\n  offset: 0, 0\n  index: -1\nveko 1_2\n  rotate: true\n  xy: 84, 49\n  size: 23, 12\n  orig: 23, 12\n  offset: 0, 0\n  index: -1\nveko 1_bottom\n  rotate: true\n  xy: 104, 76\n  size: 25, 10\n  orig: 25, 10\n  offset: 0, 0\n  index: -1\nveko 2_1\n  rotate: false\n  xy: 116, 81\n  size: 14, 9\n  orig: 14, 9\n  offset: 0, 0\n  index: -1\nveko 2_2\n  rotate: false\n  xy: 116, 70\n  size: 14, 9\n  orig: 14, 9\n  offset: 0, 0\n  index: -1\nveko 2_bottom\n  rotate: false\n  xy: 134, 2\n  size: 12, 7\n  orig: 12, 7\n  offset: 0, 0\n  index: -1\n";
-;// CONCATENATED MODULE: ./assets/spine/street/mark/mark.json
-var street_mark_mark_namespaceObject = JSON.parse('{"skeleton":{"hash":"dEIwg0xQfv8b7VSpZg9rNlENi2A","spine":"3.8.75","x":-125.76,"y":14.36,"width":271.27,"height":669,"images":"./images/","audio":""},"bones":[{"name":"block_02_mark"},{"name":"mark","parent":"block_02_mark"},{"name":"shorts","parent":"mark","x":13.44,"y":122.24},{"name":"shorts2","parent":"shorts","length":196.52,"rotation":86.1,"x":-0.61,"y":1.82},{"name":"shorts3","parent":"shorts2","length":147.95,"rotation":8.37,"x":196.52,"transform":"noScale"},{"name":"shorts4","parent":"shorts3","length":70.45,"rotation":-1.63,"x":149.74,"y":0.65},{"name":"face","parent":"shorts4","length":107.41,"rotation":5.44,"x":68.9,"y":-0.92},{"name":"glasses","parent":"face","length":43.29,"rotation":-104.83,"x":65.51,"y":22.83},{"name":"blik 2","parent":"face","length":2.6,"rotation":-8.28,"x":44.77,"y":-35.91},{"name":"brow 2","parent":"blik 2","length":22.97,"rotation":-82,"x":20.19,"y":12.86},{"name":"belok 1","parent":"face","length":1.54,"rotation":-8.28,"x":44.78,"y":-64.33},{"name":"veko 1_bottom","parent":"blik 2","rotation":90,"x":3.89,"y":-1.86},{"name":"brow 1","parent":"belok 1","length":9.84,"rotation":90.7,"x":20.57,"y":-4.82},{"name":"shorts5","parent":"shorts3","length":63.07,"rotation":-119.78,"x":138.87,"y":-23.91},{"name":"shorts6","parent":"shorts3","length":69.03,"rotation":95.11,"x":142.42,"y":21.48},{"name":"t-shirt_shoulder_L","parent":"shorts6","length":185.15,"rotation":73.05,"x":69.65,"y":1.1},{"name":"hand left","parent":"t-shirt_shoulder_L","length":153.15,"rotation":23.13,"x":186.78,"y":-2.08},{"name":"hand left2","parent":"hand left","length":65.8,"rotation":2.67,"x":153.15},{"name":"t-shirt_shoulder_R","parent":"shorts5","length":143.43,"rotation":-61.99,"x":64.75,"y":-1},{"name":"t-shirt_shoulder_R2","parent":"t-shirt_shoulder_R","length":152.57,"rotation":4.06,"x":143.19,"y":-0.05},{"name":"t-shirt_shoulder_R3","parent":"t-shirt_shoulder_R2","length":63.24,"rotation":-8.25,"x":152.57},{"name":"veko 2_bottom","parent":"belok 1","rotation":90,"x":0.71,"y":-0.42},{"name":"pupil 1","parent":"belok 1","x":6.07,"y":-0.9},{"name":"pupil 2","parent":"blik 2","x":8.82,"y":-2.88}],"slots":[{"name":"shorts","bone":"shorts","attachment":"shorts"},{"name":"hand right","bone":"t-shirt_shoulder_R2","attachment":"hand right"},{"name":"t-shirt_shoulder_R","bone":"t-shirt_shoulder_R","attachment":"t-shirt_shoulder_R"},{"name":"neck","bone":"shorts4","attachment":"neck"},{"name":"t-shirt","bone":"shorts2","attachment":"t-shirt"},{"name":"t-shirt_shoulder_L","bone":"t-shirt_shoulder_L","attachment":"t-shirt_shoulder_L"},{"name":"hand left","bone":"hand left","attachment":"hand left"},{"name":"belok 2","bone":"blik 2","attachment":"belok 2"},{"name":"belok 1","bone":"belok 1","attachment":"belok 1"},{"name":"rainbow 2","bone":"pupil 2","attachment":"rainbow 2"},{"name":"rainbow 1","bone":"pupil 1","attachment":"rainbow 1"},{"name":"pupil 2","bone":"pupil 2","attachment":"pupil 2"},{"name":"pupil 1","bone":"pupil 1","attachment":"pupil 1"},{"name":"blik 2","bone":"pupil 2","attachment":"blik 2"},{"name":"blik 1","bone":"pupil 1","attachment":"blik 1"},{"name":"face","bone":"face","attachment":"face"},{"name":"nose","bone":"face","attachment":"nose"},{"name":"veko 1_bottom","bone":"veko 1_bottom"},{"name":"veko 2_bottom","bone":"veko 2_bottom"},{"name":"closed eye 2","bone":"blik 2","attachment":"closed eye 2"},{"name":"closed eye 1","bone":"belok 1","attachment":"closed eye 1"},{"name":"veko 2_2","bone":"belok 1","attachment":"veko 2_2"},{"name":"veko 2_1","bone":"belok 1","attachment":"veko 2_1"},{"name":"veko 1_2","bone":"blik 2","attachment":"veko 1_2"},{"name":"veko 1_1","bone":"blik 2","attachment":"veko 1_1"},{"name":"hair","bone":"face","attachment":"hair"},{"name":"ear","bone":"face","attachment":"ear"},{"name":"lips","bone":"face","attachment":"lips"},{"name":"brow 2","bone":"brow 2","attachment":"brow 2"},{"name":"brow 1","bone":"brow 1","attachment":"brow 1"},{"name":"glasses","bone":"glasses","attachment":"glasses"}],"skins":[{"name":"default","attachments":{"pupil 2":{"pupil 2":{"x":-0.15,"y":0.09,"rotation":-90,"width":6,"height":8}},"veko 2_bottom":{"veko 2_bottom":{"x":0.33,"y":-0.08,"rotation":180,"width":12,"height":7}},"rainbow 1":{"rainbow 1":{"x":0.49,"y":-0.26,"rotation":-90,"width":9,"height":11}},"rainbow 2":{"rainbow 2":{"x":0.35,"y":-0.41,"rotation":-90,"width":12,"height":12}},"brow 1":{"brow 1":{"x":5.15,"y":-0.06,"rotation":179.3,"width":15,"height":9}},"brow 2":{"brow 2":{"x":11.38,"y":0.9,"rotation":-8,"width":29,"height":12}},"glasses":{"glasses":{"x":45.81,"y":3.34,"rotation":6.55,"width":114,"height":32}},"veko 1_2":{"veko 1_2":{"x":12.16,"y":1.71,"rotation":-90,"width":23,"height":12}},"closed eye 1":{"closed eye 1":{"type":"mesh","uvs":[0.36853,0.08951,0.713,0.08911,0.98405,0.42915,0.89705,0.91123,0.59711,0.91078,0.28593,0.91032,0.07029,0.77332,0.07073,0.08985],"triangles":[0,6,7,5,6,0,4,0,1,4,1,2,5,0,4,3,4,2],"vertices":[10.58,2.18,10.58,-2.64,6.84,-6.44,1.54,-5.22,1.55,-1.02,1.55,3.33,3.06,6.35,10.58,6.35],"hull":8,"edges":[2,4,4,6,10,12,12,14,6,8,8,10,2,0,0,14],"width":14,"height":11}},"t-shirt_shoulder_L":{"t-shirt_shoulder_L":{"type":"mesh","uvs":[0.65897,0,0.86396,0.14103,1,0.36069,1,0.41486,0.69103,0.55918,0.65164,0.63676,0.63247,0.98564,0.55925,1,0.0437,0.94867,0,0.9329,0,0.87094,0.0432,0.46592,0.26341,0.15759,0.55425,0.02334,0.61441,0],"triangles":[5,6,7,10,5,7,8,10,7,8,9,10,10,11,5,5,11,4,4,11,12,4,12,13,1,4,14,14,4,13,3,4,2,1,14,0,4,1,2],"vertices":[2,14,37.34,-33.11,1,15,-42.14,20.93,0,2,14,17.68,-5.48,0.99998,15,-21.44,47.79,0.00002,2,14,8.21,34,0.83204,15,13.56,68.36,0.16796,2,14,9.74,43.08,0.79865,15,22.69,69.54,0.20135,2,14,49.47,61.25,0.21195,15,51.65,36.84,0.78805,2,14,56.21,73.49,0.05645,15,65.32,33.96,0.94355,1,15,124.43,39.33,1,1,15,127.95,31.15,1,1,15,127.03,-29.79,1,1,15,125.02,-35.2,1,1,15,114.58,-36.55,1,2,14,121.57,33,0.00178,15,45.64,-40.37,0.99822,2,14,87.44,-14.4,0.85904,15,-9.64,-21.53,0.14096,2,14,50.08,-31.24,1,15,-36.64,9.29,0,2,14,42.48,-33.98,1,15,-41.47,15.76,0],"hull":15,"edges":[0,28,0,2,2,4,4,6,6,8,8,10,10,12,14,16,16,18,18,20,20,22,22,24,24,26,26,28,12,14],"width":117,"height":170}},"nose":{"nose":{"x":42.43,"y":-56.57,"rotation":-98.28,"width":25,"height":44}},"t-shirt_shoulder_R":{"t-shirt_shoulder_R":{"type":"mesh","uvs":[1,1,0,1,0,0,1,0],"triangles":[1,2,3,1,3,0],"vertices":[115.87,15.98,114.08,-21.98,10.19,-17.07,11.99,20.89],"hull":4,"edges":[0,2,2,4,4,6,0,6],"width":38,"height":104}},"veko 1_1":{"veko 1_1":{"x":11.66,"y":1.71,"rotation":-90,"width":23,"height":11}},"veko 2_1":{"veko 2_1":{"x":9.56,"y":0.34,"rotation":-90,"width":14,"height":9}},"hand left":{"hand left":{"type":"mesh","uvs":[0.03571,0,0.56729,0.03168,0.44708,0.24783,0.44778,0.26257,0.66465,0.62996,0.7124,0.68726,0.91219,0.77867,1,0.91566,1,0.98541,0.78908,1,0.49879,0.95412,0.33969,0.76118,0.09756,0.46756,0.00968,0.31197,0.00612,0],"triangles":[6,10,11,6,11,5,10,6,7,9,10,7,8,9,7,13,2,3,12,13,3,12,3,4,11,12,4,11,4,5,2,0,1,13,14,0,13,0,2],"vertices":[2,15,122.07,-28.67,0.99791,16,-69.95,0.97,0.00209,1,15,123.79,29.44,1,2,15,187.41,24.57,0.78488,16,11.05,24.26,0.21512,2,15,191.62,25.19,0.62052,16,15.16,23.18,0.37948,1,16,123.71,16.86,1,2,16,141.05,17.33,0.84232,17,-11.28,17.87,0.15768,2,16,172.34,30.92,0.01431,17,20.6,29.99,0.98569,1,17,61.16,26.47,1,1,17,80.28,20.09,1,1,17,77.08,-2.85,1,1,17,54.59,-28.4,1,2,16,150.67,-27.21,0.60541,17,-3.75,-27.07,0.39459,1,16,61.9,-29.32,1,1,16,16.05,-26.24,1,2,15,122.48,-31.84,0.99797,16,-70.82,-2.11,0.00203],"hull":15,"edges":[0,28,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16,16,18,18,20,24,26,26,28,20,22,22,24],"width":108,"height":289}},"t-shirt":{"t-shirt":{"type":"mesh","uvs":[0.36459,0,0.4705,0.05903,0.59654,0.08604,0.71993,0.0463,1,0.1581,1,0.26677,0.89724,0.45208,0.89063,0.52502,0.93198,0.76417,0.96292,0.94308,0.79943,0.96144,0.52439,0.99232,0.13532,0.9995,0.08697,0.98426,0.11398,0.80262,0.14803,0.57363,0.14185,0.453,0,0.25202,0,0.22789,0.07711,0.12071,0.3553,0,0.88431,0.25009,0.91058,0.29572,0.90533,0.37204,0.67414,0.42633,0.29453,0.41296],"triangles":[1,25,19,25,1,2,20,0,1,1,19,20,2,3,21,22,24,21,22,21,5,21,4,5,21,3,4,24,2,21,16,17,25,25,18,19,25,17,18,23,22,5,6,23,5,23,24,22,15,25,24,24,25,2,6,24,23,15,16,25,11,12,14,12,13,14,11,14,8,10,11,8,15,8,14,10,8,9,7,15,24,15,7,8,7,24,6],"vertices":[3,4,188.11,42.37,0,14,16.73,-47.38,0.08784,5,37.17,42.79,0.91216,1,5,12.7,18.98,1,1,5,0.59,-10.2,1,3,4,163.39,-39.82,0.0006,13,1.63,29.19,0.26647,5,14.79,-40.06,0.73294,2,13,80.21,17.62,0.29296,18,-9.17,22.39,0.70704,1,18,33.59,20.37,1,2,3,207.29,-68.23,0.62729,4,0.74,-69.07,0.37271,2,3,178.52,-68.62,0.87647,4,-27.79,-65.28,0.12353,2,3,85.18,-84.76,0.98922,18,228.59,-4.92,0.01078,1,3,15.34,-96.84,1,1,3,5.5,-58.83,1,1,3,-11.05,5.1,1,1,3,-20.11,96.51,1,1,3,-14.89,108.31,1,1,3,56.94,106.81,1,2,3,147.5,104.92,0.96882,4,-33.22,110.94,0.03118,3,3,194.82,109.61,0.11062,4,14.27,108.69,0.03356,15,121.95,7.23,0.85582,1,15,47.71,-36.12,1,1,15,38.28,-37.34,1,2,14,91.55,-11.77,0.07566,15,-5.93,-24.7,0.92434,3,4,188.28,44.55,0,14,18.9,-47.74,0.3341,5,37.28,44.98,0.6659,3,4,80.32,-72.23,0.02822,13,71.02,-26.82,0.05773,18,25.74,-6.59,0.91405,3,4,61.91,-77.01,0.42075,13,84.31,-40.42,0.19522,18,43.99,-1.25,0.38403,3,3,238.89,-67.99,0.00231,4,32.03,-73.43,0.983,13,96.05,-68.14,0.01469,3,3,213.84,-15.01,0.06742,4,14.96,-17.37,0.79272,18,92.76,-59.42,0.13986,3,3,213.01,74.73,0.27344,4,27.19,71.54,0.72195,14,60.13,110.3,0.00461],"hull":21,"edges":[0,40,0,2,2,4,4,6,6,8,8,10,10,12,12,14,22,24,24,26,30,32,32,34,34,36,36,38,38,40,18,20,20,22,14,16,16,18,26,28,28,30,42,44,44,46,46,12,12,48,48,50,50,32],"width":236,"height":394}},"veko 2_2":{"veko 2_2":{"x":10.06,"y":0.84,"rotation":-90,"width":14,"height":9}},"neck":{"neck":{"type":"mesh","uvs":[0.5556,0.30553,0.96385,0.39216,0.96897,0.49571,0.95277,0.69807,0.98917,0.90434,1,0.96519,0.81981,1,0.50124,0.99765,0.15479,0.87569,0,0.66625,0.17788,0.19975,0.17838,0],"triangles":[2,0,1,2,3,0,10,11,0,5,6,4,4,6,3,3,6,7,3,7,0,7,8,0,8,9,0,9,10,0],"vertices":[1,6,0.28,-0.59,1,1,6,-13.57,-33.23,1,2,5,47.76,-35.18,0.17752,6,-24.29,-32.1,0.82248,2,5,26.81,-32.78,0.51843,6,-44.92,-27.72,0.48157,2,5,5.23,-34.77,0.87809,6,-66.59,-27.66,0.12191,2,5,-1.13,-35.36,0.97638,6,-72.98,-27.65,0.02362,2,5,-4,-20.07,0.99204,6,-74.39,-12.15,0.00796,2,5,-2.43,6.65,0.9984,6,-70.29,14.3,0.0016,1,5,11.68,35.09,1,2,5,34.08,46.99,0.99811,6,-30.12,51,0.00189,2,5,81.8,29.66,0.89447,6,15.74,29.22,0.10553,1,6,36.29,26.19,1],"hull":12,"edges":[0,22,10,12,12,14,14,16,16,18,20,22,0,2,2,4,6,4,8,10,6,8,18,20],"width":84,"height":104}},"hair":{"hair":{"x":74.95,"y":-6.74,"rotation":-98.28,"width":148,"height":140}},"ear":{"ear":{"x":45.97,"y":23.25,"rotation":-98.28,"width":24,"height":39}},"belok 2":{"belok 2":{"x":8.66,"y":1.21,"rotation":-90,"width":23,"height":12}},"veko 1_bottom":{"veko 1_bottom":{"x":2.58,"y":-1.28,"rotation":180,"width":25,"height":10}},"closed eye 2":{"closed eye 2":{"type":"mesh","uvs":[0.83057,0.08115,0.95707,0.33605,0.9571,0.79196,0.8286,0.9177,0.56974,0.91785,0.26331,0.91804,0.0415,0.71212,0.04271,0.33321,0.43254,0.08228],"triangles":[0,4,8,3,0,1,3,1,2,3,4,0,5,6,7,7,8,5,4,5,8],"vertices":[13.69,-6.39,10.63,-9.3,5.16,-9.3,3.65,-6.34,3.65,-0.39,3.65,6.66,6.12,11.76,10.66,11.73,13.67,2.77],"hull":9,"edges":[0,16,0,2,2,4,4,6,10,12,12,14,14,16,6,8,8,10],"width":23,"height":12}},"lips":{"lips":{"x":9.5,"y":-50.26,"rotation":-98.28,"width":32,"height":13}},"hand right":{"hand right":{"type":"mesh","uvs":[0.52062,0.07464,0.77209,0.356,0.84353,0.69369,0.84321,0.72138,1,0.86086,1,0.87036,0.85042,0.96763,0.59806,0.99641,0.32689,0.99751,0.36784,0.77154,0.43706,0.7174,0.196,0.51606,0.05878,0.0264,0.502,0.01561],"triangles":[8,9,7,7,9,4,5,6,7,9,3,4,4,5,7,10,3,9,3,10,2,10,11,2,11,1,2,1,11,12,1,12,0,12,13,0],"vertices":[1,18,104.24,11.65,1,1,19,44.67,21.33,1,2,19,142.14,14.51,0.97399,20,-12.41,12.86,0.02601,2,19,150.09,13.55,0.67613,20,-4.41,13.05,0.32387,1,20,35.62,24.44,1,1,20,38.37,24.51,1,1,20,66.72,15.37,1,1,20,75.47,-1.07,1,1,20,76.25,-18.95,1,2,19,160.78,-19.32,0.06275,20,10.9,-17.94,0.93725,2,19,145.78,-12.94,0.76426,20,-4.86,-13.78,0.23574,1,19,86.13,-21.88,1,1,18,88.87,-18.13,1,1,18,87.14,11.23,1],"hull":14,"edges":[0,26,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16,16,18,18,20,20,22,22,24,24,26],"width":66,"height":289}},"belok 1":{"belok 1":{"x":6.56,"y":0.34,"rotation":-90,"width":14,"height":12}},"shorts":{"shorts":{"x":-10.7,"y":-43.88,"width":205,"height":128}},"face":{"face":{"x":61.01,"y":-8.75,"rotation":-98.28,"width":132,"height":159}},"blik 1":{"blik 1":{"x":-0.01,"y":2.24,"rotation":-90,"width":7,"height":5}},"blik 2":{"blik 2":{"x":-0.15,"y":3.09,"rotation":-90,"width":8,"height":6}},"pupil 1":{"pupil 1":{"x":-0.51,"y":-0.26,"rotation":-90,"width":5,"height":6}}}}],"animations":{"block_02_mark_idle":{"slots":{"closed eye 2":{"attachment":[{"name":null},{"time":1.9667,"name":"closed eye 2"},{"time":2.1333,"name":null},{"time":4.3333,"name":"closed eye 2"},{"time":4.5,"name":null},{"time":6.6,"name":"closed eye 2"},{"time":6.7667,"name":null}]},"veko 1_1":{"attachment":[{"time":2,"name":null},{"time":2.1333,"name":"veko 1_1"},{"time":4.3667,"name":null},{"time":4.5,"name":"veko 1_1"},{"time":6.6333,"name":null},{"time":6.7667,"name":"veko 1_1"}]},"closed eye 1":{"attachment":[{"name":null},{"time":1.9667,"name":"closed eye 1"},{"time":2.1333,"name":null},{"time":4.3333,"name":"closed eye 1"},{"time":4.5,"name":null},{"time":6.6,"name":"closed eye 1"},{"time":6.7667,"name":null}]},"veko 2_bottom":{"attachment":[{"time":1.9667,"name":"veko 2_bottom"},{"time":2.1333,"name":null},{"time":4.3333,"name":"veko 2_bottom"},{"time":4.5,"name":null},{"time":6.6,"name":"veko 2_bottom"},{"time":6.7667,"name":null}]},"veko 2_1":{"attachment":[{"time":2,"name":null},{"time":2.1333,"name":"veko 2_1"},{"time":4.3667,"name":null},{"time":4.5,"name":"veko 2_1"},{"time":6.6333,"name":null},{"time":6.7667,"name":"veko 2_1"}]},"veko 1_bottom":{"attachment":[{"time":1.9667,"name":"veko 1_bottom"},{"time":2.1333,"name":null},{"time":4.3333,"name":"veko 1_bottom"},{"time":4.5,"name":null},{"time":6.6,"name":"veko 1_bottom"},{"time":6.7667,"name":null}]}},"bones":{"hand left2":{"rotate":[{"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":2.27},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":2.27},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":2.27},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":2.25}]},"t-shirt_shoulder_R":{"rotate":[{"angle":-2.18,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":-2.2,"curve":0.25,"c3":0.75},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":-2.18,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":-2.2,"curve":0.25,"c3":0.75},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":-2.18,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":-2.2,"curve":0.25,"c3":0.75},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":-2.18}]},"shorts4":{"rotate":[{"angle":-0.02,"curve":0.342,"c2":0.44,"c3":0.676,"c4":0.77},{"time":0.0333,"angle":-0.01,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0667},{"time":1.2333,"angle":-0.56,"curve":0.246,"c3":0.723,"c4":0.88},{"time":2.3333,"angle":-0.02,"curve":0.342,"c2":0.44,"c3":0.676,"c4":0.77},{"time":2.3667,"angle":-0.01,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.4},{"time":3.5667,"angle":-0.56,"curve":0.246,"c3":0.723,"c4":0.88},{"time":4.6667,"angle":-0.02,"curve":0.342,"c2":0.44,"c3":0.676,"c4":0.77},{"time":4.7,"angle":-0.01,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7333},{"time":5.9,"angle":-0.56,"curve":0.246,"c3":0.723,"c4":0.88},{"time":7,"angle":-0.02}]},"shorts2":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.1667,"angle":-0.37,"curve":0.25,"c3":0.75},{"time":2.3333,"curve":0.25,"c3":0.75},{"time":3.5,"angle":-0.37,"curve":0.25,"c3":0.75},{"time":4.6667,"curve":0.25,"c3":0.75},{"time":5.8333,"angle":-0.37,"curve":0.25,"c3":0.75},{"time":7}]},"t-shirt_shoulder_R2":{"rotate":[{"angle":-2.18,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":-2.2},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":-2.18,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":-2.2},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":-2.18,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":-2.2},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":-2.18}]},"shorts3":{"rotate":[{"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333},{"time":1.2,"angle":-0.5,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667},{"time":3.5333,"angle":-0.5,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":-0.03,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7},{"time":5.8667,"angle":-0.5,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":-0.03}]},"face":{"rotate":[{"angle":-0.13,"curve":0.34,"c2":0.37,"c3":0.674,"c4":0.71},{"time":0.0333,"angle":-0.08,"curve":0.35,"c2":0.49,"c3":0.684,"c4":0.83},{"time":0.1333,"angle":-0.02,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.1667,"curve":0.25,"c3":0.75},{"time":1.3333,"angle":-1.84,"curve":0.244,"c3":0.7,"c4":0.79},{"time":2.3333,"angle":-0.13,"curve":0.34,"c2":0.37,"c3":0.674,"c4":0.71},{"time":2.3667,"angle":-0.08,"curve":0.35,"c2":0.49,"c3":0.684,"c4":0.83},{"time":2.4667,"angle":-0.02,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.5,"curve":0.25,"c3":0.75},{"time":3.6667,"angle":-1.84,"curve":0.244,"c3":0.7,"c4":0.79},{"time":4.6667,"angle":-0.13,"curve":0.34,"c2":0.37,"c3":0.674,"c4":0.71},{"time":4.7,"angle":-0.08,"curve":0.35,"c2":0.49,"c3":0.684,"c4":0.83},{"time":4.8,"angle":-0.02,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.8333,"curve":0.25,"c3":0.75},{"time":6,"angle":-1.84,"curve":0.244,"c3":0.7,"c4":0.79},{"time":7,"angle":-0.13}]},"shorts6":{"rotate":[{"angle":-2.37,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":-2.4},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":-2.37,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":-2.4},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":-2.37,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":-2.4},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":-2.37}]},"shorts5":{"rotate":[{"angle":2.37,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":2.4,"curve":0.25,"c3":0.75},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":2.37,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":2.4,"curve":0.25,"c3":0.75},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":2.37,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":2.4,"curve":0.25,"c3":0.75},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":2.37}]},"t-shirt_shoulder_L":{"rotate":[{"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":2.27},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":2.27},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":2.27},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":2.25}]},"hand left":{"rotate":[{"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":2.27,"curve":0.25,"c3":0.75},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":2.27,"curve":0.25,"c3":0.75},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":2.25,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":2.27,"curve":0.25,"c3":0.75},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":2.25}]},"t-shirt_shoulder_R3":{"rotate":[{"angle":-5.39,"curve":0.344,"c2":0.66,"c3":0.677},{"time":0.0333,"angle":-5.46,"curve":0.25,"c3":0.75},{"time":1.2,"curve":0.248,"c3":0.736,"c4":0.94},{"time":2.3333,"angle":-5.39,"curve":0.344,"c2":0.66,"c3":0.677},{"time":2.3667,"angle":-5.46,"curve":0.25,"c3":0.75},{"time":3.5333,"curve":0.248,"c3":0.736,"c4":0.94},{"time":4.6667,"angle":-5.39,"curve":0.344,"c2":0.66,"c3":0.677},{"time":4.7,"angle":-5.46,"curve":0.25,"c3":0.75},{"time":5.8667,"curve":0.248,"c3":0.736,"c4":0.94},{"time":7,"angle":-5.39}]},"veko 2_bottom":{"translate":[{"time":1.9667},{"time":2.0333,"x":2.43,"curve":"stepped"},{"time":2.0667,"x":2.43},{"time":2.1333,"curve":"stepped"},{"time":4.3333},{"time":4.4,"x":2.43,"curve":"stepped"},{"time":4.4333,"x":2.43},{"time":4.5,"curve":"stepped"},{"time":6.6},{"time":6.6667,"x":2.43,"curve":"stepped"},{"time":6.7,"x":2.43},{"time":6.7667}],"scale":[{"time":1.9333,"x":0.8}]},"brow 1":{"rotate":[{"time":1.9333},{"time":2.0333,"angle":4.8,"curve":"stepped"},{"time":2.0667,"angle":4.8},{"time":2.1333,"curve":"stepped"},{"time":4.3},{"time":4.4,"angle":4.8,"curve":"stepped"},{"time":4.4333,"angle":4.8},{"time":4.5,"curve":"stepped"},{"time":6.5667},{"time":6.6667,"angle":4.8,"curve":"stepped"},{"time":6.7,"angle":4.8},{"time":6.7667}],"translate":[{"time":1.9333},{"time":2.0333,"x":-1.11,"y":-0.01,"curve":"stepped"},{"time":2.0667,"x":-1.11,"y":-0.01},{"time":2.1333,"curve":"stepped"},{"time":4.3},{"time":4.4,"x":-1.11,"y":-0.01,"curve":"stepped"},{"time":4.4333,"x":-1.11,"y":-0.01},{"time":4.5,"curve":"stepped"},{"time":6.5667},{"time":6.6667,"x":-1.11,"y":-0.01,"curve":"stepped"},{"time":6.7,"x":-1.11,"y":-0.01},{"time":6.7667}]},"veko 1_bottom":{"translate":[{"time":1.9667,"x":-3.02},{"time":2.0333,"x":0.2,"curve":"stepped"},{"time":2.0667,"x":0.2},{"time":2.1333,"x":-3.02,"curve":"stepped"},{"time":4.3333,"x":-3.02},{"time":4.4,"x":0.2,"curve":"stepped"},{"time":4.4333,"x":0.2},{"time":4.5,"x":-3.02,"curve":"stepped"},{"time":6.6,"x":-3.02},{"time":6.6667,"x":0.2,"curve":"stepped"},{"time":6.7,"x":0.2},{"time":6.7667,"x":-3.02}]},"brow 2":{"rotate":[{"time":1.9333},{"time":2.0333,"angle":-2.4,"curve":"stepped"},{"time":2.0667,"angle":-2.4},{"time":2.1333,"curve":"stepped"},{"time":4.3},{"time":4.4,"angle":-2.4,"curve":"stepped"},{"time":4.4333,"angle":-2.4},{"time":4.5,"curve":"stepped"},{"time":6.5667},{"time":6.6667,"angle":-2.4,"curve":"stepped"},{"time":6.7,"angle":-2.4},{"time":6.7667}],"translate":[{"time":1.9333},{"time":2.0333,"x":-0.74,"y":-0.07,"curve":"stepped"},{"time":2.0667,"x":-0.74,"y":-0.07},{"time":2.1333,"curve":"stepped"},{"time":4.3},{"time":4.4,"x":-0.74,"y":-0.07,"curve":"stepped"},{"time":4.4333,"x":-0.74,"y":-0.07},{"time":4.5,"curve":"stepped"},{"time":6.5667},{"time":6.6667,"x":-0.74,"y":-0.07,"curve":"stepped"},{"time":6.7,"x":-0.74,"y":-0.07},{"time":6.7667}]}},"deform":{"default":{"closed eye 2":{"closed eye 2":[{"time":1.9667,"vertices":[1.39996,1.96002,1.34399,0.95203,4.31195,1.28802,8.7359,1.68011,9.52002,0.50403,6.664,-0.16803,0,0,-0.784,0,0.112,-0.112]},{"time":2.0333,"vertices":[0.27185,0,0.76917,0,1.65857,0,1.90393,0,1.90417,0,1.90454,0,1.50281,0,0.76361,0,0.27411],"curve":"stepped"},{"time":2.0667,"vertices":[0.27185,0,0.76917,0,1.65857,0,1.90393,0,1.90417,0,1.90454,0,1.50281,0,0.76361,0,0.27411]},{"time":2.1333,"vertices":[1.39996,1.96002,1.34399,0.95203,4.31195,1.28802,8.7359,1.68011,9.52002,0.50403,6.664,-0.16803,0,0,-0.784,0,0.112,-0.112],"curve":"stepped"},{"time":4.3333,"vertices":[1.39996,1.96002,1.34399,0.95203,4.31195,1.28802,8.7359,1.68011,9.52002,0.50403,6.664,-0.16803,0,0,-0.784,0,0.112,-0.112]},{"time":4.4,"vertices":[0.27185,0,0.76917,0,1.65857,0,1.90393,0,1.90417,0,1.90454,0,1.50281,0,0.76361,0,0.27411],"curve":"stepped"},{"time":4.4333,"vertices":[0.27185,0,0.76917,0,1.65857,0,1.90393,0,1.90417,0,1.90454,0,1.50281,0,0.76361,0,0.27411]},{"time":4.5,"vertices":[1.39996,1.96002,1.34399,0.95203,4.31195,1.28802,8.7359,1.68011,9.52002,0.50403,6.664,-0.16803,0,0,-0.784,0,0.112,-0.112],"curve":"stepped"},{"time":6.6,"vertices":[1.39996,1.96002,1.34399,0.95203,4.31195,1.28802,8.7359,1.68011,9.52002,0.50403,6.664,-0.16803,0,0,-0.784,0,0.112,-0.112]},{"time":6.6667,"vertices":[0.27185,0,0.76917,0,1.65857,0,1.90393,0,1.90417,0,1.90454,0,1.50281,0,0.76361,0,0.27411],"curve":"stepped"},{"time":6.7,"vertices":[0.27185,0,0.76917,0,1.65857,0,1.90393,0,1.90417,0,1.90454,0,1.50281,0,0.76361,0,0.27411]},{"time":6.7667,"vertices":[1.39996,1.96002,1.34399,0.95203,4.31195,1.28802,8.7359,1.68011,9.52002,0.50403,6.664,-0.16803,0,0,-0.784,0,0.112,-0.112]}]},"closed eye 1":{"closed eye 1":[{"time":1.9667,"offset":6,"vertices":[5.508,1.67395,8.09998,0.53987,7.61395,-0.324,2.42999,0.16199]},{"time":2.0333,"vertices":[-0.2229,0.00002,-0.22369,0.00002,0.48987,0.00001,1.50146,-0.00002,1.50055,-0.00002,1.49957,-0.00002,1.2121,-0.00002,-0.22217],"curve":"stepped"},{"time":2.0667,"vertices":[-0.2229,0.00002,-0.22369,0.00002,0.48987,0.00001,1.50146,-0.00002,1.50055,-0.00002,1.49957,-0.00002,1.2121,-0.00002,-0.22217]},{"time":2.1333,"offset":6,"vertices":[5.508,1.67395,8.09998,0.53987,7.61395,-0.324,2.42999,0.16199],"curve":"stepped"},{"time":4.3333,"offset":6,"vertices":[5.508,1.67395,8.09998,0.53987,7.61395,-0.324,2.42999,0.16199]},{"time":4.4,"vertices":[-0.2229,0.00002,-0.22369,0.00002,0.48987,0.00001,1.50146,-0.00002,1.50055,-0.00002,1.49957,-0.00002,1.2121,-0.00002,-0.22217],"curve":"stepped"},{"time":4.4333,"vertices":[-0.2229,0.00002,-0.22369,0.00002,0.48987,0.00001,1.50146,-0.00002,1.50055,-0.00002,1.49957,-0.00002,1.2121,-0.00002,-0.22217]},{"time":4.5,"offset":6,"vertices":[5.508,1.67395,8.09998,0.53987,7.61395,-0.324,2.42999,0.16199],"curve":"stepped"},{"time":6.6,"offset":6,"vertices":[5.508,1.67395,8.09998,0.53987,7.61395,-0.324,2.42999,0.16199]},{"time":6.6667,"vertices":[-0.2229,0.00002,-0.22369,0.00002,0.48987,0.00001,1.50146,-0.00002,1.50055,-0.00002,1.49957,-0.00002,1.2121,-0.00002,-0.22217],"curve":"stepped"},{"time":6.7,"vertices":[-0.2229,0.00002,-0.22369,0.00002,0.48987,0.00001,1.50146,-0.00002,1.50055,-0.00002,1.49957,-0.00002,1.2121,-0.00002,-0.22217]},{"time":6.7667,"offset":6,"vertices":[5.508,1.67395,8.09998,0.53987,7.61395,-0.324,2.42999,0.16199]}]}}}}}}');
-;// CONCATENATED MODULE: ./assets/spine/street/door/door.png
-var door_namespaceObject = __webpack_require__.p + "assets/spine/street/door/door.png";
-;// CONCATENATED MODULE: ./assets/spine/street/door/door.atlas
-var door_atlas_namespaceObject = "\nblock_02_door.png\nsize: 2048,2048\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\ncalling\n  rotate: true\n  xy: 466, 628\n  size: 291, 589\n  orig: 291, 589\n  offset: 0, 0\n  index: -1\ndoor\n  rotate: false\n  xy: 1306, 921\n  size: 697, 1082\n  orig: 697, 1082\n  offset: 0, 0\n  index: -1\nhand\n  rotate: true\n  xy: 2, 539\n  size: 380, 462\n  orig: 380, 462\n  offset: 0, 0\n  index: -1\nshadow\n  rotate: true\n  xy: 1057, 690\n  size: 229, 392\n  orig: 229, 392\n  offset: 0, 0\n  index: -1\nsound_1\n  rotate: false\n  xy: 1451, 732\n  size: 104, 187\n  orig: 104, 187\n  offset: 0, 0\n  index: -1\nsound_2\n  rotate: false\n  xy: 1451, 606\n  size: 76, 124\n  orig: 76, 124\n  offset: 0, 0\n  index: -1\nsound_3\n  rotate: false\n  xy: 1057, 613\n  size: 49, 75\n  orig: 49, 75\n  offset: 0, 0\n  index: -1\nwall\n  rotate: false\n  xy: 2, 921\n  size: 1302, 1082\n  orig: 1302, 1082\n  offset: 0, 0\n  index: -1\n";
-;// CONCATENATED MODULE: ./assets/spine/street/door/door.json
-var street_door_door_namespaceObject = JSON.parse('{"skeleton":{"hash":"1qxT5M5KVOte8yssTsh9wfvWcEY","spine":"3.8.75","x":-1,"y":-1081,"width":1922,"height":1082,"images":"./images/","audio":""},"bones":[{"name":"block_02_door"},{"name":"bone","parent":"block_02_door","x":1429.17,"y":-1116.88},{"name":"hand","parent":"bone","length":176.53,"rotation":115.2,"x":-0.06,"y":-0.33},{"name":"sound_3","parent":"block_02_door","length":22.01,"rotation":26.56,"x":1587.39,"y":-249.66},{"name":"sound_5","parent":"sound_3","x":36.54,"y":-0.05},{"name":"sound_2","parent":"sound_3","x":67.71,"y":3.65},{"name":"sound_1","parent":"sound_3","x":107.52,"y":4.58},{"name":"hand2","parent":"hand","length":137.13,"rotation":-18.9,"x":209.88,"y":-125.99},{"name":"hand3","parent":"hand2","length":101.23,"rotation":3.87,"x":137.13},{"name":"sound_4","parent":"block_02_door","length":22.01,"rotation":-22.77,"x":1263.65,"y":-248.29,"scaleX":-1},{"name":"sound_6","parent":"sound_4","x":36.54,"y":-0.05},{"name":"sound_7","parent":"sound_4","x":67.71,"y":3.65},{"name":"sound_8","parent":"sound_4","x":107.52,"y":4.58}],"slots":[{"name":"wall","bone":"block_02_door","attachment":"wall"},{"name":"door","bone":"block_02_door","attachment":"door"},{"name":"calling","bone":"block_02_door","attachment":"calling"},{"name":"sound_1","bone":"sound_1"},{"name":"sound_6","bone":"sound_8"},{"name":"sound_2","bone":"sound_2"},{"name":"sound_5","bone":"sound_7"},{"name":"sound_3","bone":"sound_5"},{"name":"sound_4","bone":"sound_6"},{"name":"shadow","bone":"hand","attachment":"shadow"},{"name":"hand","bone":"hand","attachment":"hand"}],"skins":[{"name":"default","attachments":{"sound_1":{"sound_1":{"x":-28.2,"y":-8.29,"rotation":-26.56,"width":104,"height":187}},"sound_2":{"sound_2":{"x":-14.1,"y":-5.12,"rotation":-26.56,"width":76,"height":124}},"sound_3":{"sound_3":{"x":-8.21,"y":0.59,"rotation":-26.56,"width":49,"height":75}},"calling":{"calling":{"type":"mesh","uvs":[1,0.00094,0.99557,0.0086,0.98406,0.80907,0.98187,0.98981,0.35834,1,0.24324,0.99827,0.01503,0.99195,0.00041,0.80548,0.00577,0.00477,0.33999,0.62816,0.31535,0.65479,0.30766,0.68597,0.32459,0.7202,0.36308,0.7491,0.41696,0.77192,0.46315,0.77877,0.53438,0.7783,0.60398,0.77041,0.65303,0.75011,0.68612,0.72757,0.70323,0.69826,0.69525,0.66838,0.67015,0.63794,0.63478,0.61652,0.60055,0.60469,0.54009,0.5906,0.47848,0.5889,0.41687,0.59736,0.36553,0.61145,0.64391,0.6402,0.65417,0.66951,0.6576,0.70389,0.63478,0.73208,0.60626,0.75237,0.47848,0.59905,0.42942,0.61032,0.39291,0.6278,0.36895,0.65204,0.36325,0.67796,0.37352,0.70558,0.40318,0.73377,0.44996,0.7535,0.48875,0.76533,0.507,0.67796],"triangles":[1,8,0,26,8,1,25,26,1,24,25,1,26,27,8,34,26,25,27,26,34,1,23,24,35,27,34,27,28,8,28,27,35,1,22,23,36,28,35,28,9,8,9,28,36,22,2,21,29,23,22,24,23,29,37,9,36,8,9,7,10,9,37,22,1,2,30,29,22,30,22,21,38,10,37,43,34,25,43,25,24,43,24,29,43,29,30,35,34,43,36,35,43,37,36,43,38,37,43,7,9,10,11,10,38,2,20,21,20,31,30,20,30,21,43,30,31,39,38,43,11,38,39,12,11,39,19,31,20,32,43,31,32,31,19,40,39,43,12,39,40,13,12,40,18,32,19,33,43,32,33,32,18,41,40,43,43,42,41,33,42,43,33,16,42,17,33,18,14,40,41,13,40,14,17,16,33,15,41,42,14,41,15,15,42,16,11,7,10,7,11,12,19,20,2,2,18,19,2,17,18,3,17,2,6,7,5,13,7,12,14,7,13,14,5,7,4,5,14,15,4,14,4,15,16,4,16,17,4,17,3],"vertices":[1568,-231.55,1566.71,-236.06,1563.36,-707.54,1562.72,-814,1381.28,-820,1347.78,-818.98,1281.37,-815.26,1277.12,-705.43,1278.68,-233.81,1375.94,-600.99,1368.77,-616.67,1366.53,-635.04,1371.46,-655.2,1382.66,-672.22,1398.34,-685.66,1411.78,-689.69,1432.51,-689.42,1452.76,-684.77,1467.03,-672.82,1476.66,-659.54,1481.64,-642.27,1479.32,-624.68,1472.01,-606.75,1461.72,-594.13,1451.76,-587.16,1434.17,-578.86,1416.24,-577.87,1398.31,-582.85,1383.37,-591.15,1464.38,-608.08,1467.36,-625.34,1468.36,-645.59,1461.72,-662.19,1453.42,-674.15,1416.24,-583.84,1401.96,-590.48,1391.34,-600.77,1384.36,-615.05,1382.71,-630.32,1385.69,-646.59,1394.32,-663.19,1407.94,-674.81,1419.22,-681.78,1424.54,-630.32],"hull":9,"edges":[0,16,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16,18,20,20,22,22,24,24,26,26,28,28,30,30,32,32,34,34,36,36,38,38,40,40,42,42,44,44,46,46,48,48,50,50,52,52,54,54,56,56,18,48,58,58,60,60,62,62,64,64,66,66,32,50,68,68,70,70,72,72,74,74,76,76,78,78,80,80,82,82,84,84,32],"width":291,"height":589}},"sound_5":{"sound_2":{"x":-14.1,"y":-5.12,"rotation":-26.56,"width":76,"height":124}},"sound_6":{"sound_1":{"x":-28.2,"y":-8.29,"rotation":-26.56,"width":104,"height":187}},"wall":{"wall":{"x":1270,"y":-540,"width":1302,"height":1082}},"sound_4":{"sound_3":{"x":-8.21,"y":0.59,"rotation":-26.56,"width":49,"height":75}},"shadow":{"shadow":{"type":"mesh","uvs":[0.96806,0,1,0.37996,1,0.45325,0.51148,0.60261,0.14027,0.71611,0.14029,0.79319,0.25957,0.99787,0.02055,0.99743,0,0.74655,0,0.67629,0.41116,0.48334,0.86177,0.27188,0.86864,0.00885,0.93496,0],"triangles":[12,13,0,0,1,12,1,11,12,2,11,1,2,3,10,2,10,11,4,9,10,3,4,10,8,9,4,8,4,5,7,8,5,7,5,6],"vertices":[1,8,51.32,12.15,1,1,7,38.66,24.65,1,1,7,10.1,27.8,1,1,2,223.1,23.19,1,1,2,219.04,119.05,1,1,2,191.7,131.91,1,1,2,107.47,141.36,1,1,2,130.93,190.81,1,1,2,221.92,153.19,1,1,2,246.84,141.47,1,1,2,275.19,24.07,1,3,2,306.25,-104.6,0.26362,7,84.24,51.46,0.21494,8,-49.29,54.91,0.52144,1,8,51.92,35.17,1,1,8,52.65,19.61,1],"hull":14,"edges":[0,26,0,2,2,4,8,10,10,12,12,14,14,16,16,18,22,24,24,26,18,20,20,22,4,6,6,8],"width":229,"height":392}},"door":{"door":{"x":347.5,"y":-540,"width":697,"height":1082}},"hand":{"hand":{"type":"mesh","uvs":[0.59853,0,0.65608,0.0171,0.67839,0.10604,0.70551,0.21412,0.73877,0.3467,0.76705,0.45941,0.76896,0.50823,0.89179,0.68784,0.9845,0.82341,1,0.95173,1,0.99787,0.69221,0.9979,0.29316,0.99795,0.0953,0.99797,0.08616,0.9844,0,0.78985,0,0.77306,0.02818,0.68658,0.15307,0.68535,0.18393,0.64746,0.24111,0.58881,0.30251,0.5882,0.39321,0.43994,0.49346,0.43837,0.54976,0.45534,0.54098,0.35082,0.53057,0.22682,0.52241,0.1296,0.51353,0.02389,0.54869,0,0.54997,0.62512],"triangles":[25,26,3,26,2,3,1,2,0,2,26,27,0,2,27,0,28,29,0,27,28,6,24,5,6,30,24,24,4,5,24,25,4,25,3,4,22,23,30,13,14,12,12,30,11,12,21,30,30,21,22,14,18,12,12,18,21,21,18,19,21,19,20,10,11,9,11,7,8,11,30,7,11,8,9,14,15,18,17,18,16,18,15,16,30,23,24,30,6,7],"vertices":[1,8,118.14,-11.78,1,1,8,106.51,-31.91,1,1,8,64.57,-33,1,2,7,153.01,-33.34,0.1897,8,13.6,-34.34,0.8103,2,7,90.74,-39.19,0.99813,8,-48.92,-35.97,0.00187,1,7,37.81,-44.16,1,2,2,210.62,-171.06,0.00238,7,15.31,-42.4,0.99762,1,2,115.67,-177.96,1,1,2,43.99,-183.17,1,1,2,-12.15,-163.26,1,1,2,-31.44,-154.18,1,1,2,18.34,-48.35,1,1,2,82.89,88.87,1,1,2,114.9,156.9,1,1,2,122.05,157.37,1,1,2,217.32,148.73,1,1,2,224.34,145.42,1,1,2,255.93,118.72,1,1,2,236.23,75.54,1,1,2,247.08,57.48,1,1,2,262.35,26.28,1,1,2,252.67,5.05,1,1,2,299.96,-55.3,1,2,2,284.4,-90.08,0.976,7,58.87,58.12,0.024,2,2,268.2,-106.1,0.11179,7,48.73,37.71,0.88821,3,2,313.31,-123.64,0.0004,7,97.09,35.73,0.99011,8,-37.54,38.35,0.00949,2,7,154.47,33.38,0.13524,8,19.55,32.13,0.86476,1,8,64.31,27.26,1,1,8,112.98,21.96,1,1,8,121.48,6.87,1,2,2,197.19,-72.78,0.69383,7,-29.24,46.23,0.30617],"hull":30,"edges":[0,58,0,2,10,12,16,18,18,20,26,28,28,30,30,32,32,34,34,36,36,38,38,40,40,42,42,44,44,46,46,48,56,58,24,26,20,22,22,24,48,60,12,14,14,16,48,50,50,52,6,8,8,10,2,4,4,6,52,54,54,56],"width":380,"height":462}}}}],"animations":{"block_02_door":{"slots":{"sound_4":{"color":[{"time":0.6667,"color":"ffffff00"},{"time":0.7333,"color":"ffffffff","curve":"stepped"},{"time":0.9,"color":"ffffffff"},{"time":1,"color":"ffffff00","curve":"stepped"},{"time":1.1,"color":"ffffff00"},{"time":1.1667,"color":"ffffffff","curve":"stepped"},{"time":1.3333,"color":"ffffffff"},{"time":1.4333,"color":"ffffff00","curve":"stepped"},{"time":1.5333,"color":"ffffff00"},{"time":1.6,"color":"ffffffff","curve":"stepped"},{"time":1.7667,"color":"ffffffff"},{"time":1.8667,"color":"ffffff00"}],"attachment":[{"time":0.6667,"name":"sound_3"}]},"sound_5":{"color":[{"time":0.6667,"color":"ffffff00"},{"time":0.7333,"color":"ffffffff","curve":"stepped"},{"time":0.9,"color":"ffffffff"},{"time":1,"color":"ffffff00","curve":"stepped"},{"time":1.1,"color":"ffffff00"},{"time":1.1667,"color":"ffffffff","curve":"stepped"},{"time":1.3333,"color":"ffffffff"},{"time":1.4333,"color":"ffffff00","curve":"stepped"},{"time":1.5333,"color":"ffffff00"},{"time":1.6,"color":"ffffffff","curve":"stepped"},{"time":1.7667,"color":"ffffffff"},{"time":1.8667,"color":"ffffff00"}],"attachment":[{"time":0.6667,"name":"sound_2"}]},"sound_2":{"color":[{"time":0.6667,"color":"ffffff00"},{"time":0.7333,"color":"ffffffff","curve":"stepped"},{"time":0.9,"color":"ffffffff"},{"time":1,"color":"ffffff00","curve":"stepped"},{"time":1.1,"color":"ffffff00"},{"time":1.1667,"color":"ffffffff","curve":"stepped"},{"time":1.3333,"color":"ffffffff"},{"time":1.4333,"color":"ffffff00","curve":"stepped"},{"time":1.5333,"color":"ffffff00"},{"time":1.6,"color":"ffffffff","curve":"stepped"},{"time":1.7667,"color":"ffffffff"},{"time":1.8667,"color":"ffffff00"}],"attachment":[{"time":0.6667,"name":"sound_2"}]},"sound_6":{"color":[{"time":0.6667,"color":"ffffff00"},{"time":0.7333,"color":"ffffffff","curve":"stepped"},{"time":0.9,"color":"ffffffff"},{"time":1,"color":"ffffff00","curve":"stepped"},{"time":1.1,"color":"ffffff00"},{"time":1.1667,"color":"ffffffff","curve":"stepped"},{"time":1.3333,"color":"ffffffff"},{"time":1.4333,"color":"ffffff00","curve":"stepped"},{"time":1.5333,"color":"ffffff00"},{"time":1.6,"color":"ffffffff","curve":"stepped"},{"time":1.7667,"color":"ffffffff"},{"time":1.8667,"color":"ffffff00"}],"attachment":[{"time":0.6667,"name":"sound_1"}]},"sound_1":{"color":[{"time":0.6667,"color":"ffffff00"},{"time":0.7333,"color":"ffffffff","curve":"stepped"},{"time":0.9,"color":"ffffffff"},{"time":1,"color":"ffffff00","curve":"stepped"},{"time":1.1,"color":"ffffff00"},{"time":1.1667,"color":"ffffffff","curve":"stepped"},{"time":1.3333,"color":"ffffffff"},{"time":1.4333,"color":"ffffff00","curve":"stepped"},{"time":1.5333,"color":"ffffff00"},{"time":1.6,"color":"ffffffff","curve":"stepped"},{"time":1.7667,"color":"ffffffff"},{"time":1.8667,"color":"ffffff00"}],"attachment":[{"time":0.6667,"name":"sound_1"}]},"sound_3":{"color":[{"time":0.6667,"color":"ffffff00"},{"time":0.7333,"color":"ffffffff","curve":"stepped"},{"time":0.9,"color":"ffffffff"},{"time":1,"color":"ffffff00","curve":"stepped"},{"time":1.1,"color":"ffffff00"},{"time":1.1667,"color":"ffffffff","curve":"stepped"},{"time":1.3333,"color":"ffffffff"},{"time":1.4333,"color":"ffffff00","curve":"stepped"},{"time":1.5333,"color":"ffffff00"},{"time":1.6,"color":"ffffffff","curve":"stepped"},{"time":1.7667,"color":"ffffffff"},{"time":1.8667,"color":"ffffff00"}],"attachment":[{"time":0.6667,"name":"sound_3"}]}},"bones":{"hand":{"rotate":[{"angle":-6.58,"curve":0.25,"c3":0.75},{"time":0.5,"curve":"stepped"},{"time":2},{"time":2.5,"angle":10.78}]},"hand2":{"rotate":[{"angle":-3.72,"curve":"stepped"},{"time":0.4,"angle":-3.72,"curve":0.25,"c3":0.75},{"time":0.7333,"curve":"stepped"},{"time":2},{"time":2.3333,"angle":-3.72}]},"hand3":{"rotate":[{"angle":-3.72,"curve":"stepped"},{"time":0.4,"angle":-3.72,"curve":0.25,"c3":0.75},{"time":0.7333,"curve":"stepped"},{"time":2},{"time":2.3333,"angle":-3.72}]},"bone":{"translate":[{"y":-471.11,"curve":0.25,"c3":0.75},{"time":0.5,"curve":"stepped"},{"time":2,"curve":0.25,"c3":0.75},{"time":2.5,"y":-489.06}]},"sound_3":{"translate":[{"time":0.6667,"x":-24.51,"y":-12.25},{"time":1,"curve":"stepped"},{"time":1.0667,"curve":"stepped"},{"time":1.1,"x":-24.51,"y":-12.25},{"time":1.4333,"curve":"stepped"},{"time":1.5,"curve":"stepped"},{"time":1.5333,"x":-24.51,"y":-12.25},{"time":1.8667}],"scale":[{"time":0.6667,"x":0.5,"y":0.5},{"time":1,"curve":"stepped"},{"time":1.0667,"curve":"stepped"},{"time":1.1,"x":0.5,"y":0.5},{"time":1.4333,"curve":"stepped"},{"time":1.5,"curve":"stepped"},{"time":1.5333,"x":0.5,"y":0.5},{"time":1.8667}]},"sound_4":{"translate":[{"time":0.6667,"x":-24.51,"y":-12.25},{"time":1,"curve":"stepped"},{"time":1.0667,"curve":"stepped"},{"time":1.1,"x":-24.51,"y":-12.25},{"time":1.4333,"curve":"stepped"},{"time":1.5,"curve":"stepped"},{"time":1.5333,"x":-24.51,"y":-12.25},{"time":1.8667}],"scale":[{"time":0.6667,"x":0.5,"y":0.5},{"time":1,"curve":"stepped"},{"time":1.0667,"curve":"stepped"},{"time":1.1,"x":0.5,"y":0.5},{"time":1.4333,"curve":"stepped"},{"time":1.5,"curve":"stepped"},{"time":1.5333,"x":0.5,"y":0.5},{"time":1.8667}]}},"deform":{"default":{"calling":{"calling":[{"time":0.5333},{"time":0.7,"offset":58,"vertices":[2.65186,-2.38196,2.74194,-4.28796,1.22388,-4.73602,0.56799,-2.41394,-1.03992,-2.11603,0.4281,-0.85596,0.19397,-0.19397,-1.3241,0.448,-1.97607,-1.06,-3.80994,-1.71198,-3.10193,-1.94592,-1.75208,-3.26007,-2.92395,-2.81396,-1.01392,-1.90796],"curve":"stepped"},{"time":2,"offset":58,"vertices":[2.65186,-2.38196,2.74194,-4.28796,1.22388,-4.73602,0.56799,-2.41394,-1.03992,-2.11603,0.4281,-0.85596,0.19397,-0.19397,-1.3241,0.448,-1.97607,-1.06,-3.80994,-1.71198,-3.10193,-1.94592,-1.75208,-3.26007,-2.92395,-2.81396,-1.01392,-1.90796]},{"time":2.1}]}}}}}}');
+;// CONCATENATED MODULE: ./assets/spine/animBg1/bg.png
+var bg_namespaceObject = __webpack_require__.p + "assets/spine/animBg1/bg.png";
+;// CONCATENATED MODULE: ./assets/spine/animBg1/bg.atlas
+var bg_atlas_namespaceObject = "\nbg.png\nsize: 2048,2048\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbg\n  rotate: false\n  xy: 2, 842\n  size: 1922, 1082\n  orig: 1922, 1082\n  offset: 0, 0\n  index: -1\npeople_1\n  rotate: false\n  xy: 2, 458\n  size: 1155, 190\n  orig: 1155, 190\n  offset: 0, 0\n  index: -1\npeople_2\n  rotate: false\n  xy: 2, 650\n  size: 1162, 190\n  orig: 1162, 190\n  offset: 0, 0\n  index: -1\n";
+;// CONCATENATED MODULE: ./assets/spine/animBg1/bg.json
+var spine_animBg1_bg_namespaceObject = JSON.parse('{"skeleton":{"hash":"rbCK7xYVqrp46j4cNRPARWJu8Sc","spine":"3.8.75","x":-1,"y":-1081,"width":1922,"height":1082,"images":"./images/","audio":""},"bones":[{"name":"root"},{"name":"bone","parent":"root","x":987.19,"y":-1087.69},{"name":"people_1","parent":"bone","x":343.04,"y":413.43},{"name":"people_2","parent":"bone","x":254.63,"y":416.56}],"slots":[{"name":"bg","bone":"bone","attachment":"bg"},{"name":"mask","bone":"bone","attachment":"mask"},{"name":"people_1","bone":"people_1","attachment":"people_1"},{"name":"people_2","bone":"people_2","attachment":"people_2"}],"skins":[{"name":"default","attachments":{"people_1":{"people_1":{"x":13.26,"y":66.26,"width":1155,"height":190}},"people_2":{"people_2":{"x":98.18,"y":64.13,"width":1162,"height":190}},"bg":{"bg":{"x":-27.19,"y":547.69,"width":1922,"height":1082}},"mask":{"mask":{"type":"clipping","end":"mask","vertexCount":4,"vertices":[-198.86,625.92,-191.65,391,935.43,398.51,933.67,673.22],"color":"ce3a3aff"}}}}],"animations":{"idle":{"slots":{"people_1":{"attachment":[{"time":0.6,"name":null},{"time":1.2,"name":"people_1"},{"time":1.8,"name":null},{"time":2.4,"name":"people_1"}]},"people_2":{"attachment":[{"name":null},{"time":0.6,"name":"people_2"},{"time":1.2,"name":null},{"time":1.8,"name":"people_2"},{"time":2.4,"name":null}]}}}}}');
+;// CONCATENATED MODULE: ./assets/spine/simon1/simon.png
+var simon_namespaceObject = __webpack_require__.p + "assets/spine/simon1/simon.png";
+;// CONCATENATED MODULE: ./assets/spine/simon1/simon.atlas
+var simon_atlas_namespaceObject = "\nsimon.png\nsize: 2048,2048\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbelt\n  rotate: false\n  xy: 2, 30\n  size: 355, 62\n  orig: 355, 62\n  offset: 0, 0\n  index: -1\nblik_L\n  rotate: true\n  xy: 420, 25\n  size: 9, 6\n  orig: 9, 6\n  offset: 0, 0\n  index: -1\nblik_R\n  rotate: true\n  xy: 420, 16\n  size: 7, 6\n  orig: 7, 6\n  offset: 0, 0\n  index: -1\nboot_L\n  rotate: true\n  xy: 346, 241\n  size: 205, 144\n  orig: 205, 144\n  offset: 0, 0\n  index: -1\nboot_R\n  rotate: false\n  xy: 471, 1872\n  size: 141, 174\n  orig: 141, 174\n  offset: 0, 0\n  index: -1\neye_closed_L\n  rotate: true\n  xy: 359, 51\n  size: 41, 27\n  orig: 41, 27\n  offset: 0, 0\n  index: -1\neye_closed_R\n  rotate: false\n  xy: 349, 6\n  size: 35, 22\n  orig: 35, 22\n  offset: 0, 0\n  index: -1\neyebrow_L\n  rotate: false\n  xy: 129, 4\n  size: 68, 24\n  orig: 68, 24\n  offset: 0, 0\n  index: -1\neyebrow_R\n  rotate: false\n  xy: 307, 6\n  size: 40, 22\n  orig: 40, 22\n  offset: 0, 0\n  index: -1\neyelashes_L_Up\n  rotate: false\n  xy: 359, 35\n  size: 43, 14\n  orig: 43, 14\n  offset: 0, 0\n  index: -1\neyelashes_L_down\n  rotate: true\n  xy: 388, 56\n  size: 36, 12\n  orig: 36, 12\n  offset: 0, 0\n  index: -1\neyelashes_R_Up\n  rotate: false\n  xy: 386, 2\n  size: 33, 11\n  orig: 33, 11\n  offset: 0, 0\n  index: -1\neyelashes_R_down\n  rotate: false\n  xy: 402, 57\n  size: 30, 11\n  orig: 30, 11\n  offset: 0, 0\n  index: -1\nhand_L_1\n  rotate: true\n  xy: 492, 254\n  size: 192, 132\n  orig: 192, 132\n  offset: 0, 0\n  index: -1\nhand_L_2\n  rotate: false\n  xy: 480, 101\n  size: 190, 138\n  orig: 190, 138\n  offset: 0, 0\n  index: -1\nhand_R\n  rotate: true\n  xy: 434, 25\n  size: 67, 107\n  orig: 67, 107\n  offset: 0, 0\n  index: -1\nhand_R_1\n  rotate: false\n  xy: 225, 190\n  size: 119, 256\n  orig: 119, 256\n  offset: 0, 0\n  index: -1\nhead\n  rotate: false\n  xy: 2, 173\n  size: 221, 273\n  orig: 221, 273\n  offset: 0, 0\n  index: -1\niris_L\n  rotate: true\n  xy: 402, 70\n  size: 22, 17\n  orig: 22, 17\n  offset: 0, 0\n  index: -1\niris_R\n  rotate: true\n  xy: 404, 36\n  size: 19, 17\n  orig: 19, 17\n  offset: 0, 0\n  index: -1\nmouth\n  rotate: false\n  xy: 199, 5\n  size: 55, 23\n  orig: 55, 23\n  offset: 0, 0\n  index: -1\nneck\n  rotate: true\n  xy: 471, 1733\n  size: 137, 130\n  orig: 137, 130\n  offset: 0, 0\n  index: -1\npants\n  rotate: false\n  xy: 2, 1076\n  size: 467, 970\n  orig: 467, 970\n  offset: 0, 0\n  index: -1\nshirt\n  rotate: false\n  xy: 2, 448\n  size: 564, 626\n  orig: 564, 626\n  offset: 0, 0\n  index: -1\nshirt_collar\n  rotate: false\n  xy: 2, 3\n  size: 125, 25\n  orig: 125, 25\n  offset: 0, 0\n  index: -1\ntie\n  rotate: true\n  xy: 2, 94\n  size: 77, 476\n  orig: 77, 476\n  offset: 0, 0\n  index: -1\nwhite_L\n  rotate: false\n  xy: 256, 9\n  size: 49, 19\n  orig: 49, 19\n  offset: 0, 0\n  index: -1\nwhite_R\n  rotate: false\n  xy: 386, 15\n  size: 32, 18\n  orig: 32, 18\n  offset: 0, 0\n  index: -1\n";
+;// CONCATENATED MODULE: ./assets/spine/simon1/simon.json
+var spine_simon1_simon_namespaceObject = JSON.parse('{"skeleton":{"hash":"XcCUKgP4wXjW10DG4y6A8nJH3e8","spine":"3.8.75","x":73,"y":-1055.21,"width":570,"height":1923.5,"images":"./images/","audio":""},"bones":[{"name":"block_02_1"},{"name":"bone","parent":"block_02_1","x":395.54,"y":-1057.91},{"name":"bone2","parent":"bone","x":-39.08,"y":1042.66},{"name":"bone3","parent":"bone2","length":325.37,"rotation":89.64,"x":0.03,"y":2.18},{"name":"bone4","parent":"bone3","length":190.48,"rotation":0.05,"x":325.37},{"name":"bone5","parent":"bone4","x":190.48},{"name":"bone6","parent":"bone5","length":202.79,"rotation":-99.63},{"name":"bone7","parent":"bone6","length":263.72,"rotation":-72.66,"x":202.79},{"name":"bone8","parent":"bone7","length":206.01,"rotation":-17.48,"x":263.72},{"name":"bone16","parent":"bone2","length":431.62,"rotation":-75.5,"x":80.66,"y":-64.58},{"name":"bone9","parent":"bone16","rotation":-24.57,"x":-50.51,"y":137.16,"color":"ff3f00ff"},{"name":"bone10","parent":"bone9","length":82.51,"rotation":-19.05},{"name":"bone11","parent":"bone5","length":176.9,"rotation":102.4,"x":-0.02,"y":4.12},{"name":"bone12","parent":"bone11","length":276.45,"rotation":64.33,"x":176.9},{"name":"bone13","parent":"bone12","length":135.67,"rotation":70.97,"x":276.45},{"name":"bone14","parent":"bone13","length":92.69,"rotation":31.33,"x":135.67},{"name":"bone15","parent":"bone5","length":106.7,"rotation":0.81,"x":3.27,"y":-1.41},{"name":"head","parent":"bone15","length":72.18,"rotation":3.94,"x":106.71,"y":-0.02},{"name":"eyelashes_L_Up","parent":"head","length":7.11,"rotation":-4.44,"x":92.56,"y":-34.96},{"name":"eyelashes_R_Up","parent":"head","length":5.49,"rotation":-2.23,"x":84.53,"y":-96.11},{"name":"iris_R","parent":"eyelashes_R_Up","x":15.86,"y":-2.59},{"name":"eyebrow_R","parent":"head","length":27.41,"rotation":74.16,"x":111.96,"y":-116.94},{"name":"eyebrow_L","parent":"head","length":45.77,"rotation":-97.78,"x":131.53,"y":-17.27},{"name":"iris_L","parent":"eyelashes_L_Up","x":16.64,"y":-5.82},{"name":"tie","parent":"bone5","length":231.38,"rotation":-179.2,"x":-6.22,"y":-4.8,"color":"4f3737ff"},{"name":"tie2","parent":"tie","length":187.63,"rotation":-1.1,"x":231.38,"color":"4f3737ff"},{"name":"bone17","parent":"bone16","length":415.41,"rotation":-25.08,"x":431.62},{"name":"bone18","parent":"bone","rotation":-100.58,"x":73.36,"y":151.86,"color":"ff3f00ff"},{"name":"bone19","parent":"bone18","length":127.63,"rotation":29.47},{"name":"bone20","parent":"bone2","length":468.75,"rotation":-89.42,"x":-79.81,"y":-69.35},{"name":"bone21","parent":"bone20","length":379.88,"rotation":10.02,"x":468.75},{"name":"bone22","parent":"bone","rotation":-79.4,"x":-44.22,"y":131.2,"color":"ff3f00ff"},{"name":"bone23","parent":"bone22","length":138.2,"rotation":-56.07}],"slots":[{"name":"boot_L","bone":"bone23","attachment":"boot_L"},{"name":"boot_R","bone":"bone19","attachment":"boot_R"},{"name":"pants","bone":"bone2","attachment":"pants"},{"name":"hand_R","bone":"bone10","attachment":"hand_R"},{"name":"shirt_collar","bone":"bone15","attachment":"shirt_collar"},{"name":"neck","bone":"bone15","attachment":"neck"},{"name":"shirt","bone":"bone3","attachment":"shirt"},{"name":"belt","bone":"bone3","attachment":"belt"},{"name":"hand_R_1","bone":"bone8","attachment":"hand_R_1"},{"name":"hand_L_2","bone":"bone13","attachment":"hand_L_2"},{"name":"tie","bone":"tie","attachment":"tie"},{"name":"hand_L_1","bone":"bone14","attachment":"hand_L_1"},{"name":"head","bone":"head","attachment":"head"},{"name":"mouth","bone":"head","attachment":"mouth"},{"name":"white_R","bone":"eyelashes_R_Up","attachment":"white_R"},{"name":"white_L","bone":"eyelashes_L_Up","attachment":"white_L"},{"name":"iris_R","bone":"iris_R","attachment":"iris_R"},{"name":"blik_R","bone":"iris_R","attachment":"blik_R"},{"name":"eye_closed_R","bone":"eyelashes_R_Up"},{"name":"eyelashes_R_down","bone":"eyelashes_R_Up","attachment":"eyelashes_R_down"},{"name":"eyelashes_R_Up","bone":"eyelashes_R_Up","attachment":"eyelashes_R_Up"},{"name":"eyebrow_R","bone":"eyebrow_R","attachment":"eyebrow_R"},{"name":"iris_L","bone":"iris_L","attachment":"iris_L"},{"name":"blik_L","bone":"iris_L","attachment":"blik_L"},{"name":"eye_closed_L","bone":"eyelashes_L_Up"},{"name":"eyelashes_L_down","bone":"eyelashes_L_Up","attachment":"eyelashes_L_down"},{"name":"eyelashes_L_Up","bone":"eyelashes_L_Up","attachment":"eyelashes_L_Up"},{"name":"eyebrow_L","bone":"eyebrow_L","attachment":"eyebrow_L"}],"ik":[{"name":"bone9","order":2,"bones":["bone7","bone8"],"target":"bone9","softness":11.2,"bendPositive":false},{"name":"bone18","bones":["bone16","bone17"],"target":"bone18","softness":10.7,"bendPositive":false},{"name":"bone22","order":1,"bones":["bone20","bone21"],"target":"bone22","softness":10.1}],"skins":[{"name":"default","attachments":{"hand_R":{"hand_R":{"x":37.17,"y":14.67,"rotation":119.12,"width":67,"height":107}},"boot_R":{"boot_R":{"x":65.31,"y":-1.1,"rotation":71.11,"width":141,"height":174}},"shirt_collar":{"shirt_collar":{"x":82.71,"y":-4.71,"rotation":-90.5,"width":125,"height":25}},"mouth":{"mouth":{"x":28.27,"y":-62.78,"rotation":-94.44,"width":55,"height":23}},"iris_L":{"iris_L":{"x":-0.08,"y":0.61,"rotation":-90,"width":22,"height":17}},"eye_closed_L":{"eye_closed_L":{"type":"mesh","uvs":[0.54513,0.00385,0.72729,0,1,0.35101,1,0.75517,0.85229,0.98543,0.58682,0.97634,0.30746,0.96678,0.00001,0.69669,0.00001,0.24613,0.34584,0.00807],"triangles":[2,5,1,9,7,8,6,7,9,5,0,1,3,5,2,6,9,0,5,6,0,4,5,3],"vertices":[31.45,-2.05,31.56,-9.52,22.08,-20.7,11.17,-20.7,4.95,-14.65,5.2,-3.76,5.45,7.69,12.75,20.3,24.91,20.3,31.34,6.12],"hull":10,"edges":[2,4,4,6,6,8,12,14,14,16,16,18,8,10,10,12,2,0,0,18],"width":41,"height":27}},"belt":{"belt":{"type":"mesh","uvs":[1,0,0.99999,0.61543,0.83697,0.89941,0.5024,0.99999,0.195,0.95077,0.00166,0.69124,0,0,0.22059,0.01911,0.48727,0.00647,0.76656,0],"triangles":[1,2,0,3,9,2,4,5,7,0,2,9,5,6,7,3,8,9,7,8,3,4,7,3],"vertices":[67.97,-176.08,29.82,-176.31,11.85,-118.55,4.86,0.18,7.22,109.32,22.88,178.06,65.73,178.92,65.04,100.6,66.42,5.94,67.45,-93.21],"hull":10,"edges":[0,18,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16,16,18],"width":355,"height":62}},"eye_closed_R":{"eye_closed_R":{"type":"mesh","uvs":[0.75487,0,0.99999,0.22914,1,0.81811,0.74358,1,0.38799,0.99998,0.08466,0.86696,0.00001,0.5784,0.07822,0.23989,0.36625,0.01011],"triangles":[4,5,7,6,7,5,4,8,0,0,3,4,1,3,0,4,7,8,1,2,3],"vertices":[27.03,-8.59,21.66,-16.97,8.71,-16.47,5.06,-7.35,5.54,5.09,8.87,15.58,15.33,18.3,22.67,15.28,27.33,5.01],"hull":9,"edges":[0,16,0,2,2,4,4,6,6,8,8,10,10,12,12,14,14,16],"width":35,"height":22}},"tie":{"tie":{"type":"mesh","uvs":[0.51728,0,0.81873,0.00195,0.8568,0.0461,0.71547,0.09521,0.87615,0.16251,0.89803,0.29401,0.92497,0.45595,0.94841,0.59681,0.9773,0.77045,0.99999,0.90683,0.64064,0.99998,0.33923,0.99999,0,0.90206,0.02232,0.77404,0.04903,0.6209,0.07243,0.48671,0.1022,0.31599,0.12553,0.18218,0.29159,0.10444,0.14662,0.06112,0.23622,0.00001],"triangles":[14,7,8,13,14,8,12,8,9,8,12,13,10,12,9,11,12,10,17,18,4,17,4,5,16,17,5,16,5,6,15,16,6,15,6,7,14,15,7,2,3,0,2,0,1,0,19,20,3,19,0,3,18,19,18,3,4],"vertices":[1,16,52.21,-5.28,1,1,16,51.08,-28.48,1,2,16,30.04,-31.23,0.99671,24,-39.58,27.96,0.00329,2,16,6.76,-20.14,0.68532,24,-16.3,16.88,0.31468,1,24,15.84,28.97,1,1,24,78.45,30.12,1,1,24,155.55,31.53,1,2,24,222.61,32.76,0.80067,25,-9.4,32.58,0.19933,1,25,73.23,35.68,1,1,25,138.12,38.12,1,1,25,182.75,10.92,1,1,25,183,-12.29,1,1,25,136.66,-38.9,1,1,25,75.71,-37.83,1,2,24,233.48,-36.59,0.39293,25,2.8,-36.54,0.60707,1,24,169.63,-34.24,1,1,24,88.39,-31.25,1,2,16,-34.25,25.64,0.02543,24,24.71,-28.9,0.97457,2,16,2.65,12.53,0.96635,24,-12.18,-15.8,0.03365,1,16,23.37,23.52,1,1,16,52.39,16.37,1],"hull":21,"edges":[0,40,0,2,18,20,20,22,22,24,38,40,36,38,36,34,2,4,6,4,6,8,24,26,16,18,26,28,14,16,28,30,12,14,30,32,32,34,8,10,10,12],"width":77,"height":476}},"eyebrow_R":{"eyebrow_R":{"x":14.12,"y":3.48,"rotation":-168.6,"width":40,"height":22}},"eyelashes_L_down":{"eyelashes_L_down":{"x":12.06,"y":-0.7,"rotation":-90,"width":36,"height":12}},"blik_R":{"blik_R":{"x":2.28,"y":-2.74,"rotation":-92.2,"width":7,"height":6}},"pants":{"pants":{"type":"mesh","uvs":[0.63077,0,0.8661,0,0.89645,0.10955,0.92549,0.21437,0.96918,0.37602,0.98182,0.46249,0.99376,0.54414,0.96114,0.65557,0.90304,0.76312,0.85934,0.87017,0.82138,0.96316,0.70271,0.9737,0.60701,0.96221,0.49258,0.99702,0.35791,0.99571,0.32024,0.91362,0.26072,0.76961,0.19225,0.60397,0.16024,0.5265,0.12357,0.43779,0.05334,0.26786,0.06771,0.16157,0.08329,0.04637,0.10602,0,0.31221,0,0.51994,0.25892,0.57268,0.35023,0.62431,0.42857,0.68805,0.52525,0.67488,0.5708,0.65165,0.67078,0.61384,0.77661,0.60238,0.87123,0.59885,0.93643,0.57039,0.87109,0.54522,0.77466,0.53099,0.68034,0.50253,0.58286,0.5091,0.52596,0.52041,0.42617,0.5267,0.3475,0.48831,0.13753,0.66429,0.61634],"triangles":[12,13,33,33,13,15,13,14,15,15,34,33,15,35,34,15,16,35,34,35,31,16,36,35,31,35,36,16,17,36,17,37,36,17,18,37,37,38,29,37,18,38,38,18,39,38,39,27,39,18,19,40,19,20,25,20,21,39,19,40,41,21,22,21,41,25,39,40,26,25,40,20,9,10,11,11,32,9,33,11,12,32,11,33,33,34,32,9,32,31,32,34,31,9,31,8,8,31,30,30,31,36,8,30,7,30,36,42,30,42,7,42,36,37,42,29,7,7,29,6,42,37,29,6,29,28,29,38,28,28,5,6,38,27,28,28,27,5,27,4,5,39,26,27,27,26,4,26,3,4,3,26,25,2,3,41,25,26,40,2,41,0,41,3,25,22,24,41,41,24,0,22,23,24,0,1,2],"vertices":[1,3,44.31,-70.8,1,1,3,45,-180.69,1,2,3,-61.17,-195.54,0.01025,9,24.44,111.97,0.98975,1,9,126.28,99.64,1,1,9,283.2,80.14,1,1,9,365.88,64.87,1,2,9,443.95,50.44,0.53033,26,-10.21,50.91,0.46967,1,26,98.85,55.78,1,1,26,206.37,48.26,1,1,26,312.2,47.26,1,1,26,404.11,46.4,1,2,26,424.34,-6.2,0.97556,30,390.28,110.09,0.02444,2,26,421.59,-52.18,0.54051,30,370.42,68.53,0.45949,2,26,464.59,-98.51,0.0183,30,392.8,9.42,0.9817,1,30,378.97,-51.94,1,1,30,297.44,-53.25,1,1,30,155.01,-52.54,1,2,29,470.62,-52.42,0.57493,30,-8.81,-51.71,0.42507,1,29,395.52,-67.61,1,1,29,309.53,-84.99,1,1,29,144.8,-118.29,1,2,3,-114.08,191.15,0.00017,29,41.68,-111.9,0.99983,2,3,-2.28,184.59,0.12897,29,-70.09,-104.96,0.87103,1,3,42.76,174.25,1,1,3,43.37,77.97,1,2,9,120.71,-94.54,0.52046,29,135.46,99.58,0.47954,2,9,212.62,-92.86,0.60488,29,223.95,124.48,0.39512,4,9,292.23,-88.54,0.66897,26,-88.72,-139.27,0.01039,29,299.87,148.82,0.31907,30,-135.13,180.02,0.00157,4,9,390.48,-83.2,0.54982,26,-2,-92.79,0.22258,29,393.56,178.88,0.18469,30,-37.29,190.42,0.0429,4,9,431.71,-100.21,0.27394,26,42.56,-90.73,0.46049,29,437.76,172.86,0.15997,30,4.76,175.55,0.10561,4,9,522.89,-134.99,0.01874,26,139.88,-83.59,0.66991,29,534.77,162.31,0.03123,30,97.61,145.52,0.28012,2,26,244.03,-82.1,0.59514,30,194.66,107.68,0.40486,2,26,335.23,-70.51,0.5618,30,283.51,84.07,0.4382,2,26,397.7,-60.52,0.52996,30,345.15,69.8,0.47004,2,26,337.84,-85.22,0.43278,30,280.39,69.46,0.56722,2,26,248.06,-113.95,0.36707,30,186.4,76.66,0.63293,4,9,517.77,-191.87,0.01287,26,159.34,-137.27,0.33639,29,544.22,105.99,0.0275,30,95.43,88.46,0.62324,4,9,422.9,-181.06,0.10977,26,68.84,-167.7,0.19073,29,449.71,92.41,0.40028,30,0.13,94.35,0.29921,4,9,370.22,-164.28,0.2243,26,14.01,-174.82,0.10583,29,394.5,95.31,0.59511,30,-53.34,108.4,0.07476,4,9,277.83,-134.93,0.39185,26,-82.1,-187.39,0.00863,29,297.69,100.3,0.59873,30,-147.12,132.94,0.0008,2,9,204.68,-112.99,0.47257,29,221.37,103,0.52743,3,3,-89.52,-5.11,0.19543,9,3.01,-79.36,0.41035,29,17.76,84.45,0.39422,4,9,473.24,-116.06,0.09759,26,86.89,-87.48,0.61331,29,481.95,168.05,0.09869,30,47.05,161.87,0.19041],"hull":25,"edges":[0,48,0,2,12,14,26,28,28,30,44,46,46,48,50,52,52,54,54,56,56,58,60,62,62,64,64,66,66,68,68,70,70,72,72,74,74,76,76,78,78,80,80,50,20,22,24,22,24,26,30,32,32,34,18,20,14,16,16,18,38,40,6,8,40,42,42,44,50,82,2,4,4,6,8,10,10,12,34,36,36,38,58,84,84,60],"width":467,"height":970}},"eyelashes_R_Up":{"eyelashes_R_Up":{"type":"mesh","uvs":[0.4873,0,0.67025,0.01434,0.85228,0.09679,0.99886,0.42163,1,0.86531,0.9276,0.93159,0.85535,0.82845,0.73077,0.59276,0.57028,0.56245,0.38958,0.56919,0.23694,0.7106,0.12379,0.91939,0.02616,0.91041,0.00782,0.5971,0.15935,0.31117,0.32426,0],"triangles":[8,0,1,9,15,0,9,0,8,14,15,9,7,1,2,6,7,2,8,1,7,10,14,9,11,13,14,3,6,2,5,6,3,11,12,13,14,10,11,4,5,3],"vertices":[23.89,0.88,23.5,-5.15,22.36,-11.12,18.61,-15.81,13.73,-15.66,13.09,-13.25,14.32,-10.91,17.07,-6.9,17.6,-1.62,17.76,4.34,16.4,9.44,14.25,13.25,14.47,16.47,17.94,16.94,20.89,11.83,24.1,6.26],"hull":16,"edges":[4,6,6,8,24,26,22,24,22,20,20,18,18,16,16,14,14,12,8,10,12,10,26,28,28,30,0,30,0,2,2,4],"width":33,"height":11}},"eyelashes_R_down":{"eyelashes_R_down":{"x":10.35,"y":-0.02,"rotation":-92.2,"width":30,"height":11}},"head":{"head":{"x":117.65,"y":-22.57,"rotation":-94.44,"width":221,"height":273}},"eyelashes_L_Up":{"eyelashes_L_Up":{"type":"mesh","uvs":[0.3762,0,0.57935,0,0.76743,0.06021,0.92223,0.32996,0.99656,0.68357,0.98191,0.94469,0.90243,0.932,0.81793,0.67976,0.66677,0.51456,0.51,0.44313,0.35152,0.49075,0.20423,0.59128,0.09323,0.75607,0.0112,0.74403,0.00001,0.39788,0.1789,0.08995],"triangles":[9,0,1,10,15,0,10,0,9,8,1,2,9,1,8,11,15,10,14,15,11,7,2,3,8,2,7,7,3,4,12,13,14,11,12,14,6,7,4,5,6,4],"vertices":[27.06,5.62,27.06,-3.12,26.21,-11.2,22.44,-17.86,17.49,-21.06,13.83,-20.43,14.01,-17.01,17.54,-13.38,19.85,-6.88,20.85,-0.13,20.19,6.68,18.78,13.01,16.47,17.79,16.64,21.31,21.49,21.79,25.8,14.1],"hull":16,"edges":[8,10,26,28,28,30,24,26,24,22,22,20,20,18,18,16,16,14,10,12,14,12,0,30,0,2,2,4,6,8,4,6],"width":43,"height":14}},"iris_R":{"iris_R":{"x":-1.1,"y":0.4,"rotation":-92.2,"width":19,"height":17}},"neck":{"neck":{"type":"mesh","uvs":[0.85954,0.29475,1,0.52652,1,0.80959,0.80221,0.99997,0.52705,1,0.25461,0.9281,0.2142,0.621,0.18724,0.36145,0.02915,0.18615,0.00008,0.06579,0,0,0.35284,0.06539,0.62767,0.57364],"triangles":[6,7,12,7,11,12,12,11,0,7,8,11,8,9,11,9,10,11,3,4,12,4,5,12,3,12,2,5,6,12,12,1,2,12,0,1],"vertices":[2,16,145.09,-40.51,0.27239,17,35.51,-43.04,0.72761,2,16,114.79,-59.5,0.68561,17,3.98,-59.9,0.31439,2,16,77.99,-59.17,0.94996,17,-32.71,-57.04,0.05004,1,16,53.48,-31.86,1,1,16,53.8,5.84,1,2,16,63.47,43.08,0.95627,17,-40.17,45.96,0.04373,2,16,103.44,48.27,0.4796,17,0.06,48.39,0.5204,2,16,137.22,51.67,0.04345,17,33.99,49.46,0.95655,2,16,160.19,73.13,0,17,58.38,69.3,1,1,17,74.29,72.06,1,1,17,82.82,71.41,1,1,17,70.6,23.87,1,2,16,109.11,-8.43,0.5499,17,1.82,-8.56,0.4501],"hull":12,"edges":[0,22,0,2,2,4,4,6,6,8,18,20,20,22,16,18,16,14,14,12,8,10,12,10],"width":137,"height":130}},"eyebrow_L":{"eyebrow_L":{"x":20.58,"y":-3.23,"rotation":3.34,"width":68,"height":24}},"white_L":{"white_L":{"x":17.06,"y":-4.7,"rotation":-90,"width":49,"height":19}},"hand_L_1":{"hand_L_1":{"x":86.19,"y":-3.67,"rotation":1.27,"width":192,"height":132}},"hand_L_2":{"hand_L_2":{"type":"mesh","uvs":[0.47591,0,0.77026,0.31422,1,0.55947,0.85433,0.99525,0.57163,0.83597,0.23969,0.64897,0.00398,0.3518,0.00001,0.21856,0.03834,0.0624,0.27106,0.00001,0.27611,0.21792],"triangles":[10,9,0,5,6,10,1,10,0,4,1,2,4,10,1,5,10,4,3,4,2,8,9,10,7,8,10,6,7,10],"vertices":[2,13,242.07,38.82,0.31365,14,25.48,45.16,0.68635,3,13,271.1,103.36,0.00084,14,95.96,38.77,0.90945,15,-13.76,53.76,0.08971,2,14,150.97,33.78,0.07464,15,30.63,20.9,0.92536,2,14,160.06,-31.8,0.53084,15,4.3,-39.84,0.46916,1,14,102.96,-42.22,1,2,13,339.66,16.2,0.01933,14,35.93,-54.47,0.98067,2,13,310.3,-36.96,0.71809,14,-23.9,-44.05,0.28191,2,13,292.6,-42,0.8911,14,-34.44,-28.97,0.1089,2,13,269.95,-39.98,0.99989,14,-39.92,-6.89,0.00011,2,13,251.2,0.98,0.99206,14,-7.31,24.19,0.00794,1,14,9.71,-0.63,1],"hull":10,"edges":[0,18,4,6,10,12,12,14,14,16,16,18,6,8,8,10,0,2,2,4],"width":190,"height":138}},"hand_R_1":{"hand_R_1":{"type":"mesh","uvs":[1,0,0.99999,0.13344,0.93267,0.38196,0.88666,0.67668,0.5491,1,0.44152,0.99999,0,0.92,0.00183,0.64764,0.08473,0.38525,0.14858,0.17995,0.19026,0.04594,0.5381,0.00001,0.62531,0.14169,0.40218,0.71471],"triangles":[6,13,5,4,5,13,3,4,13,6,7,13,7,8,13,13,8,2,8,12,2,3,13,2,9,12,8,12,10,11,10,12,9,2,12,1,1,12,0,0,12,11],"vertices":[2,7,232.88,52.05,0.99935,8,-45.89,39.44,0.00065,2,7,266.71,47.34,0.75845,8,-12.32,45.81,0.24155,2,7,328.62,30.63,0.01127,8,51.67,49.8,0.98873,2,8,126.82,58.49,0.99476,11,-94.26,30.18,0.00524,2,8,215.63,34.46,0.08193,11,-2.41,35.37,0.91807,1,11,3.83,24.19,1,1,11,11.51,-31.68,1,1,8,139.15,-46.34,1,2,7,315.54,-69.42,0.00061,8,71.32,-49.18,0.99939,2,7,264.54,-54.65,0.22681,8,18.27,-51.51,0.77319,2,7,231.24,-45.01,0.6073,8,-16.36,-53.04,0.3927,2,7,225.3,-2.39,0.99805,8,-35.63,-14.56,0.00195,2,7,262.66,2.89,0.81541,8,-1.93,2.4,0.18459,2,8,147.14,3.67,0.99878,11,-57.69,-15.45,0.00122],"hull":12,"edges":[0,22,0,2,6,8,8,10,10,12,12,14,20,22,18,20,14,16,16,18,2,4,4,6],"width":119,"height":256}},"shirt":{"shirt":{"type":"mesh","uvs":[0.68062,0.08907,0.7777,0.13593,0.86883,0.17544,0.92774,0.21428,0.93794,0.23235,0.97969,0.41196,1,0.57812,1,0.68865,0.84613,0.69281,0.81683,0.57967,0.81104,0.68419,0.79892,0.77314,0.81253,0.91727,0.69765,0.94996,0.5049,0.94586,0.1715,0.94107,0.154,0.85129,0.22786,0.72324,0.23165,0.6447,0.22907,0.53495,0.18371,0.65715,0.00001,0.66834,0.00001,0.63286,0.02468,0.52026,0.064,0.36942,0.11616,0.22379,0.17599,0.1731,0.26719,0.13277,0.36376,0.08927,0.41334,0.0066,0.43787,0.04526,0.5103,0.06954,0.58329,0.03717,0.61451,0.00776,0.40582,0.1363,0.43976,0.16376,0.50904,0.09198,0.59772,0.15315,0.64899,0.1182,0.51349,0.17712,0.51462,0.36429,0.51349,0.54842,0.51513,0.73431,0.232,0.45979,0.21877,0.32433,0.81183,0.46955,0.81984,0.35046],"triangles":[6,7,8,6,8,9,41,45,9,9,45,6,45,5,6,45,40,46,45,46,5,46,4,5,46,3,4,46,2,3,21,22,20,22,23,20,20,23,19,19,43,41,19,23,43,23,24,43,24,44,43,40,43,44,24,25,44,25,26,44,35,36,39,37,36,32,36,31,32,34,30,36,36,30,31,28,29,30,32,33,0,35,40,44,34,35,27,27,35,44,27,28,34,44,26,27,35,34,36,34,28,30,37,38,1,46,37,1,38,0,1,40,39,37,46,1,2,39,36,37,37,32,38,38,32,0,46,40,37,39,40,35,12,13,11,14,16,17,11,13,42,13,14,42,14,17,42,14,15,16,11,42,10,17,18,42,18,41,42,42,41,10,10,41,9,45,41,40,18,19,41,41,43,40],"vertices":[4,4,246.8,-102.48,0.00003,6,91.61,72.66,0.70772,12,-116.21,-32.12,0.00444,16,51.61,-101.81,0.2878,4,4,217.76,-157.39,0,6,150.61,53.22,0.97769,12,-163.6,8.03,0.00051,16,21.8,-156.31,0.02179,3,6,205.51,37.73,0.83122,12,-208.68,42.99,0,7,-35.08,14.16,0.16878,2,6,242.43,19.52,0.18983,7,-6.41,43.72,0.81017,2,6,250.05,9.37,0.09242,7,5.58,47.85,0.90758,1,7,120.19,55.67,1,2,7,224.79,52.67,0.97614,8,-53.75,37.44,0.02386,3,4,-127.56,-284.64,0,7,293.32,43.13,0.32488,8,14.23,50.34,0.67512,3,3,194.92,-197.99,0.0008,7,283.94,-43.18,0.19888,8,32.97,-34.44,0.80032,5,3,265.64,-181.02,0.21493,4,-59.9,-180.96,0.02003,6,220.3,-216.58,0.00082,7,211.51,-49.78,0.75285,8,-33.53,-63.88,0.01137,3,3,200.19,-178.17,0.67245,4,-125.34,-178.05,0.00372,7,275.86,-62.03,0.32382,2,3,144.46,-171.68,0.83645,7,330.07,-76.49,0.16355,2,3,54.29,-179.93,0.92943,7,420.49,-81.32,0.07057,2,3,33.42,-115.27,0.95448,7,431.83,-148.32,0.04552,2,3,35.29,-6.54,0.99952,7,414.3,-255.64,0.00048,2,3,37.1,181.51,0.99994,13,429.94,96.31,0.00006,2,3,93.24,191.74,0.99535,13,377.62,73.52,0.00465,3,3,173.66,150.58,0.93843,4,-151.57,150.72,0.00027,13,289.92,95.21,0.06129,3,3,222.84,148.76,0.81387,4,-102.39,148.86,0.01242,13,241.62,85.75,0.17372,4,3,291.54,150.65,0.27313,4,-33.69,150.68,0.05845,12,191.29,187.44,0.003,13,175.18,68.21,0.66541,3,3,214.87,175.75,0.00735,4,-110.33,175.85,0.00031,13,255.55,61.3,0.99234,1,13,286.66,-37.77,1,1,13,265.08,-42.99,1,1,13,193.29,-46,1,1,13,96.3,-46.6,1,2,12,212.75,-16.36,0.0761,13,0.77,-39.39,0.9239,3,6,-179.64,-28.28,0.00001,12,173.1,-40.32,0.90949,13,-37.99,-14.04,0.09051,4,4,218.18,130.54,0.00013,6,-133.34,5.46,0.0004,12,117.52,-54.23,0.97328,16,26.28,131.59,0.02619,4,4,245.71,76.22,0.00183,6,-84.39,41.69,0.00361,12,58.55,-69.44,0.62378,16,53.04,76.89,0.37078,4,4,297.6,48.54,0.00198,6,-65.78,97.49,0.00902,12,20.37,-114.18,0.24761,16,104.54,48.48,0.74139,4,4,273.48,34.57,0.00176,6,-47.97,76.04,0.00737,12,11.91,-87.62,0.229,16,80.22,34.85,0.76188,2,6,-5.11,68.12,0.02223,16,64.67,-5.86,0.97777,4,4,278.99,-47.41,0.00008,6,31.94,95.19,0.35128,12,-69.35,-75.39,0.00917,16,84.58,-47.21,0.63947,4,4,297.49,-64.92,0.00008,6,46.1,116.36,0.39181,12,-90.42,-89.7,0.00957,16,102.83,-64.97,0.59854,4,4,216.39,52.35,0.00189,6,-55.94,16.79,0.0014,12,41.53,-35.69,0.73337,16,23.39,53.43,0.26334,3,6,-34.12,3.16,0.00027,12,26.41,-14.86,0.88638,16,6.04,34.43,0.11336,2,6,-3.39,54.16,0.02518,16,50.63,-5.03,0.97482,3,6,52.49,25.08,0.78662,12,-62.09,-2.69,0.00139,16,11.9,-54.71,0.21199,4,4,228.47,-84.74,0.00002,6,77.19,51.62,0.72425,12,-94.95,-18.03,0.0037,16,33.53,-83.82,0.27203,3,4,191.17,-8.52,0.00635,6,8.29,2.1,0.78903,16,-2.69,-7.08,0.20462,3,4,74,-9.79,0.97983,6,29.14,-113.2,0.01365,7,54.47,-200.01,0.00651,4,3,284.11,-9.82,0.98846,4,-41.26,-9.78,0.00145,6,48.41,-226.85,0.00023,7,168.54,-216.53,0.00986,2,3,167.76,-11.48,0.99481,7,283.92,-231.66,0.00519,4,3,338.59,149.3,0.13172,4,13.36,149.28,0.10727,12,179.82,141.79,0.02328,13,129.06,58.78,0.73772,4,3,423.34,157.29,0.00501,4,98.12,157.2,0.05296,12,169.35,57.31,0.16498,13,48.38,31.63,0.77705,4,3,334.55,-177.76,0.07782,4,9.02,-177.77,0.05879,6,205.62,-149.17,0.01964,7,142.84,-43.07,0.84375,4,3,409.13,-181.81,0.00623,4,83.6,-181.89,0.03937,6,197.2,-74.95,0.10262,7,69.62,-28.31,0.85178],"hull":34,"edges":[6,8,12,14,20,22,22,24,24,26,30,32,32,34,34,36,42,44,14,16,18,16,18,20,8,10,10,12,66,0,0,2,6,4,2,4,58,56,56,54,50,52,54,52,58,60,60,62,62,64,64,66,56,68,68,70,70,72,72,74,74,76,76,0,72,78,78,80,80,82,82,84,26,28,28,30,84,28,38,36,40,42,38,40,44,46,46,48,48,50,38,86,86,88,18,90,90,92],"width":564,"height":626}},"blik_L":{"blik_L":{"x":4.42,"y":-2.89,"rotation":-90,"width":9,"height":6}},"white_R":{"white_R":{"x":14.4,"y":1.32,"rotation":-92.2,"width":32,"height":18}},"boot_L":{"boot_L":{"x":53.22,"y":5.86,"rotation":135.47,"width":205,"height":144}}}}],"animations":{"idle":{"slots":{"eye_closed_R":{"attachment":[{"time":2.5,"name":"eye_closed_R"},{"time":2.8,"name":null}]},"eye_closed_L":{"attachment":[{"time":2.5,"name":"eye_closed_L"},{"time":2.8,"name":null}]}},"bones":{"bone2":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.5,"angle":2.4,"curve":0.25,"c3":0.75},{"time":3}],"translate":[{"curve":0.25,"c3":0.75},{"time":1.5,"x":-4.08,"y":1.85,"curve":0.25,"c3":0.75},{"time":3}]},"bone3":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.5,"angle":-2.4,"curve":0.25,"c3":0.75},{"time":3}]},"bone4":{"rotate":[{"angle":0.01,"curve":0.342,"c2":0.66,"c3":0.676},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.5333,"angle":1.2,"curve":0.248,"c3":0.738,"c4":0.95},{"time":3,"angle":0.01}]},"bone6":{"rotate":[{"angle":-0.01,"curve":0.342,"c2":0.66,"c3":0.676},{"time":0.0333},{"time":1.5333,"angle":-1.2,"curve":0.248,"c3":0.738,"c4":0.95},{"time":3,"angle":-0.01}]},"bone11":{"rotate":[{"angle":0.01,"curve":0.342,"c2":0.66,"c3":0.676},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.5333,"angle":1.2,"curve":0.248,"c3":0.738,"c4":0.95},{"time":3,"angle":0.01}]},"bone12":{"rotate":[{"angle":-0.02,"curve":0.35,"c2":0.65,"c3":0.684},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.6,"angle":-1.01,"curve":0.247,"c3":0.727,"c4":0.9},{"time":3,"angle":-0.02}]},"bone13":{"rotate":[{"angle":0.04,"curve":0.357,"c2":0.65,"c3":0.692},{"time":0.1333,"curve":0.25,"c3":0.75},{"time":1.6333,"angle":1.22,"curve":0.246,"c3":0.716,"c4":0.85},{"time":3,"angle":0.04}]},"bone14":{"rotate":[{"angle":0.06,"curve":0.363,"c2":0.64,"c3":0.698},{"time":0.1667,"curve":0.25,"c3":0.75},{"time":1.6667,"angle":1.2,"curve":0.245,"c3":0.706,"c4":0.81},{"time":3,"angle":0.06}]},"bone15":{"rotate":[{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.6,"curve":0.247,"c3":0.727,"c4":0.9},{"time":3}]},"head":{"rotate":[{"angle":-1.16,"curve":0.357,"c2":0.65,"c3":0.692},{"time":0.1333,"angle":-1.2,"curve":0.316,"c3":0.65,"c4":0.35},{"time":0.2,"angle":-1.18,"curve":0.268,"c2":0.1,"c3":0.72,"c4":0.86},{"time":1.5,"angle":-0.04,"curve":0.357,"c2":0.65,"c3":0.692},{"time":1.6333,"curve":0.246,"c3":0.716,"c4":0.85},{"time":3,"angle":-1.16}]},"eyebrow_L":{"rotate":[{"time":2.5},{"time":2.6,"angle":-1.2,"curve":"stepped"},{"time":2.6667,"angle":-1.2},{"time":2.8}],"translate":[{"time":2.5},{"time":2.6,"x":-0.36,"y":0.06,"curve":"stepped"},{"time":2.6667,"x":-0.36,"y":0.06},{"time":2.8}]},"eyebrow_R":{"rotate":[{"time":2.5},{"time":2.6,"angle":1.2,"curve":"stepped"},{"time":2.6667,"angle":1.2},{"time":2.8}],"translate":[{"time":2.5},{"time":2.6,"x":-0.47,"y":0.12,"curve":"stepped"},{"time":2.6667,"x":-0.47,"y":0.12},{"time":2.8}]},"bone9":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.5,"angle":2.4,"curve":0.25,"c3":0.75},{"time":3}],"translate":[{"curve":0.25,"c3":0.75},{"time":1.5,"x":-0.7,"y":-3.09,"curve":0.25,"c3":0.75},{"time":3}]}},"deform":{"default":{"eyelashes_R_Up":{"eyelashes_R_Up":[{"time":2.5},{"time":2.6,"vertices":[-14.87767,-0.67108,-14.83588,1.03967,-12.69324,2.88232,-6.5332,3.72174,-0.81891,2.20154,-2.24931,-0.90662,-6.66293,-0.80231,-11.89255,-0.45343,-12.59065,1.03418,-10.73485,1.14465,-7.98534,0.11731,-4.15947,-0.83783,-2.88612,-1.92584,-4.86671,-4.30719,-9.47719,-2.28577,-13.87402,-0.81116],"curve":"stepped"},{"time":2.6667,"vertices":[-14.87767,-0.67108,-14.83588,1.03967,-12.69324,2.88232,-6.5332,3.72174,-0.81891,2.20154,-2.24931,-0.90662,-6.66293,-0.80231,-11.89255,-0.45343,-12.59065,1.03418,-10.73485,1.14465,-7.98534,0.11731,-4.15947,-0.83783,-2.88612,-1.92584,-4.86671,-4.30719,-9.47719,-2.28577,-13.87402,-0.81116]},{"time":2.8}]},"eye_closed_R":{"eye_closed_R":[{"time":2.5,"vertices":[-3.54544,-2.37598,-4.1786,0.04565,4.6595,1.09595,15.27444,-0.66956,14.33185,0.4281,5.23866,-0.25732,0,0,-3.23869,-1.1405,-3.14703,-1.05469]},{"time":2.6,"curve":"stepped"},{"time":2.6667},{"time":2.8,"vertices":[-3.54544,-2.37598,-4.1786,0.04565,4.6595,1.09595,15.27444,-0.66956,14.33185,0.4281,5.23866,-0.25732,0,0,-3.23869,-1.1405,-3.14703,-1.05469]}]},"eye_closed_L":{"eye_closed_L":[{"time":2.5,"vertices":[-2.90848,0.79871,-3.89973,-0.29639,-1.63417,0.17133,4.09032,-1.06335,13.52702,-0.91345,18.60889,-0.97302,16.23782,0.91785,5.26588,-0.42078,0,0,-4.56995,5.32532]},{"time":2.6,"curve":"stepped"},{"time":2.6667},{"time":2.8,"vertices":[-2.90848,0.79871,-3.89973,-0.29639,-1.63417,0.17133,4.09032,-1.06335,13.52702,-0.91345,18.60889,-0.97302,16.23782,0.91785,5.26588,-0.42078,0,0,-4.56995,5.32532]}]},"eyelashes_L_Up":{"eyelashes_L_Up":[{"time":2.5},{"time":2.6,"vertices":[-13.5408,1.84778,-15.99861,2.54767,-15.56253,4.18494,-11.1235,4.86877,-5.85185,4.1076,-2.91245,0.87042,-5.15698,-1.41901,-10.99542,1.42194,-13.80803,1.39148,-13.63864,2.48303,-10.45883,2.15314,-6.90356,0.64941,-2.00089,0.43097,0.11441,-2.17749,-2.85902,-4.11615,-9.5051,-2.10205],"curve":"stepped"},{"time":2.6667,"vertices":[-13.5408,1.84778,-15.99861,2.54767,-15.56253,4.18494,-11.1235,4.86877,-5.85185,4.1076,-2.91245,0.87042,-5.15698,-1.41901,-10.99542,1.42194,-13.80803,1.39148,-13.63864,2.48303,-10.45883,2.15314,-6.90356,0.64941,-2.00089,0.43097,0.11441,-2.17749,-2.85902,-4.11615,-9.5051,-2.10205]},{"time":2.8}]}}}}}}');
+;// CONCATENATED MODULE: ./assets/spine/simon2/simon.png
+var simon2_simon_namespaceObject = __webpack_require__.p + "assets/spine/simon2/simon.png";
+;// CONCATENATED MODULE: ./assets/spine/simon2/simon.atlas
+var simon2_simon_atlas_namespaceObject = "\nsimon.png\nsize: 2048,2048\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbelt\n  rotate: true\n  xy: 490, 1046\n  size: 426, 76\n  orig: 426, 76\n  offset: 0, 0\n  index: -1\nboot_L\n  rotate: false\n  xy: 586, 1644\n  size: 170, 188\n  orig: 170, 188\n  offset: 0, 0\n  index: -1\nboot_R\n  rotate: false\n  xy: 586, 1834\n  size: 166, 212\n  orig: 166, 212\n  offset: 0, 0\n  index: -1\neye_L\n  rotate: true\n  xy: 230, 24\n  size: 28, 22\n  orig: 28, 22\n  offset: 0, 0\n  index: -1\neye_R\n  rotate: false\n  xy: 340, 2\n  size: 26, 22\n  orig: 26, 22\n  offset: 0, 0\n  index: -1\neye_closed_L\n  rotate: false\n  xy: 390, 26\n  size: 54, 26\n  orig: 54, 26\n  offset: 0, 0\n  index: -1\neye_closed_R\n  rotate: false\n  xy: 332, 26\n  size: 56, 26\n  orig: 56, 26\n  offset: 0, 0\n  index: -1\neyebrow_L\n  rotate: false\n  xy: 150, 16\n  size: 78, 36\n  orig: 78, 36\n  offset: 0, 0\n  index: -1\neyebrow_R\n  rotate: false\n  xy: 54, 16\n  size: 94, 36\n  orig: 94, 36\n  offset: 0, 0\n  index: -1\neyelashes_L_Up\n  rotate: false\n  xy: 230, 4\n  size: 54, 18\n  orig: 54, 18\n  offset: 0, 0\n  index: -1\neyelashes_L_down\n  rotate: true\n  xy: 26, 2\n  size: 50, 12\n  orig: 50, 12\n  offset: 0, 0\n  index: -1\neyelashes_R_down\n  rotate: true\n  xy: 40, 4\n  size: 48, 12\n  orig: 48, 12\n  offset: 0, 0\n  index: -1\neyelashes_R_up\n  rotate: false\n  xy: 368, 8\n  size: 52, 16\n  orig: 52, 16\n  offset: 0, 0\n  index: -1\nhand_L\n  rotate: false\n  xy: 594, 934\n  size: 66, 114\n  orig: 66, 114\n  offset: 0, 0\n  index: -1\nhand_R\n  rotate: true\n  xy: 568, 1050\n  size: 80, 130\n  orig: 80, 130\n  offset: 0, 0\n  index: -1\nhead\n  rotate: false\n  xy: 568, 1132\n  size: 246, 340\n  orig: 246, 340\n  offset: 0, 0\n  index: -1\nmouth\n  rotate: false\n  xy: 254, 26\n  size: 76, 26\n  orig: 76, 26\n  offset: 0, 0\n  index: -1\nneck\n  rotate: true\n  xy: 490, 910\n  size: 134, 102\n  orig: 134, 102\n  offset: 0, 0\n  index: -1\npants\n  rotate: false\n  xy: 2, 894\n  size: 486, 1152\n  orig: 486, 1152\n  offset: 0, 0\n  index: -1\nshirt\n  rotate: false\n  xy: 2, 54\n  size: 660, 838\n  orig: 660, 838\n  offset: 0, 0\n  index: -1\ntie\n  rotate: false\n  xy: 490, 1474\n  size: 94, 572\n  orig: 94, 572\n  offset: 0, 0\n  index: -1\nwhite_L\n  rotate: true\n  xy: 2, 2\n  size: 50, 22\n  orig: 50, 22\n  offset: 0, 0\n  index: -1\nwhite_R\n  rotate: false\n  xy: 286, 2\n  size: 52, 22\n  orig: 52, 22\n  offset: 0, 0\n  index: -1\n";
+;// CONCATENATED MODULE: ./assets/spine/simon2/simon.json
+var assets_spine_simon2_simon_namespaceObject = JSON.parse('{"skeleton":{"hash":"abAjQfvGnuqNqFmQsF+CYuJQdgE","spine":"3.8.75","x":184.65,"y":-1195.94,"width":330,"height":1150.97,"images":"./images/","audio":"C:/Users/Fedor/Desktop/Flash Games/Game 3/Блок 2. Вечеринка и знакомство/Block 02/Block_02_2"},"bones":[{"name":"root"},{"name":"bone","parent":"root","x":352.98,"y":-1213.93},{"name":"bone2","parent":"bone","x":-10.54,"y":622.2},{"name":"shirt","parent":"bone2","length":204.15,"rotation":89.46,"x":0.15,"y":0.21},{"name":"shirt2","parent":"shirt","length":129.85,"rotation":-0.03,"x":204.15},{"name":"bone11","parent":"shirt2","x":129.85},{"name":"shirt3","parent":"bone11","length":63.37,"rotation":0.17,"x":-0.44,"y":-0.09},{"name":"head","parent":"shirt3","length":113.65,"rotation":-0.93,"x":59.46,"y":0.48},{"name":"bone3","parent":"bone2","length":261.63,"rotation":-81.7,"x":54.88,"y":-15.16},{"name":"bone4","parent":"bone","x":57.9,"y":111.72},{"name":"bone5","parent":"bone4","length":239.8,"rotation":84.13},{"name":"boot_R","parent":"bone4","length":71.82,"rotation":-70.02,"y":-3.83},{"name":"bone6","parent":"bone2","length":279.29,"rotation":-88.43,"x":-67.32,"y":-26.51},{"name":"bone7","parent":"bone6","length":214.72,"rotation":5.2,"x":279.29},{"name":"bone9","parent":"bone","rotation":-83.23,"x":-44.88,"y":103.28,"color":"ff3f00ff"},{"name":"bone8","parent":"bone9","length":70.58,"rotation":-25.8,"x":-3.14,"y":-0.4},{"name":"bone10","parent":"bone","rotation":-81.7,"x":82.13,"y":348.15,"color":"ff3f00ff"},{"name":"bone12","parent":"bone11","length":104.37,"rotation":102.3,"x":-1.25,"y":0.53},{"name":"bone13","parent":"bone11","length":118.97,"rotation":-99.36,"x":-1.67,"y":-1.21},{"name":"bone14","parent":"bone12","length":162.15,"rotation":67.88,"x":104.72,"y":0.9},{"name":"bone15","parent":"bone14","length":155.41,"rotation":21.24,"x":162.15},{"name":"bone16","parent":"bone13","length":162.41,"rotation":-72.03,"x":118.67,"y":-0.91},{"name":"bone17","parent":"bone16","length":157.06,"rotation":-21.44,"x":162.41},{"name":"bone18","parent":"bone2","rotation":-103.41,"x":107.58,"y":-2.45,"color":"ff3f00ff"},{"name":"bone19","parent":"bone2","rotation":-79.15,"x":-99.51,"y":-1.36,"color":"ff3f00ff"},{"name":"white_L","parent":"head","length":4.45,"rotation":4.18,"x":55.47,"y":19.63},{"name":"eyebrow_L","parent":"white_L","length":25.78,"rotation":-81.42,"x":20.32,"y":12.47},{"name":"eyelashes_R_down","parent":"head","length":3.56,"rotation":1.32,"x":58.03,"y":-24.82},{"name":"eyebrow_R","parent":"eyelashes_R_down","length":28.65,"rotation":78.26,"x":17.02,"y":-14.17},{"name":"tie","parent":"bone11","length":119.18,"rotation":-179.19,"x":-11.69,"y":-3.25,"color":"1c1616ff"},{"name":"tie2","parent":"tie","length":109.6,"rotation":-1.03,"x":119.18,"color":"1c1616ff"},{"name":"eye_R","parent":"eyelashes_R_down","x":8.71,"y":0.79},{"name":"white_L2","parent":"white_L","x":11.48,"y":-1.3},{"name":"mouth","parent":"head","x":18.1,"y":-2.29}],"slots":[{"name":"boot_R","bone":"boot_R","attachment":"boot_R"},{"name":"boot_L","bone":"bone8","attachment":"boot_L"},{"name":"pants","bone":"bone2","attachment":"pants"},{"name":"hand_R","bone":"bone17","attachment":"hand_R"},{"name":"hand_L","bone":"bone15","attachment":"hand_L"},{"name":"neck","bone":"shirt3","attachment":"neck"},{"name":"head","bone":"head","attachment":"head"},{"name":"mouth","bone":"mouth","attachment":"mouth"},{"name":"white_R","bone":"eyelashes_R_down","attachment":"white_R"},{"name":"white_L","bone":"white_L","attachment":"white_L"},{"name":"eye_R","bone":"eye_R","attachment":"eye_R"},{"name":"eye_L","bone":"white_L2","attachment":"eye_L"},{"name":"eye_closed_R","bone":"eyelashes_R_down"},{"name":"eyelashes_R_down","bone":"eyelashes_R_down","attachment":"eyelashes_R_down"},{"name":"eyelashes_R_up","bone":"eyelashes_R_down","attachment":"eyelashes_R_up"},{"name":"eye_closed_L","bone":"white_L"},{"name":"eyelashes_L_down","bone":"white_L","attachment":"eyelashes_L_down"},{"name":"eyelashes_L_Up","bone":"white_L","attachment":"eyelashes_L_Up"},{"name":"eyebrow_R","bone":"eyebrow_R","attachment":"eyebrow_R"},{"name":"eyebrow_L","bone":"eyebrow_L","attachment":"eyebrow_L"},{"name":"shirt","bone":"shirt","attachment":"shirt"},{"name":"tie","bone":"tie","attachment":"tie"},{"name":"belt","bone":"shirt","attachment":"belt"}],"ik":[{"name":"bone9","bones":["bone6","bone7"],"target":"bone9"},{"name":"bone10","order":1,"bones":["bone3"],"target":"bone10"},{"name":"bone18","order":3,"bones":["bone16","bone17"],"target":"bone18","bendPositive":false},{"name":"bone19","order":4,"bones":["bone14","bone15"],"target":"bone19"},{"name":"bone112","order":2,"bones":["bone5"],"target":"bone10"}],"skins":[{"name":"default","attachments":{"hand_R":{"hand_R":{"x":147.18,"y":7.23,"rotation":103.41,"width":40,"height":65}},"eye_R":{"eye_R":{"x":-0.01,"y":-0.18,"rotation":-90,"width":13,"height":11}},"boot_R":{"boot_R":{"x":38.69,"y":-1.54,"rotation":70.02,"width":83,"height":106}},"mouth":{"mouth":{"x":2.32,"y":-0.49,"rotation":-88.68,"width":38,"height":13}},"eyelashes_L_down":{"eyelashes_L_down":{"x":7.38,"y":-1.36,"rotation":-92.86,"width":25,"height":6}},"eye_closed_R":{"eye_closed_R":{"type":"mesh","uvs":[0.48878,0,0.77663,0.01076,0.967,0.16618,1,0.72979,0.79604,0.96083,0.43307,0.97092,0.13118,0.958,0.00002,0.80671,0.015,0.35122,0.23318,0.02247],"triangles":[6,8,9,7,8,6,4,1,2,4,2,3,5,9,0,6,9,5,4,5,0,4,0,1],"vertices":[15.9,-0.28,15.76,-8.34,13.74,-13.67,6.41,-14.59,3.41,-8.88,3.28,1.28,3.45,9.73,5.41,13.4,11.33,12.99,15.61,6.88],"hull":10,"edges":[4,6,10,12,12,14,14,16,16,18,6,8,8,10,0,18,0,2,2,4],"width":28,"height":13}},"tie":{"tie":{"type":"mesh","uvs":[0.86668,0.00001,0.82817,0.09592,0.89364,0.33616,0.95816,0.56203,0.98085,0.7723,0.99999,0.91445,0.60412,1,0.39942,1,0.00001,0.91166,0,0.77614,0.05965,0.5662,0.12475,0.33707,0.18588,0.10876,0.1397,0.01384,0.47825,0.00001],"triangles":[6,7,5,5,7,8,8,4,5,8,9,4,9,10,4,10,3,4,10,11,3,11,2,3,11,12,2,12,1,2,12,14,1,12,13,14,1,14,0],"vertices":[1,6,28.56,-18.48,1,2,6,1.12,-16.86,0.61916,29,-12.23,13.88,0.38084,1,29,56.49,16.66,1,2,29,121.1,19.42,0.42276,30,1.57,19.45,0.57724,1,30,61.69,21.35,1,1,30,102.32,22.81,1,1,30,127.05,4.54,1,1,30,127.18,-5.08,1,1,30,102.17,-24.2,1,1,30,63.42,-24.73,1,2,29,122.11,-22.82,0.38034,30,3.34,-22.76,0.61966,1,29,56.6,-19.48,1,2,6,-2.76,13.3,0.76766,29,-8.69,-16.33,0.23234,1,6,24.37,15.66,1,1,6,28.43,-0.23,1],"hull":15,"edges":[0,28,0,2,6,8,8,10,10,12,12,14,14,16,16,18,26,28,18,20,20,22,2,4,4,6,22,24,24,26],"width":47,"height":286}},"eyebrow_R":{"eyebrow_R":{"x":17.45,"y":2.43,"rotation":-168.26,"width":47,"height":18}},"white_R":{"white_R":{"x":8.7,"y":-0.79,"rotation":-90,"width":26,"height":11}},"pants":{"pants":{"type":"mesh","uvs":[0.77767,0,0.92897,0,0.95818,0.05559,0.98978,0.09962,1,0.19489,0.99999,0.27748,1,0.364,1,0.44806,1,0.54717,1,0.67658,0.96701,0.80443,0.93123,0.9307,0.92701,0.96563,0.86518,0.97739,0.78091,0.98693,0.69522,0.97688,0.64346,0.963,0.64169,0.8778,0.65042,0.7076,0.65774,0.56487,0.61355,0.44295,0.56285,0.33667,0.51691,0.25045,0.52008,0.336,0.50423,0.41821,0.47776,0.51643,0.46938,0.61606,0.48939,0.7586,0.50794,0.87619,0.54171,0.96456,0.45131,0.99156,0.36262,1,0.27029,0.9988,0.21719,0.98163,0.20224,0.90895,0.16613,0.8075,0.13263,0.68334,0.10885,0.57786,0.08701,0.49287,0.05987,0.40107,0.03936,0.33078,0,0.21488,0,0.15844,0.02275,0.06509,0.04368,0,0.2862,0,0.50994,0.00019,0.49325,0.12278],"triangles":[36,37,26,36,26,27,35,36,27,35,27,28,34,35,28,30,34,28,33,31,32,28,29,30,33,34,31,30,31,34,19,8,9,18,19,9,10,18,9,10,17,18,11,17,10,15,16,17,17,11,15,15,11,14,12,13,11,13,14,11,22,47,3,0,2,47,1,2,0,3,4,22,2,3,47,21,22,5,4,5,22,21,5,6,20,21,6,20,6,7,19,20,7,8,19,7,47,41,42,43,44,45,47,43,45,43,47,42,22,41,47,22,40,41,40,22,23,39,40,23,24,39,23,38,39,24,25,38,24,37,38,25,26,37,25,47,45,46,0,47,46],"vertices":[3,3,46.33,-68.1,0.21924,12,-68.63,137.94,0.00027,8,-58.42,22.47,0.78049,3,3,46.68,-104.86,0.0567,12,-67.62,174.7,0.00006,8,-53.11,58.85,0.94324,3,3,14.72,-112.26,0.01592,12,-35.42,180.91,0.00001,8,-20.4,61.25,0.98407,1,8,5.8,65.19,1,1,8,60.46,59.72,1,1,8,107.53,52.84,1,1,8,156.85,45.65,1,2,8,204.76,38.66,0.98169,10,302.27,-23.57,0.01831,2,8,261.25,30.41,0.41529,10,245.48,-29.39,0.58471,1,10,171.33,-36.99,1,1,10,97.26,-36.53,1,1,10,24.01,-35.3,1,1,10,3.9,-36.33,1,1,10,-4.38,-22.07,1,1,10,-11.93,-2.26,1,1,10,-8.3,19.04,1,1,10,-1.62,32.37,1,1,10,47.15,37.8,1,2,8,340.42,-66.99,0.00653,10,144.89,45.69,0.99347,2,8,259.33,-53.36,0.73802,10,226.85,52.3,0.26198,1,8,188.28,-53.84,1,3,3,-148.08,-17.74,0.0019,12,123.78,80.44,0.0351,8,125.93,-57.19,0.963,3,3,-98.52,-6.1,0.05582,12,73.83,70.64,0.43846,8,75.17,-61.07,0.50572,3,3,-147.79,-7.34,0.00428,12,123.11,70.06,0.93021,8,124.05,-67.42,0.0655,2,12,170.34,64.91,0.99479,8,170.35,-78.07,0.00521,2,12,226.72,56.92,0.98714,13,-47.2,61.45,0.01286,2,12,284.03,53.31,0.4236,13,9.54,52.66,0.5764,1,13,91.64,47.81,1,1,13,159.43,44.31,1,1,13,210.95,46.46,1,1,13,223.8,22.81,1,1,13,226.09,0.83,1,1,13,222.76,-21.36,1,1,13,211.42,-33.01,1,1,13,169.42,-31.68,1,1,13,110.35,-33.51,1,2,12,320.52,-29.55,0.00357,13,38.38,-33.16,0.99643,2,12,259.62,-33.66,0.923,13,-22.64,-31.74,0.077,1,12,210.54,-37.62,1,1,12,157.5,-42.76,1,1,12,116.9,-46.63,1,1,12,49.9,-54.36,1,1,12,17.4,-53.47,1,3,3,7.1,114.98,0.08887,12,-36.19,-46.46,0.91113,8,-47.82,-164.47,0.00001,3,3,44.63,110.25,0.18526,12,-73.53,-40.35,0.81472,8,-84.18,-154.02,0.00003,3,3,45.19,51.32,0.57062,12,-71.91,18.56,0.42908,8,-75.67,-95.7,0.0003,2,3,45.6,-3.04,0.99191,8,-67.71,-41.92,0.00809,3,3,-25.04,0.34,0.62897,12,0.16,66.91,0.17093,8,1.57,-56.13,0.2001],"hull":47,"edges":[0,92,0,2,4,6,6,8,8,10,10,12,12,14,14,16,16,18,18,20,20,22,22,24,24,26,26,28,28,30,30,32,32,34,56,58,58,60,60,62,62,64,64,66,66,68,68,70,70,72,72,74,74,76,76,78,78,80,80,82,82,84,84,86,86,88,88,90,90,92,44,42,42,40,40,38,52,50,50,48,48,46,46,44,34,36,36,38,52,54,54,56,2,4,44,94,94,92],"width":243,"height":576}},"eyelashes_R_up":{"eyelashes_R_up":{"type":"mesh","uvs":[0.50207,0,0.77479,0.03549,0.97585,0.21828,0.99999,0.71558,0.91231,0.91617,0.72889,0.5923,0.49945,0.52381,0.30331,0.64659,0.17204,0.99999,0.02461,0.99999,0.00001,0.67844,0.19355,0.13963,0.13626,0.66882,0.31472,0.33883,0.53779,0.25883,0.7424,0.30883,0.91009,0.57382],"triangles":[14,0,1,15,14,1,13,11,0,6,13,0,14,6,0,16,1,2,15,1,16,5,14,15,5,15,16,6,14,5,7,11,13,7,13,6,12,11,7,11,12,10,16,2,3,4,16,3,5,16,4,9,10,12,8,12,7,9,12,8],"vertices":[14.5,-0.55,14.22,-7.64,12.75,-12.87,8.77,-13.49,7.17,-11.21,9.76,-6.45,10.31,-0.48,9.33,4.62,6.5,8.03,6.5,11.87,9.07,12.5,13.38,7.47,9.15,8.96,11.79,4.32,12.43,-1.48,12.03,-6.8,9.91,-11.16],"hull":12,"edges":[4,6,6,8,18,20,20,22,0,22,0,2,2,4,16,18,8,10,10,12,12,14,14,16],"width":26,"height":8}},"eyelashes_R_down":{"eyelashes_R_down":{"x":5.9,"y":-0.99,"rotation":-90,"width":24,"height":6}},"head":{"head":{"x":68.62,"y":-2.46,"rotation":-88.68,"width":123,"height":170}},"eyelashes_L_Up":{"eyelashes_L_Up":{"type":"mesh","uvs":[0.85794,0.27721,0.99055,0.61342,0.96762,0.99999,0.85552,0.98325,0.74699,0.68206,0.59884,0.5354,0.40625,0.49095,0.2344,0.65539,0.13067,0.87503,0.01926,0.8584,0.00001,0.48263,0.17414,0.06439,0.42048,0,0.64376,0.00001,0.10699,0.54428,0.2581,0.31318,0.4344,0.23762,0.62402,0.2954,0.78847,0.46429,0.90254,0.7265],"triangles":[16,12,13,17,16,13,18,17,13,15,11,12,15,12,16,0,18,13,6,15,16,5,16,17,4,5,17,6,16,5,14,10,11,14,11,15,7,14,15,7,15,6,18,4,17,19,0,1,18,0,19,4,18,19,9,10,14,8,14,7,9,14,8,3,4,19,2,19,1,3,19,2],"vertices":[13.72,-10.85,10.51,-14.28,7.07,-13.49,7.37,-10.47,10.23,-7.68,11.74,-3.75,12.4,1.42,11.16,6.13,9.32,9.03,9.62,12.02,13.03,12.37,16.55,7.49,16.8,0.82,16.5,-5.2,12.33,9.52,14.2,5.34,14.64,0.55,13.87,-4.54,12.13,-8.9,9.62,-11.86],"hull":14,"edges":[2,4,18,20,20,22,22,24,24,26,2,0,0,26,14,12,12,10,10,8,4,6,8,6,16,18,14,16],"width":27,"height":9}},"belt":{"belt":{"x":40.68,"y":0.23,"rotation":-89.46,"width":213,"height":38}},"neck":{"neck":{"x":51.75,"y":-2.39,"rotation":-89.6,"width":67,"height":51}},"eyebrow_L":{"eyebrow_L":{"x":12.88,"y":-2.24,"rotation":-11.45,"width":39,"height":18}},"eye_closed_L":{"eye_closed_L":{"type":"mesh","uvs":[0.99999,0.41514,1,0.89012,0.68095,0.99445,0.41962,0.99999,0.12896,0.92837,0,0.67348,0,0.12059,0.23298,0,0.65294,0,0.86555,0.05966],"triangles":[5,6,7,4,5,7,2,8,9,2,9,0,2,0,1,3,7,8,3,8,2,4,7,3],"vertices":[11.03,-14.56,4.86,-14.25,3.93,-5.58,4.21,1.47,5.54,9.26,9.02,12.57,16.2,12.22,17.45,5.85,16.88,-5.47,15.82,-11.17],"hull":10,"edges":[0,18,0,2,10,12,8,10,2,4,4,6,6,8,16,18,12,14,14,16],"width":27,"height":13}},"shirt":{"shirt":{"type":"mesh","uvs":[0.42387,0.00012,0.42055,0.0267,0.49754,0.04813,0.57186,0.01781,0.5712,0.00003,0.59886,0.00001,0.63781,0.02844,0.67284,0.0634,0.81131,0.11483,0.94176,0.18422,0.95623,0.269,0.97445,0.3758,1,0.52558,0.99999,0.57265,0.98108,0.65572,0.98275,0.75451,0.93945,0.81031,0.90672,0.88756,0.78025,0.83996,0.78327,0.82984,0.79304,0.78752,0.75425,0.82994,0.73545,0.83001,0.48847,0.8309,0.28636,0.83162,0.21027,0.83204,0.22365,0.86205,0.11573,0.91441,0.05224,0.89309,0.00354,0.74844,0,0.57833,0.01844,0.47188,0.02067,0.35626,0.10588,0.16735,0.21683,0.10545,0.34556,0.06067,0.35918,0.02604,0.40562,0.00013,0.20496,0.49736,0.21347,0.54539,0.22197,0.6381,0.19148,0.55265,0.18085,0.60682,0.18014,0.69004,0.81108,0.47367,0.82562,0.53725,0.83435,0.56704,0.80744,0.64036,0.80962,0.7005,0.78853,0.72799,0.77617,0.70336,0.79217,0.63978,0.80089,0.58193,0.80817,0.52064,0.8006,0.40679,0.81138,0.32138,0.42321,0.12914,0.49621,0.14326,0.58845,0.12287,0.20918,0.42558,0.19582,0.34138,0.17444,0.25718,0.49383,0.22981,0.49516,0.33507,0.4965,0.42769,0.49383,0.55188,0.49249,0.64766,0.48982,0.74449,0.18131,0.74922,0.17621,0.78339,0.7975,0.75827],"triangles":[18,19,17,17,19,16,19,20,16,20,70,16,16,70,15,70,48,15,70,49,48,48,14,15,48,51,47,48,47,14,47,46,14,14,46,13,47,52,46,13,46,12,46,45,12,12,45,44,44,11,12,44,54,11,54,55,11,55,10,11,55,9,10,26,27,25,27,28,25,28,69,25,28,29,69,25,69,24,68,24,69,69,29,68,29,43,68,29,30,43,43,30,42,42,30,41,30,31,41,41,31,38,59,31,32,59,32,60,32,61,60,32,33,61,61,33,34,35,36,1,57,56,2,56,1,2,2,3,58,6,3,5,36,37,1,1,37,0,3,4,5,56,61,34,34,35,56,56,35,1,55,58,8,57,58,62,58,7,8,55,8,9,58,57,2,58,6,7,6,58,3,44,64,54,54,63,55,61,62,60,60,63,59,64,38,59,59,63,64,64,63,54,62,58,55,63,60,62,56,62,61,55,63,62,62,56,57,53,64,44,38,31,59,68,43,40,43,42,40,40,42,39,20,49,70,67,49,20,49,50,48,49,67,50,48,50,51,51,52,47,52,45,46,23,24,67,24,40,67,23,67,22,67,66,50,67,40,66,66,65,51,66,40,65,51,65,52,40,39,65,52,65,53,65,64,53,64,65,38,65,39,38,50,66,51,67,20,22,21,22,20,24,68,40,42,41,39,41,38,39,52,53,45,45,53,44],"vertices":[5,4,184.39,21.83,0.00001,18,-31.88,51.7,0.00348,17,8.93,-59.04,0.3244,6,55.04,21.76,0.67211,22,-194.55,-212.83,0,5,4,173.24,22.82,0.00001,18,-31.04,40.55,0.00302,17,12.27,-48.36,0.3109,6,43.89,22.77,0.68607,22,-183.47,-211.32,0,3,4,164.51,-2.67,0.00004,18,-4.46,36.08,0.01506,6,35.09,-2.69,0.9849,3,18,17.51,52.82,0.37475,17,-37.38,-41.86,0.00533,6,47.96,-27.13,0.61992,4,4,184.91,-26.78,0,18,16.01,60.13,0.39028,17,-38.68,-49.2,0.00556,6,55.41,-26.86,0.60417,3,18,24.99,61.71,0.40317,17,-47.61,-47.35,0.00545,6,55.48,-35.99,0.59138,3,18,39.71,52.19,0.52151,17,-57.78,-33.07,0.00426,6,43.66,-48.92,0.47423,3,18,53.62,39.76,0.75011,17,-66.12,-16.38,0.00224,6,29.09,-60.58,0.24764,3,18,102.35,26.41,0.9984,17,-106.48,14.01,0.00005,6,7.86,-106.43,0.00155,2,18,149.77,5.2,0.7149,21,3.79,31.47,0.2851,2,18,160.6,-28.97,0.10387,21,39.63,31.23,0.89613,1,21,84.78,30.93,1,2,21,148.1,30.5,0.93052,22,-24.47,23.16,0.06948,2,21,167.63,27.75,0.51087,22,-5.29,27.73,0.48913,2,21,201.22,16.7,0.00063,22,30.01,29.73,0.99937,1,22,70.15,39.87,1,1,22,96.21,31.39,1,1,22,130.2,28.39,1,3,3,37.78,-99.19,0.00483,20,155.19,202.87,0.00001,22,120.47,-16.84,0.99516,3,3,42.03,-100.15,0.00788,20,151.21,204.65,0.00001,22,116.12,-16.85,0.99211,3,3,59.79,-103.2,0.61714,20,134.4,211.15,0.00007,22,98.12,-17.82,0.38279,1,3,41.89,-90.57,1,1,3,41.81,-84.37,1,2,3,40.66,-2.87,0.99782,22,139.11,-111.38,0.00218,1,3,39.73,63.82,1,3,3,39.31,88.93,0.07548,20,116.53,18.76,0.92446,22,160.86,-200.57,0.00005,3,3,26.78,84.39,0.01738,20,129.71,20.73,0.98261,22,172.07,-193.36,0.00001,3,3,4.5,119.79,0.00027,20,144.56,-18.37,0.99973,22,201.67,-222.91,0,3,3,13.24,140.83,0.00018,20,131.84,-37.27,0.99982,22,197.84,-245.37,0,3,3,73.69,157.48,0,20,69.29,-41.65,1,22,142.61,-275.06,0,2,19,171.93,-27.72,0.35382,20,-0.93,-29.38,0.64618,2,19,126.96,-29.79,1,22,28.75,-297.14,0,2,19,79.18,-37.8,1,22,-18.54,-307.66,0,2,19,-3.75,-24.42,1,22,-102.06,-298.66,0,4,18,-91.57,-3.55,0.00007,17,84.8,-29.72,0.99235,6,10.43,89.77,0.00758,22,-135.78,-269.06,0,5,4,158.76,47.42,0,18,-52.96,22.26,0.00152,17,39.39,-39.45,0.63592,6,29.49,47.42,0.36255,22,-163.88,-232.09,0,5,4,173.31,43.07,0.00001,18,-51.03,37.33,0.00271,17,32.04,-52.75,0.4314,6,44.03,43.03,0.56588,22,-179.04,-231.08,0,5,4,184.32,27.86,0.00001,18,-37.81,50.66,0.00344,17,14.83,-60.26,0.32897,6,54.99,27.78,0.66758,22,-193.15,-218.69,0,1,3,179.52,92.01,1,1,3,159.42,89.01,1,1,3,120.61,85.84,1,5,3,156.31,96.24,0.15262,4,-47.88,96.22,0.00712,19,149.95,32.49,0.53018,20,0.39,34.7,0.31009,22,48.43,-233.75,0,5,3,133.58,99.53,0.12776,4,-70.61,99.5,0.00037,19,172.9,33.13,0.18031,20,22.02,26.98,0.69155,22,71.32,-231.9,0,4,3,98.71,99.43,0.55204,19,207.24,39.19,0.00513,20,56.22,20.19,0.44282,22,105.29,-224.04,0.00001,5,3,191.34,-107.9,0.05425,4,-12.75,-107.91,0.43169,20,6.37,241.74,0,21,117.85,-28.19,0.48662,22,-31.17,-42.53,0.02744,5,3,164.75,-112.96,0.09814,4,-39.34,-112.98,0.0113,20,33.44,241.44,0,21,144.9,-27.16,0.65334,22,-6.37,-31.68,0.23723,5,3,152.3,-115.96,0.08676,4,-51.79,-115.98,0.00468,20,46.24,241.92,0,21,157.66,-26.05,0.44463,22,5.1,-25.99,0.46393,5,3,121.5,-107.37,0.13337,4,-82.6,-107.41,0.00031,20,74.74,227.42,0.00004,21,186.84,-39.14,0.06575,22,37.04,-27.5,0.80055,4,3,96.3,-108.33,0.10543,20,99.62,223.39,0.00007,21,211.89,-41.95,0.00621,22,61.39,-20.96,0.88829,4,3,84.72,-101.48,0.61105,20,109.62,214.38,0.00007,21,222.32,-50.45,0.00111,22,74.21,-25.06,0.38777,1,3,95,-97.3,1,1,3,121.69,-102.33,1,1,3,145.95,-104.98,1,1,3,171.66,-107.13,1,5,3,219.33,-104.18,0.03181,4,15.23,-104.18,0.46235,18,119.97,-94.7,0.0015,21,89.62,-27.69,0.50119,22,-57.63,-52.39,0.00315,4,3,255.15,-107.4,0.00711,4,51.06,-107.37,0.05719,18,117.3,-58.83,0.01537,21,54.68,-19.17,0.92032,4,18,-22.77,-1.58,0.00007,17,20.14,-6.16,0.88857,6,0.98,21.6,0.11136,22,-141.92,-200.51,0,3,4,124.65,-2.63,0.4302,18,1.98,-3.25,0.5698,22,-141.75,-175.71,0,3,18,30.49,10.41,0.86007,17,-33.79,2.36,0.00052,6,3.98,-32.91,0.13941,5,3,209.61,90.9,0.15487,4,5.42,90.9,0.82044,17,114.54,101.1,0.00002,19,96.52,28.63,0.02452,20,-50.8,50.46,0.00016,4,3,244.84,95.65,0.0048,4,40.66,95.67,0.58885,17,111.69,65.66,0.00504,19,62.62,17.93,0.40131,3,4,75.86,103.07,0.00764,17,111.43,29.68,0.01124,19,29.19,4.62,0.98111,4,4,88.38,-2.21,0.9865,18,7.46,-39.11,0.01265,21,2.04,-117.57,0.00084,22,-106.29,-168.06,0,4,4,44.28,-3.09,0.9934,18,15.5,-82.48,0.00228,21,45.77,-123.3,0.00432,22,-63.49,-157.41,0,5,3,209.63,-3.92,0.07795,4,5.48,-3.91,0.9154,18,22.63,-120.63,0.00013,21,84.26,-128.28,0.00625,22,-25.84,-147.98,0.00027,3,3,157.58,-3.53,0.99494,21,135.66,-136.43,0.00264,22,24.98,-136.77,0.00243,3,3,117.45,-3.47,0.99448,21,175.34,-142.48,0.00073,22,64.12,-127.89,0.00479,2,3,76.87,-2.97,0.99528,22,103.79,-119.34,0.00472,4,3,73.92,98.81,0.07267,19,231.56,44.04,0.00014,20,80.65,15.91,0.92716,22,129.33,-217.91,0.00003,3,3,59.59,100.36,0.04764,20,94.39,11.56,0.95233,22,143.64,-216.23,0.00003,4,3,72.06,-104.56,0.57638,20,122.64,214.9,0.00007,21,235.3,-49.29,0.00001,22,85.86,-19.23,0.42354],"hull":38,"edges":[24,26,36,38,54,56,56,58,76,78,78,80,76,82,82,84,84,86,86,80,58,60,60,62,62,64,64,66,50,48,52,54,50,52,42,44,40,42,40,38,88,90,90,92,92,94,94,96,96,98,98,100,100,102,102,104,104,106,106,88,26,28,34,36,34,32,28,30,32,30,88,108,108,110,22,24,18,20,20,22,10,12,14,12,16,18,14,16,4,6,10,8,6,8,4,2,0,74,2,0,72,74,70,72,66,68,70,68,70,112,112,114,114,116,116,14,76,118,118,120,120,122,114,124,124,126,126,128,128,130,130,132,132,134,44,46,46,48,134,46,86,136,136,138,138,50,98,140,140,40],"width":330,"height":419}},"white_L":{"white_L":{"x":10.5,"y":-0.92,"rotation":-92.86,"width":25,"height":11}},"hand_L":{"hand_L":{"x":148.23,"y":-4.82,"rotation":79.15,"width":33,"height":57}},"eye_L":{"eye_L":{"x":-0.99,"y":0.18,"rotation":-92.86,"width":14,"height":11}},"boot_L":{"boot_L":{"x":40.99,"y":7.07,"rotation":109.03,"width":85,"height":94}}}}],"animations":{"idle":{"slots":{"eyelashes_L_Up":{"attachment":[{"time":2.1,"name":null},{"time":2.2667,"name":"eyelashes_L_Up"}]},"eye_closed_R":{"attachment":[{"time":2,"name":"eye_closed_R"},{"time":2.3333,"name":null}]},"eyelashes_R_up":{"attachment":[{"time":2.1,"name":null},{"time":2.2667,"name":"eyelashes_R_up"}]},"eye_closed_L":{"attachment":[{"time":2,"name":"eye_closed_L"},{"time":2.3333,"name":null}]}},"bones":{"shirt":{"rotate":[{"angle":-0.33,"curve":0.25,"c3":0.75},{"time":1.6667,"curve":0.25,"c3":0.75},{"time":3,"angle":-0.33}]},"bone13":{"rotate":[{"angle":-1.2,"curve":0.25,"c3":0.75},{"time":1.6667,"angle":1.2,"curve":0.25,"c3":0.75},{"time":3,"angle":-1.2}]},"bone12":{"rotate":[{"angle":1.2,"curve":0.25,"c3":0.75},{"time":1.6667,"angle":-1.2,"curve":0.25,"c3":0.75},{"time":3,"angle":1.2}]},"shirt2":{"rotate":[{"angle":-0.33,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0333,"angle":-0.33},{"time":1.7,"curve":0.249,"c3":0.739,"c4":0.95},{"time":3,"angle":-0.33}]},"shirt3":{"rotate":[{"angle":-0.33,"curve":0.34,"c2":0.44,"c3":0.674,"c4":0.77},{"time":0.0333,"angle":-0.33,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0667,"angle":-0.33},{"time":1.7333,"curve":0.247,"c3":0.729,"c4":0.91},{"time":3,"angle":-0.33}]},"head":{"rotate":[{"angle":-0.32,"curve":0.347,"c2":0.49,"c3":0.681,"c4":0.83},{"time":0.0667,"angle":-0.33,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.1,"angle":-0.33,"curve":0.25,"c3":0.75},{"time":1.7667,"angle":1.2,"curve":0.246,"c3":0.72,"c4":0.87},{"time":3,"angle":-0.32}]},"tie":{"rotate":[{"angle":0.01,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1},{"time":1.7667,"angle":0.37,"curve":0.246,"c3":0.72,"c4":0.87},{"time":3,"angle":0.01}]},"tie2":{"rotate":[{"angle":0.01,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.7667,"angle":0.37,"curve":0.246,"c3":0.72,"c4":0.87},{"time":3,"angle":0.01}]},"bone2":{"translate":[{"curve":0.25,"c3":0.75},{"time":1.6667,"x":-4,"curve":0.25,"c3":0.75},{"time":3}]},"bone10":{"translate":[{"curve":0.25,"c3":0.75},{"time":1.6667,"x":-3.96,"y":-0.57,"curve":0.25,"c3":0.75},{"time":3}]},"eyebrow_R":{"rotate":[{"time":2},{"time":2.1,"angle":1.2,"curve":"stepped"},{"time":2.2333,"angle":1.2},{"time":2.3333}],"translate":[{"time":2},{"time":2.1,"x":-0.19,"y":0.04,"curve":"stepped"},{"time":2.2333,"x":-0.19,"y":0.04},{"time":2.3333}]},"eyebrow_L":{"rotate":[{"time":2},{"time":2.1,"angle":-1.2,"curve":"stepped"},{"time":2.2333,"angle":-1.2},{"time":2.3333}],"translate":[{"time":2},{"time":2.1,"x":-0.57,"y":-0.07,"curve":"stepped"},{"time":2.2333,"x":-0.57,"y":-0.07},{"time":2.3333}]}},"deform":{"default":{"eyelashes_L_Up":{"eyelashes_L_Up":[{"time":2},{"time":2.1,"vertices":[-5.35748,0.48309,-2.24609,0.71507,0,0,-1.20461,0.01721,-4.17004,0.12238,-6.28299,-0.80522,-6.85422,-0.1739,-5.03542,0.03651,-1.89389,0.86971,0,0,-1.8875,-0.72365,-5.96083,0.4702,-7.91924,0.91266,-8.11464,0.44882,-4.13141,0.03436,-6.64804,0.50459,-7.59285,0.55188,-7.48547,0.11601,-5.44334,0.48747,-3.00624,0.1503],"curve":"stepped"},{"time":2.2333,"vertices":[-5.35748,0.48309,-2.24609,0.71507,0,0,-1.20461,0.01721,-4.17004,0.12238,-6.28299,-0.80522,-6.85422,-0.1739,-5.03542,0.03651,-1.89389,0.86971,0,0,-1.8875,-0.72365,-5.96083,0.4702,-7.91924,0.91266,-8.11464,0.44882,-4.13141,0.03436,-6.64804,0.50459,-7.59285,0.55188,-7.48547,0.11601,-5.44334,0.48747,-3.00624,0.1503]},{"time":2.3333}]},"eye_closed_R":{"eye_closed_R":[{"time":2,"vertices":[-0.75998,-0.076,-0.91202,0.07602,-1.74797,0.15198,0,0,7.67596,2.28,7.29601,1.67201,3.57199,-0.228,0,0,-1.06398,-0.076,-1.90001,-0.45599]},{"time":2.1,"curve":"stepped"},{"time":2.2333},{"time":2.3333,"vertices":[-0.75998,-0.076,-0.91202,0.07602,-1.74797,0.15198,0,0,7.67596,2.28,7.29601,1.67201,3.57199,-0.228,0,0,-1.06398,-0.076,-1.90001,-0.45599]}]},"eyelashes_R_up":{"eyelashes_R_up":[{"time":2},{"time":2.1,"vertices":[-8.17596,1.28798,-6.83197,-0.056,-4.36798,0.84,-1.56799,1.008,-1.34399,-0.784,-5.54398,-0.616,-6.60797,-0.00002,-5.48799,-0.05602,-1.95999,0.448,0,0,-1.45599,-0.84001,-6.43997,0.50398,-3.41599,-0.05602,-6.66397,-1.45601,-7.44795,-2.07201,-6.27197,-1.008,-3.13599,0.056],"curve":"stepped"},{"time":2.2333,"vertices":[-8.17596,1.28798,-6.83197,-0.056,-4.36798,0.84,-1.56799,1.008,-1.34399,-0.784,-5.54398,-0.616,-6.60797,-0.00002,-5.48799,-0.05602,-1.95999,0.448,0,0,-1.45599,-0.84001,-6.43997,0.50398,-3.41599,-0.05602,-6.66397,-1.45601,-7.44795,-2.07201,-6.27197,-1.008,-3.13599,0.056]},{"time":2.3333}]},"eye_closed_L":{"eye_closed_L":[{"time":2,"offset":2,"vertices":[1.91919,0.53485,8.36536,-0.48145,8.99475,-0.51299,4.68454,0.3334,0.50653,0.03775,-1.41257,-0.49716,-0.71414,-0.40587,-0.4373,0.08495,-1.29616,0.56946]},{"time":2.1,"curve":"stepped"},{"time":2.2333},{"time":2.3333,"offset":2,"vertices":[1.91919,0.53485,8.36536,-0.48145,8.99475,-0.51299,4.68454,0.3334,0.50653,0.03775,-1.41257,-0.49716,-0.71414,-0.40587,-0.4373,0.08495,-1.29616,0.56946]}]}}}}}}');
+;// CONCATENATED MODULE: ./assets/spine/melissa/melissa.png
+var melissa_namespaceObject = __webpack_require__.p + "assets/spine/melissa/melissa.png";
+;// CONCATENATED MODULE: ./assets/spine/melissa/melissa.atlas
+var melissa_atlas_namespaceObject = "\nmelissa.png\nsize: 2048,2048\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\n3_iris_L\n  rotate: false\n  xy: 692, 8\n  size: 13, 14\n  orig: 13, 14\n  offset: 0, 0\n  index: -1\n3_iris_R\n  rotate: false\n  xy: 707, 9\n  size: 13, 13\n  orig: 13, 13\n  offset: 0, 0\n  index: -1\n3_lips\n  rotate: false\n  xy: 2, 13\n  size: 80, 32\n  orig: 80, 32\n  offset: 0, 0\n  index: -1\n4_blik_L\n  rotate: false\n  xy: 558, 3\n  size: 15, 11\n  orig: 15, 11\n  offset: 0, 0\n  index: -1\n4_blik_R\n  rotate: false\n  xy: 2, 2\n  size: 13, 9\n  orig: 13, 9\n  offset: 0, 0\n  index: -1\n4_eye_L\n  rotate: false\n  xy: 696, 24\n  size: 25, 24\n  orig: 25, 24\n  offset: 0, 0\n  index: -1\n4_eye_R\n  rotate: false\n  xy: 665, 2\n  size: 25, 20\n  orig: 25, 20\n  offset: 0, 0\n  index: -1\n4_eyebrow_L\n  rotate: false\n  xy: 167, 23\n  size: 69, 22\n  orig: 69, 22\n  offset: 0, 0\n  index: -1\n4_eyebrow_R\n  rotate: false\n  xy: 84, 2\n  size: 69, 17\n  orig: 69, 17\n  offset: 0, 0\n  index: -1\n4_eyelashes_L_down\n  rotate: false\n  xy: 464, 29\n  size: 44, 16\n  orig: 44, 16\n  offset: 0, 0\n  index: -1\n4_eyelashes_L_up\n  rotate: false\n  xy: 306, 24\n  size: 54, 21\n  orig: 54, 21\n  offset: 0, 0\n  index: -1\n4_eyelashes_R_down\n  rotate: false\n  xy: 300, 6\n  size: 51, 15\n  orig: 51, 15\n  offset: 0, 0\n  index: -1\n4_eyelashes_R_up\n  rotate: false\n  xy: 409, 3\n  size: 52, 20\n  orig: 52, 20\n  offset: 0, 0\n  index: -1\n4_iris_L\n  rotate: false\n  xy: 722, 10\n  size: 12, 12\n  orig: 12, 12\n  offset: 0, 0\n  index: -1\npupil_L\n  rotate: false\n  xy: 722, 10\n  size: 12, 12\n  orig: 12, 12\n  offset: 0, 0\n  index: -1\n4_iris_R\n  rotate: false\n  xy: 736, 10\n  size: 12, 12\n  orig: 12, 12\n  offset: 0, 0\n  index: -1\npupil_R\n  rotate: false\n  xy: 736, 10\n  size: 12, 12\n  orig: 12, 12\n  offset: 0, 0\n  index: -1\n4_lips\n  rotate: false\n  xy: 510, 16\n  size: 66, 29\n  orig: 66, 29\n  offset: 0, 0\n  index: -1\n4_white_L\n  rotate: false\n  xy: 203, 2\n  size: 48, 19\n  orig: 48, 19\n  offset: 0, 0\n  index: -1\n4_white_R\n  rotate: false\n  xy: 155, 2\n  size: 46, 17\n  orig: 46, 17\n  offset: 0, 0\n  index: -1\nblik_L\n  rotate: false\n  xy: 575, 3\n  size: 15, 11\n  orig: 15, 11\n  offset: 0, 0\n  index: -1\nblik_R\n  rotate: false\n  xy: 17, 2\n  size: 13, 9\n  orig: 13, 9\n  offset: 0, 0\n  index: -1\nblush\n  rotate: false\n  xy: 442, 281\n  size: 185, 72\n  orig: 185, 72\n  offset: 0, 0\n  index: -1\nbody\n  rotate: false\n  xy: 2, 278\n  size: 438, 477\n  orig: 438, 477\n  offset: 0, 0\n  index: -1\neye_closed_L\n  rotate: false\n  xy: 417, 25\n  size: 45, 20\n  orig: 45, 20\n  offset: 0, 0\n  index: -1\neye_closed_R\n  rotate: false\n  xy: 253, 2\n  size: 45, 19\n  orig: 45, 19\n  offset: 0, 0\n  index: -1\neyebrow_L\n  rotate: false\n  xy: 238, 23\n  size: 66, 22\n  orig: 66, 22\n  offset: 0, 0\n  index: -1\neyebrow_R\n  rotate: false\n  xy: 578, 22\n  size: 65, 23\n  orig: 65, 23\n  offset: 0, 0\n  index: -1\neyelashes_L_Down\n  rotate: false\n  xy: 645, 24\n  size: 49, 24\n  orig: 49, 24\n  offset: 0, 0\n  index: -1\neyelashes_L_Up\n  rotate: false\n  xy: 353, 2\n  size: 54, 20\n  orig: 54, 20\n  offset: 0, 0\n  index: -1\neyelashes_R_Down\n  rotate: false\n  xy: 510, 3\n  size: 46, 11\n  orig: 46, 11\n  offset: 0, 0\n  index: -1\neyelashes_R_Up\n  rotate: false\n  xy: 362, 25\n  size: 53, 20\n  orig: 53, 20\n  offset: 0, 0\n  index: -1\nhair\n  rotate: false\n  xy: 618, 1658\n  size: 345, 388\n  orig: 345, 388\n  offset: 0, 0\n  index: -1\nhand_L\n  rotate: true\n  xy: 2, 47\n  size: 229, 598\n  orig: 229, 598\n  offset: 0, 0\n  index: -1\nhand_R\n  rotate: true\n  xy: 602, 50\n  size: 229, 403\n  orig: 229, 403\n  offset: 0, 0\n  index: -1\nhead\n  rotate: false\n  xy: 618, 1423\n  size: 206, 233\n  orig: 206, 233\n  offset: 0, 0\n  index: -1\niris_L\n  rotate: false\n  xy: 723, 24\n  size: 25, 24\n  orig: 25, 24\n  offset: 0, 0\n  index: -1\niris_R\n  rotate: false\n  xy: 638, 3\n  size: 25, 17\n  orig: 25, 17\n  offset: 0, 0\n  index: -1\nlegs\n  rotate: false\n  xy: 2, 757\n  size: 614, 1289\n  orig: 614, 1289\n  offset: 0, 0\n  index: -1\nlips\n  rotate: false\n  xy: 84, 21\n  size: 81, 24\n  orig: 81, 24\n  offset: 0, 0\n  index: -1\ntits\n  rotate: false\n  xy: 442, 355\n  size: 504, 400\n  orig: 504, 400\n  offset: 0, 0\n  index: -1\nwhite_L\n  rotate: false\n  xy: 463, 6\n  size: 45, 17\n  orig: 45, 17\n  offset: 0, 0\n  index: -1\nwhite_R\n  rotate: false\n  xy: 592, 4\n  size: 44, 16\n  orig: 44, 16\n  offset: 0, 0\n  index: -1\n";
+;// CONCATENATED MODULE: ./assets/spine/melissa/melissa.json
+var spine_melissa_melissa_namespaceObject = JSON.parse('{"skeleton":{"hash":"jU69yldCmboHdfO0KeRvbSaJXk4","spine":"3.8.75","x":544.92,"y":-1508.88,"width":629.52,"height":1891.09,"images":"./images/","audio":""},"bones":[{"name":"block_03_1"},{"name":"bone","parent":"block_03_1","x":818.36,"y":-1520.86},{"name":"bone2","parent":"bone","x":85.48,"y":1046.12},{"name":"bone3","parent":"bone2","length":256.63,"rotation":95.14,"x":3.99,"y":4.99},{"name":"bone4","parent":"bone3","length":240.75,"rotation":-1.49,"x":256.63},{"name":"bone5","parent":"bone4","x":240.75},{"name":"bone6","parent":"bone5","length":149.53,"rotation":-93.16},{"name":"bone7","parent":"bone6","length":253.8,"rotation":-62.89,"x":149.53},{"name":"bone8","parent":"bone7","length":148.08,"rotation":-52.61,"x":253.8},{"name":"bone9","parent":"bone3","rotation":149.84,"x":122.58,"y":-177.84,"color":"ff3f00ff"},{"name":"bone10","parent":"bone9","length":69.18,"rotation":-53.26},{"name":"bone11","parent":"bone5","length":145.83,"rotation":83.84,"x":1.28,"y":-0.08},{"name":"bone12","parent":"bone11","length":297.78,"rotation":66.28,"x":145.83},{"name":"bone13","parent":"bone12","length":195.6,"rotation":67.53,"x":297.78},{"name":"bone14","parent":"bone3","rotation":-143.85,"x":105.83,"y":177.82,"color":"ff3f00ff"},{"name":"bone15","parent":"bone14","length":105.89,"rotation":-64.76},{"name":"bone16","parent":"bone5","length":84.31,"rotation":0.06,"x":2.37,"y":1.02},{"name":"head","parent":"bone16","length":28.83,"rotation":-2.16,"x":85.91,"y":0.68},{"name":"bone17","parent":"bone4","x":-13.11,"y":150.7},{"name":"bone18","parent":"bone4","x":-18.92,"y":-168.16},{"name":"bone19","parent":"bone2","length":479.81,"rotation":-92.19,"x":94.28,"y":-5.75},{"name":"bone20","parent":"bone19","length":371.38,"rotation":-5.74,"x":479.81},{"name":"bone21","parent":"bone","rotation":-97.93,"x":115.93,"y":189.96,"color":"ff3f00ff"},{"name":"bone22","parent":"bone21","length":146.69,"rotation":4.35},{"name":"bone23","parent":"bone2","length":457.96,"rotation":-101.14,"x":-87.76,"y":-21.45},{"name":"bone24","parent":"bone23","length":385.39,"rotation":-7.93,"x":457.96},{"name":"bone25","parent":"bone","rotation":-109.08,"x":-216.73,"y":211.11,"color":"ff3f00ff"},{"name":"bone26","parent":"bone25","length":163.61,"rotation":16.09},{"name":"hair","parent":"head","x":240.45,"y":-2.3,"color":"c8a565ff"},{"name":"bone27","parent":"bone11","x":98.21,"y":-17.77,"color":"c8a565ff"},{"name":"bone28","parent":"bone6","x":84.48,"y":41.02,"color":"c8a565ff"},{"name":"white_L","parent":"head","length":6.4,"rotation":0.24,"x":109.35,"y":39.09},{"name":"eye_closed_R","parent":"head","length":5.39,"rotation":0.09,"x":108.4,"y":-43.73},{"name":"pupil_R","parent":"eye_closed_R","x":13.63,"y":1.52},{"name":"lips","parent":"head","x":46.67,"y":-0.4},{"name":"eyebrow_R","parent":"head","length":45.84,"rotation":94.37,"x":143.33,"y":-66.42},{"name":"eyebrow_L","parent":"head","length":49.18,"rotation":-97.39,"x":147.96,"y":63.61},{"name":"4_iris_L","parent":"white_L","x":16.2,"y":-1.16}],"slots":[{"name":"legs","bone":"bone2","attachment":"legs"},{"name":"body","bone":"bone4","attachment":"body"},{"name":"hand_R","bone":"bone7","attachment":"hand_R"},{"name":"hand_L","bone":"bone12","attachment":"hand_L"},{"name":"head","bone":"head","attachment":"head"},{"name":"tits","bone":"bone4","attachment":"tits"},{"name":"3_lips","bone":"lips"},{"name":"blush","bone":"head"},{"name":"lips","bone":"lips","attachment":"lips"},{"name":"white_R","bone":"eye_closed_R","attachment":"white_R"},{"name":"iris_R","bone":"pupil_R","attachment":"iris_R"},{"name":"pupil_R","bone":"pupil_R","attachment":"pupil_R"},{"name":"3_iris_R","bone":"pupil_R"},{"name":"blik_R","bone":"pupil_R","attachment":"blik_R"},{"name":"eye_closed_R","bone":"eye_closed_R"},{"name":"eyelashes_R_Down","bone":"eye_closed_R","attachment":"eyelashes_R_Down"},{"name":"eyelashes_R_Up","bone":"eye_closed_R","attachment":"eyelashes_R_Up"},{"name":"eyebrow_R","bone":"eyebrow_R","attachment":"eyebrow_R"},{"name":"white_L","bone":"white_L","attachment":"white_L"},{"name":"iris_L","bone":"4_iris_L","attachment":"iris_L"},{"name":"pupil_L","bone":"4_iris_L","attachment":"pupil_L"},{"name":"3_iris_L","bone":"4_iris_L"},{"name":"blik_L","bone":"4_iris_L","attachment":"blik_L"},{"name":"eye_closed_L","bone":"white_L"},{"name":"eyelashes_L_Down","bone":"white_L","attachment":"eyelashes_L_Down"},{"name":"eyelashes_L_Up","bone":"white_L","attachment":"eyelashes_L_Up"},{"name":"eyebrow_L","bone":"eyebrow_L","attachment":"eyebrow_L"},{"name":"4_lips","bone":"lips"},{"name":"4_white_R","bone":"eye_closed_R"},{"name":"4_white_L","bone":"white_L"},{"name":"4_eye_R","bone":"pupil_R"},{"name":"4_eye_L","bone":"4_iris_L"},{"name":"4_iris_R","bone":"pupil_R"},{"name":"4_iris_L","bone":"4_iris_L"},{"name":"4_eyelashes_R_down","bone":"eye_closed_R"},{"name":"4_eyelashes_R_up","bone":"eye_closed_R"},{"name":"4_eyelashes_L_down","bone":"white_L"},{"name":"4_eyelashes_L_up","bone":"white_L"},{"name":"4_blik_R","bone":"pupil_R"},{"name":"4_blik_L","bone":"4_iris_L"},{"name":"4_eyebrow_R","bone":"eyebrow_R"},{"name":"4_eyebrow_L","bone":"eyebrow_L"},{"name":"hair","bone":"hair","attachment":"hair"}],"ik":[{"name":"bone9","order":2,"bones":["bone7","bone8"],"target":"bone9","softness":10.1,"bendPositive":false},{"name":"bone14","order":3,"bones":["bone12","bone13"],"target":"bone14","softness":10.1},{"name":"bone21","bones":["bone19","bone20"],"target":"bone21","softness":10.1,"bendPositive":false},{"name":"bone25","order":1,"bones":["bone23","bone24"],"target":"bone25","softness":10.1,"bendPositive":false}],"skins":[{"name":"default","attachments":{"4_eyebrow_R":{"4_eyebrow_R":{"x":20.62,"y":3.36,"rotation":174.08,"width":69,"height":17}},"pupil_R":{"pupil_R":{"x":0.48,"rotation":-91.64,"width":12,"height":12}},"hand_R":{"hand_R":{"type":"mesh","uvs":[0.48029,0.00001,0.64118,0.17908,0.74597,0.2884,0.8761,0.42414,0.93436,0.48127,0.99999,0.54565,0.99999,0.62086,0.84552,0.78393,0.68708,0.95119,0.65716,0.98278,0.41904,0.97529,0.18244,0.96784,0.18302,0.88144,0.18361,0.79405,0.42862,0.72976,0.50816,0.788,0.56554,0.68524,0.65322,0.56076,0.57381,0.50849,0.41263,0.38673,0.29051,0.26972,0.23854,0.14072,0.41708,0.00431,0.61398,0.85428,0.82318,0.5591],"triangles":[13,15,12,15,13,14,9,10,23,10,12,15,11,12,10,6,24,5,7,24,6,16,17,24,7,16,24,7,15,16,23,15,7,8,23,7,10,15,23,8,9,23,1,20,21,22,0,1,1,21,22,19,20,1,19,1,2,18,19,2,18,2,3,3,17,18,24,3,4,24,4,5,24,17,3],"vertices":[1,7,19.25,31.03,1,1,7,100.28,30.25,1,1,7,150.43,31.11,1,1,7,212.72,32.17,1,2,7,239.3,33.33,0.95261,8,-35.29,8.72,0.04739,2,7,269.26,34.63,0.47056,8,-18.13,33.31,0.52944,2,7,296.12,20.59,0.07494,8,9.33,46.12,0.92506,1,8,83.84,41.86,1,2,8,160.27,37.49,0.619,10,-22.75,32.19,0.381,2,8,174.71,36.66,0.44711,10,-13.45,43.26,0.55289,1,10,39.32,29.23,1,1,10,91.77,15.28,1,2,8,183.61,-79,0.00452,10,84.56,-18.79,0.99548,2,8,151.64,-93.77,0.0447,10,77.27,-53.24,0.9553,2,8,104.44,-53.89,0.32819,10,17.07,-67.21,0.67181,2,8,118,-27.45,0.69396,10,4,-40.53,0.30604,2,7,273.02,-79.6,0.00022,8,74.92,-33.06,0.99978,2,7,237.87,-38.57,0.4815,8,20.97,-36.08,0.5185,2,7,210.78,-44.92,0.9268,8,9.57,-61.46,0.0732,1,7,150.19,-54.9,1,1,7,95.45,-57.84,1,1,7,43.86,-44.3,1,1,7,14.08,17.4,1,1,8,131.96,5.8,1,2,7,255.31,-3.76,0.11564,8,3.9,-1.09,0.88436],"hull":23,"edges":[0,44,0,2,10,12,40,42,42,44,36,38,38,40,36,34,34,32,26,28,30,28,30,32,30,46,16,18,46,16,12,14,14,16,2,4,4,6,6,8,8,10,18,20,20,22,22,24,24,26],"width":229,"height":403}},"4_white_L":{"4_white_L":{"x":15.35,"y":-0.37,"rotation":-91.79,"width":48,"height":19}},"eye_closed_L":{"eye_closed_L":{"type":"mesh","uvs":[0.51599,0.00001,0.73965,0.00001,0.86546,0.27732,1,0.57386,0.95959,0.99999,0.77964,0.97731,0.58902,0.95328,0.38452,0.9275,0.16467,0.89979,0.00001,0.68851,0.01244,0.25541,0.18276,0.11505,0.32235,0.00001],"triangles":[11,9,10,8,9,11,7,12,0,11,12,7,8,11,7,6,0,1,6,1,2,5,6,2,7,0,6,3,5,2,4,5,3],"vertices":[25.81,-1.92,25.49,-11.98,19.77,-17.46,13.65,-23.33,5.19,-21.25,5.9,-13.17,6.65,-4.61,7.45,4.57,8.31,14.45,12.77,21.72,21.41,20.89,23.98,13.14,26.08,6.79],"hull":13,"edges":[6,8,16,18,18,20,14,16,12,14,8,10,10,12,2,4,4,6,2,0,0,24,20,22,22,24],"width":45,"height":20}},"4_blik_R":{"4_blik_R":{"x":-0.51,"y":0.53,"rotation":-91.64,"width":13,"height":9}},"4_iris_L":{"4_iris_L":{"x":-0.4,"y":-0.73,"rotation":-91.79,"width":12,"height":12}},"3_lips":{"3_lips":{"x":-1.56,"y":-0.18,"rotation":-91.55,"width":80,"height":32}},"eye_closed_R":{"eye_closed_R":{"type":"mesh","uvs":[0.34959,0.02119,0.57732,0,0.80936,0.11417,1,0.43237,0.984,0.77883,0.79948,0.93825,0.51051,0.99716,0.24786,0.99999,0.016,0.94105,0.01244,0.47815,0.17219,0.24027],"triangles":[3,5,2,5,1,2,4,5,3,7,8,9,6,0,1,6,1,5,7,10,0,10,7,9,0,6,7],"vertices":[23.37,7.02,23.48,-3.23,21.01,-13.61,14.72,-22.01,8.16,-21.1,5.37,-12.71,4.63,0.32,4.91,12.13,6.33,22.53,15.12,22.44,19.44,15.12],"hull":11,"edges":[4,6,6,8,16,18,18,20,14,16,12,14,8,10,10,12,0,20,0,2,2,4],"width":45,"height":19}},"eyelashes_R_Down":{"eyelashes_R_Down":{"type":"mesh","uvs":[1,0.94585,0.84575,0.94224,0.61447,0.93683,0.39146,0.93161,0.19156,0.92693,0.04164,0.92342,0.06494,0.19134,0.20492,0.16105,0.37498,0.12424,0.57132,0.08176,0.80615,0.03094,0.94913,0],"triangles":[4,6,7,5,6,4,3,8,9,7,8,3,4,7,3,2,9,10,3,9,2,1,10,11,2,10,1,1,11,0],"vertices":[1.48,-23.63,1.73,-16.54,2.09,-5.91,2.44,4.35,2.75,13.54,2.99,20.43,11.01,19.13,11.16,12.68,11.34,4.85,11.55,-4.19,11.8,-15,11.95,-21.59],"hull":12,"edges":[0,22,10,12,12,14,14,16,16,18,18,20,20,22,8,10,6,8,4,6,0,2,2,4],"width":46,"height":11}},"eyebrow_R":{"eyebrow_R":{"x":21.4,"y":1.27,"rotation":174.08,"width":65,"height":23}},"4_eyelashes_R_up":{"4_eyelashes_R_up":{"type":"mesh","uvs":[1,0.50302,0.89893,0.83088,0.75834,0.7083,0.60011,0.57337,0.41472,0.48094,0.23467,0.60137,0.13778,0.86826,0.02493,1,0,0.83701,0.08311,0.44342,0.22883,0.0144,0.42819,0.01206,0.63866,0.0096,0.81618,0.15119],"triangles":[4,10,11,5,9,10,3,11,12,3,12,13,4,11,3,4,5,10,2,3,13,2,13,0,1,2,0,6,9,5,8,9,6,7,8,6],"vertices":[15.66,-29.54,9.26,-24.1,11.92,-16.86,14.85,-8.71,16.97,0.87,14.83,10.3,9.64,15.49,7.18,21.43,10.47,22.63,18.22,18.09,26.58,10.27,26.33,-0.1,26.06,-11.04,22.97,-20.18],"hull":14,"edges":[0,26,0,2,14,16,16,18,18,20,12,14,8,10,10,12,6,8,2,4,4,6,20,22,22,24,24,26],"width":52,"height":20}},"4_eyelashes_L_up":{"4_eyelashes_L_up":{"type":"mesh","uvs":[0.30303,0.06659,0.53606,0,0.75843,0.06112,0.89355,0.27745,0.99701,0.52406,1,0.96511,0.9237,0.95047,0.81581,0.66074,0.6647,0.50456,0.49136,0.51598,0.30174,0.68741,0.20125,0.91741,0.00541,0.90845,0.06346,0.54161,0.12288,0.16616],"triangles":[8,1,2,7,8,2,9,0,1,9,1,8,3,7,2,7,3,4,10,14,0,10,0,9,13,14,10,11,13,10,12,13,11,6,7,4,6,4,5],"vertices":[28.9,13.85,29.91,1.23,28.25,-10.73,23.48,-17.89,18.13,-23.31,8.87,-23.18,9.3,-19.07,15.57,-13.44,19.1,-5.38,19.15,3.98,15.87,14.33,11.21,19.9,11.73,30.46,19.33,27.09,27.12,23.64],"hull":15,"edges":[8,10,10,12,22,24,22,20,20,18,18,16,16,14,14,12,24,26,26,28,0,28,0,2,2,4,4,6,6,8],"width":54,"height":21}},"white_R":{"white_R":{"type":"mesh","uvs":[0.59446,0,0.84883,0.09595,1,0.33693,1,0.81708,0.84649,0.96747,0.67564,0.9991,0.48403,0.99999,0.29935,0.99999,0.15311,0.99999,0.00794,0.94116,0.01348,0.49765,0.17357,0.20025,0.34828,0.00001],"triangles":[1,5,0,4,1,2,4,2,3,4,5,1,8,10,11,9,10,8,6,12,0,6,0,5,7,11,12,7,8,11,12,6,7],"vertices":[20.46,-3.82,18.61,-14.96,14.56,-21.5,6.88,-21.28,4.67,-14.46,4.38,-6.93,4.61,1.49,4.84,9.62,5.02,16.05,6.15,22.41,13.23,21.96,17.79,14.78,20.77,7.01],"hull":13,"edges":[0,24,4,6,18,20,16,18,6,8,0,2,2,4,20,22,22,24,8,10,10,12,12,14,14,16],"width":44,"height":16}},"4_eyelashes_L_down":{"4_eyelashes_L_down":{"x":7.4,"y":1.38,"rotation":-91.79,"width":44,"height":16}},"4_eye_R":{"4_eye_R":{"x":-0.54,"y":-0.47,"rotation":-91.64,"width":25,"height":20}},"hair":{"hair":{"type":"mesh","uvs":[0.58226,0,0.75313,0.08796,0.79365,0.22181,0.84632,0.39579,0.84321,0.50301,0.87067,0.59802,0.93385,0.68491,0.95987,0.77085,0.99,0.87038,0.83759,0.86484,0.65037,0.81282,0.59469,0.76975,0.57708,0.68282,0.62934,0.57802,0.68166,0.47308,0.67449,0.34244,0.48493,0.17382,0.32816,0.27659,0.36033,0.48657,0.39262,0.69736,0.41428,0.83875,0.37091,0.97006,0.31148,0.99999,0.19574,0.99999,0.09907,0.88432,0,0.86956,0,0.81042,0.06835,0.77078,0.11426,0.70699,0.11617,0.58026,0.09049,0.43255,0.13911,0.2303,0.18307,0.04743,0.41168,0,0.2549,0.82804,0.76543,0.68833],"triangles":[12,13,35,11,12,35,10,11,35,7,9,35,7,35,6,10,35,9,9,7,8,28,29,19,34,28,19,27,28,34,24,25,26,24,27,34,24,26,27,21,34,20,22,34,21,23,24,34,22,23,34,34,19,20,5,13,4,14,15,3,29,30,18,16,33,0,16,0,1,16,1,2,17,32,33,17,33,16,31,32,17,15,16,2,15,2,3,30,31,17,30,17,18,4,14,3,4,13,14,29,18,19,35,5,6,5,35,13],"vertices":[2,28,26.63,-39.17,0.98326,30,-54.61,314.83,0.01674,1,28,-9.08,-97.18,1,1,28,-61.37,-109.75,1,1,28,-129.34,-126.09,1,2,28,-170.9,-123.89,0.70379,30,33.75,118.9,0.29621,2,28,-208,-132.37,0.52182,30,42.91,81.95,0.47818,2,28,-242.29,-153.24,0.48925,30,64.42,48.06,0.51075,2,28,-275.87,-161.32,0.00698,30,73.11,14.64,0.99302,1,30,83.17,-24.07,1,1,30,30.61,-21.47,1,2,28,-289.26,-54.14,0.00625,30,-33.81,-0.74,0.99375,1,16,52.93,-35.79,1,1,17,2.3,-32.52,1,1,17,42.45,-51.64,1,1,28,-157.79,-68.49,1,2,28,-107.05,-67.39,0.952,30,-23.92,181.69,0.048,1,28,-39.88,-3.78,1,2,28,-78.28,51.36,0.976,29,-26.6,-226.82,0.024,1,28,-160.02,42.47,1,1,16,85.47,31.96,1,3,28,-297.12,27.55,0.00748,29,-65.84,-10.22,0.51252,16,30.24,28.05,0.48,1,29,-53.12,41.33,1,1,29,-33.15,53.84,1,1,29,6.75,55.59,1,2,28,-311.86,136.74,0.00051,29,42.03,12.21,0.99949,1,29,76.43,7.99,1,2,28,-282.27,170.13,0.00156,29,77.43,-14.94,0.99844,2,28,-267.53,146.15,0.01767,29,54.55,-31.34,0.98233,2,28,-243.22,129.64,0.08126,29,39.81,-56.76,0.91874,2,28,-194.09,127.65,0.43329,29,41.31,-105.91,0.56671,1,28,-136.55,134.96,1,1,28,-58.56,116.08,1,1,28,11.96,99,1,2,28,28.22,19.66,0.9933,29,-50.68,-335.3,0.0067,2,28,-291.48,82.41,0.01074,29,-10.72,-11.96,0.98926,2,28,-242.05,-95.12,0.51374,30,6.3,47.23,0.48626],"hull":34,"edges":[0,66,0,2,16,18,28,30,30,32,32,34,40,42,42,44,44,46,50,52,64,66,38,40,34,36,36,38,52,54,54,56,56,58,58,60,50,48,48,46,24,22,18,20,20,22,14,16,12,14,12,10,10,8,8,6,24,26,26,28,2,4,4,6,60,62,62,64],"width":345,"height":388}},"eyelashes_R_Up":{"eyelashes_R_Up":{"type":"mesh","uvs":[0.92673,0.32846,1,0.7461,0.85955,0.87765,0.68308,0.66512,0.5787,0.55435,0.42625,0.50035,0.25795,0.57835,0.15908,0.77035,0.08841,0.97981,0.00151,0.94,0,0.69764,0.12496,0.37955,0.24619,0.07098,0.44803,0.02094,0.72365,0.07539],"triangles":[5,12,13,4,13,14,5,13,4,6,12,5,11,12,6,3,4,14,3,14,0,2,3,0,7,11,6,10,11,7,1,2,0,8,9,10,7,8,10],"vertices":[18.74,-26.74,10.28,-30.38,7.86,-22.87,12.37,-13.64,14.75,-8.17,16.06,-0.13,14.75,8.83,11.06,14.18,6.98,18.04,7.91,22.63,12.76,22.57,18.93,15.76,24.91,9.17,25.61,-1.56,24.1,-16.13],"hull":15,"edges":[0,28,0,2,18,20,16,18,16,14,14,12,12,10,10,8,8,6,2,4,6,4,20,22,22,24,24,26,26,28],"width":53,"height":20}},"head":{"head":{"x":114.16,"y":0.56,"rotation":-91.55,"width":206,"height":233}},"body":{"body":{"type":"mesh","uvs":[0.56495,0.10142,0.62879,0.14716,0.77674,0.18011,0.88141,0.20342,0.94261,0.37173,0.92842,0.67009,0.78071,0.81127,0.51794,0.88145,0.2516,0.83323,0.16612,0.73697,0.12653,0.60668,0.08237,0.54191,0.04446,0.42203,0.00001,0.28146,0,0.24544,0.06769,0.16148,0.1947,0.13545,0.19816,0.04271,0.2829,0,0.56126,0,0.53063,0.28234,0.56954,0.25109,0.73585,0.21804,0.40711,0.28145,0.3507,0.24483,0.20092,0.23501,0.44018,0.12159,0.47714,0.43863,0.49659,0.65029,0.26803,0.44488,0.71737,0.41541],"triangles":[5,30,4,4,30,22,22,3,4,10,11,29,11,12,29,12,25,29,12,13,25,25,14,15,25,13,14,29,24,23,29,25,24,23,24,26,26,24,16,15,16,25,24,25,16,18,16,17,16,18,26,22,2,3,20,21,30,30,21,22,21,20,26,21,1,22,21,0,1,22,1,2,26,20,23,26,0,21,26,19,0,26,18,19,8,28,7,29,28,10,29,27,28,7,28,6,28,8,9,5,6,30,28,9,10,6,28,30,28,27,30,29,23,27,27,20,30,27,23,20],"vertices":[3,16,67.86,-49.57,0.75359,6,44.53,72.84,0.24267,11,-40.71,-73.79,0.00375,3,16,44.28,-76.06,0.25817,6,72.3,50.78,0.73521,11,-69.6,-53.22,0.00662,4,16,24.4,-139.71,0.0011,6,136.97,34.51,0.97817,11,-135.03,-40.36,0.00001,7,-36.44,4.54,0.02071,2,6,182.71,23,0.13475,7,-5.35,40.02,0.86525,1,7,78.21,26.58,1,3,4,30.18,-190.07,0.34769,6,201.4,-199.77,0.00746,7,201.46,-44.85,0.64485,2,4,-32.91,-121.22,0.82134,7,231.17,-133.39,0.17866,2,4,-58.98,-4.23,0.99824,7,207.52,-250.89,0.00176,2,4,-28.6,110.73,0.91931,12,231.18,172.29,0.08069,3,4,19.61,145.17,0.61897,11,120.53,236.73,0.00523,12,206.54,118.41,0.3758,3,4,82.74,158.52,0.42373,11,140.58,175.4,0.00424,12,158.46,75.38,0.57202,3,4,114.8,175.85,0.28368,11,161.25,145.38,0.00739,12,139.3,44.37,0.70892,3,4,172.92,188.78,0.02195,11,180.35,88.98,0.00201,12,95.35,4.2,0.97604,1,12,43.81,-42.9,1,2,11,203.49,5.68,0.00069,12,28.4,-50.5,0.99931,3,11,175.63,-35.63,0.3139,12,-20.63,-41.61,0.67991,17,-38.91,167.61,0.00618,4,16,62.15,113.31,0.00011,11,120.59,-50.47,0.74005,12,-56.36,2.8,0.01088,17,-28,111.66,0.24895,2,11,121.02,-94.73,0.46311,17,16.19,108.95,0.53689,2,11,84.83,-116.71,0.31721,17,35.55,71.3,0.68279,3,16,116.24,-51.08,0.89147,6,43.32,121.23,0.01625,17,32.25,-50.58,0.09227,3,4,225.86,-27.98,0.20304,6,28.76,-13.33,0.79571,7,-43.17,-113.58,0.00125,3,16,-3.51,-46.95,0.00473,6,45.92,1.43,0.99433,11,-45.84,-2.56,0.00094,3,16,7.5,-120.67,0.00289,6,118.9,16.57,0.99705,11,-117.93,-21.5,0.00006,3,4,229.73,25.99,0.35796,11,24.6,15.03,0.63992,12,-35.02,117.04,0.00213,3,16,5.66,48.5,0.00391,11,50.05,-1.34,0.99332,17,-82,44.77,0.00276,2,11,115.79,-3.14,0.99463,17,-75.54,110.22,0.00537,3,16,61.79,5.59,0.8937,11,13.47,-61.79,0.02297,17,-24.29,4,0.08333,5,4,152.95,0.15,0.99958,6,4.69,-87.68,0.00002,11,-9.33,88.59,0.00028,12,18.68,177.69,0.00012,7,12.05,-168.88,0.00001,2,4,51.65,-1.92,0.99905,7,105.47,-208.1,0.00095,3,4,155.81,91.75,0.46247,11,82.04,95.58,0.20773,12,61.84,96.86,0.3298,3,4,157.3,-105.56,0.26251,6,110,-77.5,0.28529,7,50.98,-70.5,0.4522],"hull":20,"edges":[0,38,0,2,6,8,8,10,10,12,14,16,18,20,20,22,36,38,16,18,12,14,26,28,28,30,34,36,34,32,32,30,2,4,4,6,40,42,42,44,46,48,48,50,22,24,24,26],"width":438,"height":477}},"4_blik_L":{"4_blik_L":{"x":-1.4,"y":-0.7,"rotation":-91.79,"width":15,"height":11}},"legs":{"legs":{"type":"mesh","uvs":[0.75313,0.00001,0.82084,0.02265,0.90587,0.08268,0.97785,0.169,1,0.25566,1,0.25676,0.9425,0.34735,0.88869,0.43212,0.84114,0.51284,0.80038,0.59736,0.80578,0.6523,0.78548,0.71341,0.73691,0.80421,0.70443,0.8649,0.70613,0.91589,0.73112,0.97143,0.66984,0.99425,0.55726,0.97565,0.56021,0.86907,0.60493,0.81936,0.609,0.74437,0.59349,0.64947,0.63424,0.57085,0.62628,0.50156,0.61866,0.45445,0.4886,0.4567,0.4715,0.48254,0.43774,0.51807,0.40111,0.57864,0.36925,0.61758,0.31183,0.70544,0.2157,0.79923,0.18911,0.83594,0.21151,0.86513,0.2038,0.91128,0.19391,0.9705,0.16218,0.99162,0.0374,0.98573,0.02033,0.94884,0.04592,0.89019,0.06805,0.83948,0.08945,0.79044,0.13364,0.6778,0.18501,0.58911,0.22145,0.52768,0.23432,0.48062,0.22203,0.42909,0.2053,0.35893,0.19158,0.30139,0.22014,0.22606,0.24765,0.15349,0.38399,0.05262,0.51975,0.00001,0.30589,0.555,0.76521,0.44553,0.35052,0.44889,0.62448,0.06683,0.6065,0.15248,0.58672,0.25269,0.57501,0.35514],"triangles":[33,40,32,33,39,40,34,39,33,34,38,39,35,38,34,36,37,38,35,36,38,18,19,13,18,13,14,17,18,14,16,17,14,15,16,14,9,22,8,21,22,9,21,9,10,11,21,10,20,21,11,12,20,11,19,20,12,13,19,12,43,44,53,29,53,28,43,53,29,42,43,29,30,42,29,31,41,42,30,31,42,32,41,31,40,41,32,49,50,58,58,48,49,59,48,58,47,48,59,55,46,47,59,55,47,25,55,59,24,25,59,45,46,55,26,55,25,27,55,26,27,53,45,27,45,55,44,45,53,28,53,27,4,57,3,3,57,2,57,4,58,5,58,4,6,58,5,6,59,58,6,54,59,7,54,6,24,59,54,23,24,54,8,54,7,23,54,8,22,23,8,56,52,0,51,52,56,57,51,56,56,0,1,50,51,57,58,50,57,56,1,2,57,56,2],"vertices":[3,3,233.67,-108.42,0.86616,20,-253.08,-7.82,0.13378,24,-295.6,129.93,0.00005,3,3,200.88,-147.21,0.76003,20,-224.66,34.28,0.23993,24,-274,175.9,0.00004,3,3,119.13,-192.27,0.42036,20,-148.23,87.87,0.57962,24,-206.74,240.62,0.00002,3,3,4.35,-226.31,0.03168,20,-37.77,134.06,0.96831,24,-104.71,303.28,0,2,20,73.67,149.67,1,24,3,335.87,0,2,20,75.09,149.69,1,24,4.39,336.11,0,1,20,192.48,116.49,1,1,20,302.32,85.43,1,1,20,406.87,58.11,1,2,20,516.25,35.04,0.04279,21,31.57,39.48,0.95721,1,21,101.12,53.24,1,1,21,180.86,52.57,1,1,21,301.03,40.39,1,2,21,381.36,32.24,0.16236,23,9.31,31.31,0.83764,1,23,74.85,36.45,1,1,23,145.33,56.23,1,1,23,177.04,20.51,1,2,21,535.91,-36.01,0,23,157.42,-49.97,1,2,21,399.77,-54.54,0.25829,23,20.2,-56.74,0.74171,2,21,332.34,-36.86,0.99656,23,-45.47,-33.33,0.00344,1,21,236.37,-48.69,1,1,21,116.8,-76.21,1,2,20,483.93,-67.56,0.3837,21,12.87,-66.45,0.6163,3,20,394.71,-74.06,0.972,24,354.67,164.27,0.02043,21,-74.74,-84.5,0.00756,2,20,334.09,-79.83,0.78115,24,295.65,149.23,0.21885,2,20,338.42,-159.62,0.15383,24,312.22,71.05,0.84617,2,20,371.91,-169.52,0.03884,24,346.84,66.44,0.96116,2,20,418.08,-189.42,0.00203,24,395.52,53.88,0.99797,2,24,476.3,45.14,0.31541,25,9.66,47.76,0.68459,1,25,63.52,47.06,1,1,25,181.94,53.83,1,1,25,315.87,41.03,1,2,25,365.9,42.37,0.67015,27,-7.37,46.61,0.32985,2,25,396.31,68.46,0.18458,27,29.5,62.3,0.81542,2,25,453.66,84.92,0.00393,27,89.15,60.66,0.99607,2,20,1003.86,-328.62,0,27,165.7,58.57,1,2,20,1031.42,-347.61,0,27,193.9,40.53,1,2,20,1025.22,-424.35,0,27,190.31,-36.38,1,2,20,977.85,-435.68,0,27,143.36,-49.32,1,2,20,901.99,-421.33,0,27,67.05,-37.56,1,3,20,836.39,-408.92,0,25,396.29,-25.62,0.43444,27,1.06,-27.39,0.56556,2,20,772.95,-396.92,0,25,332.49,-35.52,1,2,20,627.29,-372.41,0,25,187.02,-61.12,1,3,20,512.41,-342.92,0,24,512.38,-83.26,0.04893,25,68.89,-71.74,0.95107,3,20,432.85,-321.98,0,24,430.54,-74.82,0.71016,25,-13.1,-78.6,0.28984,3,20,372.05,-315.17,0,24,369.42,-77.46,0.98417,25,-72.67,-92.51,0.01583,1,24,305.28,-96.3,1,1,24,217.95,-121.96,1,1,24,146.34,-143,1,2,3,-27.2,243.64,0.00212,24,47.66,-142.4,0.99788,3,3,64.45,218.43,0.1329,20,-49.7,-314.57,0,24,-47.39,-141.83,0.8671,3,3,186.44,123.4,0.76869,20,-181.2,-233.21,0,24,-189.86,-81.7,0.2313,3,3,246.51,34.3,0.98738,20,-250.51,-151.09,0.00004,24,-270.98,-11.23,0.01259,3,20,467.12,-269.51,0,24,456.32,-17.7,0.50436,25,1.66,-17.69,0.49564,1,20,320.96,9.93,1,1,24,316.86,-14.19,1,2,3,154.96,-22.02,0.97364,20,-165.54,-85.25,0.02636,1,3,45.99,-1.13,1,3,3,-81.56,22.55,0.26724,20,74.4,-104.12,0.29682,24,42.81,85.22,0.43593,3,3,-212.45,41.54,0.00629,20,206.57,-108.93,0.46666,24,174.14,100.83,0.52704],"hull":53,"edges":[0,104,8,10,14,16,26,28,28,30,30,32,32,34,34,36,36,38,38,40,48,50,50,52,60,62,70,72,72,74,74,76,84,86,100,102,102,104,66,64,64,62,76,78,78,80,66,68,68,70,80,82,82,84,58,60,52,54,54,56,56,58,86,88,88,90,46,48,44,46,40,42,42,44,16,18,18,20,20,22,22,24,24,26,48,108,108,14,50,110,90,92,110,92,10,12,12,14,92,94,94,96,96,98,98,100,6,8,6,4,0,2,4,2,112,114,114,116,116,118],"width":614,"height":1289}},"iris_R":{"iris_R":{"x":-0.04,"y":-0.49,"rotation":-91.64,"width":25,"height":17}},"4_lips":{"4_lips":{"x":-3.07,"y":-0.64,"rotation":-91.55,"width":66,"height":29}},"iris_L":{"iris_L":{"x":0.12,"y":-0.25,"rotation":-91.79,"width":25,"height":24}},"eyebrow_L":{"eyebrow_L":{"x":24.63,"y":-0.58,"rotation":5.84,"width":66,"height":22}},"lips":{"lips":{"x":-0.05,"y":0.28,"rotation":-91.55,"width":81,"height":24}},"eyelashes_L_Down":{"eyelashes_L_Down":{"type":"mesh","uvs":[0.21755,0.4632,0.38372,0.54128,0.58081,0.5484,0.78118,0.52856,0.9539,0.5124,1,0.78354,0.85895,0.84407,0.6372,0.90377,0.40845,0.91162,0.14184,0.87634,0,0.62624,0.09193,0.28261],"triangles":[10,11,0,6,3,4,6,4,5,9,10,0,7,2,3,7,3,6,8,1,2,8,2,7,9,0,1,8,9,1],"vertices":[14.71,15,12.58,6.92,12.11,-2.73,12.28,-12.56,12.4,-21.03,5.83,-23.09,4.59,-16.13,3.5,-5.23,3.66,5.98,4.92,19.01,11.13,25.77,19.24,21.01],"hull":12,"edges":[8,10,20,22,0,22,0,2,2,4,4,6,6,8,10,12,12,14,14,16,16,18,18,20],"width":49,"height":24}},"3_iris_L":{"3_iris_L":{"x":-0.9,"y":-0.71,"rotation":-91.79,"width":13,"height":14}},"4_eyebrow_L":{"4_eyebrow_L":{"x":25.73,"y":-1.47,"rotation":5.84,"width":69,"height":22}},"4_iris_R":{"4_iris_R":{"x":0.48,"rotation":-91.64,"width":12,"height":12}},"blush":{"blush":{"x":89.16,"y":0.73,"rotation":-91.55,"width":185,"height":72}},"4_white_R":{"4_white_R":{"x":13.07,"y":0.05,"rotation":-91.64,"width":46,"height":17}},"4_eyelashes_R_down":{"4_eyelashes_R_down":{"x":6.43,"y":-4.76,"rotation":-91.64,"width":51,"height":15}},"4_eye_L":{"4_eye_L":{"x":0.12,"y":-0.25,"rotation":-91.79,"width":25,"height":24}},"tits":{"tits":{"type":"mesh","uvs":[0.68592,0.02283,0.78524,0.05848,0.81878,0.14796,0.78349,0.29379,0.8651,0.42374,0.92854,0.50958,0.98084,0.58036,0.99412,0.80538,0.89369,0.97444,0.67234,0.98548,0.51375,0.85767,0.40316,0.96589,0.24765,0.99999,0.12241,0.95044,0.03135,0.83674,0.0266,0.68603,0.05013,0.55705,0.11532,0.41147,0.15047,0.31061,0.11477,0.20278,0.13078,0.11503,0.23901,0.09522,0.28813,0.08623,0.36191,0.07273,0.42677,0.1971,0.48089,0.26004,0.56681,0.12746,0.62943,0.01551,0.51185,0.73831,0.49854,0.54739,0.48523,0.39259,0.78978,0.7263,0.2397,0.75385,0.22014,0.5001,0.25812,0.4015,0.27653,0.2971,0.28228,0.1695,0.23625,0.14775,0.23165,0.24345,0.21324,0.34205,0.18331,0.4276,0.15109,0.4914,0.31105,0.5581,0.39736,0.6422,0.46181,0.73645,0.51328,0.82781,0.55502,0.73645,0.61256,0.64655,0.68851,0.55665,0.76792,0.5001,0.85193,0.47835,0.79324,0.4015,0.75871,0.33625,0.72994,0.2478,0.70577,0.1405,0.73455,0.4218,0.70232,0.34785,0.68046,0.24055,0.66435,0.126],"triangles":[41,17,40,33,40,34,41,40,33,16,17,41,32,33,42,32,14,15,32,16,41,32,41,33,32,15,16,13,14,32,12,13,32,11,12,32,50,51,4,49,55,51,49,51,50,50,4,5,48,55,49,31,49,50,31,50,5,31,5,6,48,49,31,47,48,31,31,6,7,8,31,7,9,31,8,9,46,31,57,30,25,30,56,29,57,56,30,48,56,55,48,29,56,35,24,30,30,24,25,42,30,29,30,34,35,42,34,30,33,34,42,43,42,29,47,29,48,44,43,29,29,28,44,47,46,29,46,28,29,32,42,43,45,28,46,44,28,45,10,45,46,44,32,43,11,44,45,11,45,10,11,32,44,31,46,47,10,46,9,58,27,0,54,58,0,26,27,58,1,54,0,54,1,2,57,58,54,53,54,2,57,54,53,3,53,2,52,53,3,56,57,53,56,53,52,4,51,3,52,3,51,55,56,52,55,52,51,26,58,57,26,57,25,37,20,21,22,37,21,36,37,22,19,20,37,38,19,37,38,37,36,35,38,36,18,19,38,39,18,38,39,38,35,34,39,35,36,22,23,24,36,23,40,18,39,40,39,34,17,18,40,36,24,35],"vertices":[4,11,-108.24,-45.97,0,6,110.51,41.52,0.99999,4,276.11,-112.64,0.00001,18,289.22,-263.34,0,1,6,160.45,26.83,1,5,11,-177.34,1.1,0.00001,6,177.05,-9.1,0.98713,4,221.9,-176.27,0.00594,19,240.81,-8.11,0.00692,18,235,-326.98,0,5,11,-162.12,60.15,0.00017,6,158.76,-67.28,0.65181,4,164.81,-154.81,0.17074,19,183.73,13.35,0.17728,18,177.92,-305.51,0,5,11,-205.49,110.28,0.00007,6,199.45,-119.61,0.23762,4,110.32,-192.55,0.16841,19,129.24,-24.39,0.5939,18,123.43,-343.25,0,5,11,-238.94,143.18,0.00002,6,231.13,-154.22,0.10154,4,74.02,-222.27,0.06248,19,92.94,-54.1,0.83596,18,87.13,-372.97,0,5,11,-266.52,170.31,0,6,257.25,-182.75,0.04888,4,44.08,-246.77,0.0134,19,63,-78.61,0.93771,18,57.19,-397.48,0,2,6,263.17,-272.82,0.00078,19,-27.25,-79.55,0.99922,2,4,-110.43,-192.9,0.01687,19,-91.51,-24.73,0.98313,2,4,-107.73,-81.28,0.36841,19,-88.81,86.88,0.63159,3,4,-51.62,-4.77,0.83778,19,-32.7,163.39,0.0922,18,-38.51,-155.47,0.07002,3,4,-91.27,53.61,0.51054,19,-72.35,221.78,0,18,-78.16,-97.09,0.48945,2,4,-99.89,132.7,0.12073,18,-86.78,-18.01,0.87927,2,4,-76.09,194.43,0.00248,18,-62.98,43.73,0.99752,3,11,207.08,293.74,0.0053,19,-8.86,405.5,0,18,-14.67,86.63,0.9947,3,11,212.11,233.62,0.04451,4,32.54,235.88,0.0124,18,45.65,85.18,0.94309,4,11,202.52,181.55,0.12744,6,-211.74,-169.42,0,4,83.27,220.76,0.08001,18,96.38,70.06,0.79255,4,11,172.25,121.94,0.3497,6,-178.38,-111.47,0.00001,4,139.29,184.26,0.1988,18,152.4,33.56,0.45149,5,11,156.32,80.86,0.65696,6,-160.33,-71.28,0.00002,4,178.42,164.02,0.16088,19,197.34,332.18,0,18,191.53,13.31,0.18214,4,11,176.18,38.55,0.93538,6,-177.95,-28,0,4,222.61,179.22,0.0314,18,235.72,28.52,0.03321,3,11,169.66,3.13,0.99567,4,257.13,168.93,0.00124,18,270.24,18.23,0.00309,1,11,115.51,-7.17,1,1,11,90.94,-11.85,1,1,11,54.02,-18.88,1,5,11,19.19,29.39,0.46286,6,-20.69,-27.07,0.00121,4,214.86,22.15,0.53462,19,233.78,190.31,0.00001,18,227.97,-128.55,0.00131,3,6,6.38,-52.48,0.0234,4,188,-3.47,0.9765,19,206.92,164.69,0.0001,4,11,-50.11,-1.53,0.00003,6,50.13,0.18,0.99733,4,238.17,-50.06,0.00264,18,251.28,-200.77,0,4,11,-79.68,-47.65,0,6,82.07,44.69,0.99998,4,280.85,-84.41,0.00002,18,293.96,-235.12,0,3,6,20.34,-243.91,0.00008,4,-3.91,-6.85,0.97942,19,15,161.31,0.0205,3,6,14.29,-167.49,0.00151,4,72.73,-5.03,0.99505,19,91.64,163.14,0.00345,3,6,8.11,-105.52,0.00205,4,134.95,-2.28,0.99744,19,153.87,165.89,0.0005,5,11,-172.87,232.85,0,6,160.45,-240.31,0.01029,4,-8.04,-146.95,0.10463,19,10.88,21.21,0.88508,18,5.07,-297.66,0,4,11,103.62,256.01,0.00802,4,-1.38,130.43,0.11717,19,17.54,298.59,0,18,11.73,-20.28,0.8748,4,11,117.92,155.04,0.21791,6,-125.86,-147.38,0.00001,4,100.54,133.8,0.32046,18,113.65,-16.9,0.46163,5,11,100.52,114.8,0.36243,6,-106.38,-108.1,0.00004,4,138.68,112.19,0.39974,19,157.6,280.35,0,18,151.79,-38.52,0.23779,5,11,93.08,72.67,0.59418,6,-96.75,-66.42,0.00011,4,179.77,100.27,0.31035,19,198.69,268.43,0,18,192.88,-50.44,0.09536,5,11,92.42,21.56,0.93363,6,-93.41,-15.41,0.00005,4,230.52,94.12,0.05525,19,249.44,262.28,0,18,243.63,-56.58,0.01107,5,11,115.98,13.88,0.9776,6,-116.54,-6.51,0.00001,4,240.68,116.72,0.01561,19,259.6,284.88,0,18,253.79,-33.99,0.00678,5,11,116.62,52.23,0.79809,6,-119.18,-44.77,0.00005,4,202.63,121.47,0.13546,19,221.54,289.63,0,18,215.74,-29.23,0.0664,5,11,124.16,92.03,0.54778,6,-128.8,-84.13,0.00004,4,163.86,133.25,0.24981,19,182.77,301.41,0,18,176.97,-17.46,0.20237,5,11,137.73,126.88,0.35458,6,-144.17,-118.22,0.00002,4,130.67,150.48,0.25545,19,149.58,318.64,0,18,143.78,-0.23,0.38995,4,11,152.84,153.09,0.23954,6,-160.63,-143.6,0.00001,4,106.23,168.31,0.19829,18,119.34,17.6,0.56216,4,11,71.12,176.21,0.09123,6,-80.24,-170.97,0,4,74.47,89.55,0.56289,18,87.58,-61.15,0.34588,3,11,26.19,207.91,0.01256,4,38.13,48.28,0.80485,18,51.24,-102.42,0.18259,3,11,-7.91,244.15,0.00014,4,-1.56,18.27,0.93247,18,11.55,-132.43,0.06739,3,4,-39.68,-5.29,0.86383,19,-20.77,162.87,0.08105,18,-26.57,-155.99,0.05512,3,6,42.1,-243.36,0.00139,4,-4.56,-28.62,0.88752,19,14.36,139.55,0.11109,5,11,-82.24,204.9,0,6,71.41,-207.65,0.02256,4,29.48,-59.85,0.75064,19,48.4,108.32,0.22679,18,42.59,-210.55,0,5,11,-118.91,167.3,0.00005,6,110,-172.01,0.10778,4,62.93,-100.34,0.50913,19,81.85,67.82,0.38303,18,76.04,-251.04,0,5,11,-157.9,142.94,0.00008,6,150.21,-149.74,0.196,4,82.96,-141.72,0.28652,19,101.87,26.44,0.51741,18,96.07,-292.42,0,5,11,-199.82,132.4,0.00005,6,192.62,-141.4,0.18685,4,88.94,-184.53,0.15055,19,107.86,-16.37,0.66255,18,102.05,-335.23,0,5,11,-168.92,102.98,0.00013,6,163.31,-110.41,0.35136,4,121.51,-156.97,0.2374,19,140.42,11.2,0.4111,18,134.61,-307.67,0,5,11,-150.39,77.67,0.00021,6,146.13,-84.16,0.53143,4,148.66,-141.26,0.23269,19,167.58,26.9,0.23567,18,161.77,-291.97,0,5,11,-134.35,42.96,0.00022,6,131.93,-48.66,0.79493,4,184.89,-129.05,0.12762,19,203.81,39.12,0.07723,18,198,-279.75,0,5,11,-120.31,0.61,0.00002,6,120.12,-5.63,0.9921,4,228.5,-119.63,0.00554,19,247.42,48.54,0.00235,18,241.61,-270.33,0,5,11,-139.72,112.39,0.00018,6,133.66,-118.27,0.328,4,115.29,-126.93,0.34355,19,134.2,41.23,0.32827,18,128.4,-277.63,0,5,11,-122.2,83.55,0.00036,6,117.67,-88.56,0.48844,4,145.84,-112.61,0.33526,19,164.76,55.56,0.17594,18,158.95,-263.31,0,5,11,-109.31,41.16,0.00044,6,107.02,-45.54,0.78216,4,189.37,-104.34,0.16782,19,208.29,63.82,0.04958,18,202.48,-255.05,0,3,11,-99.19,-4.27,0,6,99.29,0.34,1,18,248.73,-249.86,0],"hull":28,"edges":[12,14,14,16,16,18,18,20,20,22,22,24,24,26,26,28,28,30,46,48,48,50,56,58,58,60,60,50,2,4,4,6,6,8,30,32,32,34,34,36,38,40,36,38,66,68,68,70,70,72,74,76,40,42,74,42,42,44,44,46,72,44,76,78,78,80,80,82,32,82,82,66,66,84,84,86,86,88,20,90,90,56,88,90,90,92,92,94,94,96,96,98,98,100,8,10,10,12,100,10,100,102,102,104,104,106,106,108,2,0,0,54,108,0,98,110,110,112,112,114,114,116,116,54,50,52,52,54],"width":504,"height":400}},"eyelashes_L_Up":{"eyelashes_L_Up":{"type":"mesh","uvs":[0.88818,0.28497,0.99999,0.75662,0.99999,0.99999,0.91396,0.98886,0.81879,0.70508,0.64842,0.52109,0.46324,0.54509,0.29732,0.72909,0.13502,0.88806,0,0.87059,0.09271,0.29141,0.26786,0.02136,0.48561,0,0.7458,0.08],"triangles":[5,12,13,6,11,12,6,12,5,4,13,0,5,13,4,7,11,6,10,11,7,4,0,1,8,9,10,7,8,10,3,4,1,3,1,2],"vertices":[22.62,-17.57,13,-23.31,8.13,-23.16,8.5,-18.52,14.33,-13.56,18.3,-4.48,18.13,5.53,14.73,14.6,11.83,23.46,12.41,30.74,23.83,25.37,28.93,15.75,28.99,3.98,26.95,-10.01],"hull":14,"edges":[2,4,18,20,4,6,6,8,8,10,10,12,12,14,16,18,14,16,20,22,22,24,24,26,2,0,0,26],"width":54,"height":20}},"white_L":{"white_L":{"type":"mesh","uvs":[0.54295,0,0.74292,0.00917,0.87813,0.32598,1,0.61151,0.96983,0.99999,0.81501,1,0.63153,0.99999,0.48109,0.99999,0.31498,0.99999,0.15732,0.97022,0,0.76629,0.00117,0.38241,0.14342,0.1587,0.32472,0.00103],"triangles":[8,9,12,11,12,9,10,11,9,3,5,2,6,0,1,6,1,2,5,6,2,7,13,0,7,0,6,13,8,12,7,8,13,3,4,5],"vertices":[23.74,-4.07,23.3,-13.06,17.73,-18.97,12.7,-24.3,6.15,-22.74,6.36,-15.77,6.62,-7.52,6.83,-0.75,7.07,6.72,7.79,13.79,11.48,20.76,18,20.5,21.6,13.99,24.03,5.75],"hull":14,"edges":[6,8,20,22,2,4,4,6,8,10,10,12,12,14,14,16,16,18,18,20,22,24,24,26,2,0,0,26],"width":45,"height":17}},"3_iris_R":{"3_iris_R":{"x":-0.52,"y":0.03,"rotation":-91.64,"width":13,"height":13}},"blik_L":{"blik_L":{"x":-1.4,"y":-0.7,"rotation":-91.79,"width":15,"height":11}},"pupil_L":{"pupil_L":{"x":-0.4,"y":-0.73,"rotation":-91.79,"width":12,"height":12}},"hand_L":{"hand_L":{"type":"mesh","uvs":[0.86365,0.23097,0.63432,0.38681,0.46083,0.5047,0.60706,0.57678,0.92937,0.74264,0.76658,0.85874,0.57541,0.99509,0.50193,0.93327,0.63715,0.77037,0.46353,0.69026,0.15461,0.60462,0.00001,0.56176,0.00001,0.50053,0.08651,0.42874,0.19714,0.33692,0.38162,0.18382,0.54748,0.04616,0.71778,0.07394,0.22528,0.50361],"triangles":[5,8,4,7,8,5,6,7,5,10,11,18,3,10,2,3,9,10,9,3,4,8,9,4,15,16,17,15,17,0,1,15,0,14,15,1,2,18,14,13,14,18,12,13,18,1,2,14,11,12,18,10,18,2],"vertices":[1,12,75.68,59.51,1,2,12,182.49,53.6,0.99979,13,5.46,127.02,0.00021,2,12,263.29,49.13,0.52587,13,32.21,50.65,0.47413,2,12,287.15,98.22,0.01856,13,86.7,47.36,0.98144,2,13,209.92,37.37,0.74444,15,-27.7,28.89,0.25556,1,15,50.84,22.34,1,1,15,143.06,14.66,1,1,15,115.85,-15.49,1,2,13,178.23,-23.85,0.54441,15,14.17,-25.89,0.45559,1,13,116,-22.12,1,2,12,347.89,12.64,0.0013,13,30.83,-41.47,0.9987,2,12,340.55,-30.45,0.26579,13,-11.78,-51.16,0.73421,2,12,307.71,-46.63,0.72837,13,-39.29,-27,0.27163,1,12,260.44,-47.84,1,1,12,199.99,-49.39,1,1,12,99.19,-51.97,1,1,12,8.56,-54.29,1,1,12,6.22,-11.96,1,2,12,286.55,0.45,0.99915,13,-3.87,10.55,0.00085],"hull":18,"edges":[0,34,4,6,6,8,12,14,14,16,16,18,22,24,32,34,0,2,2,4,30,32,28,30,24,26,26,28,18,20,20,22,8,10,10,12],"width":229,"height":598}},"blik_R":{"blik_R":{"x":-0.51,"y":0.53,"rotation":-91.64,"width":13,"height":9}}}}],"animations":{"idle1":{"slots":{"eye_closed_L":{"attachment":[{"time":2.1667,"name":"eye_closed_L"},{"time":2.4667,"name":null}]},"eye_closed_R":{"attachment":[{"time":2.1667,"name":"eye_closed_R"},{"time":2.4667,"name":null}]}},"bones":{"bone3":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":-0.64,"curve":0.25,"c3":0.75},{"time":2.6667}]},"bone4":{"rotate":[{"angle":0.01,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.3667,"angle":1.2,"curve":0.249,"c3":0.739,"c4":0.95},{"time":2.6667,"angle":0.01}]},"bone6":{"rotate":[{"angle":0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667},{"time":1.4,"angle":1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":0.02}]},"bone11":{"rotate":[{"angle":-0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.4,"angle":-1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":-0.02}]},"bone16":{"rotate":[{"angle":0.02,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.4333,"angle":0.95,"curve":0.246,"c3":0.72,"c4":0.87},{"time":2.6667,"angle":0.02}]},"head":{"rotate":[{"angle":0.04,"curve":0.36,"c2":0.64,"c3":0.695},{"time":0.1333,"curve":0.25,"c3":0.75},{"time":1.4667,"angle":0.95,"curve":0.245,"c3":0.711,"c4":0.83},{"time":2.6667,"angle":0.04}]},"bone2":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":-1.2,"curve":0.25,"c3":0.75},{"time":2.6667}],"translate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"x":-1.96,"y":0.1,"curve":0.25,"c3":0.75},{"time":2.6667}]},"bone17":{"rotate":[{"angle":-0.2,"curve":0.369,"c2":0.63,"c3":0.706},{"time":0.2},{"time":1.5333,"angle":-2.4,"curve":0.244,"c3":0.694,"c4":0.77},{"time":2.6667,"angle":-0.2}],"translate":[{"x":-0.56,"curve":0.369,"c2":0.63,"c3":0.706},{"time":0.2},{"time":1.5333,"x":-6.69,"curve":0.244,"c3":0.694,"c4":0.77},{"time":2.6667,"x":-0.56}]},"bone18":{"rotate":[{"angle":0.2,"curve":0.369,"c2":0.63,"c3":0.706},{"time":0.2,"curve":0.25,"c3":0.75},{"time":1.5333,"angle":2.4,"curve":0.244,"c3":0.694,"c4":0.77},{"time":2.6667,"angle":0.2}],"translate":[{"x":-0.56,"curve":0.369,"c2":0.63,"c3":0.706},{"time":0.2},{"time":1.5333,"x":-6.69,"curve":0.244,"c3":0.694,"c4":0.77},{"time":2.6667,"x":-0.56}]},"eyebrow_L":{"rotate":[{"time":2.1667},{"time":2.2667,"angle":-1.2,"curve":"stepped"},{"time":2.3333,"angle":-1.2},{"time":2.4667}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.24,"y":-0.38,"curve":"stepped"},{"time":2.3333,"x":-0.24,"y":-0.38},{"time":2.4667}]},"eyebrow_R":{"rotate":[{"time":2.1667},{"time":2.2667,"angle":1.2,"curve":"stepped"},{"time":2.3333,"angle":1.2},{"time":2.4667}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.23,"y":-0.02,"curve":"stepped"},{"time":2.3333,"x":-0.23,"y":-0.02},{"time":2.4667}]}},"deform":{"default":{"eyelashes_R_Up":{"eyelashes_R_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275],"curve":"stepped"},{"time":2.3333,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275]},{"time":2.4667}]},"eye_closed_L":{"eye_closed_L":[{"time":2.1667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]},{"time":2.2667,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784],"curve":"stepped"},{"time":2.3333,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784]},{"time":2.4667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]}]},"eyelashes_L_Up":{"eyelashes_L_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624],"curve":"stepped"},{"time":2.3333,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624]},{"time":2.4667}]},"eye_closed_R":{"eye_closed_R":[{"time":2.1667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]},{"time":2.2667,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801],"curve":"stepped"},{"time":2.3333,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801]},{"time":2.4667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]}]}}}},"idle2":{"slots":{"blush":{"attachment":[{"name":"blush"}]},"eye_closed_L":{"attachment":[{"time":2.1667,"name":"eye_closed_L"},{"time":2.4667,"name":null},{"time":4.8333,"name":"eye_closed_L"},{"time":5.1333,"name":null}]},"eye_closed_R":{"attachment":[{"time":2.1667,"name":"eye_closed_R"},{"time":2.4667,"name":null},{"time":4.8333,"name":"eye_closed_R"},{"time":5.1333,"name":null}]}},"bones":{"bone3":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":-1.84,"curve":0.25,"c3":0.75},{"time":2.6667,"curve":0.25,"c3":0.75},{"time":4,"angle":-0.14,"curve":0.25,"c3":0.75},{"time":5.3333}]},"bone4":{"rotate":[{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.3667,"curve":0.25,"c3":0.75},{"time":2.7,"curve":0.25,"c3":0.75},{"time":4.0333,"curve":0.249,"c3":0.739,"c4":0.95},{"time":5.3333}]},"bone6":{"rotate":[{"angle":-0.01,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0333},{"time":1.3667,"angle":-1.2,"curve":0.25,"c3":0.75},{"time":2.7,"curve":0.25,"c3":0.75},{"time":4.0333,"angle":-1.2,"curve":0.249,"c3":0.739,"c4":0.95},{"time":5.3333,"angle":-0.01}]},"bone11":{"rotate":[{"angle":0.01,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.3667,"angle":1.2,"curve":0.25,"c3":0.75},{"time":2.7,"curve":0.25,"c3":0.75},{"time":4.0333,"angle":1.2,"curve":0.249,"c3":0.739,"c4":0.95},{"time":5.3333,"angle":0.01}]},"bone16":{"rotate":[{"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.4,"angle":-0.25,"curve":0.25,"c3":0.75},{"time":2.7333,"curve":0.25,"c3":0.75},{"time":4.0667,"angle":-0.25,"curve":0.247,"c3":0.729,"c4":0.91},{"time":5.3333}]},"head":{"rotate":[{"angle":0.02,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.4333,"angle":2.15,"curve":0.25,"c3":0.75},{"time":2.7667,"curve":0.25,"c3":0.75},{"time":4.1,"angle":0.95,"curve":0.246,"c3":0.72,"c4":0.87},{"time":5.3333,"angle":0.02}]},"bone2":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":1.2,"curve":0.25,"c3":0.75},{"time":2.6667,"angle":-1.2,"curve":0.25,"c3":0.75},{"time":4,"angle":-0.6,"curve":0.25,"c3":0.75},{"time":5.3333}],"translate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"x":-14.63,"y":1.98,"curve":0.25,"c3":0.75},{"time":2.6667,"x":-10,"y":0.21,"curve":0.25,"c3":0.75},{"time":4,"x":-8.63,"y":2.04,"curve":0.25,"c3":0.75},{"time":5.3333}]},"bone17":{"rotate":[{"angle":-0.15,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"angle":-2.4,"curve":0.25,"c3":0.75},{"time":2.8333,"curve":0.25,"c3":0.75},{"time":4.1667,"angle":-2.4,"curve":0.244,"c3":0.702,"c4":0.8},{"time":5.3333,"angle":-0.15}],"translate":[{"x":-0.42,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667,"curve":0.25,"c3":0.75},{"time":1.5,"x":-6.69,"curve":0.25,"c3":0.75},{"time":2.8333,"curve":0.25,"c3":0.75},{"time":4.1667,"x":-6.69,"curve":0.244,"c3":0.702,"c4":0.8},{"time":5.3333,"x":-0.42}]},"bone18":{"rotate":[{"angle":0.15,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"angle":2.4,"curve":0.25,"c3":0.75},{"time":2.8333,"curve":0.25,"c3":0.75},{"time":4.1667,"angle":2.4,"curve":0.244,"c3":0.702,"c4":0.8},{"time":5.3333,"angle":0.15}],"translate":[{"x":-0.42,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"x":-6.69,"curve":0.25,"c3":0.75},{"time":2.8333,"curve":0.25,"c3":0.75},{"time":4.1667,"x":-6.69,"curve":0.244,"c3":0.702,"c4":0.8},{"time":5.3333,"x":-0.42}]},"eyebrow_L":{"rotate":[{"time":2.1667},{"time":2.2667,"angle":-1.2,"curve":"stepped"},{"time":2.3333,"angle":-1.2},{"time":2.4667,"curve":"stepped"},{"time":4.8333},{"time":4.9333,"angle":-1.2,"curve":"stepped"},{"time":5,"angle":-1.2},{"time":5.1333}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.24,"y":-0.38,"curve":"stepped"},{"time":2.3333,"x":-0.24,"y":-0.38},{"time":2.4667,"curve":"stepped"},{"time":4.8333},{"time":4.9333,"x":-0.24,"y":-0.38,"curve":"stepped"},{"time":5,"x":-0.24,"y":-0.38},{"time":5.1333}]},"eyebrow_R":{"rotate":[{"time":2.1667},{"time":2.2667,"angle":1.2,"curve":"stepped"},{"time":2.3333,"angle":1.2},{"time":2.4667,"curve":"stepped"},{"time":4.8333},{"time":4.9333,"angle":1.2,"curve":"stepped"},{"time":5,"angle":1.2},{"time":5.1333}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.23,"y":-0.02,"curve":"stepped"},{"time":2.3333,"x":-0.23,"y":-0.02},{"time":2.4667,"curve":"stepped"},{"time":4.8333},{"time":4.9333,"x":-0.23,"y":-0.02,"curve":"stepped"},{"time":5,"x":-0.23,"y":-0.02},{"time":5.1333}]},"4_iris_L":{"translate":[{"curve":0.25,"c3":0.75},{"time":0.6667,"x":-1.1,"y":-3.29,"curve":"stepped"},{"time":2.3,"x":-1.1,"y":-3.29},{"time":2.3333}]},"pupil_R":{"translate":[{"curve":0.25,"c3":0.75},{"time":0.6667,"x":-0.58,"y":-3.3,"curve":"stepped"},{"time":2.3,"x":-0.58,"y":-3.3},{"time":2.3333}]}},"deform":{"default":{"eyelashes_R_Up":{"eyelashes_R_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275],"curve":"stepped"},{"time":2.3333,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275]},{"time":2.4667,"curve":"stepped"},{"time":4.8333},{"time":4.9333,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275],"curve":"stepped"},{"time":5,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275]},{"time":5.1333}]},"eye_closed_L":{"eye_closed_L":[{"time":2.1667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]},{"time":2.2667,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784],"curve":"stepped"},{"time":2.3333,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784]},{"time":2.4667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147],"curve":"stepped"},{"time":4.8333,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]},{"time":4.9333,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784],"curve":"stepped"},{"time":5,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784]},{"time":5.1333,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]}]},"eyelashes_L_Up":{"eyelashes_L_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624],"curve":"stepped"},{"time":2.3333,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624]},{"time":2.4667,"curve":"stepped"},{"time":4.8333},{"time":4.9333,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624],"curve":"stepped"},{"time":5,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624]},{"time":5.1333}]},"eye_closed_R":{"eye_closed_R":[{"time":2.1667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]},{"time":2.2667,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801],"curve":"stepped"},{"time":2.3333,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801]},{"time":2.4667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009],"curve":"stepped"},{"time":4.8333,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]},{"time":4.9333,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801],"curve":"stepped"},{"time":5,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801]},{"time":5.1333,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]}]}}}},"idle3":{"slots":{"3_iris_R":{"attachment":[{"name":"3_iris_R"}]},"3_iris_L":{"attachment":[{"name":"3_iris_L"}]},"3_lips":{"attachment":[{"name":"3_lips"}]},"eye_closed_L":{"attachment":[{"time":2.1667,"name":"eye_closed_L"},{"time":2.4667,"name":null}]},"lips":{"attachment":[{"name":null}]},"eye_closed_R":{"attachment":[{"time":2.1667,"name":"eye_closed_R"},{"time":2.4667,"name":null}]}},"bones":{"bone3":{"rotate":[{"angle":-0.01,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.3667,"angle":-0.64,"curve":0.249,"c3":0.739,"c4":0.95},{"time":2.6667,"angle":-0.01}]},"bone4":{"rotate":[{"angle":0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.4,"angle":1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":0.02}]},"bone6":{"rotate":[{"angle":0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667},{"time":1.4,"angle":1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":0.02}]},"bone11":{"rotate":[{"angle":-0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.4,"angle":-1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":-0.02}]},"bone16":{"rotate":[{"angle":-0.04,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.4333,"angle":-1.45,"curve":0.246,"c3":0.72,"c4":0.87},{"time":2.6667,"angle":-0.04}]},"head":{"rotate":[{"angle":0.04,"curve":0.36,"c2":0.64,"c3":0.695},{"time":0.1333,"curve":0.25,"c3":0.75},{"time":1.4667,"angle":0.95,"curve":0.245,"c3":0.711,"c4":0.83},{"time":2.6667,"angle":0.04}]},"bone2":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":-1.2,"curve":0.25,"c3":0.75},{"time":2.6667}],"translate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"x":-2,"y":-1.94,"curve":0.25,"c3":0.75},{"time":2.6667}]},"bone17":{"rotate":[{"angle":-0.15,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667,"curve":0.25,"c3":0.75},{"time":1.5,"angle":-2.4,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"angle":-0.15}],"translate":[{"x":-0.42,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"x":-6.69,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"x":-0.42}]},"bone18":{"rotate":[{"angle":0.15,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"angle":2.4,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"angle":0.15}],"translate":[{"x":-0.42,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"x":-6.69,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"x":-0.42}]},"eyebrow_L":{"rotate":[{"angle":1.2,"curve":"stepped"},{"time":2.1667,"angle":1.2},{"time":2.2667,"angle":-1.2,"curve":"stepped"},{"time":2.3333,"angle":-1.2},{"time":2.4667,"angle":1.2}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.24,"y":-0.38,"curve":"stepped"},{"time":2.3333,"x":-0.24,"y":-0.38},{"time":2.4667}]},"eyebrow_R":{"rotate":[{"angle":-1.2,"curve":"stepped"},{"time":2.1667,"angle":-1.2},{"time":2.2667,"angle":1.2,"curve":"stepped"},{"time":2.3333,"angle":1.2},{"time":2.4667,"angle":-1.2}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.23,"y":-0.02,"curve":"stepped"},{"time":2.3333,"x":-0.23,"y":-0.02},{"time":2.4667}]}},"deform":{"default":{"white_L":{"white_L":[{"offset":10,"vertices":[0.6507,-0.18457,0.40717,-0.09485,0.40729,-0.09485,0.4917,-0.01538,0.65558,-0.02051]}]},"eyelashes_R_Up":{"eyelashes_R_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275],"curve":"stepped"},{"time":2.3333,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275]},{"time":2.4667}]},"eye_closed_L":{"eye_closed_L":[{"time":2.1667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]},{"time":2.2667,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784],"curve":"stepped"},{"time":2.3333,"vertices":[0.88586,0.14331,0.69714,-0.20215,1.19232,-1.10059,0.93518,-0.91516,0,0,-0.97394,-0.14099,-0.80121,-0.23499,-0.87933,0.0321,0,0,0,0,0,0,0.73248,0.76526,0.89551,0.40784]},{"time":2.4667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.0947,-1.97473,14.60437,-1.48804,13.29074,-1.30566,10.0947,-1.97485,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]}]},"eyelashes_R_Down":{"eyelashes_R_Down":[{"vertices":[1.30084,0.39502,0.52289,0.24377,0.69254,0.15308,0,0,0.51318,-0.09985,0,0,0.59656,-0.18799,0.59879,-0.10095,0.68747,-0.01855,0.6015,-0.01624,0.5181,0.07202,0.86197,0.06238]}]},"eyelashes_L_Up":{"eyelashes_L_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624],"curve":"stepped"},{"time":2.3333,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624]},{"time":2.4667}]},"eyelashes_L_Down":{"eyelashes_L_Down":[{"offset":2,"vertices":[0.71967,-0.02246,0.6297,-0.01965,0.62976,-0.01965,0,0,0,0,0,0,0.54254,0.07288,0.17987,-0.00562,1.24261,-0.5791]}]},"eye_closed_R":{"eye_closed_R":[{"time":2.1667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]},{"time":2.2667,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801],"curve":"stepped"},{"time":2.3333,"vertices":[1.73349,0.37329,2.37103,-1.10925,1.55713,-2.28845,-0.10199,-3.00708,0,0,-0.97171,-0.73914,-1.28918,0.04382,-0.82162,1.14709,0,0,0,0,0.45001,0.58801]},{"time":2.4667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,10.6268,1.00476,14.50317,0.10913,10.98203,0.36145,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]}]},"white_R":{"white_R":[{"offset":8,"vertices":[0.51559,-0.01416,0.59415,-0.27405,1.03122,-0.0282,0.9454,-0.02563,0.77341,-0.021]}]}}}},"idle4":{"slots":{"eye_closed_L":{"attachment":[{"time":2.1667,"name":"eye_closed_L"},{"time":2.4667,"name":null}]},"pupil_L":{"attachment":[{"name":null}]},"blik_L":{"attachment":[{"name":null}]},"iris_L":{"attachment":[{"name":null}]},"eyebrow_R":{"attachment":[{"name":null}]},"4_eyebrow_L":{"attachment":[{"name":"4_eyebrow_L"}]},"4_eyelashes_L_up":{"attachment":[{"name":"4_eyelashes_L_up"}]},"4_eye_L":{"attachment":[{"name":"4_eye_L"}]},"4_eye_R":{"attachment":[{"name":"4_eye_R"}]},"4_eyelashes_R_up":{"attachment":[{"name":"4_eyelashes_R_up"}]},"white_L":{"attachment":[{"name":null}]},"4_white_R":{"attachment":[{"name":"4_white_R"}]},"eyelashes_R_Up":{"attachment":[{"name":null}]},"blik_R":{"attachment":[{"name":null}]},"4_iris_L":{"attachment":[{"name":"4_iris_L"}]},"eyelashes_R_Down":{"attachment":[{"name":null}]},"4_lips":{"attachment":[{"name":"4_lips"}]},"4_eyelashes_R_down":{"attachment":[{"name":"4_eyelashes_R_down"}]},"eyelashes_L_Up":{"attachment":[{"name":null}]},"4_blik_L":{"attachment":[{"name":"4_blik_L"}]},"lips":{"attachment":[{"name":null}]},"pupil_R":{"attachment":[{"name":null}]},"4_iris_R":{"attachment":[{"name":"4_iris_R"}]},"eyelashes_L_Down":{"attachment":[{"name":null}]},"eyebrow_L":{"attachment":[{"name":null}]},"4_eyebrow_R":{"attachment":[{"name":"4_eyebrow_R"}]},"eye_closed_R":{"attachment":[{"time":2.1667,"name":"eye_closed_R"},{"time":2.4667,"name":null}]},"4_eyelashes_L_down":{"attachment":[{"name":"4_eyelashes_L_down"}]},"white_R":{"attachment":[{"name":null}]},"4_blik_R":{"attachment":[{"name":"4_blik_R"}]},"4_white_L":{"attachment":[{"name":"4_white_L"}]},"iris_R":{"attachment":[{"name":null}]}},"bones":{"bone3":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":1.2,"curve":0.25,"c3":0.75},{"time":2.6667}]},"bone4":{"rotate":[{"angle":0.01,"curve":0.341,"c2":0.66,"c3":0.675},{"time":0.0333,"curve":0.25,"c3":0.75},{"time":1.3667,"angle":1.2,"curve":0.249,"c3":0.739,"c4":0.95},{"time":2.6667,"angle":0.01}]},"bone6":{"rotate":[{"angle":0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667},{"time":1.4,"angle":1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":0.02}]},"bone11":{"rotate":[{"angle":-0.02,"curve":0.348,"c2":0.66,"c3":0.682},{"time":0.0667,"curve":0.25,"c3":0.75},{"time":1.4,"angle":-1.2,"curve":0.247,"c3":0.729,"c4":0.91},{"time":2.6667,"angle":-0.02}]},"bone16":{"rotate":[{"angle":0.02,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.4333,"angle":0.95,"curve":0.246,"c3":0.72,"c4":0.87},{"time":2.6667,"angle":0.02}]},"head":{"rotate":[{"angle":0.02,"curve":0.354,"c2":0.65,"c3":0.689},{"time":0.1,"curve":0.25,"c3":0.75},{"time":1.4333,"angle":0.95,"curve":0.245,"c3":0.711,"c4":0.83},{"time":2.6333,"angle":0.04,"curve":0.339,"c2":0.38,"c3":0.673,"c4":0.71},{"time":2.6667,"angle":0.02}]},"bone2":{"rotate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"angle":-2.4,"curve":0.25,"c3":0.75},{"time":2.6667}],"translate":[{"curve":0.25,"c3":0.75},{"time":1.3333,"x":-13.99,"y":0.33,"curve":0.25,"c3":0.75},{"time":2.6667}]},"bone17":{"rotate":[{"angle":-0.15,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667,"curve":0.25,"c3":0.75},{"time":1.5,"angle":-2.4,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"angle":-0.15}],"translate":[{"x":-0.42,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"x":-6.69,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"x":-0.42}]},"bone18":{"rotate":[{"angle":0.15,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"angle":2.4,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"angle":0.15}],"translate":[{"x":-0.42,"curve":0.364,"c2":0.64,"c3":0.701},{"time":0.1667},{"time":1.5,"x":-6.69,"curve":0.244,"c3":0.702,"c4":0.8},{"time":2.6667,"x":-0.42}]},"eyebrow_L":{"rotate":[{"time":2.1667},{"time":2.2667,"angle":-1.2,"curve":"stepped"},{"time":2.3333,"angle":-1.2},{"time":2.4667}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.24,"y":-0.38,"curve":"stepped"},{"time":2.3333,"x":-0.24,"y":-0.38},{"time":2.4667}]},"eyebrow_R":{"rotate":[{"time":2.1667},{"time":2.2667,"angle":1.2,"curve":"stepped"},{"time":2.3333,"angle":1.2},{"time":2.4667}],"translate":[{"time":2.1667},{"time":2.2667,"x":-0.23,"y":-0.02,"curve":"stepped"},{"time":2.3333,"x":-0.23,"y":-0.02},{"time":2.4667}]}},"deform":{"default":{"4_eyelashes_L_up":{"4_eyelashes_L_up":[{"time":2.1667},{"time":2.2667,"vertices":[-14.34357,-3.16565,-16.91711,1.25171,-14.95663,3.72412,-10.02142,4.51086,-6.09872,7.00549,0.74927,4.08972,-1.09695,2.00208,-8.70355,3.08521,-13.22751,2.77197,-12.51852,0.88379,-7.84485,0.01184,-1.6651,2.51575,3.50629,-0.62878,-1.51108,-1.0199,-11.2334,-3.87573],"curve":"stepped"},{"time":2.3333,"vertices":[-14.34357,-3.16565,-16.91711,1.25171,-14.95663,3.72412,-10.02142,4.51086,-6.09872,7.00549,0.74927,4.08972,-1.09695,2.00208,-8.70355,3.08521,-13.22751,2.77197,-12.51852,0.88379,-7.84485,0.01184,-1.6651,2.51575,3.50629,-0.62878,-1.51108,-1.0199,-11.2334,-3.87573]},{"time":2.4667}]},"4_eyelashes_R_up":{"4_eyelashes_R_up":[{"time":2.1667},{"time":2.2667,"vertices":[-4.22897,2.69312,-2.33835,0.36743,-6.76996,0.05908,-11.05759,1.15552,-12.68198,0.4624,-9.70023,-0.30481,-2.93997,-0.64612,0.8222,-3.22913,-0.04721,-3.85583,-7.79303,-2.1626,-15.39871,-1.79016,-15.98367,0.20764,-15.57645,1.03674,-11.5416,3.33289],"curve":"stepped"},{"time":2.3333,"vertices":[-4.22897,2.69312,-2.33835,0.36743,-6.76996,0.05908,-11.05759,1.15552,-12.68198,0.4624,-9.70023,-0.30481,-2.93997,-0.64612,0.8222,-3.22913,-0.04721,-3.85583,-7.79303,-2.1626,-15.39871,-1.79016,-15.98367,0.20764,-15.57645,1.03674,-11.5416,3.33289]},{"time":2.4667}]},"eyelashes_R_Up":{"eyelashes_R_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275],"curve":"stepped"},{"time":2.3333,"vertices":[-5.76181,5.18799,0,0,-0.8595,0.02979,-6.85156,-1.57251,-10.40317,0.26709,-11.75827,0.91602,-9.85693,-1.38489,-5.86819,-0.48865,-1.12024,-0.0481,-0.02036,-0.60156,-2.48846,-2.32397,-8.71918,-0.82178,-13.60965,-0.39771,-13.06476,0.44373,-11.90543,4.19275]},{"time":2.4667}]},"eye_closed_L":{"eye_closed_L":[{"time":2.1667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.78262,-2.1748,15.39841,-1.92676,14.4595,-1.12073,11.67395,-1.69104,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]},{"time":2.2667,"vertices":[1.92709,0.04346,1.85327,-0.73804,1.83563,-2.20483,0.93518,-0.91516,0,0,-0.97394,-0.14099,-1.97995,-0.28735,-2.15225,0.08154,-1.67578,0.18115,-0.61447,0.60437,0,0,2.466,2.03174,1.70947,0.43347],"curve":"stepped"},{"time":2.3333,"vertices":[1.92709,0.04346,1.85327,-0.73804,1.83563,-2.20483,0.93518,-0.91516,0,0,-0.97394,-0.14099,-1.97995,-0.28735,-2.15225,0.08154,-1.67578,0.18115,-0.61447,0.60437,0,0,2.466,2.03174,1.70947,0.43347]},{"time":2.4667,"vertices":[-0.91342,0.29932,-1.44608,0.18811,0,0,0,0,3.53018,-0.92847,10.78262,-2.1748,15.39841,-1.92676,14.4595,-1.12073,11.67395,-1.69104,2.75439,-0.50244,0,0,-1.56784,0.45691,-2.61279,0.76147]}]},"eyelashes_L_Up":{"eyelashes_L_Up":[{"time":2.1667},{"time":2.2667,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624],"curve":"stepped"},{"time":2.3333,"vertices":[-9.94678,1.3551,-1.30292,1.30908,0.0033,0.08997,-1.4556,-0.39673,-7.61847,0.99927,-11.56256,1.50391,-10.55997,1.82715,-6.27283,0.86023,-1.26251,-0.04346,0,0,-4.87628,-0.36084,-11.78204,0.43115,-14.09103,1.32654,-14.24789,1.9624]},{"time":2.4667}]},"eye_closed_R":{"eye_closed_R":[{"time":2.1667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,11.46469,0.78308,15.4574,0.44727,12.28577,0.02698,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]},{"time":2.2667,"vertices":[1.73349,0.37329,2.37103,-1.10925,2.18018,-3.25244,0.04453,-4.14172,-1.08847,-1.46545,-2.30103,-1.06702,-1.28918,0.04382,-1.87244,0.71521,0,0,1.47766,1.82605,2.35962,1.36389],"curve":"stepped"},{"time":2.3333,"vertices":[1.73349,0.37329,2.37103,-1.10925,2.18018,-3.25244,0.04453,-4.14172,-1.08847,-1.46545,-2.30103,-1.06702,-1.28918,0.04382,-1.87244,0.71521,0,0,1.47766,1.82605,2.35962,1.36389]},{"time":2.4667,"vertices":[-1.50641,0.18042,-1.50653,0.1803,-2.01465,0.07239,-1.13324,0.04077,2.74756,-0.72937,11.46469,0.78308,15.4574,0.44727,12.28577,0.02698,2.64426,-0.09521,-1.77661,-0.31433,-0.89047,-0.22009]}]}}},"drawOrder":[{"offsets":[{"slot":"eye_closed_R","offset":19},{"slot":"eye_closed_L","offset":14},{"slot":"4_blik_R","offset":-6},{"slot":"4_blik_L","offset":-3}]}]}}}');
 ;// CONCATENATED MODULE: ./js/SpineScript/index.js
 
 
@@ -67775,19 +67595,53 @@ var street_door_door_namespaceObject = JSON.parse('{"skeleton":{"hash":"1qxT5M5K
 
 
 
+//bg1
 
 
 
+const atlasDataBg1 = {
+  atlas: bg_atlas_namespaceObject,
+  textures: {
+    'bg.png': bg_namespaceObject
+  }
+};
+// simon1
 
 
 
+const atlasDataSimon1 = {
+  atlas: simon_atlas_namespaceObject,
+  textures: {
+    'simon.png': simon_namespaceObject
+  }
+};
+// simon2
 
 
+
+const atlasDataSimon2 = {
+  atlas: simon2_simon_atlas_namespaceObject,
+  textures: {
+    'simon.png': simon2_simon_namespaceObject
+  }
+};
+// melissa
+
+
+
+const atlasDataMelissa1 = {
+  atlas: melissa_atlas_namespaceObject,
+  textures: {
+    'melissa.png': melissa_namespaceObject
+  }
+};
+
+// ============
 const loadSpineJson = (dataURI, dataJson, atlas) => {
-  const SpineRuntime = getSpineRuntime_getSpineRuntime(dataJson);
-  const baseTexture = core_BaseTexture.from(dataURI);
+  const SpineRuntime = getSpineRuntime(dataJson);
+  const baseTexture = BaseTexture.from(dataURI);
   textures.push(baseTexture);
-  const spineTextureAtlas = new base_es_TextureAtlas(atlas, (line, callback) => {
+  const spineTextureAtlas = new TextureAtlas(atlas, (line, callback) => {
     callback(baseTexture);
   });
   const spineAtlasAttachmentLoader = new SpineRuntime.AtlasAttachmentLoader(spineTextureAtlas);
@@ -67796,10 +67650,10 @@ const loadSpineJson = (dataURI, dataJson, atlas) => {
   return spineData;
 };
 const loadSpineJson2 = (dataJson, dataAtlas) => {
-  const spineTextureAtlas = new TextureAtlas();
-  const SpineRuntime = getSpineRuntime(dataJson);
+  const SpineRuntime = getSpineRuntime_getSpineRuntime(dataJson);
+  const spineTextureAtlas = new base_es_TextureAtlas();
   spineTextureAtlas.addSpineAtlas(dataAtlas.atlas, (name, callback) => {
-    const baseTexture = new BaseTexture.from(dataAtlas.textures[name]);
+    const baseTexture = new core_BaseTexture.from(dataAtlas.textures[name]);
     textures.push(baseTexture);
     callback(baseTexture);
   });
@@ -67856,8 +67710,7 @@ const create = _ref => {
     animLoop = true,
     gameScene = false,
     flip,
-    addDelay,
-    animDelay = 0
+    delay
   } = _ref;
   const spine = new loader_uni_es_Spine(spineDate);
   if (gameScene) hideGameInterface();
@@ -67865,13 +67718,10 @@ const create = _ref => {
   spine.position.set(posX, posY);
   spine.scale.set(scale);
   if (flip) spine.scale.x = -scale;
-  spine.state.setEmptyAnimation(0, 0);
-  setTimeout(() => {
-    spine.state.setAnimation(0, animName, animLoop);
-  }, animDelay);
+  spine.state.setAnimation(0, animName, animLoop);
   app.stage.addChild(spine);
   let container = document.querySelector(idCon);
-  setTimeout(() => container.appendChild(app.view), addDelay);
+  setTimeout(() => container.appendChild(app.view), delay);
   if (gameScene && spine.state && spine.state.data) showGameInterface();
   apps.push(app);
   return {
@@ -67883,11 +67733,14 @@ function createApp(_ref2) {
   let {
     idCon,
     w = 800,
-    h = 800
+    h = 800,
+    id = ''
   } = _ref2;
   const app = new Application(w, h);
   let container = document.querySelector(idCon);
   container.appendChild(app.view);
+  app.view.id = id;
+  app.view.style.position = 'absolute';
   apps.push(app);
   return app;
 }
@@ -67905,9 +67758,8 @@ function addSpineToApp(_ref3) {
     animLoop = true,
     gameScene,
     flip,
-    randomStart = false,
-    removeDelay,
-    animDelay
+    randomStart,
+    removeDelay
   } = _ref3;
   const spine = new loader_uni_es_Spine(spineDate);
   if (gameScene) hideGameInterface();
@@ -67915,17 +67767,16 @@ function addSpineToApp(_ref3) {
   spine.position.set(posX, posY);
   spine.scale.set(scale);
   if (flip) spine.scale.x = -scale;
-  if (!randomStart && !animDelay) {
+  if (!randomStart) {
     spine.state.setAnimation(0, animName, animLoop);
   } else {
-    spine.state.setAnimation(0, animName, animLoop);
+    spine.state.setAnimation(0, animName, false);
     spine.state.update(0);
-    spine.state.timeScale = 0;
-    let randomDelay = +randomStart * 3500 * Math.random();
+    spine.skeleton.updateWorldTransform();
+    let randomDelay = 3500 * Math.random();
     setTimeout(() => {
-      spine.state.setAnimation(0, animName, animLoop);
-      spine.state.timeScale = 1;
-    }, animDelay + randomDelay);
+      spine.state.setAnimation(0, animName, true);
+    }, randomDelay);
   }
   app.stage.addChild(spine);
   if (removeDelay) {
@@ -67951,251 +67802,203 @@ function hideGameInterface() {
   let gameInterface = document.querySelector('.gameInterface');
   if (gameInterface.classList.contains('show')) gameInterface.classList.remove('show');
 }
-let markHome = loadSpineJson(markHome_namespaceObject, spine_MarkHome_markHome_namespaceObject, markHome_atlas_namespaceObject);
-let markStreet = loadSpineJson(mark_namespaceObject, street_mark_mark_namespaceObject, mark_atlas_namespaceObject);
-let door = loadSpineJson(door_namespaceObject, street_door_door_namespaceObject, door_atlas_namespaceObject);
+
+//******************************************************
+let bg1 = loadSpineJson2(spine_animBg1_bg_namespaceObject, atlasDataBg1);
+let simon1 = loadSpineJson2(spine_simon1_simon_namespaceObject, atlasDataSimon1);
+let simon2 = loadSpineJson2(assets_spine_simon2_simon_namespaceObject, atlasDataSimon2);
+let melissa1 = loadSpineJson2(spine_melissa_melissa_namespaceObject, atlasDataMelissa1);
+
+//******************************************************
+
 const allSpine = [{
-  name: 'markHome',
+  name: 'clear',
   sceneName: 'startScene',
-  spine: markHome,
-  sceneStart: [1, 2, 3, 4, 5, 6, 7]
+  sceneStart: []
 }, {
-  name: 'markStreet',
+  name: 'bg1',
   sceneName: 'startScene',
-  spine: markStreet,
-  sceneStart: [8]
+  spine: bg1,
+  sceneStart: [1]
 }, {
-  name: 'door',
+  name: 'simon1',
   sceneName: 'startScene',
-  spine: door,
-  sceneStart: [9]
+  spine: simon1,
+  sceneStart: [2]
+}, {
+  name: 'simon2',
+  sceneName: 'startScene',
+  spine: simon2,
+  sceneStart: [6]
+}, {
+  name: 'melissa1',
+  sceneName: 'startScene',
+  spine: melissa1,
+  sceneStart: [8, 11, 16]
 }];
 
 ;// CONCATENATED MODULE: ./js/Settings/spinesSettings.js
 const spinesDescription = [{
-  name: 'markHome',
+  name: 'bg1',
   individualScenesSetting: {
     1: {
       spineSettings: [{
         spineSetting: {
-          animName: 'block_01_idle_2',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
-        }
-      }]
-    },
-    2: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_01_idle_2',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
-        }
-      }]
-    },
-    3: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_01_idle_1',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
-        }
-      }]
-    },
-    4: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_01_idle_1',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
-        }
-      }]
-    },
-    5: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_01_idle_1',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
-        }
-      }]
-    },
-    6: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_01_idle_1',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
-        }
-      }]
-    },
-    7: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_01_idle_1',
-          posX: 870,
-          posY: 940,
-          scale: 0.73
+          animName: 'idle',
+          posX: 0,
+          posY: 0,
+          scale: 1
         }
       }]
     }
   }
 }, {
-  name: 'markStreet',
+  name: 'simon1',
+  individualScenesSetting: {
+    2: {
+      spineSettings: [{
+        spineSetting: {
+          animName: 'idle',
+          posX: 0,
+          posY: 600,
+          scale: 0.27
+        }
+      }]
+    }
+  }
+}, {
+  name: 'simon2',
+  individualScenesSetting: {
+    6: {
+      spineSettings: [{
+        spineSetting: {
+          animName: 'idle',
+          posX: 500,
+          posY: 70,
+          scale: 0.82
+        }
+      }]
+    }
+  }
+}, {
+  name: 'melissa1',
   individualScenesSetting: {
     8: {
       spineSettings: [{
         spineSetting: {
-          animName: 'block_02_mark_idle',
-          posX: 340,
-          posY: 1140,
-          scale: 1.3
-        }
-      }]
-    }
-  }
-}, {
-  name: 'door',
-  individualScenesSetting: {
-    9: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_02_door',
-          posX: 0,
-          posY: 0,
-          scale: 1.05,
-          animLoop: false,
-          animDelay: 1000
-        }
-      }]
-    }
-  }
-}, {
-  name: 'alexa',
-  individualScenesSetting: {
-    10: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_03_alexa_idle_1',
-          posX: 1000,
-          posY: 1500,
-          scale: 1.2
+          animName: 'idle1',
+          posX: 500,
+          posY: 400,
+          scale: 0.4
         }
       }]
     },
-    12: {
+    11: {
       spineSettings: [{
         spineSetting: {
-          animName: 'block_03_alexa_idle_2',
-          posX: 1000,
-          posY: 1500,
-          scale: 1.2
-        }
-      }]
-    },
-    13: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_03_alexa_idle_1',
-          posX: 1000,
-          posY: 1500,
-          scale: 1.2
-        }
-      }]
-    },
-    15: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_03_alexa_idle_2',
-          posX: 1000,
-          posY: 1500,
-          scale: 1.2
+          animName: 'idle1',
+          posX: 500,
+          posY: 400,
+          scale: 0.4
         }
       }]
     },
     16: {
       spineSettings: [{
         spineSetting: {
-          animName: 'block_03_alexa_idle_1',
-          posX: 1000,
-          posY: 1500,
-          scale: 1.2
-        }
-      }]
-    },
-    17: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_04_alexa_idle_2',
-          posX: 800,
-          posY: 1050,
-          scale: .85
-        }
-      }]
-    },
-    18: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_04_alexa_idle_1',
-          posX: 800,
-          posY: 1050,
-          scale: .85
+          animName: 'idle1',
+          posX: 250,
+          posY: 350,
+          scale: 0.72
         }
       }]
     }
   }
 }, {
-  name: 'alexaHome',
+  name: 'melissa2',
   individualScenesSetting: {
-    11: {
+    17: {
       spineSettings: [{
         spineSetting: {
-          animName: 'block_03_mark_idle_1',
-          posX: 1000,
-          posY: 2000,
+          animName: 'idle',
+          posX: 300,
+          posY: 50,
+          scale: 1
+        }
+      }]
+    }
+  }
+}, {
+  name: 'simon3',
+  individualScenesSetting: {
+    10: {
+      spineSettings: [{
+        spineSetting: {
+          animName: 'idle',
+          posX: 500,
+          posY: 20,
           scale: 2
+        }
+      }]
+    }
+  }
+}, {
+  name: 'SM1',
+  individualScenesSetting: {
+    12: {
+      spineSettings: [{
+        spineSetting: {
+          animName: 'idle',
+          posX: 0,
+          posY: 0,
+          scale: 1
+        }
+      }]
+    }
+  }
+}, {
+  name: 'SM2',
+  individualScenesSetting: {
+    13: {
+      spineSettings: [{
+        spineSetting: {
+          animName: 'idle1',
+          posX: 1630,
+          posY: 0,
+          scale: 1,
+          flip: true
         }
       }]
     },
     14: {
       spineSettings: [{
         spineSetting: {
-          animName: 'block_03_mark_idle_1',
-          posX: 1000,
-          posY: 2000,
-          scale: 2
-        }
-      }]
-    },
-    17: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_03_mark_idle_3',
-          posX: 1230,
-          posY: 1060,
-          scale: 1.05
-        }
-      }]
-    },
-    18: {
-      spineSettings: [{
-        spineSetting: {
-          animName: 'block_03_mark_idle_2',
-          posX: 1230,
-          posY: 1060,
-          scale: 1.05
-        }
+          changeAnim: true,
+          animName: 'idle2',
+          loop: false,
+          mix: false
+        },
+        changeAnim: [{
+          animName: 'idle3',
+          loop: false,
+          delay: 2500,
+          mix: false
+        }, {
+          animName: 'idle4',
+          loop: false,
+          delay: 4000,
+          mix: false
+        }, {
+          animName: 'idle5',
+          loop: true,
+          delay: 4800,
+          mix: false
+        }]
       }]
     }
   }
 }, {
-  name: 'sex1',
+  name: 'pos1',
   setting: {
     animName: '1',
     w: 1920,
@@ -68207,7 +68010,7 @@ const spinesDescription = [{
     gameScene: true
   }
 }, {
-  name: 'sex2',
+  name: 'pos2',
   setting: {
     animName: '1',
     w: 1920,
@@ -68219,7 +68022,7 @@ const spinesDescription = [{
     gameScene: true
   }
 }, {
-  name: 'sex3',
+  name: 'pos3',
   setting: {
     animName: '1',
     w: 1920,
@@ -68231,7 +68034,7 @@ const spinesDescription = [{
     gameScene: true
   }
 }, {
-  name: 'sex4',
+  name: 'pos4',
   setting: {
     animName: '1',
     w: 1920,
@@ -68243,185 +68046,6318 @@ const spinesDescription = [{
     gameScene: true
   }
 }, {
-  name: 'final',
-  setting: {
-    animName: 'block_05_idle',
-    w: 1920,
-    h: 1080,
-    posY: 1125,
-    posX: 900,
-    scale: 1,
-    animLoop: true
+  name: 'end',
+  individualScenesSetting: {
+    22: {
+      spineSettings: [{
+        spineSetting: {
+          animName: 'idle1',
+          posX: 0,
+          posY: 0,
+          scale: 1
+        }
+      }]
+    },
+    23: {
+      spineSettings: [{
+        spineSetting: {
+          changeAnim: true,
+          animName: 'idle2',
+          posX: 0,
+          posY: 0,
+          scale: 1,
+          mix: false
+        },
+        changeAnim: [{
+          animName: 'idle3',
+          loop: true,
+          delay: 2500,
+          mix: false
+        }]
+      }]
+    },
+    24: {
+      spineSettings: [{
+        spineSetting: {
+          changeAnim: true,
+          animName: 'idle4',
+          posX: 0,
+          posY: 0,
+          scale: 1,
+          loop: false,
+          mix: false
+        },
+        changeAnim: [{
+          animName: 'idle5',
+          loop: true,
+          delay: 3000,
+          mix: false
+        }]
+      }]
+    }
   }
 }];
-;// CONCATENATED MODULE: ./js/spineManager.js
+;// CONCATENATED MODULE: ../node_modules/gsap/gsap-core.js
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-let addedSpines = [];
-let nowScene, app;
-let cleared = false;
-const spineManager = {
-  checkScene,
-  changeAnimation,
-  getSpine
-};
-function createSpineApp() {
-  app = createApp({
-    w: 1920,
-    h: 1080,
-    idCon: `#spines .spines__box`
-  });
-}
-createSpineApp();
-function checkScene(nowSceneId) {
-  let sceneName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  nowScene = nowSceneId;
-  cleared = false;
-  allSpine.forEach(spine => {
-    if (nowScene === 'clear') {
-      clearApp(app);
-    } else if (spine.sceneStart.includes(nowScene) && spine.sceneName === sceneName) {
-      generateSpine(spine);
-    }
-  });
-}
-function generateSpine(spine) {
-  let description = spinesDescription.find(setting => setting.name === spine.name);
-  if (description?.setting) {
-    baseSettingSpine(spine, description);
-  } else if (description?.individualScenesSetting) {
-    individualSettingSpine(spine, description);
+/*!
+ * GSAP 3.12.5
+ * https://gsap.com
+ *
+ * @license Copyright 2008-2024, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license or for
+ * Club GSAP members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/* eslint-disable */
+var _config = {
+  autoSleep: 120,
+  force3D: "auto",
+  nullTargetWarn: 1,
+  units: {
+    lineHeight: ""
   }
-}
-function baseSettingSpine(spine, description) {
-  clearApp(app);
-  let spineAnim = createSpine(spine, description.setting);
-  addedSpines.push({
-    name: spine.name,
-    spine: spineAnim
+},
+    _defaults = {
+  duration: .5,
+  overwrite: false,
+  delay: 0
+},
+    _suppressOverwrites,
+    _reverting,
+    _context,
+    _bigNum = 1e8,
+    _tinyNum = 1 / _bigNum,
+    _2PI = Math.PI * 2,
+    _HALF_PI = _2PI / 4,
+    _gsID = 0,
+    _sqrt = Math.sqrt,
+    _cos = Math.cos,
+    _sin = Math.sin,
+    _isString = function _isString(value) {
+  return typeof value === "string";
+},
+    _isFunction = function _isFunction(value) {
+  return typeof value === "function";
+},
+    _isNumber = function _isNumber(value) {
+  return typeof value === "number";
+},
+    _isUndefined = function _isUndefined(value) {
+  return typeof value === "undefined";
+},
+    _isObject = function _isObject(value) {
+  return typeof value === "object";
+},
+    _isNotFalse = function _isNotFalse(value) {
+  return value !== false;
+},
+    _windowExists = function _windowExists() {
+  return typeof window !== "undefined";
+},
+    _isFuncOrString = function _isFuncOrString(value) {
+  return _isFunction(value) || _isString(value);
+},
+    _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function () {},
+    // note: IE10 has ArrayBuffer, but NOT ArrayBuffer.isView().
+_isArray = Array.isArray,
+    _strictNumExp = /(?:-?\.?\d|\.)+/gi,
+    //only numbers (including negatives and decimals) but NOT relative values.
+_numExp = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g,
+    //finds any numbers, including ones that start with += or -=, negative numbers, and ones in scientific notation like 1e-8.
+_numWithUnitExp = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g,
+    _complexStringNumExp = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi,
+    //duplicate so that while we're looping through matches from exec(), it doesn't contaminate the lastIndex of _numExp which we use to search for colors too.
+_relExp = /[+-]=-?[.\d]+/,
+    _delimitedValueExp = /[^,'"\[\]\s]+/gi,
+    // previously /[#\-+.]*\b[a-z\d\-=+%.]+/gi but didn't catch special characters.
+_unitExp = /^[+\-=e\s\d]*\d+[.\d]*([a-z]*|%)\s*$/i,
+    _globalTimeline,
+    _win,
+    _coreInitted,
+    _doc,
+    _globals = {},
+    _installScope = {},
+    _coreReady,
+    _install = function _install(scope) {
+  return (_installScope = _merge(scope, _globals)) && gsap;
+},
+    _missingPlugin = function _missingPlugin(property, value) {
+  return console.warn("Invalid property", property, "set to", value, "Missing plugin? gsap.registerPlugin()");
+},
+    _warn = function _warn(message, suppress) {
+  return !suppress && console.warn(message);
+},
+    _addGlobal = function _addGlobal(name, obj) {
+  return name && (_globals[name] = obj) && _installScope && (_installScope[name] = obj) || _globals;
+},
+    _emptyFunc = function _emptyFunc() {
+  return 0;
+},
+    _startAtRevertConfig = {
+  suppressEvents: true,
+  isStart: true,
+  kill: false
+},
+    _revertConfigNoKill = {
+  suppressEvents: true,
+  kill: false
+},
+    _revertConfig = {
+  suppressEvents: true
+},
+    _reservedProps = {},
+    _lazyTweens = [],
+    _lazyLookup = {},
+    _lastRenderedFrame,
+    _plugins = {},
+    _effects = {},
+    _nextGCFrame = 30,
+    _harnessPlugins = [],
+    _callbackNames = "",
+    _harness = function _harness(targets) {
+  var target = targets[0],
+      harnessPlugin,
+      i;
+  _isObject(target) || _isFunction(target) || (targets = [targets]);
+
+  if (!(harnessPlugin = (target._gsap || {}).harness)) {
+    // find the first target with a harness. We assume targets passed into an animation will be of similar type, meaning the same kind of harness can be used for them all (performance optimization)
+    i = _harnessPlugins.length;
+
+    while (i-- && !_harnessPlugins[i].targetTest(target)) {}
+
+    harnessPlugin = _harnessPlugins[i];
+  }
+
+  i = targets.length;
+
+  while (i--) {
+    targets[i] && (targets[i]._gsap || (targets[i]._gsap = new GSCache(targets[i], harnessPlugin))) || targets.splice(i, 1);
+  }
+
+  return targets;
+},
+    _getCache = function _getCache(target) {
+  return target._gsap || _harness(toArray(target))[0]._gsap;
+},
+    _getProperty = function _getProperty(target, property, v) {
+  return (v = target[property]) && _isFunction(v) ? target[property]() : _isUndefined(v) && target.getAttribute && target.getAttribute(property) || v;
+},
+    _forEachName = function _forEachName(names, func) {
+  return (names = names.split(",")).forEach(func) || names;
+},
+    //split a comma-delimited list of names into an array, then run a forEach() function and return the split array (this is just a way to consolidate/shorten some code).
+_round = function _round(value) {
+  return Math.round(value * 100000) / 100000 || 0;
+},
+    _roundPrecise = function _roundPrecise(value) {
+  return Math.round(value * 10000000) / 10000000 || 0;
+},
+    // increased precision mostly for timing values.
+_parseRelative = function _parseRelative(start, value) {
+  var operator = value.charAt(0),
+      end = parseFloat(value.substr(2));
+  start = parseFloat(start);
+  return operator === "+" ? start + end : operator === "-" ? start - end : operator === "*" ? start * end : start / end;
+},
+    _arrayContainsAny = function _arrayContainsAny(toSearch, toFind) {
+  //searches one array to find matches for any of the items in the toFind array. As soon as one is found, it returns true. It does NOT return all the matches; it's simply a boolean search.
+  var l = toFind.length,
+      i = 0;
+
+  for (; toSearch.indexOf(toFind[i]) < 0 && ++i < l;) {}
+
+  return i < l;
+},
+    _lazyRender = function _lazyRender() {
+  var l = _lazyTweens.length,
+      a = _lazyTweens.slice(0),
+      i,
+      tween;
+
+  _lazyLookup = {};
+  _lazyTweens.length = 0;
+
+  for (i = 0; i < l; i++) {
+    tween = a[i];
+    tween && tween._lazy && (tween.render(tween._lazy[0], tween._lazy[1], true)._lazy = 0);
+  }
+},
+    _lazySafeRender = function _lazySafeRender(animation, time, suppressEvents, force) {
+  _lazyTweens.length && !_reverting && _lazyRender();
+  animation.render(time, suppressEvents, force || _reverting && time < 0 && (animation._initted || animation._startAt));
+  _lazyTweens.length && !_reverting && _lazyRender(); //in case rendering caused any tweens to lazy-init, we should render them because typically when someone calls seek() or time() or progress(), they expect an immediate render.
+},
+    _numericIfPossible = function _numericIfPossible(value) {
+  var n = parseFloat(value);
+  return (n || n === 0) && (value + "").match(_delimitedValueExp).length < 2 ? n : _isString(value) ? value.trim() : value;
+},
+    _passThrough = function _passThrough(p) {
+  return p;
+},
+    _setDefaults = function _setDefaults(obj, defaults) {
+  for (var p in defaults) {
+    p in obj || (obj[p] = defaults[p]);
+  }
+
+  return obj;
+},
+    _setKeyframeDefaults = function _setKeyframeDefaults(excludeDuration) {
+  return function (obj, defaults) {
+    for (var p in defaults) {
+      p in obj || p === "duration" && excludeDuration || p === "ease" || (obj[p] = defaults[p]);
+    }
+  };
+},
+    _merge = function _merge(base, toMerge) {
+  for (var p in toMerge) {
+    base[p] = toMerge[p];
+  }
+
+  return base;
+},
+    _mergeDeep = function _mergeDeep(base, toMerge) {
+  for (var p in toMerge) {
+    p !== "__proto__" && p !== "constructor" && p !== "prototype" && (base[p] = _isObject(toMerge[p]) ? _mergeDeep(base[p] || (base[p] = {}), toMerge[p]) : toMerge[p]);
+  }
+
+  return base;
+},
+    _copyExcluding = function _copyExcluding(obj, excluding) {
+  var copy = {},
+      p;
+
+  for (p in obj) {
+    p in excluding || (copy[p] = obj[p]);
+  }
+
+  return copy;
+},
+    _inheritDefaults = function _inheritDefaults(vars) {
+  var parent = vars.parent || _globalTimeline,
+      func = vars.keyframes ? _setKeyframeDefaults(_isArray(vars.keyframes)) : _setDefaults;
+
+  if (_isNotFalse(vars.inherit)) {
+    while (parent) {
+      func(vars, parent.vars.defaults);
+      parent = parent.parent || parent._dp;
+    }
+  }
+
+  return vars;
+},
+    _arraysMatch = function _arraysMatch(a1, a2) {
+  var i = a1.length,
+      match = i === a2.length;
+
+  while (match && i-- && a1[i] === a2[i]) {}
+
+  return i < 0;
+},
+    _addLinkedListItem = function _addLinkedListItem(parent, child, firstProp, lastProp, sortBy) {
+  if (firstProp === void 0) {
+    firstProp = "_first";
+  }
+
+  if (lastProp === void 0) {
+    lastProp = "_last";
+  }
+
+  var prev = parent[lastProp],
+      t;
+
+  if (sortBy) {
+    t = child[sortBy];
+
+    while (prev && prev[sortBy] > t) {
+      prev = prev._prev;
+    }
+  }
+
+  if (prev) {
+    child._next = prev._next;
+    prev._next = child;
+  } else {
+    child._next = parent[firstProp];
+    parent[firstProp] = child;
+  }
+
+  if (child._next) {
+    child._next._prev = child;
+  } else {
+    parent[lastProp] = child;
+  }
+
+  child._prev = prev;
+  child.parent = child._dp = parent;
+  return child;
+},
+    _removeLinkedListItem = function _removeLinkedListItem(parent, child, firstProp, lastProp) {
+  if (firstProp === void 0) {
+    firstProp = "_first";
+  }
+
+  if (lastProp === void 0) {
+    lastProp = "_last";
+  }
+
+  var prev = child._prev,
+      next = child._next;
+
+  if (prev) {
+    prev._next = next;
+  } else if (parent[firstProp] === child) {
+    parent[firstProp] = next;
+  }
+
+  if (next) {
+    next._prev = prev;
+  } else if (parent[lastProp] === child) {
+    parent[lastProp] = prev;
+  }
+
+  child._next = child._prev = child.parent = null; // don't delete the _dp just so we can revert if necessary. But parent should be null to indicate the item isn't in a linked list.
+},
+    _removeFromParent = function _removeFromParent(child, onlyIfParentHasAutoRemove) {
+  child.parent && (!onlyIfParentHasAutoRemove || child.parent.autoRemoveChildren) && child.parent.remove && child.parent.remove(child);
+  child._act = 0;
+},
+    _uncache = function _uncache(animation, child) {
+  if (animation && (!child || child._end > animation._dur || child._start < 0)) {
+    // performance optimization: if a child animation is passed in we should only uncache if that child EXTENDS the animation (its end time is beyond the end)
+    var a = animation;
+
+    while (a) {
+      a._dirty = 1;
+      a = a.parent;
+    }
+  }
+
+  return animation;
+},
+    _recacheAncestors = function _recacheAncestors(animation) {
+  var parent = animation.parent;
+
+  while (parent && parent.parent) {
+    //sometimes we must force a re-sort of all children and update the duration/totalDuration of all ancestor timelines immediately in case, for example, in the middle of a render loop, one tween alters another tween's timeScale which shoves its startTime before 0, forcing the parent timeline to shift around and shiftChildren() which could affect that next tween's render (startTime). Doesn't matter for the root timeline though.
+    parent._dirty = 1;
+    parent.totalDuration();
+    parent = parent.parent;
+  }
+
+  return animation;
+},
+    _rewindStartAt = function _rewindStartAt(tween, totalTime, suppressEvents, force) {
+  return tween._startAt && (_reverting ? tween._startAt.revert(_revertConfigNoKill) : tween.vars.immediateRender && !tween.vars.autoRevert || tween._startAt.render(totalTime, true, force));
+},
+    _hasNoPausedAncestors = function _hasNoPausedAncestors(animation) {
+  return !animation || animation._ts && _hasNoPausedAncestors(animation.parent);
+},
+    _elapsedCycleDuration = function _elapsedCycleDuration(animation) {
+  return animation._repeat ? _animationCycle(animation._tTime, animation = animation.duration() + animation._rDelay) * animation : 0;
+},
+    // feed in the totalTime and cycleDuration and it'll return the cycle (iteration minus 1) and if the playhead is exactly at the very END, it will NOT bump up to the next cycle.
+_animationCycle = function _animationCycle(tTime, cycleDuration) {
+  var whole = Math.floor(tTime /= cycleDuration);
+  return tTime && whole === tTime ? whole - 1 : whole;
+},
+    _parentToChildTotalTime = function _parentToChildTotalTime(parentTime, child) {
+  return (parentTime - child._start) * child._ts + (child._ts >= 0 ? 0 : child._dirty ? child.totalDuration() : child._tDur);
+},
+    _setEnd = function _setEnd(animation) {
+  return animation._end = _roundPrecise(animation._start + (animation._tDur / Math.abs(animation._ts || animation._rts || _tinyNum) || 0));
+},
+    _alignPlayhead = function _alignPlayhead(animation, totalTime) {
+  // adjusts the animation's _start and _end according to the provided totalTime (only if the parent's smoothChildTiming is true and the animation isn't paused). It doesn't do any rendering or forcing things back into parent timelines, etc. - that's what totalTime() is for.
+  var parent = animation._dp;
+
+  if (parent && parent.smoothChildTiming && animation._ts) {
+    animation._start = _roundPrecise(parent._time - (animation._ts > 0 ? totalTime / animation._ts : ((animation._dirty ? animation.totalDuration() : animation._tDur) - totalTime) / -animation._ts));
+
+    _setEnd(animation);
+
+    parent._dirty || _uncache(parent, animation); //for performance improvement. If the parent's cache is already dirty, it already took care of marking the ancestors as dirty too, so skip the function call here.
+  }
+
+  return animation;
+},
+
+/*
+_totalTimeToTime = (clampedTotalTime, duration, repeat, repeatDelay, yoyo) => {
+	let cycleDuration = duration + repeatDelay,
+		time = _round(clampedTotalTime % cycleDuration);
+	if (time > duration) {
+		time = duration;
+	}
+	return (yoyo && (~~(clampedTotalTime / cycleDuration) & 1)) ? duration - time : time;
+},
+*/
+_postAddChecks = function _postAddChecks(timeline, child) {
+  var t;
+
+  if (child._time || !child._dur && child._initted || child._start < timeline._time && (child._dur || !child.add)) {
+    // in case, for example, the _start is moved on a tween that has already rendered, or if it's being inserted into a timeline BEFORE where the playhead is currently. Imagine it's at its end state, then the startTime is moved WAY later (after the end of this timeline), it should render at its beginning. Special case: if it's a timeline (has .add() method) and no duration, we can skip rendering because the user may be populating it AFTER adding it to a parent timeline (unconventional, but possible, and we wouldn't want it to get removed if the parent's autoRemoveChildren is true).
+    t = _parentToChildTotalTime(timeline.rawTime(), child);
+
+    if (!child._dur || _clamp(0, child.totalDuration(), t) - child._tTime > _tinyNum) {
+      child.render(t, true);
+    }
+  } //if the timeline has already ended but the inserted tween/timeline extends the duration, we should enable this timeline again so that it renders properly. We should also align the playhead with the parent timeline's when appropriate.
+
+
+  if (_uncache(timeline, child)._dp && timeline._initted && timeline._time >= timeline._dur && timeline._ts) {
+    //in case any of the ancestors had completed but should now be enabled...
+    if (timeline._dur < timeline.duration()) {
+      t = timeline;
+
+      while (t._dp) {
+        t.rawTime() >= 0 && t.totalTime(t._tTime); //moves the timeline (shifts its startTime) if necessary, and also enables it. If it's currently zero, though, it may not be scheduled to render until later so there's no need to force it to align with the current playhead position. Only move to catch up with the playhead.
+
+        t = t._dp;
+      }
+    }
+
+    timeline._zTime = -_tinyNum; // helps ensure that the next render() will be forced (crossingStart = true in render()), even if the duration hasn't changed (we're adding a child which would need to get rendered). Definitely an edge case. Note: we MUST do this AFTER the loop above where the totalTime() might trigger a render() because this _addToTimeline() method gets called from the Animation constructor, BEFORE tweens even record their targets, etc. so we wouldn't want things to get triggered in the wrong order.
+  }
+},
+    _addToTimeline = function _addToTimeline(timeline, child, position, skipChecks) {
+  child.parent && _removeFromParent(child);
+  child._start = _roundPrecise((_isNumber(position) ? position : position || timeline !== _globalTimeline ? _parsePosition(timeline, position, child) : timeline._time) + child._delay);
+  child._end = _roundPrecise(child._start + (child.totalDuration() / Math.abs(child.timeScale()) || 0));
+
+  _addLinkedListItem(timeline, child, "_first", "_last", timeline._sort ? "_start" : 0);
+
+  _isFromOrFromStart(child) || (timeline._recent = child);
+  skipChecks || _postAddChecks(timeline, child);
+  timeline._ts < 0 && _alignPlayhead(timeline, timeline._tTime); // if the timeline is reversed and the new child makes it longer, we may need to adjust the parent's _start (push it back)
+
+  return timeline;
+},
+    _scrollTrigger = function _scrollTrigger(animation, trigger) {
+  return (_globals.ScrollTrigger || _missingPlugin("scrollTrigger", trigger)) && _globals.ScrollTrigger.create(trigger, animation);
+},
+    _attemptInitTween = function _attemptInitTween(tween, time, force, suppressEvents, tTime) {
+  _initTween(tween, time, tTime);
+
+  if (!tween._initted) {
+    return 1;
+  }
+
+  if (!force && tween._pt && !_reverting && (tween._dur && tween.vars.lazy !== false || !tween._dur && tween.vars.lazy) && _lastRenderedFrame !== _ticker.frame) {
+    _lazyTweens.push(tween);
+
+    tween._lazy = [tTime, suppressEvents];
+    return 1;
+  }
+},
+    _parentPlayheadIsBeforeStart = function _parentPlayheadIsBeforeStart(_ref) {
+  var parent = _ref.parent;
+  return parent && parent._ts && parent._initted && !parent._lock && (parent.rawTime() < 0 || _parentPlayheadIsBeforeStart(parent));
+},
+    // check parent's _lock because when a timeline repeats/yoyos and does its artificial wrapping, we shouldn't force the ratio back to 0
+_isFromOrFromStart = function _isFromOrFromStart(_ref2) {
+  var data = _ref2.data;
+  return data === "isFromStart" || data === "isStart";
+},
+    _renderZeroDurationTween = function _renderZeroDurationTween(tween, totalTime, suppressEvents, force) {
+  var prevRatio = tween.ratio,
+      ratio = totalTime < 0 || !totalTime && (!tween._start && _parentPlayheadIsBeforeStart(tween) && !(!tween._initted && _isFromOrFromStart(tween)) || (tween._ts < 0 || tween._dp._ts < 0) && !_isFromOrFromStart(tween)) ? 0 : 1,
+      // if the tween or its parent is reversed and the totalTime is 0, we should go to a ratio of 0. Edge case: if a from() or fromTo() stagger tween is placed later in a timeline, the "startAt" zero-duration tween could initially render at a time when the parent timeline's playhead is technically BEFORE where this tween is, so make sure that any "from" and "fromTo" startAt tweens are rendered the first time at a ratio of 1.
+  repeatDelay = tween._rDelay,
+      tTime = 0,
+      pt,
+      iteration,
+      prevIteration;
+
+  if (repeatDelay && tween._repeat) {
+    // in case there's a zero-duration tween that has a repeat with a repeatDelay
+    tTime = _clamp(0, tween._tDur, totalTime);
+    iteration = _animationCycle(tTime, repeatDelay);
+    tween._yoyo && iteration & 1 && (ratio = 1 - ratio);
+
+    if (iteration !== _animationCycle(tween._tTime, repeatDelay)) {
+      // if iteration changed
+      prevRatio = 1 - ratio;
+      tween.vars.repeatRefresh && tween._initted && tween.invalidate();
+    }
+  }
+
+  if (ratio !== prevRatio || _reverting || force || tween._zTime === _tinyNum || !totalTime && tween._zTime) {
+    if (!tween._initted && _attemptInitTween(tween, totalTime, force, suppressEvents, tTime)) {
+      // if we render the very beginning (time == 0) of a fromTo(), we must force the render (normal tweens wouldn't need to render at a time of 0 when the prevTime was also 0). This is also mandatory to make sure overwriting kicks in immediately.
+      return;
+    }
+
+    prevIteration = tween._zTime;
+    tween._zTime = totalTime || (suppressEvents ? _tinyNum : 0); // when the playhead arrives at EXACTLY time 0 (right on top) of a zero-duration tween, we need to discern if events are suppressed so that when the playhead moves again (next time), it'll trigger the callback. If events are NOT suppressed, obviously the callback would be triggered in this render. Basically, the callback should fire either when the playhead ARRIVES or LEAVES this exact spot, not both. Imagine doing a timeline.seek(0) and there's a callback that sits at 0. Since events are suppressed on that seek() by default, nothing will fire, but when the playhead moves off of that position, the callback should fire. This behavior is what people intuitively expect.
+
+    suppressEvents || (suppressEvents = totalTime && !prevIteration); // if it was rendered previously at exactly 0 (_zTime) and now the playhead is moving away, DON'T fire callbacks otherwise they'll seem like duplicates.
+
+    tween.ratio = ratio;
+    tween._from && (ratio = 1 - ratio);
+    tween._time = 0;
+    tween._tTime = tTime;
+    pt = tween._pt;
+
+    while (pt) {
+      pt.r(ratio, pt.d);
+      pt = pt._next;
+    }
+
+    totalTime < 0 && _rewindStartAt(tween, totalTime, suppressEvents, true);
+    tween._onUpdate && !suppressEvents && _callback(tween, "onUpdate");
+    tTime && tween._repeat && !suppressEvents && tween.parent && _callback(tween, "onRepeat");
+
+    if ((totalTime >= tween._tDur || totalTime < 0) && tween.ratio === ratio) {
+      ratio && _removeFromParent(tween, 1);
+
+      if (!suppressEvents && !_reverting) {
+        _callback(tween, ratio ? "onComplete" : "onReverseComplete", true);
+
+        tween._prom && tween._prom();
+      }
+    }
+  } else if (!tween._zTime) {
+    tween._zTime = totalTime;
+  }
+},
+    _findNextPauseTween = function _findNextPauseTween(animation, prevTime, time) {
+  var child;
+
+  if (time > prevTime) {
+    child = animation._first;
+
+    while (child && child._start <= time) {
+      if (child.data === "isPause" && child._start > prevTime) {
+        return child;
+      }
+
+      child = child._next;
+    }
+  } else {
+    child = animation._last;
+
+    while (child && child._start >= time) {
+      if (child.data === "isPause" && child._start < prevTime) {
+        return child;
+      }
+
+      child = child._prev;
+    }
+  }
+},
+    _setDuration = function _setDuration(animation, duration, skipUncache, leavePlayhead) {
+  var repeat = animation._repeat,
+      dur = _roundPrecise(duration) || 0,
+      totalProgress = animation._tTime / animation._tDur;
+  totalProgress && !leavePlayhead && (animation._time *= dur / animation._dur);
+  animation._dur = dur;
+  animation._tDur = !repeat ? dur : repeat < 0 ? 1e10 : _roundPrecise(dur * (repeat + 1) + animation._rDelay * repeat);
+  totalProgress > 0 && !leavePlayhead && _alignPlayhead(animation, animation._tTime = animation._tDur * totalProgress);
+  animation.parent && _setEnd(animation);
+  skipUncache || _uncache(animation.parent, animation);
+  return animation;
+},
+    _onUpdateTotalDuration = function _onUpdateTotalDuration(animation) {
+  return animation instanceof gsap_core_Timeline ? _uncache(animation) : _setDuration(animation, animation._dur);
+},
+    _zeroPosition = {
+  _start: 0,
+  endTime: _emptyFunc,
+  totalDuration: _emptyFunc
+},
+    _parsePosition = function _parsePosition(animation, position, percentAnimation) {
+  var labels = animation.labels,
+      recent = animation._recent || _zeroPosition,
+      clippedDuration = animation.duration() >= _bigNum ? recent.endTime(false) : animation._dur,
+      //in case there's a child that infinitely repeats, users almost never intend for the insertion point of a new child to be based on a SUPER long value like that so we clip it and assume the most recently-added child's endTime should be used instead.
+  i,
+      offset,
+      isPercent;
+
+  if (_isString(position) && (isNaN(position) || position in labels)) {
+    //if the string is a number like "1", check to see if there's a label with that name, otherwise interpret it as a number (absolute value).
+    offset = position.charAt(0);
+    isPercent = position.substr(-1) === "%";
+    i = position.indexOf("=");
+
+    if (offset === "<" || offset === ">") {
+      i >= 0 && (position = position.replace(/=/, ""));
+      return (offset === "<" ? recent._start : recent.endTime(recent._repeat >= 0)) + (parseFloat(position.substr(1)) || 0) * (isPercent ? (i < 0 ? recent : percentAnimation).totalDuration() / 100 : 1);
+    }
+
+    if (i < 0) {
+      position in labels || (labels[position] = clippedDuration);
+      return labels[position];
+    }
+
+    offset = parseFloat(position.charAt(i - 1) + position.substr(i + 1));
+
+    if (isPercent && percentAnimation) {
+      offset = offset / 100 * (_isArray(percentAnimation) ? percentAnimation[0] : percentAnimation).totalDuration();
+    }
+
+    return i > 1 ? _parsePosition(animation, position.substr(0, i - 1), percentAnimation) + offset : clippedDuration + offset;
+  }
+
+  return position == null ? clippedDuration : +position;
+},
+    _createTweenType = function _createTweenType(type, params, timeline) {
+  var isLegacy = _isNumber(params[1]),
+      varsIndex = (isLegacy ? 2 : 1) + (type < 2 ? 0 : 1),
+      vars = params[varsIndex],
+      irVars,
+      parent;
+
+  isLegacy && (vars.duration = params[1]);
+  vars.parent = timeline;
+
+  if (type) {
+    irVars = vars;
+    parent = timeline;
+
+    while (parent && !("immediateRender" in irVars)) {
+      // inheritance hasn't happened yet, but someone may have set a default in an ancestor timeline. We could do vars.immediateRender = _isNotFalse(_inheritDefaults(vars).immediateRender) but that'd exact a slight performance penalty because _inheritDefaults() also runs in the Tween constructor. We're paying a small kb price here to gain speed.
+      irVars = parent.vars.defaults || {};
+      parent = _isNotFalse(parent.vars.inherit) && parent.parent;
+    }
+
+    vars.immediateRender = _isNotFalse(irVars.immediateRender);
+    type < 2 ? vars.runBackwards = 1 : vars.startAt = params[varsIndex - 1]; // "from" vars
+  }
+
+  return new Tween(params[0], vars, params[varsIndex + 1]);
+},
+    _conditionalReturn = function _conditionalReturn(value, func) {
+  return value || value === 0 ? func(value) : func;
+},
+    _clamp = function _clamp(min, max, value) {
+  return value < min ? min : value > max ? max : value;
+},
+    getUnit = function getUnit(value, v) {
+  return !_isString(value) || !(v = _unitExp.exec(value)) ? "" : v[1];
+},
+    // note: protect against padded numbers as strings, like "100.100". That shouldn't return "00" as the unit. If it's numeric, return no unit.
+clamp = function clamp(min, max, value) {
+  return _conditionalReturn(value, function (v) {
+    return _clamp(min, max, v);
   });
-}
-function individualSettingSpine(spine, description) {
-  let settings = description.individualScenesSetting[nowScene],
-    spineArray = [];
-  if (settings.spineSettings[0].changeAnim) {
-    changeAnimation(spine.name, settings.spineSettings[0].changeAnim.animName);
+},
+    _slice = [].slice,
+    _isArrayLike = function _isArrayLike(value, nonEmpty) {
+  return value && _isObject(value) && "length" in value && (!nonEmpty && !value.length || value.length - 1 in value && _isObject(value[0])) && !value.nodeType && value !== _win;
+},
+    _flatten = function _flatten(ar, leaveStrings, accumulator) {
+  if (accumulator === void 0) {
+    accumulator = [];
+  }
+
+  return ar.forEach(function (value) {
+    var _accumulator;
+
+    return _isString(value) && !leaveStrings || _isArrayLike(value, 1) ? (_accumulator = accumulator).push.apply(_accumulator, toArray(value)) : accumulator.push(value);
+  }) || accumulator;
+},
+    //takes any value and returns an array. If it's a string (and leaveStrings isn't true), it'll use document.querySelectorAll() and convert that to an array. It'll also accept iterables like jQuery objects.
+toArray = function toArray(value, scope, leaveStrings) {
+  return _context && !scope && _context.selector ? _context.selector(value) : _isString(value) && !leaveStrings && (_coreInitted || !_wake()) ? _slice.call((scope || _doc).querySelectorAll(value), 0) : _isArray(value) ? _flatten(value, leaveStrings) : _isArrayLike(value) ? _slice.call(value, 0) : value ? [value] : [];
+},
+    selector = function selector(value) {
+  value = toArray(value)[0] || _warn("Invalid scope") || {};
+  return function (v) {
+    var el = value.current || value.nativeElement || value;
+    return toArray(v, el.querySelectorAll ? el : el === value ? _warn("Invalid scope") || _doc.createElement("div") : value);
+  };
+},
+    shuffle = function shuffle(a) {
+  return a.sort(function () {
+    return .5 - Math.random();
+  });
+},
+    // alternative that's a bit faster and more reliably diverse but bigger:   for (let j, v, i = a.length; i; j = Math.floor(Math.random() * i), v = a[--i], a[i] = a[j], a[j] = v); return a;
+//for distributing values across an array. Can accept a number, a function or (most commonly) a function which can contain the following properties: {base, amount, from, ease, grid, axis, length, each}. Returns a function that expects the following parameters: index, target, array. Recognizes the following
+distribute = function distribute(v) {
+  if (_isFunction(v)) {
+    return v;
+  }
+
+  var vars = _isObject(v) ? v : {
+    each: v
+  },
+      //n:1 is just to indicate v was a number; we leverage that later to set v according to the length we get. If a number is passed in, we treat it like the old stagger value where 0.1, for example, would mean that things would be distributed with 0.1 between each element in the array rather than a total "amount" that's chunked out among them all.
+  ease = _parseEase(vars.ease),
+      from = vars.from || 0,
+      base = parseFloat(vars.base) || 0,
+      cache = {},
+      isDecimal = from > 0 && from < 1,
+      ratios = isNaN(from) || isDecimal,
+      axis = vars.axis,
+      ratioX = from,
+      ratioY = from;
+
+  if (_isString(from)) {
+    ratioX = ratioY = {
+      center: .5,
+      edges: .5,
+      end: 1
+    }[from] || 0;
+  } else if (!isDecimal && ratios) {
+    ratioX = from[0];
+    ratioY = from[1];
+  }
+
+  return function (i, target, a) {
+    var l = (a || vars).length,
+        distances = cache[l],
+        originX,
+        originY,
+        x,
+        y,
+        d,
+        j,
+        max,
+        min,
+        wrapAt;
+
+    if (!distances) {
+      wrapAt = vars.grid === "auto" ? 0 : (vars.grid || [1, _bigNum])[1];
+
+      if (!wrapAt) {
+        max = -_bigNum;
+
+        while (max < (max = a[wrapAt++].getBoundingClientRect().left) && wrapAt < l) {}
+
+        wrapAt < l && wrapAt--;
+      }
+
+      distances = cache[l] = [];
+      originX = ratios ? Math.min(wrapAt, l) * ratioX - .5 : from % wrapAt;
+      originY = wrapAt === _bigNum ? 0 : ratios ? l * ratioY / wrapAt - .5 : from / wrapAt | 0;
+      max = 0;
+      min = _bigNum;
+
+      for (j = 0; j < l; j++) {
+        x = j % wrapAt - originX;
+        y = originY - (j / wrapAt | 0);
+        distances[j] = d = !axis ? _sqrt(x * x + y * y) : Math.abs(axis === "y" ? y : x);
+        d > max && (max = d);
+        d < min && (min = d);
+      }
+
+      from === "random" && shuffle(distances);
+      distances.max = max - min;
+      distances.min = min;
+      distances.v = l = (parseFloat(vars.amount) || parseFloat(vars.each) * (wrapAt > l ? l - 1 : !axis ? Math.max(wrapAt, l / wrapAt) : axis === "y" ? l / wrapAt : wrapAt) || 0) * (from === "edges" ? -1 : 1);
+      distances.b = l < 0 ? base - l : base;
+      distances.u = getUnit(vars.amount || vars.each) || 0; //unit
+
+      ease = ease && l < 0 ? _invertEase(ease) : ease;
+    }
+
+    l = (distances[i] - distances.min) / distances.max || 0;
+    return _roundPrecise(distances.b + (ease ? ease(l) : l) * distances.v) + distances.u; //round in order to work around floating point errors
+  };
+},
+    _roundModifier = function _roundModifier(v) {
+  //pass in 0.1 get a function that'll round to the nearest tenth, or 5 to round to the closest 5, or 0.001 to the closest 1000th, etc.
+  var p = Math.pow(10, ((v + "").split(".")[1] || "").length); //to avoid floating point math errors (like 24 * 0.1 == 2.4000000000000004), we chop off at a specific number of decimal places (much faster than toFixed())
+
+  return function (raw) {
+    var n = _roundPrecise(Math.round(parseFloat(raw) / v) * v * p);
+
+    return (n - n % 1) / p + (_isNumber(raw) ? 0 : getUnit(raw)); // n - n % 1 replaces Math.floor() in order to handle negative values properly. For example, Math.floor(-150.00000000000003) is 151!
+  };
+},
+    snap = function snap(snapTo, value) {
+  var isArray = _isArray(snapTo),
+      radius,
+      is2D;
+
+  if (!isArray && _isObject(snapTo)) {
+    radius = isArray = snapTo.radius || _bigNum;
+
+    if (snapTo.values) {
+      snapTo = toArray(snapTo.values);
+
+      if (is2D = !_isNumber(snapTo[0])) {
+        radius *= radius; //performance optimization so we don't have to Math.sqrt() in the loop.
+      }
+    } else {
+      snapTo = _roundModifier(snapTo.increment);
+    }
+  }
+
+  return _conditionalReturn(value, !isArray ? _roundModifier(snapTo) : _isFunction(snapTo) ? function (raw) {
+    is2D = snapTo(raw);
+    return Math.abs(is2D - raw) <= radius ? is2D : raw;
+  } : function (raw) {
+    var x = parseFloat(is2D ? raw.x : raw),
+        y = parseFloat(is2D ? raw.y : 0),
+        min = _bigNum,
+        closest = 0,
+        i = snapTo.length,
+        dx,
+        dy;
+
+    while (i--) {
+      if (is2D) {
+        dx = snapTo[i].x - x;
+        dy = snapTo[i].y - y;
+        dx = dx * dx + dy * dy;
+      } else {
+        dx = Math.abs(snapTo[i] - x);
+      }
+
+      if (dx < min) {
+        min = dx;
+        closest = i;
+      }
+    }
+
+    closest = !radius || min <= radius ? snapTo[closest] : raw;
+    return is2D || closest === raw || _isNumber(raw) ? closest : closest + getUnit(raw);
+  });
+},
+    random = function random(min, max, roundingIncrement, returnFunction) {
+  return _conditionalReturn(_isArray(min) ? !max : roundingIncrement === true ? !!(roundingIncrement = 0) : !returnFunction, function () {
+    return _isArray(min) ? min[~~(Math.random() * min.length)] : (roundingIncrement = roundingIncrement || 1e-5) && (returnFunction = roundingIncrement < 1 ? Math.pow(10, (roundingIncrement + "").length - 2) : 1) && Math.floor(Math.round((min - roundingIncrement / 2 + Math.random() * (max - min + roundingIncrement * .99)) / roundingIncrement) * roundingIncrement * returnFunction) / returnFunction;
+  });
+},
+    pipe = function pipe() {
+  for (var _len = arguments.length, functions = new Array(_len), _key = 0; _key < _len; _key++) {
+    functions[_key] = arguments[_key];
+  }
+
+  return function (value) {
+    return functions.reduce(function (v, f) {
+      return f(v);
+    }, value);
+  };
+},
+    unitize = function unitize(func, unit) {
+  return function (value) {
+    return func(parseFloat(value)) + (unit || getUnit(value));
+  };
+},
+    normalize = function normalize(min, max, value) {
+  return mapRange(min, max, 0, 1, value);
+},
+    _wrapArray = function _wrapArray(a, wrapper, value) {
+  return _conditionalReturn(value, function (index) {
+    return a[~~wrapper(index)];
+  });
+},
+    wrap = function wrap(min, max, value) {
+  // NOTE: wrap() CANNOT be an arrow function! A very odd compiling bug causes problems (unrelated to GSAP).
+  var range = max - min;
+  return _isArray(min) ? _wrapArray(min, wrap(0, min.length), max) : _conditionalReturn(value, function (value) {
+    return (range + (value - min) % range) % range + min;
+  });
+},
+    wrapYoyo = function wrapYoyo(min, max, value) {
+  var range = max - min,
+      total = range * 2;
+  return _isArray(min) ? _wrapArray(min, wrapYoyo(0, min.length - 1), max) : _conditionalReturn(value, function (value) {
+    value = (total + (value - min) % total) % total || 0;
+    return min + (value > range ? total - value : value);
+  });
+},
+    _replaceRandom = function _replaceRandom(value) {
+  //replaces all occurrences of random(...) in a string with the calculated random value. can be a range like random(-100, 100, 5) or an array like random([0, 100, 500])
+  var prev = 0,
+      s = "",
+      i,
+      nums,
+      end,
+      isArray;
+
+  while (~(i = value.indexOf("random(", prev))) {
+    end = value.indexOf(")", i);
+    isArray = value.charAt(i + 7) === "[";
+    nums = value.substr(i + 7, end - i - 7).match(isArray ? _delimitedValueExp : _strictNumExp);
+    s += value.substr(prev, i - prev) + random(isArray ? nums : +nums[0], isArray ? 0 : +nums[1], +nums[2] || 1e-5);
+    prev = end + 1;
+  }
+
+  return s + value.substr(prev, value.length - prev);
+},
+    mapRange = function mapRange(inMin, inMax, outMin, outMax, value) {
+  var inRange = inMax - inMin,
+      outRange = outMax - outMin;
+  return _conditionalReturn(value, function (value) {
+    return outMin + ((value - inMin) / inRange * outRange || 0);
+  });
+},
+    interpolate = function interpolate(start, end, progress, mutate) {
+  var func = isNaN(start + end) ? 0 : function (p) {
+    return (1 - p) * start + p * end;
+  };
+
+  if (!func) {
+    var isString = _isString(start),
+        master = {},
+        p,
+        i,
+        interpolators,
+        l,
+        il;
+
+    progress === true && (mutate = 1) && (progress = null);
+
+    if (isString) {
+      start = {
+        p: start
+      };
+      end = {
+        p: end
+      };
+    } else if (_isArray(start) && !_isArray(end)) {
+      interpolators = [];
+      l = start.length;
+      il = l - 2;
+
+      for (i = 1; i < l; i++) {
+        interpolators.push(interpolate(start[i - 1], start[i])); //build the interpolators up front as a performance optimization so that when the function is called many times, it can just reuse them.
+      }
+
+      l--;
+
+      func = function func(p) {
+        p *= l;
+        var i = Math.min(il, ~~p);
+        return interpolators[i](p - i);
+      };
+
+      progress = end;
+    } else if (!mutate) {
+      start = _merge(_isArray(start) ? [] : {}, start);
+    }
+
+    if (!interpolators) {
+      for (p in end) {
+        _addPropTween.call(master, start, p, "get", end[p]);
+      }
+
+      func = function func(p) {
+        return _renderPropTweens(p, master) || (isString ? start.p : start);
+      };
+    }
+  }
+
+  return _conditionalReturn(progress, func);
+},
+    _getLabelInDirection = function _getLabelInDirection(timeline, fromTime, backward) {
+  //used for nextLabel() and previousLabel()
+  var labels = timeline.labels,
+      min = _bigNum,
+      p,
+      distance,
+      label;
+
+  for (p in labels) {
+    distance = labels[p] - fromTime;
+
+    if (distance < 0 === !!backward && distance && min > (distance = Math.abs(distance))) {
+      label = p;
+      min = distance;
+    }
+  }
+
+  return label;
+},
+    _callback = function _callback(animation, type, executeLazyFirst) {
+  var v = animation.vars,
+      callback = v[type],
+      prevContext = _context,
+      context = animation._ctx,
+      params,
+      scope,
+      result;
+
+  if (!callback) {
     return;
   }
-  if (!cleared) {
-    cleared = !cleared;
-    clearApp(app);
-  }
-  settings.spineSettings.forEach((settingsForSpine, i) => {
-    let createdSpine;
-    let attachment = settingsForSpine.attachment;
-    let delayCrete = settingsForSpine.spineSetting.delay;
-    let addedSpine;
-    if (delayCrete) {
-      setTimeout(() => {
-        createdSpine = addSpine(spine, addedSpine, settingsForSpine, attachment);
-      }, delayCrete);
-    } else {
-      createdSpine = addSpine(spine, addedSpine, settingsForSpine, attachment);
+
+  params = v[type + "Params"];
+  scope = v.callbackScope || animation;
+  executeLazyFirst && _lazyTweens.length && _lazyRender(); //in case rendering caused any tweens to lazy-init, we should render them because typically when a timeline finishes, users expect things to have rendered fully. Imagine an onUpdate on a timeline that reports/checks tweened values.
+
+  context && (_context = context);
+  result = params ? callback.apply(scope, params) : callback.call(scope);
+  _context = prevContext;
+  return result;
+},
+    _interrupt = function _interrupt(animation) {
+  _removeFromParent(animation);
+
+  animation.scrollTrigger && animation.scrollTrigger.kill(!!_reverting);
+  animation.progress() < 1 && _callback(animation, "onInterrupt");
+  return animation;
+},
+    _quickTween,
+    _registerPluginQueue = [],
+    _createPlugin = function _createPlugin(config) {
+  if (!config) return;
+  config = !config.name && config["default"] || config; // UMD packaging wraps things oddly, so for example MotionPathHelper becomes {MotionPathHelper:MotionPathHelper, default:MotionPathHelper}.
+
+  if (_windowExists() || config.headless) {
+    // edge case: some build tools may pass in a null/undefined value
+    var name = config.name,
+        isFunc = _isFunction(config),
+        Plugin = name && !isFunc && config.init ? function () {
+      this._props = [];
+    } : config,
+        //in case someone passes in an object that's not a plugin, like CustomEase
+    instanceDefaults = {
+      init: _emptyFunc,
+      render: _renderPropTweens,
+      add: _addPropTween,
+      kill: _killPropTweensOf,
+      modifier: _addPluginModifier,
+      rawVars: 0
+    },
+        statics = {
+      targetTest: 0,
+      get: 0,
+      getSetter: _getSetter,
+      aliases: {},
+      register: 0
+    };
+
+    _wake();
+
+    if (config !== Plugin) {
+      if (_plugins[name]) {
+        return;
+      }
+
+      _setDefaults(Plugin, _setDefaults(_copyExcluding(config, instanceDefaults), statics)); //static methods
+
+
+      _merge(Plugin.prototype, _merge(instanceDefaults, _copyExcluding(config, statics))); //instance methods
+
+
+      _plugins[Plugin.prop = name] = Plugin;
+
+      if (config.targetTest) {
+        _harnessPlugins.push(Plugin);
+
+        _reservedProps[name] = 1;
+      }
+
+      name = (name === "css" ? "CSS" : name.charAt(0).toUpperCase() + name.substr(1)) + "Plugin"; //for the global name. "motionPath" should become MotionPathPlugin
     }
-    addedSpines.push({
-      index: i,
-      name: spine.name,
-      spine: {
-        app,
-        spine: createdSpine
+
+    _addGlobal(name, Plugin);
+
+    config.register && config.register(gsap, Plugin, PropTween);
+  } else {
+    _registerPluginQueue.push(config);
+  }
+},
+
+/*
+ * --------------------------------------------------------------------------------------
+ * COLORS
+ * --------------------------------------------------------------------------------------
+ */
+_255 = 255,
+    _colorLookup = {
+  aqua: [0, _255, _255],
+  lime: [0, _255, 0],
+  silver: [192, 192, 192],
+  black: [0, 0, 0],
+  maroon: [128, 0, 0],
+  teal: [0, 128, 128],
+  blue: [0, 0, _255],
+  navy: [0, 0, 128],
+  white: [_255, _255, _255],
+  olive: [128, 128, 0],
+  yellow: [_255, _255, 0],
+  orange: [_255, 165, 0],
+  gray: [128, 128, 128],
+  purple: [128, 0, 128],
+  green: [0, 128, 0],
+  red: [_255, 0, 0],
+  pink: [_255, 192, 203],
+  cyan: [0, _255, _255],
+  transparent: [_255, _255, _255, 0]
+},
+    // possible future idea to replace the hard-coded color name values - put this in the ticker.wake() where we set the _doc:
+// let ctx = _doc.createElement("canvas").getContext("2d");
+// _forEachName("aqua,lime,silver,black,maroon,teal,blue,navy,white,olive,yellow,orange,gray,purple,green,red,pink,cyan", color => {ctx.fillStyle = color; _colorLookup[color] = splitColor(ctx.fillStyle)});
+_hue = function _hue(h, m1, m2) {
+  h += h < 0 ? 1 : h > 1 ? -1 : 0;
+  return (h * 6 < 1 ? m1 + (m2 - m1) * h * 6 : h < .5 ? m2 : h * 3 < 2 ? m1 + (m2 - m1) * (2 / 3 - h) * 6 : m1) * _255 + .5 | 0;
+},
+    splitColor = function splitColor(v, toHSL, forceAlpha) {
+  var a = !v ? _colorLookup.black : _isNumber(v) ? [v >> 16, v >> 8 & _255, v & _255] : 0,
+      r,
+      g,
+      b,
+      h,
+      s,
+      l,
+      max,
+      min,
+      d,
+      wasHSL;
+
+  if (!a) {
+    if (v.substr(-1) === ",") {
+      //sometimes a trailing comma is included and we should chop it off (typically from a comma-delimited list of values like a textShadow:"2px 2px 2px blue, 5px 5px 5px rgb(255,0,0)" - in this example "blue," has a trailing comma. We could strip it out inside parseComplex() but we'd need to do it to the beginning and ending values plus it wouldn't provide protection from other potential scenarios like if the user passes in a similar value.
+      v = v.substr(0, v.length - 1);
+    }
+
+    if (_colorLookup[v]) {
+      a = _colorLookup[v];
+    } else if (v.charAt(0) === "#") {
+      if (v.length < 6) {
+        //for shorthand like #9F0 or #9F0F (could have alpha)
+        r = v.charAt(1);
+        g = v.charAt(2);
+        b = v.charAt(3);
+        v = "#" + r + r + g + g + b + b + (v.length === 5 ? v.charAt(4) + v.charAt(4) : "");
+      }
+
+      if (v.length === 9) {
+        // hex with alpha, like #fd5e53ff
+        a = parseInt(v.substr(1, 6), 16);
+        return [a >> 16, a >> 8 & _255, a & _255, parseInt(v.substr(7), 16) / 255];
+      }
+
+      v = parseInt(v.substr(1), 16);
+      a = [v >> 16, v >> 8 & _255, v & _255];
+    } else if (v.substr(0, 3) === "hsl") {
+      a = wasHSL = v.match(_strictNumExp);
+
+      if (!toHSL) {
+        h = +a[0] % 360 / 360;
+        s = +a[1] / 100;
+        l = +a[2] / 100;
+        g = l <= .5 ? l * (s + 1) : l + s - l * s;
+        r = l * 2 - g;
+        a.length > 3 && (a[3] *= 1); //cast as number
+
+        a[0] = _hue(h + 1 / 3, r, g);
+        a[1] = _hue(h, r, g);
+        a[2] = _hue(h - 1 / 3, r, g);
+      } else if (~v.indexOf("=")) {
+        //if relative values are found, just return the raw strings with the relative prefixes in place.
+        a = v.match(_numExp);
+        forceAlpha && a.length < 4 && (a[3] = 1);
+        return a;
+      }
+    } else {
+      a = v.match(_strictNumExp) || _colorLookup.transparent;
+    }
+
+    a = a.map(Number);
+  }
+
+  if (toHSL && !wasHSL) {
+    r = a[0] / _255;
+    g = a[1] / _255;
+    b = a[2] / _255;
+    max = Math.max(r, g, b);
+    min = Math.min(r, g, b);
+    l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0;
+    } else {
+      d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+      h *= 60;
+    }
+
+    a[0] = ~~(h + .5);
+    a[1] = ~~(s * 100 + .5);
+    a[2] = ~~(l * 100 + .5);
+  }
+
+  forceAlpha && a.length < 4 && (a[3] = 1);
+  return a;
+},
+    _colorOrderData = function _colorOrderData(v) {
+  // strips out the colors from the string, finds all the numeric slots (with units) and returns an array of those. The Array also has a "c" property which is an Array of the index values where the colors belong. This is to help work around issues where there's a mis-matched order of color/numeric data like drop-shadow(#f00 0px 1px 2px) and drop-shadow(0x 1px 2px #f00). This is basically a helper function used in _formatColors()
+  var values = [],
+      c = [],
+      i = -1;
+  v.split(_colorExp).forEach(function (v) {
+    var a = v.match(_numWithUnitExp) || [];
+    values.push.apply(values, a);
+    c.push(i += a.length + 1);
+  });
+  values.c = c;
+  return values;
+},
+    _formatColors = function _formatColors(s, toHSL, orderMatchData) {
+  var result = "",
+      colors = (s + result).match(_colorExp),
+      type = toHSL ? "hsla(" : "rgba(",
+      i = 0,
+      c,
+      shell,
+      d,
+      l;
+
+  if (!colors) {
+    return s;
+  }
+
+  colors = colors.map(function (color) {
+    return (color = splitColor(color, toHSL, 1)) && type + (toHSL ? color[0] + "," + color[1] + "%," + color[2] + "%," + color[3] : color.join(",")) + ")";
+  });
+
+  if (orderMatchData) {
+    d = _colorOrderData(s);
+    c = orderMatchData.c;
+
+    if (c.join(result) !== d.c.join(result)) {
+      shell = s.replace(_colorExp, "1").split(_numWithUnitExp);
+      l = shell.length - 1;
+
+      for (; i < l; i++) {
+        result += shell[i] + (~c.indexOf(i) ? colors.shift() || type + "0,0,0,0)" : (d.length ? d : colors.length ? colors : orderMatchData).shift());
+      }
+    }
+  }
+
+  if (!shell) {
+    shell = s.split(_colorExp);
+    l = shell.length - 1;
+
+    for (; i < l; i++) {
+      result += shell[i] + colors[i];
+    }
+  }
+
+  return result + shell[l];
+},
+    _colorExp = function () {
+  var s = "(?:\\b(?:(?:rgb|rgba|hsl|hsla)\\(.+?\\))|\\B#(?:[0-9a-f]{3,4}){1,2}\\b",
+      //we'll dynamically build this Regular Expression to conserve file size. After building it, it will be able to find rgb(), rgba(), # (hexadecimal), and named color values like red, blue, purple, etc.,
+  p;
+
+  for (p in _colorLookup) {
+    s += "|" + p + "\\b";
+  }
+
+  return new RegExp(s + ")", "gi");
+}(),
+    _hslExp = /hsl[a]?\(/,
+    _colorStringFilter = function _colorStringFilter(a) {
+  var combined = a.join(" "),
+      toHSL;
+  _colorExp.lastIndex = 0;
+
+  if (_colorExp.test(combined)) {
+    toHSL = _hslExp.test(combined);
+    a[1] = _formatColors(a[1], toHSL);
+    a[0] = _formatColors(a[0], toHSL, _colorOrderData(a[1])); // make sure the order of numbers/colors match with the END value.
+
+    return true;
+  }
+},
+
+/*
+ * --------------------------------------------------------------------------------------
+ * TICKER
+ * --------------------------------------------------------------------------------------
+ */
+_tickerActive,
+    _ticker = function () {
+  var _getTime = Date.now,
+      _lagThreshold = 500,
+      _adjustedLag = 33,
+      _startTime = _getTime(),
+      _lastUpdate = _startTime,
+      _gap = 1000 / 240,
+      _nextTime = _gap,
+      _listeners = [],
+      _id,
+      _req,
+      _raf,
+      _self,
+      _delta,
+      _i,
+      _tick = function _tick(v) {
+    var elapsed = _getTime() - _lastUpdate,
+        manual = v === true,
+        overlap,
+        dispatch,
+        time,
+        frame;
+
+    (elapsed > _lagThreshold || elapsed < 0) && (_startTime += elapsed - _adjustedLag);
+    _lastUpdate += elapsed;
+    time = _lastUpdate - _startTime;
+    overlap = time - _nextTime;
+
+    if (overlap > 0 || manual) {
+      frame = ++_self.frame;
+      _delta = time - _self.time * 1000;
+      _self.time = time = time / 1000;
+      _nextTime += overlap + (overlap >= _gap ? 4 : _gap - overlap);
+      dispatch = 1;
+    }
+
+    manual || (_id = _req(_tick)); //make sure the request is made before we dispatch the "tick" event so that timing is maintained. Otherwise, if processing the "tick" requires a bunch of time (like 15ms) and we're using a setTimeout() that's based on 16.7ms, it'd technically take 31.7ms between frames otherwise.
+
+    if (dispatch) {
+      for (_i = 0; _i < _listeners.length; _i++) {
+        // use _i and check _listeners.length instead of a variable because a listener could get removed during the loop, and if that happens to an element less than the current index, it'd throw things off in the loop.
+        _listeners[_i](time, _delta, frame, v);
+      }
+    }
+  };
+
+  _self = {
+    time: 0,
+    frame: 0,
+    tick: function tick() {
+      _tick(true);
+    },
+    deltaRatio: function deltaRatio(fps) {
+      return _delta / (1000 / (fps || 60));
+    },
+    wake: function wake() {
+      if (_coreReady) {
+        if (!_coreInitted && _windowExists()) {
+          _win = _coreInitted = window;
+          _doc = _win.document || {};
+          _globals.gsap = gsap;
+          (_win.gsapVersions || (_win.gsapVersions = [])).push(gsap.version);
+
+          _install(_installScope || _win.GreenSockGlobals || !_win.gsap && _win || {});
+
+          _registerPluginQueue.forEach(_createPlugin);
+        }
+
+        _raf = typeof requestAnimationFrame !== "undefined" && requestAnimationFrame;
+        _id && _self.sleep();
+
+        _req = _raf || function (f) {
+          return setTimeout(f, _nextTime - _self.time * 1000 + 1 | 0);
+        };
+
+        _tickerActive = 1;
+
+        _tick(2);
+      }
+    },
+    sleep: function sleep() {
+      (_raf ? cancelAnimationFrame : clearTimeout)(_id);
+      _tickerActive = 0;
+      _req = _emptyFunc;
+    },
+    lagSmoothing: function lagSmoothing(threshold, adjustedLag) {
+      _lagThreshold = threshold || Infinity; // zero should be interpreted as basically unlimited
+
+      _adjustedLag = Math.min(adjustedLag || 33, _lagThreshold);
+    },
+    fps: function fps(_fps) {
+      _gap = 1000 / (_fps || 240);
+      _nextTime = _self.time * 1000 + _gap;
+    },
+    add: function add(callback, once, prioritize) {
+      var func = once ? function (t, d, f, v) {
+        callback(t, d, f, v);
+
+        _self.remove(func);
+      } : callback;
+
+      _self.remove(callback);
+
+      _listeners[prioritize ? "unshift" : "push"](func);
+
+      _wake();
+
+      return func;
+    },
+    remove: function remove(callback, i) {
+      ~(i = _listeners.indexOf(callback)) && _listeners.splice(i, 1) && _i >= i && _i--;
+    },
+    _listeners: _listeners
+  };
+  return _self;
+}(),
+    _wake = function _wake() {
+  return !_tickerActive && _ticker.wake();
+},
+    //also ensures the core classes are initialized.
+
+/*
+* -------------------------------------------------
+* EASING
+* -------------------------------------------------
+*/
+_easeMap = {},
+    _customEaseExp = /^[\d.\-M][\d.\-,\s]/,
+    _quotesExp = /["']/g,
+    _parseObjectInString = function _parseObjectInString(value) {
+  //takes a string like "{wiggles:10, type:anticipate})" and turns it into a real object. Notice it ends in ")" and includes the {} wrappers. This is because we only use this function for parsing ease configs and prioritized optimization rather than reusability.
+  var obj = {},
+      split = value.substr(1, value.length - 3).split(":"),
+      key = split[0],
+      i = 1,
+      l = split.length,
+      index,
+      val,
+      parsedVal;
+
+  for (; i < l; i++) {
+    val = split[i];
+    index = i !== l - 1 ? val.lastIndexOf(",") : val.length;
+    parsedVal = val.substr(0, index);
+    obj[key] = isNaN(parsedVal) ? parsedVal.replace(_quotesExp, "").trim() : +parsedVal;
+    key = val.substr(index + 1).trim();
+  }
+
+  return obj;
+},
+    _valueInParentheses = function _valueInParentheses(value) {
+  var open = value.indexOf("(") + 1,
+      close = value.indexOf(")"),
+      nested = value.indexOf("(", open);
+  return value.substring(open, ~nested && nested < close ? value.indexOf(")", close + 1) : close);
+},
+    _configEaseFromString = function _configEaseFromString(name) {
+  //name can be a string like "elastic.out(1,0.5)", and pass in _easeMap as obj and it'll parse it out and call the actual function like _easeMap.Elastic.easeOut.config(1,0.5). It will also parse custom ease strings as long as CustomEase is loaded and registered (internally as _easeMap._CE).
+  var split = (name + "").split("("),
+      ease = _easeMap[split[0]];
+  return ease && split.length > 1 && ease.config ? ease.config.apply(null, ~name.indexOf("{") ? [_parseObjectInString(split[1])] : _valueInParentheses(name).split(",").map(_numericIfPossible)) : _easeMap._CE && _customEaseExp.test(name) ? _easeMap._CE("", name) : ease;
+},
+    _invertEase = function _invertEase(ease) {
+  return function (p) {
+    return 1 - ease(1 - p);
+  };
+},
+    // allow yoyoEase to be set in children and have those affected when the parent/ancestor timeline yoyos.
+_propagateYoyoEase = function _propagateYoyoEase(timeline, isYoyo) {
+  var child = timeline._first,
+      ease;
+
+  while (child) {
+    if (child instanceof gsap_core_Timeline) {
+      _propagateYoyoEase(child, isYoyo);
+    } else if (child.vars.yoyoEase && (!child._yoyo || !child._repeat) && child._yoyo !== isYoyo) {
+      if (child.timeline) {
+        _propagateYoyoEase(child.timeline, isYoyo);
+      } else {
+        ease = child._ease;
+        child._ease = child._yEase;
+        child._yEase = ease;
+        child._yoyo = isYoyo;
+      }
+    }
+
+    child = child._next;
+  }
+},
+    _parseEase = function _parseEase(ease, defaultEase) {
+  return !ease ? defaultEase : (_isFunction(ease) ? ease : _easeMap[ease] || _configEaseFromString(ease)) || defaultEase;
+},
+    _insertEase = function _insertEase(names, easeIn, easeOut, easeInOut) {
+  if (easeOut === void 0) {
+    easeOut = function easeOut(p) {
+      return 1 - easeIn(1 - p);
+    };
+  }
+
+  if (easeInOut === void 0) {
+    easeInOut = function easeInOut(p) {
+      return p < .5 ? easeIn(p * 2) / 2 : 1 - easeIn((1 - p) * 2) / 2;
+    };
+  }
+
+  var ease = {
+    easeIn: easeIn,
+    easeOut: easeOut,
+    easeInOut: easeInOut
+  },
+      lowercaseName;
+
+  _forEachName(names, function (name) {
+    _easeMap[name] = _globals[name] = ease;
+    _easeMap[lowercaseName = name.toLowerCase()] = easeOut;
+
+    for (var p in ease) {
+      _easeMap[lowercaseName + (p === "easeIn" ? ".in" : p === "easeOut" ? ".out" : ".inOut")] = _easeMap[name + "." + p] = ease[p];
+    }
+  });
+
+  return ease;
+},
+    _easeInOutFromOut = function _easeInOutFromOut(easeOut) {
+  return function (p) {
+    return p < .5 ? (1 - easeOut(1 - p * 2)) / 2 : .5 + easeOut((p - .5) * 2) / 2;
+  };
+},
+    _configElastic = function _configElastic(type, amplitude, period) {
+  var p1 = amplitude >= 1 ? amplitude : 1,
+      //note: if amplitude is < 1, we simply adjust the period for a more natural feel. Otherwise the math doesn't work right and the curve starts at 1.
+  p2 = (period || (type ? .3 : .45)) / (amplitude < 1 ? amplitude : 1),
+      p3 = p2 / _2PI * (Math.asin(1 / p1) || 0),
+      easeOut = function easeOut(p) {
+    return p === 1 ? 1 : p1 * Math.pow(2, -10 * p) * _sin((p - p3) * p2) + 1;
+  },
+      ease = type === "out" ? easeOut : type === "in" ? function (p) {
+    return 1 - easeOut(1 - p);
+  } : _easeInOutFromOut(easeOut);
+
+  p2 = _2PI / p2; //precalculate to optimize
+
+  ease.config = function (amplitude, period) {
+    return _configElastic(type, amplitude, period);
+  };
+
+  return ease;
+},
+    _configBack = function _configBack(type, overshoot) {
+  if (overshoot === void 0) {
+    overshoot = 1.70158;
+  }
+
+  var easeOut = function easeOut(p) {
+    return p ? --p * p * ((overshoot + 1) * p + overshoot) + 1 : 0;
+  },
+      ease = type === "out" ? easeOut : type === "in" ? function (p) {
+    return 1 - easeOut(1 - p);
+  } : _easeInOutFromOut(easeOut);
+
+  ease.config = function (overshoot) {
+    return _configBack(type, overshoot);
+  };
+
+  return ease;
+}; // a cheaper (kb and cpu) but more mild way to get a parameterized weighted ease by feeding in a value between -1 (easeIn) and 1 (easeOut) where 0 is linear.
+// _weightedEase = ratio => {
+// 	let y = 0.5 + ratio / 2;
+// 	return p => (2 * (1 - p) * p * y + p * p);
+// },
+// a stronger (but more expensive kb/cpu) parameterized weighted ease that lets you feed in a value between -1 (easeIn) and 1 (easeOut) where 0 is linear.
+// _weightedEaseStrong = ratio => {
+// 	ratio = .5 + ratio / 2;
+// 	let o = 1 / 3 * (ratio < .5 ? ratio : 1 - ratio),
+// 		b = ratio - o,
+// 		c = ratio + o;
+// 	return p => p === 1 ? p : 3 * b * (1 - p) * (1 - p) * p + 3 * c * (1 - p) * p * p + p * p * p;
+// };
+
+
+_forEachName("Linear,Quad,Cubic,Quart,Quint,Strong", function (name, i) {
+  var power = i < 5 ? i + 1 : i;
+
+  _insertEase(name + ",Power" + (power - 1), i ? function (p) {
+    return Math.pow(p, power);
+  } : function (p) {
+    return p;
+  }, function (p) {
+    return 1 - Math.pow(1 - p, power);
+  }, function (p) {
+    return p < .5 ? Math.pow(p * 2, power) / 2 : 1 - Math.pow((1 - p) * 2, power) / 2;
+  });
+});
+
+_easeMap.Linear.easeNone = _easeMap.none = _easeMap.Linear.easeIn;
+
+_insertEase("Elastic", _configElastic("in"), _configElastic("out"), _configElastic());
+
+(function (n, c) {
+  var n1 = 1 / c,
+      n2 = 2 * n1,
+      n3 = 2.5 * n1,
+      easeOut = function easeOut(p) {
+    return p < n1 ? n * p * p : p < n2 ? n * Math.pow(p - 1.5 / c, 2) + .75 : p < n3 ? n * (p -= 2.25 / c) * p + .9375 : n * Math.pow(p - 2.625 / c, 2) + .984375;
+  };
+
+  _insertEase("Bounce", function (p) {
+    return 1 - easeOut(1 - p);
+  }, easeOut);
+})(7.5625, 2.75);
+
+_insertEase("Expo", function (p) {
+  return p ? Math.pow(2, 10 * (p - 1)) : 0;
+});
+
+_insertEase("Circ", function (p) {
+  return -(_sqrt(1 - p * p) - 1);
+});
+
+_insertEase("Sine", function (p) {
+  return p === 1 ? 1 : -_cos(p * _HALF_PI) + 1;
+});
+
+_insertEase("Back", _configBack("in"), _configBack("out"), _configBack());
+
+_easeMap.SteppedEase = _easeMap.steps = _globals.SteppedEase = {
+  config: function config(steps, immediateStart) {
+    if (steps === void 0) {
+      steps = 1;
+    }
+
+    var p1 = 1 / steps,
+        p2 = steps + (immediateStart ? 0 : 1),
+        p3 = immediateStart ? 1 : 0,
+        max = 1 - _tinyNum;
+    return function (p) {
+      return ((p2 * _clamp(0, max, p) | 0) + p3) * p1;
+    };
+  }
+};
+_defaults.ease = _easeMap["quad.out"];
+
+_forEachName("onComplete,onUpdate,onStart,onRepeat,onReverseComplete,onInterrupt", function (name) {
+  return _callbackNames += name + "," + name + "Params,";
+});
+/*
+ * --------------------------------------------------------------------------------------
+ * CACHE
+ * --------------------------------------------------------------------------------------
+ */
+
+
+var GSCache = function GSCache(target, harness) {
+  this.id = _gsID++;
+  target._gsap = this;
+  this.target = target;
+  this.harness = harness;
+  this.get = harness ? harness.get : _getProperty;
+  this.set = harness ? harness.getSetter : _getSetter;
+};
+/*
+ * --------------------------------------------------------------------------------------
+ * ANIMATION
+ * --------------------------------------------------------------------------------------
+ */
+
+var gsap_core_Animation = /*#__PURE__*/function () {
+  function Animation(vars) {
+    this.vars = vars;
+    this._delay = +vars.delay || 0;
+
+    if (this._repeat = vars.repeat === Infinity ? -2 : vars.repeat || 0) {
+      // TODO: repeat: Infinity on a timeline's children must flag that timeline internally and affect its totalDuration, otherwise it'll stop in the negative direction when reaching the start.
+      this._rDelay = vars.repeatDelay || 0;
+      this._yoyo = !!vars.yoyo || !!vars.yoyoEase;
+    }
+
+    this._ts = 1;
+
+    _setDuration(this, +vars.duration, 1, 1);
+
+    this.data = vars.data;
+
+    if (_context) {
+      this._ctx = _context;
+
+      _context.data.push(this);
+    }
+
+    _tickerActive || _ticker.wake();
+  }
+
+  var _proto = Animation.prototype;
+
+  _proto.delay = function delay(value) {
+    if (value || value === 0) {
+      this.parent && this.parent.smoothChildTiming && this.startTime(this._start + value - this._delay);
+      this._delay = value;
+      return this;
+    }
+
+    return this._delay;
+  };
+
+  _proto.duration = function duration(value) {
+    return arguments.length ? this.totalDuration(this._repeat > 0 ? value + (value + this._rDelay) * this._repeat : value) : this.totalDuration() && this._dur;
+  };
+
+  _proto.totalDuration = function totalDuration(value) {
+    if (!arguments.length) {
+      return this._tDur;
+    }
+
+    this._dirty = 0;
+    return _setDuration(this, this._repeat < 0 ? value : (value - this._repeat * this._rDelay) / (this._repeat + 1));
+  };
+
+  _proto.totalTime = function totalTime(_totalTime, suppressEvents) {
+    _wake();
+
+    if (!arguments.length) {
+      return this._tTime;
+    }
+
+    var parent = this._dp;
+
+    if (parent && parent.smoothChildTiming && this._ts) {
+      _alignPlayhead(this, _totalTime);
+
+      !parent._dp || parent.parent || _postAddChecks(parent, this); // edge case: if this is a child of a timeline that already completed, for example, we must re-activate the parent.
+      //in case any of the ancestor timelines had completed but should now be enabled, we should reset their totalTime() which will also ensure that they're lined up properly and enabled. Skip for animations that are on the root (wasteful). Example: a TimelineLite.exportRoot() is performed when there's a paused tween on the root, the export will not complete until that tween is unpaused, but imagine a child gets restarted later, after all [unpaused] tweens have completed. The start of that child would get pushed out, but one of the ancestors may have completed.
+
+      while (parent && parent.parent) {
+        if (parent.parent._time !== parent._start + (parent._ts >= 0 ? parent._tTime / parent._ts : (parent.totalDuration() - parent._tTime) / -parent._ts)) {
+          parent.totalTime(parent._tTime, true);
+        }
+
+        parent = parent.parent;
+      }
+
+      if (!this.parent && this._dp.autoRemoveChildren && (this._ts > 0 && _totalTime < this._tDur || this._ts < 0 && _totalTime > 0 || !this._tDur && !_totalTime)) {
+        //if the animation doesn't have a parent, put it back into its last parent (recorded as _dp for exactly cases like this). Limit to parents with autoRemoveChildren (like globalTimeline) so that if the user manually removes an animation from a timeline and then alters its playhead, it doesn't get added back in.
+        _addToTimeline(this._dp, this, this._start - this._delay);
+      }
+    }
+
+    if (this._tTime !== _totalTime || !this._dur && !suppressEvents || this._initted && Math.abs(this._zTime) === _tinyNum || !_totalTime && !this._initted && (this.add || this._ptLookup)) {
+      // check for _ptLookup on a Tween instance to ensure it has actually finished being instantiated, otherwise if this.reverse() gets called in the Animation constructor, it could trigger a render() here even though the _targets weren't populated, thus when _init() is called there won't be any PropTweens (it'll act like the tween is non-functional)
+      this._ts || (this._pTime = _totalTime); // otherwise, if an animation is paused, then the playhead is moved back to zero, then resumed, it'd revert back to the original time at the pause
+      //if (!this._lock) { // avoid endless recursion (not sure we need this yet or if it's worth the performance hit)
+      //   this._lock = 1;
+
+      _lazySafeRender(this, _totalTime, suppressEvents); //   this._lock = 0;
+      //}
+
+    }
+
+    return this;
+  };
+
+  _proto.time = function time(value, suppressEvents) {
+    return arguments.length ? this.totalTime(Math.min(this.totalDuration(), value + _elapsedCycleDuration(this)) % (this._dur + this._rDelay) || (value ? this._dur : 0), suppressEvents) : this._time; // note: if the modulus results in 0, the playhead could be exactly at the end or the beginning, and we always defer to the END with a non-zero value, otherwise if you set the time() to the very end (duration()), it would render at the START!
+  };
+
+  _proto.totalProgress = function totalProgress(value, suppressEvents) {
+    return arguments.length ? this.totalTime(this.totalDuration() * value, suppressEvents) : this.totalDuration() ? Math.min(1, this._tTime / this._tDur) : this.rawTime() > 0 ? 1 : 0;
+  };
+
+  _proto.progress = function progress(value, suppressEvents) {
+    return arguments.length ? this.totalTime(this.duration() * (this._yoyo && !(this.iteration() & 1) ? 1 - value : value) + _elapsedCycleDuration(this), suppressEvents) : this.duration() ? Math.min(1, this._time / this._dur) : this.rawTime() > 0 ? 1 : 0;
+  };
+
+  _proto.iteration = function iteration(value, suppressEvents) {
+    var cycleDuration = this.duration() + this._rDelay;
+
+    return arguments.length ? this.totalTime(this._time + (value - 1) * cycleDuration, suppressEvents) : this._repeat ? _animationCycle(this._tTime, cycleDuration) + 1 : 1;
+  } // potential future addition:
+  // isPlayingBackwards() {
+  // 	let animation = this,
+  // 		orientation = 1; // 1 = forward, -1 = backward
+  // 	while (animation) {
+  // 		orientation *= animation.reversed() || (animation.repeat() && !(animation.iteration() & 1)) ? -1 : 1;
+  // 		animation = animation.parent;
+  // 	}
+  // 	return orientation < 0;
+  // }
+  ;
+
+  _proto.timeScale = function timeScale(value, suppressEvents) {
+    if (!arguments.length) {
+      return this._rts === -_tinyNum ? 0 : this._rts; // recorded timeScale. Special case: if someone calls reverse() on an animation with timeScale of 0, we assign it -_tinyNum to remember it's reversed.
+    }
+
+    if (this._rts === value) {
+      return this;
+    }
+
+    var tTime = this.parent && this._ts ? _parentToChildTotalTime(this.parent._time, this) : this._tTime; // make sure to do the parentToChildTotalTime() BEFORE setting the new _ts because the old one must be used in that calculation.
+    // future addition? Up side: fast and minimal file size. Down side: only works on this animation; if a timeline is reversed, for example, its childrens' onReverse wouldn't get called.
+    //(+value < 0 && this._rts >= 0) && _callback(this, "onReverse", true);
+    // prioritize rendering where the parent's playhead lines up instead of this._tTime because there could be a tween that's animating another tween's timeScale in the same rendering loop (same parent), thus if the timeScale tween renders first, it would alter _start BEFORE _tTime was set on that tick (in the rendering loop), effectively freezing it until the timeScale tween finishes.
+
+    this._rts = +value || 0;
+    this._ts = this._ps || value === -_tinyNum ? 0 : this._rts; // _ts is the functional timeScale which would be 0 if the animation is paused.
+
+    this.totalTime(_clamp(-Math.abs(this._delay), this._tDur, tTime), suppressEvents !== false);
+
+    _setEnd(this); // if parent.smoothChildTiming was false, the end time didn't get updated in the _alignPlayhead() method, so do it here.
+
+
+    return _recacheAncestors(this);
+  };
+
+  _proto.paused = function paused(value) {
+    if (!arguments.length) {
+      return this._ps;
+    }
+
+    if (this._ps !== value) {
+      this._ps = value;
+
+      if (value) {
+        this._pTime = this._tTime || Math.max(-this._delay, this.rawTime()); // if the pause occurs during the delay phase, make sure that's factored in when resuming.
+
+        this._ts = this._act = 0; // _ts is the functional timeScale, so a paused tween would effectively have a timeScale of 0. We record the "real" timeScale as _rts (recorded time scale)
+      } else {
+        _wake();
+
+        this._ts = this._rts; //only defer to _pTime (pauseTime) if tTime is zero. Remember, someone could pause() an animation, then scrub the playhead and resume(). If the parent doesn't have smoothChildTiming, we render at the rawTime() because the startTime won't get updated.
+
+        this.totalTime(this.parent && !this.parent.smoothChildTiming ? this.rawTime() : this._tTime || this._pTime, this.progress() === 1 && Math.abs(this._zTime) !== _tinyNum && (this._tTime -= _tinyNum)); // edge case: animation.progress(1).pause().play() wouldn't render again because the playhead is already at the end, but the call to totalTime() below will add it back to its parent...and not remove it again (since removing only happens upon rendering at a new time). Offsetting the _tTime slightly is done simply to cause the final render in totalTime() that'll pop it off its timeline (if autoRemoveChildren is true, of course). Check to make sure _zTime isn't -_tinyNum to avoid an edge case where the playhead is pushed to the end but INSIDE a tween/callback, the timeline itself is paused thus halting rendering and leaving a few unrendered. When resuming, it wouldn't render those otherwise.
+      }
+    }
+
+    return this;
+  };
+
+  _proto.startTime = function startTime(value) {
+    if (arguments.length) {
+      this._start = value;
+      var parent = this.parent || this._dp;
+      parent && (parent._sort || !this.parent) && _addToTimeline(parent, this, value - this._delay);
+      return this;
+    }
+
+    return this._start;
+  };
+
+  _proto.endTime = function endTime(includeRepeats) {
+    return this._start + (_isNotFalse(includeRepeats) ? this.totalDuration() : this.duration()) / Math.abs(this._ts || 1);
+  };
+
+  _proto.rawTime = function rawTime(wrapRepeats) {
+    var parent = this.parent || this._dp; // _dp = detached parent
+
+    return !parent ? this._tTime : wrapRepeats && (!this._ts || this._repeat && this._time && this.totalProgress() < 1) ? this._tTime % (this._dur + this._rDelay) : !this._ts ? this._tTime : _parentToChildTotalTime(parent.rawTime(wrapRepeats), this);
+  };
+
+  _proto.revert = function revert(config) {
+    if (config === void 0) {
+      config = _revertConfig;
+    }
+
+    var prevIsReverting = _reverting;
+    _reverting = config;
+
+    if (this._initted || this._startAt) {
+      this.timeline && this.timeline.revert(config);
+      this.totalTime(-0.01, config.suppressEvents);
+    }
+
+    this.data !== "nested" && config.kill !== false && this.kill();
+    _reverting = prevIsReverting;
+    return this;
+  };
+
+  _proto.globalTime = function globalTime(rawTime) {
+    var animation = this,
+        time = arguments.length ? rawTime : animation.rawTime();
+
+    while (animation) {
+      time = animation._start + time / (Math.abs(animation._ts) || 1);
+      animation = animation._dp;
+    }
+
+    return !this.parent && this._sat ? this._sat.globalTime(rawTime) : time; // the _startAt tweens for .fromTo() and .from() that have immediateRender should always be FIRST in the timeline (important for context.revert()). "_sat" stands for _startAtTween, referring to the parent tween that created the _startAt. We must discern if that tween had immediateRender so that we can know whether or not to prioritize it in revert().
+  };
+
+  _proto.repeat = function repeat(value) {
+    if (arguments.length) {
+      this._repeat = value === Infinity ? -2 : value;
+      return _onUpdateTotalDuration(this);
+    }
+
+    return this._repeat === -2 ? Infinity : this._repeat;
+  };
+
+  _proto.repeatDelay = function repeatDelay(value) {
+    if (arguments.length) {
+      var time = this._time;
+      this._rDelay = value;
+
+      _onUpdateTotalDuration(this);
+
+      return time ? this.time(time) : this;
+    }
+
+    return this._rDelay;
+  };
+
+  _proto.yoyo = function yoyo(value) {
+    if (arguments.length) {
+      this._yoyo = value;
+      return this;
+    }
+
+    return this._yoyo;
+  };
+
+  _proto.seek = function seek(position, suppressEvents) {
+    return this.totalTime(_parsePosition(this, position), _isNotFalse(suppressEvents));
+  };
+
+  _proto.restart = function restart(includeDelay, suppressEvents) {
+    return this.play().totalTime(includeDelay ? -this._delay : 0, _isNotFalse(suppressEvents));
+  };
+
+  _proto.play = function play(from, suppressEvents) {
+    from != null && this.seek(from, suppressEvents);
+    return this.reversed(false).paused(false);
+  };
+
+  _proto.reverse = function reverse(from, suppressEvents) {
+    from != null && this.seek(from || this.totalDuration(), suppressEvents);
+    return this.reversed(true).paused(false);
+  };
+
+  _proto.pause = function pause(atTime, suppressEvents) {
+    atTime != null && this.seek(atTime, suppressEvents);
+    return this.paused(true);
+  };
+
+  _proto.resume = function resume() {
+    return this.paused(false);
+  };
+
+  _proto.reversed = function reversed(value) {
+    if (arguments.length) {
+      !!value !== this.reversed() && this.timeScale(-this._rts || (value ? -_tinyNum : 0)); // in case timeScale is zero, reversing would have no effect so we use _tinyNum.
+
+      return this;
+    }
+
+    return this._rts < 0;
+  };
+
+  _proto.invalidate = function invalidate() {
+    this._initted = this._act = 0;
+    this._zTime = -_tinyNum;
+    return this;
+  };
+
+  _proto.isActive = function isActive() {
+    var parent = this.parent || this._dp,
+        start = this._start,
+        rawTime;
+    return !!(!parent || this._ts && this._initted && parent.isActive() && (rawTime = parent.rawTime(true)) >= start && rawTime < this.endTime(true) - _tinyNum);
+  };
+
+  _proto.eventCallback = function eventCallback(type, callback, params) {
+    var vars = this.vars;
+
+    if (arguments.length > 1) {
+      if (!callback) {
+        delete vars[type];
+      } else {
+        vars[type] = callback;
+        params && (vars[type + "Params"] = params);
+        type === "onUpdate" && (this._onUpdate = callback);
+      }
+
+      return this;
+    }
+
+    return vars[type];
+  };
+
+  _proto.then = function then(onFulfilled) {
+    var self = this;
+    return new Promise(function (resolve) {
+      var f = _isFunction(onFulfilled) ? onFulfilled : _passThrough,
+          _resolve = function _resolve() {
+        var _then = self.then;
+        self.then = null; // temporarily null the then() method to avoid an infinite loop (see https://github.com/greensock/GSAP/issues/322)
+
+        _isFunction(f) && (f = f(self)) && (f.then || f === self) && (self.then = _then);
+        resolve(f);
+        self.then = _then;
+      };
+
+      if (self._initted && self.totalProgress() === 1 && self._ts >= 0 || !self._tTime && self._ts < 0) {
+        _resolve();
+      } else {
+        self._prom = _resolve;
       }
     });
-  });
-}
-function addSpine(spine, addedSpine, spineSetting, attachmentArr) {
-  addedSpine = addSpineToApp({
-    app,
-    spineDate: spine.spine,
-    ...spineSetting.spineSetting
-  });
-  let ChangeAttachmentArr = spineSetting.ChangeAttachment;
-  if (attachmentArr) {
-    addedSpine.skeleton.slots.forEach(slot => {
-      slot.attachment = null;
-    });
-    attachmentArr.forEach(attachment => {
-      addedSpine.skeleton.setAttachment(attachment.slotName, attachment.attachmentName);
-    });
+  };
+
+  _proto.kill = function kill() {
+    _interrupt(this);
+  };
+
+  return Animation;
+}();
+
+_setDefaults(gsap_core_Animation.prototype, {
+  _time: 0,
+  _start: 0,
+  _end: 0,
+  _tTime: 0,
+  _tDur: 0,
+  _dirty: 0,
+  _repeat: 0,
+  _yoyo: false,
+  parent: null,
+  _initted: false,
+  _rDelay: 0,
+  _ts: 1,
+  _dp: 0,
+  ratio: 0,
+  _zTime: -_tinyNum,
+  _prom: 0,
+  _ps: false,
+  _rts: 1
+});
+/*
+ * -------------------------------------------------
+ * TIMELINE
+ * -------------------------------------------------
+ */
+
+
+var gsap_core_Timeline = /*#__PURE__*/function (_Animation) {
+  _inheritsLoose(Timeline, _Animation);
+
+  function Timeline(vars, position) {
+    var _this;
+
+    if (vars === void 0) {
+      vars = {};
+    }
+
+    _this = _Animation.call(this, vars) || this;
+    _this.labels = {};
+    _this.smoothChildTiming = !!vars.smoothChildTiming;
+    _this.autoRemoveChildren = !!vars.autoRemoveChildren;
+    _this._sort = _isNotFalse(vars.sortChildren);
+    _globalTimeline && _addToTimeline(vars.parent || _globalTimeline, _assertThisInitialized(_this), position);
+    vars.reversed && _this.reverse();
+    vars.paused && _this.paused(true);
+    vars.scrollTrigger && _scrollTrigger(_assertThisInitialized(_this), vars.scrollTrigger);
+    return _this;
   }
-  if (ChangeAttachmentArr) {
-    addedSpine.skeleton.slots.forEach(slot => {
-      slot.attachment = null;
-    });
-    changeAttachment(ChangeAttachmentArr, addedSpine);
+
+  var _proto2 = Timeline.prototype;
+
+  _proto2.to = function to(targets, vars, position) {
+    _createTweenType(0, arguments, this);
+
+    return this;
+  };
+
+  _proto2.from = function from(targets, vars, position) {
+    _createTweenType(1, arguments, this);
+
+    return this;
+  };
+
+  _proto2.fromTo = function fromTo(targets, fromVars, toVars, position) {
+    _createTweenType(2, arguments, this);
+
+    return this;
+  };
+
+  _proto2.set = function set(targets, vars, position) {
+    vars.duration = 0;
+    vars.parent = this;
+    _inheritDefaults(vars).repeatDelay || (vars.repeat = 0);
+    vars.immediateRender = !!vars.immediateRender;
+    new Tween(targets, vars, _parsePosition(this, position), 1);
+    return this;
+  };
+
+  _proto2.call = function call(callback, params, position) {
+    return _addToTimeline(this, Tween.delayedCall(0, callback, params), position);
+  } //ONLY for backward compatibility! Maybe delete?
+  ;
+
+  _proto2.staggerTo = function staggerTo(targets, duration, vars, stagger, position, onCompleteAll, onCompleteAllParams) {
+    vars.duration = duration;
+    vars.stagger = vars.stagger || stagger;
+    vars.onComplete = onCompleteAll;
+    vars.onCompleteParams = onCompleteAllParams;
+    vars.parent = this;
+    new Tween(targets, vars, _parsePosition(this, position));
+    return this;
+  };
+
+  _proto2.staggerFrom = function staggerFrom(targets, duration, vars, stagger, position, onCompleteAll, onCompleteAllParams) {
+    vars.runBackwards = 1;
+    _inheritDefaults(vars).immediateRender = _isNotFalse(vars.immediateRender);
+    return this.staggerTo(targets, duration, vars, stagger, position, onCompleteAll, onCompleteAllParams);
+  };
+
+  _proto2.staggerFromTo = function staggerFromTo(targets, duration, fromVars, toVars, stagger, position, onCompleteAll, onCompleteAllParams) {
+    toVars.startAt = fromVars;
+    _inheritDefaults(toVars).immediateRender = _isNotFalse(toVars.immediateRender);
+    return this.staggerTo(targets, duration, toVars, stagger, position, onCompleteAll, onCompleteAllParams);
+  };
+
+  _proto2.render = function render(totalTime, suppressEvents, force) {
+    var prevTime = this._time,
+        tDur = this._dirty ? this.totalDuration() : this._tDur,
+        dur = this._dur,
+        tTime = totalTime <= 0 ? 0 : _roundPrecise(totalTime),
+        // if a paused timeline is resumed (or its _start is updated for another reason...which rounds it), that could result in the playhead shifting a **tiny** amount and a zero-duration child at that spot may get rendered at a different ratio, like its totalTime in render() may be 1e-17 instead of 0, for example.
+    crossingStart = this._zTime < 0 !== totalTime < 0 && (this._initted || !dur),
+        time,
+        child,
+        next,
+        iteration,
+        cycleDuration,
+        prevPaused,
+        pauseTween,
+        timeScale,
+        prevStart,
+        prevIteration,
+        yoyo,
+        isYoyo;
+    this !== _globalTimeline && tTime > tDur && totalTime >= 0 && (tTime = tDur);
+
+    if (tTime !== this._tTime || force || crossingStart) {
+      if (prevTime !== this._time && dur) {
+        //if totalDuration() finds a child with a negative startTime and smoothChildTiming is true, things get shifted around internally so we need to adjust the time accordingly. For example, if a tween starts at -30 we must shift EVERYTHING forward 30 seconds and move this timeline's startTime backward by 30 seconds so that things align with the playhead (no jump).
+        tTime += this._time - prevTime;
+        totalTime += this._time - prevTime;
+      }
+
+      time = tTime;
+      prevStart = this._start;
+      timeScale = this._ts;
+      prevPaused = !timeScale;
+
+      if (crossingStart) {
+        dur || (prevTime = this._zTime); //when the playhead arrives at EXACTLY time 0 (right on top) of a zero-duration timeline, we need to discern if events are suppressed so that when the playhead moves again (next time), it'll trigger the callback. If events are NOT suppressed, obviously the callback would be triggered in this render. Basically, the callback should fire either when the playhead ARRIVES or LEAVES this exact spot, not both. Imagine doing a timeline.seek(0) and there's a callback that sits at 0. Since events are suppressed on that seek() by default, nothing will fire, but when the playhead moves off of that position, the callback should fire. This behavior is what people intuitively expect.
+
+        (totalTime || !suppressEvents) && (this._zTime = totalTime);
+      }
+
+      if (this._repeat) {
+        //adjust the time for repeats and yoyos
+        yoyo = this._yoyo;
+        cycleDuration = dur + this._rDelay;
+
+        if (this._repeat < -1 && totalTime < 0) {
+          return this.totalTime(cycleDuration * 100 + totalTime, suppressEvents, force);
+        }
+
+        time = _roundPrecise(tTime % cycleDuration); //round to avoid floating point errors. (4 % 0.8 should be 0 but some browsers report it as 0.79999999!)
+
+        if (tTime === tDur) {
+          // the tDur === tTime is for edge cases where there's a lengthy decimal on the duration and it may reach the very end but the time is rendered as not-quite-there (remember, tDur is rounded to 4 decimals whereas dur isn't)
+          iteration = this._repeat;
+          time = dur;
+        } else {
+          iteration = ~~(tTime / cycleDuration);
+
+          if (iteration && iteration === tTime / cycleDuration) {
+            time = dur;
+            iteration--;
+          }
+
+          time > dur && (time = dur);
+        }
+
+        prevIteration = _animationCycle(this._tTime, cycleDuration);
+        !prevTime && this._tTime && prevIteration !== iteration && this._tTime - prevIteration * cycleDuration - this._dur <= 0 && (prevIteration = iteration); // edge case - if someone does addPause() at the very beginning of a repeating timeline, that pause is technically at the same spot as the end which causes this._time to get set to 0 when the totalTime would normally place the playhead at the end. See https://gsap.com/forums/topic/23823-closing-nav-animation-not-working-on-ie-and-iphone-6-maybe-other-older-browser/?tab=comments#comment-113005 also, this._tTime - prevIteration * cycleDuration - this._dur <= 0 just checks to make sure it wasn't previously in the "repeatDelay" portion
+
+        if (yoyo && iteration & 1) {
+          time = dur - time;
+          isYoyo = 1;
+        }
+        /*
+        make sure children at the end/beginning of the timeline are rendered properly. If, for example,
+        a 3-second long timeline rendered at 2.9 seconds previously, and now renders at 3.2 seconds (which
+        would get translated to 2.8 seconds if the timeline yoyos or 0.2 seconds if it just repeats), there
+        could be a callback or a short tween that's at 2.95 or 3 seconds in which wouldn't render. So
+        we need to push the timeline to the end (and/or beginning depending on its yoyo value). Also we must
+        ensure that zero-duration tweens at the very beginning or end of the Timeline work.
+        */
+
+
+        if (iteration !== prevIteration && !this._lock) {
+          var rewinding = yoyo && prevIteration & 1,
+              doesWrap = rewinding === (yoyo && iteration & 1);
+          iteration < prevIteration && (rewinding = !rewinding);
+          prevTime = rewinding ? 0 : tTime % dur ? dur : tTime; // if the playhead is landing exactly at the end of an iteration, use that totalTime rather than only the duration, otherwise it'll skip the 2nd render since it's effectively at the same time.
+
+          this._lock = 1;
+          this.render(prevTime || (isYoyo ? 0 : _roundPrecise(iteration * cycleDuration)), suppressEvents, !dur)._lock = 0;
+          this._tTime = tTime; // if a user gets the iteration() inside the onRepeat, for example, it should be accurate.
+
+          !suppressEvents && this.parent && _callback(this, "onRepeat");
+          this.vars.repeatRefresh && !isYoyo && (this.invalidate()._lock = 1);
+
+          if (prevTime && prevTime !== this._time || prevPaused !== !this._ts || this.vars.onRepeat && !this.parent && !this._act) {
+            // if prevTime is 0 and we render at the very end, _time will be the end, thus won't match. So in this edge case, prevTime won't match _time but that's okay. If it gets killed in the onRepeat, eject as well.
+            return this;
+          }
+
+          dur = this._dur; // in case the duration changed in the onRepeat
+
+          tDur = this._tDur;
+
+          if (doesWrap) {
+            this._lock = 2;
+            prevTime = rewinding ? dur : -0.0001;
+            this.render(prevTime, true);
+            this.vars.repeatRefresh && !isYoyo && this.invalidate();
+          }
+
+          this._lock = 0;
+
+          if (!this._ts && !prevPaused) {
+            return this;
+          } //in order for yoyoEase to work properly when there's a stagger, we must swap out the ease in each sub-tween.
+
+
+          _propagateYoyoEase(this, isYoyo);
+        }
+      }
+
+      if (this._hasPause && !this._forcing && this._lock < 2) {
+        pauseTween = _findNextPauseTween(this, _roundPrecise(prevTime), _roundPrecise(time));
+
+        if (pauseTween) {
+          tTime -= time - (time = pauseTween._start);
+        }
+      }
+
+      this._tTime = tTime;
+      this._time = time;
+      this._act = !timeScale; //as long as it's not paused, force it to be active so that if the user renders independent of the parent timeline, it'll be forced to re-render on the next tick.
+
+      if (!this._initted) {
+        this._onUpdate = this.vars.onUpdate;
+        this._initted = 1;
+        this._zTime = totalTime;
+        prevTime = 0; // upon init, the playhead should always go forward; someone could invalidate() a completed timeline and then if they restart(), that would make child tweens render in reverse order which could lock in the wrong starting values if they build on each other, like tl.to(obj, {x: 100}).to(obj, {x: 0}).
+      }
+
+      if (!prevTime && time && !suppressEvents && !iteration) {
+        _callback(this, "onStart");
+
+        if (this._tTime !== tTime) {
+          // in case the onStart triggered a render at a different spot, eject. Like if someone did animation.pause(0.5) or something inside the onStart.
+          return this;
+        }
+      }
+
+      if (time >= prevTime && totalTime >= 0) {
+        child = this._first;
+
+        while (child) {
+          next = child._next;
+
+          if ((child._act || time >= child._start) && child._ts && pauseTween !== child) {
+            if (child.parent !== this) {
+              // an extreme edge case - the child's render could do something like kill() the "next" one in the linked list, or reparent it. In that case we must re-initiate the whole render to be safe.
+              return this.render(totalTime, suppressEvents, force);
+            }
+
+            child.render(child._ts > 0 ? (time - child._start) * child._ts : (child._dirty ? child.totalDuration() : child._tDur) + (time - child._start) * child._ts, suppressEvents, force);
+
+            if (time !== this._time || !this._ts && !prevPaused) {
+              //in case a tween pauses or seeks the timeline when rendering, like inside of an onUpdate/onComplete
+              pauseTween = 0;
+              next && (tTime += this._zTime = -_tinyNum); // it didn't finish rendering, so flag zTime as negative so that so that the next time render() is called it'll be forced (to render any remaining children)
+
+              break;
+            }
+          }
+
+          child = next;
+        }
+      } else {
+        child = this._last;
+        var adjustedTime = totalTime < 0 ? totalTime : time; //when the playhead goes backward beyond the start of this timeline, we must pass that information down to the child animations so that zero-duration tweens know whether to render their starting or ending values.
+
+        while (child) {
+          next = child._prev;
+
+          if ((child._act || adjustedTime <= child._end) && child._ts && pauseTween !== child) {
+            if (child.parent !== this) {
+              // an extreme edge case - the child's render could do something like kill() the "next" one in the linked list, or reparent it. In that case we must re-initiate the whole render to be safe.
+              return this.render(totalTime, suppressEvents, force);
+            }
+
+            child.render(child._ts > 0 ? (adjustedTime - child._start) * child._ts : (child._dirty ? child.totalDuration() : child._tDur) + (adjustedTime - child._start) * child._ts, suppressEvents, force || _reverting && (child._initted || child._startAt)); // if reverting, we should always force renders of initted tweens (but remember that .fromTo() or .from() may have a _startAt but not _initted yet). If, for example, a .fromTo() tween with a stagger (which creates an internal timeline) gets reverted BEFORE some of its child tweens render for the first time, it may not properly trigger them to revert.
+
+            if (time !== this._time || !this._ts && !prevPaused) {
+              //in case a tween pauses or seeks the timeline when rendering, like inside of an onUpdate/onComplete
+              pauseTween = 0;
+              next && (tTime += this._zTime = adjustedTime ? -_tinyNum : _tinyNum); // it didn't finish rendering, so adjust zTime so that so that the next time render() is called it'll be forced (to render any remaining children)
+
+              break;
+            }
+          }
+
+          child = next;
+        }
+      }
+
+      if (pauseTween && !suppressEvents) {
+        this.pause();
+        pauseTween.render(time >= prevTime ? 0 : -_tinyNum)._zTime = time >= prevTime ? 1 : -1;
+
+        if (this._ts) {
+          //the callback resumed playback! So since we may have held back the playhead due to where the pause is positioned, go ahead and jump to where it's SUPPOSED to be (if no pause happened).
+          this._start = prevStart; //if the pause was at an earlier time and the user resumed in the callback, it could reposition the timeline (changing its startTime), throwing things off slightly, so we make sure the _start doesn't shift.
+
+          _setEnd(this);
+
+          return this.render(totalTime, suppressEvents, force);
+        }
+      }
+
+      this._onUpdate && !suppressEvents && _callback(this, "onUpdate", true);
+      if (tTime === tDur && this._tTime >= this.totalDuration() || !tTime && prevTime) if (prevStart === this._start || Math.abs(timeScale) !== Math.abs(this._ts)) if (!this._lock) {
+        // remember, a child's callback may alter this timeline's playhead or timeScale which is why we need to add some of these checks.
+        (totalTime || !dur) && (tTime === tDur && this._ts > 0 || !tTime && this._ts < 0) && _removeFromParent(this, 1); // don't remove if the timeline is reversed and the playhead isn't at 0, otherwise tl.progress(1).reverse() won't work. Only remove if the playhead is at the end and timeScale is positive, or if the playhead is at 0 and the timeScale is negative.
+
+        if (!suppressEvents && !(totalTime < 0 && !prevTime) && (tTime || prevTime || !tDur)) {
+          _callback(this, tTime === tDur && totalTime >= 0 ? "onComplete" : "onReverseComplete", true);
+
+          this._prom && !(tTime < tDur && this.timeScale() > 0) && this._prom();
+        }
+      }
+    }
+
+    return this;
+  };
+
+  _proto2.add = function add(child, position) {
+    var _this2 = this;
+
+    _isNumber(position) || (position = _parsePosition(this, position, child));
+
+    if (!(child instanceof gsap_core_Animation)) {
+      if (_isArray(child)) {
+        child.forEach(function (obj) {
+          return _this2.add(obj, position);
+        });
+        return this;
+      }
+
+      if (_isString(child)) {
+        return this.addLabel(child, position);
+      }
+
+      if (_isFunction(child)) {
+        child = Tween.delayedCall(0, child);
+      } else {
+        return this;
+      }
+    }
+
+    return this !== child ? _addToTimeline(this, child, position) : this; //don't allow a timeline to be added to itself as a child!
+  };
+
+  _proto2.getChildren = function getChildren(nested, tweens, timelines, ignoreBeforeTime) {
+    if (nested === void 0) {
+      nested = true;
+    }
+
+    if (tweens === void 0) {
+      tweens = true;
+    }
+
+    if (timelines === void 0) {
+      timelines = true;
+    }
+
+    if (ignoreBeforeTime === void 0) {
+      ignoreBeforeTime = -_bigNum;
+    }
+
+    var a = [],
+        child = this._first;
+
+    while (child) {
+      if (child._start >= ignoreBeforeTime) {
+        if (child instanceof Tween) {
+          tweens && a.push(child);
+        } else {
+          timelines && a.push(child);
+          nested && a.push.apply(a, child.getChildren(true, tweens, timelines));
+        }
+      }
+
+      child = child._next;
+    }
+
+    return a;
+  };
+
+  _proto2.getById = function getById(id) {
+    var animations = this.getChildren(1, 1, 1),
+        i = animations.length;
+
+    while (i--) {
+      if (animations[i].vars.id === id) {
+        return animations[i];
+      }
+    }
+  };
+
+  _proto2.remove = function remove(child) {
+    if (_isString(child)) {
+      return this.removeLabel(child);
+    }
+
+    if (_isFunction(child)) {
+      return this.killTweensOf(child);
+    }
+
+    _removeLinkedListItem(this, child);
+
+    if (child === this._recent) {
+      this._recent = this._last;
+    }
+
+    return _uncache(this);
+  };
+
+  _proto2.totalTime = function totalTime(_totalTime2, suppressEvents) {
+    if (!arguments.length) {
+      return this._tTime;
+    }
+
+    this._forcing = 1;
+
+    if (!this._dp && this._ts) {
+      //special case for the global timeline (or any other that has no parent or detached parent).
+      this._start = _roundPrecise(_ticker.time - (this._ts > 0 ? _totalTime2 / this._ts : (this.totalDuration() - _totalTime2) / -this._ts));
+    }
+
+    _Animation.prototype.totalTime.call(this, _totalTime2, suppressEvents);
+
+    this._forcing = 0;
+    return this;
+  };
+
+  _proto2.addLabel = function addLabel(label, position) {
+    this.labels[label] = _parsePosition(this, position);
+    return this;
+  };
+
+  _proto2.removeLabel = function removeLabel(label) {
+    delete this.labels[label];
+    return this;
+  };
+
+  _proto2.addPause = function addPause(position, callback, params) {
+    var t = Tween.delayedCall(0, callback || _emptyFunc, params);
+    t.data = "isPause";
+    this._hasPause = 1;
+    return _addToTimeline(this, t, _parsePosition(this, position));
+  };
+
+  _proto2.removePause = function removePause(position) {
+    var child = this._first;
+    position = _parsePosition(this, position);
+
+    while (child) {
+      if (child._start === position && child.data === "isPause") {
+        _removeFromParent(child);
+      }
+
+      child = child._next;
+    }
+  };
+
+  _proto2.killTweensOf = function killTweensOf(targets, props, onlyActive) {
+    var tweens = this.getTweensOf(targets, onlyActive),
+        i = tweens.length;
+
+    while (i--) {
+      _overwritingTween !== tweens[i] && tweens[i].kill(targets, props);
+    }
+
+    return this;
+  };
+
+  _proto2.getTweensOf = function getTweensOf(targets, onlyActive) {
+    var a = [],
+        parsedTargets = toArray(targets),
+        child = this._first,
+        isGlobalTime = _isNumber(onlyActive),
+        // a number is interpreted as a global time. If the animation spans
+    children;
+
+    while (child) {
+      if (child instanceof Tween) {
+        if (_arrayContainsAny(child._targets, parsedTargets) && (isGlobalTime ? (!_overwritingTween || child._initted && child._ts) && child.globalTime(0) <= onlyActive && child.globalTime(child.totalDuration()) > onlyActive : !onlyActive || child.isActive())) {
+          // note: if this is for overwriting, it should only be for tweens that aren't paused and are initted.
+          a.push(child);
+        }
+      } else if ((children = child.getTweensOf(parsedTargets, onlyActive)).length) {
+        a.push.apply(a, children);
+      }
+
+      child = child._next;
+    }
+
+    return a;
+  } // potential future feature - targets() on timelines
+  // targets() {
+  // 	let result = [];
+  // 	this.getChildren(true, true, false).forEach(t => result.push(...t.targets()));
+  // 	return result.filter((v, i) => result.indexOf(v) === i);
+  // }
+  ;
+
+  _proto2.tweenTo = function tweenTo(position, vars) {
+    vars = vars || {};
+
+    var tl = this,
+        endTime = _parsePosition(tl, position),
+        _vars = vars,
+        startAt = _vars.startAt,
+        _onStart = _vars.onStart,
+        onStartParams = _vars.onStartParams,
+        immediateRender = _vars.immediateRender,
+        initted,
+        tween = Tween.to(tl, _setDefaults({
+      ease: vars.ease || "none",
+      lazy: false,
+      immediateRender: false,
+      time: endTime,
+      overwrite: "auto",
+      duration: vars.duration || Math.abs((endTime - (startAt && "time" in startAt ? startAt.time : tl._time)) / tl.timeScale()) || _tinyNum,
+      onStart: function onStart() {
+        tl.pause();
+
+        if (!initted) {
+          var duration = vars.duration || Math.abs((endTime - (startAt && "time" in startAt ? startAt.time : tl._time)) / tl.timeScale());
+          tween._dur !== duration && _setDuration(tween, duration, 0, 1).render(tween._time, true, true);
+          initted = 1;
+        }
+
+        _onStart && _onStart.apply(tween, onStartParams || []); //in case the user had an onStart in the vars - we don't want to overwrite it.
+      }
+    }, vars));
+
+    return immediateRender ? tween.render(0) : tween;
+  };
+
+  _proto2.tweenFromTo = function tweenFromTo(fromPosition, toPosition, vars) {
+    return this.tweenTo(toPosition, _setDefaults({
+      startAt: {
+        time: _parsePosition(this, fromPosition)
+      }
+    }, vars));
+  };
+
+  _proto2.recent = function recent() {
+    return this._recent;
+  };
+
+  _proto2.nextLabel = function nextLabel(afterTime) {
+    if (afterTime === void 0) {
+      afterTime = this._time;
+    }
+
+    return _getLabelInDirection(this, _parsePosition(this, afterTime));
+  };
+
+  _proto2.previousLabel = function previousLabel(beforeTime) {
+    if (beforeTime === void 0) {
+      beforeTime = this._time;
+    }
+
+    return _getLabelInDirection(this, _parsePosition(this, beforeTime), 1);
+  };
+
+  _proto2.currentLabel = function currentLabel(value) {
+    return arguments.length ? this.seek(value, true) : this.previousLabel(this._time + _tinyNum);
+  };
+
+  _proto2.shiftChildren = function shiftChildren(amount, adjustLabels, ignoreBeforeTime) {
+    if (ignoreBeforeTime === void 0) {
+      ignoreBeforeTime = 0;
+    }
+
+    var child = this._first,
+        labels = this.labels,
+        p;
+
+    while (child) {
+      if (child._start >= ignoreBeforeTime) {
+        child._start += amount;
+        child._end += amount;
+      }
+
+      child = child._next;
+    }
+
+    if (adjustLabels) {
+      for (p in labels) {
+        if (labels[p] >= ignoreBeforeTime) {
+          labels[p] += amount;
+        }
+      }
+    }
+
+    return _uncache(this);
+  };
+
+  _proto2.invalidate = function invalidate(soft) {
+    var child = this._first;
+    this._lock = 0;
+
+    while (child) {
+      child.invalidate(soft);
+      child = child._next;
+    }
+
+    return _Animation.prototype.invalidate.call(this, soft);
+  };
+
+  _proto2.clear = function clear(includeLabels) {
+    if (includeLabels === void 0) {
+      includeLabels = true;
+    }
+
+    var child = this._first,
+        next;
+
+    while (child) {
+      next = child._next;
+      this.remove(child);
+      child = next;
+    }
+
+    this._dp && (this._time = this._tTime = this._pTime = 0);
+    includeLabels && (this.labels = {});
+    return _uncache(this);
+  };
+
+  _proto2.totalDuration = function totalDuration(value) {
+    var max = 0,
+        self = this,
+        child = self._last,
+        prevStart = _bigNum,
+        prev,
+        start,
+        parent;
+
+    if (arguments.length) {
+      return self.timeScale((self._repeat < 0 ? self.duration() : self.totalDuration()) / (self.reversed() ? -value : value));
+    }
+
+    if (self._dirty) {
+      parent = self.parent;
+
+      while (child) {
+        prev = child._prev; //record it here in case the tween changes position in the sequence...
+
+        child._dirty && child.totalDuration(); //could change the tween._startTime, so make sure the animation's cache is clean before analyzing it.
+
+        start = child._start;
+
+        if (start > prevStart && self._sort && child._ts && !self._lock) {
+          //in case one of the tweens shifted out of order, it needs to be re-inserted into the correct position in the sequence
+          self._lock = 1; //prevent endless recursive calls - there are methods that get triggered that check duration/totalDuration when we add().
+
+          _addToTimeline(self, child, start - child._delay, 1)._lock = 0;
+        } else {
+          prevStart = start;
+        }
+
+        if (start < 0 && child._ts) {
+          //children aren't allowed to have negative startTimes unless smoothChildTiming is true, so adjust here if one is found.
+          max -= start;
+
+          if (!parent && !self._dp || parent && parent.smoothChildTiming) {
+            self._start += start / self._ts;
+            self._time -= start;
+            self._tTime -= start;
+          }
+
+          self.shiftChildren(-start, false, -1e999);
+          prevStart = 0;
+        }
+
+        child._end > max && child._ts && (max = child._end);
+        child = prev;
+      }
+
+      _setDuration(self, self === _globalTimeline && self._time > max ? self._time : max, 1, 1);
+
+      self._dirty = 0;
+    }
+
+    return self._tDur;
+  };
+
+  Timeline.updateRoot = function updateRoot(time) {
+    if (_globalTimeline._ts) {
+      _lazySafeRender(_globalTimeline, _parentToChildTotalTime(time, _globalTimeline));
+
+      _lastRenderedFrame = _ticker.frame;
+    }
+
+    if (_ticker.frame >= _nextGCFrame) {
+      _nextGCFrame += _config.autoSleep || 120;
+      var child = _globalTimeline._first;
+      if (!child || !child._ts) if (_config.autoSleep && _ticker._listeners.length < 2) {
+        while (child && !child._ts) {
+          child = child._next;
+        }
+
+        child || _ticker.sleep();
+      }
+    }
+  };
+
+  return Timeline;
+}(gsap_core_Animation);
+
+_setDefaults(gsap_core_Timeline.prototype, {
+  _lock: 0,
+  _hasPause: 0,
+  _forcing: 0
+});
+
+var _addComplexStringPropTween = function _addComplexStringPropTween(target, prop, start, end, setter, stringFilter, funcParam) {
+  //note: we call _addComplexStringPropTween.call(tweenInstance...) to ensure that it's scoped properly. We may call it from within a plugin too, thus "this" would refer to the plugin.
+  var pt = new PropTween(this._pt, target, prop, 0, 1, _renderComplexString, null, setter),
+      index = 0,
+      matchIndex = 0,
+      result,
+      startNums,
+      color,
+      endNum,
+      chunk,
+      startNum,
+      hasRandom,
+      a;
+  pt.b = start;
+  pt.e = end;
+  start += ""; //ensure values are strings
+
+  end += "";
+
+  if (hasRandom = ~end.indexOf("random(")) {
+    end = _replaceRandom(end);
   }
-  return addedSpine;
-}
-function changeAttachment(ChangeAttachmentSettings, addedSpine) {
-  ChangeAttachmentSettings.forEach(settting => {
-    setTimeout(() => {
-      addedSpine.skeleton.setAttachment(settting.slotName, settting.attachmentName);
-    }, settting.delay || 0);
-  });
-}
-function createSpine(spine, setting) {
-  return create({
-    app,
-    spineDate: spine.spine,
-    idCon: `#spines .spines__box`,
-    ...setting
-  });
-}
-function clearSpine(spineObj, i) {
-  let spine = spineObj.spine.spine;
-  addedSpines.splice(i, 1);
-  if (Array.isArray(spine)) {
-    spine.forEach(spine => {
-      destroySpine(spine);
-    });
-  } else {
-    destroySpine(spine);
+
+  if (stringFilter) {
+    a = [start, end];
+    stringFilter(a, target, prop); //pass an array with the starting and ending values and let the filter do whatever it needs to the values.
+
+    start = a[0];
+    end = a[1];
   }
-}
-function destroySpine(spine) {
-  spine.destroy({
-    texture: false,
-    baseTexture: false,
-    children: true
-  });
-}
-function changeAnimation(spineName, animationName) {
-  let loop = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  addedSpines.forEach(spineObj => {
-    if (spineObj.name !== spineName) return;
-    spineObj.spine.spine.state.setAnimation(0, animationName, loop);
-    if (animationName === '3') {
-      spineObj.spine.spine.state.timeScale = 1.25;
-      spineObj.spine.spine.state.addListener({
-        complete: e => {
-          if (e.animation.name === '4') {
-            spineObj.spine.spine.state.setAnimation(0, '5', true);
+
+  startNums = start.match(_complexStringNumExp) || [];
+
+  while (result = _complexStringNumExp.exec(end)) {
+    endNum = result[0];
+    chunk = end.substring(index, result.index);
+
+    if (color) {
+      color = (color + 1) % 5;
+    } else if (chunk.substr(-5) === "rgba(") {
+      color = 1;
+    }
+
+    if (endNum !== startNums[matchIndex++]) {
+      startNum = parseFloat(startNums[matchIndex - 1]) || 0; //these nested PropTweens are handled in a special way - we'll never actually call a render or setter method on them. We'll just loop through them in the parent complex string PropTween's render method.
+
+      pt._pt = {
+        _next: pt._pt,
+        p: chunk || matchIndex === 1 ? chunk : ",",
+        //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
+        s: startNum,
+        c: endNum.charAt(1) === "=" ? _parseRelative(startNum, endNum) - startNum : parseFloat(endNum) - startNum,
+        m: color && color < 4 ? Math.round : 0
+      };
+      index = _complexStringNumExp.lastIndex;
+    }
+  }
+
+  pt.c = index < end.length ? end.substring(index, end.length) : ""; //we use the "c" of the PropTween to store the final part of the string (after the last number)
+
+  pt.fp = funcParam;
+
+  if (_relExp.test(end) || hasRandom) {
+    pt.e = 0; //if the end string contains relative values or dynamic random(...) values, delete the end it so that on the final render we don't actually set it to the string with += or -= characters (forces it to use the calculated value).
+  }
+
+  this._pt = pt; //start the linked list with this new PropTween. Remember, we call _addComplexStringPropTween.call(tweenInstance...) to ensure that it's scoped properly. We may call it from within a plugin too, thus "this" would refer to the plugin.
+
+  return pt;
+},
+    _addPropTween = function _addPropTween(target, prop, start, end, index, targets, modifier, stringFilter, funcParam, optional) {
+  _isFunction(end) && (end = end(index || 0, target, targets));
+  var currentValue = target[prop],
+      parsedStart = start !== "get" ? start : !_isFunction(currentValue) ? currentValue : funcParam ? target[prop.indexOf("set") || !_isFunction(target["get" + prop.substr(3)]) ? prop : "get" + prop.substr(3)](funcParam) : target[prop](),
+      setter = !_isFunction(currentValue) ? _setterPlain : funcParam ? _setterFuncWithParam : _setterFunc,
+      pt;
+
+  if (_isString(end)) {
+    if (~end.indexOf("random(")) {
+      end = _replaceRandom(end);
+    }
+
+    if (end.charAt(1) === "=") {
+      pt = _parseRelative(parsedStart, end) + (getUnit(parsedStart) || 0);
+
+      if (pt || pt === 0) {
+        // to avoid isNaN, like if someone passes in a value like "!= whatever"
+        end = pt;
+      }
+    }
+  }
+
+  if (!optional || parsedStart !== end || _forceAllPropTweens) {
+    if (!isNaN(parsedStart * end) && end !== "") {
+      // fun fact: any number multiplied by "" is evaluated as the number 0!
+      pt = new PropTween(this._pt, target, prop, +parsedStart || 0, end - (parsedStart || 0), typeof currentValue === "boolean" ? _renderBoolean : _renderPlain, 0, setter);
+      funcParam && (pt.fp = funcParam);
+      modifier && pt.modifier(modifier, this, target);
+      return this._pt = pt;
+    }
+
+    !currentValue && !(prop in target) && _missingPlugin(prop, end);
+    return _addComplexStringPropTween.call(this, target, prop, parsedStart, end, setter, stringFilter || _config.stringFilter, funcParam);
+  }
+},
+    //creates a copy of the vars object and processes any function-based values (putting the resulting values directly into the copy) as well as strings with "random()" in them. It does NOT process relative values.
+_processVars = function _processVars(vars, index, target, targets, tween) {
+  _isFunction(vars) && (vars = _parseFuncOrString(vars, tween, index, target, targets));
+
+  if (!_isObject(vars) || vars.style && vars.nodeType || _isArray(vars) || _isTypedArray(vars)) {
+    return _isString(vars) ? _parseFuncOrString(vars, tween, index, target, targets) : vars;
+  }
+
+  var copy = {},
+      p;
+
+  for (p in vars) {
+    copy[p] = _parseFuncOrString(vars[p], tween, index, target, targets);
+  }
+
+  return copy;
+},
+    _checkPlugin = function _checkPlugin(property, vars, tween, index, target, targets) {
+  var plugin, pt, ptLookup, i;
+
+  if (_plugins[property] && (plugin = new _plugins[property]()).init(target, plugin.rawVars ? vars[property] : _processVars(vars[property], index, target, targets, tween), tween, index, targets) !== false) {
+    tween._pt = pt = new PropTween(tween._pt, target, property, 0, 1, plugin.render, plugin, 0, plugin.priority);
+
+    if (tween !== _quickTween) {
+      ptLookup = tween._ptLookup[tween._targets.indexOf(target)]; //note: we can't use tween._ptLookup[index] because for staggered tweens, the index from the fullTargets array won't match what it is in each individual tween that spawns from the stagger.
+
+      i = plugin._props.length;
+
+      while (i--) {
+        ptLookup[plugin._props[i]] = pt;
+      }
+    }
+  }
+
+  return plugin;
+},
+    _overwritingTween,
+    //store a reference temporarily so we can avoid overwriting itself.
+_forceAllPropTweens,
+    _initTween = function _initTween(tween, time, tTime) {
+  var vars = tween.vars,
+      ease = vars.ease,
+      startAt = vars.startAt,
+      immediateRender = vars.immediateRender,
+      lazy = vars.lazy,
+      onUpdate = vars.onUpdate,
+      runBackwards = vars.runBackwards,
+      yoyoEase = vars.yoyoEase,
+      keyframes = vars.keyframes,
+      autoRevert = vars.autoRevert,
+      dur = tween._dur,
+      prevStartAt = tween._startAt,
+      targets = tween._targets,
+      parent = tween.parent,
+      fullTargets = parent && parent.data === "nested" ? parent.vars.targets : targets,
+      autoOverwrite = tween._overwrite === "auto" && !_suppressOverwrites,
+      tl = tween.timeline,
+      cleanVars,
+      i,
+      p,
+      pt,
+      target,
+      hasPriority,
+      gsData,
+      harness,
+      plugin,
+      ptLookup,
+      index,
+      harnessVars,
+      overwritten;
+  tl && (!keyframes || !ease) && (ease = "none");
+  tween._ease = _parseEase(ease, _defaults.ease);
+  tween._yEase = yoyoEase ? _invertEase(_parseEase(yoyoEase === true ? ease : yoyoEase, _defaults.ease)) : 0;
+
+  if (yoyoEase && tween._yoyo && !tween._repeat) {
+    //there must have been a parent timeline with yoyo:true that is currently in its yoyo phase, so flip the eases.
+    yoyoEase = tween._yEase;
+    tween._yEase = tween._ease;
+    tween._ease = yoyoEase;
+  }
+
+  tween._from = !tl && !!vars.runBackwards; //nested timelines should never run backwards - the backwards-ness is in the child tweens.
+
+  if (!tl || keyframes && !vars.stagger) {
+    //if there's an internal timeline, skip all the parsing because we passed that task down the chain.
+    harness = targets[0] ? _getCache(targets[0]).harness : 0;
+    harnessVars = harness && vars[harness.prop]; //someone may need to specify CSS-specific values AND non-CSS values, like if the element has an "x" property plus it's a standard DOM element. We allow people to distinguish by wrapping plugin-specific stuff in a css:{} object for example.
+
+    cleanVars = _copyExcluding(vars, _reservedProps);
+
+    if (prevStartAt) {
+      prevStartAt._zTime < 0 && prevStartAt.progress(1); // in case it's a lazy startAt that hasn't rendered yet.
+
+      time < 0 && runBackwards && immediateRender && !autoRevert ? prevStartAt.render(-1, true) : prevStartAt.revert(runBackwards && dur ? _revertConfigNoKill : _startAtRevertConfig); // if it's a "startAt" (not "from()" or runBackwards: true), we only need to do a shallow revert (keep transforms cached in CSSPlugin)
+      // don't just _removeFromParent(prevStartAt.render(-1, true)) because that'll leave inline styles. We're creating a new _startAt for "startAt" tweens that re-capture things to ensure that if the pre-tween values changed since the tween was created, they're recorded.
+
+      prevStartAt._lazy = 0;
+    }
+
+    if (startAt) {
+      _removeFromParent(tween._startAt = Tween.set(targets, _setDefaults({
+        data: "isStart",
+        overwrite: false,
+        parent: parent,
+        immediateRender: true,
+        lazy: !prevStartAt && _isNotFalse(lazy),
+        startAt: null,
+        delay: 0,
+        onUpdate: onUpdate && function () {
+          return _callback(tween, "onUpdate");
+        },
+        stagger: 0
+      }, startAt))); //copy the properties/values into a new object to avoid collisions, like var to = {x:0}, from = {x:500}; timeline.fromTo(e, from, to).fromTo(e, to, from);
+
+
+      tween._startAt._dp = 0; // don't allow it to get put back into root timeline! Like when revert() is called and totalTime() gets set.
+
+      tween._startAt._sat = tween; // used in globalTime(). _sat stands for _startAtTween
+
+      time < 0 && (_reverting || !immediateRender && !autoRevert) && tween._startAt.revert(_revertConfigNoKill); // rare edge case, like if a render is forced in the negative direction of a non-initted tween.
+
+      if (immediateRender) {
+        if (dur && time <= 0 && tTime <= 0) {
+          // check tTime here because in the case of a yoyo tween whose playhead gets pushed to the end like tween.progress(1), we should allow it through so that the onComplete gets fired properly.
+          time && (tween._zTime = time);
+          return; //we skip initialization here so that overwriting doesn't occur until the tween actually begins. Otherwise, if you create several immediateRender:true tweens of the same target/properties to drop into a Timeline, the last one created would overwrite the first ones because they didn't get placed into the timeline yet before the first render occurs and kicks in overwriting.
+        }
+      }
+    } else if (runBackwards && dur) {
+      //from() tweens must be handled uniquely: their beginning values must be rendered but we don't want overwriting to occur yet (when time is still 0). Wait until the tween actually begins before doing all the routines like overwriting. At that time, we should render at the END of the tween to ensure that things initialize correctly (remember, from() tweens go backwards)
+      if (!prevStartAt) {
+        time && (immediateRender = false); //in rare cases (like if a from() tween runs and then is invalidate()-ed), immediateRender could be true but the initial forced-render gets skipped, so there's no need to force the render in this context when the _time is greater than 0
+
+        p = _setDefaults({
+          overwrite: false,
+          data: "isFromStart",
+          //we tag the tween with as "isFromStart" so that if [inside a plugin] we need to only do something at the very END of a tween, we have a way of identifying this tween as merely the one that's setting the beginning values for a "from()" tween. For example, clearProps in CSSPlugin should only get applied at the very END of a tween and without this tag, from(...{height:100, clearProps:"height", delay:1}) would wipe the height at the beginning of the tween and after 1 second, it'd kick back in.
+          lazy: immediateRender && !prevStartAt && _isNotFalse(lazy),
+          immediateRender: immediateRender,
+          //zero-duration tweens render immediately by default, but if we're not specifically instructed to render this tween immediately, we should skip this and merely _init() to record the starting values (rendering them immediately would push them to completion which is wasteful in that case - we'd have to render(-1) immediately after)
+          stagger: 0,
+          parent: parent //ensures that nested tweens that had a stagger are handled properly, like gsap.from(".class", {y: gsap.utils.wrap([-100,100]), stagger: 0.5})
+
+        }, cleanVars);
+        harnessVars && (p[harness.prop] = harnessVars); // in case someone does something like .from(..., {css:{}})
+
+        _removeFromParent(tween._startAt = Tween.set(targets, p));
+
+        tween._startAt._dp = 0; // don't allow it to get put back into root timeline!
+
+        tween._startAt._sat = tween; // used in globalTime()
+
+        time < 0 && (_reverting ? tween._startAt.revert(_revertConfigNoKill) : tween._startAt.render(-1, true));
+        tween._zTime = time;
+
+        if (!immediateRender) {
+          _initTween(tween._startAt, _tinyNum, _tinyNum); //ensures that the initial values are recorded
+
+        } else if (!time) {
+          return;
+        }
+      }
+    }
+
+    tween._pt = tween._ptCache = 0;
+    lazy = dur && _isNotFalse(lazy) || lazy && !dur;
+
+    for (i = 0; i < targets.length; i++) {
+      target = targets[i];
+      gsData = target._gsap || _harness(targets)[i]._gsap;
+      tween._ptLookup[i] = ptLookup = {};
+      _lazyLookup[gsData.id] && _lazyTweens.length && _lazyRender(); //if other tweens of the same target have recently initted but haven't rendered yet, we've got to force the render so that the starting values are correct (imagine populating a timeline with a bunch of sequential tweens and then jumping to the end)
+
+      index = fullTargets === targets ? i : fullTargets.indexOf(target);
+
+      if (harness && (plugin = new harness()).init(target, harnessVars || cleanVars, tween, index, fullTargets) !== false) {
+        tween._pt = pt = new PropTween(tween._pt, target, plugin.name, 0, 1, plugin.render, plugin, 0, plugin.priority);
+
+        plugin._props.forEach(function (name) {
+          ptLookup[name] = pt;
+        });
+
+        plugin.priority && (hasPriority = 1);
+      }
+
+      if (!harness || harnessVars) {
+        for (p in cleanVars) {
+          if (_plugins[p] && (plugin = _checkPlugin(p, cleanVars, tween, index, target, fullTargets))) {
+            plugin.priority && (hasPriority = 1);
+          } else {
+            ptLookup[p] = pt = _addPropTween.call(tween, target, p, "get", cleanVars[p], index, fullTargets, 0, vars.stringFilter);
           }
         }
-      });
-      console.log(spineObj.spine.spine.state.getCurrent(0).animation.duration * 0.75);
-    } else {
-      spineObj.spine.spine.state.timeScale = 1;
-      console.log(spineObj.spine.spine.state.getCurrent(0).animation.duration);
+      }
+
+      tween._op && tween._op[i] && tween.kill(target, tween._op[i]);
+
+      if (autoOverwrite && tween._pt) {
+        _overwritingTween = tween;
+
+        _globalTimeline.killTweensOf(target, ptLookup, tween.globalTime(time)); // make sure the overwriting doesn't overwrite THIS tween!!!
+
+
+        overwritten = !tween.parent;
+        _overwritingTween = 0;
+      }
+
+      tween._pt && lazy && (_lazyLookup[gsData.id] = 1);
     }
+
+    hasPriority && _sortPropTweensByPriority(tween);
+    tween._onInit && tween._onInit(tween); //plugins like RoundProps must wait until ALL of the PropTweens are instantiated. In the plugin's init() function, it sets the _onInit on the tween instance. May not be pretty/intuitive, but it's fast and keeps file size down.
+  }
+
+  tween._onUpdate = onUpdate;
+  tween._initted = (!tween._op || tween._pt) && !overwritten; // if overwrittenProps resulted in the entire tween being killed, do NOT flag it as initted or else it may render for one tick.
+
+  keyframes && time <= 0 && tl.render(_bigNum, true, true); // if there's a 0% keyframe, it'll render in the "before" state for any staggered/delayed animations thus when the following tween initializes, it'll use the "before" state instead of the "after" state as the initial values.
+},
+    _updatePropTweens = function _updatePropTweens(tween, property, value, start, startIsRelative, ratio, time, skipRecursion) {
+  var ptCache = (tween._pt && tween._ptCache || (tween._ptCache = {}))[property],
+      pt,
+      rootPT,
+      lookup,
+      i;
+
+  if (!ptCache) {
+    ptCache = tween._ptCache[property] = [];
+    lookup = tween._ptLookup;
+    i = tween._targets.length;
+
+    while (i--) {
+      pt = lookup[i][property];
+
+      if (pt && pt.d && pt.d._pt) {
+        // it's a plugin, so find the nested PropTween
+        pt = pt.d._pt;
+
+        while (pt && pt.p !== property && pt.fp !== property) {
+          // "fp" is functionParam for things like setting CSS variables which require .setProperty("--var-name", value)
+          pt = pt._next;
+        }
+      }
+
+      if (!pt) {
+        // there is no PropTween associated with that property, so we must FORCE one to be created and ditch out of this
+        // if the tween has other properties that already rendered at new positions, we'd normally have to rewind to put them back like tween.render(0, true) before forcing an _initTween(), but that can create another edge case like tweening a timeline's progress would trigger onUpdates to fire which could move other things around. It's better to just inform users that .resetTo() should ONLY be used for tweens that already have that property. For example, you can't gsap.to(...{ y: 0 }) and then tween.restTo("x", 200) for example.
+        _forceAllPropTweens = 1; // otherwise, when we _addPropTween() and it finds no change between the start and end values, it skips creating a PropTween (for efficiency...why tween when there's no difference?) but in this case we NEED that PropTween created so we can edit it.
+
+        tween.vars[property] = "+=0";
+
+        _initTween(tween, time);
+
+        _forceAllPropTweens = 0;
+        return skipRecursion ? _warn(property + " not eligible for reset") : 1; // if someone tries to do a quickTo() on a special property like borderRadius which must get split into 4 different properties, that's not eligible for .resetTo().
+      }
+
+      ptCache.push(pt);
+    }
+  }
+
+  i = ptCache.length;
+
+  while (i--) {
+    rootPT = ptCache[i];
+    pt = rootPT._pt || rootPT; // complex values may have nested PropTweens. We only accommodate the FIRST value.
+
+    pt.s = (start || start === 0) && !startIsRelative ? start : pt.s + (start || 0) + ratio * pt.c;
+    pt.c = value - pt.s;
+    rootPT.e && (rootPT.e = _round(value) + getUnit(rootPT.e)); // mainly for CSSPlugin (end value)
+
+    rootPT.b && (rootPT.b = pt.s + getUnit(rootPT.b)); // (beginning value)
+  }
+},
+    _addAliasesToVars = function _addAliasesToVars(targets, vars) {
+  var harness = targets[0] ? _getCache(targets[0]).harness : 0,
+      propertyAliases = harness && harness.aliases,
+      copy,
+      p,
+      i,
+      aliases;
+
+  if (!propertyAliases) {
+    return vars;
+  }
+
+  copy = _merge({}, vars);
+
+  for (p in propertyAliases) {
+    if (p in copy) {
+      aliases = propertyAliases[p].split(",");
+      i = aliases.length;
+
+      while (i--) {
+        copy[aliases[i]] = copy[p];
+      }
+    }
+  }
+
+  return copy;
+},
+    // parses multiple formats, like {"0%": {x: 100}, {"50%": {x: -20}} and { x: {"0%": 100, "50%": -20} }, and an "ease" can be set on any object. We populate an "allProps" object with an Array for each property, like {x: [{}, {}], y:[{}, {}]} with data for each property tween. The objects have a "t" (time), "v", (value), and "e" (ease) property. This allows us to piece together a timeline later.
+_parseKeyframe = function _parseKeyframe(prop, obj, allProps, easeEach) {
+  var ease = obj.ease || easeEach || "power1.inOut",
+      p,
+      a;
+
+  if (_isArray(obj)) {
+    a = allProps[prop] || (allProps[prop] = []); // t = time (out of 100), v = value, e = ease
+
+    obj.forEach(function (value, i) {
+      return a.push({
+        t: i / (obj.length - 1) * 100,
+        v: value,
+        e: ease
+      });
+    });
+  } else {
+    for (p in obj) {
+      a = allProps[p] || (allProps[p] = []);
+      p === "ease" || a.push({
+        t: parseFloat(prop),
+        v: obj[p],
+        e: ease
+      });
+    }
+  }
+},
+    _parseFuncOrString = function _parseFuncOrString(value, tween, i, target, targets) {
+  return _isFunction(value) ? value.call(tween, i, target, targets) : _isString(value) && ~value.indexOf("random(") ? _replaceRandom(value) : value;
+},
+    _staggerTweenProps = _callbackNames + "repeat,repeatDelay,yoyo,repeatRefresh,yoyoEase,autoRevert",
+    _staggerPropsToSkip = {};
+
+_forEachName(_staggerTweenProps + ",id,stagger,delay,duration,paused,scrollTrigger", function (name) {
+  return _staggerPropsToSkip[name] = 1;
+});
+/*
+ * --------------------------------------------------------------------------------------
+ * TWEEN
+ * --------------------------------------------------------------------------------------
+ */
+
+
+var Tween = /*#__PURE__*/function (_Animation2) {
+  _inheritsLoose(Tween, _Animation2);
+
+  function Tween(targets, vars, position, skipInherit) {
+    var _this3;
+
+    if (typeof vars === "number") {
+      position.duration = vars;
+      vars = position;
+      position = null;
+    }
+
+    _this3 = _Animation2.call(this, skipInherit ? vars : _inheritDefaults(vars)) || this;
+    var _this3$vars = _this3.vars,
+        duration = _this3$vars.duration,
+        delay = _this3$vars.delay,
+        immediateRender = _this3$vars.immediateRender,
+        stagger = _this3$vars.stagger,
+        overwrite = _this3$vars.overwrite,
+        keyframes = _this3$vars.keyframes,
+        defaults = _this3$vars.defaults,
+        scrollTrigger = _this3$vars.scrollTrigger,
+        yoyoEase = _this3$vars.yoyoEase,
+        parent = vars.parent || _globalTimeline,
+        parsedTargets = (_isArray(targets) || _isTypedArray(targets) ? _isNumber(targets[0]) : "length" in vars) ? [targets] : toArray(targets),
+        tl,
+        i,
+        copy,
+        l,
+        p,
+        curTarget,
+        staggerFunc,
+        staggerVarsToMerge;
+    _this3._targets = parsedTargets.length ? _harness(parsedTargets) : _warn("GSAP target " + targets + " not found. https://gsap.com", !_config.nullTargetWarn) || [];
+    _this3._ptLookup = []; //PropTween lookup. An array containing an object for each target, having keys for each tweening property
+
+    _this3._overwrite = overwrite;
+
+    if (keyframes || stagger || _isFuncOrString(duration) || _isFuncOrString(delay)) {
+      vars = _this3.vars;
+      tl = _this3.timeline = new gsap_core_Timeline({
+        data: "nested",
+        defaults: defaults || {},
+        targets: parent && parent.data === "nested" ? parent.vars.targets : parsedTargets
+      }); // we need to store the targets because for staggers and keyframes, we end up creating an individual tween for each but function-based values need to know the index and the whole Array of targets.
+
+      tl.kill();
+      tl.parent = tl._dp = _assertThisInitialized(_this3);
+      tl._start = 0;
+
+      if (stagger || _isFuncOrString(duration) || _isFuncOrString(delay)) {
+        l = parsedTargets.length;
+        staggerFunc = stagger && distribute(stagger);
+
+        if (_isObject(stagger)) {
+          //users can pass in callbacks like onStart/onComplete in the stagger object. These should fire with each individual tween.
+          for (p in stagger) {
+            if (~_staggerTweenProps.indexOf(p)) {
+              staggerVarsToMerge || (staggerVarsToMerge = {});
+              staggerVarsToMerge[p] = stagger[p];
+            }
+          }
+        }
+
+        for (i = 0; i < l; i++) {
+          copy = _copyExcluding(vars, _staggerPropsToSkip);
+          copy.stagger = 0;
+          yoyoEase && (copy.yoyoEase = yoyoEase);
+          staggerVarsToMerge && _merge(copy, staggerVarsToMerge);
+          curTarget = parsedTargets[i]; //don't just copy duration or delay because if they're a string or function, we'd end up in an infinite loop because _isFuncOrString() would evaluate as true in the child tweens, entering this loop, etc. So we parse the value straight from vars and default to 0.
+
+          copy.duration = +_parseFuncOrString(duration, _assertThisInitialized(_this3), i, curTarget, parsedTargets);
+          copy.delay = (+_parseFuncOrString(delay, _assertThisInitialized(_this3), i, curTarget, parsedTargets) || 0) - _this3._delay;
+
+          if (!stagger && l === 1 && copy.delay) {
+            // if someone does delay:"random(1, 5)", repeat:-1, for example, the delay shouldn't be inside the repeat.
+            _this3._delay = delay = copy.delay;
+            _this3._start += delay;
+            copy.delay = 0;
+          }
+
+          tl.to(curTarget, copy, staggerFunc ? staggerFunc(i, curTarget, parsedTargets) : 0);
+          tl._ease = _easeMap.none;
+        }
+
+        tl.duration() ? duration = delay = 0 : _this3.timeline = 0; // if the timeline's duration is 0, we don't need a timeline internally!
+      } else if (keyframes) {
+        _inheritDefaults(_setDefaults(tl.vars.defaults, {
+          ease: "none"
+        }));
+
+        tl._ease = _parseEase(keyframes.ease || vars.ease || "none");
+        var time = 0,
+            a,
+            kf,
+            v;
+
+        if (_isArray(keyframes)) {
+          keyframes.forEach(function (frame) {
+            return tl.to(parsedTargets, frame, ">");
+          });
+          tl.duration(); // to ensure tl._dur is cached because we tap into it for performance purposes in the render() method.
+        } else {
+          copy = {};
+
+          for (p in keyframes) {
+            p === "ease" || p === "easeEach" || _parseKeyframe(p, keyframes[p], copy, keyframes.easeEach);
+          }
+
+          for (p in copy) {
+            a = copy[p].sort(function (a, b) {
+              return a.t - b.t;
+            });
+            time = 0;
+
+            for (i = 0; i < a.length; i++) {
+              kf = a[i];
+              v = {
+                ease: kf.e,
+                duration: (kf.t - (i ? a[i - 1].t : 0)) / 100 * duration
+              };
+              v[p] = kf.v;
+              tl.to(parsedTargets, v, time);
+              time += v.duration;
+            }
+          }
+
+          tl.duration() < duration && tl.to({}, {
+            duration: duration - tl.duration()
+          }); // in case keyframes didn't go to 100%
+        }
+      }
+
+      duration || _this3.duration(duration = tl.duration());
+    } else {
+      _this3.timeline = 0; //speed optimization, faster lookups (no going up the prototype chain)
+    }
+
+    if (overwrite === true && !_suppressOverwrites) {
+      _overwritingTween = _assertThisInitialized(_this3);
+
+      _globalTimeline.killTweensOf(parsedTargets);
+
+      _overwritingTween = 0;
+    }
+
+    _addToTimeline(parent, _assertThisInitialized(_this3), position);
+
+    vars.reversed && _this3.reverse();
+    vars.paused && _this3.paused(true);
+
+    if (immediateRender || !duration && !keyframes && _this3._start === _roundPrecise(parent._time) && _isNotFalse(immediateRender) && _hasNoPausedAncestors(_assertThisInitialized(_this3)) && parent.data !== "nested") {
+      _this3._tTime = -_tinyNum; //forces a render without having to set the render() "force" parameter to true because we want to allow lazying by default (using the "force" parameter always forces an immediate full render)
+
+      _this3.render(Math.max(0, -delay) || 0); //in case delay is negative
+
+    }
+
+    scrollTrigger && _scrollTrigger(_assertThisInitialized(_this3), scrollTrigger);
+    return _this3;
+  }
+
+  var _proto3 = Tween.prototype;
+
+  _proto3.render = function render(totalTime, suppressEvents, force) {
+    var prevTime = this._time,
+        tDur = this._tDur,
+        dur = this._dur,
+        isNegative = totalTime < 0,
+        tTime = totalTime > tDur - _tinyNum && !isNegative ? tDur : totalTime < _tinyNum ? 0 : totalTime,
+        time,
+        pt,
+        iteration,
+        cycleDuration,
+        prevIteration,
+        isYoyo,
+        ratio,
+        timeline,
+        yoyoEase;
+
+    if (!dur) {
+      _renderZeroDurationTween(this, totalTime, suppressEvents, force);
+    } else if (tTime !== this._tTime || !totalTime || force || !this._initted && this._tTime || this._startAt && this._zTime < 0 !== isNegative) {
+      //this senses if we're crossing over the start time, in which case we must record _zTime and force the render, but we do it in this lengthy conditional way for performance reasons (usually we can skip the calculations): this._initted && (this._zTime < 0) !== (totalTime < 0)
+      time = tTime;
+      timeline = this.timeline;
+
+      if (this._repeat) {
+        //adjust the time for repeats and yoyos
+        cycleDuration = dur + this._rDelay;
+
+        if (this._repeat < -1 && isNegative) {
+          return this.totalTime(cycleDuration * 100 + totalTime, suppressEvents, force);
+        }
+
+        time = _roundPrecise(tTime % cycleDuration); //round to avoid floating point errors. (4 % 0.8 should be 0 but some browsers report it as 0.79999999!)
+
+        if (tTime === tDur) {
+          // the tDur === tTime is for edge cases where there's a lengthy decimal on the duration and it may reach the very end but the time is rendered as not-quite-there (remember, tDur is rounded to 4 decimals whereas dur isn't)
+          iteration = this._repeat;
+          time = dur;
+        } else {
+          iteration = ~~(tTime / cycleDuration);
+
+          if (iteration && iteration === _roundPrecise(tTime / cycleDuration)) {
+            time = dur;
+            iteration--;
+          }
+
+          time > dur && (time = dur);
+        }
+
+        isYoyo = this._yoyo && iteration & 1;
+
+        if (isYoyo) {
+          yoyoEase = this._yEase;
+          time = dur - time;
+        }
+
+        prevIteration = _animationCycle(this._tTime, cycleDuration);
+
+        if (time === prevTime && !force && this._initted && iteration === prevIteration) {
+          //could be during the repeatDelay part. No need to render and fire callbacks.
+          this._tTime = tTime;
+          return this;
+        }
+
+        if (iteration !== prevIteration) {
+          timeline && this._yEase && _propagateYoyoEase(timeline, isYoyo); //repeatRefresh functionality
+
+          if (this.vars.repeatRefresh && !isYoyo && !this._lock && this._time !== cycleDuration && this._initted) {
+            // this._time will === cycleDuration when we render at EXACTLY the end of an iteration. Without this condition, it'd often do the repeatRefresh render TWICE (again on the very next tick).
+            this._lock = force = 1; //force, otherwise if lazy is true, the _attemptInitTween() will return and we'll jump out and get caught bouncing on each tick.
+
+            this.render(_roundPrecise(cycleDuration * iteration), true).invalidate()._lock = 0;
+          }
+        }
+      }
+
+      if (!this._initted) {
+        if (_attemptInitTween(this, isNegative ? totalTime : time, force, suppressEvents, tTime)) {
+          this._tTime = 0; // in constructor if immediateRender is true, we set _tTime to -_tinyNum to have the playhead cross the starting point but we can't leave _tTime as a negative number.
+
+          return this;
+        }
+
+        if (prevTime !== this._time && !(force && this.vars.repeatRefresh && iteration !== prevIteration)) {
+          // rare edge case - during initialization, an onUpdate in the _startAt (.fromTo()) might force this tween to render at a different spot in which case we should ditch this render() call so that it doesn't revert the values. But we also don't want to dump if we're doing a repeatRefresh render!
+          return this;
+        }
+
+        if (dur !== this._dur) {
+          // while initting, a plugin like InertiaPlugin might alter the duration, so rerun from the start to ensure everything renders as it should.
+          return this.render(totalTime, suppressEvents, force);
+        }
+      }
+
+      this._tTime = tTime;
+      this._time = time;
+
+      if (!this._act && this._ts) {
+        this._act = 1; //as long as it's not paused, force it to be active so that if the user renders independent of the parent timeline, it'll be forced to re-render on the next tick.
+
+        this._lazy = 0;
+      }
+
+      this.ratio = ratio = (yoyoEase || this._ease)(time / dur);
+
+      if (this._from) {
+        this.ratio = ratio = 1 - ratio;
+      }
+
+      if (time && !prevTime && !suppressEvents && !iteration) {
+        _callback(this, "onStart");
+
+        if (this._tTime !== tTime) {
+          // in case the onStart triggered a render at a different spot, eject. Like if someone did animation.pause(0.5) or something inside the onStart.
+          return this;
+        }
+      }
+
+      pt = this._pt;
+
+      while (pt) {
+        pt.r(ratio, pt.d);
+        pt = pt._next;
+      }
+
+      timeline && timeline.render(totalTime < 0 ? totalTime : timeline._dur * timeline._ease(time / this._dur), suppressEvents, force) || this._startAt && (this._zTime = totalTime);
+
+      if (this._onUpdate && !suppressEvents) {
+        isNegative && _rewindStartAt(this, totalTime, suppressEvents, force); //note: for performance reasons, we tuck this conditional logic inside less traveled areas (most tweens don't have an onUpdate). We'd just have it at the end before the onComplete, but the values should be updated before any onUpdate is called, so we ALSO put it here and then if it's not called, we do so later near the onComplete.
+
+        _callback(this, "onUpdate");
+      }
+
+      this._repeat && iteration !== prevIteration && this.vars.onRepeat && !suppressEvents && this.parent && _callback(this, "onRepeat");
+
+      if ((tTime === this._tDur || !tTime) && this._tTime === tTime) {
+        isNegative && !this._onUpdate && _rewindStartAt(this, totalTime, true, true);
+        (totalTime || !dur) && (tTime === this._tDur && this._ts > 0 || !tTime && this._ts < 0) && _removeFromParent(this, 1); // don't remove if we're rendering at exactly a time of 0, as there could be autoRevert values that should get set on the next tick (if the playhead goes backward beyond the startTime, negative totalTime). Don't remove if the timeline is reversed and the playhead isn't at 0, otherwise tl.progress(1).reverse() won't work. Only remove if the playhead is at the end and timeScale is positive, or if the playhead is at 0 and the timeScale is negative.
+
+        if (!suppressEvents && !(isNegative && !prevTime) && (tTime || prevTime || isYoyo)) {
+          // if prevTime and tTime are zero, we shouldn't fire the onReverseComplete. This could happen if you gsap.to(... {paused:true}).play();
+          _callback(this, tTime === tDur ? "onComplete" : "onReverseComplete", true);
+
+          this._prom && !(tTime < tDur && this.timeScale() > 0) && this._prom();
+        }
+      }
+    }
+
+    return this;
+  };
+
+  _proto3.targets = function targets() {
+    return this._targets;
+  };
+
+  _proto3.invalidate = function invalidate(soft) {
+    // "soft" gives us a way to clear out everything EXCEPT the recorded pre-"from" portion of from() tweens. Otherwise, for example, if you tween.progress(1).render(0, true true).invalidate(), the "from" values would persist and then on the next render, the from() tweens would initialize and the current value would match the "from" values, thus animate from the same value to the same value (no animation). We tap into this in ScrollTrigger's refresh() where we must push a tween to completion and then back again but honor its init state in case the tween is dependent on another tween further up on the page.
+    (!soft || !this.vars.runBackwards) && (this._startAt = 0);
+    this._pt = this._op = this._onUpdate = this._lazy = this.ratio = 0;
+    this._ptLookup = [];
+    this.timeline && this.timeline.invalidate(soft);
+    return _Animation2.prototype.invalidate.call(this, soft);
+  };
+
+  _proto3.resetTo = function resetTo(property, value, start, startIsRelative, skipRecursion) {
+    _tickerActive || _ticker.wake();
+    this._ts || this.play();
+    var time = Math.min(this._dur, (this._dp._time - this._start) * this._ts),
+        ratio;
+    this._initted || _initTween(this, time);
+    ratio = this._ease(time / this._dur); // don't just get tween.ratio because it may not have rendered yet.
+    // possible future addition to allow an object with multiple values to update, like tween.resetTo({x: 100, y: 200}); At this point, it doesn't seem worth the added kb given the fact that most users will likely opt for the convenient gsap.quickTo() way of interacting with this method.
+    // if (_isObject(property)) { // performance optimization
+    // 	for (p in property) {
+    // 		if (_updatePropTweens(this, p, property[p], value ? value[p] : null, start, ratio, time)) {
+    // 			return this.resetTo(property, value, start, startIsRelative); // if a PropTween wasn't found for the property, it'll get forced with a re-initialization so we need to jump out and start over again.
+    // 		}
+    // 	}
+    // } else {
+
+    if (_updatePropTweens(this, property, value, start, startIsRelative, ratio, time, skipRecursion)) {
+      return this.resetTo(property, value, start, startIsRelative, 1); // if a PropTween wasn't found for the property, it'll get forced with a re-initialization so we need to jump out and start over again.
+    } //}
+
+
+    _alignPlayhead(this, 0);
+
+    this.parent || _addLinkedListItem(this._dp, this, "_first", "_last", this._dp._sort ? "_start" : 0);
+    return this.render(0);
+  };
+
+  _proto3.kill = function kill(targets, vars) {
+    if (vars === void 0) {
+      vars = "all";
+    }
+
+    if (!targets && (!vars || vars === "all")) {
+      this._lazy = this._pt = 0;
+      return this.parent ? _interrupt(this) : this;
+    }
+
+    if (this.timeline) {
+      var tDur = this.timeline.totalDuration();
+      this.timeline.killTweensOf(targets, vars, _overwritingTween && _overwritingTween.vars.overwrite !== true)._first || _interrupt(this); // if nothing is left tweening, interrupt.
+
+      this.parent && tDur !== this.timeline.totalDuration() && _setDuration(this, this._dur * this.timeline._tDur / tDur, 0, 1); // if a nested tween is killed that changes the duration, it should affect this tween's duration. We must use the ratio, though, because sometimes the internal timeline is stretched like for keyframes where they don't all add up to whatever the parent tween's duration was set to.
+
+      return this;
+    }
+
+    var parsedTargets = this._targets,
+        killingTargets = targets ? toArray(targets) : parsedTargets,
+        propTweenLookup = this._ptLookup,
+        firstPT = this._pt,
+        overwrittenProps,
+        curLookup,
+        curOverwriteProps,
+        props,
+        p,
+        pt,
+        i;
+
+    if ((!vars || vars === "all") && _arraysMatch(parsedTargets, killingTargets)) {
+      vars === "all" && (this._pt = 0);
+      return _interrupt(this);
+    }
+
+    overwrittenProps = this._op = this._op || [];
+
+    if (vars !== "all") {
+      //so people can pass in a comma-delimited list of property names
+      if (_isString(vars)) {
+        p = {};
+
+        _forEachName(vars, function (name) {
+          return p[name] = 1;
+        });
+
+        vars = p;
+      }
+
+      vars = _addAliasesToVars(parsedTargets, vars);
+    }
+
+    i = parsedTargets.length;
+
+    while (i--) {
+      if (~killingTargets.indexOf(parsedTargets[i])) {
+        curLookup = propTweenLookup[i];
+
+        if (vars === "all") {
+          overwrittenProps[i] = vars;
+          props = curLookup;
+          curOverwriteProps = {};
+        } else {
+          curOverwriteProps = overwrittenProps[i] = overwrittenProps[i] || {};
+          props = vars;
+        }
+
+        for (p in props) {
+          pt = curLookup && curLookup[p];
+
+          if (pt) {
+            if (!("kill" in pt.d) || pt.d.kill(p) === true) {
+              _removeLinkedListItem(this, pt, "_pt");
+            }
+
+            delete curLookup[p];
+          }
+
+          if (curOverwriteProps !== "all") {
+            curOverwriteProps[p] = 1;
+          }
+        }
+      }
+    }
+
+    this._initted && !this._pt && firstPT && _interrupt(this); //if all tweening properties are killed, kill the tween. Without this line, if there's a tween with multiple targets and then you killTweensOf() each target individually, the tween would technically still remain active and fire its onComplete even though there aren't any more properties tweening.
+
+    return this;
+  };
+
+  Tween.to = function to(targets, vars) {
+    return new Tween(targets, vars, arguments[2]);
+  };
+
+  Tween.from = function from(targets, vars) {
+    return _createTweenType(1, arguments);
+  };
+
+  Tween.delayedCall = function delayedCall(delay, callback, params, scope) {
+    return new Tween(callback, 0, {
+      immediateRender: false,
+      lazy: false,
+      overwrite: false,
+      delay: delay,
+      onComplete: callback,
+      onReverseComplete: callback,
+      onCompleteParams: params,
+      onReverseCompleteParams: params,
+      callbackScope: scope
+    }); // we must use onReverseComplete too for things like timeline.add(() => {...}) which should be triggered in BOTH directions (forward and reverse)
+  };
+
+  Tween.fromTo = function fromTo(targets, fromVars, toVars) {
+    return _createTweenType(2, arguments);
+  };
+
+  Tween.set = function set(targets, vars) {
+    vars.duration = 0;
+    vars.repeatDelay || (vars.repeat = 0);
+    return new Tween(targets, vars);
+  };
+
+  Tween.killTweensOf = function killTweensOf(targets, props, onlyActive) {
+    return _globalTimeline.killTweensOf(targets, props, onlyActive);
+  };
+
+  return Tween;
+}(gsap_core_Animation);
+
+_setDefaults(Tween.prototype, {
+  _targets: [],
+  _lazy: 0,
+  _startAt: 0,
+  _op: 0,
+  _onInit: 0
+}); //add the pertinent timeline methods to Tween instances so that users can chain conveniently and create a timeline automatically. (removed due to concerns that it'd ultimately add to more confusion especially for beginners)
+// _forEachName("to,from,fromTo,set,call,add,addLabel,addPause", name => {
+// 	Tween.prototype[name] = function() {
+// 		let tl = new Timeline();
+// 		return _addToTimeline(tl, this)[name].apply(tl, toArray(arguments));
+// 	}
+// });
+//for backward compatibility. Leverage the timeline calls.
+
+
+_forEachName("staggerTo,staggerFrom,staggerFromTo", function (name) {
+  Tween[name] = function () {
+    var tl = new gsap_core_Timeline(),
+        params = _slice.call(arguments, 0);
+
+    params.splice(name === "staggerFromTo" ? 5 : 4, 0, 0);
+    return tl[name].apply(tl, params);
+  };
+});
+/*
+ * --------------------------------------------------------------------------------------
+ * PROPTWEEN
+ * --------------------------------------------------------------------------------------
+ */
+
+
+var _setterPlain = function _setterPlain(target, property, value) {
+  return target[property] = value;
+},
+    _setterFunc = function _setterFunc(target, property, value) {
+  return target[property](value);
+},
+    _setterFuncWithParam = function _setterFuncWithParam(target, property, value, data) {
+  return target[property](data.fp, value);
+},
+    _setterAttribute = function _setterAttribute(target, property, value) {
+  return target.setAttribute(property, value);
+},
+    _getSetter = function _getSetter(target, property) {
+  return _isFunction(target[property]) ? _setterFunc : _isUndefined(target[property]) && target.setAttribute ? _setterAttribute : _setterPlain;
+},
+    _renderPlain = function _renderPlain(ratio, data) {
+  return data.set(data.t, data.p, Math.round((data.s + data.c * ratio) * 1000000) / 1000000, data);
+},
+    _renderBoolean = function _renderBoolean(ratio, data) {
+  return data.set(data.t, data.p, !!(data.s + data.c * ratio), data);
+},
+    _renderComplexString = function _renderComplexString(ratio, data) {
+  var pt = data._pt,
+      s = "";
+
+  if (!ratio && data.b) {
+    //b = beginning string
+    s = data.b;
+  } else if (ratio === 1 && data.e) {
+    //e = ending string
+    s = data.e;
+  } else {
+    while (pt) {
+      s = pt.p + (pt.m ? pt.m(pt.s + pt.c * ratio) : Math.round((pt.s + pt.c * ratio) * 10000) / 10000) + s; //we use the "p" property for the text inbetween (like a suffix). And in the context of a complex string, the modifier (m) is typically just Math.round(), like for RGB colors.
+
+      pt = pt._next;
+    }
+
+    s += data.c; //we use the "c" of the PropTween to store the final chunk of non-numeric text.
+  }
+
+  data.set(data.t, data.p, s, data);
+},
+    _renderPropTweens = function _renderPropTweens(ratio, data) {
+  var pt = data._pt;
+
+  while (pt) {
+    pt.r(ratio, pt.d);
+    pt = pt._next;
+  }
+},
+    _addPluginModifier = function _addPluginModifier(modifier, tween, target, property) {
+  var pt = this._pt,
+      next;
+
+  while (pt) {
+    next = pt._next;
+    pt.p === property && pt.modifier(modifier, tween, target);
+    pt = next;
+  }
+},
+    _killPropTweensOf = function _killPropTweensOf(property) {
+  var pt = this._pt,
+      hasNonDependentRemaining,
+      next;
+
+  while (pt) {
+    next = pt._next;
+
+    if (pt.p === property && !pt.op || pt.op === property) {
+      _removeLinkedListItem(this, pt, "_pt");
+    } else if (!pt.dep) {
+      hasNonDependentRemaining = 1;
+    }
+
+    pt = next;
+  }
+
+  return !hasNonDependentRemaining;
+},
+    _setterWithModifier = function _setterWithModifier(target, property, value, data) {
+  data.mSet(target, property, data.m.call(data.tween, value, data.mt), data);
+},
+    _sortPropTweensByPriority = function _sortPropTweensByPriority(parent) {
+  var pt = parent._pt,
+      next,
+      pt2,
+      first,
+      last; //sorts the PropTween linked list in order of priority because some plugins need to do their work after ALL of the PropTweens were created (like RoundPropsPlugin and ModifiersPlugin)
+
+  while (pt) {
+    next = pt._next;
+    pt2 = first;
+
+    while (pt2 && pt2.pr > pt.pr) {
+      pt2 = pt2._next;
+    }
+
+    if (pt._prev = pt2 ? pt2._prev : last) {
+      pt._prev._next = pt;
+    } else {
+      first = pt;
+    }
+
+    if (pt._next = pt2) {
+      pt2._prev = pt;
+    } else {
+      last = pt;
+    }
+
+    pt = next;
+  }
+
+  parent._pt = first;
+}; //PropTween key: t = target, p = prop, r = renderer, d = data, s = start, c = change, op = overwriteProperty (ONLY populated when it's different than p), pr = priority, _next/_prev for the linked list siblings, set = setter, m = modifier, mSet = modifierSetter (the original setter, before a modifier was added)
+
+
+var PropTween = /*#__PURE__*/function () {
+  function PropTween(next, target, prop, start, change, renderer, data, setter, priority) {
+    this.t = target;
+    this.s = start;
+    this.c = change;
+    this.p = prop;
+    this.r = renderer || _renderPlain;
+    this.d = data || this;
+    this.set = setter || _setterPlain;
+    this.pr = priority || 0;
+    this._next = next;
+
+    if (next) {
+      next._prev = this;
+    }
+  }
+
+  var _proto4 = PropTween.prototype;
+
+  _proto4.modifier = function modifier(func, tween, target) {
+    this.mSet = this.mSet || this.set; //in case it was already set (a PropTween can only have one modifier)
+
+    this.set = _setterWithModifier;
+    this.m = func;
+    this.mt = target; //modifier target
+
+    this.tween = tween;
+  };
+
+  return PropTween;
+}(); //Initialization tasks
+
+_forEachName(_callbackNames + "parent,duration,ease,delay,overwrite,runBackwards,startAt,yoyo,immediateRender,repeat,repeatDelay,data,paused,reversed,lazy,callbackScope,stringFilter,id,yoyoEase,stagger,inherit,repeatRefresh,keyframes,autoRevert,scrollTrigger", function (name) {
+  return _reservedProps[name] = 1;
+});
+
+_globals.TweenMax = _globals.TweenLite = Tween;
+_globals.TimelineLite = _globals.TimelineMax = gsap_core_Timeline;
+_globalTimeline = new gsap_core_Timeline({
+  sortChildren: false,
+  defaults: _defaults,
+  autoRemoveChildren: true,
+  id: "root",
+  smoothChildTiming: true
+});
+_config.stringFilter = _colorStringFilter;
+
+var _media = [],
+    _listeners = {},
+    _emptyArray = [],
+    _lastMediaTime = 0,
+    _contextID = 0,
+    _dispatch = function _dispatch(type) {
+  return (_listeners[type] || _emptyArray).map(function (f) {
+    return f();
   });
-}
-function getSpine(name) {
-  return addedSpines.find(item => item.name === name);
-}
+},
+    _onMediaChange = function _onMediaChange() {
+  var time = Date.now(),
+      matches = [];
+
+  if (time - _lastMediaTime > 2) {
+    _dispatch("matchMediaInit");
+
+    _media.forEach(function (c) {
+      var queries = c.queries,
+          conditions = c.conditions,
+          match,
+          p,
+          anyMatch,
+          toggled;
+
+      for (p in queries) {
+        match = _win.matchMedia(queries[p]).matches; // Firefox doesn't update the "matches" property of the MediaQueryList object correctly - it only does so as it calls its change handler - so we must re-create a media query here to ensure it's accurate.
+
+        match && (anyMatch = 1);
+
+        if (match !== conditions[p]) {
+          conditions[p] = match;
+          toggled = 1;
+        }
+      }
+
+      if (toggled) {
+        c.revert();
+        anyMatch && matches.push(c);
+      }
+    });
+
+    _dispatch("matchMediaRevert");
+
+    matches.forEach(function (c) {
+      return c.onMatch(c, function (func) {
+        return c.add(null, func);
+      });
+    });
+    _lastMediaTime = time;
+
+    _dispatch("matchMedia");
+  }
+};
+
+var Context = /*#__PURE__*/function () {
+  function Context(func, scope) {
+    this.selector = scope && selector(scope);
+    this.data = [];
+    this._r = []; // returned/cleanup functions
+
+    this.isReverted = false;
+    this.id = _contextID++; // to work around issues that frameworks like Vue cause by making things into Proxies which make it impossible to do something like _media.indexOf(this) because "this" would no longer refer to the Context instance itself - it'd refer to a Proxy! We needed a way to identify the context uniquely
+
+    func && this.add(func);
+  }
+
+  var _proto5 = Context.prototype;
+
+  _proto5.add = function add(name, func, scope) {
+    // possible future addition if we need the ability to add() an animation to a context and for whatever reason cannot create that animation inside of a context.add(() => {...}) function.
+    // if (name && _isFunction(name.revert)) {
+    // 	this.data.push(name);
+    // 	return (name._ctx = this);
+    // }
+    if (_isFunction(name)) {
+      scope = func;
+      func = name;
+      name = _isFunction;
+    }
+
+    var self = this,
+        f = function f() {
+      var prev = _context,
+          prevSelector = self.selector,
+          result;
+      prev && prev !== self && prev.data.push(self);
+      scope && (self.selector = selector(scope));
+      _context = self;
+      result = func.apply(self, arguments);
+      _isFunction(result) && self._r.push(result);
+      _context = prev;
+      self.selector = prevSelector;
+      self.isReverted = false;
+      return result;
+    };
+
+    self.last = f;
+    return name === _isFunction ? f(self, function (func) {
+      return self.add(null, func);
+    }) : name ? self[name] = f : f;
+  };
+
+  _proto5.ignore = function ignore(func) {
+    var prev = _context;
+    _context = null;
+    func(this);
+    _context = prev;
+  };
+
+  _proto5.getTweens = function getTweens() {
+    var a = [];
+    this.data.forEach(function (e) {
+      return e instanceof Context ? a.push.apply(a, e.getTweens()) : e instanceof Tween && !(e.parent && e.parent.data === "nested") && a.push(e);
+    });
+    return a;
+  };
+
+  _proto5.clear = function clear() {
+    this._r.length = this.data.length = 0;
+  };
+
+  _proto5.kill = function kill(revert, matchMedia) {
+    var _this4 = this;
+
+    if (revert) {
+      (function () {
+        var tweens = _this4.getTweens(),
+            i = _this4.data.length,
+            t;
+
+        while (i--) {
+          // Flip plugin tweens are very different in that they should actually be pushed to their end. The plugin replaces the timeline's .revert() method to do exactly that. But we also need to remove any of those nested tweens inside the flip timeline so that they don't get individually reverted.
+          t = _this4.data[i];
+
+          if (t.data === "isFlip") {
+            t.revert();
+            t.getChildren(true, true, false).forEach(function (tween) {
+              return tweens.splice(tweens.indexOf(tween), 1);
+            });
+          }
+        } // save as an object so that we can cache the globalTime for each tween to optimize performance during the sort
+
+
+        tweens.map(function (t) {
+          return {
+            g: t._dur || t._delay || t._sat && !t._sat.vars.immediateRender ? t.globalTime(0) : -Infinity,
+            t: t
+          };
+        }).sort(function (a, b) {
+          return b.g - a.g || -Infinity;
+        }).forEach(function (o) {
+          return o.t.revert(revert);
+        }); // note: all of the _startAt tweens should be reverted in reverse order that they were created, and they'll all have the same globalTime (-1) so the " || -1" in the sort keeps the order properly.
+
+        i = _this4.data.length;
+
+        while (i--) {
+          // make sure we loop backwards so that, for example, SplitTexts that were created later on the same element get reverted first
+          t = _this4.data[i];
+
+          if (t instanceof gsap_core_Timeline) {
+            if (t.data !== "nested") {
+              t.scrollTrigger && t.scrollTrigger.revert();
+              t.kill(); // don't revert() the timeline because that's duplicating efforts since we already reverted all the tweens
+            }
+          } else {
+            !(t instanceof Tween) && t.revert && t.revert(revert);
+          }
+        }
+
+        _this4._r.forEach(function (f) {
+          return f(revert, _this4);
+        });
+
+        _this4.isReverted = true;
+      })();
+    } else {
+      this.data.forEach(function (e) {
+        return e.kill && e.kill();
+      });
+    }
+
+    this.clear();
+
+    if (matchMedia) {
+      var i = _media.length;
+
+      while (i--) {
+        // previously, we checked _media.indexOf(this), but some frameworks like Vue enforce Proxy objects that make it impossible to get the proper result that way, so we must use a unique ID number instead.
+        _media[i].id === this.id && _media.splice(i, 1);
+      }
+    }
+  };
+
+  _proto5.revert = function revert(config) {
+    this.kill(config || {});
+  };
+
+  return Context;
+}();
+
+var MatchMedia = /*#__PURE__*/function () {
+  function MatchMedia(scope) {
+    this.contexts = [];
+    this.scope = scope;
+    _context && _context.data.push(this);
+  }
+
+  var _proto6 = MatchMedia.prototype;
+
+  _proto6.add = function add(conditions, func, scope) {
+    _isObject(conditions) || (conditions = {
+      matches: conditions
+    });
+    var context = new Context(0, scope || this.scope),
+        cond = context.conditions = {},
+        mq,
+        p,
+        active;
+    _context && !context.selector && (context.selector = _context.selector); // in case a context is created inside a context. Like a gsap.matchMedia() that's inside a scoped gsap.context()
+
+    this.contexts.push(context);
+    func = context.add("onMatch", func);
+    context.queries = conditions;
+
+    for (p in conditions) {
+      if (p === "all") {
+        active = 1;
+      } else {
+        mq = _win.matchMedia(conditions[p]);
+
+        if (mq) {
+          _media.indexOf(context) < 0 && _media.push(context);
+          (cond[p] = mq.matches) && (active = 1);
+          mq.addListener ? mq.addListener(_onMediaChange) : mq.addEventListener("change", _onMediaChange);
+        }
+      }
+    }
+
+    active && func(context, function (f) {
+      return context.add(null, f);
+    });
+    return this;
+  } // refresh() {
+  // 	let time = _lastMediaTime,
+  // 		media = _media;
+  // 	_lastMediaTime = -1;
+  // 	_media = this.contexts;
+  // 	_onMediaChange();
+  // 	_lastMediaTime = time;
+  // 	_media = media;
+  // }
+  ;
+
+  _proto6.revert = function revert(config) {
+    this.kill(config || {});
+  };
+
+  _proto6.kill = function kill(revert) {
+    this.contexts.forEach(function (c) {
+      return c.kill(revert, true);
+    });
+  };
+
+  return MatchMedia;
+}();
+/*
+ * --------------------------------------------------------------------------------------
+ * GSAP
+ * --------------------------------------------------------------------------------------
+ */
+
+
+var _gsap = {
+  registerPlugin: function registerPlugin() {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    args.forEach(function (config) {
+      return _createPlugin(config);
+    });
+  },
+  timeline: function timeline(vars) {
+    return new gsap_core_Timeline(vars);
+  },
+  getTweensOf: function getTweensOf(targets, onlyActive) {
+    return _globalTimeline.getTweensOf(targets, onlyActive);
+  },
+  getProperty: function getProperty(target, property, unit, uncache) {
+    _isString(target) && (target = toArray(target)[0]); //in case selector text or an array is passed in
+
+    var getter = _getCache(target || {}).get,
+        format = unit ? _passThrough : _numericIfPossible;
+
+    unit === "native" && (unit = "");
+    return !target ? target : !property ? function (property, unit, uncache) {
+      return format((_plugins[property] && _plugins[property].get || getter)(target, property, unit, uncache));
+    } : format((_plugins[property] && _plugins[property].get || getter)(target, property, unit, uncache));
+  },
+  quickSetter: function quickSetter(target, property, unit) {
+    target = toArray(target);
+
+    if (target.length > 1) {
+      var setters = target.map(function (t) {
+        return gsap.quickSetter(t, property, unit);
+      }),
+          l = setters.length;
+      return function (value) {
+        var i = l;
+
+        while (i--) {
+          setters[i](value);
+        }
+      };
+    }
+
+    target = target[0] || {};
+
+    var Plugin = _plugins[property],
+        cache = _getCache(target),
+        p = cache.harness && (cache.harness.aliases || {})[property] || property,
+        // in case it's an alias, like "rotate" for "rotation".
+    setter = Plugin ? function (value) {
+      var p = new Plugin();
+      _quickTween._pt = 0;
+      p.init(target, unit ? value + unit : value, _quickTween, 0, [target]);
+      p.render(1, p);
+      _quickTween._pt && _renderPropTweens(1, _quickTween);
+    } : cache.set(target, p);
+
+    return Plugin ? setter : function (value) {
+      return setter(target, p, unit ? value + unit : value, cache, 1);
+    };
+  },
+  quickTo: function quickTo(target, property, vars) {
+    var _merge2;
+
+    var tween = gsap.to(target, _merge((_merge2 = {}, _merge2[property] = "+=0.1", _merge2.paused = true, _merge2), vars || {})),
+        func = function func(value, start, startIsRelative) {
+      return tween.resetTo(property, value, start, startIsRelative);
+    };
+
+    func.tween = tween;
+    return func;
+  },
+  isTweening: function isTweening(targets) {
+    return _globalTimeline.getTweensOf(targets, true).length > 0;
+  },
+  defaults: function defaults(value) {
+    value && value.ease && (value.ease = _parseEase(value.ease, _defaults.ease));
+    return _mergeDeep(_defaults, value || {});
+  },
+  config: function config(value) {
+    return _mergeDeep(_config, value || {});
+  },
+  registerEffect: function registerEffect(_ref3) {
+    var name = _ref3.name,
+        effect = _ref3.effect,
+        plugins = _ref3.plugins,
+        defaults = _ref3.defaults,
+        extendTimeline = _ref3.extendTimeline;
+    (plugins || "").split(",").forEach(function (pluginName) {
+      return pluginName && !_plugins[pluginName] && !_globals[pluginName] && _warn(name + " effect requires " + pluginName + " plugin.");
+    });
+
+    _effects[name] = function (targets, vars, tl) {
+      return effect(toArray(targets), _setDefaults(vars || {}, defaults), tl);
+    };
+
+    if (extendTimeline) {
+      gsap_core_Timeline.prototype[name] = function (targets, vars, position) {
+        return this.add(_effects[name](targets, _isObject(vars) ? vars : (position = vars) && {}, this), position);
+      };
+    }
+  },
+  registerEase: function registerEase(name, ease) {
+    _easeMap[name] = _parseEase(ease);
+  },
+  parseEase: function parseEase(ease, defaultEase) {
+    return arguments.length ? _parseEase(ease, defaultEase) : _easeMap;
+  },
+  getById: function getById(id) {
+    return _globalTimeline.getById(id);
+  },
+  exportRoot: function exportRoot(vars, includeDelayedCalls) {
+    if (vars === void 0) {
+      vars = {};
+    }
+
+    var tl = new gsap_core_Timeline(vars),
+        child,
+        next;
+    tl.smoothChildTiming = _isNotFalse(vars.smoothChildTiming);
+
+    _globalTimeline.remove(tl);
+
+    tl._dp = 0; //otherwise it'll get re-activated when adding children and be re-introduced into _globalTimeline's linked list (then added to itself).
+
+    tl._time = tl._tTime = _globalTimeline._time;
+    child = _globalTimeline._first;
+
+    while (child) {
+      next = child._next;
+
+      if (includeDelayedCalls || !(!child._dur && child instanceof Tween && child.vars.onComplete === child._targets[0])) {
+        _addToTimeline(tl, child, child._start - child._delay);
+      }
+
+      child = next;
+    }
+
+    _addToTimeline(_globalTimeline, tl, 0);
+
+    return tl;
+  },
+  context: function context(func, scope) {
+    return func ? new Context(func, scope) : _context;
+  },
+  matchMedia: function matchMedia(scope) {
+    return new MatchMedia(scope);
+  },
+  matchMediaRefresh: function matchMediaRefresh() {
+    return _media.forEach(function (c) {
+      var cond = c.conditions,
+          found,
+          p;
+
+      for (p in cond) {
+        if (cond[p]) {
+          cond[p] = false;
+          found = 1;
+        }
+      }
+
+      found && c.revert();
+    }) || _onMediaChange();
+  },
+  addEventListener: function addEventListener(type, callback) {
+    var a = _listeners[type] || (_listeners[type] = []);
+    ~a.indexOf(callback) || a.push(callback);
+  },
+  removeEventListener: function removeEventListener(type, callback) {
+    var a = _listeners[type],
+        i = a && a.indexOf(callback);
+    i >= 0 && a.splice(i, 1);
+  },
+  utils: {
+    wrap: wrap,
+    wrapYoyo: wrapYoyo,
+    distribute: distribute,
+    random: random,
+    snap: snap,
+    normalize: normalize,
+    getUnit: getUnit,
+    clamp: clamp,
+    splitColor: splitColor,
+    toArray: toArray,
+    selector: selector,
+    mapRange: mapRange,
+    pipe: pipe,
+    unitize: unitize,
+    interpolate: interpolate,
+    shuffle: shuffle
+  },
+  install: _install,
+  effects: _effects,
+  ticker: _ticker,
+  updateRoot: gsap_core_Timeline.updateRoot,
+  plugins: _plugins,
+  globalTimeline: _globalTimeline,
+  core: {
+    PropTween: PropTween,
+    globals: _addGlobal,
+    Tween: Tween,
+    Timeline: gsap_core_Timeline,
+    Animation: gsap_core_Animation,
+    getCache: _getCache,
+    _removeLinkedListItem: _removeLinkedListItem,
+    reverting: function reverting() {
+      return _reverting;
+    },
+    context: function context(toAdd) {
+      if (toAdd && _context) {
+        _context.data.push(toAdd);
+
+        toAdd._ctx = _context;
+      }
+
+      return _context;
+    },
+    suppressOverwrites: function suppressOverwrites(value) {
+      return _suppressOverwrites = value;
+    }
+  }
+};
+
+_forEachName("to,from,fromTo,delayedCall,set,killTweensOf", function (name) {
+  return _gsap[name] = Tween[name];
+});
+
+_ticker.add(gsap_core_Timeline.updateRoot);
+
+_quickTween = _gsap.to({}, {
+  duration: 0
+}); // ---- EXTRA PLUGINS --------------------------------------------------------
+
+var _getPluginPropTween = function _getPluginPropTween(plugin, prop) {
+  var pt = plugin._pt;
+
+  while (pt && pt.p !== prop && pt.op !== prop && pt.fp !== prop) {
+    pt = pt._next;
+  }
+
+  return pt;
+},
+    _addModifiers = function _addModifiers(tween, modifiers) {
+  var targets = tween._targets,
+      p,
+      i,
+      pt;
+
+  for (p in modifiers) {
+    i = targets.length;
+
+    while (i--) {
+      pt = tween._ptLookup[i][p];
+
+      if (pt && (pt = pt.d)) {
+        if (pt._pt) {
+          // is a plugin
+          pt = _getPluginPropTween(pt, p);
+        }
+
+        pt && pt.modifier && pt.modifier(modifiers[p], tween, targets[i], p);
+      }
+    }
+  }
+},
+    _buildModifierPlugin = function _buildModifierPlugin(name, modifier) {
+  return {
+    name: name,
+    rawVars: 1,
+    //don't pre-process function-based values or "random()" strings.
+    init: function init(target, vars, tween) {
+      tween._onInit = function (tween) {
+        var temp, p;
+
+        if (_isString(vars)) {
+          temp = {};
+
+          _forEachName(vars, function (name) {
+            return temp[name] = 1;
+          }); //if the user passes in a comma-delimited list of property names to roundProps, like "x,y", we round to whole numbers.
+
+
+          vars = temp;
+        }
+
+        if (modifier) {
+          temp = {};
+
+          for (p in vars) {
+            temp[p] = modifier(vars[p]);
+          }
+
+          vars = temp;
+        }
+
+        _addModifiers(tween, vars);
+      };
+    }
+  };
+}; //register core plugins
+
+
+var gsap = _gsap.registerPlugin({
+  name: "attr",
+  init: function init(target, vars, tween, index, targets) {
+    var p, pt, v;
+    this.tween = tween;
+
+    for (p in vars) {
+      v = target.getAttribute(p) || "";
+      pt = this.add(target, "setAttribute", (v || 0) + "", vars[p], index, targets, 0, 0, p);
+      pt.op = p;
+      pt.b = v; // record the beginning value so we can revert()
+
+      this._props.push(p);
+    }
+  },
+  render: function render(ratio, data) {
+    var pt = data._pt;
+
+    while (pt) {
+      _reverting ? pt.set(pt.t, pt.p, pt.b, pt) : pt.r(ratio, pt.d); // if reverting, go back to the original (pt.b)
+
+      pt = pt._next;
+    }
+  }
+}, {
+  name: "endArray",
+  init: function init(target, value) {
+    var i = value.length;
+
+    while (i--) {
+      this.add(target, i, target[i] || 0, value[i], 0, 0, 0, 0, 0, 1);
+    }
+  }
+}, _buildModifierPlugin("roundProps", _roundModifier), _buildModifierPlugin("modifiers"), _buildModifierPlugin("snap", snap)) || _gsap; //to prevent the core plugins from being dropped via aggressive tree shaking, we must include them in the variable declaration in this way.
+
+Tween.version = gsap_core_Timeline.version = gsap.version = "3.12.5";
+_coreReady = 1;
+_windowExists() && _wake();
+var Power0 = _easeMap.Power0,
+    Power1 = _easeMap.Power1,
+    Power2 = _easeMap.Power2,
+    Power3 = _easeMap.Power3,
+    Power4 = _easeMap.Power4,
+    Linear = _easeMap.Linear,
+    gsap_core_Quad = _easeMap.Quad,
+    Cubic = _easeMap.Cubic,
+    Quart = _easeMap.Quart,
+    Quint = _easeMap.Quint,
+    Strong = _easeMap.Strong,
+    Elastic = _easeMap.Elastic,
+    Back = _easeMap.Back,
+    SteppedEase = _easeMap.SteppedEase,
+    Bounce = _easeMap.Bounce,
+    Sine = _easeMap.Sine,
+    Expo = _easeMap.Expo,
+    Circ = _easeMap.Circ;
+
+ //export some internal methods/orojects for use in CSSPlugin so that we can externalize that file and allow custom builds that exclude it.
+
+
+;// CONCATENATED MODULE: ../node_modules/gsap/CSSPlugin.js
+/*!
+ * CSSPlugin 3.12.5
+ * https://gsap.com
+ *
+ * Copyright 2008-2024, GreenSock. All rights reserved.
+ * Subject to the terms at https://gsap.com/standard-license or for
+ * Club GSAP members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/* eslint-disable */
+
+
+var CSSPlugin_win,
+    CSSPlugin_doc,
+    _docElement,
+    _pluginInitted,
+    _tempDiv,
+    _tempDivStyler,
+    _recentSetterPlugin,
+    CSSPlugin_reverting,
+    CSSPlugin_windowExists = function _windowExists() {
+  return typeof window !== "undefined";
+},
+    _transformProps = {},
+    _RAD2DEG = 180 / Math.PI,
+    _DEG2RAD = Math.PI / 180,
+    _atan2 = Math.atan2,
+    CSSPlugin_bigNum = 1e8,
+    _capsExp = /([A-Z])/g,
+    _horizontalExp = /(left|right|width|margin|padding|x)/i,
+    _complexExp = /[\s,\(]\S/,
+    _propertyAliases = {
+  autoAlpha: "opacity,visibility",
+  scale: "scaleX,scaleY",
+  alpha: "opacity"
+},
+    _renderCSSProp = function _renderCSSProp(ratio, data) {
+  return data.set(data.t, data.p, Math.round((data.s + data.c * ratio) * 10000) / 10000 + data.u, data);
+},
+    _renderPropWithEnd = function _renderPropWithEnd(ratio, data) {
+  return data.set(data.t, data.p, ratio === 1 ? data.e : Math.round((data.s + data.c * ratio) * 10000) / 10000 + data.u, data);
+},
+    _renderCSSPropWithBeginning = function _renderCSSPropWithBeginning(ratio, data) {
+  return data.set(data.t, data.p, ratio ? Math.round((data.s + data.c * ratio) * 10000) / 10000 + data.u : data.b, data);
+},
+    //if units change, we need a way to render the original unit/value when the tween goes all the way back to the beginning (ratio:0)
+_renderRoundedCSSProp = function _renderRoundedCSSProp(ratio, data) {
+  var value = data.s + data.c * ratio;
+  data.set(data.t, data.p, ~~(value + (value < 0 ? -.5 : .5)) + data.u, data);
+},
+    _renderNonTweeningValue = function _renderNonTweeningValue(ratio, data) {
+  return data.set(data.t, data.p, ratio ? data.e : data.b, data);
+},
+    _renderNonTweeningValueOnlyAtEnd = function _renderNonTweeningValueOnlyAtEnd(ratio, data) {
+  return data.set(data.t, data.p, ratio !== 1 ? data.b : data.e, data);
+},
+    _setterCSSStyle = function _setterCSSStyle(target, property, value) {
+  return target.style[property] = value;
+},
+    _setterCSSProp = function _setterCSSProp(target, property, value) {
+  return target.style.setProperty(property, value);
+},
+    _setterTransform = function _setterTransform(target, property, value) {
+  return target._gsap[property] = value;
+},
+    _setterScale = function _setterScale(target, property, value) {
+  return target._gsap.scaleX = target._gsap.scaleY = value;
+},
+    _setterScaleWithRender = function _setterScaleWithRender(target, property, value, data, ratio) {
+  var cache = target._gsap;
+  cache.scaleX = cache.scaleY = value;
+  cache.renderTransform(ratio, cache);
+},
+    _setterTransformWithRender = function _setterTransformWithRender(target, property, value, data, ratio) {
+  var cache = target._gsap;
+  cache[property] = value;
+  cache.renderTransform(ratio, cache);
+},
+    _transformProp = "transform",
+    _transformOriginProp = _transformProp + "Origin",
+    _saveStyle = function _saveStyle(property, isNotCSS) {
+  var _this = this;
+
+  var target = this.target,
+      style = target.style,
+      cache = target._gsap;
+
+  if (property in _transformProps && style) {
+    this.tfm = this.tfm || {};
+
+    if (property !== "transform") {
+      property = _propertyAliases[property] || property;
+      ~property.indexOf(",") ? property.split(",").forEach(function (a) {
+        return _this.tfm[a] = _get(target, a);
+      }) : this.tfm[property] = cache.x ? cache[property] : _get(target, property); // note: scale would map to "scaleX,scaleY", thus we loop and apply them both.
+
+      property === _transformOriginProp && (this.tfm.zOrigin = cache.zOrigin);
+    } else {
+      return _propertyAliases.transform.split(",").forEach(function (p) {
+        return _saveStyle.call(_this, p, isNotCSS);
+      });
+    }
+
+    if (this.props.indexOf(_transformProp) >= 0) {
+      return;
+    }
+
+    if (cache.svg) {
+      this.svgo = target.getAttribute("data-svg-origin");
+      this.props.push(_transformOriginProp, isNotCSS, "");
+    }
+
+    property = _transformProp;
+  }
+
+  (style || isNotCSS) && this.props.push(property, isNotCSS, style[property]);
+},
+    _removeIndependentTransforms = function _removeIndependentTransforms(style) {
+  if (style.translate) {
+    style.removeProperty("translate");
+    style.removeProperty("scale");
+    style.removeProperty("rotate");
+  }
+},
+    _revertStyle = function _revertStyle() {
+  var props = this.props,
+      target = this.target,
+      style = target.style,
+      cache = target._gsap,
+      i,
+      p;
+
+  for (i = 0; i < props.length; i += 3) {
+    // stored like this: property, isNotCSS, value
+    props[i + 1] ? target[props[i]] = props[i + 2] : props[i + 2] ? style[props[i]] = props[i + 2] : style.removeProperty(props[i].substr(0, 2) === "--" ? props[i] : props[i].replace(_capsExp, "-$1").toLowerCase());
+  }
+
+  if (this.tfm) {
+    for (p in this.tfm) {
+      cache[p] = this.tfm[p];
+    }
+
+    if (cache.svg) {
+      cache.renderTransform();
+      target.setAttribute("data-svg-origin", this.svgo || "");
+    }
+
+    i = CSSPlugin_reverting();
+
+    if ((!i || !i.isStart) && !style[_transformProp]) {
+      _removeIndependentTransforms(style);
+
+      if (cache.zOrigin && style[_transformOriginProp]) {
+        style[_transformOriginProp] += " " + cache.zOrigin + "px"; // since we're uncaching, we must put the zOrigin back into the transformOrigin so that we can pull it out accurately when we parse again. Otherwise, we'd lose the z portion of the origin since we extract it to protect from Safari bugs.
+
+        cache.zOrigin = 0;
+        cache.renderTransform();
+      }
+
+      cache.uncache = 1; // if it's a startAt that's being reverted in the _initTween() of the core, we don't need to uncache transforms. This is purely a performance optimization.
+    }
+  }
+},
+    _getStyleSaver = function _getStyleSaver(target, properties) {
+  var saver = {
+    target: target,
+    props: [],
+    revert: _revertStyle,
+    save: _saveStyle
+  };
+  target._gsap || gsap.core.getCache(target); // just make sure there's a _gsap cache defined because we read from it in _saveStyle() and it's more efficient to just check it here once.
+
+  properties && properties.split(",").forEach(function (p) {
+    return saver.save(p);
+  });
+  return saver;
+},
+    _supports3D,
+    _createElement = function _createElement(type, ns) {
+  var e = CSSPlugin_doc.createElementNS ? CSSPlugin_doc.createElementNS((ns || "http://www.w3.org/1999/xhtml").replace(/^https/, "http"), type) : CSSPlugin_doc.createElement(type); //some servers swap in https for http in the namespace which can break things, making "style" inaccessible.
+
+  return e && e.style ? e : CSSPlugin_doc.createElement(type); //some environments won't allow access to the element's style when created with a namespace in which case we default to the standard createElement() to work around the issue. Also note that when GSAP is embedded directly inside an SVG file, createElement() won't allow access to the style object in Firefox (see https://gsap.com/forums/topic/20215-problem-using-tweenmax-in-standalone-self-containing-svg-file-err-cannot-set-property-csstext-of-undefined/).
+},
+    _getComputedProperty = function _getComputedProperty(target, property, skipPrefixFallback) {
+  var cs = getComputedStyle(target);
+  return cs[property] || cs.getPropertyValue(property.replace(_capsExp, "-$1").toLowerCase()) || cs.getPropertyValue(property) || !skipPrefixFallback && _getComputedProperty(target, _checkPropPrefix(property) || property, 1) || ""; //css variables may not need caps swapped out for dashes and lowercase.
+},
+    _prefixes = "O,Moz,ms,Ms,Webkit".split(","),
+    _checkPropPrefix = function _checkPropPrefix(property, element, preferPrefix) {
+  var e = element || _tempDiv,
+      s = e.style,
+      i = 5;
+
+  if (property in s && !preferPrefix) {
+    return property;
+  }
+
+  property = property.charAt(0).toUpperCase() + property.substr(1);
+
+  while (i-- && !(_prefixes[i] + property in s)) {}
+
+  return i < 0 ? null : (i === 3 ? "ms" : i >= 0 ? _prefixes[i] : "") + property;
+},
+    _initCore = function _initCore() {
+  if (CSSPlugin_windowExists() && window.document) {
+    CSSPlugin_win = window;
+    CSSPlugin_doc = CSSPlugin_win.document;
+    _docElement = CSSPlugin_doc.documentElement;
+    _tempDiv = _createElement("div") || {
+      style: {}
+    };
+    _tempDivStyler = _createElement("div");
+    _transformProp = _checkPropPrefix(_transformProp);
+    _transformOriginProp = _transformProp + "Origin";
+    _tempDiv.style.cssText = "border-width:0;line-height:0;position:absolute;padding:0"; //make sure to override certain properties that may contaminate measurements, in case the user has overreaching style sheets.
+
+    _supports3D = !!_checkPropPrefix("perspective");
+    CSSPlugin_reverting = gsap.core.reverting;
+    _pluginInitted = 1;
+  }
+},
+    _getBBoxHack = function _getBBoxHack(swapIfPossible) {
+  //works around issues in some browsers (like Firefox) that don't correctly report getBBox() on SVG elements inside a <defs> element and/or <mask>. We try creating an SVG, adding it to the documentElement and toss the element in there so that it's definitely part of the rendering tree, then grab the bbox and if it works, we actually swap out the original getBBox() method for our own that does these extra steps whenever getBBox is needed. This helps ensure that performance is optimal (only do all these extra steps when absolutely necessary...most elements don't need it).
+  var svg = _createElement("svg", this.ownerSVGElement && this.ownerSVGElement.getAttribute("xmlns") || "http://www.w3.org/2000/svg"),
+      oldParent = this.parentNode,
+      oldSibling = this.nextSibling,
+      oldCSS = this.style.cssText,
+      bbox;
+
+  _docElement.appendChild(svg);
+
+  svg.appendChild(this);
+  this.style.display = "block";
+
+  if (swapIfPossible) {
+    try {
+      bbox = this.getBBox();
+      this._gsapBBox = this.getBBox; //store the original
+
+      this.getBBox = _getBBoxHack;
+    } catch (e) {}
+  } else if (this._gsapBBox) {
+    bbox = this._gsapBBox();
+  }
+
+  if (oldParent) {
+    if (oldSibling) {
+      oldParent.insertBefore(this, oldSibling);
+    } else {
+      oldParent.appendChild(this);
+    }
+  }
+
+  _docElement.removeChild(svg);
+
+  this.style.cssText = oldCSS;
+  return bbox;
+},
+    _getAttributeFallbacks = function _getAttributeFallbacks(target, attributesArray) {
+  var i = attributesArray.length;
+
+  while (i--) {
+    if (target.hasAttribute(attributesArray[i])) {
+      return target.getAttribute(attributesArray[i]);
+    }
+  }
+},
+    _getBBox = function _getBBox(target) {
+  var bounds;
+
+  try {
+    bounds = target.getBBox(); //Firefox throws errors if you try calling getBBox() on an SVG element that's not rendered (like in a <symbol> or <defs>). https://bugzilla.mozilla.org/show_bug.cgi?id=612118
+  } catch (error) {
+    bounds = _getBBoxHack.call(target, true);
+  }
+
+  bounds && (bounds.width || bounds.height) || target.getBBox === _getBBoxHack || (bounds = _getBBoxHack.call(target, true)); //some browsers (like Firefox) misreport the bounds if the element has zero width and height (it just assumes it's at x:0, y:0), thus we need to manually grab the position in that case.
+
+  return bounds && !bounds.width && !bounds.x && !bounds.y ? {
+    x: +_getAttributeFallbacks(target, ["x", "cx", "x1"]) || 0,
+    y: +_getAttributeFallbacks(target, ["y", "cy", "y1"]) || 0,
+    width: 0,
+    height: 0
+  } : bounds;
+},
+    _isSVG = function _isSVG(e) {
+  return !!(e.getCTM && (!e.parentNode || e.ownerSVGElement) && _getBBox(e));
+},
+    //reports if the element is an SVG on which getBBox() actually works
+_removeProperty = function _removeProperty(target, property) {
+  if (property) {
+    var style = target.style,
+        first2Chars;
+
+    if (property in _transformProps && property !== _transformOriginProp) {
+      property = _transformProp;
+    }
+
+    if (style.removeProperty) {
+      first2Chars = property.substr(0, 2);
+
+      if (first2Chars === "ms" || property.substr(0, 6) === "webkit") {
+        //Microsoft and some Webkit browsers don't conform to the standard of capitalizing the first prefix character, so we adjust so that when we prefix the caps with a dash, it's correct (otherwise it'd be "ms-transform" instead of "-ms-transform" for IE9, for example)
+        property = "-" + property;
+      }
+
+      style.removeProperty(first2Chars === "--" ? property : property.replace(_capsExp, "-$1").toLowerCase());
+    } else {
+      //note: old versions of IE use "removeAttribute()" instead of "removeProperty()"
+      style.removeAttribute(property);
+    }
+  }
+},
+    _addNonTweeningPT = function _addNonTweeningPT(plugin, target, property, beginning, end, onlySetAtEnd) {
+  var pt = new PropTween(plugin._pt, target, property, 0, 1, onlySetAtEnd ? _renderNonTweeningValueOnlyAtEnd : _renderNonTweeningValue);
+  plugin._pt = pt;
+  pt.b = beginning;
+  pt.e = end;
+
+  plugin._props.push(property);
+
+  return pt;
+},
+    _nonConvertibleUnits = {
+  deg: 1,
+  rad: 1,
+  turn: 1
+},
+    _nonStandardLayouts = {
+  grid: 1,
+  flex: 1
+},
+    //takes a single value like 20px and converts it to the unit specified, like "%", returning only the numeric amount.
+_convertToUnit = function _convertToUnit(target, property, value, unit) {
+  var curValue = parseFloat(value) || 0,
+      curUnit = (value + "").trim().substr((curValue + "").length) || "px",
+      // some browsers leave extra whitespace at the beginning of CSS variables, hence the need to trim()
+  style = _tempDiv.style,
+      horizontal = _horizontalExp.test(property),
+      isRootSVG = target.tagName.toLowerCase() === "svg",
+      measureProperty = (isRootSVG ? "client" : "offset") + (horizontal ? "Width" : "Height"),
+      amount = 100,
+      toPixels = unit === "px",
+      toPercent = unit === "%",
+      px,
+      parent,
+      cache,
+      isSVG;
+
+  if (unit === curUnit || !curValue || _nonConvertibleUnits[unit] || _nonConvertibleUnits[curUnit]) {
+    return curValue;
+  }
+
+  curUnit !== "px" && !toPixels && (curValue = _convertToUnit(target, property, value, "px"));
+  isSVG = target.getCTM && _isSVG(target);
+
+  if ((toPercent || curUnit === "%") && (_transformProps[property] || ~property.indexOf("adius"))) {
+    px = isSVG ? target.getBBox()[horizontal ? "width" : "height"] : target[measureProperty];
+    return _round(toPercent ? curValue / px * amount : curValue / 100 * px);
+  }
+
+  style[horizontal ? "width" : "height"] = amount + (toPixels ? curUnit : unit);
+  parent = ~property.indexOf("adius") || unit === "em" && target.appendChild && !isRootSVG ? target : target.parentNode;
+
+  if (isSVG) {
+    parent = (target.ownerSVGElement || {}).parentNode;
+  }
+
+  if (!parent || parent === CSSPlugin_doc || !parent.appendChild) {
+    parent = CSSPlugin_doc.body;
+  }
+
+  cache = parent._gsap;
+
+  if (cache && toPercent && cache.width && horizontal && cache.time === _ticker.time && !cache.uncache) {
+    return _round(curValue / cache.width * amount);
+  } else {
+    if (toPercent && (property === "height" || property === "width")) {
+      // if we're dealing with width/height that's inside a container with padding and/or it's a flexbox/grid container, we must apply it to the target itself rather than the _tempDiv in order to ensure complete accuracy, factoring in the parent's padding.
+      var v = target.style[property];
+      target.style[property] = amount + unit;
+      px = target[measureProperty];
+      v ? target.style[property] = v : _removeProperty(target, property);
+    } else {
+      (toPercent || curUnit === "%") && !_nonStandardLayouts[_getComputedProperty(parent, "display")] && (style.position = _getComputedProperty(target, "position"));
+      parent === target && (style.position = "static"); // like for borderRadius, if it's a % we must have it relative to the target itself but that may not have position: relative or position: absolute in which case it'd go up the chain until it finds its offsetParent (bad). position: static protects against that.
+
+      parent.appendChild(_tempDiv);
+      px = _tempDiv[measureProperty];
+      parent.removeChild(_tempDiv);
+      style.position = "absolute";
+    }
+
+    if (horizontal && toPercent) {
+      cache = _getCache(parent);
+      cache.time = _ticker.time;
+      cache.width = parent[measureProperty];
+    }
+  }
+
+  return _round(toPixels ? px * curValue / amount : px && curValue ? amount / px * curValue : 0);
+},
+    _get = function _get(target, property, unit, uncache) {
+  var value;
+  _pluginInitted || _initCore();
+
+  if (property in _propertyAliases && property !== "transform") {
+    property = _propertyAliases[property];
+
+    if (~property.indexOf(",")) {
+      property = property.split(",")[0];
+    }
+  }
+
+  if (_transformProps[property] && property !== "transform") {
+    value = _parseTransform(target, uncache);
+    value = property !== "transformOrigin" ? value[property] : value.svg ? value.origin : _firstTwoOnly(_getComputedProperty(target, _transformOriginProp)) + " " + value.zOrigin + "px";
+  } else {
+    value = target.style[property];
+
+    if (!value || value === "auto" || uncache || ~(value + "").indexOf("calc(")) {
+      value = _specialProps[property] && _specialProps[property](target, property, unit) || _getComputedProperty(target, property) || _getProperty(target, property) || (property === "opacity" ? 1 : 0); // note: some browsers, like Firefox, don't report borderRadius correctly! Instead, it only reports every corner like  borderTopLeftRadius
+    }
+  }
+
+  return unit && !~(value + "").trim().indexOf(" ") ? _convertToUnit(target, property, value, unit) + unit : value;
+},
+    _tweenComplexCSSString = function _tweenComplexCSSString(target, prop, start, end) {
+  // note: we call _tweenComplexCSSString.call(pluginInstance...) to ensure that it's scoped properly. We may call it from within a plugin too, thus "this" would refer to the plugin.
+  if (!start || start === "none") {
+    // some browsers like Safari actually PREFER the prefixed property and mis-report the unprefixed value like clipPath (BUG). In other words, even though clipPath exists in the style ("clipPath" in target.style) and it's set in the CSS properly (along with -webkit-clip-path), Safari reports clipPath as "none" whereas WebkitClipPath reports accurately like "ellipse(100% 0% at 50% 0%)", so in this case we must SWITCH to using the prefixed property instead. See https://gsap.com/forums/topic/18310-clippath-doesnt-work-on-ios/
+    var p = _checkPropPrefix(prop, target, 1),
+        s = p && _getComputedProperty(target, p, 1);
+
+    if (s && s !== start) {
+      prop = p;
+      start = s;
+    } else if (prop === "borderColor") {
+      start = _getComputedProperty(target, "borderTopColor"); // Firefox bug: always reports "borderColor" as "", so we must fall back to borderTopColor. See https://gsap.com/forums/topic/24583-how-to-return-colors-that-i-had-after-reverse/
+    }
+  }
+
+  var pt = new PropTween(this._pt, target.style, prop, 0, 1, _renderComplexString),
+      index = 0,
+      matchIndex = 0,
+      a,
+      result,
+      startValues,
+      startNum,
+      color,
+      startValue,
+      endValue,
+      endNum,
+      chunk,
+      endUnit,
+      startUnit,
+      endValues;
+  pt.b = start;
+  pt.e = end;
+  start += ""; // ensure values are strings
+
+  end += "";
+
+  if (end === "auto") {
+    startValue = target.style[prop];
+    target.style[prop] = end;
+    end = _getComputedProperty(target, prop) || end;
+    startValue ? target.style[prop] = startValue : _removeProperty(target, prop);
+  }
+
+  a = [start, end];
+
+  _colorStringFilter(a); // pass an array with the starting and ending values and let the filter do whatever it needs to the values. If colors are found, it returns true and then we must match where the color shows up order-wise because for things like boxShadow, sometimes the browser provides the computed values with the color FIRST, but the user provides it with the color LAST, so flip them if necessary. Same for drop-shadow().
+
+
+  start = a[0];
+  end = a[1];
+  startValues = start.match(_numWithUnitExp) || [];
+  endValues = end.match(_numWithUnitExp) || [];
+
+  if (endValues.length) {
+    while (result = _numWithUnitExp.exec(end)) {
+      endValue = result[0];
+      chunk = end.substring(index, result.index);
+
+      if (color) {
+        color = (color + 1) % 5;
+      } else if (chunk.substr(-5) === "rgba(" || chunk.substr(-5) === "hsla(") {
+        color = 1;
+      }
+
+      if (endValue !== (startValue = startValues[matchIndex++] || "")) {
+        startNum = parseFloat(startValue) || 0;
+        startUnit = startValue.substr((startNum + "").length);
+        endValue.charAt(1) === "=" && (endValue = _parseRelative(startNum, endValue) + startUnit);
+        endNum = parseFloat(endValue);
+        endUnit = endValue.substr((endNum + "").length);
+        index = _numWithUnitExp.lastIndex - endUnit.length;
+
+        if (!endUnit) {
+          //if something like "perspective:300" is passed in and we must add a unit to the end
+          endUnit = endUnit || _config.units[prop] || startUnit;
+
+          if (index === end.length) {
+            end += endUnit;
+            pt.e += endUnit;
+          }
+        }
+
+        if (startUnit !== endUnit) {
+          startNum = _convertToUnit(target, prop, startValue, endUnit) || 0;
+        } // these nested PropTweens are handled in a special way - we'll never actually call a render or setter method on them. We'll just loop through them in the parent complex string PropTween's render method.
+
+
+        pt._pt = {
+          _next: pt._pt,
+          p: chunk || matchIndex === 1 ? chunk : ",",
+          //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
+          s: startNum,
+          c: endNum - startNum,
+          m: color && color < 4 || prop === "zIndex" ? Math.round : 0
+        };
+      }
+    }
+
+    pt.c = index < end.length ? end.substring(index, end.length) : ""; //we use the "c" of the PropTween to store the final part of the string (after the last number)
+  } else {
+    pt.r = prop === "display" && end === "none" ? _renderNonTweeningValueOnlyAtEnd : _renderNonTweeningValue;
+  }
+
+  _relExp.test(end) && (pt.e = 0); //if the end string contains relative values or dynamic random(...) values, delete the end it so that on the final render we don't actually set it to the string with += or -= characters (forces it to use the calculated value).
+
+  this._pt = pt; //start the linked list with this new PropTween. Remember, we call _tweenComplexCSSString.call(pluginInstance...) to ensure that it's scoped properly. We may call it from within another plugin too, thus "this" would refer to the plugin.
+
+  return pt;
+},
+    _keywordToPercent = {
+  top: "0%",
+  bottom: "100%",
+  left: "0%",
+  right: "100%",
+  center: "50%"
+},
+    _convertKeywordsToPercentages = function _convertKeywordsToPercentages(value) {
+  var split = value.split(" "),
+      x = split[0],
+      y = split[1] || "50%";
+
+  if (x === "top" || x === "bottom" || y === "left" || y === "right") {
+    //the user provided them in the wrong order, so flip them
+    value = x;
+    x = y;
+    y = value;
+  }
+
+  split[0] = _keywordToPercent[x] || x;
+  split[1] = _keywordToPercent[y] || y;
+  return split.join(" ");
+},
+    _renderClearProps = function _renderClearProps(ratio, data) {
+  if (data.tween && data.tween._time === data.tween._dur) {
+    var target = data.t,
+        style = target.style,
+        props = data.u,
+        cache = target._gsap,
+        prop,
+        clearTransforms,
+        i;
+
+    if (props === "all" || props === true) {
+      style.cssText = "";
+      clearTransforms = 1;
+    } else {
+      props = props.split(",");
+      i = props.length;
+
+      while (--i > -1) {
+        prop = props[i];
+
+        if (_transformProps[prop]) {
+          clearTransforms = 1;
+          prop = prop === "transformOrigin" ? _transformOriginProp : _transformProp;
+        }
+
+        _removeProperty(target, prop);
+      }
+    }
+
+    if (clearTransforms) {
+      _removeProperty(target, _transformProp);
+
+      if (cache) {
+        cache.svg && target.removeAttribute("transform");
+
+        _parseTransform(target, 1); // force all the cached values back to "normal"/identity, otherwise if there's another tween that's already set to render transforms on this element, it could display the wrong values.
+
+
+        cache.uncache = 1;
+
+        _removeIndependentTransforms(style);
+      }
+    }
+  }
+},
+    // note: specialProps should return 1 if (and only if) they have a non-zero priority. It indicates we need to sort the linked list.
+_specialProps = {
+  clearProps: function clearProps(plugin, target, property, endValue, tween) {
+    if (tween.data !== "isFromStart") {
+      var pt = plugin._pt = new PropTween(plugin._pt, target, property, 0, 0, _renderClearProps);
+      pt.u = endValue;
+      pt.pr = -10;
+      pt.tween = tween;
+
+      plugin._props.push(property);
+
+      return 1;
+    }
+  }
+  /* className feature (about 0.4kb gzipped).
+  , className(plugin, target, property, endValue, tween) {
+  	let _renderClassName = (ratio, data) => {
+  			data.css.render(ratio, data.css);
+  			if (!ratio || ratio === 1) {
+  				let inline = data.rmv,
+  					target = data.t,
+  					p;
+  				target.setAttribute("class", ratio ? data.e : data.b);
+  				for (p in inline) {
+  					_removeProperty(target, p);
+  				}
+  			}
+  		},
+  		_getAllStyles = (target) => {
+  			let styles = {},
+  				computed = getComputedStyle(target),
+  				p;
+  			for (p in computed) {
+  				if (isNaN(p) && p !== "cssText" && p !== "length") {
+  					styles[p] = computed[p];
+  				}
+  			}
+  			_setDefaults(styles, _parseTransform(target, 1));
+  			return styles;
+  		},
+  		startClassList = target.getAttribute("class"),
+  		style = target.style,
+  		cssText = style.cssText,
+  		cache = target._gsap,
+  		classPT = cache.classPT,
+  		inlineToRemoveAtEnd = {},
+  		data = {t:target, plugin:plugin, rmv:inlineToRemoveAtEnd, b:startClassList, e:(endValue.charAt(1) !== "=") ? endValue : startClassList.replace(new RegExp("(?:\\s|^)" + endValue.substr(2) + "(?![\\w-])"), "") + ((endValue.charAt(0) === "+") ? " " + endValue.substr(2) : "")},
+  		changingVars = {},
+  		startVars = _getAllStyles(target),
+  		transformRelated = /(transform|perspective)/i,
+  		endVars, p;
+  	if (classPT) {
+  		classPT.r(1, classPT.d);
+  		_removeLinkedListItem(classPT.d.plugin, classPT, "_pt");
+  	}
+  	target.setAttribute("class", data.e);
+  	endVars = _getAllStyles(target, true);
+  	target.setAttribute("class", startClassList);
+  	for (p in endVars) {
+  		if (endVars[p] !== startVars[p] && !transformRelated.test(p)) {
+  			changingVars[p] = endVars[p];
+  			if (!style[p] && style[p] !== "0") {
+  				inlineToRemoveAtEnd[p] = 1;
+  			}
+  		}
+  	}
+  	cache.classPT = plugin._pt = new PropTween(plugin._pt, target, "className", 0, 0, _renderClassName, data, 0, -11);
+  	if (style.cssText !== cssText) { //only apply if things change. Otherwise, in cases like a background-image that's pulled dynamically, it could cause a refresh. See https://gsap.com/forums/topic/20368-possible-gsap-bug-switching-classnames-in-chrome/.
+  		style.cssText = cssText; //we recorded cssText before we swapped classes and ran _getAllStyles() because in cases when a className tween is overwritten, we remove all the related tweening properties from that class change (otherwise class-specific stuff can't override properties we've directly set on the target's style object due to specificity).
+  	}
+  	_parseTransform(target, true); //to clear the caching of transforms
+  	data.css = new gsap.plugins.css();
+  	data.css.init(target, changingVars, tween);
+  	plugin._props.push(...data.css._props);
+  	return 1;
+  }
+  */
+
+},
+
+/*
+ * --------------------------------------------------------------------------------------
+ * TRANSFORMS
+ * --------------------------------------------------------------------------------------
+ */
+_identity2DMatrix = [1, 0, 0, 1, 0, 0],
+    _rotationalProperties = {},
+    _isNullTransform = function _isNullTransform(value) {
+  return value === "matrix(1, 0, 0, 1, 0, 0)" || value === "none" || !value;
+},
+    _getComputedTransformMatrixAsArray = function _getComputedTransformMatrixAsArray(target) {
+  var matrixString = _getComputedProperty(target, _transformProp);
+
+  return _isNullTransform(matrixString) ? _identity2DMatrix : matrixString.substr(7).match(_numExp).map(_round);
+},
+    _getMatrix = function _getMatrix(target, force2D) {
+  var cache = target._gsap || _getCache(target),
+      style = target.style,
+      matrix = _getComputedTransformMatrixAsArray(target),
+      parent,
+      nextSibling,
+      temp,
+      addedToDOM;
+
+  if (cache.svg && target.getAttribute("transform")) {
+    temp = target.transform.baseVal.consolidate().matrix; //ensures that even complex values like "translate(50,60) rotate(135,0,0)" are parsed because it mashes it into a matrix.
+
+    matrix = [temp.a, temp.b, temp.c, temp.d, temp.e, temp.f];
+    return matrix.join(",") === "1,0,0,1,0,0" ? _identity2DMatrix : matrix;
+  } else if (matrix === _identity2DMatrix && !target.offsetParent && target !== _docElement && !cache.svg) {
+    //note: if offsetParent is null, that means the element isn't in the normal document flow, like if it has display:none or one of its ancestors has display:none). Firefox returns null for getComputedStyle() if the element is in an iframe that has display:none. https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+    //browsers don't report transforms accurately unless the element is in the DOM and has a display value that's not "none". Firefox and Microsoft browsers have a partial bug where they'll report transforms even if display:none BUT not any percentage-based values like translate(-50%, 8px) will be reported as if it's translate(0, 8px).
+    temp = style.display;
+    style.display = "block";
+    parent = target.parentNode;
+
+    if (!parent || !target.offsetParent) {
+      // note: in 3.3.0 we switched target.offsetParent to _doc.body.contains(target) to avoid [sometimes unnecessary] MutationObserver calls but that wasn't adequate because there are edge cases where nested position: fixed elements need to get reparented to accurately sense transforms. See https://github.com/greensock/GSAP/issues/388 and https://github.com/greensock/GSAP/issues/375
+      addedToDOM = 1; //flag
+
+      nextSibling = target.nextElementSibling;
+
+      _docElement.appendChild(target); //we must add it to the DOM in order to get values properly
+
+    }
+
+    matrix = _getComputedTransformMatrixAsArray(target);
+    temp ? style.display = temp : _removeProperty(target, "display");
+
+    if (addedToDOM) {
+      nextSibling ? parent.insertBefore(target, nextSibling) : parent ? parent.appendChild(target) : _docElement.removeChild(target);
+    }
+  }
+
+  return force2D && matrix.length > 6 ? [matrix[0], matrix[1], matrix[4], matrix[5], matrix[12], matrix[13]] : matrix;
+},
+    _applySVGOrigin = function _applySVGOrigin(target, origin, originIsAbsolute, smooth, matrixArray, pluginToAddPropTweensTo) {
+  var cache = target._gsap,
+      matrix = matrixArray || _getMatrix(target, true),
+      xOriginOld = cache.xOrigin || 0,
+      yOriginOld = cache.yOrigin || 0,
+      xOffsetOld = cache.xOffset || 0,
+      yOffsetOld = cache.yOffset || 0,
+      a = matrix[0],
+      b = matrix[1],
+      c = matrix[2],
+      d = matrix[3],
+      tx = matrix[4],
+      ty = matrix[5],
+      originSplit = origin.split(" "),
+      xOrigin = parseFloat(originSplit[0]) || 0,
+      yOrigin = parseFloat(originSplit[1]) || 0,
+      bounds,
+      determinant,
+      x,
+      y;
+
+  if (!originIsAbsolute) {
+    bounds = _getBBox(target);
+    xOrigin = bounds.x + (~originSplit[0].indexOf("%") ? xOrigin / 100 * bounds.width : xOrigin);
+    yOrigin = bounds.y + (~(originSplit[1] || originSplit[0]).indexOf("%") ? yOrigin / 100 * bounds.height : yOrigin); // if (!("xOrigin" in cache) && (xOrigin || yOrigin)) { // added in 3.12.3, reverted in 3.12.4; requires more exploration
+    // 	xOrigin -= bounds.x;
+    // 	yOrigin -= bounds.y;
+    // }
+  } else if (matrix !== _identity2DMatrix && (determinant = a * d - b * c)) {
+    //if it's zero (like if scaleX and scaleY are zero), skip it to avoid errors with dividing by zero.
+    x = xOrigin * (d / determinant) + yOrigin * (-c / determinant) + (c * ty - d * tx) / determinant;
+    y = xOrigin * (-b / determinant) + yOrigin * (a / determinant) - (a * ty - b * tx) / determinant;
+    xOrigin = x;
+    yOrigin = y; // theory: we only had to do this for smoothing and it assumes that the previous one was not originIsAbsolute.
+  }
+
+  if (smooth || smooth !== false && cache.smooth) {
+    tx = xOrigin - xOriginOld;
+    ty = yOrigin - yOriginOld;
+    cache.xOffset = xOffsetOld + (tx * a + ty * c) - tx;
+    cache.yOffset = yOffsetOld + (tx * b + ty * d) - ty;
+  } else {
+    cache.xOffset = cache.yOffset = 0;
+  }
+
+  cache.xOrigin = xOrigin;
+  cache.yOrigin = yOrigin;
+  cache.smooth = !!smooth;
+  cache.origin = origin;
+  cache.originIsAbsolute = !!originIsAbsolute;
+  target.style[_transformOriginProp] = "0px 0px"; //otherwise, if someone sets  an origin via CSS, it will likely interfere with the SVG transform attribute ones (because remember, we're baking the origin into the matrix() value).
+
+  if (pluginToAddPropTweensTo) {
+    _addNonTweeningPT(pluginToAddPropTweensTo, cache, "xOrigin", xOriginOld, xOrigin);
+
+    _addNonTweeningPT(pluginToAddPropTweensTo, cache, "yOrigin", yOriginOld, yOrigin);
+
+    _addNonTweeningPT(pluginToAddPropTweensTo, cache, "xOffset", xOffsetOld, cache.xOffset);
+
+    _addNonTweeningPT(pluginToAddPropTweensTo, cache, "yOffset", yOffsetOld, cache.yOffset);
+  }
+
+  target.setAttribute("data-svg-origin", xOrigin + " " + yOrigin);
+},
+    _parseTransform = function _parseTransform(target, uncache) {
+  var cache = target._gsap || new GSCache(target);
+
+  if ("x" in cache && !uncache && !cache.uncache) {
+    return cache;
+  }
+
+  var style = target.style,
+      invertedScaleX = cache.scaleX < 0,
+      px = "px",
+      deg = "deg",
+      cs = getComputedStyle(target),
+      origin = _getComputedProperty(target, _transformOriginProp) || "0",
+      x,
+      y,
+      z,
+      scaleX,
+      scaleY,
+      rotation,
+      rotationX,
+      rotationY,
+      skewX,
+      skewY,
+      perspective,
+      xOrigin,
+      yOrigin,
+      matrix,
+      angle,
+      cos,
+      sin,
+      a,
+      b,
+      c,
+      d,
+      a12,
+      a22,
+      t1,
+      t2,
+      t3,
+      a13,
+      a23,
+      a33,
+      a42,
+      a43,
+      a32;
+  x = y = z = rotation = rotationX = rotationY = skewX = skewY = perspective = 0;
+  scaleX = scaleY = 1;
+  cache.svg = !!(target.getCTM && _isSVG(target));
+
+  if (cs.translate) {
+    // accommodate independent transforms by combining them into normal ones.
+    if (cs.translate !== "none" || cs.scale !== "none" || cs.rotate !== "none") {
+      style[_transformProp] = (cs.translate !== "none" ? "translate3d(" + (cs.translate + " 0 0").split(" ").slice(0, 3).join(", ") + ") " : "") + (cs.rotate !== "none" ? "rotate(" + cs.rotate + ") " : "") + (cs.scale !== "none" ? "scale(" + cs.scale.split(" ").join(",") + ") " : "") + (cs[_transformProp] !== "none" ? cs[_transformProp] : "");
+    }
+
+    style.scale = style.rotate = style.translate = "none";
+  }
+
+  matrix = _getMatrix(target, cache.svg);
+
+  if (cache.svg) {
+    if (cache.uncache) {
+      // if cache.uncache is true (and maybe if origin is 0,0), we need to set element.style.transformOrigin = (cache.xOrigin - bbox.x) + "px " + (cache.yOrigin - bbox.y) + "px". Previously we let the data-svg-origin stay instead, but when introducing revert(), it complicated things.
+      t2 = target.getBBox();
+      origin = cache.xOrigin - t2.x + "px " + (cache.yOrigin - t2.y) + "px";
+      t1 = "";
+    } else {
+      t1 = !uncache && target.getAttribute("data-svg-origin"); //  Remember, to work around browser inconsistencies we always force SVG elements' transformOrigin to 0,0 and offset the translation accordingly.
+    }
+
+    _applySVGOrigin(target, t1 || origin, !!t1 || cache.originIsAbsolute, cache.smooth !== false, matrix);
+  }
+
+  xOrigin = cache.xOrigin || 0;
+  yOrigin = cache.yOrigin || 0;
+
+  if (matrix !== _identity2DMatrix) {
+    a = matrix[0]; //a11
+
+    b = matrix[1]; //a21
+
+    c = matrix[2]; //a31
+
+    d = matrix[3]; //a41
+
+    x = a12 = matrix[4];
+    y = a22 = matrix[5]; //2D matrix
+
+    if (matrix.length === 6) {
+      scaleX = Math.sqrt(a * a + b * b);
+      scaleY = Math.sqrt(d * d + c * c);
+      rotation = a || b ? _atan2(b, a) * _RAD2DEG : 0; //note: if scaleX is 0, we cannot accurately measure rotation. Same for skewX with a scaleY of 0. Therefore, we default to the previously recorded value (or zero if that doesn't exist).
+
+      skewX = c || d ? _atan2(c, d) * _RAD2DEG + rotation : 0;
+      skewX && (scaleY *= Math.abs(Math.cos(skewX * _DEG2RAD)));
+
+      if (cache.svg) {
+        x -= xOrigin - (xOrigin * a + yOrigin * c);
+        y -= yOrigin - (xOrigin * b + yOrigin * d);
+      } //3D matrix
+
+    } else {
+      a32 = matrix[6];
+      a42 = matrix[7];
+      a13 = matrix[8];
+      a23 = matrix[9];
+      a33 = matrix[10];
+      a43 = matrix[11];
+      x = matrix[12];
+      y = matrix[13];
+      z = matrix[14];
+      angle = _atan2(a32, a33);
+      rotationX = angle * _RAD2DEG; //rotationX
+
+      if (angle) {
+        cos = Math.cos(-angle);
+        sin = Math.sin(-angle);
+        t1 = a12 * cos + a13 * sin;
+        t2 = a22 * cos + a23 * sin;
+        t3 = a32 * cos + a33 * sin;
+        a13 = a12 * -sin + a13 * cos;
+        a23 = a22 * -sin + a23 * cos;
+        a33 = a32 * -sin + a33 * cos;
+        a43 = a42 * -sin + a43 * cos;
+        a12 = t1;
+        a22 = t2;
+        a32 = t3;
+      } //rotationY
+
+
+      angle = _atan2(-c, a33);
+      rotationY = angle * _RAD2DEG;
+
+      if (angle) {
+        cos = Math.cos(-angle);
+        sin = Math.sin(-angle);
+        t1 = a * cos - a13 * sin;
+        t2 = b * cos - a23 * sin;
+        t3 = c * cos - a33 * sin;
+        a43 = d * sin + a43 * cos;
+        a = t1;
+        b = t2;
+        c = t3;
+      } //rotationZ
+
+
+      angle = _atan2(b, a);
+      rotation = angle * _RAD2DEG;
+
+      if (angle) {
+        cos = Math.cos(angle);
+        sin = Math.sin(angle);
+        t1 = a * cos + b * sin;
+        t2 = a12 * cos + a22 * sin;
+        b = b * cos - a * sin;
+        a22 = a22 * cos - a12 * sin;
+        a = t1;
+        a12 = t2;
+      }
+
+      if (rotationX && Math.abs(rotationX) + Math.abs(rotation) > 359.9) {
+        //when rotationY is set, it will often be parsed as 180 degrees different than it should be, and rotationX and rotation both being 180 (it looks the same), so we adjust for that here.
+        rotationX = rotation = 0;
+        rotationY = 180 - rotationY;
+      }
+
+      scaleX = _round(Math.sqrt(a * a + b * b + c * c));
+      scaleY = _round(Math.sqrt(a22 * a22 + a32 * a32));
+      angle = _atan2(a12, a22);
+      skewX = Math.abs(angle) > 0.0002 ? angle * _RAD2DEG : 0;
+      perspective = a43 ? 1 / (a43 < 0 ? -a43 : a43) : 0;
+    }
+
+    if (cache.svg) {
+      //sense if there are CSS transforms applied on an SVG element in which case we must overwrite them when rendering. The transform attribute is more reliable cross-browser, but we can't just remove the CSS ones because they may be applied in a CSS rule somewhere (not just inline).
+      t1 = target.getAttribute("transform");
+      cache.forceCSS = target.setAttribute("transform", "") || !_isNullTransform(_getComputedProperty(target, _transformProp));
+      t1 && target.setAttribute("transform", t1);
+    }
+  }
+
+  if (Math.abs(skewX) > 90 && Math.abs(skewX) < 270) {
+    if (invertedScaleX) {
+      scaleX *= -1;
+      skewX += rotation <= 0 ? 180 : -180;
+      rotation += rotation <= 0 ? 180 : -180;
+    } else {
+      scaleY *= -1;
+      skewX += skewX <= 0 ? 180 : -180;
+    }
+  }
+
+  uncache = uncache || cache.uncache;
+  cache.x = x - ((cache.xPercent = x && (!uncache && cache.xPercent || (Math.round(target.offsetWidth / 2) === Math.round(-x) ? -50 : 0))) ? target.offsetWidth * cache.xPercent / 100 : 0) + px;
+  cache.y = y - ((cache.yPercent = y && (!uncache && cache.yPercent || (Math.round(target.offsetHeight / 2) === Math.round(-y) ? -50 : 0))) ? target.offsetHeight * cache.yPercent / 100 : 0) + px;
+  cache.z = z + px;
+  cache.scaleX = _round(scaleX);
+  cache.scaleY = _round(scaleY);
+  cache.rotation = _round(rotation) + deg;
+  cache.rotationX = _round(rotationX) + deg;
+  cache.rotationY = _round(rotationY) + deg;
+  cache.skewX = skewX + deg;
+  cache.skewY = skewY + deg;
+  cache.transformPerspective = perspective + px;
+
+  if (cache.zOrigin = parseFloat(origin.split(" ")[2]) || !uncache && cache.zOrigin || 0) {
+    style[_transformOriginProp] = _firstTwoOnly(origin);
+  }
+
+  cache.xOffset = cache.yOffset = 0;
+  cache.force3D = _config.force3D;
+  cache.renderTransform = cache.svg ? _renderSVGTransforms : _supports3D ? _renderCSSTransforms : _renderNon3DTransforms;
+  cache.uncache = 0;
+  return cache;
+},
+    _firstTwoOnly = function _firstTwoOnly(value) {
+  return (value = value.split(" "))[0] + " " + value[1];
+},
+    //for handling transformOrigin values, stripping out the 3rd dimension
+_addPxTranslate = function _addPxTranslate(target, start, value) {
+  var unit = getUnit(start);
+  return _round(parseFloat(start) + parseFloat(_convertToUnit(target, "x", value + "px", unit))) + unit;
+},
+    _renderNon3DTransforms = function _renderNon3DTransforms(ratio, cache) {
+  cache.z = "0px";
+  cache.rotationY = cache.rotationX = "0deg";
+  cache.force3D = 0;
+
+  _renderCSSTransforms(ratio, cache);
+},
+    _zeroDeg = "0deg",
+    _zeroPx = "0px",
+    _endParenthesis = ") ",
+    _renderCSSTransforms = function _renderCSSTransforms(ratio, cache) {
+  var _ref = cache || this,
+      xPercent = _ref.xPercent,
+      yPercent = _ref.yPercent,
+      x = _ref.x,
+      y = _ref.y,
+      z = _ref.z,
+      rotation = _ref.rotation,
+      rotationY = _ref.rotationY,
+      rotationX = _ref.rotationX,
+      skewX = _ref.skewX,
+      skewY = _ref.skewY,
+      scaleX = _ref.scaleX,
+      scaleY = _ref.scaleY,
+      transformPerspective = _ref.transformPerspective,
+      force3D = _ref.force3D,
+      target = _ref.target,
+      zOrigin = _ref.zOrigin,
+      transforms = "",
+      use3D = force3D === "auto" && ratio && ratio !== 1 || force3D === true; // Safari has a bug that causes it not to render 3D transform-origin values properly, so we force the z origin to 0, record it in the cache, and then do the math here to offset the translate values accordingly (basically do the 3D transform-origin part manually)
+
+
+  if (zOrigin && (rotationX !== _zeroDeg || rotationY !== _zeroDeg)) {
+    var angle = parseFloat(rotationY) * _DEG2RAD,
+        a13 = Math.sin(angle),
+        a33 = Math.cos(angle),
+        cos;
+
+    angle = parseFloat(rotationX) * _DEG2RAD;
+    cos = Math.cos(angle);
+    x = _addPxTranslate(target, x, a13 * cos * -zOrigin);
+    y = _addPxTranslate(target, y, -Math.sin(angle) * -zOrigin);
+    z = _addPxTranslate(target, z, a33 * cos * -zOrigin + zOrigin);
+  }
+
+  if (transformPerspective !== _zeroPx) {
+    transforms += "perspective(" + transformPerspective + _endParenthesis;
+  }
+
+  if (xPercent || yPercent) {
+    transforms += "translate(" + xPercent + "%, " + yPercent + "%) ";
+  }
+
+  if (use3D || x !== _zeroPx || y !== _zeroPx || z !== _zeroPx) {
+    transforms += z !== _zeroPx || use3D ? "translate3d(" + x + ", " + y + ", " + z + ") " : "translate(" + x + ", " + y + _endParenthesis;
+  }
+
+  if (rotation !== _zeroDeg) {
+    transforms += "rotate(" + rotation + _endParenthesis;
+  }
+
+  if (rotationY !== _zeroDeg) {
+    transforms += "rotateY(" + rotationY + _endParenthesis;
+  }
+
+  if (rotationX !== _zeroDeg) {
+    transforms += "rotateX(" + rotationX + _endParenthesis;
+  }
+
+  if (skewX !== _zeroDeg || skewY !== _zeroDeg) {
+    transforms += "skew(" + skewX + ", " + skewY + _endParenthesis;
+  }
+
+  if (scaleX !== 1 || scaleY !== 1) {
+    transforms += "scale(" + scaleX + ", " + scaleY + _endParenthesis;
+  }
+
+  target.style[_transformProp] = transforms || "translate(0, 0)";
+},
+    _renderSVGTransforms = function _renderSVGTransforms(ratio, cache) {
+  var _ref2 = cache || this,
+      xPercent = _ref2.xPercent,
+      yPercent = _ref2.yPercent,
+      x = _ref2.x,
+      y = _ref2.y,
+      rotation = _ref2.rotation,
+      skewX = _ref2.skewX,
+      skewY = _ref2.skewY,
+      scaleX = _ref2.scaleX,
+      scaleY = _ref2.scaleY,
+      target = _ref2.target,
+      xOrigin = _ref2.xOrigin,
+      yOrigin = _ref2.yOrigin,
+      xOffset = _ref2.xOffset,
+      yOffset = _ref2.yOffset,
+      forceCSS = _ref2.forceCSS,
+      tx = parseFloat(x),
+      ty = parseFloat(y),
+      a11,
+      a21,
+      a12,
+      a22,
+      temp;
+
+  rotation = parseFloat(rotation);
+  skewX = parseFloat(skewX);
+  skewY = parseFloat(skewY);
+
+  if (skewY) {
+    //for performance reasons, we combine all skewing into the skewX and rotation values. Remember, a skewY of 10 degrees looks the same as a rotation of 10 degrees plus a skewX of 10 degrees.
+    skewY = parseFloat(skewY);
+    skewX += skewY;
+    rotation += skewY;
+  }
+
+  if (rotation || skewX) {
+    rotation *= _DEG2RAD;
+    skewX *= _DEG2RAD;
+    a11 = Math.cos(rotation) * scaleX;
+    a21 = Math.sin(rotation) * scaleX;
+    a12 = Math.sin(rotation - skewX) * -scaleY;
+    a22 = Math.cos(rotation - skewX) * scaleY;
+
+    if (skewX) {
+      skewY *= _DEG2RAD;
+      temp = Math.tan(skewX - skewY);
+      temp = Math.sqrt(1 + temp * temp);
+      a12 *= temp;
+      a22 *= temp;
+
+      if (skewY) {
+        temp = Math.tan(skewY);
+        temp = Math.sqrt(1 + temp * temp);
+        a11 *= temp;
+        a21 *= temp;
+      }
+    }
+
+    a11 = _round(a11);
+    a21 = _round(a21);
+    a12 = _round(a12);
+    a22 = _round(a22);
+  } else {
+    a11 = scaleX;
+    a22 = scaleY;
+    a21 = a12 = 0;
+  }
+
+  if (tx && !~(x + "").indexOf("px") || ty && !~(y + "").indexOf("px")) {
+    tx = _convertToUnit(target, "x", x, "px");
+    ty = _convertToUnit(target, "y", y, "px");
+  }
+
+  if (xOrigin || yOrigin || xOffset || yOffset) {
+    tx = _round(tx + xOrigin - (xOrigin * a11 + yOrigin * a12) + xOffset);
+    ty = _round(ty + yOrigin - (xOrigin * a21 + yOrigin * a22) + yOffset);
+  }
+
+  if (xPercent || yPercent) {
+    //The SVG spec doesn't support percentage-based translation in the "transform" attribute, so we merge it into the translation to simulate it.
+    temp = target.getBBox();
+    tx = _round(tx + xPercent / 100 * temp.width);
+    ty = _round(ty + yPercent / 100 * temp.height);
+  }
+
+  temp = "matrix(" + a11 + "," + a21 + "," + a12 + "," + a22 + "," + tx + "," + ty + ")";
+  target.setAttribute("transform", temp);
+  forceCSS && (target.style[_transformProp] = temp); //some browsers prioritize CSS transforms over the transform attribute. When we sense that the user has CSS transforms applied, we must overwrite them this way (otherwise some browser simply won't render the transform attribute changes!)
+},
+    _addRotationalPropTween = function _addRotationalPropTween(plugin, target, property, startNum, endValue) {
+  var cap = 360,
+      isString = _isString(endValue),
+      endNum = parseFloat(endValue) * (isString && ~endValue.indexOf("rad") ? _RAD2DEG : 1),
+      change = endNum - startNum,
+      finalValue = startNum + change + "deg",
+      direction,
+      pt;
+
+  if (isString) {
+    direction = endValue.split("_")[1];
+
+    if (direction === "short") {
+      change %= cap;
+
+      if (change !== change % (cap / 2)) {
+        change += change < 0 ? cap : -cap;
+      }
+    }
+
+    if (direction === "cw" && change < 0) {
+      change = (change + cap * CSSPlugin_bigNum) % cap - ~~(change / cap) * cap;
+    } else if (direction === "ccw" && change > 0) {
+      change = (change - cap * CSSPlugin_bigNum) % cap - ~~(change / cap) * cap;
+    }
+  }
+
+  plugin._pt = pt = new PropTween(plugin._pt, target, property, startNum, change, _renderPropWithEnd);
+  pt.e = finalValue;
+  pt.u = "deg";
+
+  plugin._props.push(property);
+
+  return pt;
+},
+    _assign = function _assign(target, source) {
+  // Internet Explorer doesn't have Object.assign(), so we recreate it here.
+  for (var p in source) {
+    target[p] = source[p];
+  }
+
+  return target;
+},
+    _addRawTransformPTs = function _addRawTransformPTs(plugin, transforms, target) {
+  //for handling cases where someone passes in a whole transform string, like transform: "scale(2, 3) rotate(20deg) translateY(30em)"
+  var startCache = _assign({}, target._gsap),
+      exclude = "perspective,force3D,transformOrigin,svgOrigin",
+      style = target.style,
+      endCache,
+      p,
+      startValue,
+      endValue,
+      startNum,
+      endNum,
+      startUnit,
+      endUnit;
+
+  if (startCache.svg) {
+    startValue = target.getAttribute("transform");
+    target.setAttribute("transform", "");
+    style[_transformProp] = transforms;
+    endCache = _parseTransform(target, 1);
+
+    _removeProperty(target, _transformProp);
+
+    target.setAttribute("transform", startValue);
+  } else {
+    startValue = getComputedStyle(target)[_transformProp];
+    style[_transformProp] = transforms;
+    endCache = _parseTransform(target, 1);
+    style[_transformProp] = startValue;
+  }
+
+  for (p in _transformProps) {
+    startValue = startCache[p];
+    endValue = endCache[p];
+
+    if (startValue !== endValue && exclude.indexOf(p) < 0) {
+      //tweening to no perspective gives very unintuitive results - just keep the same perspective in that case.
+      startUnit = getUnit(startValue);
+      endUnit = getUnit(endValue);
+      startNum = startUnit !== endUnit ? _convertToUnit(target, p, startValue, endUnit) : parseFloat(startValue);
+      endNum = parseFloat(endValue);
+      plugin._pt = new PropTween(plugin._pt, endCache, p, startNum, endNum - startNum, _renderCSSProp);
+      plugin._pt.u = endUnit || 0;
+
+      plugin._props.push(p);
+    }
+  }
+
+  _assign(endCache, startCache);
+}; // handle splitting apart padding, margin, borderWidth, and borderRadius into their 4 components. Firefox, for example, won't report borderRadius correctly - it will only do borderTopLeftRadius and the other corners. We also want to handle paddingTop, marginLeft, borderRightWidth, etc.
+
+
+_forEachName("padding,margin,Width,Radius", function (name, index) {
+  var t = "Top",
+      r = "Right",
+      b = "Bottom",
+      l = "Left",
+      props = (index < 3 ? [t, r, b, l] : [t + l, t + r, b + r, b + l]).map(function (side) {
+    return index < 2 ? name + side : "border" + side + name;
+  });
+
+  _specialProps[index > 1 ? "border" + name : name] = function (plugin, target, property, endValue, tween) {
+    var a, vars;
+
+    if (arguments.length < 4) {
+      // getter, passed target, property, and unit (from _get())
+      a = props.map(function (prop) {
+        return _get(plugin, prop, property);
+      });
+      vars = a.join(" ");
+      return vars.split(a[0]).length === 5 ? a[0] : vars;
+    }
+
+    a = (endValue + "").split(" ");
+    vars = {};
+    props.forEach(function (prop, i) {
+      return vars[prop] = a[i] = a[i] || a[(i - 1) / 2 | 0];
+    });
+    plugin.init(target, vars, tween);
+  };
+});
+
+var CSSPlugin = {
+  name: "css",
+  register: _initCore,
+  targetTest: function targetTest(target) {
+    return target.style && target.nodeType;
+  },
+  init: function init(target, vars, tween, index, targets) {
+    var props = this._props,
+        style = target.style,
+        startAt = tween.vars.startAt,
+        startValue,
+        endValue,
+        endNum,
+        startNum,
+        type,
+        specialProp,
+        p,
+        startUnit,
+        endUnit,
+        relative,
+        isTransformRelated,
+        transformPropTween,
+        cache,
+        smooth,
+        hasPriority,
+        inlineProps;
+    _pluginInitted || _initCore(); // we may call init() multiple times on the same plugin instance, like when adding special properties, so make sure we don't overwrite the revert data or inlineProps
+
+    this.styles = this.styles || _getStyleSaver(target);
+    inlineProps = this.styles.props;
+    this.tween = tween;
+
+    for (p in vars) {
+      if (p === "autoRound") {
+        continue;
+      }
+
+      endValue = vars[p];
+
+      if (_plugins[p] && _checkPlugin(p, vars, tween, index, target, targets)) {
+        // plugins
+        continue;
+      }
+
+      type = typeof endValue;
+      specialProp = _specialProps[p];
+
+      if (type === "function") {
+        endValue = endValue.call(tween, index, target, targets);
+        type = typeof endValue;
+      }
+
+      if (type === "string" && ~endValue.indexOf("random(")) {
+        endValue = _replaceRandom(endValue);
+      }
+
+      if (specialProp) {
+        specialProp(this, target, p, endValue, tween) && (hasPriority = 1);
+      } else if (p.substr(0, 2) === "--") {
+        //CSS variable
+        startValue = (getComputedStyle(target).getPropertyValue(p) + "").trim();
+        endValue += "";
+        _colorExp.lastIndex = 0;
+
+        if (!_colorExp.test(startValue)) {
+          // colors don't have units
+          startUnit = getUnit(startValue);
+          endUnit = getUnit(endValue);
+        }
+
+        endUnit ? startUnit !== endUnit && (startValue = _convertToUnit(target, p, startValue, endUnit) + endUnit) : startUnit && (endValue += startUnit);
+        this.add(style, "setProperty", startValue, endValue, index, targets, 0, 0, p);
+        props.push(p);
+        inlineProps.push(p, 0, style[p]);
+      } else if (type !== "undefined") {
+        if (startAt && p in startAt) {
+          // in case someone hard-codes a complex value as the start, like top: "calc(2vh / 2)". Without this, it'd use the computed value (always in px)
+          startValue = typeof startAt[p] === "function" ? startAt[p].call(tween, index, target, targets) : startAt[p];
+          _isString(startValue) && ~startValue.indexOf("random(") && (startValue = _replaceRandom(startValue));
+          getUnit(startValue + "") || startValue === "auto" || (startValue += _config.units[p] || getUnit(_get(target, p)) || ""); // for cases when someone passes in a unitless value like {x: 100}; if we try setting translate(100, 0px) it won't work.
+
+          (startValue + "").charAt(1) === "=" && (startValue = _get(target, p)); // can't work with relative values
+        } else {
+          startValue = _get(target, p);
+        }
+
+        startNum = parseFloat(startValue);
+        relative = type === "string" && endValue.charAt(1) === "=" && endValue.substr(0, 2);
+        relative && (endValue = endValue.substr(2));
+        endNum = parseFloat(endValue);
+
+        if (p in _propertyAliases) {
+          if (p === "autoAlpha") {
+            //special case where we control the visibility along with opacity. We still allow the opacity value to pass through and get tweened.
+            if (startNum === 1 && _get(target, "visibility") === "hidden" && endNum) {
+              //if visibility is initially set to "hidden", we should interpret that as intent to make opacity 0 (a convenience)
+              startNum = 0;
+            }
+
+            inlineProps.push("visibility", 0, style.visibility);
+
+            _addNonTweeningPT(this, style, "visibility", startNum ? "inherit" : "hidden", endNum ? "inherit" : "hidden", !endNum);
+          }
+
+          if (p !== "scale" && p !== "transform") {
+            p = _propertyAliases[p];
+            ~p.indexOf(",") && (p = p.split(",")[0]);
+          }
+        }
+
+        isTransformRelated = p in _transformProps; //--- TRANSFORM-RELATED ---
+
+        if (isTransformRelated) {
+          this.styles.save(p);
+
+          if (!transformPropTween) {
+            cache = target._gsap;
+            cache.renderTransform && !vars.parseTransform || _parseTransform(target, vars.parseTransform); // if, for example, gsap.set(... {transform:"translateX(50vw)"}), the _get() call doesn't parse the transform, thus cache.renderTransform won't be set yet so force the parsing of the transform here.
+
+            smooth = vars.smoothOrigin !== false && cache.smooth;
+            transformPropTween = this._pt = new PropTween(this._pt, style, _transformProp, 0, 1, cache.renderTransform, cache, 0, -1); //the first time through, create the rendering PropTween so that it runs LAST (in the linked list, we keep adding to the beginning)
+
+            transformPropTween.dep = 1; //flag it as dependent so that if things get killed/overwritten and this is the only PropTween left, we can safely kill the whole tween.
+          }
+
+          if (p === "scale") {
+            this._pt = new PropTween(this._pt, cache, "scaleY", cache.scaleY, (relative ? _parseRelative(cache.scaleY, relative + endNum) : endNum) - cache.scaleY || 0, _renderCSSProp);
+            this._pt.u = 0;
+            props.push("scaleY", p);
+            p += "X";
+          } else if (p === "transformOrigin") {
+            inlineProps.push(_transformOriginProp, 0, style[_transformOriginProp]);
+            endValue = _convertKeywordsToPercentages(endValue); //in case something like "left top" or "bottom right" is passed in. Convert to percentages.
+
+            if (cache.svg) {
+              _applySVGOrigin(target, endValue, 0, smooth, 0, this);
+            } else {
+              endUnit = parseFloat(endValue.split(" ")[2]) || 0; //handle the zOrigin separately!
+
+              endUnit !== cache.zOrigin && _addNonTweeningPT(this, cache, "zOrigin", cache.zOrigin, endUnit);
+
+              _addNonTweeningPT(this, style, p, _firstTwoOnly(startValue), _firstTwoOnly(endValue));
+            }
+
+            continue;
+          } else if (p === "svgOrigin") {
+            _applySVGOrigin(target, endValue, 1, smooth, 0, this);
+
+            continue;
+          } else if (p in _rotationalProperties) {
+            _addRotationalPropTween(this, cache, p, startNum, relative ? _parseRelative(startNum, relative + endValue) : endValue);
+
+            continue;
+          } else if (p === "smoothOrigin") {
+            _addNonTweeningPT(this, cache, "smooth", cache.smooth, endValue);
+
+            continue;
+          } else if (p === "force3D") {
+            cache[p] = endValue;
+            continue;
+          } else if (p === "transform") {
+            _addRawTransformPTs(this, endValue, target);
+
+            continue;
+          }
+        } else if (!(p in style)) {
+          p = _checkPropPrefix(p) || p;
+        }
+
+        if (isTransformRelated || (endNum || endNum === 0) && (startNum || startNum === 0) && !_complexExp.test(endValue) && p in style) {
+          startUnit = (startValue + "").substr((startNum + "").length);
+          endNum || (endNum = 0); // protect against NaN
+
+          endUnit = getUnit(endValue) || (p in _config.units ? _config.units[p] : startUnit);
+          startUnit !== endUnit && (startNum = _convertToUnit(target, p, startValue, endUnit));
+          this._pt = new PropTween(this._pt, isTransformRelated ? cache : style, p, startNum, (relative ? _parseRelative(startNum, relative + endNum) : endNum) - startNum, !isTransformRelated && (endUnit === "px" || p === "zIndex") && vars.autoRound !== false ? _renderRoundedCSSProp : _renderCSSProp);
+          this._pt.u = endUnit || 0;
+
+          if (startUnit !== endUnit && endUnit !== "%") {
+            //when the tween goes all the way back to the beginning, we need to revert it to the OLD/ORIGINAL value (with those units). We record that as a "b" (beginning) property and point to a render method that handles that. (performance optimization)
+            this._pt.b = startValue;
+            this._pt.r = _renderCSSPropWithBeginning;
+          }
+        } else if (!(p in style)) {
+          if (p in target) {
+            //maybe it's not a style - it could be a property added directly to an element in which case we'll try to animate that.
+            this.add(target, p, startValue || target[p], relative ? relative + endValue : endValue, index, targets);
+          } else if (p !== "parseTransform") {
+            _missingPlugin(p, endValue);
+
+            continue;
+          }
+        } else {
+          _tweenComplexCSSString.call(this, target, p, startValue, relative ? relative + endValue : endValue);
+        }
+
+        isTransformRelated || (p in style ? inlineProps.push(p, 0, style[p]) : inlineProps.push(p, 1, startValue || target[p]));
+        props.push(p);
+      }
+    }
+
+    hasPriority && _sortPropTweensByPriority(this);
+  },
+  render: function render(ratio, data) {
+    if (data.tween._time || !CSSPlugin_reverting()) {
+      var pt = data._pt;
+
+      while (pt) {
+        pt.r(ratio, pt.d);
+        pt = pt._next;
+      }
+    } else {
+      data.styles.revert();
+    }
+  },
+  get: _get,
+  aliases: _propertyAliases,
+  getSetter: function getSetter(target, property, plugin) {
+    //returns a setter function that accepts target, property, value and applies it accordingly. Remember, properties like "x" aren't as simple as target.style.property = value because they've got to be applied to a proxy object and then merged into a transform string in a renderer.
+    var p = _propertyAliases[property];
+    p && p.indexOf(",") < 0 && (property = p);
+    return property in _transformProps && property !== _transformOriginProp && (target._gsap.x || _get(target, "x")) ? plugin && _recentSetterPlugin === plugin ? property === "scale" ? _setterScale : _setterTransform : (_recentSetterPlugin = plugin || {}) && (property === "scale" ? _setterScaleWithRender : _setterTransformWithRender) : target.style && !_isUndefined(target.style[property]) ? _setterCSSStyle : ~property.indexOf("-") ? _setterCSSProp : _getSetter(target, property);
+  },
+  core: {
+    _removeProperty: _removeProperty,
+    _getMatrix: _getMatrix
+  }
+};
+gsap.utils.checkPrefix = _checkPropPrefix;
+gsap.core.getStyleSaver = _getStyleSaver;
+
+(function (positionAndScale, rotation, others, aliases) {
+  var all = _forEachName(positionAndScale + "," + rotation + "," + others, function (name) {
+    _transformProps[name] = 1;
+  });
+
+  _forEachName(rotation, function (name) {
+    _config.units[name] = "deg";
+    _rotationalProperties[name] = 1;
+  });
+
+  _propertyAliases[all[13]] = positionAndScale + "," + rotation;
+
+  _forEachName(aliases, function (name) {
+    var split = name.split(":");
+    _propertyAliases[split[1]] = all[split[0]];
+  });
+})("x,y,z,scale,scaleX,scaleY,xPercent,yPercent", "rotation,rotationX,rotationY,skewX,skewY", "transform,transformOrigin,svgOrigin,force3D,smoothOrigin,transformPerspective", "0:translateX,1:translateY,2:translateZ,8:rotate,8:rotationZ,8:rotateZ,9:rotateX,10:rotateY");
+
+_forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function (name) {
+  _config.units[name] = "px";
+});
+
+gsap.registerPlugin(CSSPlugin);
+
+;// CONCATENATED MODULE: ../node_modules/gsap/index.js
+
+
+var gsapWithCSS = gsap.registerPlugin(CSSPlugin) || gsap,
+    // to protect from tree shaking
+TweenMaxWithCSS = gsapWithCSS.core.Tween;
 
 ;// CONCATENATED MODULE: ./js/gameMechanics.js
 
 
 
 let _ = (/* unused pure expression or super */ null && (undefined));
-let spineAnimInfo = [];
-let soundForScene = {};
+let spineAnimInfo = [{
+  scene: 18,
+  sceneName: 'startScene',
+  name: 'pos1'
+}, {
+  scene: 19,
+  sceneName: 'startScene',
+  name: 'pos2'
+}, {
+  scene: 20,
+  sceneName: 'startScene',
+  name: 'pos3'
+}, {
+  scene: 21,
+  sceneName: 'startScene',
+  name: 'pos4'
+}];
+let soundForScene = {
+  17: {
+    1: [{
+      audioName: 'churn2',
+      spacePlay: 2000,
+      volume: 0.5
+    }],
+    2: [{
+      audioName: 'churn2',
+      spacePlay: 1000,
+      volume: 0.5
+    }, {
+      audioName: '3-1стон',
+      volume: 0.08,
+      spacePlay: 3000,
+      spaceDelay: 300
+    }],
+    3: [{
+      audioName: 'churn2',
+      spacePlay: 666.6249781847,
+      volume: 0.5,
+      spaceDelay: 400
+    }, {
+      audioName: ['3-2-1стон', '3-2-2стон'],
+      volume: 0.05,
+      spacePlay: 666.6249781847 * 3,
+      spaceDelay: 700
+    }],
+    4: [{
+      audioName: 'churn2',
+      endTime: 1,
+      spacePlay: 1000,
+      spaceDelay: 200,
+      spaceDuration: 1300
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 2,
+      isLoop: true,
+      duration: 3000,
+      delay: 1000
+    }]
+  },
+  18: {
+    1: [{
+      audioName: 'Suckles_02',
+      startTime: 1.9,
+      spacePlay: 1733.299970626831
+      // spaceDelay: 500,
+    }],
+
+    2: [{
+      audioName: 'Sucking Faster_02',
+      startTime: 1.17,
+      endTime: 2,
+      spacePlay: 1000,
+      spaceDelay: 300,
+      volume: 0.4
+    }],
+    3: [{
+      audioName: 'Sucking Faster_02',
+      startTime: 1.17,
+      endTime: 1.45,
+      spacePlay: 426.639986038208,
+      spaceDelay: 100,
+      volume: 0.4
+    }],
+    4: [{
+      audioName: 'Sucking gags_06',
+      isLoop: true,
+      duration: 850,
+      delay: 200
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 1.8,
+      spacePlay: 700,
+      spaceDuration: 2100 + 1450,
+      spaceDelay: 1450
+    }]
+  },
+  19: {
+    1: [{
+      audioName: 'churn2',
+      spacePlay: 2000,
+      volume: 0.5
+    }],
+    2: [{
+      audioName: 'churn2',
+      spacePlay: 1333.299994468689,
+      spaceDelay: 200,
+      volume: 0.5
+    }, {
+      audioName: ['3-3-1стон', '3-3-2стон'],
+      volume: 0.025,
+      spacePlay: 1333.299994468689,
+      spaceDelay: 600
+    }],
+    3: [{
+      audioName: 'wetfuck4',
+      spacePlay: 533.3600044250488,
+      spaceDelay: 100,
+      volume: 0.5
+    }, {
+      audioName: ['3-3-1стон', '3-3-2стон'],
+      volume: 0.025,
+      spacePlay: 533.3600044250488 * 2,
+      spaceDelay: 200
+    }],
+    4: [{
+      audioName: 'wetfuck4',
+      spacePlay: 533.3600044250488,
+      spaceDelay: 100,
+      spaceDuration: 500,
+      volume: 0.5
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 1.8,
+      repeatCount: 3,
+      repeatSpace: 700,
+      delay: 800
+    }]
+  },
+  20: {
+    1: [{
+      audioName: 'churn2',
+      spacePlay: 2333.3001136779785,
+      volume: 0.5
+    }],
+    2: [{
+      audioName: 'churn2',
+      spacePlay: 1333.299994468689,
+      volume: 0.5
+    }, {
+      audioName: ['3-2-1стон', '3-2-2стон'],
+      volume: 0.05,
+      spacePlay: 1333.299994468689,
+      spaceDelay: 700
+    }],
+    3: [{
+      audioName: 'wetfuck1',
+      spacePlay: 533.3600044250488,
+      spaceDelay: 200,
+      volume: 0.33
+    }, {
+      audioName: ['3-3-1стон', '3-3-2стон'],
+      volume: 0.025,
+      spacePlay: 533.3600044250488,
+      spaceDelay: 200
+    }],
+    4: [{
+      audioName: 'wetfuck1',
+      repeatCount: 3,
+      repeatSpace: 1200,
+      delay: 200,
+      volume: 0.33
+    }, {
+      audioName: 'end',
+      startTime: 1,
+      endTime: 2,
+      isLoop: true,
+      duration: 1000,
+      delay: 3300
+    }]
+  }
+};
 let timersSpacePlay = [],
   timeoutsSpace = [],
   needGameBtns = [];
@@ -68434,7 +74370,7 @@ function initGameMechanics(sceneId, sceneNameId) {
   progress = 0;
   gameMode = unlockStage = setedAnim = '1';
   needGameBtns = [];
-  setSoundForGameMode();
+  setSoundForGameMode(1);
   setUnusedBtns();
   setNeedPropertyForBtns();
   setActiveBtn();
@@ -68445,9 +74381,9 @@ function initGameMechanics(sceneId, sceneNameId) {
 function setNeedPropertyForBtns() {
   let nowSpineInfo = getSpineAnimInfo(scene);
   let spine = spineManager.getSpine(nowSpineInfo.name).spine.spine;
-  animationsLength = spine.state.data.skeletonData.animations.length;
-  if (nowSpineInfo.name) {
-    animationsLength--;
+  animationsLength = spine.state.data.skeletonData.animations.length - 1;
+  if (nowSpineInfo.name === 'pos2' || nowSpineInfo.name === 'pos3' || nowSpineInfo.name === 'pos4') {
+    animationsLength -= 2;
   }
   for (let i = 1; i < animationsLength; i++) {
     let btn = btns[i - 1];
@@ -68511,8 +74447,10 @@ function autoplay() {
     }
     if (progress >= stageProgress && progress < nextStageProgress && setedAnim != i + 1) {
       setedAnim = `${i + 1}`;
-      setSoundForGameMode(i + 1);
       setAnim(setedAnim);
+      setTimeout(() => {
+        setSoundForGameMode(i + 1);
+      }, 0);
       break;
     }
   }
@@ -68533,10 +74471,11 @@ function updateStage(mode) {
   if (gameMode != mode) {
     gameMode = mode;
     setActiveBtn();
-    console.log(unlockStage, mode);
     if (gameMode != 'autoplay') {
-      setSoundForGameMode();
       setAnim(gameMode);
+      setTimeout(() => {
+        setSoundForGameMode(mode);
+      }, 0);
     }
     updateProgressIfCan();
   }
@@ -68563,7 +74502,9 @@ function disabledAllBtns() {
 function sceneEnd(stage) {
   clearInterval(timer);
   setAnim(`${animationsLength}`, false);
-  setSoundForGameMode(stage);
+  setTimeout(() => {
+    setSoundForGameMode(stage);
+  }, 0);
   setTimeout(() => {
     change_btns.showBtn();
   }, 2000);
@@ -68578,11 +74519,14 @@ function setActiveBtn() {
     }
   });
 }
+let nowMode;
+let audioMode;
 function setSoundForGameMode(mode) {
-  if (timeoutsSpace.length) clearTimeoutSpaces();
-  if (timersSpacePlay.length) clearTimers();
+  clearTimeoutSpaces();
+  clearTimers();
   let needSounds = soundForScene[scene];
   let audioArrSetting = needSounds[mode || gameMode];
+  nowMode = mode;
   Object.values(needSounds).forEach(audioSettingArr => {
     audioSettingArr.forEach(audioSetting => {
       if (Array.isArray(audioSetting.audioName)) {
@@ -68596,48 +74540,44 @@ function setSoundForGameMode(mode) {
       }
     });
   });
-  audioArrSetting.forEach(audioSetting => {
-    if (Array.isArray(audioSetting.audioName)) {
-      playGameAudio(audioSetting, true);
-    } else {
-      playGameAudio(audioSetting);
-    }
-  });
-  function playGameAudio(audioSetting) {
-    let random = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    let prevAudioName;
-    let timeout = setTimeout(() => {
-      if (audioSetting.spacePlay) {
-        let randomAudioName = getRandomAudioName(audioSetting.audioName);
-        random ? sound_sound.playAudio({
-          ...audioSetting,
-          audioName: randomAudioName
-        }) : sound_sound.playAudio(audioSetting);
-        prevAudioName = randomAudioName;
-        let timer = setInterval(() => {
-          let randomAudioName = getRandomAudioName(audioSetting.audioName, prevAudioName);
-          random ? sound_sound.playAudio({
-            ...audioSetting,
-            audioName: randomAudioName
-          }) : sound_sound.playAudio(audioSetting);
-          prevAudioName = randomAudioName;
-        }, audioSetting.spacePlay);
-        timersSpacePlay.push(timer);
-      } else {
-        sound_sound.playAudio(audioSetting);
-        if (audioSetting.repeatCount > 1) {
-          let i = audioSetting.repeatCount;
-          let interval = setInterval(() => {
-            sound_sound.playAudio(audioSetting);
-            i--;
-            if (i === 1) {
-              clearInterval(interval);
-            }
-          }, audioSetting.repeatSpace);
+  if (spineManager.getTransitionAnimationPlaying()) {
+    console.log('zx');
+    spineManager.setTransitionAnimationCompleteCallback(playArrAudio);
+  } else {
+    playArrAudio();
+  }
+  function playArrAudio() {
+    audioArrSetting.forEach(audioSetting => {
+      {
+        if (Array.isArray(audioSetting.audioName)) {
+          playGameAudio(audioSetting, true);
+        } else {
+          playGameAudio(audioSetting);
         }
       }
-    }, audioSetting.spaceDelay);
-    timeoutsSpace.push(timeout);
+    });
+  }
+  function randomInteger(min, max) {
+    // получить случайное число от (min-0.5) до (max+0.5)
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+  }
+  function getRandomAudioName(audioNamesArr, prevAudioName) {
+    let audioName = audioNamesArr[randomInteger(0, audioNamesArr.length - 1)];
+    if (audioName === prevAudioName) return getRandomAudioName(audioNamesArr, prevAudioName);
+    return audioName;
+  }
+  function playGameAudio(audioSetting) {
+    let random = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    let timeout;
+    if (audioSetting.spaceDelay > 0) {
+      timeout = setTimeout(() => {
+        playSpace(audioSetting, random, nowMode);
+      }, audioSetting.spaceDelay);
+      timeoutsSpace.push(timeout);
+    } else {
+      playSpace(audioSetting, random, nowMode);
+    }
     if (audioSetting.spaceDuration) spaceDuration(audioSetting.spaceDuration);
   }
   function spaceDuration(duration) {
@@ -68646,33 +74586,403 @@ function setSoundForGameMode(mode) {
       clearTimers();
     }, duration);
   }
-  function clearTimeoutSpaces() {
-    timeoutsSpace.forEach(timeout => {
-      clearTimeout(timeout);
+  function playSpace(audioSetting, random, mode) {
+    let prevAudioName;
+    if (audioSetting.spacePlay) {
+      let randomAudioName = getRandomAudioName(audioSetting.audioName);
+      random ? sound_sound.playAudio({
+        ...audioSetting,
+        audioName: randomAudioName
+      }) : sound_sound.playAudio(audioSetting);
+      prevAudioName = randomAudioName;
+      let timer = setInterval(() => {
+        if (mode !== nowMode) {
+          clearInterval(timer);
+        }
+        let randomAudioName = getRandomAudioName(audioSetting.audioName, prevAudioName);
+        random ? sound_sound.playAudio({
+          ...audioSetting,
+          audioName: randomAudioName
+        }) : sound_sound.playAudio(audioSetting);
+        prevAudioName = randomAudioName;
+      }, audioSetting.spacePlay);
+      timersSpacePlay.push(timer);
+    } else {
+      sound_sound.playAudio(audioSetting);
+      if (audioSetting.repeatCount > 1) {
+        let i = audioSetting.repeatCount;
+        let interval = setInterval(() => {
+          sound_sound.playAudio(audioSetting);
+          i--;
+          if (i === 1) {
+            clearInterval(interval);
+          }
+        }, audioSetting.repeatSpace);
+      }
+    }
+  }
+}
+function clearTimeoutSpaces() {
+  timeoutsSpace.forEach(timeout => clearTimeout(timeout));
+  timeoutsSpace = [];
+}
+function clearTimers() {
+  timersSpacePlay.forEach(timer => clearInterval(timer));
+  timersSpacePlay = [];
+}
+
+;// CONCATENATED MODULE: ./js/spineManager.js
+
+
+
+
+let addedSpine = [];
+let nowScene;
+let app = [];
+let newAppSpines = {};
+const spineManager = {
+  checkScene,
+  changeAnimation,
+  getSpine,
+  getTransitionAnimationPlaying,
+  setTransitionAnimationCompleteCallback,
+  smoothZoom
+};
+function createSpineApp() {
+  let id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  app.push(createApp({
+    w: 1920,
+    h: 1080,
+    idCon: `#spines .spines__box`,
+    id
+  }));
+}
+createSpineApp('mainApp');
+function checkScene(nowSceneId) {
+  let sceneName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  nowScene = nowSceneId;
+  allSpine.forEach(spine => {
+    if (nowScene === 'clear' || spine.name === 'clear' && spine.sceneStart.includes(nowScene)) {
+      clearApp(app[0]);
+    } else if (spine.sceneStart.includes(nowScene) && spine.sceneName === sceneName) {
+      generateSpine(spine);
+    }
+  });
+}
+function smoothZoom(scale) {
+  let duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  let zoomPercentX = arguments.length > 2 ? arguments[2] : undefined;
+  let zoomPercentY = arguments.length > 3 ? arguments[3] : undefined;
+  let type = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'none';
+  let mainContainer = app[0].stage;
+  const zoomX = zoomPercentX * app[0].view.width / 100;
+  const zoomY = zoomPercentY * app[0].view.height / 100;
+  let originDuration = duration;
+  const worldPos = {
+    x: zoomX,
+    y: zoomY
+  };
+  if (type === 'fast') {
+    duration = originDuration = 0;
+  } else if (type === 'none') {
+    originDuration = 0;
+  }
+  let newScreenPos = {
+    x: worldPos.x * scale + mainContainer.x,
+    y: worldPos.y * scale + mainContainer.y
+  };
+  gsapWithCSS.to(mainContainer.scale, {
+    x: scale,
+    y: scale,
+    duration: duration,
+    ease: "linear"
+  });
+  gsapWithCSS.to(mainContainer.pivot, {
+    x: zoomX,
+    y: zoomY,
+    duration: originDuration,
+    ease: "linear"
+  });
+  gsapWithCSS.to(mainContainer.position, {
+    x: zoomX,
+    y: zoomY,
+    duration: originDuration,
+    ease: "linear"
+  });
+}
+function generateSpine(spine) {
+  let description = spinesDescription.find(setting => setting.name === spine.name);
+  if (description?.setting) {
+    baseSettingSpine(spine, description);
+    if (app.length > 1) {
+      destroyApp(app[1]);
+      destroyApp(app[2]);
+      app.length = 1;
+    }
+  } else if (description?.individualScenesSetting) {
+    individualSettingSpine(spine, description);
+    if (app.length > 1) {
+      destroyApp(app[1]);
+      destroyApp(app[2]);
+      app.length = 1;
+    }
+  } else if (description?.newAppSpine) {
+    createSpineInNewApp(spine, description);
+  }
+}
+function baseSettingSpine(spine, description) {
+  clearApp(app[0]);
+  let spineAnim = createSpine(spine, description.setting);
+  if (getSpineIndex(spine.name) !== -1) {
+    addedSpine.splice(getSpineIndex(spine.name), 1);
+    addedSpine.push({
+      name: spine.name,
+      spine: spineAnim
     });
-    timeoutsSpace = [];
-  }
-  function clearTimers() {
-    timersSpacePlay.forEach(timer => {
-      clearInterval(timer);
+  } else {
+    addedSpine.push({
+      name: spine.name,
+      spine: spineAnim
     });
-    timersSpacePlay = [];
   }
-  function getRandomAudioName(audioNamesArr, prevAudioName) {
-    let audioName = audioNamesArr[randomInteger(0, audioNamesArr.length - 1)];
-    if (audioName === prevAudioName) return getRandomAudioName(audioNamesArr, prevAudioName);
-    return audioName;
+}
+function individualSettingSpine(spine, description) {
+  let settings = description.individualScenesSetting[nowScene];
+  if (!settings.spineSettings[0].spineSetting.changeAnim && !settings.spineSettings[0].spineSetting.addAnim) {
+    clearApp(app[0]);
   }
-  function randomInteger(min, max) {
-    // получить случайное число от (min-0.5) до (max+0.5)
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
+  settings.spineSettings.forEach(settingsForSpine => {
+    let attachment = settingsForSpine.attachment;
+    let delayCrete = settingsForSpine.spineSetting.delay;
+    let addingSpine;
+    if (delayCrete) {
+      setTimeout(() => {
+        addSpine(spine, addingSpine, settingsForSpine, attachment);
+      }, delayCrete);
+    } else {
+      addSpine(spine, addingSpine, settingsForSpine, attachment);
+    }
+  });
+}
+function createSpineInNewApp(spine, description) {
+  createSpineApp(description.name);
+  let name = `${description.name}`;
+  newAppSpines[name] = Object.keys(newAppSpines).length + 1;
+  let settings = description.newAppSpine[nowScene];
+  settings.spineSettings.forEach(settingsForSpine => {
+    let addingSpine;
+    addSpine(spine, addingSpine, settingsForSpine, null, newAppSpines[name]);
+  });
+}
+function addSpine(spine, addSpine, spineSetting, attachmentArr) {
+  let appIndex = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+  if (spineSetting.spineSetting.changeAnim) {
+    changeAnimation(spine.name, spineSetting.spineSetting.animName, spineSetting.spineSetting?.loop, spineSetting.spineSetting.mix);
+  } else {
+    addSpine = addSpineToApp({
+      app: app[appIndex],
+      spineDate: spine.spine,
+      ...spineSetting.spineSetting
+    });
+    if (getSpineIndex(spine.name) !== -1) {
+      addedSpine.splice(getSpineIndex(spine.name), 1);
+      addedSpine.push({
+        name: spine.name,
+        spine: {
+          app: app[appIndex],
+          spine: addSpine
+        }
+      });
+    } else {
+      addedSpine.push({
+        name: spine.name,
+        spine: {
+          app: app[appIndex],
+          spine: addSpine
+        }
+      });
+    }
   }
+  let ChangeAttachmentArr = spineSetting.ChangeAttachment;
+  let ChangeAnimArr = spineSetting.changeAnim;
+  if (attachmentArr) {
+    addSpine.skeleton.slots.forEach(slot => {
+      slot.attachment = null;
+    });
+    attachmentArr.forEach(attachment => {
+      addSpine.skeleton.setAttachment(attachment.slotName, attachment.attachmentName);
+    });
+  }
+  if (ChangeAttachmentArr) {
+    addSpine.skeleton.slots.forEach(slot => {
+      slot.attachment = null;
+    });
+    changeAttachment(ChangeAttachmentArr, addSpine);
+  }
+  if (ChangeAnimArr) {
+    changeAnimArr(ChangeAnimArr, spine.name);
+  }
+}
+function changeAnimArr(animArr, spineName) {
+  animArr.forEach(setting => {
+    setTimeout(() => {
+      changeAnimation(spineName, setting.animName, setting.loop, setting.mix);
+    }, setting.delay || 0);
+  });
+}
+function changeAttachment(ChangeAttachmentSettings, addedSpine) {
+  ChangeAttachmentSettings.forEach(setting => {
+    setTimeout(() => {
+      addedSpine.skeleton.setAttachment(setting.slotName, setting.attachmentName);
+    }, setting.delay || 0);
+  });
+}
+function createSpine(spine, setting) {
+  return create({
+    app: app[0],
+    spineDate: spine.spine,
+    idCon: `#spines .spines__box`,
+    ...setting
+  });
+}
+function deleteSpine(spineName) {}
+function clearSpine(spineObj, i) {
+  let spine = spineObj.spine.spine;
+  addedSpine.splice(i, 1);
+  if (Array.isArray(spine)) {
+    spine.forEach(spine => {
+      destroySpine(spine);
+    });
+  } else {
+    destroySpine(spine);
+  }
+}
+function destroySpine(spine) {
+  spine.destroy({
+    texture: false,
+    baseTexture: false,
+    children: true
+  });
+}
+let prevAnim = '1';
+let transitionAnimationPlaying = false;
+let lastSelectedAnimation = null;
+let transitionCompleteListener = null;
+let transitionAnimationCompleteCallback = null;
+
+// Устанавливаем колбэк для обработки завершения переходной анимации
+function setTransitionAnimationCompleteCallback(callback) {
+  transitionAnimationCompleteCallback = callback;
+}
+function getTransitionAnimationPlaying() {
+  return transitionAnimationPlaying;
+}
+function changeAnimation(spineName, animationName) {
+  let loop = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  let mix = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  if (lastSelectedAnimation && lastSelectedAnimation !== '4' && (spineName === 'pos2' || spineName === 'pos3' || spineName === 'pos4')) prevAnim = lastSelectedAnimation;
+  if (lastSelectedAnimation === '4') prevAnim = '1';
+  lastSelectedAnimation = animationName;
+  if (transitionAnimationPlaying && animationName !== '1') return;
+  if (prevAnim === '1' && ['2', '3', '4'].includes(animationName) && (spineName === 'pos2' || spineName === 'pos3' || spineName === 'pos4')) {
+    playTransitionAnimation(spineName, prevAnim, animationName, loop, false);
+  } else if (['2', '3', '4'].includes(prevAnim) && animationName === '1' && (spineName === 'pos2' || spineName === 'pos3' || spineName === 'pos4')) {
+    playTransitionAnimation(spineName, prevAnim, animationName, loop, true);
+  } else {
+    playLastAnimation(spineName, animationName, loop, mix);
+  }
+}
+let isChangingAnimation = false;
+function playTransitionAnimation(spineName, prevAnim, animationName, loop, reverse) {
+  addedSpine.forEach(spineObj => {
+    if (spineObj.name !== spineName) return;
+    if (isChangingAnimation) return;
+    transitionAnimationPlaying = true;
+    isChangingAnimation = true;
+    spineObj.spine.spine.state.removeListener(transitionCompleteListener);
+    spineObj.spine.spine.state.timeScale = 2;
+    if (reverse) {
+      spineObj.spine.spine.state.setAnimation(0, 'transitionR', false);
+    } else {
+      spineObj.spine.spine.state.setAnimation(0, 'transition', false);
+    }
+    spineObj.spine.spine.state.clearListeners();
+    transitionCompleteListener = {
+      complete: e => {
+        if (e.animation.name === 'transition' || e.animation.name === 'transitionR') {
+          spineObj.spine.spine.state.timeScale = 1;
+          if (transitionAnimationCompleteCallback) {
+            transitionAnimationCompleteCallback();
+          }
+          playLastAnimation(spineName, lastSelectedAnimation, loop);
+          spineObj.spine.spine.state.removeListener(transitionCompleteListener);
+        }
+        isChangingAnimation = false;
+      }
+    };
+    spineObj.spine.spine.state.addListener(transitionCompleteListener);
+    isChangingAnimation = true;
+  });
+}
+function playLastAnimation(spineName, animationName, loop) {
+  let mix = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  transitionAnimationPlaying = false;
+  addedSpine.forEach(spineObj => {
+    if (spineObj.name !== spineName) return;
+    spineObj.spine.spine.state.clearListeners();
+    transitionCompleteListener = {
+      complete: e => {
+        if (e.animation.name === '4') {
+          spineObj.spine.spine.state.removeListener(transitionCompleteListener);
+          spineObj.spine.spine.state.setAnimation(0, '5', true);
+        }
+      }
+    };
+    if (['pos1', 'pos2', 'pos3', 'pos4'].includes(spineObj.name)) {
+      spineObj.spine.spine.state.addListener(transitionCompleteListener);
+    }
+    if (!mix) {
+      spineObj.spine.spine.state.setAnimation(0, animationName, loop).mixDuration = 0;
+    } else {
+      spineObj.spine.spine.state.setAnimation(0, animationName, loop);
+    }
+    if (animationName === '3') {
+      spineObj.spine.spine.state.timeScale = 1.25;
+      console.log(spineObj.spine.spine.state.getCurrent(0).animation.duration * 0.8);
+    } else {
+      console.log(spineObj.spine.spine.state.getCurrent(0).animation.duration);
+      spineObj.spine.spine.state.timeScale = 1;
+    }
+  });
+}
+function destroyApp(app) {
+  app.stage.removeChildren();
+  app.view.remove();
+}
+function getSpine(name) {
+  return addedSpine.find(item => item.name === name);
+}
+function getSpineIndex(name) {
+  return addedSpine.findIndex(item => item.name === name);
 }
 
 ;// CONCATENATED MODULE: ./js/functions/editFunctions.js
 
 
+function lightening(_ref) {
+  let {
+    time,
+    delay = 0
+  } = _ref;
+  setTimeout(() => {
+    let lightening = document.querySelector('#lightening');
+    lightening.classList.add('show');
+    setTimeout(() => {
+      lightening.classList.remove('show');
+      lightening.classList.add('end');
+    }, time);
+  }, delay);
+}
 function editFunctions_hideGameInterface() {
   let gameInterface = document.querySelector('.gameInterface');
   let gameInterfaceProgress = document.querySelector('#progress-game');
@@ -68728,42 +75038,70 @@ function fade(time, fast) {
     usingEl.classList.remove('show');
   }, time);
 }
-function zoom(_ref) {
+function zoom(_ref2) {
   let {
     scale,
     x,
     y,
-    fastZoom
-  } = _ref;
+    fastZoom,
+    delay = 0,
+    smooth,
+    transitionDuration
+  } = _ref2;
   let scenes = document.querySelector(`#scenes`);
   let canvas = document.querySelector(`#spines canvas`);
-  if (fastZoom) {
-    scenes.classList.add('fastZoom');
-    canvas.classList.add('fastZoom');
-  }
-  scenes.style.scale = scale;
-  scenes.style.transformOrigin = `${x}% ${y}%`;
-  canvas.style.scale = scale;
-  canvas.style.transformOrigin = `${x}% ${y}%`;
   setTimeout(() => {
-    scenes.classList.remove('fastZoom');
-    canvas.classList.remove('fastZoom');
-  });
+    if (fastZoom) {
+      spineManager.smoothZoom(scale, transitionDuration, x, y, 'fast');
+    } else if (smooth) {
+      spineManager.smoothZoom(scale, transitionDuration, x, y, 'smooth');
+    } else {
+      spineManager.smoothZoom(scale, transitionDuration, x, y);
+    }
+    if (fastZoom) {
+      scenes.classList.add('fastZoom');
+      // canvas.classList.add('fastZoom')
+      scenes.style.transitionDuration = ``;
+      // canvas.style.transitionDuration = ``
+      scenes.classList.remove('smooth');
+      // canvas.classList.remove('smooth')
+    } else if (smooth) {
+      scenes.classList.remove('fastZoom');
+      // canvas.classList.remove('fastZoom')
+      scenes.style.transitionDuration = ``;
+      // canvas.style.transitionDuration = ``
+      scenes.classList.add('smooth');
+      // canvas.classList.add('smooth')
+    } else {
+      scenes.classList.remove('fastZoom');
+      // canvas.classList.remove('fastZoom')
+      scenes.classList.remove('smooth');
+      // canvas.classList.remove('smooth')
+    }
+
+    if (transitionDuration) {
+      scenes.style.transitionDuration = `${transitionDuration}s`;
+      // canvas.style.transitionDuration = `${transitionDuration}s`
+    }
+
+    scenes.style.transformOrigin = `${x}% ${y}%`;
+    // canvas.style.transformOrigin = `${x}% ${y}%`
+    scenes.style.scale = scale;
+    // canvas.style.scale           = scale
+  }, delay);
 }
 function fullZoom(delay) {
   setTimeout(() => {
     let scenes = document.querySelector(`#scenes`);
     let canvas = document.querySelector(`#spines canvas`);
-    canvas.style.scale = 1;
+    scenes.classList.remove('fastZoom');
+    // canvas.classList.remove('fastZoom')
+    scenes.style.transitionDuration = ``;
+    // canvas.style.transitionDuration = ``
+    // canvas.style.scale              = 1
     scenes.style.scale = 1;
+    spineManager.smoothZoom(1, 2, 0, 0, 'smooth');
   }, delay || 0);
-}
-function editFunctions_gameChat(gameChat) {
-  if (gameChat) {
-    showChat();
-  } else {
-    hideChat();
-  }
 }
 
 ;// CONCATENATED MODULE: ./js/endScreen.js
@@ -68799,28 +75137,29 @@ endScreenBtnsPose.forEach(btn => {
 function baseSound() {
   sound_sound.playAudio({
     audioName: 'bg1',
-    volume: 0.04,
+    volume: 0.08,
     isLoop: true
   });
 }
-function offBaseSound() {
-  sound.pauseAudio({
-    audioName: 'bg1'
-  });
-}
-function sexSceneBackgroundSound() {
-  sound.playAudio({
+function endSound() {
+  sound_sound.playAudio({
     audioName: 'bg3',
-    volume: 0.05,
-    delay: 1000,
+    volume: 0.075,
     isLoop: true
   });
 }
-function offSexSceneBackgroundSound() {
+function offEndSound() {
   sound.pauseAudio({
     audioName: 'bg3'
   });
 }
+function offBaseSound() {
+  sound_sound.pauseAudio({
+    audioName: 'bg1'
+  });
+}
+function sexSceneBackgroundSound() {}
+function offSexSceneBackgroundSound() {}
 
 ;// CONCATENATED MODULE: ./js/btns/play-btn.js
 
@@ -68845,52 +75184,9 @@ const playAudioInit = () => {
   });
 };
 /* harmony default export */ var play_btn = (playAudioInit);
-;// CONCATENATED MODULE: ./js/Settings/clickableItemsSettings.js
-const clickableItemsSettings = {
-  emptyBasket: {
-    w: 26,
-    h: 46,
-    t: 23,
-    l: 39,
-    src: './assets/img/items/basket.png'
-  },
-  meat: {
-    w: 26,
-    h: 46,
-    t: 23,
-    l: 39,
-    src: './assets/img/items/meat.png'
-  },
-  milk: {
-    w: 14,
-    h: 66,
-    t: 23,
-    l: 29,
-    src: './assets/img/items/milk.png'
-  },
-  bread: {
-    w: 18,
-    h: 66,
-    t: 23,
-    l: 29,
-    src: './assets/img/items/bread.png'
-  },
-  fish: {
-    w: 21,
-    h: 66,
-    t: 23,
-    l: 29,
-    src: './assets/img/items/fish2.png'
-  },
-  fullBasket: {
-    w: 33,
-    h: 66,
-    t: 23,
-    l: 49,
-    src: './assets/img/items/fullBasket.png'
-  }
-};
-/* harmony default export */ var Settings_clickableItemsSettings = (clickableItemsSettings);
+// EXTERNAL MODULE: ./js/Settings/clickableItemsSettings.js
+var clickableItemsSettings = __webpack_require__(775);
+var clickableItemsSettings_default = /*#__PURE__*/__webpack_require__.n(clickableItemsSettings);
 ;// CONCATENATED MODULE: ./js/clickableItems.js
 
 
@@ -68925,7 +75221,7 @@ function addItem(nowScene, img) {
   scene.appendChild(img);
 }
 function checkItem(itemName) {
-  let item = Settings_clickableItemsSettings[itemName];
+  let item = (clickableItemsSettings_default())[itemName];
   if (item) createItem(item);
 }
 
@@ -68947,6 +75243,303 @@ function destroyPhoneRotateBlock() {
 function showPhoneRotateBlock() {
   let phoneRotateWarn = document.querySelector('#phoneRotateWarn');
   phoneRotateWarn.classList.add('show');
+}
+
+;// CONCATENATED MODULE: ./js/rollingText/rollingText.js
+function setRollingText(_ref) {
+  let {
+    text,
+    duration,
+    delay
+  } = _ref;
+  setTimeout(() => {
+    let rollingText = document.querySelector('#rollingText');
+    let textEl = document.querySelector('#rollingText p');
+    textEl.textContent = text;
+    rollingText.classList.add('show');
+    setTimeout(() => {
+      rollingText.classList.remove('show');
+    }, duration);
+  }, delay || 1500);
+}
+
+;// CONCATENATED MODULE: ./js/functions/resetGameProgress.js
+function resetGameProgress() {
+  setTimeout(() => {
+    let progress = document.querySelector('.progress-gameInterface__progress');
+    progress.classList.add('reset');
+    progress.style.height = '0%';
+    setTimeout(() => {
+      progress.classList.remove('reset');
+    }, 100);
+  }, 900);
+}
+/* harmony default export */ var functions_resetGameProgress = (resetGameProgress);
+;// CONCATENATED MODULE: ./js/beerpong/beerPong.js
+
+
+
+
+
+let anim;
+const targets = document.querySelectorAll('.beerPong__center');
+const targetsHitBox = document.querySelectorAll('.beerPong__target');
+const beerPong = document.querySelector('.beerPong');
+const beerPongBox = document.querySelector('.beerPong__box');
+let missBall = document.querySelector('.beerPong__box .beerPong__missBall');
+let targetsXY = [];
+let shotIndexes = [];
+const throwBtn = document.querySelector('.beerPong__throw button');
+const crosshairCenter = document.querySelector('.beerPong__crosshairCenter');
+const crosshair = document.querySelector(".beerPong__crosshair");
+const container = document.querySelector(".beerPong__box");
+let lastPhrase = null;
+let winPhrases = ['Nice shot, Simon!', 'Almost there, sexy!', 'You got an eagle eye!'];
+let missPhrases = ['You missed, honey!', 'What a shame!', 'Someone needs practice!'];
+function startBeerPongGame() {
+  change_btns.hideBtn();
+  toggleShowBeerPong();
+  getXYtargets();
+  initMove();
+  throwBtn.addEventListener('click', checkThrow);
+}
+function toggleShowBeerPong() {
+  beerPong.classList.toggle('hide');
+}
+function getBallXY() {
+  let crosshairCenterBounds = crosshairCenter.getBoundingClientRect();
+  let containerBounds = container.getBoundingClientRect();
+  let xPercent = (crosshairCenterBounds.x - containerBounds.x - missBall.offsetWidth / 2) * 100 / containerBounds.width;
+  let yPercent = (crosshairCenterBounds.y - containerBounds.y - missBall.offsetHeight / 2) * 100 / containerBounds.height;
+  return {
+    x: xPercent,
+    y: yPercent
+  };
+}
+function crosshairInsideTarget(target) {
+  const pointRect = crosshairCenter.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const pointX = pointRect.left + pointRect.width / 2;
+  const pointY = pointRect.top + pointRect.height / 2;
+  return pointX >= targetRect.left && pointX <= targetRect.right && pointY >= targetRect.top && pointY <= targetRect.bottom;
+}
+function checkThrow() {
+  clearInterval(anim);
+  disableBtn();
+  toggleClassCrosshair();
+  let miss = 0;
+  targetsHitBox.forEach(hitBox => {
+    if (crosshairInsideTarget(hitBox)) {
+      let cup = hitBox.closest('.beerPong__cup');
+      let idCup = hitBox.querySelector('.beerPong__center').id;
+      clearTargets(idCup);
+      hideCup(cup);
+      setTimeout(() => sayRandomPhrase(true), idCup === '3' || idCup === '2' ? 2250 : 1750);
+      setTimeout(() => {
+        spineManager.changeAnimation('melissa1', 'idle1', true, true);
+        toggleClassCrosshair();
+        undisableBtn();
+        hideTalkEl();
+        initMove();
+      }, idCup === '3' || idCup === '2' ? 3250 : 2750);
+    } else {
+      miss++;
+    }
+  });
+  if (miss === 10) {
+    setMissBallPos();
+    setTimeout(() => {
+      sayRandomPhrase(false);
+      hideMissBall();
+    }, 1250);
+    setTimeout(() => {
+      spineManager.changeAnimation('melissa1', 'idle1', true, true);
+      toggleClassCrosshair();
+      undisableBtn();
+      hideTalkEl();
+      initMove();
+    }, 2250);
+  }
+}
+function hideMissBall() {
+  beerPongBox.classList.remove('miss2');
+  beerPongBox.classList.remove('miss3');
+}
+function setMissBallPos() {
+  let cors = getBallXY();
+  missBall.style.left = cors.x + '%';
+  if (cors.y < 45) {
+    missBall.style.zIndex = 0;
+    missBall.style.top = `calc(${cors.y}% - 10em)`;
+    beerPongBox.classList.remove('miss2');
+    beerPongBox.classList.add('miss3');
+  } else if (cors.y > 45 && cors.y < 60) {
+    missBall.style.zIndex = 1;
+    missBall.style.top = `calc(${cors.y}% - 15em)`;
+    beerPongBox.classList.remove('miss3');
+    beerPongBox.classList.add('miss2');
+  } else {
+    missBall.style.zIndex = 2;
+    missBall.style.top = `calc(${cors.y}% - 15em)`;
+    beerPongBox.classList.remove('miss3');
+    beerPongBox.classList.add('miss2');
+  }
+  if (cors.y < 40 || cors.x < 22 || cors.x > 64) {
+    missBall.style.zIndex = 0;
+    beerPongBox.classList.remove('miss2');
+    beerPongBox.classList.add('miss3');
+  } else {
+    missBall.style.zIndex = 2;
+    beerPongBox.classList.remove('miss3');
+    beerPongBox.classList.add('miss2');
+  }
+  sound_sound.playAudio({
+    audioName: 'miss',
+    endTime: 0.5,
+    volume: 0.5
+  });
+}
+function clearTargets(id) {
+  shotIndexes.push(id);
+  targetsXY = targetsXY.filter(target => target.id !== id);
+  console.log(targetsXY);
+}
+function hideCup(cup) {
+  cup.classList.add('hide');
+  sound_sound.playAudio({
+    audioName: 'hit',
+    endTime: 1,
+    volume: 0.5,
+    delay: 750
+  });
+}
+function disableBtn() {
+  throwBtn.disabled = true;
+}
+function hideThrowBtn() {
+  throwBtn.classList.add('hide');
+}
+function undisableBtn() {
+  throwBtn.disabled = false;
+}
+function toggleClassCrosshair() {
+  crosshair.classList.toggle('hide');
+  crosshair.style.left = '5%';
+  crosshair.style.top = '5%';
+}
+function getXYtargets() {
+  targetsXY = [];
+  targets.forEach(item => {
+    let bound = item.getBoundingClientRect();
+    targetsXY.push({
+      x: bound.left,
+      y: bound.top,
+      id: item.id
+    });
+  });
+}
+function destroyBeerPong() {
+  clearInterval(anim);
+  window.removeEventListener('resize', onResize);
+  window.removeEventListener('orientationchange', onResize);
+}
+function removeTargetsById() {
+  targetsXY = targetsXY.filter(item => !shotIndexes.includes(item.id));
+}
+function checkEnd() {
+  if (targetsXY.length === 0) {
+    clearInterval(anim);
+    disableBtn();
+    hideThrowBtn();
+    toggleClassCrosshair();
+    change_btns.showBtn();
+    return true;
+  }
+  return false;
+}
+let onResize;
+function initMove() {
+  if (checkEnd()) return;
+  let speedX = 0.375 * (Math.random() > 0.5 ? 1 : -1);
+  let speedY = 0.375 * (Math.random() > 0.5 ? 1 : -1);
+  let isGoTarget = false;
+  function moveCrosshair() {
+    let crosshairBounds = crosshair.getBoundingClientRect();
+    let containerBounds = container.getBoundingClientRect();
+    let xPercent = (crosshairBounds.left - containerBounds.left) * 100 / containerBounds.width;
+    let crosshairXPercent = crosshairBounds.width * 100 / containerBounds.width;
+    let yPercent = (crosshairBounds.top - containerBounds.top) * 100 / containerBounds.height;
+    let crosshairYPercent = crosshairBounds.height * 100 / containerBounds.height;
+    if (xPercent + crosshairXPercent >= 100) {
+      speedX = -1 * Math.abs(speedX);
+      if (Math.random() > 0.5) {
+        goTarget();
+      }
+    } else if (xPercent <= 0) {
+      speedX = Math.abs(speedX);
+      if (Math.random() > 0.5) {
+        goTarget();
+      }
+    }
+    if (yPercent + crosshairYPercent >= 100) {
+      speedY = -1 * Math.abs(speedY);
+      if (Math.random() > 0.5) {
+        goTarget();
+      }
+    } else if (yPercent <= 0) {
+      speedY = Math.abs(speedY);
+      if (Math.random() > 0.5) {
+        goTarget();
+      }
+    }
+    crosshair.style.left = xPercent + speedX + '%';
+    crosshair.style.top = yPercent + speedY + '%';
+    function goTarget() {
+      let targetIndex = Math.floor(Math.random() * targetsXY.length);
+      let target = targetsXY[targetIndex];
+      console.log(targetsXY);
+      let crosshairCenterX = crosshairBounds.left + crosshair.offsetWidth / 2;
+      let crosshairCenterY = crosshairBounds.top + crosshair.offsetHeight / 2;
+      let targetXPercent = (target.x - containerBounds.left) / containerBounds.width * 100;
+      let targetYPercent = (target.y - containerBounds.top) / containerBounds.height * 100;
+      let newXPercent = targetXPercent - (crosshairCenterX - crosshairBounds.left) / containerBounds.width * 100;
+      let newYPercent = targetYPercent - (crosshairCenterY - crosshairBounds.top) / containerBounds.height * 100;
+
+      // Вычисляем новые координаты центра прицела в процентах от размеров контейнера
+      let deltaX = newXPercent - xPercent;
+      let deltaY = newYPercent - yPercent;
+      const distanceX = Math.abs(deltaX);
+      const distanceY = Math.abs(deltaY);
+      let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      speedY = speedX = 0.375;
+      speedY = deltaY / distance * Math.abs(speedY);
+      speedX = deltaX / distance * Math.abs(speedX);
+      console.log(targetIndex + 1, speedX, speedY);
+      crosshair.style.left = xPercent + speedX + '%';
+      crosshair.style.top = yPercent + speedY + '%';
+    }
+  }
+  onResize = () => {
+    getXYtargets();
+    removeTargetsById();
+    moveCrosshair();
+  };
+  window.addEventListener('resize', onResize);
+  window.addEventListener('orientationchange', onResize);
+  anim = setInterval(moveCrosshair, 1);
+}
+function sayRandomPhrase(isHit) {
+  let phrase;
+  if (isHit) {
+    phrase = winPhrases[Math.floor(Math.random() * winPhrases.length)];
+    spineManager.changeAnimation('melissa1', 'idle3', true, true);
+  } else {
+    phrase = missPhrases[Math.floor(Math.random() * missPhrases.length)];
+    spineManager.changeAnimation('melissa1', 'idle4', true, true);
+  }
+  if (phrase === lastPhrase) return sayRandomPhrase(isHit);
+  lastPhrase = phrase;
+  talk_updateer(phrase, 15, 53, 'cl', true);
 }
 
 ;// CONCATENATED MODULE: ./js/main.js
@@ -68988,6 +75581,8 @@ function showPhoneRotateBlock() {
 
 
 
+
+
 //Main script
 sound_soundAction();
 functions_fullscreen();
@@ -69006,16 +75601,16 @@ if (functions_isIphone) {
   play_btn();
 }
 let scenesName = ['startScene'];
-let sexScenes = {};
 let main_nowScene = 1,
-  sceneNameIndex = 0,
   talkIndex = 0,
+  sceneNameIndex = 0,
   nowSceneName = scenesName[sceneNameIndex],
   nowTalk = getDialog(nowSceneName, main_nowScene, talkIndex),
   nowSetting = sceneSettings[nowSceneName][main_nowScene - 1],
   modifyScene = nowSetting.modifyScene,
   soundScene = nowSetting.sound,
   isGameScene = nowSetting.gameScene,
+  isBeerPong = nowSetting.beerPong,
   isReplayPose = false;
 function gameInit() {
   clearOnSpineElements();
@@ -69081,45 +75676,45 @@ function changeScene() {
   checkItem(clickableItem);
   setSoundTalk(soundTalk);
   if (nowTalk !== undefined) {
-    if (modifyScene && modifyScene.gameChat) {
-      chatTalkUpdate(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex).filter(Boolean));
-    } else {
-      TalkUpdate(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
-    }
+    talk_updateer(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
   } else {
-    if (sceneCount === main_nowScene + 1) {
+    if (sceneCount === main_nowScene + 1 && !isReplayPose) {
       endScreen.showEndScreen();
       change_btns.hideBtn();
       hideTalkEl();
-      // nowScene = 'end'
-      pauseSoundAtEnd();
-      // spineManager.checkScene(nowScene, nowSceneName)
+      main_nowScene = 'end';
+      offSexSceneBackgroundSound();
+      offBaseSound();
+      spineManager.checkScene(main_nowScene, nowSceneName);
       return;
     } else if (isReplayPose) {
       endScreen.showEndScreen();
       editFunctions_hideGameInterface();
       change_btns.hideBtn();
-
-      // nowScene = 'end'
-      // spineManager.checkScene(nowScene, nowSceneName)
+      offSexSceneBackgroundSound();
+      endSound();
+      main_nowScene = 'end';
+      spineManager.checkScene(main_nowScene, nowSceneName);
       return;
     }
     updateSettings();
-    if (isGameScene) {
-      change_btns.hideBtn();
-      hideTalkEl();
+    if (isBeerPong === true) {
+      return startBeerPong(isBeerPong);
+    } else if (isBeerPong === false) {
       setTimeout(() => {
-        updateScene();
-        initGameMechanics(main_nowScene, nowSceneName);
-      }, nowSetting.gameDelayUpdate);
-      if (nowSetting.gameFade) fade(nowSetting.gameFade);
+        toggleShowBeerPong();
+        destroyBeerPong();
+      }, 1000);
+    }
+    if (isGameScene) {
+      gameSceneStart();
     } else if (modifyScene) {
       addModifyAndUpdateScene(modifyScene);
       change_btns.hideBtn();
       hideTalkEl();
     } else {
       updateScene();
-      TalkUpdate(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
+      talk_updateer(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
     }
     if (soundScene) setSound(soundScene);
   }
@@ -69128,6 +75723,26 @@ function changeScene() {
   }
 }
 change_btns.clickCallback(changeScene);
+function startBeerPong() {
+  addModifyAndUpdateScene(modifyScene);
+  hideTalkEl();
+  if (soundScene) setSound(soundScene);
+  setTimeout(startBeerPongGame, 1000);
+
+  // button.hideBtn()
+}
+
+function gameSceneStart() {
+  change_btns.changeBtn('next');
+  change_btns.hideBtn();
+  functions_resetGameProgress();
+  hideTalkEl();
+  setTimeout(() => {
+    updateScene();
+    initGameMechanics(main_nowScene, nowSceneName);
+  }, nowSetting.gameDelayUpdate);
+  if (nowSetting.gameFade) fade(nowSetting.gameFade);
+}
 function updateScene() {
   checkOnSpineScene(main_nowScene + 1);
   removeScene(main_nowScene);
@@ -69137,6 +75752,9 @@ function updateScene() {
   nowTalk = getDialog(nowSceneName, main_nowScene, talkIndex);
 }
 function setSetting() {
+  if (isBeerPong) {
+    startBeerPongGame();
+  }
   if (modifyScene) modify(modifyScene);
   if (soundScene) setSound(soundScene);
   if (isGameScene) {
@@ -69147,10 +75765,12 @@ function setSetting() {
 function updateSettings() {
   nowSetting = sceneSettings[nowSceneName][main_nowScene];
   isGameScene = nowSetting.gameScene;
+  isBeerPong = nowSetting.beerPong;
   modifyScene = nowSetting.modifyScene;
   soundScene = nowSetting.sound;
 }
 function addModifyAndUpdateScene(modifyObj) {
+  modify(modifyObj);
   if (modifyScene.delayUpdate) {
     setTimeout(() => {
       updateScene();
@@ -69158,9 +75778,9 @@ function addModifyAndUpdateScene(modifyObj) {
   } else {
     updateScene();
   }
-  modify(modifyObj);
 }
 function modify(modifyObj) {
+  let nextCallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   if (modifyObj.fadeStart) {
     change_btns.hideBtn();
     fade(modifyObj.fadeStart);
@@ -69180,33 +75800,35 @@ function modify(modifyObj) {
       }, modifyObj.delayNext - modifyObj.fadeNext);
     }
     setTimeout(() => {
-      if (sceneCount === main_nowScene + 1) {
-        endScreen.showEndScreen();
-        change_btns.hideBtn();
-        hideTalkEl();
-        // nowScene = 'end'
-        pauseSoundAtEnd();
-        spineManager.checkScene('clear', nowSceneName);
-        removeAllScene();
-        return;
-      }
-      updateScene();
-      let btn = sceneSettings[main_nowScene - 1]?.modifyScene?.btn;
+      let btn = sceneSettings[nowSceneName][main_nowScene]?.modifyScene?.btn;
       if (btn) {
         change_btns.changeBtn(btn);
       }
-      TalkUpdate(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
+      if (sceneSettings[nowSceneName][main_nowScene]?.modifyScene?.next) {
+        updateSettings();
+        updateScene();
+        modify(modifyScene, true);
+        if (soundScene) setSound(soundScene);
+        setTimeout(() => {
+          updateSettings();
+          updateScene();
+          hideTalkEl();
+          delayTalk();
+          modify(modifyScene, true);
+        }, modifyScene.delayNext);
+      } else if (nextCallback === false) {
+        updateSettings();
+        if (soundScene) setSound(soundScene);
+        if (isGameScene) {
+          gameSceneStart();
+        } else {
+          updateScene();
+          modify(modifyScene);
+        }
+      }
     }, modifyObj.delayNext);
   } else {
-    setTimeout(() => {
-      if (modifyScene.gameChat) {
-        chatTalkUpdate(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex).filter(Boolean));
-      } else {
-        TalkUpdate(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
-      }
-      let clickableItem = getClickableItemForThisTalk(nowSceneName, main_nowScene, talkIndex);
-      checkItem(clickableItem);
-    }, modifyScene.delayTalk);
+    delayTalk();
   }
   if (modifyObj.btn && !modifyObj.next) {
     change_btns.changeBtn(modifyObj.btn);
@@ -69220,9 +75842,19 @@ function modify(modifyObj) {
   if (modifyObj.fullZoom) {
     fullZoom(modifyObj?.fullZoomDelay);
   }
-  if (modifyObj.hasOwnProperty('gameChat')) {
-    editFunctions_gameChat(modifyObj.gameChat);
+  if (modifyObj.rolling) {
+    setRollingText(modifyObj.rolling);
   }
+  if (modifyObj.lightening) {
+    lightening(modifyObj.lightening);
+  }
+}
+function delayTalk() {
+  setTimeout(() => {
+    talk_updateer(nowTalk, ...getSettingForThisTalk(nowSceneName, main_nowScene, talkIndex));
+    let clickableItem = getClickableItemForThisTalk(nowSceneName, main_nowScene, talkIndex);
+    checkItem(clickableItem);
+  }, modifyScene.delayTalk);
 }
 function getDialog(sceneName, sceneNum, index) {
   return assets_dialog[sceneName][sceneNum - 1][index];
@@ -69234,7 +75866,9 @@ function getSettingForThisTalk(sceneName, idScene, indexTalk) {
 function replayGame() {
   return;
 }
-function replayPose(sexScene) {}
+function replayPose(sexScene) {
+  return;
+}
 function getSoundForThisTalk(nameScene, idScene, indexTalk) {
   let getSoundSetting;
   getSoundSetting = sceneSettings[nameScene][idScene - 1][`talks`][indexTalk]?.sound;
@@ -69251,11 +75885,7 @@ function playSounds(audioPlaySettingArr) {
 function pauseSounds(audioPauseSettingArr) {
   audioPauseSettingArr.forEach(audioSetting => sound_sound.pauseAudio(audioSetting));
 }
-function pauseSoundAtEnd() {
-  sound_sound.pauseAudio({
-    audioName: 'bg2'
-  });
-}
+function pauseSoundAtEnd() {}
 function removeAllScene() {
   let sceneContainer = document.querySelector('#scenes');
   sceneContainer.innerHTML = '';

@@ -2869,12 +2869,15 @@ const spineSceneAdap_adaptive = () => {
   function setSize() {
     let container = document.querySelector('#container');
     let talkBlock = document.querySelector('.talk');
+    let warn = document.querySelector('.warning');
+    let phone = document.querySelector('.phoneRotateWarn');
     let textBlocks = document.querySelectorAll('[class*="-textBlock"]');
     let size = 30 * (getContainerWidth() / 1920) + 'px';
     textBlocks.forEach(block => block.style.fontSize = size);
     talkBlock.style.fontSize = size;
     container.style.fontSize = size;
-    setMapTitleSize();
+    warn.style.fontSize = size;
+    if (phone) phone.style.fontSize = size;
   }
 };
 /* harmony default export */ var spineSceneAdap = (spineSceneAdap_adaptive);
