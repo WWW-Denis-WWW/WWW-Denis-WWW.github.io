@@ -70104,7 +70104,7 @@ if (js_isPhone) {
   Warning(gameInit);
   play_btn();
 }
-let main_nowScene = 9,
+let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
 let nowSetting = sceneSettings[main_nowScene - 1];
