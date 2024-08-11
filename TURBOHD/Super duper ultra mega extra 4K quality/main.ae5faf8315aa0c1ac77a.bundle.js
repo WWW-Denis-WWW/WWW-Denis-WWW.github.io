@@ -3568,6 +3568,12 @@ function playAudio(_ref) {
   } = _ref;
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.onstatechange = () => {
+      if (audioCtx.state === 'suspended') {
+        console.log('suspended');
+        audioCtx.resume();
+      }
+    };
     addAllSoundGain();
   }
   let sound = getSound(audioName);
@@ -68691,58 +68697,47 @@ const spineEnd = loadSpineJson2(spine_end_Pair_idle_namespaceObject, spineDataEn
 const allSpine = [{
   name: 'Lizard',
   spine: spineLizard,
-  // sceneStart: [1, 22],
-  sceneStart: [],
+  sceneStart: [1, 22],
   sceneEnd: [2, 23]
 }, {
   name: 'all',
   spine: spineAll,
-  sceneStart: [],
-  // sceneStart: [
-  //     3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 31, 34,
-  // ],
+  sceneStart: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 31, 34],
   sceneEnd: [15]
 }, {
   name: 'smileDrake',
   spine: spineSmileDrake,
-  // sceneStart: [9],
-  sceneStart: [],
+  sceneStart: [9],
   sceneEnd: []
 }, {
   name: 'H-transform',
   spine: spineHelenaT,
-  // sceneStart: [25],
-  sceneStart: [],
+  sceneStart: [25],
   sceneEnd: [26]
 }, {
   name: 'Sucking',
   spine: spineSucking,
-  // sceneStart: [26],
-  sceneStart: [],
+  sceneStart: [26],
   sceneEnd: [27]
 }, {
   name: 'BoobJob',
   spine: spineBoobJob,
-  // sceneStart: [27],
-  sceneStart: [],
+  sceneStart: [27],
   sceneEnd: [28]
 }, {
   name: 'DoggyStyle',
   spine: spineDoggyStyle,
-  // sceneStart: [28],
-  sceneStart: [],
+  sceneStart: [28],
   sceneEnd: [29]
 }, {
   name: 'Wallslam',
   spine: spineWallslam,
-  // sceneStart: [29],
-  sceneStart: [],
+  sceneStart: [29],
   sceneEnd: [30]
 }, {
   name: 'End',
   spine: spineEnd,
-  // sceneStart: [30, 32, 33],
-  sceneStart: [],
+  sceneStart: [30, 32, 33],
   sceneEnd: []
 }];
 
@@ -70200,6 +70195,7 @@ function changeScene() {
         updateScene();
         initGameMechanics(main_nowScene);
         js_resetGameProgress();
+        main_showGameInterface();
       }, nowSetting.gameDelayUpdate);
       if (nowSetting.gameFade) fade(nowSetting.gameFade);
     } else if (modifyScene) {
@@ -70335,6 +70331,7 @@ function replayPose(scene) {
   spineManager.checkScene('end');
   spineManager.checkScene(main_nowScene);
   initGameMechanics(main_nowScene);
+  main_showGameInterface();
   sound.pauseAudio({
     audioName: 'экшн'
   });
@@ -70367,6 +70364,10 @@ function pauseSoundAtEnd() {
   // sound.pauseAudio({audioName: 'вступление'})
 }
 
+function main_showGameInterface() {
+  let gameInterface = document.querySelector('.gameInterface');
+  gameInterface.classList.add('show');
+}
 
 }();
 /******/ })()
