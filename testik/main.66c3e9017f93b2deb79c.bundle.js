@@ -3568,6 +3568,12 @@ function playAudio(_ref) {
   } = _ref;
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioCtx.onstatechange = () => {
+      if (audioCtx.state === 'suspended') {
+        console.log('suspended');
+        audioCtx.resume();
+      }
+    };
     addAllSoundGain();
   }
   let sound = getSound(audioName);
