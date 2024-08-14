@@ -2844,7 +2844,8 @@ function preloadAll() {
 const adaptive = () => {
   let spineScene = document.querySelector('#spines');
   setScale();
-  window.addEventListener('resize', setScale);
+  window.onresize = setScale;
+  window.onchange = setScale;
   function setScale() {
     spineScene.style.transform = `scale(${(getContainerWidth() / 1920).toFixed(2)})`;
     setSize();
@@ -3525,14 +3526,51 @@ let resolution = () => {
 /* harmony default export */ var screenResolution = (resolution);
 ;// CONCATENATED MODULE: ./js/sound/preloadSounds.js
 const allSounds = [];
-let allSoundsName = ['вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли 2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'чайки', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон', '4-2-2стон', '4-2-1стон'];
-function preloadSounds() {
+let allSoundsName = ['чайки', 'вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 1', 'Джунгли2', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'огонь', 'одеваются', 'появление статуи', 'превращение', 'прыжок в песок', 'Салли убегает', 'Салли устанавливает факел', 'стоны', 'Факел', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'mnc1', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '3-3стон', '4-1стон', '4-2стон', '4-3стон', '4-2-2стон', '4-2-1стон'];
+let audioCtx;
+async function preloadSounds() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext || false)();
   allSoundsName.forEach(soundName => {
-    let audio = new Audio(`./assets/audio/${soundName}.mp3`);
     allSounds.push({
       name: soundName,
-      audio: audio
+      audioBuffer: null
     });
+  });
+  for (const soundName of allSoundsName) {
+    // const soundIndex  = allSounds.findIndex(sound => sound.name === soundName);
+    // const response    = await fetch(`./assets/audio/${soundName}.mp3`);
+    // const arrayBuffer = await response.arrayBuffer();
+    // const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+    // audioBuffer.then(()=>{
+    //     if (soundIndex !== -1) {
+    //         allSounds[soundIndex].audioBuffer = audioBuffer;
+    //     }
+    // })
+    fetch(`./assets/audio/${soundName}.mp3`).then(response => response.arrayBuffer()).then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer)).then(audioBuffer => {
+      // Находим индекс заглушки и обновляем его
+      const soundIndex = allSounds.findIndex(sound => sound.name === soundName);
+      if (soundIndex !== -1) {
+        allSounds[soundIndex].audioBuffer = audioBuffer;
+      }
+    }).catch(error => {
+      console.error(`Ошибка загрузки или декодирования звука ${soundName}:`, error);
+    });
+    // allSounds.push({
+    //     name: soundName,
+    //     audioBuffer: null,
+    // });
+  }
+}
+
+async function loadAudioBuffer(soundName) {
+  return fetch(`./assets/audio/${soundName}.mp3`).then(response => {
+    if (!response.ok) {
+      throw new Error(`Ошибка загрузки файла: ${response.statusText}`);
+    }
+    return response.arrayBuffer();
+  }).then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer)).catch(error => {
+    console.error(`Ошибка при загрузке и декодировании ${soundName}:`, error);
+    throw error;
   });
 }
 
@@ -3547,18 +3585,18 @@ let sound = {
 };
 let soundsVolume = {};
 let off = false;
-let audioCtx;
 function getSound(audioName) {
   return allSounds.find(sound => sound.name === audioName);
 }
 function isPausedAudio(audioName) {
   let sound = getSound(audioName);
-  return sound.audio.paused;
+  return !sound.isStart;
 }
+let flagGain = false;
 function playAudio(_ref) {
   let {
     audioName,
-    isLoop,
+    isLoop = false,
     startTime = 0,
     endTime = null,
     volume = 1,
@@ -3566,30 +3604,37 @@ function playAudio(_ref) {
     decrease = 0,
     duration
   } = _ref;
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    audioCtx.onstatechange = () => {
-      if (audioCtx.state === 'suspended') {
-        console.log('suspended');
-        audioCtx.resume();
-      }
-    };
+  if (!flagGain) {
+    flagGain = true;
     addAllSoundGain();
   }
   let sound = getSound(audioName);
+  sound.isStart = true;
+  let source = audioCtx.createBufferSource();
+  source.buffer = sound.audioBuffer;
+  // sound.audio.currentTime = startTime
+  console.log(audioName, ':', source);
+  source.connect(sound.gainNode);
   setVolume(sound, off ? 0 : volume);
   if (volume !== 1) addVolumes(audioName, volume);
-  sound.audio.currentTime = startTime;
-  if (endTime) {
-    setTime(sound.audio, startTime, endTime, isLoop);
-  } else if (isLoop) {
-    setLoop(sound.audio, startTime);
+  if (isLoop) {
+    source.loop = true;
+    source.loopStart = startTime;
+    source.loopEnd = endTime ?? source.buffer.duration;
+  } else {
+    source.loop = false;
   }
   setTimeout(() => {
-    sound.audio.play();
-    setDurationAndDecrease(sound.audio, audioName, duration, decrease);
+    console.log(source.loopEnd);
+    if (isLoop) {
+      source.start(audioCtx.currentTime, startTime);
+    } else {
+      source.start(audioCtx.currentTime, startTime, endTime ? endTime - startTime : source.buffer.duration - startTime);
+    }
+    setDurationAndDecrease(source, audioName, duration, decrease);
   }, delay);
-  return sound.audio;
+  sound.source = source;
+  return source;
 }
 function setDurationAndDecrease(audio, audioName, duration, decrease) {
   if (duration) setTimeout(() => pauseAudio({
@@ -3597,32 +3642,19 @@ function setDurationAndDecrease(audio, audioName, duration, decrease) {
     decrease
   }), duration);
 }
-function setLoop(audio, startTime) {
-  audio.onended = () => {
-    audio.currentTime = startTime;
-    audio.play();
-  };
-}
-function setTime(audio, startTime, endTime, isLoop) {
-  audio.ontimeupdate = () => {
-    if (audio.currentTime >= endTime && isLoop) {
-      audio.currentTime = startTime;
-    } else if (audio.currentTime >= endTime) {
-      audio.pause();
-    }
-  };
-}
 function pauseAudio(_ref2) {
   let {
     audioName,
     decrease = 0
   } = _ref2;
   let sound = allSounds.find(sound => sound.name === audioName);
+  if (!sound?.isStart) return;
   if (decrease) {
     decreaseVolume(decrease, sound);
     return;
   }
-  sound.audio.pause();
+  sound.source.stop();
+  sound.isStart = false;
 }
 function onVolumeSound() {
   off = false;
@@ -3638,7 +3670,11 @@ function decreaseVolume(duration, sound) {
     currentVolume -= decreaseStep;
     if (currentVolume <= 0) {
       clearInterval(decreaseInterval);
-      sound.audio.pause();
+      sound.gainNode.gain.value = 0;
+      if (sound.source) {
+        sound.source.stop();
+        sound.isStart = false;
+      }
     } else {
       setVolume(sound, currentVolume);
     }
@@ -3652,16 +3688,33 @@ function addVolumes(audioName, volume) {
   soundsVolume[audioName] = volume;
 }
 function setVolume(sound, volume) {
-  sound.gainNode.gain.value = volume;
+  if (sound.gainNode) {
+    sound.gainNode.gain.value = volume;
+  } else {
+    console.error('Gain node not found for sound:', sound);
+  }
 }
 function addAllSoundGain() {
   allSounds.forEach(sound => {
-    let source = audioCtx.createMediaElementSource(sound.audio);
     let gainNode = audioCtx.createGain();
-    source.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    sound.source = source;
-    sound.gainNode = gainNode;
+    let source;
+    if (sound.audioBuffer) {
+      // Если используется AudioBuffer
+      source = audioCtx.createBufferSource();
+      source.buffer = sound.audioBuffer;
+    } else if (sound.audio) {
+      // Если используется HTMLMediaElement
+      source = audioCtx.createMediaElementSource(sound.audio);
+    }
+    if (source) {
+      // Проверка, что source был создан
+      source.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      sound.source = source;
+      sound.gainNode = gainNode;
+    } else {
+      console.error('Source not created for sound:', sound);
+    }
   });
 }
 
@@ -3800,7 +3853,7 @@ const Preloader = uploadedImages => {
     media = Array.from(document.querySelectorAll('img , video')),
     audio = allSounds,
     percentEl = document.querySelector('#loadPercent'),
-    allElCount = media.length - uploadedImages.length + audio.length,
+    allElCount = media.length - uploadedImages.length + allSoundsName.length,
     loadedElements = 0,
     percentValue = 0;
   function listenLoads() {
@@ -3808,18 +3861,22 @@ const Preloader = uploadedImages => {
       el.addEventListener('load', loaded, {
         once: true
       });
-      el.addEventListener('error', loaded, {
-        once: true
+      el.addEventListener('error', e => {
+        console.error('Error', e, el);
       });
     });
-    audio.forEach(el => {
-      el.audio.addEventListener('progress', loaded, {
-        once: true
-      });
-      el.audio.addEventListener('error', loaded, {
-        once: true
-      });
-    });
+    let loadedBuffer = 0;
+    let interval = setInterval(() => {
+      let nowLoad = audio.reduce((sum, el) => {
+        return sum + (el.audioBuffer === null ? 0 : 1);
+      }, 0);
+      if (nowLoad !== loadedBuffer) {
+        loadedElements = loadedElements + (nowLoad - loadedBuffer);
+        loadedBuffer = nowLoad;
+      }
+      countPercent();
+      if (loadedBuffer === audio.length) clearInterval(interval);
+    }, 100);
   }
   function loaded() {
     loadedElements++;
@@ -3830,6 +3887,7 @@ const Preloader = uploadedImages => {
       percentValue = 100;
       setTimeout(hidePreloaderProgress, 500);
       change_btns.hideBtn();
+      console.log('load');
     } else {
       percentValue = (loadedElements / allElCount * 100).toFixed(0);
     }
@@ -3921,9 +3979,7 @@ const TALKING_POSITIONS = [{
     }, {
       audioName: 'чайки',
       isLoop: true,
-      volume: 0.2,
-      startTime: 17,
-      endTime: 31
+      volume: 0.2
     }]
   }
 }, {
@@ -4275,6 +4331,7 @@ const TALKING_POSITIONS = [{
     play: [{
       audioName: 'Факел',
       endTime: 1.4,
+      isLoop: false,
       delay: 1000
     }]
   },
@@ -68697,58 +68754,47 @@ const spineEnd = loadSpineJson2(spine_end_Pair_idle_namespaceObject, spineDataEn
 const allSpine = [{
   name: 'Lizard',
   spine: spineLizard,
-  // sceneStart: [1, 22],
-  sceneStart: [],
+  sceneStart: [1, 22],
   sceneEnd: [2, 23]
 }, {
   name: 'all',
   spine: spineAll,
-  sceneStart: [],
-  // sceneStart: [
-  //     3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 31, 34,
-  // ],
+  sceneStart: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 31, 34],
   sceneEnd: [15]
 }, {
   name: 'smileDrake',
   spine: spineSmileDrake,
-  // sceneStart: [9],
-  sceneStart: [],
+  sceneStart: [9],
   sceneEnd: []
 }, {
   name: 'H-transform',
   spine: spineHelenaT,
-  // sceneStart: [25],
-  sceneStart: [],
+  sceneStart: [25],
   sceneEnd: [26]
 }, {
   name: 'Sucking',
   spine: spineSucking,
-  // sceneStart: [26],
-  sceneStart: [],
+  sceneStart: [26],
   sceneEnd: [27]
 }, {
   name: 'BoobJob',
   spine: spineBoobJob,
-  // sceneStart: [27],
-  sceneStart: [],
+  sceneStart: [27],
   sceneEnd: [28]
 }, {
   name: 'DoggyStyle',
   spine: spineDoggyStyle,
-  // sceneStart: [28],
-  sceneStart: [],
+  sceneStart: [28],
   sceneEnd: [29]
 }, {
   name: 'Wallslam',
   spine: spineWallslam,
-  // sceneStart: [29],
-  sceneStart: [],
+  sceneStart: [29],
   sceneEnd: [30]
 }, {
   name: 'End',
   spine: spineEnd,
-  // sceneStart: [30, 32, 33],
-  sceneStart: [],
+  sceneStart: [30, 32, 33],
   sceneEnd: []
 }];
 
@@ -69704,7 +69750,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 40);
     autoplay();
     return;
   }
@@ -69714,7 +69760,7 @@ function updateProgressIfCan() {
   }
   if (gameMode == unlockStage) {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 400);
+    timer = setInterval(increaseProgress, 40);
   } else {
     clearInterval(timer);
   }
@@ -70106,23 +70152,29 @@ function resetGameProgress() {
 
 
 
+
 //Main script
-sound_soundAction();
-js_fullscreen();
-screenResolution();
-if (js_isPhone()) {
-  showPhoneRotateBlock();
-  phoneRotate().then(() => {
+window.addEventListener('click', () => {
+  sound_soundAction();
+  js_fullscreen();
+  screenResolution();
+  spineSceneAdap();
+  if (js_isPhone()) {
+    showPhoneRotateBlock();
+    phoneRotate().then(() => {
+      SceneCreater(preloader);
+      Warning(gameInit);
+      play_btn();
+    });
+  } else {
+    destroyPhoneRotateBlock();
     SceneCreater(preloader);
     Warning(gameInit);
     play_btn();
-  });
-} else {
-  destroyPhoneRotateBlock();
-  SceneCreater(preloader);
-  Warning(gameInit);
-  play_btn();
-}
+  }
+}, {
+  once: true
+});
 let main_nowScene = 1,
   talkIndex = 0;
 let nowTalk = getDialog(main_nowScene, talkIndex);
@@ -70161,13 +70213,10 @@ function playChainSounds(soundArr) {
     }
     return;
   }
-  let audio = sound.playAudio(soundArr[index]);
-  const interval = setInterval(() => {
-    if (audio.currentTime >= audio.duration) {
-      playChainSounds(soundArr, index + 1, next);
-      clearInterval(interval);
-    }
-  }, 100);
+  let source = sound.playAudio(soundArr[index]);
+  source.onended = () => {
+    playChainSounds(soundArr, index + 1, next);
+  };
 }
 function setSoundTalk(soundTalk) {
   if (soundTalk) setSound(soundTalk);
@@ -70383,3 +70432,4 @@ function main_showGameInterface() {
 }();
 /******/ })()
 ;
+//# sourceMappingURL=main.172c28667baf8e29305d.bundle.js.map
