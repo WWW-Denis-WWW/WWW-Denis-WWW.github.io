@@ -2859,12 +2859,14 @@ const adaptive = () => {
     let talkBlock = document.querySelector('.talk');
     let warn = document.querySelector('.warning');
     let phone = document.querySelector('.phoneRotateWarn');
+    let start = document.querySelector('#startBlock');
     let textBlocks = document.querySelectorAll('[class*="-textBlock"]');
     let size = 30 * (getContainerWidth() / 1920) + 'px';
     textBlocks.forEach(block => block.style.fontSize = size);
     talkBlock.style.fontSize = size;
     container.style.fontSize = size;
     warn.style.fontSize = size;
+    if (start) start.style.fontSize = size;
     if (phone) phone.style.fontSize = size;
   }
 };
@@ -3612,8 +3614,6 @@ function playAudio(_ref) {
   sound.isStart = true;
   let source = audioCtx.createBufferSource();
   source.buffer = sound.audioBuffer;
-  // sound.audio.currentTime = startTime
-  console.log(audioName, ':', source);
   source.connect(sound.gainNode);
   setVolume(sound, off ? 0 : volume);
   if (volume !== 1) addVolumes(audioName, volume);
@@ -3625,7 +3625,6 @@ function playAudio(_ref) {
     source.loop = false;
   }
   setTimeout(() => {
-    console.log(source.loopEnd);
     if (isLoop) {
       source.start(audioCtx.currentTime, startTime);
     } else {
@@ -3887,7 +3886,6 @@ const Preloader = uploadedImages => {
       percentValue = 100;
       setTimeout(hidePreloaderProgress, 500);
       change_btns.hideBtn();
-      console.log('load');
     } else {
       percentValue = (loadedElements / allElCount * 100).toFixed(0);
     }
@@ -69561,8 +69559,10 @@ function changeAnimation(spineName, animationName) {
     if (spineObj.name === spineName && animationName !== '4') {
       spineObj.spine.spine.state.setAnimation(0, animationName, loop);
     }
+    // console.log(spineObj.spine.spine.state.getCurrent(0).animation.duration)
   });
 }
+
 
 ;// CONCATENATED MODULE: ./js/gameMechanics.js
 
@@ -69596,10 +69596,10 @@ let soundForScene = {
     }],
     3: [{
       audioName: 'Sucking Faster_02',
-      isLoop: true,
       startTime: 1.17,
-      endTime: 2,
-      delay: 300
+      endTime: 1.8,
+      spacePlay: 833.299994468689,
+      spaceDelay: 200
     }],
     4: [{
       audioName: 'Sucking gags_06',
@@ -69730,7 +69730,7 @@ let soundForScene = {
       endTime: 2,
       isLoop: true,
       duration: 2000,
-      delay: 1700
+      delay: 1300
     }]
   }
 };
@@ -69750,7 +69750,7 @@ function initGameMechanics(sceneId) {
 function updateProgressIfCan() {
   if (gameMode == 'autoplay') {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 40);
+    timer = setInterval(increaseProgress, 400);
     autoplay();
     return;
   }
@@ -69760,7 +69760,7 @@ function updateProgressIfCan() {
   }
   if (gameMode == unlockStage) {
     clearInterval(timer);
-    timer = setInterval(increaseProgress, 40);
+    timer = setInterval(increaseProgress, 400);
   } else {
     clearInterval(timer);
   }
@@ -70154,12 +70154,16 @@ function resetGameProgress() {
 
 
 //Main script
-window.addEventListener('click', () => {
+spineSceneAdap();
+let startbtn = document.querySelector('#startBlockButton');
+let startBlock = document.querySelector('#startBlock');
+startbtn.addEventListener('click', () => {
+  startBlock.remove();
   sound_soundAction();
   js_fullscreen();
   screenResolution();
-  spineSceneAdap();
   if (js_isPhone()) {
+    console.log('zxc');
     showPhoneRotateBlock();
     phoneRotate().then(() => {
       SceneCreater(preloader);
@@ -70432,4 +70436,3 @@ function main_showGameInterface() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=main.172c28667baf8e29305d.bundle.js.map
