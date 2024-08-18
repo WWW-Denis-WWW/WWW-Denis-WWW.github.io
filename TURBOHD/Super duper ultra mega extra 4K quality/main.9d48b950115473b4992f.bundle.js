@@ -6905,7 +6905,7 @@ function preloadSounds() {
   allSoundsName.forEach(soundName => {
     const sound = new howler.Howl({
       src: [`./assets/audio/${soundName}.mp3`],
-      preload: true,
+      html5: true,
       onload: () => {
         loaded();
       }
