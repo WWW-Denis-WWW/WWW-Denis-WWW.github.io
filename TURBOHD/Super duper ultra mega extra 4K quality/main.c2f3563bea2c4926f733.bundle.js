@@ -6071,7 +6071,7 @@ __webpack_require__.d(runtime_4_1_es_namespaceObject, {
 const talks = [[''], [], ['Finally! Remind me to take a helicopter for the next trip, Salli.', 'I’d rather avoid meeting pirates and fixing that damn engine every hour.'], ['I’m too old for all this crap, Nath.', 'This time we better get lucky and find something valuable.'], ['Come on guys, we shouldn’t argue and complain.', 'Look how beautiful it is here.'], ['Sorry for that. Just getting sick of pointless adventures.', 'I owe a lot of money to serious people. And they aren’t kidding anymore.'], ['Don’t worry, old man. This campaign will bring us to jackpot for sure.', 'But we gotta hurry. Roman is gonna be here in a couple hours.', 'Let’s go!'], ['I’ve already seen this tree!', 'We are going round and round in circles, Nath!', 'I don’t understand!', 'The entrance is supposed to be right here.', 'I’m kinda tired.', 'You figure out, which direction we should go. I need a rest.'], ['Way to go, girl!', 'I told you, Nath. This lady is a pure diamond!', 'I must admit the truth.', 'Not bad for a journalist, Helena.', 'We are running out of time, boys!', 'I want to see, what’s hidden inside. Let’s roll!'], ['Never thought I’d say it.', 'You wanna smoke your cigar, Salli?', 'I can’t see a thing.', 'Just a moment.', '[JS]hide'], ['Damn that was close!', 'It’s a dead end.', 'Let’s move back the same way.'], ['Maybe we missed something.'], ['Look what I’ve found! Could be useful.'], [''], ['I can’t believe we found it.', 'The definition of «gorgeous»!', 'There it is, ladies and gentlemen.'], ['Let me introduce… The famous El Whorado.'], ['Alright. I’ll quickly get back to the boat.', 'We definitely need some equipment to transport this giant.'], ['You two! Don’t do anything stupid.'], ['Yes, sir!', 'Oh please. Everything is under control, Salli.'], ['Okay, he is gone. Let’s open this thing!'], ['What? No! We have no idea, what’s inside.', 'It can be dangerous, Helena.', 'Oh don’t be such a pussy! I’m so excited!'], ['Wait!!!'], [''], ['Well, I was wrong. It is not under control from now.'], ['Time to have some fun!'], [], [], [], [], ['Damn...'], ['What the hell is going on here?'], ['Well, at least we know this statue is cursed'], ['...what just happened here?'], ['I wouldn’t say this adventure was pointless.', 'Totally agreed!', 'Get me back to normal, you idiots!', 'Arghhh!!!']];
 /* harmony default export */ var dialog = (talks);
 ;// CONCATENATED MODULE: ./js/images.js
-const preloadImages = ["./assets/media/characters/Helen-sit-scare.webp", "./assets/media/characters/Helen-sit-smile.webp", "./assets/media/characters/drake-surprise-right.webp", "./assets/media/characters/drake-smile-right.webp", "./assets/media/characters/sally-big-surprise.webp", "./assets/media/characters/sally-big-smile.webp"];
+const preloadImages = ["./assets/media/characters/Helen-sit-scare.webp", "./assets/media/characters/Helen-sit-smile.webp", "./assets/media/characters/drake-surprise-right.webp", "./assets/media/characters/drake-smile-right.webp", "./assets/media/characters/sally-big-surprise.webp", "./assets/media/characters/sally-big-smile.webp", "./assets/media/characters/sally-big-smile.webp", "./assets/media/characters/sally-big-smile.webp", "./assets/media/icons/goNormalScreen.svg", './assets/media/icons/goFullScreen.svg', './assets/media/icons/sound-off.svg', './assets/media/icons/sound-on.svg'];
 /* harmony default export */ var js_images = (preloadImages);
 ;// CONCATENATED MODULE: ./js/preloadImg.js
 
@@ -6853,7 +6853,7 @@ function changeBtn(btnType) {
     change_btns_button.activeBtn = continueBtn;
     change_btns_button.btnBox.classList.remove('next');
     setTimeout(() => change_btns_button.btnBox.classList.add('continue'), 200);
-  } else if (btnType === 'next' && change_btns_button.activeBtn !== continueBtn) {
+  } else if (btnType === 'next' && change_btns_button.activeBtn !== nextBtn) {
     change_btns_button.activeBtn = nextBtn;
     change_btns_button.btnBox.classList.remove('continue');
     setTimeout(() => change_btns_button.btnBox.classList.add('next'), 200);
@@ -7010,9 +7010,10 @@ var howler = __webpack_require__(472);
 
 
 howler.Howler.autoUnlock = true;
+howler.Howler.usingWebAudio = true;
 howler.Howler.autoSuspend = false;
 const allSounds = [];
-let allSoundsName = ['чайки', 'вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'одеваются', 'появление статуи', 'превращение', 'Салли убегает', 'Салли устанавливает факел', 'Факел', 'шаги по каменному полу', 'шаги по песку', 'экшн', 'churn1', 'churn2', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '4-1стон', '4-2-2стон', '4-2-1стон'];
+let allSoundsName = ['чайки', 'вступление', 'дверца в статуе', 'Дверь в пещеру', 'Джунгли 3', 'дым', 'зажигалка', 'Камень вниз', 'капли в пещере', 'мелкие камни осыпались', 'море', 'одеваются', 'появление статуи', 'превращение', 'Салли убегает', 'Салли устанавливает факел', 'Факел', 'шаги по каменному полу', 'p', 'экшн', 'churn1', 'churn2', 'Sucking Faster_02', 'Sucking gags_06', 'Suckles_02', 'wetfuck1', 'wetfuck4', 'wetfuck5', 'wetfuck6', 'end', '3-1стон', '3-2-2стон', '3-2-1стон', '3-3-2стон', '3-3-1стон', '4-1стон', '4-2-2стон', '4-2-1стон'];
 window.addEventListener('orientationchange', () => {
   console.log('orientationchange');
   howler.Howler._autoResume();
@@ -7030,7 +7031,6 @@ function preloadSounds() {
   allSoundsName.forEach(soundName => {
     const sound = new howler.Howl({
       src: [`./assets/audio/${soundName}.mp3`],
-      html5: true,
       preload: true,
       onload: () => {
         loaded();
@@ -7081,6 +7081,7 @@ function playAudio(_ref) {
     } else if (isLoop) {
       setLoop(sound, startTime);
     } else {
+      sound.loop(false);
       sound.seek(startTime);
       sound.play();
     }
@@ -7176,11 +7177,15 @@ let soundAction = () => {
     if (soundFlag) {
       sound.onVolumeSound();
       soundBlock.classList.add('on');
-      iconOn.data = "./assets/media/icons/sound-on.svg";
+      setTimeout(() => {
+        iconOn.data = "./assets/media/icons/sound-on.svg";
+      }, 0);
     } else {
       sound.offVolumeSound();
-      soundBlock.classList.remove('on');
-      iconOff.data = "./assets/media/icons/sound-off.svg";
+      // soundBlock.classList.remove('on')
+      setTimeout(() => {
+        iconOn.data = "./assets/media/icons/sound-off.svg";
+      }, 0);
     }
   }
 };
@@ -7334,8 +7339,8 @@ const TALKING_POSITIONS = [{
       decrease: 2000
     }],
     play: [{
-      audioName: 'шаги по песку',
-      startTime: 7
+      audioName: 'p',
+      isLoop: false
     }]
   }
 }, {
