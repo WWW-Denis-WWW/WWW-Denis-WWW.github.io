@@ -13,7 +13,7 @@
             console.error('Error captured:', message, source, lineno, colno, error);
 
             // Отправляем ошибку на сервер логирования
-            fetch('/log-client-error', {
+            fetch('https://porngamestown.com/log-client-error', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +32,7 @@
             console.error('Unhandled promise rejection:', event.reason);
 
             // Отправляем ошибку на сервер логирования
-            fetch('/log-client-error', {
+            fetch('https://porngamestown.com/log-client-error', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
