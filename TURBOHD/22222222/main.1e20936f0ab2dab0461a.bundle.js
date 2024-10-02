@@ -75381,6 +75381,7 @@ function showAudioAlertBlock() {
 
 
 
+
 //Main script
 spineSceneAdap();
 let startbtn = document.querySelector('#startBlockButton');
@@ -75655,6 +75656,7 @@ function replayGame() {
   fade(1000, true);
   offSexSceneBackgroundSound();
   baseSound();
+  resetMap();
 }
 function replayPose(sexScene) {
   removeAllScene();
