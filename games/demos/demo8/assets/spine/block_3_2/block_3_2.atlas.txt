@@ -1,0 +1,57 @@
+block_3_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+boots
+	bounds: 2, 47, 674, 474
+eye
+	bounds: 1777, 391, 95, 74
+eye_closed
+	bounds: 1671, 389, 104, 76
+grass_1
+	bounds: 1310, 377, 403, 359
+	rotate: 90
+grass_2
+	bounds: 1250, 175, 392, 200
+grass_3
+	bounds: 1071, 172, 349, 177
+	rotate: 90
+grass_4
+	bounds: 1679, 992, 440, 179
+	rotate: 90
+hand_L
+	bounds: 1310, 782, 367, 650
+hand_R
+	bounds: 2, 523, 1261, 1509
+head
+	bounds: 1310, 1434, 543, 598
+neck
+	bounds: 678, 98, 391, 423
+r_Leg_L
+	bounds: 1679, 648, 297, 342
+r_ear
+	bounds: 1671, 467, 179, 277
+	rotate: 90
+r_eye_closed
+	bounds: 1071, 101, 86, 69
+r_tail
+	bounds: 1855, 1435, 160, 133
+rabbit_leg
+	bounds: 1855, 1570, 177, 462
+rope
+	bounds: 1265, 399, 1633, 43
+	rotate: 90
+
+block_3_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+body
+	bounds: 2, 349, 963, 1422
+pants
+	bounds: 967, 444, 1327, 804
+	rotate: 90
+
+block_3_2_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+rabbit
+	bounds: 2, 2, 938, 1080

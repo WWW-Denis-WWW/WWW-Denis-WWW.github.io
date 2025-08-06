@@ -1,0 +1,32 @@
+block_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+boot_L
+	bounds: 952, 172, 662, 444
+boot_R
+	bounds: 1806, 1152, 318, 219
+	rotate: 90
+eye
+	bounds: 1250, 728, 81, 69
+eye_closed
+	bounds: 952, 94, 128, 76
+face
+	bounds: 1250, 799, 554, 671
+hand
+	bounds: 2, 54, 948, 562
+shirt
+	bounds: 2, 618, 1246, 1419
+shirt_down
+	bounds: 1616, 416, 331, 381
+veko_down
+	bounds: 2, 12, 82, 40
+veko_up
+	bounds: 1616, 400, 62, 14
+wood
+	bounds: 1250, 1472, 787, 565
+
+block_2_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+pants
+	bounds: 2, 501, 1318, 819

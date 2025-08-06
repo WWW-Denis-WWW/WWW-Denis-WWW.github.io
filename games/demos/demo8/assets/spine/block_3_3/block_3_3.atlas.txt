@@ -1,0 +1,54 @@
+block_3_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+boot_L
+	bounds: 1331, 162, 664, 442
+	rotate: 90
+eye
+	bounds: 1972, 1299, 95, 74
+	rotate: 90
+eye_closed
+	bounds: 1891, 1290, 104, 79
+	rotate: 90
+hand_L
+	bounds: 1606, 1396, 367, 650
+hand_R down
+	bounds: 1775, 63, 195, 163
+krekers
+	bounds: 1331, 67, 116, 93
+leg_R
+	bounds: 2, 19, 1327, 807
+o
+	bounds: 2, 828, 1602, 1218
+o_ear_L
+	bounds: 1775, 228, 193, 172
+	rotate: 90
+o_ear_R
+	bounds: 1775, 423, 170, 220
+o_jaw
+	bounds: 1775, 645, 231, 178
+	rotate: 90
+o_leg_2
+	bounds: 1606, 878, 283, 516
+
+block_3_3_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+boot_R
+	bounds: 1722, 1549, 293, 466
+hand_R
+	bounds: 2, 635, 1205, 1380
+head
+	bounds: 1209, 1429, 511, 586
+leg_L
+	bounds: 2, 183, 845, 450
+neck
+	bounds: 849, 210, 399, 423
+o_leg_1
+	bounds: 1209, 774, 318, 653
+
+block_3_3_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+body
+	bounds: 2, 2, 963, 1422

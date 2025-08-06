@@ -1,0 +1,67 @@
+block_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+backpack_back_L
+	bounds: 1925, 1825, 211, 111
+	rotate: 90
+backpack_back_R
+	bounds: 1493, 1141, 430, 895
+backpack_front_L
+	bounds: 719, 139, 191, 517
+backpack_front_R
+	bounds: 788, 671, 212, 693
+	rotate: 90
+eye_L
+	bounds: 1925, 1754, 51, 28
+eye_R
+	bounds: 2, 56, 74, 31
+eye_closed_L
+	bounds: 1439, 358, 55, 37
+	rotate: 90
+eye_closed_R
+	bounds: 106, 108, 74, 36
+face
+	bounds: 1493, 772, 367, 442
+	rotate: 90
+hand_L
+	bounds: 1483, 609, 161, 486
+	rotate: 90
+hand_R
+	bounds: 912, 415, 254, 565
+	rotate: 90
+hat
+	bounds: 2, 146, 510, 715
+	rotate: 90
+lips_1
+	bounds: 1925, 265, 88, 44
+	rotate: 90
+lips_2
+	bounds: 2, 89, 102, 55
+neck
+	bounds: 1479, 355, 252, 506
+	rotate: 90
+pants
+	bounds: 2, 658, 784, 1378
+shirt
+	bounds: 788, 885, 703, 1151
+shirt_R
+	bounds: 1439, 76, 277, 484
+	rotate: 90
+shirt_sh
+	bounds: 912, 162, 525, 251
+veki_L
+	bounds: 1925, 210, 53, 40
+	rotate: 90
+veki_R
+	bounds: 1925, 1784, 74, 39
+
+block_1_2.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+boot_L
+	bounds: 2, 243, 398, 322
+boot_R
+	bounds: 2, 567, 402, 325
+shirt_L
+	bounds: 406, 722, 170, 486
+	rotate: 90

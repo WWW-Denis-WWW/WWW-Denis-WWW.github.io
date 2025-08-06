@@ -1,0 +1,111 @@
+block_3_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_Hair
+	bounds: 2, 253, 370, 389
+2_ear
+	bounds: 1904, 1785, 68, 108
+2_eye_L
+	bounds: 1819, 1622, 55, 29
+2_eye_L_under
+	bounds: 1592, 1047, 65, 75
+2_eye_R
+	bounds: 1452, 944, 78, 30
+2_eye_R_under
+	bounds: 1452, 1031, 138, 91
+2_eye_closed_L
+	bounds: 1938, 1728, 55, 32
+	rotate: 90
+2_eye_closed_R
+	bounds: 1904, 1706, 77, 32
+	rotate: 90
+2_eyebrow_L
+	bounds: 1659, 1055, 67, 31
+	rotate: 90
+2_eyebrow_R
+	bounds: 1452, 976, 118, 53
+2_head
+	bounds: 374, 249, 286, 393
+2_iris_L
+	bounds: 1711, 1526, 27, 25
+2_iris_R
+	bounds: 1904, 1674, 30, 30
+2_lips
+	bounds: 597, 664, 94, 51
+	rotate: 90
+2_neck
+	bounds: 1615, 1653, 287, 393
+2_nose
+	bounds: 1615, 1526, 94, 125
+2_veko_L
+	bounds: 215, 96, 54, 40
+2_veko_R
+	bounds: 215, 138, 75, 44
+2_white_L
+	bounds: 1994, 1902, 43, 21
+	rotate: 90
+2_white_R
+	bounds: 1421, 854, 78, 25
+	rotate: 90
+boot_L
+	bounds: 2, 8, 211, 243
+boot_R
+	bounds: 662, 230, 212, 224
+	rotate: 90
+ear_L
+	bounds: 1711, 1553, 39, 98
+ear_R
+	bounds: 992, 453, 35, 105
+	rotate: 90
+eye_L
+	bounds: 888, 282, 61, 28
+eye_L_under
+	bounds: 888, 361, 96, 81
+eye_R
+	bounds: 292, 155, 66, 27
+eye_R_under
+	bounds: 1315, 838, 104, 94
+eye_closed_L
+	bounds: 1099, 455, 67, 33
+eye_closed_R
+	bounds: 1315, 762, 64, 34
+eyebrow_L
+	bounds: 1994, 1947, 99, 39
+	rotate: 90
+eyebrow_R
+	bounds: 1315, 798, 97, 38
+hair
+	bounds: 662, 444, 328, 314
+hand_L
+	bounds: 597, 760, 172, 716
+	rotate: 90
+hand_R
+	bounds: 1452, 1523, 161, 523
+head
+	bounds: 1452, 1124, 239, 397
+head_dirt
+	bounds: 888, 312, 70, 47
+iris_L
+	bounds: 2017, 1919, 29, 26
+iris_R
+	bounds: 1532, 948, 30, 26
+lips
+	bounds: 215, 184, 114, 67
+neck
+	bounds: 992, 490, 268, 346
+	rotate: 90
+nose
+	bounds: 1904, 1895, 88, 151
+pants
+	bounds: 2, 644, 593, 1402
+shirt
+	bounds: 597, 934, 853, 1112
+veko_L
+	bounds: 1752, 1613, 65, 38
+veko_R
+	bounds: 331, 184, 67, 38
+	rotate: 90
+white_L
+	bounds: 1168, 463, 59, 25
+white_R
+	bounds: 1752, 1587, 61, 24
