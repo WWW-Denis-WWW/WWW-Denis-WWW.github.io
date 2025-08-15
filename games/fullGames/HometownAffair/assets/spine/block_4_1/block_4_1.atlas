@@ -1,0 +1,126 @@
+block_4_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+bg
+	bounds: 2, 966, 1920, 1080
+body
+	bounds: 1244, 149, 766, 815
+cum
+	bounds: 1924, 1810, 236, 69
+	rotate: 90
+cum_1
+	bounds: 1735, 54, 93, 113
+	rotate: 90
+cum_2
+	bounds: 1584, 67, 80, 149
+	rotate: 90
+cum_3
+	bounds: 1244, 17, 130, 175
+	rotate: 90
+cum_4
+	bounds: 1924, 1654, 62, 154
+cum_5
+	bounds: 1421, 38, 109, 161
+	rotate: 90
+cum_6
+	bounds: 1995, 1937, 48, 109
+eye_closed_L
+	bounds: 1924, 1283, 66, 30
+	rotate: 90
+eye_closed_R
+	bounds: 2018, 1663, 46, 28
+	rotate: 90
+eyebrow_L
+	bounds: 1924, 1219, 62, 27
+	rotate: 90
+eyebrow_R
+	bounds: 1651, 2, 36, 13
+	rotate: 90
+eyelashes_L_down
+	bounds: 1988, 1742, 54, 28
+eyelashes_L_up
+	bounds: 1924, 1351, 72, 29
+	rotate: 90
+eyelashes_R_down
+	bounds: 1421, 22, 40, 14
+eyelashes_R_up
+	bounds: 1924, 1165, 52, 25
+	rotate: 90
+eyelid_L
+	bounds: 1995, 1861, 74, 40
+	rotate: 90
+eyelid_R
+	bounds: 1924, 1058, 50, 23
+	rotate: 90
+lips_1
+	bounds: 1926, 108, 69, 39
+lips_2
+	bounds: 1850, 63, 69, 41
+m_body
+	bounds: 2, 25, 1240, 939
+m_eye_L
+	bounds: 1995, 1806, 53, 37
+	rotate: 90
+m_eye_R
+	bounds: 1584, 2, 65, 36
+m_eye_closed_L
+	bounds: 1988, 1711, 52, 29
+m_eye_closed_R
+	bounds: 1988, 1772, 58, 32
+m_eyebrow_L
+	bounds: 1988, 1656, 53, 28
+	rotate: 90
+m_eyebrow_R
+	bounds: 1584, 40, 79, 25
+m_eyelid_L_down
+	bounds: 2, 2, 46, 21
+m_eyelid_L_up
+	bounds: 1924, 1110, 53, 23
+	rotate: 90
+m_eyelid_R_down
+	bounds: 1665, 41, 54, 24
+m_eyelid_R_up
+	bounds: 1924, 1425, 72, 33
+	rotate: 90
+m_lips_1
+	bounds: 1924, 1574, 78, 40
+	rotate: 90
+m_lips_2
+	bounds: 1924, 1499, 73, 38
+	rotate: 90
+m_pupil_L
+	bounds: 1695, 14, 23, 25
+m_pupil_R
+	bounds: 1666, 14, 27, 25
+m_white_L
+	bounds: 50, 2, 41, 21
+m_white_R
+	bounds: 1924, 1006, 50, 22
+	rotate: 90
+pupil_L
+	bounds: 1924, 980, 24, 22
+	rotate: 90
+pupil_R
+	bounds: 93, 2, 20, 21
+white_L
+	bounds: 1850, 106, 74, 41
+white_R
+	bounds: 1966, 1608, 44, 19
+	rotate: 90
+
+block_4_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+boobs
+	bounds: 2, 29, 580, 338
+	rotate: 90
+hair
+	bounds: 529, 989, 321, 344
+legs
+	bounds: 2, 1335, 1180, 592
+m_hand_L
+	bounds: 1184, 1575, 743, 352
+m_hand_R
+	bounds: 2, 611, 525, 722
+m_head
+	bounds: 529, 638, 296, 349

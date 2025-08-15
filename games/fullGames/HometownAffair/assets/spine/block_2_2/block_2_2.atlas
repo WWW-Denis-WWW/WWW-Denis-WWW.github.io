@@ -1,0 +1,17 @@
+block_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+hand_L
+	bounds: 727, 1252, 173, 584
+hand_R
+	bounds: 2, 260, 196, 646
+head
+	bounds: 200, 515, 289, 391
+leg_L
+	bounds: 727, 1008, 242, 141
+	rotate: 90
+leg_R
+	bounds: 2, 2, 256, 172
+	rotate: 90
+t_shirt
+	bounds: 2, 908, 723, 928

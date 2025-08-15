@@ -1,0 +1,73 @@
+block_2_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Layer 1
+	bounds: 2, 10, 217, 322
+	rotate: 90
+boot_R
+	bounds: 1192, 1762, 369, 278
+eye_L_1
+	bounds: 1019, 1479, 64, 35
+eye_L_2
+	bounds: 1521, 1696, 64, 35
+	rotate: 90
+eye_R_1
+	bounds: 1521, 1643, 51, 33
+	rotate: 90
+eye_R_2
+	bounds: 1964, 1932, 51, 33
+eye_closed_L
+	bounds: 1019, 1413, 51, 24
+eye_closed_R
+	bounds: 1521, 1590, 51, 24
+	rotate: 90
+eyebrow_L
+	bounds: 632, 1272, 97, 21
+	rotate: 90
+eyebrow_R
+	bounds: 1019, 1439, 56, 38
+eyelid_L_down
+	bounds: 1964, 1967, 63, 33
+eyelid_L_up
+	bounds: 1964, 2002, 76, 38
+eyelid_R_down
+	bounds: 588, 282, 54, 21
+	rotate: 90
+eyelid_R_up
+	bounds: 1085, 1484, 58, 30
+hair
+	bounds: 334, 338, 294, 275
+	rotate: 90
+hand_L_1
+	bounds: 670, 1376, 347, 138
+hand_L_2
+	bounds: 1563, 1723, 142, 209
+	rotate: 90
+hand_R_1
+	bounds: 1774, 1691, 182, 174
+hand_R_2
+	bounds: 1563, 1867, 173, 399
+	rotate: 90
+head
+	bounds: 1192, 1518, 242, 327
+	rotate: 90
+leg_L_1
+	bounds: 2, 229, 404, 330
+	rotate: 90
+leg_L_2
+	bounds: 2, 635, 398, 734
+leg_R
+	bounds: 2, 1371, 666, 669
+neck
+	bounds: 334, 119, 252, 217
+pupil_L
+	bounds: 1145, 1492, 30, 22
+pupil_R
+	bounds: 632, 1246, 24, 21
+	rotate: 90
+t_shirt
+	bounds: 670, 1516, 520, 524
+t_shirt_L
+	bounds: 402, 990, 228, 379
+t_shirt_R
+	bounds: 402, 634, 212, 354

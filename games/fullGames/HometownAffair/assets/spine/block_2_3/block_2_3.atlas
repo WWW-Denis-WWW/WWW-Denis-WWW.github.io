@@ -1,0 +1,67 @@
+block_2_3.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+belly
+	bounds: 579, 387, 193, 98
+boob_1
+	bounds: 928, 891, 131, 42
+	rotate: 90
+boob_2
+	bounds: 540, 708, 386, 314
+eye_closed_L
+	bounds: 540, 465, 34, 20
+eye_closed_R
+	bounds: 739, 345, 40, 20
+	rotate: 90
+eyebrow_L
+	bounds: 774, 390, 48, 20
+eyebrow_R
+	bounds: 119, 2, 52, 18
+	rotate: 90
+eyelash_L_down
+	bounds: 877, 579, 38, 17
+eyelash_L_up
+	bounds: 928, 841, 48, 22
+	rotate: 90
+eyelash_R_down
+	bounds: 139, 40, 38, 14
+eyelash_R_up
+	bounds: 972, 1002, 50, 20
+eyelid_L
+	bounds: 579, 236, 45, 27
+eyelid_R
+	bounds: 972, 983, 50, 17
+face
+	bounds: 2, 56, 119, 183
+	rotate: 90
+glasses
+	bounds: 2, 2, 115, 52
+hair
+	bounds: 364, 190, 213, 264
+hand_L_1
+	bounds: 684, 279, 53, 106
+hand_L_2
+	bounds: 774, 412, 93, 73
+hand_R_1
+	bounds: 579, 265, 103, 120
+hand_R_2
+	bounds: 877, 598, 41, 108
+hand_R_3
+	bounds: 364, 456, 174, 566
+leg_L
+	bounds: 175, 231, 187, 791
+leg_R
+	bounds: 2, 177, 171, 845
+lips
+	bounds: 175, 200, 49, 29
+pupil_L
+	bounds: 226, 212, 17, 17
+pupil_R
+	bounds: 175, 181, 18, 17
+skirt
+	bounds: 540, 487, 335, 219
+white_L
+	bounds: 1007, 949, 32, 15
+	rotate: 90
+white_R
+	bounds: 972, 966, 33, 15

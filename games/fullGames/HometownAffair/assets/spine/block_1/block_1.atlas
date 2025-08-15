@@ -1,0 +1,236 @@
+block_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_hand_R_1
+	bounds: 1914, 1897, 113, 149
+2_hand_R_2
+	bounds: 1450, 430, 245, 597
+3_hand_L_1
+	bounds: 2, 8, 121, 187
+	rotate: 90
+3_hand_L_2
+	bounds: 1697, 390, 220, 215
+3_hand_L_3
+	bounds: 1697, 607, 170, 420
+Comp_4/Comp_4_006
+	bounds: 2, 1244, 722, 802
+Comp_4/Comp_4_007
+	bounds: 2, 440, 722, 802
+Comp_4/Comp_4_008
+	bounds: 726, 1244, 722, 802
+Comp_4/Comp_4_009
+	bounds: 726, 440, 722, 802
+boot_L
+	bounds: 1014, 28, 172, 203
+	rotate: 90
+boot_R
+	bounds: 1219, 29, 171, 203
+	rotate: 90
+eye_L
+	bounds: 191, 52, 57, 29
+eye_R
+	bounds: 281, 100, 57, 29
+eye_closed_L
+	bounds: 1014, 2, 51, 24
+eye_closed_R
+	bounds: 1067, 2, 51, 24
+eyebrow_L
+	bounds: 1914, 1869, 74, 26
+eyebrow_R
+	bounds: 1869, 951, 76, 27
+	rotate: 90
+hair
+	bounds: 1050, 202, 266, 236
+hand_L
+	bounds: 2, 131, 147, 713
+	rotate: 90
+hand_R
+	bounds: 2, 280, 158, 727
+	rotate: 90
+head
+	bounds: 731, 203, 235, 317
+	rotate: 90
+lips_1
+	bounds: 191, 83, 88, 46
+lips_2
+	bounds: 1318, 390, 86, 48
+lips_3
+	bounds: 1318, 339, 85, 49
+neck
+	bounds: 717, 2, 295, 199
+pants
+	bounds: 1450, 1029, 462, 1017
+
+block_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_010
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_011
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_012
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_013
+	bounds: 726, 2, 722, 802
+
+block_1_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_014
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_015
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_016
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_017
+	bounds: 726, 2, 722, 802
+
+block_1_4.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_018
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_019
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_020
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_021
+	bounds: 726, 2, 722, 802
+
+block_1_5.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_022
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_023
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_024
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_025
+	bounds: 726, 2, 722, 802
+
+block_1_6.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_026
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_027
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_028
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_029
+	bounds: 726, 2, 722, 802
+
+block_1_7.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_030
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_031
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_032
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_033
+	bounds: 726, 2, 722, 802
+
+block_1_8.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_034
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_035
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_036
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_037
+	bounds: 726, 2, 722, 802
+
+block_1_9.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_038
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_039
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_040
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_041
+	bounds: 726, 2, 722, 802
+
+block_1_10.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_042
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_043
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_044
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_045
+	bounds: 726, 2, 722, 802
+
+block_1_11.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_046
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_047
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_048
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_049
+	bounds: 726, 2, 722, 802
+
+block_1_12.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_050
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_051
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_052
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_053
+	bounds: 726, 2, 722, 802
+
+block_1_13.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_054
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_055
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_056
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_057
+	bounds: 726, 2, 722, 802
+
+block_1_14.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_058
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_059
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_060
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_061
+	bounds: 726, 2, 722, 802
+
+block_1_15.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp_4/Comp_4_062
+	bounds: 2, 806, 722, 802
+Comp_4/Comp_4_063
+	bounds: 2, 2, 722, 802
+Comp_4/Comp_4_064
+	bounds: 726, 806, 722, 802
+Comp_4/Comp_4_065
+	bounds: 726, 2, 722, 802
+
+block_1_16.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+tshirt
+	bounds: 2, 2, 631, 736
