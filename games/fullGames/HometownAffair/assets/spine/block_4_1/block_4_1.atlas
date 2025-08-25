@@ -56,7 +56,7 @@ lips_1
 	bounds: 1926, 108, 69, 39
 lips_2
 	bounds: 1850, 63, 69, 41
-m_body
+m_body_ver2
 	bounds: 2, 25, 1240, 939
 m_eye_L
 	bounds: 1995, 1806, 53, 37
