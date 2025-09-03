@@ -2,137 +2,127 @@ block_3_1.webp
 	size: 2048, 2048
 	filter: Linear, Linear
 2_hand_R_1
-	bounds: 1013, 29, 179, 534
-	rotate: 90
+	bounds: 677, 213, 179, 534
 2_hand_R_2
-	bounds: 1924, 1322, 100, 135
-bg
-	bounds: 2, 966, 1920, 1080
+	bounds: 1449, 93, 100, 135
+belly
+	bounds: 844, 52, 269, 142
 boob_under
-	bounds: 665, 74, 217, 61
-bottle
-	bounds: 1924, 1613, 79, 183
+	bounds: 1753, 1637, 217, 61
+boobs
+	bounds: 839, 966, 537, 444
+	rotate: 90
+chair
+	bounds: 1293, 450, 226, 243
 eye_closed_L
-	bounds: 2005, 1674, 67, 29
-	rotate: 90
+	bounds: 1753, 1606, 67, 29
 eye_closed_R
-	bounds: 795, 45, 44, 27
+	bounds: 1112, 16, 44, 27
 eyebrow_L
-	bounds: 1063, 351, 70, 24
-	rotate: 90
+	bounds: 1165, 1538, 70, 24
 eyebrow_R
-	bounds: 2015, 1874, 41, 20
+	bounds: 1158, 2, 41, 20
 	rotate: 90
 eyelashes_L_down
-	bounds: 88, 14, 56, 23
+	bounds: 1972, 1637, 56, 23
 eyelashes_L_up
-	bounds: 2015, 1973, 73, 27
+	bounds: 1718, 1515, 73, 27
 	rotate: 90
 eyelashes_R_down
-	bounds: 1991, 1257, 39, 15
+	bounds: 1244, 1578, 39, 15
 eyelashes_R_up
-	bounds: 959, 107, 52, 28
+	bounds: 1882, 1607, 52, 28
 eyelid_L
-	bounds: 884, 90, 73, 45
+	bounds: 1090, 1517, 73, 45
 eyelid_R
-	bounds: 1997, 1296, 49, 24
+	bounds: 1718, 1410, 49, 24
+	rotate: 90
+face
+	bounds: 1539, 698, 208, 265
 glasses
-	bounds: 1924, 1459, 152, 98
+	bounds: 1090, 1564, 152, 98
+hair
+	bounds: 858, 579, 385, 425
 	rotate: 90
 hair_back
-	bounds: 1924, 1798, 89, 248
+	bounds: 858, 196, 89, 248
+	rotate: 90
+hand_L_1
+	bounds: 1284, 53, 163, 175
 hand_L_2
-	bounds: 1867, 10, 198, 165
+	bounds: 677, 13, 198, 165
 	rotate: 90
 hand_R_1
-	bounds: 1549, 27, 181, 316
-	rotate: 90
+	bounds: 1110, 261, 181, 316
+hand_R_2
+	bounds: 858, 287, 250, 290
 legs
-	bounds: 2, 423, 1086, 541
+	bounds: 2, 1505, 1086, 541
 lips
-	bounds: 1013, 270, 67, 39
+	bounds: 1244, 1595, 67, 39
+	rotate: 90
+m_blush
+	bounds: 1115, 45, 214, 167
 	rotate: 90
 m_eye_L
-	bounds: 2005, 1743, 53, 41
-	rotate: 90
+	bounds: 1001, 9, 53, 41
 m_eye_R
-	bounds: 1924, 1236, 65, 36
+	bounds: 1972, 1662, 65, 36
 m_eye_closed_L
-	bounds: 959, 78, 52, 27
+	bounds: 1718, 1461, 52, 27
+	rotate: 90
 m_eye_closed_R
-	bounds: 1013, 210, 58, 32
-	rotate: 90
+	bounds: 1822, 1603, 58, 32
 m_eyebrow_L
-	bounds: 739, 40, 54, 32
+	bounds: 1056, 18, 54, 32
 m_eyebrow_R
-	bounds: 2, 10, 84, 27
+	bounds: 1449, 64, 84, 27
 m_eyelid_L_down
-	bounds: 146, 17, 45, 20
+	bounds: 1718, 1311, 45, 20
+	rotate: 90
 m_eyelid_L_up
-	bounds: 1924, 1210, 54, 24
+	bounds: 1936, 1611, 54, 24
 m_eyelid_R_down
-	bounds: 2015, 1917, 54, 24
-	rotate: 90
+	bounds: 1992, 1611, 54, 24
 m_eyelid_R_up
-	bounds: 665, 39, 72, 33
+	bounds: 1718, 1590, 72, 33
+	rotate: 90
 m_hair
-	bounds: 665, 137, 346, 284
+	bounds: 1753, 1700, 346, 284
+	rotate: 90
 m_hands
-	bounds: 2, 39, 661, 382
-m_lips
-	bounds: 1013, 339, 82, 48
-	rotate: 90
-m_pants
-	bounds: 1090, 210, 835, 754
-m_pupil_L
-	bounds: 841, 47, 23, 25
-m_pupil_R
-	bounds: 1063, 322, 27, 25
-	rotate: 90
-m_white_L
-	bounds: 1997, 1274, 41, 20
-m_white_R
-	bounds: 2005, 1622, 50, 22
-	rotate: 90
-pupil_L
-	bounds: 1924, 1165, 23, 22
-pupil_R
-	bounds: 193, 18, 19, 21
-	rotate: 90
-white_L
-	bounds: 1924, 1274, 71, 46
-white_R
-	bounds: 1924, 1189, 44, 19
-
-block_3_1_2.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-belly
-	bounds: 389, 554, 269, 142
-	rotate: 90
-boobs
-	bounds: 2, 825, 537, 444
-chair
-	bounds: 1615, 1767, 226, 243
-face
-	bounds: 1405, 1745, 208, 265
-hair
-	bounds: 2, 398, 385, 425
-hand_L_1
-	bounds: 541, 1094, 163, 175
-hand_R_2
-	bounds: 1153, 1720, 250, 290
-m_blush
-	bounds: 1843, 1796, 214, 167
-	rotate: 90
+	bounds: 1090, 1664, 661, 382
 m_head_1_ver2
-	bounds: 1153, 1500, 218, 230
+	bounds: 1293, 230, 218, 230
 	rotate: 90
 m_head_2_ver2
-	bounds: 2, 128, 252, 268
+	bounds: 1285, 695, 252, 268
+m_lips
+	bounds: 844, 2, 82, 48
+m_pants
+	bounds: 2, 749, 835, 754
+m_pupil_L
+	bounds: 1231, 18, 23, 25
+m_pupil_R
+	bounds: 1202, 18, 27, 25
 m_shirt
-	bounds: 2, 1271, 673, 739
+	bounds: 2, 8, 673, 739
 m_shoes
-	bounds: 677, 1356, 445, 221
+	bounds: 1285, 965, 445, 221
+m_white_L
+	bounds: 1180, 2, 41, 20
+	rotate: 90
+m_white_R
+	bounds: 1718, 1358, 50, 22
+	rotate: 90
+pupil_L
+	bounds: 1256, 21, 23, 22
+pupil_R
+	bounds: 1718, 1288, 19, 21
 skirt
-	bounds: 677, 1579, 474, 431
+	bounds: 1285, 1188, 474, 431
+	rotate: 90
+white_L
+	bounds: 928, 4, 71, 46
+white_R
+	bounds: 1165, 1517, 44, 19
