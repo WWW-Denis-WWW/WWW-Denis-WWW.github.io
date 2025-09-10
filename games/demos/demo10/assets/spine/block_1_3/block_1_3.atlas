@@ -1,0 +1,31 @@
+block_1_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+bg
+	bounds: 2, 964, 1922, 1082
+chair
+	bounds: 2, 602, 513, 360
+closed_eyes
+	bounds: 1926, 2016, 105, 30
+eyebrow_L
+	bounds: 478, 584, 31, 16
+eyebrow_R
+	bounds: 1926, 1999, 29, 15
+eyes
+	bounds: 298, 317, 105, 30
+face
+	bounds: 731, 796, 127, 166
+hand_L
+	bounds: 2, 2, 116, 330
+	rotate: 90
+hand_R
+	bounds: 298, 349, 251, 178
+	rotate: 90
+legs
+	bounds: 2, 120, 294, 480
+lips
+	bounds: 860, 911, 55, 51
+nose
+	bounds: 731, 718, 40, 76
+tors
+	bounds: 517, 606, 212, 356

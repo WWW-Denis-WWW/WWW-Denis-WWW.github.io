@@ -1,0 +1,104 @@
+block_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_eye_closed_L_1
+	bounds: 881, 1287, 48, 23
+1_eye_closed_L_2
+	bounds: 1999, 2005, 47, 41
+1_eye_closed_R_1
+	bounds: 790, 1220, 51, 23
+	rotate: 90
+1_eye_closed_R_2
+	bounds: 551, 1049, 51, 32
+1_eyebrow_L
+	bounds: 1018, 1326, 50, 21
+1_eyebrow_R
+	bounds: 1214, 1817, 48, 32
+1_eyelashes_L
+	bounds: 1159, 1404, 42, 21
+	rotate: 90
+1_eyelashes_R
+	bounds: 604, 1060, 41, 21
+1_eyelid_L
+	bounds: 336, 136, 43, 36
+1_eyelid_R
+	bounds: 336, 174, 51, 39
+1_face
+	bounds: 1583, 1869, 177, 206
+	rotate: 90
+1_lips
+	bounds: 818, 1282, 61, 28
+1_pupil_L
+	bounds: 790, 1203, 18, 15
+1_pupil_R
+	bounds: 336, 119, 20, 15
+1_white_L
+	bounds: 1161, 1760, 34, 15
+1_white_R
+	bounds: 407, 978, 36, 15
+2_eye_closed_L_1
+	bounds: 1161, 1777, 51, 30
+2_eye_closed_L_2
+	bounds: 1999, 1972, 47, 31
+2_eye_closed_R_1
+	bounds: 1999, 1910, 47, 27
+2_eye_closed_R_2
+	bounds: 1999, 1939, 47, 31
+2_eyebrow_L
+	bounds: 1018, 1349, 50, 36
+2_eyebrow_R
+	bounds: 1161, 1809, 51, 40
+2_eyebrow_center
+	bounds: 931, 1291, 12, 19
+2_eyelashes_L
+	bounds: 551, 1025, 41, 22
+2_eyelashes_R
+	bounds: 1070, 1362, 41, 23
+2_eyelid_L
+	bounds: 723, 1094, 45, 38
+2_eyelid_R
+	bounds: 1999, 1872, 45, 36
+2_face
+	bounds: 1791, 1869, 177, 206
+	rotate: 90
+2_lips
+	bounds: 1159, 1448, 57, 27
+	rotate: 90
+2_pupil_L
+	bounds: 1214, 1800, 21, 15
+2_pupil_R
+	bounds: 1264, 1833, 20, 16
+2_white_L
+	bounds: 402, 960, 34, 16
+2_white_R
+	bounds: 770, 1097, 35, 18
+	rotate: 90
+dum_body
+	bounds: 2, 15, 332, 401
+dum_hand_R_1
+	bounds: 407, 995, 142, 86
+dum_hand_R_2
+	bounds: 407, 1083, 188, 314
+	rotate: 90
+face_sh
+	bounds: 1018, 1507, 177, 206
+hair
+	bounds: 1161, 1851, 209, 195
+hand_L_1
+	bounds: 1018, 1387, 139, 118
+hand_L_2
+	bounds: 1372, 1857, 209, 189
+hand_L_3
+	bounds: 1018, 1715, 141, 331
+hand_R_1
+	bounds: 336, 215, 64, 201
+hand_R_2
+	bounds: 723, 1134, 65, 137
+legs
+	bounds: 2, 978, 403, 1068
+plach_back
+	bounds: 407, 1273, 409, 773
+tors_1
+	bounds: 2, 418, 398, 558
+tors_2
+	bounds: 818, 1312, 198, 734
