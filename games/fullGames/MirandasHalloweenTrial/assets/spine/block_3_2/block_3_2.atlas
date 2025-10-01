@@ -1,0 +1,63 @@
+block_3_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_eyelash_down_L
+	bounds: 374, 140, 105, 31
+2_eyelash_down_R
+	bounds: 1924, 1657, 106, 27
+	rotate: 90
+2_lips
+	bounds: 2, 111, 247, 60
+2_pupil_L
+	bounds: 796, 131, 72, 40
+2_pupil_R
+	bounds: 572, 127, 73, 44
+2_white_L
+	bounds: 2, 17, 113, 41
+2_white_R
+	bounds: 251, 126, 121, 45
+BG
+	bounds: 2, 958, 1920, 1080
+eyelash_down_L
+	bounds: 1966, 1795, 95, 25
+	rotate: 90
+eyelash_down_R
+	bounds: 481, 142, 89, 29
+eyelash_up_L
+	bounds: 125, 72, 110, 37
+eyelash_up_R
+	bounds: 1924, 1765, 125, 40
+	rotate: 90
+lips
+	bounds: 1924, 1892, 146, 68
+	rotate: 90
+pupil_L
+	bounds: 722, 127, 72, 44
+pupil_R
+	bounds: 647, 122, 73, 49
+white_L
+	bounds: 1994, 1925, 113, 44
+	rotate: 90
+white_R
+	bounds: 2, 60, 121, 49
+wing_R
+	bounds: 2, 173, 783, 1943
+	rotate: 90
+
+block_3_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+body
+	bounds: 912, 459, 607, 632
+	rotate: 90
+hands
+	bounds: 912, 1068, 899, 966
+head
+	bounds: 2, 2, 779, 822
+	rotate: 90
+legs
+	bounds: 2, 783, 908, 1251
+nose
+	bounds: 1546, 826, 186, 240
+trost
+	bounds: 1813, 808, 214, 1226

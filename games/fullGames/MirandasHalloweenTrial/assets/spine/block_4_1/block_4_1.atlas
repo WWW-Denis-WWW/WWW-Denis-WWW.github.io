@@ -1,0 +1,390 @@
+block_4_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_leg_L
+	bounds: 2, 251, 330, 1860
+	offsets: 0, 0, 330, 2037
+	rotate: 90
+3_leg_L
+	bounds: 2, 583, 381, 1835
+	rotate: 90
+Comp 1/Comp 1_001
+	bounds: 1924, 1436, 114, 610
+	offsets: 380, 218, 900, 1080
+Comp 1/Comp 1_012
+	bounds: 1864, 315, 181, 649
+	offsets: 348, 200, 900, 1080
+Comp 1/Comp 1_025
+	bounds: 1323, 10, 239, 658
+	offsets: 320, 190, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_026
+	bounds: 663, 6, 243, 658
+	offsets: 318, 190, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_027
+	bounds: 2, 3, 246, 659
+	offsets: 316, 189, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_070
+	bounds: 1924, 1025, 106, 409
+	offsets: 266, 284, 900, 1080
+Comp 1/Comp 1_071
+	bounds: 1864, 269, 44, 147
+	offsets: 292, 544, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_072
+	bounds: 1839, 718, 45, 21
+	offsets: 290, 668, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_073
+	bounds: 1983, 234, 2, 2
+	offsets: 289, 685, 900, 1080
+bg
+	bounds: 2, 966, 1920, 1080
+eye_closed_L
+	bounds: 2015, 96, 66, 30
+	rotate: 90
+eye_closed_R
+	bounds: 2015, 164, 68, 31
+	rotate: 90
+eyebrow_L
+	bounds: 1983, 127, 105, 30
+	offsets: 9, 0, 114, 30
+	rotate: 90
+eyebrow_R
+	bounds: 1983, 23, 102, 30
+	rotate: 90
+eyelash_down_L
+	bounds: 1839, 831, 68, 18
+	rotate: 90
+eyelash_down_R
+	bounds: 1839, 765, 64, 22
+	rotate: 90
+eyelash_up_L
+	bounds: 2013, 234, 79, 33
+	rotate: 90
+lips
+	bounds: 1924, 966, 92, 57
+pupil_L
+	bounds: 2018, 994, 29, 28
+	offsets: 1, 1, 31, 30
+	rotate: 90
+pupil_R
+	bounds: 1983, 238, 29, 28
+	offsets: 1, 1, 31, 30
+	rotate: 90
+white_L
+	bounds: 1839, 901, 63, 23
+	rotate: 90
+white_R
+	bounds: 2015, 31, 63, 25
+	rotate: 90
+
+block_4_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_leg_R
+	bounds: 685, 332, 291, 1714
+2_leg_L
+	bounds: 2, 201, 330, 1845
+	offsets: 0, 0, 330, 2037
+2_leg_R
+	bounds: 978, 332, 291, 1714
+3_boob
+	bounds: 1271, 201, 555, 442
+	rotate: 90
+3_hand_R
+	bounds: 1271, 758, 459, 1288
+	offsets: 6, 0, 465, 1288
+3_leg_R
+	bounds: 334, 324, 349, 1722
+Comp 1/Comp 1_015
+	bounds: 952, 5, 194, 651
+	offsets: 345, 196, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_046
+	bounds: 1732, 721, 309, 661
+	offsets: 278, 177, 900, 1080
+Comp 1/Comp 1_047
+	bounds: 1732, 1384, 313, 662
+	offsets: 276, 176, 900, 1080
+Comp 1/Comp 1_049
+	bounds: 334, 2, 320, 616
+	offsets: 272, 175, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_062
+	bounds: 1715, 178, 331, 541
+	offsets: 247, 170, 900, 1080
+eyelash_up_R
+	bounds: 2, 18, 81, 35
+lips_2
+	bounds: 1605, 132, 86, 67
+semen
+	bounds: 2, 55, 168, 144
+	offsets: 2, 1, 172, 146
+
+block_4_1_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_hand_L
+	bounds: 900, 758, 394, 1288
+1_hand_R
+	bounds: 2, 758, 449, 1288
+	offsets: 16, 0, 465, 1288
+2_boob
+	bounds: 1292, 363, 476, 393
+	offsets: 0, 2, 476, 395
+2_hand_L
+	bounds: 2, 362, 394, 1288
+	rotate: 90
+2_hand_R
+	bounds: 453, 758, 445, 1288
+	offsets: 20, 0, 465, 1288
+3_hand_L
+	bounds: 1296, 758, 394, 1288
+Comp 1/Comp 1_037
+	bounds: 1770, 136, 276, 659
+	offsets: 298, 182, 900, 1080
+Comp 1/Comp 1_043
+	bounds: 665, 62, 298, 660
+	offsets: 285, 178, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_044
+	bounds: 1692, 797, 302, 661
+	offsets: 282, 177, 900, 1080
+Comp 1/Comp 1_045
+	bounds: 2, 54, 306, 661
+	offsets: 280, 177, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_060
+	bounds: 1692, 1460, 354, 586
+	offsets: 251, 171, 900, 1080
+Comp 1/Comp 1_064
+	bounds: 1327, 23, 338, 438
+	offsets: 243, 269, 900, 1080
+	rotate: 90
+
+block_4_1_4.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_body
+	bounds: 706, 1185, 571, 859
+1_boob
+	bounds: 654, 26, 450, 378
+	offsets: 1, 6, 456, 395
+1_neck
+	bounds: 1275, 545, 521, 617
+2_body
+	bounds: 2, 95, 650, 971
+2_neck
+	bounds: 1106, 22, 521, 617
+	rotate: 90
+3_body
+	bounds: 2, 1068, 702, 976
+Comp 1/Comp 1_002
+	bounds: 1798, 516, 139, 646
+	offsets: 358, 216, 900, 1080
+Comp 1/Comp 1_024
+	bounds: 1808, 1386, 236, 658
+	offsets: 322, 191, 900, 1080
+Comp 1/Comp 1_034
+	bounds: 654, 406, 266, 660
+	offsets: 304, 184, 900, 1080
+Comp 1/Comp 1_059
+	bounds: 922, 577, 351, 606
+	offsets: 253, 172, 900, 1080
+Comp 1/Comp 1_065
+	bounds: 1725, 79, 273, 435
+	offsets: 268, 269, 900, 1080
+hair
+	bounds: 1279, 1164, 527, 880
+
+block_4_1_5.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_pants
+	bounds: 2, 825, 599, 460
+	rotate: 90
+1_top
+	bounds: 525, 1497, 489, 546
+	offsets: 0, 0, 489, 549
+3_neck
+	bounds: 2, 1426, 521, 617
+Comp 1/Comp 1_003
+	bounds: 352, 177, 143, 646
+	offsets: 357, 214, 900, 1080
+Comp 1/Comp 1_010
+	bounds: 2, 2, 173, 646
+	offsets: 350, 203, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_011
+	bounds: 650, 4, 177, 645
+	offsets: 349, 202, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_013
+	bounds: 1297, 2, 185, 648
+	offsets: 347, 199, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_018
+	bounds: 801, 841, 210, 654
+	offsets: 336, 194, 900, 1080
+Comp 1/Comp 1_021
+	bounds: 790, 183, 223, 656
+	offsets: 329, 192, 900, 1080
+Comp 1/Comp 1_038
+	bounds: 1016, 1468, 279, 660
+	offsets: 296, 181, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_040
+	bounds: 1356, 189, 286, 660
+	offsets: 292, 180, 900, 1080
+Comp 1/Comp 1_041
+	bounds: 497, 222, 291, 660
+	offsets: 289, 179, 900, 1080
+Comp 1/Comp 1_042
+	bounds: 1016, 1749, 294, 660
+	offsets: 287, 179, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_048
+	bounds: 1360, 851, 316, 615
+	offsets: 274, 176, 900, 1080
+Comp 1/Comp 1_054
+	bounds: 1644, 234, 335, 610
+	offsets: 263, 174, 900, 1080
+Comp 1/Comp 1_055
+	bounds: 1015, 248, 339, 609
+	offsets: 261, 174, 900, 1080
+Comp 1/Comp 1_056
+	bounds: 1678, 846, 341, 609
+	offsets: 259, 173, 900, 1080
+Comp 1/Comp 1_057
+	bounds: 1013, 859, 345, 607
+	offsets: 257, 173, 900, 1080
+Comp 1/Comp 1_058
+	bounds: 2, 216, 348, 607
+	offsets: 255, 172, 900, 1080
+Comp 1/Comp 1_061
+	bounds: 1678, 1457, 357, 586
+	offsets: 249, 171, 900, 1080
+Comp 1/Comp 1_063
+	bounds: 464, 884, 335, 540
+	offsets: 245, 169, 900, 1080
+
+block_4_1_6.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Comp 1/Comp 1_004
+	bounds: 1152, 410, 147, 646
+	offsets: 356, 213, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_005
+	bounds: 1151, 257, 151, 646
+	offsets: 355, 211, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_006
+	bounds: 1148, 99, 156, 646
+	offsets: 354, 209, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_014
+	bounds: 497, 102, 190, 649
+	offsets: 346, 198, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_016
+	bounds: 497, 294, 200, 652
+	offsets: 342, 195, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_017
+	bounds: 497, 496, 205, 653
+	offsets: 339, 194, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_019
+	bounds: 1276, 559, 214, 655
+	offsets: 334, 193, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_020
+	bounds: 276, 113, 219, 655
+	offsets: 331, 193, 900, 1080
+Comp 1/Comp 1_022
+	bounds: 1277, 775, 228, 657
+	offsets: 326, 192, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_023
+	bounds: 616, 703, 232, 658
+	offsets: 324, 191, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_028
+	bounds: 1330, 1005, 249, 658
+	offsets: 314, 189, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_029
+	bounds: 1330, 1256, 252, 659
+	offsets: 312, 188, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_030
+	bounds: 669, 1197, 255, 659
+	offsets: 311, 187, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_031
+	bounds: 616, 937, 258, 659
+	offsets: 309, 187, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_032
+	bounds: 1330, 1510, 261, 659
+	offsets: 307, 186, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_033
+	bounds: 669, 1454, 263, 659
+	offsets: 306, 185, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_035
+	bounds: 1284, 1773, 269, 659
+	offsets: 302, 184, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_036
+	bounds: 2, 109, 272, 659
+	offsets: 300, 183, 900, 1080
+Comp 1/Comp 1_039
+	bounds: 2, 770, 283, 659
+	offsets: 294, 181, 900, 1080
+Comp 1/Comp 1_050
+	bounds: 669, 1719, 323, 613
+	offsets: 270, 175, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_051
+	bounds: 287, 817, 327, 612
+	offsets: 268, 175, 900, 1080
+Comp 1/Comp 1_052
+	bounds: 337, 1431, 330, 611
+	offsets: 266, 175, 900, 1080
+Comp 1/Comp 1_053
+	bounds: 2, 1431, 333, 611
+	offsets: 264, 174, 900, 1080
+head
+	bounds: 1800, 180, 242, 377
+
+block_4_1_7.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+Comp 1/Comp 1_007
+	bounds: 820, 373, 160, 646
+	offsets: 353, 208, 900, 1080
+Comp 1/Comp 1_008
+	bounds: 2, 2, 164, 646
+	offsets: 352, 206, 900, 1080
+	rotate: 90
+Comp 1/Comp 1_009
+	bounds: 650, 374, 168, 645
+	offsets: 351, 205, 900, 1080
+Comp 1/Comp 1_066
+	bounds: 2, 586, 275, 433
+	offsets: 267, 269, 900, 1080
+Comp 1/Comp 1_067
+	bounds: 2, 168, 278, 416
+	offsets: 265, 284, 900, 1080
+Comp 1/Comp 1_068
+	bounds: 279, 605, 276, 414
+	offsets: 268, 284, 900, 1080
+Comp 1/Comp 1_069
+	bounds: 282, 192, 278, 411
+	offsets: 267, 284, 900, 1080

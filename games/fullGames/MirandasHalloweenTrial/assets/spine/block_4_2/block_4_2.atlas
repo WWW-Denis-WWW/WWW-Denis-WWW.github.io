@@ -1,0 +1,130 @@
+block_4_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_eyebrow_L
+	bounds: 1924, 1814, 82, 54
+	offsets: 2, 2, 86, 57
+2_eyebrow_R
+	bounds: 2, 10, 92, 49
+	offsets: 2, 1, 97, 51
+2_eyelash_down_L
+	bounds: 342, 98, 75, 23
+	offsets: 1, 1, 77, 26
+2_eyelash_down_R
+	bounds: 96, 2, 80, 24
+	offsets: 1, 1, 83, 27
+2_eyelash_up_L
+	bounds: 1924, 1729, 83, 36
+	offsets: 1, 2, 86, 40
+	rotate: 90
+2_eyelash_up_R
+	bounds: 432, 177, 92, 32
+	offsets: 2, 1, 96, 34
+2_lips
+	bounds: 1924, 1870, 176, 106
+	offsets: 2, 2, 179, 110
+	rotate: 90
+2_mouth
+	bounds: 240, 123, 190, 86
+	offsets: 1, 1, 193, 89
+2_pupil_L
+	bounds: 325, 70, 15, 24
+	offsets: 1, 1, 17, 26
+2_pupil_R
+	bounds: 622, 194, 15, 23
+	offsets: 2, 1, 19, 25
+	rotate: 90
+2_teeth_down
+	bounds: 1924, 1575, 76, 30
+	offsets: 1, 1, 78, 32
+	rotate: 90
+2_teeth_up
+	bounds: 1852, 817, 147, 56
+	offsets: 5, 1, 154, 59
+	rotate: 90
+2_tongue
+	bounds: 2, 61, 148, 236
+	rotate: 90
+2_white_L
+	bounds: 432, 141, 79, 34
+	offsets: 3, 2, 84, 38
+2_white_R
+	bounds: 240, 62, 83, 32
+	offsets: 2, 2, 87, 35
+bg
+	bounds: 2, 966, 1920, 1080
+body
+	bounds: 2, 211, 753, 1590
+	rotate: 90
+dick
+	bounds: 1594, 154, 256, 810
+eyebrow_L
+	bounds: 526, 188, 94, 21
+	offsets: 2, 1, 98, 23
+eyebrow_R
+	bounds: 240, 96, 100, 25
+	offsets: 1, 1, 102, 27
+eyelash_down_L
+	bounds: 1852, 567, 65, 27
+	offsets: 1, 1, 67, 30
+	rotate: 90
+eyelash_down_R
+	bounds: 178, 2, 59, 24
+	offsets: 2, 1, 62, 26
+eyelash_up_L
+	bounds: 1962, 1736, 76, 37
+	offsets: 1, 2, 79, 40
+	rotate: 90
+eyelash_up_R
+	bounds: 1852, 634, 84, 28
+	offsets: 2, 1, 88, 30
+	rotate: 90
+lips
+	bounds: 96, 28, 90, 31
+	offsets: 1, 1, 92, 33
+pupil_L
+	bounds: 2008, 1836, 15, 32
+	offsets: 2, 2, 18, 35
+pupil_R
+	bounds: 1882, 788, 15, 27
+	offsets: 2, 2, 18, 31
+teeth
+	bounds: 1852, 720, 95, 28
+	offsets: 2, 1, 98, 30
+	rotate: 90
+white_L
+	bounds: 1924, 1653, 74, 35
+	offsets: 3, 2, 79, 39
+	rotate: 90
+white_R
+	bounds: 1924, 1499, 74, 30
+	offsets: 2, 2, 77, 33
+	rotate: 90
+
+block_4_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_head
+	bounds: 1036, 571, 375, 639
+	offsets: 1, 2, 438, 644
+	rotate: 90
+balls
+	bounds: 615, 22, 222, 248
+	offsets: 1, 1, 224, 250
+	rotate: 90
+hand_L
+	bounds: 2, 395, 598, 1639
+	offsets: 0, 0, 726, 1743
+hand_R
+	bounds: 602, 473, 432, 1561
+head
+	bounds: 2, 18, 375, 611
+	offsets: 1, 1, 438, 615
+	rotate: 90
+leg_L
+	bounds: 1790, 813, 244, 1221
+leg_R
+	bounds: 615, 246, 225, 1211
+	rotate: 90
+legs_up
+	bounds: 1036, 948, 752, 1086

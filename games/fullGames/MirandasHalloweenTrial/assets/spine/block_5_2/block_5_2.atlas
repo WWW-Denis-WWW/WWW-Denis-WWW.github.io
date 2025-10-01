@@ -1,0 +1,314 @@
+block_5_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_eye_L
+	bounds: 1924, 1916, 122, 130
+	offsets: 1, 1, 125, 132
+1_lips
+	bounds: 1924, 993, 209, 109
+	offsets: 1, 1, 211, 111
+	rotate: 90
+1_mouth
+	bounds: 1924, 1663, 251, 110
+	offsets: 1, 2, 254, 113
+	rotate: 90
+1_mouth_ver2
+	bounds: 1924, 1418, 243, 110
+	offsets: 1, 2, 246, 113
+	rotate: 90
+1_teeth_ver2
+	bounds: 1941, 776, 215, 100
+	offsets: 1, 10, 217, 112
+	rotate: 90
+2_body
+	bounds: 2, 30, 934, 1266
+	offsets: 0, 0, 1036, 1266
+	rotate: 90
+2_eye_L
+	bounds: 1941, 2, 103, 94
+	offsets: 1, 1, 105, 96
+	rotate: 90
+2_eye_L_ver2
+	bounds: 1941, 463, 105, 92
+	offsets: 1, 2, 107, 95
+2_mouth
+	bounds: 1941, 107, 181, 60
+	offsets: 1, 1, 183, 62
+	rotate: 90
+2_mouth_ver2
+	bounds: 1941, 557, 217, 75
+	offsets: 1, 2, 219, 78
+	rotate: 90
+3_balls
+	bounds: 1924, 1204, 111, 212
+	offsets: 2, 1, 115, 214
+3_body
+	bounds: 1270, 31, 669, 933
+	offsets: 30, 0, 699, 933
+3_eyelash_down_L_ver2
+	bounds: 2018, 709, 65, 21
+	offsets: 2, 1, 68, 23
+	rotate: 90
+3_eyelash_down_R
+	bounds: 2003, 154, 134, 43
+	offsets: 1, 1, 136, 45
+	rotate: 90
+3_teeth_ver2
+	bounds: 1941, 290, 171, 90
+	offsets: 1, 2, 173, 93
+	rotate: 90
+bg
+	bounds: 2, 966, 1920, 1080
+
+block_5_2_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_balls
+	bounds: 1696, 1486, 138, 229
+	offsets: 1, 1, 140, 231
+1_body
+	bounds: 2, 753, 1038, 1293
+	offsets: 0, 0, 1103, 1293
+1_eye_L_ver2
+	bounds: 1696, 1148, 123, 127
+	offsets: 2, 1, 126, 129
+1_eye_R
+	bounds: 1818, 1305, 81, 125
+	offsets: 1, 1, 83, 127
+	rotate: 90
+1_eye_R_ver2
+	bounds: 1962, 1465, 81, 116
+	offsets: 1, 2, 83, 119
+1_eyelash_down_L
+	bounds: 1836, 1485, 124, 86
+	offsets: 1, 1, 126, 88
+1_eyelash_down_L_ver2
+	bounds: 1945, 1339, 124, 76
+	offsets: 1, 2, 126, 80
+	rotate: 90
+1_eyelash_down_R
+	bounds: 1962, 1812, 84, 71
+	offsets: 2, 1, 87, 75
+1_eyelash_down_R_ver2
+	bounds: 1841, 977, 82, 56
+	offsets: 1, 1, 84, 59
+	rotate: 90
+1_eyelash_up_L
+	bounds: 1818, 1388, 125, 95
+	offsets: 1, 1, 127, 97
+1_eyelash_up_L_ver2
+	bounds: 1696, 720, 127, 100
+	offsets: 1, 1, 129, 102
+	rotate: 90
+1_eyelash_up_R
+	bounds: 1892, 902, 86, 69
+	offsets: 1, 1, 88, 71
+1_eyelash_up_R_ver2
+	bounds: 1899, 973, 81, 90
+	offsets: 1, 1, 83, 92
+	rotate: 90
+1_head
+	bounds: 1030, 156, 560, 1010
+	offsets: 2, 1, 568, 1012
+	rotate: 90
+1_lips_ver2
+	bounds: 1696, 1717, 246, 162
+	offsets: 2, 6, 250, 170
+1_pupil_L_ver2
+	bounds: 1900, 1056, 82, 104
+	offsets: 1, 2, 86, 109
+1_pupil_R
+	bounds: 1834, 883, 56, 92
+	offsets: 1, 1, 60, 96
+1_teeth
+	bounds: 1696, 1277, 207, 120
+	offsets: 1, 1, 209, 123
+	rotate: 90
+2_balls
+	bounds: 1030, 27, 127, 246
+	offsets: 1, 1, 129, 248
+	rotate: 90
+2_eye_R
+	bounds: 1944, 1720, 90, 99
+	offsets: 1, 1, 92, 101
+	rotate: 90
+2_eye_R_ver2
+	bounds: 1953, 1951, 93, 95
+	offsets: 1, 1, 95, 97
+2_eyelash_down_L
+	bounds: 1938, 1583, 105, 57
+	offsets: 2, 1, 108, 59
+2_eyelash_down_L_ver2
+	bounds: 1976, 1234, 103, 50
+	offsets: 1, 2, 105, 54
+	rotate: 90
+2_eyelash_down_R
+	bounds: 1984, 1068, 93, 57
+	offsets: 1, 1, 95, 59
+	rotate: 90
+2_eyelash_down_R_ver2
+	bounds: 1798, 726, 93, 42
+	offsets: 1, 2, 95, 45
+2_eyelash_up_L
+	bounds: 1841, 1061, 105, 57
+	offsets: 1, 1, 107, 59
+	rotate: 90
+2_eyelash_up_L_ver2
+	bounds: 1938, 1642, 108, 73
+	offsets: 1, 1, 111, 75
+2_eyelash_up_R_ver2
+	bounds: 1962, 752, 78, 77
+	offsets: 1, 1, 80, 79
+	rotate: 90
+2_lips
+	bounds: 1836, 1573, 142, 100
+	offsets: 1, 1, 149, 102
+	rotate: 90
+2_lips_ver2
+	bounds: 1278, 28, 228, 126
+	offsets: 1, 1, 239, 129
+2_neck
+	bounds: 2, 19, 1026, 732
+2_teeth
+	bounds: 1902, 1162, 141, 72
+	offsets: 1, 5, 144, 78
+	rotate: 90
+2_teeth_ver2
+	bounds: 1828, 88, 169, 66
+	offsets: 1, 9, 172, 76
+3_eye_L
+	bounds: 1953, 1885, 64, 93
+	offsets: 1, 2, 67, 96
+	rotate: 90
+3_eye_L_ver2
+	bounds: 1892, 832, 68, 87
+	offsets: 2, 1, 71, 89
+	rotate: 90
+3_eye_R
+	bounds: 1696, 1012, 134, 104
+	offsets: 2, 1, 137, 106
+	rotate: 90
+3_eye_R_ver2
+	bounds: 1693, 47, 133, 107
+	offsets: 1, 1, 136, 109
+3_eyelash_down_L
+	bounds: 1893, 731, 67, 41
+	offsets: 1, 1, 69, 43
+3_eyelash_down_R_ver2
+	bounds: 1802, 1012, 134, 37
+	offsets: 2, 1, 137, 39
+	rotate: 90
+3_eyelash_up_L
+	bounds: 1976, 1163, 69, 59
+	offsets: 1, 1, 71, 61
+	rotate: 90
+3_eyelash_up_R
+	bounds: 1766, 875, 135, 66
+	offsets: 1, 1, 137, 68
+	rotate: 90
+3_eyelash_up_R_ver2
+	bounds: 1821, 1168, 135, 79
+	offsets: 1, 2, 137, 83
+	rotate: 90
+3_leg_R
+	bounds: 1042, 718, 652, 1328
+3_lips
+	bounds: 1696, 1881, 255, 165
+	offsets: 1, 2, 257, 168
+3_lips_ver2
+	bounds: 1508, 40, 183, 114
+	offsets: 1, 1, 192, 117
+3_mouth
+	bounds: 1828, 40, 173, 46
+	offsets: 1, 2, 175, 49
+3_mouth_ver2
+	bounds: 1696, 849, 161, 68
+	offsets: 1, 1, 163, 70
+	rotate: 90
+3_pupil_L_ver2
+	bounds: 1887, 774, 56, 72
+	offsets: 1, 1, 58, 74
+	rotate: 90
+3_pupil_R
+	bounds: 1798, 770, 103, 87
+	offsets: 1, 1, 105, 89
+	rotate: 90
+
+block_5_2_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_eyelash_up_R
+	bounds: 1787, 1971, 77, 71
+	offsets: 4, 1, 83, 73
+2_hand_L
+	bounds: 645, 515, 546, 1527
+2_hand_R
+	bounds: 2, 2, 511, 1439
+	rotate: 90
+2_leg_L
+	bounds: 2, 581, 641, 1461
+2_leg_R
+	bounds: 1193, 642, 592, 1400
+	offsets: 21, 0, 613, 1400
+3_eyelash_up_L_ver2
+	bounds: 1193, 564, 71, 76
+	offsets: 1, 1, 73, 78
+
+block_5_2_4.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_hand_L
+	bounds: 2, 456, 518, 1462
+1_hand_R
+	bounds: 522, 214, 445, 1396
+	offsets: 0, 0, 565, 1396
+	rotate: 90
+1_leg_L
+	bounds: 522, 661, 608, 1214
+	rotate: 90
+1_neck
+	bounds: 522, 1271, 1211, 647
+
+block_5_2_5.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_dick
+	bounds: 510, 495, 407, 896
+	offsets: 0, 0, 422, 896
+	rotate: 90
+1_head_ver2
+	bounds: 1071, 1028, 560, 1010
+	offsets: 2, 1, 568, 1012
+1_leg_R
+	bounds: 510, 904, 559, 1134
+	offsets: 23, 0, 582, 1134
+3_dick
+	bounds: 2, 16, 374, 759
+3_hand_L
+	bounds: 1633, 866, 405, 1172
+3_head
+	bounds: 378, 7, 486, 982
+	rotate: 90
+3_leg_L
+	bounds: 2, 777, 506, 1261
+3_neck
+	bounds: 1408, 72, 792, 535
+	offsets: 8, 0, 800, 535
+	rotate: 90
+
+block_5_2_6.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_dick
+	bounds: 868, 840, 429, 900
+2_head
+	bounds: 1299, 883, 441, 857
+	offsets: 6, 59, 448, 917
+2_head_ver2
+	bounds: 2, 74, 441, 857
+	offsets: 6, 59, 448, 917
+	rotate: 90
+3_hand_R
+	bounds: 2, 517, 376, 1223
+3_head_ver2
+	bounds: 380, 758, 486, 982
