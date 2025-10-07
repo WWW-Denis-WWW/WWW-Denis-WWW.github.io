@@ -1,147 +1,201 @@
 block_7_2.webp
 	size: 2048, 2048
 	filter: Linear, Linear
-chain
-	bounds: 1479, 157, 671, 526
-	offsets: 0, 0, 671, 552
+	scale: 0.5
+Smoke_3/Smoke_3_000
+	bounds: 1989, 204, 35, 57
+	offsets: 215, 26, 480, 270
 	rotate: 90
+Smoke_3/Smoke_3_001
+	bounds: 1989, 204, 35, 57
+	offsets: 215, 26, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_002
+	bounds: 1989, 167, 35, 57
+	offsets: 215, 26, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_008
+	bounds: 1097, 13, 142, 180
+	offsets: 164, 27, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_009
+	bounds: 1330, 809, 156, 185
+	offsets: 157, 27, 480, 270
+Smoke_3/Smoke_3_021
+	bounds: 872, 9, 133, 74
+	offsets: 156, 160, 480, 270
+body
+	bounds: 1563, 1425, 482, 621
 eyes
-	bounds: 1479, 111, 220, 44
-	offsets: 1, 1, 222, 46
+	bounds: 1295, 257, 111, 23
+	rotate: 90
 eyes_2
-	bounds: 2, 51, 226, 40
-	offsets: 2, 6, 229, 47
-hand_R
-	bounds: 1479, 830, 534, 1213
+	bounds: 1330, 786, 114, 21
+	offsets: 1, 3, 115, 24
+head
+	bounds: 1744, 66, 173, 243
+	offsets: 0, 0, 173, 246
+	rotate: 90
 lips
-	bounds: 1701, 107, 115, 48
-	offsets: 2, 1, 118, 50
+	bounds: 1989, 140, 57, 25
+	offsets: 1, 0, 59, 25
 lips_2
-	bounds: 2, 2, 124, 47
-	offsets: 2, 2, 127, 50
+	bounds: 666, 1045, 62, 24
+	offsets: 1, 1, 64, 25
+shadow
+	bounds: 872, 85, 223, 70
+	offsets: 3, 3, 229, 76
+tentacle_10
+	bounds: 1330, 241, 536, 703
+	rotate: 90
 tentacle_11
-	bounds: 2, 93, 1475, 1950
+	bounds: 2, 1071, 738, 975
+tentacle_12
+	bounds: 742, 996, 444, 744
+	rotate: 90
+tentacle_13
+	bounds: 742, 1442, 819, 604
+tentacle_14
+	bounds: 2, 172, 662, 897
+tentacle_16
+	bounds: 666, 370, 662, 624
+tentacle_20
+	bounds: 2, 10, 617, 160
+tentacle_25
+	bounds: 1488, 779, 551, 644
+	offsets: 0, 0, 551, 665
+tentacle_4
+	bounds: 621, 69, 86, 249
+	rotate: 90
+tentacle_5
+	bounds: 1295, 33, 206, 447
+	rotate: 90
+tentacle_9
+	bounds: 666, 157, 211, 627
+	offsets: 0, 0, 221, 695
+	rotate: 90
 
 block_7_2_2.webp
 	size: 2048, 2048
 	filter: Linear, Linear
-tentacle_14
-	bounds: 2, 252, 1323, 1793
-tentacle_2
-	bounds: 1327, 232, 478, 718
+	scale: 0.5
+Smoke_3/Smoke_3_003
+	bounds: 747, 54, 78, 112
+	offsets: 196, 27, 480, 270
 	rotate: 90
-tentacle_4
-	bounds: 2, 79, 171, 498
+Smoke_3/Smoke_3_004
+	bounds: 747, 54, 78, 112
+	offsets: 196, 27, 480, 270
 	rotate: 90
-tentacle_4_1
-	bounds: 502, 82, 168, 356
-	offsets: 0, 0, 168, 360
+Smoke_3/Smoke_3_005
+	bounds: 586, 31, 101, 159
+	offsets: 184, 26, 480, 270
 	rotate: 90
-tentacle_7
-	bounds: 1327, 712, 650, 1333
-	offsets: 0, 0, 671, 1429
-
-block_7_2_3.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-bg
-	bounds: 2, 897, 1920, 1080
-tentacle_12
-	bounds: 2, 7, 888, 1487
+Smoke_3/Smoke_3_006
+	bounds: 1410, 706, 125, 169
+	offsets: 173, 27, 480, 270
 	rotate: 90
-tentacle_5
-	bounds: 1491, 2, 412, 893
-
-block_7_2_4.webp
-	size: 2048, 2048
-	filter: Linear, Linear
+Smoke_3/Smoke_3_007
+	bounds: 1410, 706, 125, 169
+	offsets: 173, 27, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_010
+	bounds: 1421, 4, 156, 185
+	offsets: 157, 27, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_011
+	bounds: 1460, 343, 164, 191
+	offsets: 152, 26, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_012
+	bounds: 1460, 343, 164, 191
+	offsets: 152, 26, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_013
+	bounds: 861, 33, 171, 194
+	offsets: 149, 28, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_014
+	bounds: 1460, 509, 179, 195
+	offsets: 145, 31, 480, 270
+Smoke_3/Smoke_3_015
+	bounds: 1440, 162, 179, 195
+	offsets: 145, 31, 480, 270
+	rotate: 90
+Smoke_3/Smoke_3_016
+	bounds: 1410, 833, 189, 192
+	offsets: 143, 37, 480, 270
+Smoke_3/Smoke_3_017
+	bounds: 1057, 2, 180, 171
+	offsets: 150, 59, 480, 270
+Smoke_3/Smoke_3_018
+	bounds: 1239, 2, 180, 171
+	offsets: 150, 59, 480, 270
+Smoke_3/Smoke_3_019
+	bounds: 1690, 1065, 176, 168
+	offsets: 143, 65, 480, 270
+Smoke_3/Smoke_3_020
+	bounds: 1868, 972, 176, 168
+	offsets: 143, 65, 480, 270
+chain
+	bounds: 1195, 350, 336, 263
+	offsets: 0, 0, 336, 276
+	rotate: 90
 hand_L
-	bounds: 2, 2, 821, 1228
+	bounds: 1204, 1635, 411, 614
 	rotate: 90
-tentacle_13
-	bounds: 2, 825, 1638, 1208
-tentacle_20
-	bounds: 1642, 800, 1233, 320
-	rotate: 90
-tentacle_21
-	bounds: 1232, 43, 368, 780
-tentacle_6
-	bounds: 1602, 2, 308, 796
-
-block_7_2_5.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-head
-	bounds: 639, 2, 344, 484
-	offsets: 1, 1, 346, 492
+hand_R
+	bounds: 574, 968, 267, 607
 	rotate: 90
 head_2
-	bounds: 1125, 2, 344, 484
-	offsets: 1, 1, 346, 492
+	bounds: 1195, 175, 173, 243
+	offsets: 0, 0, 173, 246
 	rotate: 90
 head_tentacle
-	bounds: 1328, 393, 554, 642
-	offsets: 2, 1, 557, 644
+	bounds: 1087, 688, 278, 321
+	offsets: 1, 1, 279, 322
 	rotate: 90
 tentacle_1
-	bounds: 1611, 7, 384, 344
+	bounds: 1868, 1142, 192, 172
 	rotate: 90
-tentacle_16
-	bounds: 2, 772, 1324, 1247
+tentacle_15
+	bounds: 2, 500, 546, 545
+tentacle_17
+	bounds: 2, 1572, 626, 474
+tentacle_18
+	bounds: 2, 1047, 570, 523
+tentacle_2
+	bounds: 1243, 1027, 239, 359
+	rotate: 90
+tentacle_21
+	bounds: 1820, 1656, 184, 390
 tentacle_22
-	bounds: 2, 25, 321, 635
+	bounds: 1865, 1336, 161, 318
+tentacle_23
+	bounds: 630, 1564, 572, 482
+	offsets: 15, 20, 587, 502
+tentacle_24
+	bounds: 861, 206, 459, 332
+	rotate: 90
+tentacle_26
+	bounds: 586, 134, 531, 273
+	rotate: 90
+tentacle_3
+	bounds: 1243, 1268, 365, 464
+	rotate: 90
+tentacle_4_1
+	bounds: 1604, 1088, 84, 178
+	offsets: 0, 0, 84, 180
+tentacle_6
+	bounds: 1709, 1235, 154, 398
+tentacle_7
+	bounds: 574, 1237, 325, 667
+	offsets: 0, 0, 336, 715
 	rotate: 90
 tentacle_8
-	bounds: 1328, 949, 1070, 597
-	offsets: 0, 0, 1106, 677
-	rotate: 90
-tentacle_9
-	bounds: 2, 348, 422, 1253
-	offsets: 0, 0, 442, 1389
-	rotate: 90
-
-block_7_2_6.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-body
-	bounds: 1076, 797, 963, 1242
-tentacle_10
-	bounds: 2, 633, 1072, 1406
-tentacle_26
-	bounds: 2, 86, 1062, 545
-tentacle_3
-	bounds: 1076, 65, 730, 928
-	rotate: 90
-
-block_7_2_7.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-tentacle_24
-	bounds: 2, 2, 918, 664
-tentacle_25
-	bounds: 2, 668, 1101, 1287
-	offsets: 0, 0, 1101, 1330
+	bounds: 550, 667, 535, 299
+	offsets: 0, 0, 553, 339
 torso
-	bounds: 1105, 791, 814, 1164
-	offsets: 79, 0, 907, 1164
-
-block_7_2_8.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-tentacle_17
-	bounds: 2, 1049, 1251, 948
-tentacle_18
-	bounds: 2, 2, 1139, 1045
-
-block_7_2_9.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-tentacle_15
-	bounds: 2, 4, 1091, 1089
-
-block_7_2_10.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-tentacle_23
-	bounds: 2, 181, 1143, 964
-	offsets: 30, 40, 1173, 1004
+	bounds: 2, 90, 408, 582
+	offsets: 39, 0, 454, 582
+	rotate: 90
