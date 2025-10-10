@@ -3,495 +3,481 @@ block_8_2.webp
 	filter: Linear, Linear
 	scale: 0.5
 Smoke/Smoke_001
-	bounds: 1927, 1824, 73, 222
-	offsets: 440, 313, 960, 540
-Smoke/Smoke_002
-	bounds: 654, 26, 175, 386
-	offsets: 392, 124, 960, 540
-	rotate: 90
-Smoke/Smoke_003
-	bounds: 654, 26, 175, 386
-	offsets: 392, 124, 960, 540
-	rotate: 90
-Smoke/Smoke_008
-	bounds: 1685, 245, 933, 285
-	offsets: 27, 0, 960, 540
-	rotate: 90
-Smoke/Smoke_009
-	bounds: 856, 1180, 960, 324
-	offsets: 0, 0, 960, 540
+	bounds: 1425, 10, 55, 167
+	offsets: 330, 235, 720, 405
 Smoke/Smoke_010
-	bounds: 723, 203, 960, 433
-	offsets: 0, 0, 960, 540
+	bounds: 2, 6, 720, 325
+	offsets: 0, 0, 720, 405
 Smoke/Smoke_013
-	bounds: 856, 1506, 960, 540
-Smoke/Smoke_014
-	bounds: 723, 638, 960, 540
-Smoke_1/Smoke_1_001
-	bounds: 1927, 1481, 55, 38
-	offsets: 426, 225, 960, 540
-Smoke_1/Smoke_1_003
-	bounds: 1818, 1191, 240, 192
-	offsets: 347, 153, 960, 540
+	bounds: 1164, 590, 720, 405
 	rotate: 90
+Smoke_1/Smoke_1_001
+	bounds: 1482, 12, 55, 38
+	offsets: 426, 225, 960, 540
+	rotate: 90
+Smoke_1/Smoke_1_009
+	bounds: 1164, 179, 409, 392
+	offsets: 259, 52, 960, 540
+	rotate: 90
+Smoke_1/Smoke_1_011
+	bounds: 724, 5, 436, 418
+	offsets: 247, 41, 960, 540
 Smoke_1/Smoke_1_017
-	bounds: 1818, 1180, 9, 4
+	bounds: 1121, 1228, 9, 4
 	offsets: 585, 402, 960, 540
 	rotate: 90
 Smoke_1/Smoke_1_018
-	bounds: 849, 1222, 5, 4
+	bounds: 2041, 2042, 5, 4
 	offsets: 589, 404, 960, 540
 Smoke_4/Smoke_4_001
-	bounds: 1927, 1665, 157, 109
-	offsets: 397, 134, 960, 540
-	rotate: 90
+	bounds: 856, 1228, 119, 82
+	offsets: 297, 100, 720, 405
 Smoke_4/Smoke_4_002
-	bounds: 1927, 1665, 157, 109
-	offsets: 397, 134, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_003
-	bounds: 1330, 23, 275, 178
-	offsets: 342, 119, 960, 540
-Smoke_4/Smoke_4_004
-	bounds: 1330, 23, 275, 178
-	offsets: 342, 119, 960, 540
-Smoke_4/Smoke_4_005
-	bounds: 1685, 36, 311, 207
-	offsets: 330, 115, 960, 540
-Smoke_4/Smoke_4_006
-	bounds: 1685, 36, 311, 207
-	offsets: 330, 115, 960, 540
-Smoke_4/Smoke_4_007
-	bounds: 1685, 36, 311, 207
-	offsets: 330, 115, 960, 540
+	bounds: 856, 1228, 119, 82
+	offsets: 297, 100, 720, 405
+Smoke_4/Smoke_4_008
+	bounds: 1162, 4, 261, 173
+	offsets: 243, 83, 720, 405
+Smoke_4/Smoke_4_009
+	bounds: 1162, 4, 261, 173
+	offsets: 243, 83, 720, 405
+Smoke_4/Smoke_4_010
+	bounds: 1162, 4, 261, 173
+	offsets: 243, 83, 720, 405
+Smoke_4/Smoke_4_021
+	bounds: 1558, 2, 316, 226
+	offsets: 218, 68, 720, 405
+Smoke_4/Smoke_4_022
+	bounds: 1558, 2, 316, 226
+	offsets: 218, 68, 720, 405
 balls
-	bounds: 1927, 1521, 78, 142
+	bounds: 977, 1232, 78, 142
 	offsets: 0, 1, 79, 143
-boobs
-	bounds: 2, 43, 650, 288
-	offsets: 0, 7, 665, 295
+	rotate: 90
 eyelash_L_down
-	bounds: 1478, 7, 42, 14
+	bounds: 2003, 11, 42, 14
 	offsets: 1, 0, 43, 15
 eyelash_L_up
-	bounds: 2029, 1612, 51, 17
+	bounds: 2018, 1665, 51, 17
 	offsets: 0, 0, 51, 18
 	rotate: 90
 eyelash_R_down
-	bounds: 2002, 1944, 44, 13
+	bounds: 2018, 1511, 44, 13
 	offsets: 1, 0, 50, 18
+	rotate: 90
 eyelash_R_up
-	bounds: 1387, 2, 53, 19
+	bounds: 1603, 1200, 53, 19
 	offsets: 1, 2, 55, 21
+	rotate: 90
+hand_R_2
+	bounds: 1876, 27, 201, 169
+	offsets: 1, 1, 202, 170
+	rotate: 90
+head
+	bounds: 1571, 510, 455, 562
 lips
-	bounds: 1607, 93, 108, 35
+	bounds: 1482, 69, 108, 35
 	offsets: 1, 1, 109, 37
 	rotate: 90
-pupils
-	bounds: 654, 206, 125, 20
+lobok
+	bounds: 1558, 230, 488, 278
+neck
+	bounds: 723, 425, 801, 439
 	rotate: 90
+pupils
+	bounds: 1876, 5, 125, 20
 s_2_eyelash_down_L
-	bounds: 778, 1180, 51, 14
+	bounds: 2018, 1557, 51, 14
 	offsets: 2, 0, 53, 16
+	rotate: 90
 s_2_eyelash_down_R
-	bounds: 723, 1180, 53, 14
+	bounds: 2018, 1610, 53, 14
+	rotate: 90
 s_2_lips
-	bounds: 723, 1196, 124, 30
+	bounds: 1571, 1186, 124, 30
+	rotate: 90
 s_2_pupil_L
-	bounds: 1442, 2, 34, 19
+	bounds: 1587, 1081, 34, 19
 	offsets: 1, 1, 36, 20
 s_2_pupil_R
-	bounds: 1984, 1484, 35, 21
+	bounds: 1587, 1102, 35, 21
 	offsets: 1, 1, 37, 22
-	rotate: 90
 s_2_white_L
-	bounds: 153, 20, 55, 21
+	bounds: 2018, 1775, 55, 21
 	offsets: 1, 0, 57, 21
+	rotate: 90
 s_2_white_R
-	bounds: 1607, 32, 59, 23
+	bounds: 1519, 118, 59, 23
 	offsets: 1, 0, 61, 23
 	rotate: 90
 s_eyelash_down_L
-	bounds: 2, 5, 47, 13
+	bounds: 1519, 69, 47, 13
 	offsets: 0, 0, 48, 13
+	rotate: 90
 s_eyelash_down_R
-	bounds: 2002, 1959, 44, 14
+	bounds: 1571, 1079, 44, 14
 	offsets: 0, 0, 45, 15
+	rotate: 90
 s_eyelash_up_L
-	bounds: 1330, 2, 55, 19
+	bounds: 1603, 1255, 55, 19
+	rotate: 90
 s_eyelash_up_R
-	bounds: 2007, 1600, 63, 20
+	bounds: 2018, 1832, 63, 20
 	rotate: 90
 s_lips
-	bounds: 2002, 1975, 71, 33
+	bounds: 1121, 1239, 71, 33
 	offsets: 1, 1, 73, 34
 	rotate: 90
 s_pupil_L
-	bounds: 676, 236, 34, 22
+	bounds: 1534, 82, 34, 22
 	offsets: 1, 0, 36, 22
 	rotate: 90
 s_pupil_R
-	bounds: 1927, 1454, 35, 25
+	bounds: 1597, 1149, 35, 25
 	offsets: 1, 0, 37, 25
-s_trost
-	bounds: 1818, 1433, 107, 613
+	rotate: 90
 s_white_L
-	bounds: 1644, 146, 55, 22
+	bounds: 2018, 1718, 55, 22
 	offsets: 1, 0, 57, 22
 	rotate: 90
 s_white_R
-	bounds: 676, 272, 59, 24
+	bounds: 1571, 1125, 59, 24
 	offsets: 1, 1, 61, 25
 	rotate: 90
-shadow
-	bounds: 1042, 5, 286, 196
-	offsets: 14, 20, 330, 220
+s_wing_R
+	bounds: 1624, 1074, 392, 972
 whites
-	bounds: 2, 20, 149, 21
+	bounds: 2018, 1897, 149, 21
 	offsets: 1, 1, 151, 22
+	rotate: 90
 wing_R_1
 	bounds: 2, 333, 893, 719
 	rotate: 90
 wing_R_2
 	bounds: 2, 1228, 852, 818
 	offsets: 5, 0, 857, 818
+wing_R_3
+	bounds: 856, 1312, 766, 734
 
 block_8_2_2.webp
 	size: 2048, 2048
 	filter: Linear, Linear
 	scale: 0.5
+Smoke/Smoke_002
+	bounds: 1910, 975, 131, 290
+	offsets: 294, 93, 720, 405
+Smoke/Smoke_003
+	bounds: 1910, 975, 131, 290
+	offsets: 294, 93, 720, 405
+Smoke/Smoke_009
+	bounds: 939, 223, 720, 243
+	offsets: 0, 0, 720, 405
+	rotate: 90
+Smoke/Smoke_011
+	bounds: 1202, 1267, 720, 371
+	offsets: 0, 0, 720, 405
+Smoke/Smoke_012
+	bounds: 1188, 867, 720, 398
+	offsets: 0, 0, 720, 405
+Smoke/Smoke_014
+	bounds: 1202, 1640, 720, 405
 Smoke/Smoke_015
-	bounds: 2, 1506, 960, 540
+	bounds: 532, 223, 720, 405
+	rotate: 90
 Smoke/Smoke_016
-	bounds: 2, 964, 960, 540
+	bounds: 1184, 460, 720, 405
 Smoke/Smoke_017
-	bounds: 2, 2, 960, 540
+	bounds: 1184, 53, 720, 405
+Smoke/Smoke_027
+	bounds: 579, 945, 607, 360
+	offsets: 7, 45, 720, 405
+Smoke/Smoke_030
+	bounds: 2, 36, 492, 199
+	offsets: 114, 172, 720, 405
+Smoke_1/Smoke_1_002
+	bounds: 1906, 612, 152, 139
+	offsets: 382, 178, 960, 540
 	rotate: 90
-Smoke/Smoke_018
-	bounds: 544, 2, 960, 540
+Smoke_4/Smoke_4_003
+	bounds: 1910, 766, 207, 134
+	offsets: 256, 89, 720, 405
 	rotate: 90
-Smoke/Smoke_019
-	bounds: 964, 1506, 960, 540
-Smoke/Smoke_020
-	bounds: 964, 964, 960, 540
-Smoke/Smoke_021
-	bounds: 1086, 2, 960, 540
+Smoke_4/Smoke_4_004
+	bounds: 1910, 766, 207, 134
+	offsets: 256, 89, 720, 405
 	rotate: 90
-Smoke_1/Smoke_1_011
-	bounds: 1628, 526, 436, 418
-	offsets: 247, 41, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_043
-	bounds: 1628, 18, 506, 369
-	offsets: 248, 76, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_044
-	bounds: 1628, 18, 506, 369
-	offsets: 248, 76, 960, 540
-	rotate: 90
+Smoke_4/Smoke_4_017
+	bounds: 803, 8, 301, 213
+	offsets: 226, 70, 720, 405
+Smoke_4/Smoke_4_018
+	bounds: 803, 8, 301, 213
+	offsets: 226, 70, 720, 405
+Smoke_4/Smoke_4_019
+	bounds: 496, 2, 305, 219
+	offsets: 224, 69, 720, 405
+Smoke_4/Smoke_4_020
+	bounds: 496, 2, 305, 219
+	offsets: 224, 69, 720, 405
+leg_L
+	bounds: 2, 1133, 575, 912
+	offsets: 4, 0, 579, 920
+leg_R
+	bounds: 2, 237, 528, 894
+	offsets: 0, 0, 682, 894
 s_nose
-	bounds: 1926, 1929, 90, 117
+	bounds: 1924, 1313, 90, 117
 	offsets: 1, 0, 93, 120
+s_trost
+	bounds: 1924, 1432, 107, 613
+torso
+	bounds: 579, 1307, 621, 738
+	offsets: 0, 0, 646, 738
 
 block_8_2_3.webp
 	size: 2048, 2048
 	filter: Linear, Linear
 	scale: 0.5
-Smoke/Smoke_011
-	bounds: 540, 350, 960, 494
-	offsets: 0, 0, 960, 540
-	rotate: 90
-Smoke/Smoke_012
-	bounds: 1036, 550, 960, 530
-	offsets: 0, 0, 960, 540
-	rotate: 90
+Smoke/Smoke_004
+	bounds: 1446, 1024, 409, 299
+	offsets: 188, 35, 720, 405
+Smoke/Smoke_005
+	bounds: 1446, 1024, 409, 299
+	offsets: 188, 35, 720, 405
+Smoke/Smoke_006
+	bounds: 719, 333, 650, 290
+	offsets: 66, 0, 720, 405
+Smoke/Smoke_007
+	bounds: 719, 333, 650, 290
+	offsets: 66, 0, 720, 405
+Smoke/Smoke_008
+	bounds: 724, 625, 700, 214
+	offsets: 20, 0, 720, 405
+Smoke/Smoke_018
+	bounds: 2, 1640, 720, 405
+Smoke/Smoke_019
+	bounds: 2, 1233, 720, 405
+Smoke/Smoke_020
+	bounds: 724, 1640, 720, 405
+Smoke/Smoke_021
+	bounds: 2, 826, 720, 405
 Smoke/Smoke_022
-	bounds: 2, 350, 960, 536
-	offsets: 0, 4, 960, 540
-	rotate: 90
+	bounds: 724, 1236, 720, 402
+	offsets: 0, 3, 720, 405
 Smoke/Smoke_023
-	bounds: 770, 1512, 960, 534
-	offsets: 0, 6, 960, 540
-Smoke_1/Smoke_1_002
-	bounds: 1220, 39, 152, 139
-	offsets: 382, 178, 960, 540
-Smoke_4/Smoke_4_031
-	bounds: 2, 2, 481, 346
-	offsets: 261, 80, 960, 540
-Smoke_4/Smoke_4_032
-	bounds: 2, 2, 481, 346
-	offsets: 261, 80, 960, 540
-Smoke_4/Smoke_4_039
-	bounds: 1543, 169, 503, 367
-	offsets: 250, 79, 960, 540
-Smoke_4/Smoke_4_040
-	bounds: 1543, 169, 503, 367
-	offsets: 250, 79, 960, 540
-Smoke_4/Smoke_4_041
-	bounds: 1036, 180, 505, 368
-	offsets: 249, 77, 960, 540
-Smoke_4/Smoke_4_042
-	bounds: 1036, 180, 505, 368
-	offsets: 249, 77, 960, 540
-hand_L_1
-	bounds: 1732, 1551, 281, 495
-hand_L_2
-	bounds: 1028, 13, 190, 165
-hand_R_1
-	bounds: 485, 46, 302, 541
+	bounds: 1446, 1325, 720, 401
+	offsets: 0, 4, 720, 405
 	rotate: 90
-hand_R_2
-	bounds: 770, 1341, 201, 169
-	offsets: 1, 1, 202, 170
-s_wing_R
-	bounds: 1568, 538, 392, 972
-wing_R_3
-	bounds: 2, 1312, 766, 734
+Smoke/Smoke_024
+	bounds: 2, 424, 715, 400
+	offsets: 4, 5, 720, 405
+Smoke/Smoke_025
+	bounds: 724, 841, 696, 393
+	offsets: 6, 12, 720, 405
+Smoke/Smoke_026
+	bounds: 2, 45, 692, 377
+	offsets: 7, 28, 720, 405
+Smoke/Smoke_028
+	bounds: 1371, 239, 555, 355
+	offsets: 56, 47, 720, 405
+Smoke_1/Smoke_1_012
+	bounds: 1426, 596, 445, 426
+	offsets: 241, 37, 960, 540
+Smoke_1/Smoke_1_016
+	bounds: 1348, 15, 222, 363
+	offsets: 470, 41, 960, 540
+	rotate: 90
+Smoke_4/Smoke_4_005
+	bounds: 1873, 968, 234, 156
+	offsets: 247, 86, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_006
+	bounds: 1873, 968, 234, 156
+	offsets: 247, 86, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_007
+	bounds: 1873, 968, 234, 156
+	offsets: 247, 86, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_011
+	bounds: 1857, 1204, 273, 186
+	offsets: 237, 79, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_012
+	bounds: 1857, 1204, 273, 186
+	offsets: 237, 79, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_013
+	bounds: 1849, 1479, 278, 194
+	offsets: 235, 76, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_014
+	bounds: 1849, 1479, 278, 194
+	offsets: 235, 76, 720, 405
+	rotate: 90
+Smoke_4/Smoke_4_023
+	bounds: 1713, 6, 326, 231
+	offsets: 213, 67, 720, 405
+Smoke_4/Smoke_4_024
+	bounds: 1713, 6, 326, 231
+	offsets: 213, 67, 720, 405
+boobs
+	bounds: 696, 43, 650, 288
+	offsets: 0, 7, 665, 295
+hand_L_2
+	bounds: 1873, 776, 190, 165
+	rotate: 90
+shadow
+	bounds: 1849, 1759, 286, 196
+	offsets: 14, 20, 330, 220
+	rotate: 90
 
 block_8_2_4.webp
 	size: 2048, 2048
 	filter: Linear, Linear
 	scale: 0.5
-Smoke/Smoke_004
-	bounds: 1405, 2, 545, 398
-	offsets: 251, 47, 960, 540
-Smoke/Smoke_005
-	bounds: 1405, 2, 545, 398
-	offsets: 251, 47, 960, 540
-Smoke/Smoke_006
-	bounds: 537, 74, 866, 387
-	offsets: 89, 0, 960, 540
-Smoke/Smoke_007
-	bounds: 537, 74, 866, 387
-	offsets: 89, 0, 960, 540
-Smoke/Smoke_024
-	bounds: 2, 154, 953, 533
-	offsets: 6, 7, 960, 540
-	rotate: 90
-Smoke/Smoke_025
-	bounds: 579, 1497, 928, 524
-	offsets: 8, 16, 960, 540
-Smoke/Smoke_026
-	bounds: 579, 993, 922, 502
-	offsets: 10, 38, 960, 540
-Smoke/Smoke_027
-	bounds: 1509, 1213, 808, 480
-	offsets: 10, 60, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_033
-	bounds: 1503, 859, 488, 352
-	offsets: 257, 79, 960, 540
-Smoke_4/Smoke_4_034
-	bounds: 1503, 859, 488, 352
-	offsets: 257, 79, 960, 540
-head
-	bounds: 1433, 402, 455, 562
-	rotate: 90
-leg_L
-	bounds: 2, 1109, 575, 912
-	offsets: 4, 0, 579, 920
-leg_R
-	bounds: 537, 463, 528, 894
-	offsets: 0, 0, 682, 894
-	rotate: 90
-
-block_8_2_5.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-	scale: 0.5
-Smoke/Smoke_028
-	bounds: 625, 1573, 739, 473
-	offsets: 75, 63, 960, 540
 Smoke/Smoke_029
-	bounds: 1366, 1619, 659, 427
-	offsets: 152, 66, 960, 540
-Smoke/Smoke_030
-	bounds: 625, 1306, 655, 265
-	offsets: 152, 229, 960, 540
-Smoke_1/Smoke_1_008
-	bounds: 899, 427, 390, 373
-	offsets: 270, 60, 960, 540
-Smoke_1/Smoke_1_009
-	bounds: 1291, 413, 409, 392
-	offsets: 259, 52, 960, 540
-Smoke_1/Smoke_1_010
-	bounds: 1279, 3, 426, 408
-	offsets: 251, 45, 960, 540
-Smoke_1/Smoke_1_014
-	bounds: 454, 220, 456, 434
-	offsets: 234, 32, 960, 540
+	bounds: 458, 1263, 494, 321
+	offsets: 114, 49, 720, 405
+Smoke_1/Smoke_1_003
+	bounds: 1790, 13, 240, 192
+	offsets: 347, 153, 960, 540
 	rotate: 90
-Smoke_4/Smoke_4_015
-	bounds: 890, 156, 387, 269
-	offsets: 306, 100, 960, 540
-Smoke_4/Smoke_4_016
-	bounds: 890, 156, 387, 269
-	offsets: 306, 100, 960, 540
-Smoke_4/Smoke_4_023
-	bounds: 1707, 9, 435, 308
-	offsets: 284, 89, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_024
-	bounds: 1707, 9, 435, 308
-	offsets: 284, 89, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_035
-	bounds: 1263, 807, 497, 358
-	offsets: 253, 80, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_036
-	bounds: 1263, 807, 497, 358
-	offsets: 253, 80, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_037
-	bounds: 899, 802, 502, 362
-	offsets: 251, 80, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_038
-	bounds: 899, 802, 502, 362
-	offsets: 251, 80, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_045
-	bounds: 1623, 859, 491, 370
-	offsets: 255, 75, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_046
-	bounds: 1623, 859, 491, 370
-	offsets: 255, 75, 960, 540
-	rotate: 90
-dick
-	bounds: 1366, 1352, 265, 547
-	rotate: 90
-neck
-	bounds: 2, 505, 801, 439
-	rotate: 90
-s_hands
-	bounds: 2, 20, 450, 483
-s_head
-	bounds: 1702, 446, 344, 411
-	offsets: 0, 0, 390, 411
-s_legs
-	bounds: 443, 678, 454, 626
-torso
-	bounds: 2, 1308, 621, 738
-	offsets: 0, 0, 646, 738
-
-block_8_2_6.webp
-	size: 2048, 2048
-	filter: Linear, Linear
-	scale: 0.5
 Smoke_1/Smoke_1_004
-	bounds: 678, 945, 306, 300
+	bounds: 1714, 801, 306, 300
 	offsets: 312, 98, 960, 540
-	rotate: 90
 Smoke_1/Smoke_1_005
-	bounds: 678, 945, 306, 300
+	bounds: 1714, 801, 306, 300
 	offsets: 312, 98, 960, 540
-	rotate: 90
 Smoke_1/Smoke_1_006
-	bounds: 449, 1253, 355, 343
+	bounds: 430, 83, 355, 343
 	offsets: 288, 78, 960, 540
-	rotate: 90
 Smoke_1/Smoke_1_007
-	bounds: 449, 1253, 355, 343
+	bounds: 430, 83, 355, 343
 	offsets: 288, 78, 960, 540
-	rotate: 90
-Smoke_1/Smoke_1_012
-	bounds: 2, 1182, 445, 426
-	offsets: 241, 37, 960, 540
+Smoke_1/Smoke_1_008
+	bounds: 954, 1218, 390, 373
+	offsets: 270, 60, 960, 540
+Smoke_1/Smoke_1_010
+	bounds: 2, 46, 426, 408
+	offsets: 251, 45, 960, 540
 Smoke_1/Smoke_1_013
-	bounds: 2, 1610, 451, 433
+	bounds: 2, 456, 451, 433
 	offsets: 237, 33, 960, 540
+	rotate: 90
+Smoke_1/Smoke_1_014
+	bounds: 458, 1586, 456, 434
+	offsets: 234, 32, 960, 540
 Smoke_1/Smoke_1_015
-	bounds: 455, 1616, 442, 427
+	bounds: 916, 1593, 442, 427
 	offsets: 249, 41, 960, 540
-Smoke_1/Smoke_1_016
-	bounds: 680, 28, 222, 363
-	offsets: 470, 41, 960, 540
-Smoke_4/Smoke_4_008
-	bounds: 1813, 1695, 348, 230
-	offsets: 324, 111, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_009
-	bounds: 1813, 1695, 348, 230
-	offsets: 324, 111, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_010
-	bounds: 1813, 1695, 348, 230
-	offsets: 324, 111, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_011
-	bounds: 623, 393, 364, 248
-	offsets: 316, 105, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_012
-	bounds: 623, 393, 364, 248
-	offsets: 316, 105, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_013
-	bounds: 2, 4, 371, 259
-	offsets: 313, 101, 960, 540
-Smoke_4/Smoke_4_014
-	bounds: 2, 4, 371, 259
-	offsets: 313, 101, 960, 540
-Smoke_4/Smoke_4_017
-	bounds: 1352, 1128, 401, 283
-	offsets: 301, 94, 960, 540
-Smoke_4/Smoke_4_018
-	bounds: 1352, 1128, 401, 283
-	offsets: 301, 94, 960, 540
-Smoke_4/Smoke_4_019
-	bounds: 331, 320, 406, 290
-	offsets: 299, 93, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_020
-	bounds: 331, 320, 406, 290
-	offsets: 299, 93, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_021
-	bounds: 375, 759, 421, 301
-	offsets: 291, 91, 960, 540
-	rotate: 90
-Smoke_4/Smoke_4_022
-	bounds: 375, 759, 421, 301
-	offsets: 291, 91, 960, 540
-	rotate: 90
+Smoke_4/Smoke_4_015
+	bounds: 1497, 51, 291, 202
+	offsets: 229, 75, 720, 405
+Smoke_4/Smoke_4_016
+	bounds: 1497, 51, 291, 202
+	offsets: 229, 75, 720, 405
 Smoke_4/Smoke_4_025
-	bounds: 899, 1384, 451, 317
-	offsets: 274, 87, 960, 540
+	bounds: 1156, 68, 339, 238
+	offsets: 205, 65, 720, 405
 Smoke_4/Smoke_4_026
-	bounds: 899, 1384, 451, 317
-	offsets: 274, 87, 960, 540
+	bounds: 1156, 68, 339, 238
+	offsets: 205, 65, 720, 405
 Smoke_4/Smoke_4_027
-	bounds: 2, 265, 461, 327
-	offsets: 268, 84, 960, 540
+	bounds: 1759, 1103, 346, 246
+	offsets: 201, 63, 720, 405
 	rotate: 90
 Smoke_4/Smoke_4_028
-	bounds: 2, 265, 461, 327
-	offsets: 268, 84, 960, 540
+	bounds: 1759, 1103, 346, 246
+	offsets: 201, 63, 720, 405
 	rotate: 90
 Smoke_4/Smoke_4_029
-	bounds: 899, 1703, 475, 340
-	offsets: 262, 80, 960, 540
+	bounds: 1187, 308, 357, 255
+	offsets: 196, 60, 720, 405
 Smoke_4/Smoke_4_030
-	bounds: 899, 1703, 475, 340
-	offsets: 262, 80, 960, 540
+	bounds: 1187, 308, 357, 255
+	offsets: 196, 60, 720, 405
+Smoke_4/Smoke_4_031
+	bounds: 1210, 565, 361, 260
+	offsets: 196, 60, 720, 405
+Smoke_4/Smoke_4_032
+	bounds: 1210, 565, 361, 260
+	offsets: 196, 60, 720, 405
+Smoke_4/Smoke_4_033
+	bounds: 787, 121, 367, 265
+	offsets: 192, 59, 720, 405
+Smoke_4/Smoke_4_034
+	bounds: 787, 121, 367, 265
+	offsets: 192, 59, 720, 405
+Smoke_4/Smoke_4_035
+	bounds: 834, 668, 374, 269
+	offsets: 189, 60, 720, 405
+Smoke_4/Smoke_4_036
+	bounds: 834, 668, 374, 269
+	offsets: 189, 60, 720, 405
+Smoke_4/Smoke_4_037
+	bounds: 437, 428, 377, 272
+	offsets: 188, 60, 720, 405
+Smoke_4/Smoke_4_038
+	bounds: 437, 428, 377, 272
+	offsets: 188, 60, 720, 405
+Smoke_4/Smoke_4_039
+	bounds: 454, 702, 378, 276
+	offsets: 187, 59, 720, 405
+Smoke_4/Smoke_4_040
+	bounds: 454, 702, 378, 276
+	offsets: 187, 59, 720, 405
+Smoke_4/Smoke_4_041
+	bounds: 1333, 827, 379, 276
+	offsets: 187, 58, 720, 405
+Smoke_4/Smoke_4_042
+	bounds: 1333, 827, 379, 276
+	offsets: 187, 58, 720, 405
+Smoke_4/Smoke_4_043
+	bounds: 951, 939, 380, 277
+	offsets: 186, 57, 720, 405
+Smoke_4/Smoke_4_044
+	bounds: 951, 939, 380, 277
+	offsets: 186, 57, 720, 405
+Smoke_4/Smoke_4_045
+	bounds: 816, 388, 369, 278
+	offsets: 191, 56, 720, 405
+Smoke_4/Smoke_4_046
+	bounds: 816, 388, 369, 278
+	offsets: 191, 56, 720, 405
 Smoke_4/Smoke_4_047
-	bounds: 2, 728, 452, 371
-	offsets: 285, 74, 960, 540
-	rotate: 90
+	bounds: 1573, 520, 339, 279
+	offsets: 214, 55, 720, 405
 Smoke_4/Smoke_4_048
-	bounds: 2, 728, 452, 371
-	offsets: 285, 74, 960, 540
-	rotate: 90
+	bounds: 1573, 520, 339, 279
+	offsets: 214, 55, 720, 405
 Smoke_4/Smoke_4_049
-	bounds: 1376, 1693, 435, 350
-	offsets: 300, 72, 960, 540
+	bounds: 1546, 255, 326, 263
+	offsets: 225, 54, 720, 405
 Smoke_4/Smoke_4_050
-	bounds: 1376, 1693, 435, 350
-	offsets: 300, 72, 960, 540
-lobok
-	bounds: 1352, 1413, 488, 278
+	bounds: 1546, 255, 326, 263
+	offsets: 225, 54, 720, 405
+dick
+	bounds: 1360, 1451, 265, 547
+	rotate: 90
+hand_L_1
+	bounds: 454, 980, 281, 495
+	rotate: 90
+hand_R_1
+	bounds: 1360, 1718, 302, 541
+	rotate: 90
+s_hands
+	bounds: 2, 909, 450, 483
+s_head
+	bounds: 1346, 1105, 344, 411
+	offsets: 0, 0, 390, 411
+	rotate: 90
+s_legs
+	bounds: 2, 1394, 454, 626
+
+block_8_2_5.webp
+	size: 512, 512
+	filter: Linear, Linear
+	scale: 0.5
 s_body
-	bounds: 375, 2, 303, 316
+	bounds: 2, 2, 303, 316
 	offsets: 0, 0, 304, 316
