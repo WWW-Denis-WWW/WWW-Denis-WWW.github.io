@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "glGOubwm6jU",
+	"hash": "2feA50k6fQI",
 	"spine": "4.1.24",
 	"x": 1311.35,
 	"y": -4179.55,
@@ -305,10 +305,8 @@
 					"path": "Smoke_2/Smoke_2_",
 					"x": 43.38,
 					"y": 452.33,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 22, "start": 0, "digits": 3 }
 				}
 			},

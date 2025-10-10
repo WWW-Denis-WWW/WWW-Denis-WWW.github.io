@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "26MCaH82yh8",
+	"hash": "liS8Ka77Ktw",
 	"spine": "4.1.24",
 	"x": 411,
 	"y": -4118.18,
@@ -777,10 +777,8 @@
 					"path": "Smoke_17/Smoke_17_",
 					"x": -2.28,
 					"y": 65.85,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 16, "digits": 3 }
 				}
 			},
@@ -789,10 +787,8 @@
 					"path": "Smoke_17/Smoke_17_",
 					"x": -2.28,
 					"y": 65.85,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 16, "digits": 3 }
 				}
 			},
@@ -801,10 +797,8 @@
 					"path": "Smoke_17/Smoke_17_",
 					"x": -2.28,
 					"y": 65.85,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 16, "digits": 3 }
 				}
 			}

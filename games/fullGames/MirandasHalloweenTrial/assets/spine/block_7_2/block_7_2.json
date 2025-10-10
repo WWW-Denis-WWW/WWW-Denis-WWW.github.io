@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "0zYVt5Xi9Eo",
+	"hash": "V0Qm4iq5ECc",
 	"spine": "4.1.24",
 	"x": 370.28,
 	"y": -4128.21,
@@ -1035,10 +1035,8 @@
 					"path": "Smoke_3/Smoke_3_",
 					"x": 61.86,
 					"y": 467.07,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 22, "start": 0, "digits": 3 }
 				}
 			},
@@ -23024,200 +23022,6 @@
 						]
 					}
 				}
-			}
-		}
-	},
-	"idleBG": {
-		"slots": {
-			"body": {
-				"attachment": [
-					{}
-				]
-			},
-			"chain": {
-				"attachment": [
-					{}
-				]
-			},
-			"eyes": {
-				"attachment": [
-					{}
-				]
-			},
-			"hand_L": {
-				"attachment": [
-					{}
-				]
-			},
-			"hand_R": {
-				"attachment": [
-					{}
-				]
-			},
-			"head": {
-				"attachment": [
-					{}
-				]
-			},
-			"head_tentacle": {
-				"attachment": [
-					{}
-				]
-			},
-			"lips": {
-				"attachment": [
-					{}
-				]
-			},
-			"shadow": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_1": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_2": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_3": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_4": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_4_1": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_5": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_6": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_7": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_8": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_9": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_10": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_11": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_12": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_13": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_14": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_15": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_16": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_17": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_18": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_19": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_20": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_21": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_22": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_23": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_24": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_25": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_26": {
-				"attachment": [
-					{}
-				]
-			},
-			"tentacle_27": {
-				"attachment": [
-					{}
-				]
-			},
-			"torso": {
-				"attachment": [
-					{}
-				]
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "72zPJLrBRFY",
+	"hash": "VYgCJH6wT7w",
 	"spine": "4.1.24",
 	"x": 250.67,
 	"y": -4392.65,
@@ -774,10 +774,8 @@
 					"path": "Smoke/Smoke_",
 					"x": -11.17,
 					"y": -580.27,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 30, "digits": 3 }
 				}
 			},
@@ -786,10 +784,8 @@
 					"path": "Smoke_1/Smoke_1_",
 					"x": 53.45,
 					"y": 48.08,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 18, "digits": 3 }
 				}
 			},
@@ -798,10 +794,8 @@
 					"path": "Smoke_4/Smoke_4_",
 					"x": 13.22,
 					"y": 201.66,
-					"scaleX": 2,
-					"scaleY": 2,
-					"width": 960,
-					"height": 540,
+					"width": 1920,
+					"height": 1080,
 					"sequence": { "count": 50, "digits": 3 }
 				}
 			},
@@ -1144,7 +1138,8 @@
 			},
 			"Smoke_1/Smoke_1_001": {
 				"attachment": [
-					{ "time": 0.9333, "name": "Smoke_1/Smoke_1_001" }
+					{ "time": 0.9333, "name": "Smoke_1/Smoke_1_001" },
+					{ "time": 1.6667 }
 				]
 			},
 			"s_2_eyelash_down_L": {

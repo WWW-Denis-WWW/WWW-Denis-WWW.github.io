@@ -3,52 +3,51 @@ block_5_2.webp
 	filter: Linear, Linear
 	scale: 0.5
 1_balls
-	bounds: 1188, 116, 70, 116
-	rotate: 90
+	bounds: 1777, 1207, 70, 116
 1_body
 	bounds: 2, 1399, 519, 647
 	offsets: 0, 0, 552, 647
-1_dick
-	bounds: 1602, 388, 204, 448
-	offsets: 0, 0, 211, 448
 1_eye_L
-	bounds: 714, 2, 62, 66
+	bounds: 1870, 1326, 62, 66
 	offsets: 0, 0, 63, 66
+	rotate: 90
 1_eye_L_ver2
-	bounds: 1530, 121, 61, 65
+	bounds: 1777, 1140, 61, 65
 	offsets: 1, 0, 63, 65
 1_eye_R
-	bounds: 1188, 72, 42, 64
+	bounds: 905, 133, 42, 64
 	rotate: 90
 1_eye_R_ver2
-	bounds: 1254, 72, 42, 59
+	bounds: 471, 1139, 42, 59
 	offsets: 0, 1, 42, 60
-	rotate: 90
 1_eyelash_down_L
-	bounds: 1380, 58, 63, 43
+	bounds: 971, 132, 63, 43
 	offsets: 0, 1, 63, 44
-	rotate: 90
 1_eyelash_down_L_ver2
-	bounds: 1425, 90, 63, 38
+	bounds: 1994, 421, 63, 38
 	offsets: 0, 1, 63, 40
+	rotate: 90
 1_eyelash_down_R
-	bounds: 1159, 2, 43, 37
+	bounds: 1854, 7, 43, 37
 	offsets: 1, 0, 44, 38
 1_eyelash_down_R_ver2
-	bounds: 1857, 388, 42, 29
+	bounds: 2017, 1680, 42, 29
 	offsets: 0, 0, 42, 30
+	rotate: 90
 1_eyelash_up_L
-	bounds: 1315, 72, 63, 49
+	bounds: 1783, 44, 63, 49
 	offsets: 1, 0, 64, 49
 1_eyelash_up_L_ver2
-	bounds: 1973, 118, 64, 51
+	bounds: 1994, 640, 64, 51
 	offsets: 1, 0, 65, 51
+	rotate: 90
 1_eyelash_up_R
 	bounds: 471, 764, 44, 36
 	rotate: 90
 1_eyelash_up_R_ver2
-	bounds: 1642, 96, 41, 37
+	bounds: 1849, 1233, 41, 37
 	offsets: 0, 9, 42, 46
+	rotate: 90
 1_hand_L
 	bounds: 523, 1464, 259, 731
 	rotate: 90
@@ -56,7 +55,7 @@ block_5_2.webp
 	bounds: 301, 64, 223, 698
 	offsets: 0, 0, 283, 698
 1_head
-	bounds: 1087, 188, 280, 505
+	bounds: 1087, 124, 280, 505
 	offsets: 1, 0, 284, 506
 	rotate: 90
 1_leg_L
@@ -66,26 +65,27 @@ block_5_2.webp
 	offsets: 11, 0, 291, 567
 	rotate: 90
 1_lips
-	bounds: 1423, 130, 105, 56
+	bounds: 1783, 238, 105, 56
 	offsets: 0, 0, 106, 56
 1_lips_ver2
-	bounds: 962, 94, 123, 81
+	bounds: 1870, 1390, 123, 81
 	offsets: 1, 3, 125, 85
+	rotate: 90
 1_mouth
 	bounds: 96, 4, 126, 56
 	offsets: 0, 1, 127, 57
 1_mouth_ver2
-	bounds: 962, 36, 122, 56
+	bounds: 1783, 361, 122, 56
 	offsets: 0, 1, 123, 57
 1_neck
 	bounds: 471, 810, 606, 324
 1_pupil_L_ver2
-	bounds: 1978, 1515, 42, 52
+	bounds: 1994, 706, 42, 52
 	offsets: 0, 1, 43, 55
-1_pupil_R
-	bounds: 1808, 388, 29, 47
-	offsets: 0, 0, 30, 48
 	rotate: 90
+1_pupil_R
+	bounds: 2017, 1724, 29, 47
+	offsets: 0, 0, 30, 48
 1_teeth
 	bounds: 301, 2, 105, 60
 	offsets: 0, 1, 105, 62
@@ -98,46 +98,50 @@ block_5_2.webp
 2_body
 	bounds: 2, 764, 467, 633
 	offsets: 0, 0, 518, 633
-2_dick
-	bounds: 1594, 171, 215, 450
-	rotate: 90
 2_eye_L
-	bounds: 1204, 23, 53, 47
+	bounds: 1036, 122, 53, 47
 	offsets: 0, 0, 53, 48
+	rotate: 90
 2_eye_L_ver2
-	bounds: 1530, 73, 54, 46
+	bounds: 1852, 94, 54, 46
 	offsets: 0, 1, 54, 48
+	rotate: 90
 2_eye_R
-	bounds: 1314, 24, 46, 51
+	bounds: 1848, 46, 46, 51
 	rotate: 90
 2_eye_R_ver2
-	bounds: 471, 1139, 47, 47
+	bounds: 895, 84, 47, 47
 	offsets: 0, 1, 48, 49
 2_eyelash_down_L
-	bounds: 1993, 1121, 53, 30
+	bounds: 808, 77, 53, 30
 	offsets: 1, 0, 54, 30
+	rotate: 90
 2_eyelash_down_L_ver2
-	bounds: 1416, 31, 52, 25
+	bounds: 944, 79, 52, 25
 	offsets: 1, 1, 53, 27
+	rotate: 90
 2_eyelash_down_R
-	bounds: 1593, 103, 47, 30
+	bounds: 1849, 1276, 47, 30
 	offsets: 1, 0, 48, 30
+	rotate: 90
 2_eyelash_down_R_ver2
 	bounds: 2022, 1910, 47, 22
 	offsets: 1, 1, 48, 23
 	rotate: 90
 2_eyelash_up_L
-	bounds: 1425, 58, 54, 30
+	bounds: 2014, 1585, 54, 30
+	rotate: 90
 2_eyelash_up_L_ver2
-	bounds: 1490, 73, 55, 38
+	bounds: 1978, 1520, 55, 38
 	offsets: 0, 0, 56, 38
 	rotate: 90
 2_eyelash_up_R
-	bounds: 1727, 96, 39, 37
+	bounds: 1849, 1194, 39, 37
 	offsets: 2, 0, 42, 37
 2_eyelash_up_R_ver2
-	bounds: 1685, 95, 40, 38
+	bounds: 1888, 1237, 40, 38
 	offsets: 0, 1, 40, 40
+	rotate: 90
 2_hand_L
 	bounds: 1256, 1773, 273, 764
 	rotate: 90
@@ -145,7 +149,10 @@ block_5_2.webp
 	bounds: 1256, 1515, 256, 720
 	rotate: 90
 2_head
-	bounds: 1808, 419, 221, 429
+	bounds: 1548, 407, 221, 429
+	offsets: 3, 29, 224, 459
+2_head_ver2
+	bounds: 1771, 419, 221, 429
 	offsets: 3, 29, 224, 459
 2_leg_L
 	bounds: 523, 1725, 321, 731
@@ -157,63 +164,63 @@ block_5_2.webp
 	bounds: 224, 9, 72, 51
 	offsets: 0, 0, 75, 51
 2_lips_ver2
-	bounds: 1306, 123, 115, 63
+	bounds: 1783, 296, 115, 63
 	offsets: 0, 1, 120, 65
 2_mouth
-	bounds: 1978, 1569, 92, 31
-	rotate: 90
+	bounds: 1783, 150, 92, 31
 2_mouth_ver2
 	bounds: 1978, 1663, 108, 37
 	offsets: 1, 1, 110, 39
 	rotate: 90
-2_neck
-	bounds: 1087, 470, 513, 366
 2_teeth
-	bounds: 1086, 2, 71, 37
+	bounds: 832, 138, 71, 37
 	offsets: 0, 2, 72, 39
 2_teeth_ver2
-	bounds: 1593, 135, 84, 34
+	bounds: 1978, 1577, 84, 34
 	offsets: 1, 4, 86, 38
+	rotate: 90
 3_balls
 	bounds: 408, 6, 56, 106
 	offsets: 1, 1, 58, 107
 	rotate: 90
+3_dick
+	bounds: 1594, 25, 187, 380
 3_eye_L
-	bounds: 1367, 23, 33, 47
+	bounds: 971, 83, 33, 47
 	offsets: 0, 1, 34, 48
-	rotate: 90
 3_eye_L_ver2
-	bounds: 2011, 1616, 35, 45
+	bounds: 1881, 1279, 35, 45
 	offsets: 1, 0, 36, 45
 3_eye_R
-	bounds: 1993, 1153, 67, 53
+	bounds: 1783, 95, 67, 53
 	offsets: 1, 0, 69, 53
-	rotate: 90
 3_eye_R_ver2
-	bounds: 1904, 114, 67, 55
+	bounds: 1907, 362, 67, 55
 	offsets: 0, 0, 68, 55
 3_eyelash_down_L
-	bounds: 2011, 1592, 35, 22
+	bounds: 1006, 95, 35, 22
+	rotate: 90
 3_eyelash_down_L_ver2
-	bounds: 1174, 53, 33, 12
+	bounds: 1079, 1122, 33, 12
 	offsets: 1, 0, 34, 12
-	rotate: 90
 3_eyelash_down_R
-	bounds: 1940, 395, 67, 22
+	bounds: 808, 132, 67, 22
 	offsets: 1, 0, 68, 23
-3_eyelash_down_R_ver2
-	bounds: 778, 2, 68, 19
-	offsets: 1, 0, 69, 20
-3_eyelash_up_L
-	bounds: 1586, 70, 36, 31
-3_eyelash_up_L_ver2
-	bounds: 1768, 97, 36, 39
-	offsets: 1, 0, 37, 39
 	rotate: 90
+3_eyelash_down_R_ver2
+	bounds: 1953, 1445, 68, 19
+	offsets: 1, 0, 69, 20
+	rotate: 90
+3_eyelash_up_L
+	bounds: 1877, 150, 36, 31
+3_eyelash_up_L_ver2
+	bounds: 1890, 1196, 36, 39
+	offsets: 1, 0, 37, 39
 3_eyelash_up_R
-	bounds: 1762, 135, 69, 34
+	bounds: 1994, 486, 69, 34
+	rotate: 90
 3_eyelash_up_R_ver2
-	bounds: 1833, 129, 69, 40
+	bounds: 1783, 2, 69, 40
 	offsets: 0, 1, 69, 42
 3_hand_L
 	bounds: 1189, 1120, 203, 586
@@ -227,7 +234,7 @@ block_5_2.webp
 	bounds: 523, 1136, 326, 664
 	rotate: 90
 3_lips
-	bounds: 714, 70, 129, 83
+	bounds: 723, 70, 129, 83
 	offsets: 0, 1, 129, 84
 	rotate: 90
 3_lips_ver2
@@ -238,99 +245,107 @@ block_5_2.webp
 	offsets: 1, 1, 88, 25
 	rotate: 90
 3_mouth_ver2
-	bounds: 1679, 135, 81, 34
+	bounds: 1994, 557, 81, 34
 	offsets: 1, 1, 82, 35
+	rotate: 90
 3_neck
 	bounds: 1648, 850, 396, 268
 	offsets: 4, 0, 400, 268
 3_pupil_L_ver2
-	bounds: 1901, 388, 29, 37
-	rotate: 90
+	bounds: 2017, 1641, 29, 37
 3_pupil_R
-	bounds: 1259, 25, 53, 45
+	bounds: 840, 91, 53, 45
 3_teeth_ver2
-	bounds: 1086, 41, 86, 45
+	bounds: 471, 1200, 86, 45
 	offsets: 1, 1, 87, 47
+	rotate: 90
 Smoke_17/Smoke_17_001
-	bounds: 1809, 93, 34, 36
-	offsets: 226, 98, 480, 270
+	bounds: 723, 2, 66, 73
+	offsets: 453, 195, 960, 540
 	rotate: 90
 Smoke_17/Smoke_17_002
-	bounds: 1847, 93, 34, 36
-	offsets: 226, 98, 480, 270
+	bounds: 798, 2, 66, 73
+	offsets: 453, 195, 960, 540
 	rotate: 90
 Smoke_17/Smoke_17_003
-	bounds: 1087, 88, 99, 98
-	offsets: 191, 69, 480, 270
+	bounds: 526, 2, 197, 195
+	offsets: 382, 139, 960, 540
+	rotate: 90
 Smoke_17/Smoke_17_004
-	bounds: 1087, 88, 99, 98
-	offsets: 191, 69, 480, 270
-Smoke_17/Smoke_17_005
-	bounds: 799, 23, 161, 152
-	offsets: 156, 53, 480, 270
-Smoke_17/Smoke_17_006
-	bounds: 1870, 1328, 185, 175
-	offsets: 142, 42, 480, 270
+	bounds: 526, 2, 197, 195
+	offsets: 382, 139, 960, 540
 	rotate: 90
-Smoke_17/Smoke_17_007
-	bounds: 1870, 1328, 185, 175
-	offsets: 142, 42, 480, 270
-	rotate: 90
-Smoke_17/Smoke_17_008
-	bounds: 526, 2, 197, 186
-	offsets: 136, 38, 480, 270
-	rotate: 90
-Smoke_17/Smoke_17_011
-	bounds: 1777, 1120, 214, 203
-	offsets: 128, 30, 480, 270
-Smoke_17/Smoke_17_012
-	bounds: 1777, 1120, 214, 203
-	offsets: 128, 30, 480, 270
+Smoke_17/Smoke_17_016
+	bounds: 1087, 406, 459, 430
+	offsets: 241, 49, 960, 540
 shadow1
-	bounds: 471, 1188, 98, 47
+	bounds: 1994, 750, 98, 47
 	offsets: 3, 3, 104, 53
 	rotate: 90
 shadow2
-	bounds: 1993, 1222, 104, 53
-	rotate: 90
+	bounds: 1783, 183, 104, 53
 
 block_5_2_2.webp
-	size: 1024, 1024
+	size: 2048, 2048
 	filter: Linear, Linear
 	scale: 0.5
+1_dick
+	bounds: 1479, 1336, 204, 448
+	offsets: 0, 0, 211, 448
+	rotate: 90
 1_head_ver2
-	bounds: 2, 45, 280, 505
+	bounds: 986, 1722, 280, 505
 	offsets: 1, 0, 284, 506
-2_head_ver2
-	bounds: 339, 553, 221, 429
-	offsets: 3, 29, 224, 459
 	rotate: 90
+2_dick
+	bounds: 1493, 1542, 215, 450
+	rotate: 90
+2_neck
+	bounds: 2, 1636, 513, 366
 3_body
-	bounds: 2, 552, 335, 467
+	bounds: 517, 1667, 335, 467
 	offsets: 15, 0, 350, 467
-3_dick
-	bounds: 832, 639, 187, 380
+	rotate: 90
 3_head
-	bounds: 284, 59, 243, 491
+	bounds: 1493, 1759, 243, 491
+	rotate: 90
 3_head_ver2
-	bounds: 339, 776, 243, 491
+	bounds: 986, 1477, 243, 491
 	rotate: 90
+Smoke_17/Smoke_17_005
+	bounds: 432, 475, 320, 304
+	offsets: 313, 106, 960, 540
+	rotate: 90
+Smoke_17/Smoke_17_006
+	bounds: 418, 18, 370, 350
+	offsets: 284, 85, 960, 540
+	rotate: 90
+Smoke_17/Smoke_17_007
+	bounds: 418, 18, 370, 350
+	offsets: 284, 85, 960, 540
+	rotate: 90
+Smoke_17/Smoke_17_008
+	bounds: 840, 1105, 394, 370
+	offsets: 272, 77, 960, 540
 Smoke_17/Smoke_17_009
-	bounds: 529, 144, 207, 194
-	offsets: 131, 34, 480, 270
+	bounds: 2, 2, 414, 386
+	offsets: 262, 69, 960, 540
 Smoke_17/Smoke_17_010
-	bounds: 738, 2, 207, 194
-	offsets: 131, 34, 480, 270
+	bounds: 452, 1220, 414, 386
+	offsets: 262, 69, 960, 540
 	rotate: 90
+Smoke_17/Smoke_17_011
+	bounds: 2, 390, 428, 405
+	offsets: 256, 60, 960, 540
+Smoke_17/Smoke_17_012
+	bounds: 2, 390, 428, 405
+	offsets: 256, 60, 960, 540
 Smoke_17/Smoke_17_013
-	bounds: 755, 211, 221, 208
-	offsets: 124, 28, 480, 270
+	bounds: 2, 797, 440, 414
+	offsets: 249, 57, 960, 540
 Smoke_17/Smoke_17_014
-	bounds: 529, 340, 224, 211
-	offsets: 123, 27, 480, 270
+	bounds: 2, 1213, 448, 421
+	offsets: 245, 54, 960, 540
 Smoke_17/Smoke_17_015
-	bounds: 529, 340, 224, 211
-	offsets: 123, 27, 480, 270
-Smoke_17/Smoke_17_016
-	bounds: 770, 421, 230, 216
-	offsets: 120, 24, 480, 270
+	bounds: 2, 1213, 448, 421
+	offsets: 245, 54, 960, 540

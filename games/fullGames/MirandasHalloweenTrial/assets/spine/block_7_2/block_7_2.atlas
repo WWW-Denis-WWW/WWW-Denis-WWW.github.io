@@ -3,48 +3,36 @@ block_7_2.webp
 	filter: Linear, Linear
 	scale: 0.5
 Smoke_3/Smoke_3_000
-	bounds: 1989, 204, 35, 57
-	offsets: 215, 26, 480, 270
-	rotate: 90
+	bounds: 1416, 881, 70, 113
+	offsets: 430, 53, 960, 540
 Smoke_3/Smoke_3_001
-	bounds: 1989, 204, 35, 57
-	offsets: 215, 26, 480, 270
-	rotate: 90
+	bounds: 1416, 881, 70, 113
+	offsets: 430, 53, 960, 540
 Smoke_3/Smoke_3_002
-	bounds: 1989, 167, 35, 57
-	offsets: 215, 26, 480, 270
+	bounds: 1140, 85, 70, 113
+	offsets: 430, 53, 960, 540
 	rotate: 90
-Smoke_3/Smoke_3_008
-	bounds: 1097, 13, 142, 180
-	offsets: 164, 27, 480, 270
-	rotate: 90
-Smoke_3/Smoke_3_009
-	bounds: 1330, 809, 156, 185
-	offsets: 157, 27, 480, 270
 Smoke_3/Smoke_3_021
-	bounds: 872, 9, 133, 74
-	offsets: 156, 160, 480, 270
+	bounds: 621, 7, 266, 148
+	offsets: 312, 320, 960, 540
 body
 	bounds: 1563, 1425, 482, 621
 eyes
-	bounds: 1295, 257, 111, 23
-	rotate: 90
+	bounds: 1744, 41, 111, 23
 eyes_2
-	bounds: 1330, 786, 114, 21
+	bounds: 1295, 254, 114, 21
 	offsets: 1, 3, 115, 24
+	rotate: 90
 head
 	bounds: 1744, 66, 173, 243
 	offsets: 0, 0, 173, 246
 	rotate: 90
 lips
-	bounds: 1989, 140, 57, 25
+	bounds: 1989, 214, 57, 25
 	offsets: 1, 0, 59, 25
 lips_2
 	bounds: 666, 1045, 62, 24
 	offsets: 1, 1, 64, 25
-shadow
-	bounds: 872, 85, 223, 70
-	offsets: 3, 3, 229, 76
 tentacle_10
 	bounds: 1330, 241, 536, 703
 	rotate: 90
@@ -65,8 +53,11 @@ tentacle_25
 	bounds: 1488, 779, 551, 644
 	offsets: 0, 0, 551, 665
 tentacle_4
-	bounds: 621, 69, 86, 249
+	bounds: 889, 69, 86, 249
 	rotate: 90
+tentacle_4_1
+	bounds: 1330, 816, 84, 178
+	offsets: 0, 0, 84, 180
 tentacle_5
 	bounds: 1295, 33, 206, 447
 	rotate: 90
@@ -79,67 +70,38 @@ block_7_2_2.webp
 	size: 2048, 2048
 	filter: Linear, Linear
 	scale: 0.5
-Smoke_3/Smoke_3_003
-	bounds: 747, 54, 78, 112
-	offsets: 196, 27, 480, 270
-	rotate: 90
-Smoke_3/Smoke_3_004
-	bounds: 747, 54, 78, 112
-	offsets: 196, 27, 480, 270
-	rotate: 90
 Smoke_3/Smoke_3_005
-	bounds: 586, 31, 101, 159
-	offsets: 184, 26, 480, 270
+	bounds: 861, 2, 202, 317
+	offsets: 368, 53, 960, 540
 	rotate: 90
-Smoke_3/Smoke_3_006
-	bounds: 1410, 706, 125, 169
-	offsets: 173, 27, 480, 270
-	rotate: 90
-Smoke_3/Smoke_3_007
-	bounds: 1410, 706, 125, 169
-	offsets: 173, 27, 480, 270
-	rotate: 90
-Smoke_3/Smoke_3_010
-	bounds: 1421, 4, 156, 185
-	offsets: 157, 27, 480, 270
-	rotate: 90
+Smoke_3/Smoke_3_009
+	bounds: 1709, 1262, 310, 371
+	offsets: 315, 54, 960, 540
 Smoke_3/Smoke_3_011
-	bounds: 1460, 343, 164, 191
-	offsets: 152, 26, 480, 270
+	bounds: 1195, 38, 328, 381
+	offsets: 304, 53, 960, 540
 	rotate: 90
 Smoke_3/Smoke_3_012
-	bounds: 1460, 343, 164, 191
-	offsets: 152, 26, 480, 270
+	bounds: 1195, 38, 328, 381
+	offsets: 304, 53, 960, 540
 	rotate: 90
 Smoke_3/Smoke_3_013
-	bounds: 861, 33, 171, 194
-	offsets: 149, 28, 480, 270
+	bounds: 1643, 919, 341, 388
+	offsets: 299, 55, 960, 540
 	rotate: 90
 Smoke_3/Smoke_3_014
-	bounds: 1460, 509, 179, 195
-	offsets: 145, 31, 480, 270
-Smoke_3/Smoke_3_015
-	bounds: 1440, 162, 179, 195
-	offsets: 145, 31, 480, 270
+	bounds: 1183, 753, 357, 389
+	offsets: 291, 62, 960, 540
 	rotate: 90
+Smoke_3/Smoke_3_015
+	bounds: 1575, 528, 357, 389
+	offsets: 291, 62, 960, 540
 Smoke_3/Smoke_3_016
-	bounds: 1410, 833, 189, 192
-	offsets: 143, 37, 480, 270
+	bounds: 1195, 368, 378, 383
+	offsets: 286, 74, 960, 540
 Smoke_3/Smoke_3_017
-	bounds: 1057, 2, 180, 171
-	offsets: 150, 59, 480, 270
-Smoke_3/Smoke_3_018
-	bounds: 1239, 2, 180, 171
-	offsets: 150, 59, 480, 270
-Smoke_3/Smoke_3_019
-	bounds: 1690, 1065, 176, 168
-	offsets: 143, 65, 480, 270
-Smoke_3/Smoke_3_020
-	bounds: 1868, 972, 176, 168
-	offsets: 143, 65, 480, 270
-chain
-	bounds: 1195, 350, 336, 263
-	offsets: 0, 0, 336, 276
+	bounds: 1578, 168, 358, 343
+	offsets: 301, 118, 960, 540
 	rotate: 90
 hand_L
 	bounds: 1204, 1635, 411, 614
@@ -147,30 +109,20 @@ hand_L
 hand_R
 	bounds: 574, 968, 267, 607
 	rotate: 90
-head_2
-	bounds: 1195, 175, 173, 243
-	offsets: 0, 0, 173, 246
-	rotate: 90
-head_tentacle
-	bounds: 1087, 688, 278, 321
-	offsets: 1, 1, 279, 322
-	rotate: 90
-tentacle_1
-	bounds: 1868, 1142, 192, 172
-	rotate: 90
+shadow
+	bounds: 2, 18, 223, 70
+	offsets: 3, 3, 229, 76
 tentacle_15
 	bounds: 2, 500, 546, 545
 tentacle_17
 	bounds: 2, 1572, 626, 474
 tentacle_18
 	bounds: 2, 1047, 570, 523
-tentacle_2
-	bounds: 1243, 1027, 239, 359
-	rotate: 90
 tentacle_21
 	bounds: 1820, 1656, 184, 390
 tentacle_22
-	bounds: 1865, 1336, 161, 318
+	bounds: 1578, 5, 161, 318
+	rotate: 90
 tentacle_23
 	bounds: 630, 1564, 572, 482
 	offsets: 15, 20, 587, 502
@@ -183,11 +135,9 @@ tentacle_26
 tentacle_3
 	bounds: 1243, 1268, 365, 464
 	rotate: 90
-tentacle_4_1
-	bounds: 1604, 1088, 84, 178
-	offsets: 0, 0, 84, 180
 tentacle_6
-	bounds: 1709, 1235, 154, 398
+	bounds: 1243, 1112, 154, 398
+	rotate: 90
 tentacle_7
 	bounds: 574, 1237, 325, 667
 	offsets: 0, 0, 336, 715
@@ -199,3 +149,54 @@ torso
 	bounds: 2, 90, 408, 582
 	offsets: 39, 0, 454, 582
 	rotate: 90
+
+block_7_2_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+	scale: 0.5
+Smoke_3/Smoke_3_003
+	bounds: 1741, 1776, 156, 224
+	offsets: 392, 53, 960, 540
+Smoke_3/Smoke_3_004
+	bounds: 1741, 1776, 156, 224
+	offsets: 392, 53, 960, 540
+Smoke_3/Smoke_3_006
+	bounds: 1401, 1750, 250, 338
+	offsets: 346, 54, 960, 540
+	rotate: 90
+Smoke_3/Smoke_3_007
+	bounds: 1401, 1750, 250, 338
+	offsets: 346, 54, 960, 540
+	rotate: 90
+Smoke_3/Smoke_3_008
+	bounds: 717, 1716, 284, 359
+	offsets: 328, 54, 960, 540
+	rotate: 90
+Smoke_3/Smoke_3_010
+	bounds: 2, 946, 310, 371
+	offsets: 315, 54, 960, 540
+Smoke_3/Smoke_3_018
+	bounds: 2, 1657, 358, 343
+	offsets: 301, 118, 960, 540
+Smoke_3/Smoke_3_019
+	bounds: 2, 1319, 353, 336
+	offsets: 285, 130, 960, 540
+Smoke_3/Smoke_3_020
+	bounds: 362, 1665, 353, 335
+	offsets: 285, 130, 960, 540
+chain
+	bounds: 2, 608, 336, 263
+	offsets: 0, 0, 336, 276
+	rotate: 90
+head_2
+	bounds: 2, 2, 173, 243
+	offsets: 0, 0, 173, 246
+head_tentacle
+	bounds: 1078, 1722, 278, 321
+	offsets: 1, 1, 279, 322
+	rotate: 90
+tentacle_1
+	bounds: 177, 53, 192, 172
+	rotate: 90
+tentacle_2
+	bounds: 2, 247, 239, 359
