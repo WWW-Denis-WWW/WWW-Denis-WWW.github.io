@@ -1,0 +1,197 @@
+block_4_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+	scale: 0.5
+2_eyebrow_L
+	bounds: 924, 2, 41, 28
+	offsets: 1, 1, 43, 29
+2_eyebrow_R
+	bounds: 2, 10, 47, 25
+	offsets: 1, 0, 49, 26
+2_eyelash_down_L
+	bounds: 1344, 1573, 39, 12
+	offsets: 0, 0, 39, 13
+	rotate: 90
+2_eyelash_down_R
+	bounds: 381, 1251, 41, 12
+	offsets: 0, 1, 42, 14
+2_eyelash_up_L
+	bounds: 1358, 1039, 41, 18
+	offsets: 1, 1, 43, 20
+2_eyelash_up_R
+	bounds: 1190, 338, 46, 16
+	offsets: 1, 1, 48, 17
+2_head
+	bounds: 1261, 684, 188, 320
+	offsets: 0, 1, 219, 322
+2_lips
+	bounds: 542, 1175, 88, 53
+	offsets: 1, 1, 90, 55
+	rotate: 90
+2_mouth
+	bounds: 362, 39, 96, 44
+	offsets: 0, 0, 97, 45
+2_pupil_L
+	bounds: 1344, 1332, 8, 13
+	offsets: 0, 0, 9, 13
+2_pupil_R
+	bounds: 417, 623, 8, 13
+	offsets: 1, 0, 10, 13
+2_teeth_down
+	bounds: 1894, 1552, 39, 16
+2_teeth_up
+	bounds: 848, 2, 74, 28
+	offsets: 2, 1, 77, 30
+2_tongue
+	bounds: 887, 1053, 74, 118
+2_white_L
+	bounds: 303, 492, 39, 17
+	offsets: 2, 1, 42, 19
+2_white_R
+	bounds: 1556, 1329, 42, 16
+	offsets: 1, 1, 44, 18
+Smoke_2/Smoke_2_000
+	bounds: 848, 32, 70, 114
+	offsets: 430, 52, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_001
+	bounds: 848, 32, 70, 114
+	offsets: 430, 52, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_002
+	bounds: 1894, 1570, 70, 114
+	offsets: 430, 52, 960, 540
+Smoke_2/Smoke_2_003
+	bounds: 1667, 1528, 156, 225
+	offsets: 392, 53, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_004
+	bounds: 1667, 1528, 156, 225
+	offsets: 392, 53, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_005
+	bounds: 1243, 363, 203, 319
+	offsets: 368, 52, 960, 540
+Smoke_2/Smoke_2_006
+	bounds: 848, 104, 250, 340
+	offsets: 346, 53, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_007
+	bounds: 848, 104, 250, 340
+	offsets: 346, 53, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_008
+	bounds: 1750, 1686, 284, 360
+	offsets: 328, 54, 960, 540
+Smoke_2/Smoke_2_009
+	bounds: 984, 1006, 310, 372
+	offsets: 315, 53, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_010
+	bounds: 887, 694, 310, 372
+	offsets: 315, 53, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_011
+	bounds: 599, 1173, 328, 383
+	offsets: 304, 52, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_012
+	bounds: 599, 1173, 328, 383
+	offsets: 304, 52, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_013
+	bounds: 542, 783, 343, 388
+	offsets: 298, 55, 960, 540
+Smoke_2/Smoke_2_014
+	bounds: 1358, 1688, 358, 390
+	offsets: 291, 62, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_015
+	bounds: 2, 37, 358, 390
+	offsets: 291, 62, 960, 540
+Smoke_2/Smoke_2_016
+	bounds: 977, 1663, 379, 383
+	offsets: 285, 74, 960, 540
+Smoke_2/Smoke_2_017
+	bounds: 984, 1318, 358, 343
+	offsets: 301, 118, 960, 540
+Smoke_2/Smoke_2_018
+	bounds: 542, 423, 358, 343
+	offsets: 301, 118, 960, 540
+	rotate: 90
+Smoke_2/Smoke_2_019
+	bounds: 887, 356, 354, 336
+	offsets: 285, 130, 960, 540
+Smoke_2/Smoke_2_020
+	bounds: 362, 85, 354, 336
+	offsets: 285, 130, 960, 540
+Smoke_2/Smoke_2_021
+	bounds: 1344, 1347, 266, 149
+	offsets: 312, 319, 960, 540
+balls
+	bounds: 303, 511, 112, 125
+body
+	bounds: 2, 1251, 377, 795
+dick
+	bounds: 718, 16, 128, 405
+eyebrow_L
+	bounds: 1344, 1614, 47, 12
+	offsets: 1, 0, 49, 12
+	rotate: 90
+eyebrow_R
+	bounds: 427, 642, 50, 13
+	offsets: 0, 1, 51, 14
+eyelash_down_L
+	bounds: 51, 2, 33, 14
+	offsets: 0, 0, 34, 15
+	rotate: 90
+eyelash_down_R
+	bounds: 1344, 1541, 30, 12
+	offsets: 1, 0, 31, 13
+	rotate: 90
+eyelash_up_L
+	bounds: 963, 1132, 39, 19
+	offsets: 0, 1, 40, 20
+	rotate: 90
+eyelash_up_R
+	bounds: 1667, 1511, 42, 15
+	offsets: 1, 0, 44, 15
+hand_L
+	bounds: 2, 429, 299, 820
+	offsets: 0, 0, 363, 872
+hand_R
+	bounds: 381, 1265, 216, 781
+head
+	bounds: 1358, 1498, 188, 307
+	offsets: 0, 0, 219, 308
+	rotate: 90
+leg_L
+	bounds: 303, 638, 122, 611
+leg_R
+	bounds: 427, 657, 113, 606
+legs_up
+	bounds: 599, 1503, 376, 543
+lips
+	bounds: 887, 1006, 45, 17
+	offsets: 1, 0, 46, 17
+	rotate: 90
+pupil_L
+	bounds: 2036, 2029, 8, 17
+	offsets: 1, 1, 9, 18
+pupil_R
+	bounds: 1243, 684, 8, 14
+	offsets: 1, 1, 9, 16
+	rotate: 90
+shadow
+	bounds: 1358, 1059, 286, 196
+	offsets: 14, 20, 330, 220
+	rotate: 90
+teeth
+	bounds: 1612, 1482, 48, 14
+	offsets: 1, 0, 49, 15
+white_L
+	bounds: 848, 403, 37, 18
+	offsets: 2, 1, 40, 20
+white_R
+	bounds: 1966, 1668, 38, 16
+	offsets: 1, 1, 39, 17

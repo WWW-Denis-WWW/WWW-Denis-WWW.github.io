@@ -1,0 +1,125 @@
+block_8_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_leg_L
+	bounds: 2, 407, 557, 1813
+	rotate: 90
+2_eyebrow_L
+	bounds: 129, 52, 96, 38
+2_eyebrow_R
+	bounds: 2, 6, 97, 38
+bg
+	bounds: 2, 966, 1920, 1080
+eye_closed_L
+	bounds: 1817, 661, 62, 25
+eye_closed_R
+	bounds: 1145, 86, 67, 23
+eyebrow_L
+	bounds: 1924, 2006, 100, 40
+eyebrow_R
+	bounds: 1817, 688, 100, 40
+eyelash_down_L
+	bounds: 1319, 146, 69, 17
+eyelash_down_R
+	bounds: 1924, 1930, 68, 19
+eyelash_up_L
+	bounds: 1237, 129, 80, 34
+eyelash_up_R
+	bounds: 2011, 1923, 81, 35
+	rotate: 90
+head
+	bounds: 1145, 165, 240, 375
+	offsets: 1, 1, 242, 377
+	rotate: 90
+head_2
+	bounds: 1522, 165, 240, 375
+	offsets: 1, 1, 242, 377
+	rotate: 90
+lips
+	bounds: 1924, 1951, 85, 53
+	offsets: 1, 1, 89, 55
+lips_2
+	bounds: 1145, 111, 90, 52
+	offsets: 2, 2, 95, 55
+pupil_L
+	bounds: 2026, 2017, 29, 20
+	offsets: 1, 1, 31, 22
+	rotate: 90
+pupil_R
+	bounds: 1919, 706, 28, 22
+	offsets: 2, 1, 31, 24
+semen_1
+	bounds: 767, 76, 329, 376
+	rotate: 90
+semen_2
+	bounds: 2, 92, 313, 763
+	rotate: 90
+semen_head_1
+	bounds: 2, 46, 44, 125
+	offsets: 1, 4, 48, 135
+	rotate: 90
+semen_head_2
+	bounds: 1817, 730, 234, 154
+	offsets: 2, 4, 240, 161
+	rotate: 90
+white_L
+	bounds: 1817, 596, 63, 21
+	rotate: 90
+white_R
+	bounds: 227, 66, 63, 24
+
+block_8_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_leg_R
+	bounds: 561, 129, 541, 1761
+2_leg_L
+	bounds: 2, 77, 557, 1813
+2_leg_R
+	bounds: 1104, 129, 541, 1761
+semen_neck
+	bounds: 1647, 1608, 243, 282
+
+block_8_1_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_top
+	bounds: 2, 964, 1197, 937
+	offsets: 8, 0, 1205, 937
+2_body
+	bounds: 1201, 884, 1017, 569
+	rotate: 90
+2_boobs
+	bounds: 2, 69, 1194, 893
+	offsets: 46, 0, 1240, 893
+hair
+	bounds: 1198, 2, 527, 880
+
+block_8_1_4.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_boobs
+	bounds: 1031, 206, 902, 482
+	offsets: 338, 411, 1240, 893
+1_hand_L
+	bounds: 2, 717, 520, 1261
+1_hand_R
+	bounds: 1046, 690, 465, 1288
+1_pants
+	bounds: 2, 247, 1027, 468
+2_hand_L
+	bounds: 524, 717, 520, 1261
+2_hand_R
+	bounds: 1513, 690, 465, 1288
+
+block_8_1_5.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_neck
+	bounds: 627, 1054, 521, 617
+2_neck
+	bounds: 1150, 1054, 521, 617
+semen_boob_L
+	bounds: 2, 282, 488, 675
+semen_boob_R
+	bounds: 2, 959, 623, 712
