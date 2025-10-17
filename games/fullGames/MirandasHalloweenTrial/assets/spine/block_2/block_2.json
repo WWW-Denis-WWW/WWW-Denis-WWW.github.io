@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "T6+kDpg0fE4",
+	"hash": "7Jn8/fXPUbw",
 	"spine": "4.1.24",
 	"x": -1,
 	"y": -1728,
@@ -1910,6 +1910,14 @@
 					{ "time": 1.5, "value": -1.2 },
 					{ "time": 3 }
 				]
+			},
+			"partticles_1/partticles_1_000": {
+				"translate": [
+					{ "x": 580.26, "y": 640.45 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
 			}
 		},
 		"attachments": {
@@ -2281,6 +2289,7 @@
 			},
 			"partticles_1/partticles_1_000": {
 				"translate": [
+					{ "x": 580.26, "y": 640.45, "curve": "stepped" },
 					{
 						"time": 0.1667,
 						"x": 580.26,
@@ -2290,6 +2299,7 @@
 					{ "time": 1, "x": 580.26, "y": 815.87 }
 				],
 				"scale": [
+					{ "x": 2, "y": 2, "curve": "stepped" },
 					{
 						"time": 0.1667,
 						"x": 2,
