@@ -1,0 +1,47 @@
+block_6_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok left
+	bounds: 277, 326, 53, 27
+	rotate: 90
+belok right
+	bounds: 855, 1804, 50, 27
+brow left
+	bounds: 623, 1325, 52, 22
+brow right
+	bounds: 444, 1126, 55, 21
+chest
+	bounds: 444, 1732, 409, 312
+face
+	bounds: 855, 1833, 193, 211
+hair
+	bounds: 444, 1149, 177, 198
+hand left
+	bounds: 444, 1349, 301, 381
+hand right
+	bounds: 2, 2, 273, 377
+legs
+	bounds: 2, 891, 440, 1153
+lips
+	bounds: 747, 1702, 77, 28
+pupil 2
+	bounds: 1180, 2022, 23, 22
+pupil left
+	bounds: 747, 1680, 21, 20
+pursing 1
+	bounds: 826, 1712, 14, 18
+pursing 2
+	bounds: 1050, 1874, 42, 16
+pursing 3
+	bounds: 380, 874, 44, 15
+pursing 4
+	bounds: 277, 313, 17, 11
+shadow hands
+	bounds: 328, 589, 300, 50
+	rotate: 90
+sperma
+	bounds: 1050, 1892, 128, 152
+tors
+	bounds: 2, 381, 324, 508
+veko 2
+	bounds: 328, 558, 45, 29

@@ -1,0 +1,66 @@
+block_6_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_belok left
+	bounds: 220, 299, 52, 29
+	rotate: 90
+2_belok right
+	bounds: 339, 922, 50, 28
+2_brow left
+	bounds: 744, 1097, 46, 25
+2_brow right
+	bounds: 939, 1368, 46, 25
+2_face
+	bounds: 744, 1337, 193, 211
+2_lips
+	bounds: 418, 998, 62, 40
+2_pupil left
+	bounds: 418, 974, 23, 22
+2_pupil right
+	bounds: 482, 1016, 21, 22
+Layer 20
+	bounds: 939, 1395, 177, 198
+Layer 21
+	bounds: 744, 1124, 193, 211
+belok left
+	bounds: 254, 602, 54, 25
+belok right
+	bounds: 884, 1568, 53, 25
+brow left
+	bounds: 2, 53, 59, 24
+brow right
+	bounds: 1918, 1950, 58, 26
+chest
+	bounds: 1161, 1692, 377, 284
+fartuc
+	bounds: 2, 952, 414, 1024
+hand left
+	bounds: 858, 1595, 301, 381
+hand right
+	bounds: 1540, 1703, 273, 376
+	rotate: 90
+legs
+	bounds: 2, 353, 250, 597
+lips
+	bounds: 1161, 1661, 66, 29
+popa
+	bounds: 418, 1550, 438, 426
+pupil left
+	bounds: 1161, 1640, 21, 19
+pupil right
+	bounds: 1229, 1672, 19, 18
+pursing
+	bounds: 884, 1550, 16, 10
+	rotate: 90
+shadow chest
+	bounds: 2, 79, 216, 272
+shadow hands
+	bounds: 254, 629, 321, 83
+	rotate: 90
+tors
+	bounds: 418, 1040, 324, 508
+veko 1
+	bounds: 858, 1550, 43, 24
+	rotate: 90
+veko 2
+	bounds: 1118, 1571, 41, 22

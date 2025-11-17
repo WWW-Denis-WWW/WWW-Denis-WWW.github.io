@@ -1,0 +1,40 @@
+block_8_5.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+t_belok
+	bounds: 1786, 1885, 32, 29
+t_brow
+	bounds: 260, 381, 41, 37
+t_brush
+	bounds: 372, 831, 92, 87
+	rotate: 90
+t_collar
+	bounds: 462, 1194, 199, 375
+t_face
+	bounds: 2, 103, 256, 315
+t_hair
+	bounds: 2, 2, 138, 99
+t_hand left
+	bounds: 847, 1641, 273, 593
+	rotate: 90
+t_hand right
+	bounds: 2, 1571, 843, 343
+t_handkerchief
+	bounds: 663, 1280, 90, 289
+t_hat
+	bounds: 2, 420, 503, 368
+	rotate: 90
+t_jacket
+	bounds: 2, 925, 458, 644
+t_lips
+	bounds: 847, 1594, 48, 45
+t_neck
+	bounds: 462, 1048, 140, 144
+t_pupil
+	bounds: 755, 1553, 12, 16
+t_revolver
+	bounds: 1442, 1739, 342, 175
+t_veko
+	bounds: 663, 1251, 30, 27
+t_veko closed
+	bounds: 1442, 1702, 35, 35

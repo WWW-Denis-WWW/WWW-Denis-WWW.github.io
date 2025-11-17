@@ -1,0 +1,280 @@
+pose_05.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok left
+	bounds: 1641, 5, 38, 27
+bg
+	bounds: 2, 966, 1920, 1080
+bg_part_1
+	bounds: 1926, 28, 24, 556
+bg_part_2
+	bounds: 460, 24, 25, 556
+	rotate: 90
+bg_part_3
+	bounds: 2, 7, 66, 456
+	rotate: 90
+brow right
+	bounds: 1494, 615, 36, 31
+cum_1
+	bounds: 1924, 1212, 14, 29
+cum_12
+	bounds: 1989, 334, 29, 54
+	rotate: 90
+cum_2
+	bounds: 1427, 73, 11, 27
+cum_3
+	bounds: 563, 2, 20, 35
+	rotate: 90
+cum_4
+	bounds: 511, 51, 15, 22
+cum_5
+	bounds: 1494, 588, 26, 25
+cum_6
+	bounds: 460, 2, 20, 55
+	rotate: 90
+cum_8
+	bounds: 1491, 7, 25, 54
+	rotate: 90
+cum_9
+	bounds: 1463, 586, 29, 60
+eyelashes_L
+	bounds: 1786, 9, 38, 25
+hair background 2
+	bounds: 1160, 22, 265, 78
+hand left man 2
+	bounds: 544, 51, 416, 575
+hm_accessories A L
+	bounds: 1018, 19, 31, 136
+	rotate: 90
+hm_accessories A R
+	bounds: 1688, 36, 35, 136
+	rotate: 90
+hm_belok left 2 faza
+	bounds: 1547, 3, 45, 29
+hm_belok left 2 faza копия
+	bounds: 517, 2, 44, 20
+hm_belok right 2 faza
+	bounds: 1594, 3, 45, 29
+hm_brow left
+	bounds: 981, 629, 51, 17
+hm_brow right
+	bounds: 460, 51, 49, 22
+hm_brush left 1 ver 2
+	bounds: 1826, 6, 96, 65
+hm_brush left 2
+	bounds: 1952, 8, 87, 115
+hm_eyelashes_R
+	bounds: 1740, 13, 44, 21
+hm_hair_L
+	bounds: 1940, 738, 106, 503
+hm_hair_R
+	bounds: 1924, 1243, 113, 517
+hm_leg left 1
+	bounds: 1532, 586, 378, 406
+	rotate: 90
+hm_lips 1 faza
+	bounds: 1427, 6, 62, 26
+hm_popa
+	bounds: 1160, 102, 544, 301
+	rotate: 90
+hm_pupil left 2 faza
+	bounds: 1924, 1193, 17, 14
+	rotate: 90
+hm_pupil right 2 faza
+	bounds: 1924, 1193, 17, 14
+	rotate: 90
+hm_shadow hair L
+	bounds: 1952, 333, 35, 259
+hm_shadow hair R
+	bounds: 1427, 34, 37, 259
+	rotate: 90
+leg right 1
+	bounds: 1924, 1762, 284, 122
+	rotate: 90
+leg right man 1
+	bounds: 2, 628, 336, 977
+	rotate: 90
+lips 2 faza
+	bounds: 1989, 365, 64, 47
+	rotate: 90
+man hand right 1
+	bounds: 1952, 125, 87, 206
+man hand right 2 ver 2
+	bounds: 962, 52, 196, 574
+popa left ver 3
+	bounds: 1463, 73, 461, 511
+pupil left
+	bounds: 1034, 628, 22, 18
+pupil right
+	bounds: 1440, 81, 21, 19
+semen 1
+	bounds: 1940, 594, 142, 88
+	rotate: 90
+shadow hand 1
+	bounds: 1989, 431, 161, 51
+	rotate: 90
+shoes right
+	bounds: 981, 648, 549, 316
+taburetka
+	bounds: 2, 75, 540, 551
+veko closed 2
+	bounds: 1688, 3, 50, 31
+
+pose_05_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok right
+	bounds: 1489, 329, 47, 34
+brow left
+	bounds: 945, 1203, 39, 21
+brush
+	bounds: 1345, 604, 211, 146
+chest left
+	bounds: 1736, 1067, 278, 278
+chest right ver 2
+	bounds: 833, 876, 268, 313
+cum_10
+	bounds: 2, 5, 67, 83
+	rotate: 90
+cum_11
+	bounds: 242, 30, 35, 42
+cum_13
+	bounds: 1307, 492, 110, 133
+	rotate: 90
+cum_14
+	bounds: 1383, 1368, 82, 96
+cum_7
+	bounds: 1842, 1405, 79, 67
+dick
+	bounds: 366, 1106, 427, 131
+	rotate: 90
+eyelashes_R
+	bounds: 1842, 1369, 47, 34
+face
+	bounds: 1112, 492, 193, 203
+hair 1
+	bounds: 465, 1563, 182, 565
+	rotate: 90
+hair 2
+	bounds: 315, 668, 384, 192
+	rotate: 90
+hair background 1
+	bounds: 1917, 932, 96, 133
+hand left
+	bounds: 1103, 941, 279, 247
+	rotate: 90
+hand right 1
+	bounds: 1483, 1347, 357, 125
+hand right 2
+	bounds: 1112, 314, 220, 176
+hat
+	bounds: 509, 544, 349, 299
+hm_accessories 1
+	bounds: 499, 1191, 341, 370
+hm_accessories 2
+	bounds: 959, 17, 194, 140
+	rotate: 90
+hm_brush left 3
+	bounds: 87, 6, 78, 66
+hm_brush left 4
+	bounds: 1489, 365, 73, 139
+hm_brush left 5
+	bounds: 842, 1191, 33, 101
+	rotate: 90
+hm_brush right
+	bounds: 315, 547, 176, 119
+hm_chest
+	bounds: 1334, 329, 153, 161
+hm_chest left
+	bounds: 860, 606, 268, 249
+	rotate: 90
+hm_chest right
+	bounds: 1111, 697, 242, 232
+	rotate: 90
+hm_face
+	bounds: 1724, 914, 151, 191
+	rotate: 90
+hm_hand left
+	bounds: 945, 341, 165, 263
+hm_hand right
+	bounds: 1345, 752, 174, 287
+	rotate: 90
+hm_hm_leg right blik
+	bounds: 509, 845, 344, 322
+	rotate: 90
+hm_hm_leg right blik 2
+	bounds: 318, 19, 200, 321
+	rotate: 90
+hm_leg left 2
+	bounds: 2, 74, 314, 468
+hm_leg right 1
+	bounds: 318, 221, 324, 321
+hm_leg right 2
+	bounds: 997, 1752, 294, 468
+	rotate: 90
+hm_leg right tatto
+	bounds: 1011, 1222, 370, 242
+hm_lips 2 faza
+	bounds: 1307, 633, 62, 34
+	rotate: 90
+hm_lips 3 faza
+	bounds: 1938, 1488, 63, 39
+hm_liquid
+	bounds: 1642, 935, 80, 163
+hm_shadow brush left
+	bounds: 1558, 610, 135, 140
+hm_shadow brush right
+	bounds: 945, 213, 147, 126
+hm_tors
+	bounds: 2, 544, 311, 508
+hm_vagina
+	bounds: 1574, 524, 84, 127
+	rotate: 90
+hm_veko 2
+	bounds: 641, 2, 40, 21
+	rotate: 90
+leg left man 1
+	bounds: 1032, 1466, 284, 449
+	rotate: 90
+leg left man 2
+	bounds: 644, 206, 336, 299
+	rotate: 90
+leg left sh
+	bounds: 1938, 1529, 108, 84
+leg left ver 3
+	bounds: 1938, 1615, 234, 100
+	rotate: 90
+lips 1 faza
+	bounds: 860, 563, 63, 41
+lips 3 faza
+	bounds: 366, 1056, 61, 48
+man hand right 2 sh
+	bounds: 1467, 1851, 195, 567
+	rotate: 90
+man hand right 2 ver 3_1
+	bounds: 842, 1226, 167, 335
+man hand right 2 ver 3_2
+	bounds: 1352, 928, 170, 288
+	rotate: 90
+popa
+	bounds: 2, 1535, 461, 511
+popa left ver 2
+	bounds: 1383, 1100, 245, 351
+	rotate: 90
+semen 2
+	bounds: 1442, 506, 130, 96
+shadow hand
+	bounds: 641, 44, 316, 160
+shoes left
+	bounds: 465, 1747, 530, 299
+tors man 1
+	bounds: 1483, 1474, 375, 453
+	rotate: 90
+tors ver 2
+	bounds: 2, 1054, 479, 362
+	rotate: 90
+vagina ver 2
+	bounds: 167, 4, 68, 73
+	rotate: 90
+veko closed 1
+	bounds: 1352, 1191, 29, 29

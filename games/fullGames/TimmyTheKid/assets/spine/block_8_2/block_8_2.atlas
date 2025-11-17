@@ -1,0 +1,82 @@
+block_8_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+accessories
+	bounds: 500, 182, 146, 203
+accessories A L
+	bounds: 1312, 1549, 65, 143
+accessories A R
+	bounds: 760, 1048, 131, 97
+	rotate: 90
+accessories X
+	bounds: 2, 311, 423, 391
+belok left
+	bounds: 427, 340, 24, 45
+belok right
+	bounds: 453, 361, 24, 45
+	rotate: 90
+brow left
+	bounds: 2, 6, 18, 57
+	rotate: 90
+brow right
+	bounds: 951, 1451, 22, 57
+chest left
+	bounds: 638, 1238, 311, 270
+chest right
+	bounds: 2, 26, 324, 283
+face
+	bounds: 991, 1530, 221, 168
+hair
+	bounds: 2, 704, 447, 445
+hair shadow
+	bounds: 639, 701, 104, 138
+hand left
+	bounds: 1022, 1700, 298, 87
+hand right
+	bounds: 500, 43, 187, 137
+leg left
+	bounds: 2, 1717, 1018, 323
+leg right
+	bounds: 2, 1510, 987, 205
+light chest
+	bounds: 451, 676, 186, 473
+lips
+	bounds: 2005, 1975, 35, 65
+pupil left
+	bounds: 427, 683, 14, 19
+pupil right
+	bounds: 991, 1515, 13, 19
+	rotate: 90
+ropes 1
+	bounds: 328, 23, 170, 286
+ropes 2
+	bounds: 1022, 1789, 251, 512
+	rotate: 90
+shadow hair
+	bounds: 427, 387, 232, 287
+shadow ropes 1
+	bounds: 1536, 1801, 239, 467
+	rotate: 90
+shadow ropes 2
+	bounds: 1214, 1538, 96, 160
+sperma 1
+	bounds: 760, 932, 103, 114
+sperma 2
+	bounds: 1322, 1694, 93, 207
+	rotate: 90
+sperma 3
+	bounds: 639, 984, 119, 195
+sperma 4
+	bounds: 638, 1181, 210, 55
+sperma 5
+	bounds: 760, 855, 92, 75
+tors
+	bounds: 2, 1151, 634, 357
+vagina
+	bounds: 639, 841, 119, 141
+veko 1
+	bounds: 453, 335, 24, 45
+	rotate: 90
+veko 2
+	bounds: 639, 676, 23, 45
+	rotate: 90

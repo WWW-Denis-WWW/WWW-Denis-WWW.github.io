@@ -1,0 +1,24 @@
+block_6_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+dick
+	bounds: 1176, 364, 211, 725
+	rotate: 90
+eggs
+	bounds: 2, 129, 210, 190
+hand right_down
+	bounds: 1704, 828, 157, 168
+hand right_up
+	bounds: 1176, 577, 526, 419
+leg left
+	bounds: 2, 321, 617, 1683
+leg right
+	bounds: 621, 277, 553, 1727
+popa
+	bounds: 1176, 1411, 828, 593
+shadow hands 1
+	bounds: 1874, 1339, 124, 70
+shadow hands 2
+	bounds: 1176, 295, 109, 67
+tors
+	bounds: 1176, 998, 696, 411

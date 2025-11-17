@@ -1,0 +1,107 @@
+pose_02.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok 1
+	bounds: 1964, 928, 62, 58
+bg
+	bounds: 2, 966, 1920, 1080
+brow
+	bounds: 1980, 1521, 91, 66
+	rotate: 90
+eyelid 1
+	bounds: 1525, 329, 52, 40
+finger
+	bounds: 1525, 371, 74, 59
+hair
+	bounds: 812, 432, 794, 532
+hair_1
+	bounds: 1924, 1060, 115, 236
+hand
+	bounds: 1924, 1298, 54, 314
+hand ver 2
+	bounds: 1924, 1614, 104, 432
+leg right
+	bounds: 812, 48, 711, 382
+leg woman right ver 2
+	bounds: 1608, 321, 354, 643
+lips 1 faza bottom
+	bounds: 1924, 988, 70, 110
+	rotate: 90
+pupil 1
+	bounds: 1579, 344, 25, 27
+	rotate: 90
+sluna
+	bounds: 1525, 30, 289, 505
+	rotate: 90
+sperma_2
+	bounds: 1964, 876, 32, 50
+sperma_3
+	bounds: 968, 7, 39, 58
+	rotate: 90
+sperma_4
+	bounds: 812, 7, 39, 105
+	rotate: 90
+tors_ver_2
+	bounds: 2, 3, 808, 961
+veko 3 faza
+	bounds: 1980, 1320, 49, 73
+white 1
+	bounds: 919, 2, 47, 44
+yazik
+	bounds: 1980, 1395, 47, 124
+
+pose_02_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+chest left ver 2
+	bounds: 516, 2, 258, 228
+	rotate: 90
+chest right
+	bounds: 1713, 1464, 275, 237
+	rotate: 90
+eggs
+	bounds: 516, 262, 322, 273
+face 1 faza
+	bounds: 2, 148, 342, 443
+fingers
+	bounds: 1951, 1901, 87, 145
+hand 1
+	bounds: 588, 954, 209, 610
+hand right
+	bounds: 2, 593, 519, 464
+leg left ver 2
+	bounds: 2, 1566, 812, 480
+leg left woman
+	bounds: 746, 16, 244, 295
+	rotate: 90
+lips 1 faza
+	bounds: 1014, 1478, 149, 110
+lips 2 faza
+	bounds: 1165, 1483, 146, 105
+lips under 1 faza
+	bounds: 246, 25, 121, 96
+	rotate: 90
+neck
+	bounds: 840, 276, 189, 259
+penis
+	bounds: 816, 1590, 456, 595
+	rotate: 90
+shadow hair
+	bounds: 1413, 1741, 536, 305
+shadow leg
+	bounds: 1413, 1475, 264, 298
+	rotate: 90
+shadow penis
+	bounds: 2, 9, 137, 242
+	rotate: 90
+shoulder_man_1
+	bounds: 523, 537, 415, 342
+	rotate: 90
+shoulder_man_2
+	bounds: 346, 168, 423, 168
+	rotate: 90
+sperma_1
+	bounds: 816, 1413, 175, 196
+	rotate: 90
+tors
+	bounds: 2, 1059, 584, 505

@@ -1,0 +1,50 @@
+block_8_4.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+belok
+	bounds: 319, 580, 22, 18
+brow
+	bounds: 999, 983, 39, 23
+	rotate: 90
+brush left
+	bounds: 609, 294, 161, 119
+brush right
+	bounds: 264, 226, 114, 93
+collar
+	bounds: 581, 415, 141, 217
+	rotate: 90
+face
+	bounds: 2, 37, 181, 221
+	rotate: 90
+hand left 11
+	bounds: 2, 220, 260, 358
+hand right
+	bounds: 384, 411, 195, 187
+handkerchief
+	bounds: 948, 630, 54, 150
+hat
+	bounds: 642, 558, 304, 222
+jacket
+	bounds: 2, 580, 315, 442
+leg left
+	bounds: 642, 782, 355, 240
+leg right 11
+	bounds: 319, 600, 321, 422
+lips
+	bounds: 2, 3, 39, 32
+neck
+	bounds: 380, 181, 130, 133
+	rotate: 90
+pupil
+	bounds: 225, 202, 15, 16
+revolver
+	bounds: 264, 321, 257, 118
+	rotate: 90
+shoes left
+	bounds: 800, 383, 179, 173
+shoes right
+	bounds: 384, 313, 223, 96
+veko
+	bounds: 581, 578, 24, 20
+veko closed
+	bounds: 772, 389, 26, 24

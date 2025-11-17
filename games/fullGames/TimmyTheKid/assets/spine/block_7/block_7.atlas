@@ -1,0 +1,57 @@
+block_7.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_brow left
+	bounds: 76, 323, 41, 19
+2_brow right
+	bounds: 2, 2, 40, 21
+2_lips
+	bounds: 478, 1320, 71, 29
+Layer 26
+	bounds: 133, 507, 178, 255
+belok left
+	bounds: 290, 469, 36, 20
+	rotate: 90
+belok right
+	bounds: 344, 1076, 34, 19
+belt
+	bounds: 2, 25, 317, 72
+	rotate: 90
+brow left
+	bounds: 1031, 1781, 42, 17
+brow right
+	bounds: 1105, 1805, 42, 17
+face
+	bounds: 811, 1634, 164, 218
+	rotate: 90
+hair
+	bounds: 133, 372, 155, 133
+hand left
+	bounds: 2, 344, 129, 703
+hand right
+	bounds: 344, 1251, 132, 695
+hat
+	bounds: 811, 1800, 292, 146
+jeans
+	bounds: 2, 1049, 340, 897
+lips
+	bounds: 303, 982, 65, 31
+	rotate: 90
+neck
+	bounds: 133, 764, 168, 283
+pupil left
+	bounds: 439, 1235, 17, 14
+pupil right
+	bounds: 478, 1304, 16, 14
+shoes left
+	bounds: 1105, 1824, 239, 122
+shoes right
+	bounds: 344, 1097, 93, 152
+veko 1
+	bounds: 1346, 1925, 36, 21
+veko 2
+	bounds: 133, 348, 35, 22
+vest bottom
+	bounds: 478, 1351, 321, 277
+vest top
+	bounds: 478, 1630, 331, 316
