@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "yWq8JwwMgCI",
+	"hash": "W8H9tFGJJZk",
 	"spine": "4.1.24",
 	"x": -61.76,
 	"y": -1136.65,
@@ -253,14 +253,15 @@
 	{ "name": "shoulder_man_2", "bone": "bone18", "attachment": "shoulder_man_2" },
 	{ "name": "shoulder_man_4", "bone": "bone23", "attachment": "shoulder_man_2" },
 	{ "name": "hair_1", "bone": "hair_1", "attachment": "hair_1" },
+	{ "name": "shadow leg", "bone": "leg left2", "attachment": "shadow leg" },
+	{ "name": "hand right2", "bone": "hand right", "attachment": "hand right" },
 	{ "name": "leg woman right ver 2", "bone": "leg woman right", "attachment": "leg woman right ver 2" },
+	{ "name": "leg left woman", "bone": "leg left woman", "attachment": "leg left woman" },
 	{ "name": "leg left ver 2", "bone": "leg left2", "attachment": "leg left ver 2" },
+	{ "name": "hand right", "bone": "hand right", "attachment": "hand right" },
 	{ "name": "shadow penis", "bone": "penis2", "attachment": "shadow penis" },
 	{ "name": "leg right", "bone": "bone10", "attachment": "leg right" },
-	{ "name": "shadow leg", "bone": "leg left2", "attachment": "shadow leg" },
-	{ "name": "hand right", "bone": "hand right", "attachment": "hand right" },
 	{ "name": "eggs", "bone": "eggs", "attachment": "eggs" },
-	{ "name": "leg left woman", "bone": "leg left woman", "attachment": "leg left woman" },
 	{ "name": "tors_ver_2", "bone": "bone11", "attachment": "tors_ver_2" },
 	{ "name": "hand", "bone": "bone17", "attachment": "hand" },
 	{ "name": "hand ver 2", "bone": "bone17", "attachment": "hand ver 2" },
@@ -482,6 +483,18 @@
 				}
 			},
 			"hand right": {
+				"hand right": {
+					"type": "mesh",
+					"uvs": [ 0, 0.23265, 0.0787, 0.36041, 0.20122, 0.48584, 0.31959, 0.57875, 0.41719, 0.69025, 0.68923, 0.59269, 0.59579, 0.45564, 0.49611, 0.32789, 0.37981, 0.18155, 0.25937, 0.0538, 0.12646, 0, 0, 0 ],
+					"triangles": [ 0, 11, 10, 9, 1, 0, 9, 0, 10, 1, 9, 8, 2, 1, 8, 2, 8, 7, 3, 2, 7, 3, 7, 6, 4, 3, 6, 4, 6, 5 ],
+					"vertices": [ 1, 53, 1.35, -55.08, 1, 1, 53, 71.81, -69.83, 1, 1, 53, 158, -68.11, 1, 1, 53, 232.21, -56.95, 1, 2, 53, 304.58, -59.47, 0.76032, 54, -14.28, -62.58, 0.23968, 2, 53, 375.58, 70.69, 0.12524, 54, 34.9, 77.3, 0.87476, 2, 53, 296.61, 83.28, 0.88592, 54, -45.08, 77.04, 0.11408, 1, 53, 218.26, 90.52, 1, 1, 53, 127.73, 98.05, 1, 1, 53, 41.58, 97.86, 1, 1, 53, -25.58, 68.35, 1, 1, 53, -73.1, 23.08, 1 ],
+					"hull": 12,
+					"edges": [ 0, 2, 2, 4, 4, 6, 6, 8, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 0, 22, 8, 10 ],
+					"width": 519,
+					"height": 464
+				}
+			},
+			"hand right2": {
 				"hand right": {
 					"type": "mesh",
 					"uvs": [ 0, 0.23265, 0.0787, 0.36041, 0.20122, 0.48584, 0.31959, 0.57875, 0.41719, 0.69025, 0.50857, 0.83658, 0.65185, 1, 1, 1, 1, 0.94343, 0.91351, 0.82032, 0.80137, 0.69489, 0.68923, 0.59269, 0.59579, 0.45564, 0.49611, 0.32789, 0.37981, 0.18155, 0.25937, 0.0538, 0.12646, 0, 0, 0 ],
@@ -1211,15 +1224,15 @@
 			"hand right": {
 				"rotate": [
 					{
-						"value": -10.59,
-						"curve": [ 0.609, -10.59, 1.224, -3.32 ]
+						"value": 0.21,
+						"curve": [ 0.609, 0.21, 1.224, -4.62 ]
 					},
 					{
 						"time": 1.8333,
-						"value": -3.32,
-						"curve": [ 2.442, -3.32, 3.058, -10.59 ]
+						"value": -4.62,
+						"curve": [ 2.442, -4.62, 3.056, 0.21 ]
 					},
-					{ "time": 3.6667, "value": -10.59 }
+					{ "time": 3.6667, "value": 0.21 }
 				],
 				"translate": [
 					{ "x": 37.21, "y": -59.44 }
@@ -1228,15 +1241,15 @@
 			"hand right2": {
 				"rotate": [
 					{
-						"value": -10.59,
-						"curve": [ 0.609, -10.59, 1.224, -3.32 ]
+						"value": -33.39,
+						"curve": [ 0.609, -33.39, 1.224, -3.32 ]
 					},
 					{
 						"time": 1.8333,
 						"value": -3.32,
-						"curve": [ 2.442, -3.32, 3.058, -10.59 ]
+						"curve": [ 2.442, -3.32, 3.056, -33.39 ]
 					},
-					{ "time": 3.6667, "value": -10.59 }
+					{ "time": 3.6667, "value": -33.39 }
 				]
 			},
 			"hair_1": {
@@ -5474,7 +5487,9 @@
 			},
 			"hand right": {
 				"rotate": [
-					{ "value": -2.8 }
+					{ "value": -2.8, "curve": "stepped" },
+					{ "time": 3.9333, "value": -2.8 },
+					{ "time": 5.3333, "value": -0.4 }
 				],
 				"translate": [
 					{ "x": 37.21, "y": -59.44 }
@@ -6368,7 +6383,7 @@
 			},
 			"hand right": {
 				"rotate": [
-					{ "value": -2.8 }
+					{ "value": -0.4 }
 				],
 				"translate": [
 					{ "x": 37.21, "y": -59.44 }
@@ -6870,7 +6885,10 @@
 			},
 			"hand right": {
 				"rotate": [
-					{ "value": -10.59 },
+					{
+						"value": 0.21,
+						"curve": [ 0.222, 0.21, 0.444, -1.54 ]
+					},
 					{ "time": 0.6667, "value": -1.54 }
 				],
 				"translate": [
@@ -6879,7 +6897,10 @@
 			},
 			"hand right2": {
 				"rotate": [
-					{ "value": -10.59 },
+					{
+						"value": -33.39,
+						"curve": [ 0.222, -33.39, 0.444, -1.54 ]
+					},
 					{ "time": 0.6667, "value": -1.54 }
 				]
 			},
@@ -7688,7 +7709,7 @@
 				"rotate": [
 					{ "value": -1.54, "curve": "stepped" },
 					{ "time": 0.8333, "value": -1.54 },
-					{ "time": 1.5, "value": -10.59 }
+					{ "time": 1.5, "value": 0.21 }
 				],
 				"translate": [
 					{ "x": 37.21, "y": -59.44 }
@@ -7698,7 +7719,7 @@
 				"rotate": [
 					{ "value": -1.54, "curve": "stepped" },
 					{ "time": 0.8333, "value": -1.54 },
-					{ "time": 1.5, "value": -10.59 }
+					{ "time": 1.5, "value": -33.39 }
 				]
 			},
 			"hair_1": {

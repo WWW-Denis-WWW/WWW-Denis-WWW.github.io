@@ -129,45 +129,51 @@ pose_03_2.webp
 	size: 2048, 2048
 	filter: Linear, Linear
 brow left
-	bounds: 622, 1240, 62, 55
+	bounds: 829, 905, 62, 55
 chest
-	bounds: 2, 194, 399, 323
+	bounds: 723, 962, 399, 323
 comp_3
-	bounds: 961, 1386, 125, 62
+	bounds: 1953, 1916, 125, 62
+	rotate: 90
 hair
-	bounds: 1728, 1372, 328, 318
+	bounds: 437, 537, 328, 318
 	rotate: 90
 hand_1_ver_2
-	bounds: 1323, 1702, 559, 344
+	bounds: 2, 168, 559, 344
 hand_2_ver_2
-	bounds: 961, 1450, 360, 596
+	bounds: 622, 1287, 360, 596
+	rotate: 90
 leg man ver 2
-	bounds: 622, 1379, 337, 667
+	bounds: 1284, 1704, 337, 667
+	rotate: 90
+legs_pecks_1
+	bounds: 622, 1649, 660, 392
 lips 1 faza
-	bounds: 98, 141, 100, 51
+	bounds: 1284, 1651, 100, 51
 lips 2 faza
-	bounds: 563, 1176, 99, 57
+	bounds: 1220, 1548, 99, 57
 	rotate: 90
 nose
-	bounds: 1884, 1956, 77, 90
+	bounds: 128, 76, 77, 90
 penis
-	bounds: 2, 519, 756, 433
+	bounds: 2, 514, 756, 433
 	rotate: 90
 sperma_10
-	bounds: 1088, 1394, 71, 54
+	bounds: 1953, 1843, 71, 54
+	rotate: 90
 sperma_6
-	bounds: 2, 16, 59, 71
+	bounds: 2, 2, 59, 71
+	rotate: 90
 sperma_8
-	bounds: 437, 1080, 67, 90
+	bounds: 1124, 1090, 67, 90
 sperma_9
-	bounds: 622, 1297, 80, 104
+	bounds: 723, 880, 80, 104
 	rotate: 90
 tors
-	bounds: 1323, 1416, 284, 403
-	rotate: 90
+	bounds: 437, 867, 284, 403
 tors man ver 2
-	bounds: 2, 1277, 618, 769
+	bounds: 2, 1272, 618, 769
 wrist_3_sh
-	bounds: 437, 1172, 124, 103
+	bounds: 2, 63, 124, 103
 wrist_4_sh
-	bounds: 2, 89, 94, 103
+	bounds: 1124, 1182, 94, 103
