@@ -1,0 +1,64 @@
+block_9_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+Layer 26
+	bounds: 1934, 1891, 155, 109
+	rotate: 90
+accessories
+	bounds: 511, 54, 265, 115
+belok left
+	bounds: 1798, 771, 73, 33
+belok right
+	bounds: 1934, 1809, 73, 34
+brow left
+	bounds: 777, 981, 91, 34
+	rotate: 90
+brow right
+	bounds: 1705, 768, 91, 36
+face
+	bounds: 1705, 806, 240, 319
+	rotate: 90
+hair
+	bounds: 2, 1074, 821, 972
+hair background
+	bounds: 541, 783, 289, 234
+	rotate: 90
+hand left
+	bounds: 541, 171, 604, 671
+	rotate: 90
+hand right
+	bounds: 1214, 77, 544, 671
+leg left
+	bounds: 1323, 750, 380, 1296
+leg right
+	bounds: 825, 777, 496, 1269
+lips
+	bounds: 1934, 1845, 112, 44
+pupil left
+	bounds: 511, 184, 28, 24
+pupil right
+	bounds: 1214, 751, 26, 24
+shadow hand
+	bounds: 2, 66, 507, 142
+shoes L
+	bounds: 1705, 1375, 227, 671
+tors
+	bounds: 2, 210, 537, 862
+vagina
+	bounds: 1705, 1048, 301, 325
+veko closed 1
+	bounds: 2, 26, 73, 38
+veko closed 2
+	bounds: 778, 131, 73, 38
+
+block_9_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+chest left
+	bounds: 706, 1077, 429, 477
+chest right
+	bounds: 1137, 1079, 417, 475
+shadow hair
+	bounds: 2, 1031, 702, 523
+shoes R
+	bounds: 2, 345, 349, 684

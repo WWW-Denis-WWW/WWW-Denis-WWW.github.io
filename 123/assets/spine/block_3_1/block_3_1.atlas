@@ -1,0 +1,86 @@
+block_3_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_belok left
+	bounds: 1877, 1303, 73, 38
+2_belok right
+	bounds: 1877, 1343, 73, 42
+2_face
+	bounds: 463, 147, 240, 319
+	rotate: 90
+2_lips
+	bounds: 1877, 1387, 103, 61
+2_pupil left
+	bounds: 1758, 45, 24, 23
+2_pupil right
+	bounds: 349, 48, 24, 21
+belok left
+	bounds: 1877, 1268, 73, 33
+belok right
+	bounds: 410, 94, 73, 34
+	rotate: 90
+boots L
+	bounds: 1758, 70, 227, 671
+boots R
+	bounds: 463, 389, 349, 683
+brow left
+	bounds: 410, 169, 91, 34
+	rotate: 90
+brow right
+	bounds: 1994, 1519, 91, 36
+	rotate: 90
+chest
+	bounds: 814, 43, 749, 450
+	rotate: 90
+ears
+	bounds: 1877, 1450, 264, 115
+	rotate: 90
+hair
+	bounds: 2, 1074, 821, 972
+hair background
+	bounds: 2, 20, 240, 345
+	rotate: 90
+hand left
+	bounds: 1610, 1178, 265, 868
+kobura
+	bounds: 1610, 743, 271, 433
+leg left
+	bounds: 1281, 725, 327, 1321
+leg right
+	bounds: 825, 794, 454, 1252
+lips
+	bounds: 1994, 1612, 102, 52
+	rotate: 90
+nose
+	bounds: 349, 71, 59, 189
+pupil left
+	bounds: 784, 363, 28, 24
+pupil right
+	bounds: 784, 363, 28, 24
+shadow hair
+	bounds: 1877, 1716, 330, 168
+	rotate: 90
+short
+	bounds: 1266, 40, 683, 490
+	rotate: 90
+tors
+	bounds: 2, 262, 459, 810
+veko 1
+	bounds: 1994, 1452, 65, 35
+	rotate: 90
+veko 2
+	bounds: 1877, 1231, 65, 35
+
+block_3_1_2.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+brush left
+	bounds: 191, 378, 231, 183
+brush right
+	bounds: 433, 697, 228, 185
+face
+	bounds: 191, 563, 240, 319
+hand right
+	bounds: 2, 2, 187, 880
+scarf
+	bounds: 191, 182, 187, 194

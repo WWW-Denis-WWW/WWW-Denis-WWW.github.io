@@ -1,0 +1,43 @@
+block_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok left
+	bounds: 788, 1170, 50, 27
+	rotate: 90
+belok right
+	bounds: 615, 1123, 52, 28
+brow left
+	bounds: 273, 285, 65, 33
+brow right
+	bounds: 2, 2, 76, 27
+brush right
+	bounds: 273, 320, 207, 172
+	rotate: 90
+face
+	bounds: 2, 185, 269, 342
+hair
+	bounds: 2, 31, 261, 152
+hand left
+	bounds: 615, 1222, 211, 739
+hand right
+	bounds: 2, 529, 462, 558
+hat
+	bounds: 828, 1707, 293, 254
+jacket
+	bounds: 2, 1089, 611, 872
+lips
+	bounds: 1123, 1916, 78, 45
+moustache
+	bounds: 828, 1648, 135, 57
+pupil left
+	bounds: 591, 1060, 27, 22
+	rotate: 90
+pupil right
+	bounds: 828, 1624, 25, 22
+shoulder straps L
+	bounds: 466, 902, 185, 123
+	rotate: 90
+shoulder straps R
+	bounds: 615, 1153, 171, 67
+veko 2
+	bounds: 466, 871, 55, 29

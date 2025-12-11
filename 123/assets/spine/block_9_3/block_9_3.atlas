@@ -1,0 +1,79 @@
+block_9_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+accessories
+	bounds: 2, 452, 423, 391
+accessories A
+	bounds: 380, 2, 146, 203
+	rotate: 90
+accessories E L
+	bounds: 738, 1147, 148, 32
+accessories E R
+	bounds: 1816, 1712, 150, 31
+	rotate: 90
+belok left 1
+	bounds: 424, 189, 23, 46
+belok left 2
+	bounds: 714, 1058, 19, 46
+belok right 1
+	bounds: 572, 796, 24, 47
+belok right 2
+	bounds: 603, 896, 20, 48
+brow left
+	bounds: 2, 9, 21, 56
+	rotate: 90
+brow right
+	bounds: 738, 1566, 22, 54
+	rotate: 90
+chest
+	bounds: 223, 8, 155, 442
+chest left
+	bounds: 1033, 1254, 293, 270
+	rotate: 90
+chest right
+	bounds: 738, 1235, 293, 312
+face
+	bounds: 1866, 1831, 215, 170
+	rotate: 90
+hair
+	bounds: 2, 845, 599, 259
+hand left
+	bounds: 800, 1549, 433, 137
+hand right
+	bounds: 427, 443, 400, 143
+	rotate: 90
+leg left
+	bounds: 2, 1106, 734, 482
+leg right
+	bounds: 2, 1590, 796, 456
+lips
+	bounds: 1235, 1609, 34, 77
+pupil left
+	bounds: 1235, 1580, 18, 27
+pupil right
+	bounds: 1271, 1664, 18, 22
+rope 1
+	bounds: 1337, 1864, 182, 527
+	rotate: 90
+rope 2
+	bounds: 424, 237, 162, 204
+shadow hair L
+	bounds: 738, 1181, 297, 52
+shadow hair R
+	bounds: 380, 150, 300, 42
+	rotate: 90
+shadow rope 1
+	bounds: 1337, 1706, 156, 477
+	rotate: 90
+shadow rope 2
+	bounds: 603, 946, 109, 158
+taz
+	bounds: 2, 32, 219, 418
+tors
+	bounds: 800, 1688, 535, 358
+veko closed 1
+	bounds: 738, 1124, 21, 40
+	rotate: 90
+veko closed 2
+	bounds: 888, 1158, 21, 40
+	rotate: 90

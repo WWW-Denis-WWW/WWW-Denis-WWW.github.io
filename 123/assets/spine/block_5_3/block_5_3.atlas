@@ -1,0 +1,60 @@
+block_5_3.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+accessories
+	bounds: 844, 181, 158, 70
+	rotate: 90
+belok left
+	bounds: 892, 368, 41, 19
+belok right
+	bounds: 58, 11, 35, 17
+brow left
+	bounds: 813, 41, 48, 21
+brow right
+	bounds: 966, 576, 40, 14
+	rotate: 90
+brush left
+	bounds: 716, 12, 166, 95
+	rotate: 90
+brush right
+	bounds: 813, 64, 98, 114
+chest
+	bounds: 662, 341, 228, 95
+face
+	bounds: 646, 180, 159, 196
+	rotate: 90
+hair
+	bounds: 662, 618, 319, 404
+hand left
+	bounds: 396, 168, 197, 248
+	rotate: 90
+hand right
+	bounds: 224, 21, 127, 490
+	rotate: 90
+leg left
+	bounds: 2, 30, 220, 992
+leg right
+	bounds: 224, 150, 170, 872
+light
+	bounds: 662, 438, 178, 302
+	rotate: 90
+lips
+	bounds: 2, 6, 54, 22
+nose
+	bounds: 983, 957, 35, 65
+pupil left
+	bounds: 646, 348, 17, 14
+	rotate: 90
+pupil right
+	bounds: 396, 152, 15, 14
+pursing
+	bounds: 646, 168, 10, 15
+	rotate: 90
+sperma
+	bounds: 892, 389, 65, 47
+tors
+	bounds: 396, 367, 264, 655
+veko 1
+	bounds: 983, 917, 34, 18
+veko 2
+	bounds: 983, 937, 39, 18

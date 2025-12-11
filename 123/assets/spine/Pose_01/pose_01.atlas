@@ -1,0 +1,137 @@
+pose_01.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok left 1 faza
+	bounds: 259, 336, 36, 35
+belok right 1 faza
+	bounds: 2008, 1765, 50, 38
+	rotate: 90
+bg
+	bounds: 2, 966, 1920, 1080
+brow 1
+	bounds: 138, 296, 27, 31
+	rotate: 90
+brow 2
+	bounds: 2014, 1992, 54, 23
+	rotate: 90
+hair_R
+	bounds: 1705, 292, 229, 672
+hand 2 man
+	bounds: 945, 43, 251, 629
+	rotate: 90
+lips 1 faza
+	bounds: 138, 325, 80, 46
+lips 2 faza
+	bounds: 1901, 56, 69, 60
+lips 3 faza
+	bounds: 65, 300, 71, 71
+pupil left 1 faza
+	bounds: 1956, 1485, 24, 21
+pupil right 1 faza
+	bounds: 1924, 1431, 25, 23
+semen
+	bounds: 1901, 118, 172, 130
+	rotate: 90
+shadow
+	bounds: 2, 2, 292, 941
+	rotate: 90
+shadow brush
+	bounds: 1924, 1817, 88, 229
+shadow_man
+	bounds: 1576, 46, 244, 323
+	rotate: 90
+sperma_1
+	bounds: 1924, 1566, 65, 59
+	rotate: 90
+sperma_10
+	bounds: 1924, 1633, 60, 69
+sperma_11
+	bounds: 220, 326, 37, 45
+sperma_12
+	bounds: 1972, 57, 59, 59
+sperma_13
+	bounds: 1901, 2, 52, 66
+	rotate: 90
+sperma_14
+	bounds: 945, 12, 29, 55
+	rotate: 90
+sperma_15
+	bounds: 2033, 1691, 13, 21
+sperma_16
+	bounds: 220, 296, 28, 36
+	rotate: 90
+sperma_17
+	bounds: 1986, 1680, 20, 22
+sperma_18
+	bounds: 2008, 1693, 19, 19
+sperma_2
+	bounds: 297, 340, 31, 36
+	rotate: 90
+sperma_3
+	bounds: 1924, 1704, 111, 82
+	rotate: 90
+sperma_4
+	bounds: 2008, 1714, 38, 49
+sperma_5
+	bounds: 2, 296, 61, 75
+sperma_6
+	bounds: 1002, 18, 23, 41
+	rotate: 90
+sperma_7
+	bounds: 1002, 2, 14, 15
+	rotate: 90
+sperma_8
+	bounds: 1924, 1456, 30, 50
+sperma_9
+	bounds: 1924, 1508, 58, 56
+tors man ver 2
+	bounds: 2, 373, 591, 1009
+	rotate: 90
+tors woman ver2
+	bounds: 1013, 296, 668, 690
+	rotate: 90
+
+pose_01_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+accessories
+	bounds: 1548, 1116, 196, 170
+	rotate: 90
+brush ver2
+	bounds: 595, 307, 272, 273
+chest left ver2
+	bounds: 1090, 1077, 449, 456
+	rotate: 90
+chest right ver 2
+	bounds: 2, 1451, 527, 514
+dick ver2
+	bounds: 619, 1086, 469, 452
+face ver2
+	bounds: 617, 582, 299, 315
+	rotate: 90
+hair L
+	bounds: 2, 830, 399, 619
+hair background
+	bounds: 619, 883, 350, 201
+hand 1 man
+	bounds: 1107, 1528, 437, 547
+	rotate: 90
+leg 1 woman ver2
+	bounds: 1656, 1583, 309, 382
+leg 2 woman
+	bounds: 417, 288, 303, 176
+	rotate: 90
+leg woman
+	bounds: 403, 911, 538, 214
+	rotate: 90
+leg woman_sh
+	bounds: 2, 36, 494, 246
+leg_ver 3
+	bounds: 531, 1540, 574, 425
+leg_ver2
+	bounds: 2, 284, 544, 413
+	rotate: 90
+shadow hair L
+	bounds: 1548, 1314, 147, 212
+shadow hair R
+	bounds: 417, 593, 198, 316

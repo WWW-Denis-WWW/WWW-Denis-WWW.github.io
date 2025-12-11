@@ -1,0 +1,153 @@
+pose_04.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok 2 faza
+	bounds: 1109, 2, 35, 33
+belok left girl
+	bounds: 712, 1525, 51, 63
+belok right girl
+	bounds: 1056, 23, 51, 61
+bg1
+	bounds: 2, 1590, 768, 456
+brow left girl
+	bounds: 1954, 1542, 38, 55
+	rotate: 90
+brow man
+	bounds: 1078, 154, 51, 39
+	rotate: 90
+brow right girl
+	bounds: 2019, 1982, 27, 64
+brush man L
+	bounds: 969, 10, 85, 74
+brush man L 1
+	bounds: 1078, 263, 35, 103
+brush man L 1 sh
+	bounds: 2, 7, 25, 85
+	rotate: 90
+brush man L 2
+	bounds: 837, 373, 90, 118
+	rotate: 90
+brush man L 3
+	bounds: 1954, 1650, 60, 87
+chest left
+	bounds: 2, 34, 444, 320
+chest right
+	bounds: 1143, 1032, 491, 376
+	rotate: 90
+closed eye man
+	bounds: 1235, 48, 37, 36
+dick
+	bounds: 1382, 1536, 570, 280
+eyelashes_L
+	bounds: 1923, 1266, 51, 63
+	rotate: 90
+eyelashes_R
+	bounds: 1172, 38, 46, 61
+	rotate: 90
+feathers
+	bounds: 1125, 469, 561, 539
+	rotate: 90
+girl_leg_sh
+	bounds: 1907, 689, 88, 234
+hair man
+	bounds: 1707, 1836, 310, 210
+hair_L
+	bounds: 650, 1055, 468, 491
+	rotate: 90
+hair_R
+	bounds: 2, 356, 416, 693
+hand left
+	bounds: 969, 86, 377, 107
+	rotate: 90
+hand man 1
+	bounds: 1848, 86, 421, 169
+	rotate: 90
+hand man 2
+	bounds: 1521, 1068, 142, 195
+hand right girl 1
+	bounds: 1666, 509, 174, 346
+	rotate: 90
+hand right girl 2
+	bounds: 1521, 1265, 400, 269
+heel
+	bounds: 1667, 86, 421, 179
+	rotate: 90
+heel_sh
+	bounds: 1907, 925, 338, 85
+	rotate: 90
+leg left man 1
+	bounds: 772, 1525, 608, 291
+leg left man 2
+	bounds: 837, 465, 286, 588
+leg left woman 1
+	bounds: 420, 372, 677, 415
+	rotate: 90
+leg left woman 2
+	bounds: 1666, 685, 578, 239
+	rotate: 90
+leg right man 2
+	bounds: 1125, 86, 540, 381
+leg woman right 1
+	bounds: 772, 1818, 933, 228
+leg woman right 2
+	bounds: 448, 14, 356, 519
+	rotate: 90
+lips 1 faza
+	bounds: 1078, 368, 45, 95
+lips 2 faza
+	bounds: 1954, 1739, 55, 95
+lips 3 faza
+	bounds: 1954, 1582, 55, 66
+lips man
+	bounds: 1109, 37, 61, 47
+pupil 1 faza man
+	bounds: 1988, 1297, 22, 20
+pupil left girl
+	bounds: 1521, 1045, 22, 21
+pupil right girl
+	bounds: 2019, 1902, 21, 22
+shadow leg
+	bounds: 1923, 1319, 97, 215
+sperma_2
+	bounds: 650, 1525, 63, 60
+	rotate: 90
+sperma_3
+	bounds: 2019, 1926, 54, 27
+	rotate: 90
+tors girl
+	bounds: 2, 1051, 646, 537
+veko closed 1
+	bounds: 1078, 207, 39, 54
+veko closed 2
+	bounds: 1078, 102, 40, 50
+
+pose_04_2.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+accessories
+	bounds: 335, 355, 216, 262
+brush man r
+	bounds: 553, 435, 192, 136
+	rotate: 90
+brush man r sh
+	bounds: 142, 16, 130, 98
+chest
+	bounds: 273, 146, 204, 207
+face man
+	bounds: 539, 753, 317, 263
+face woman
+	bounds: 2, 116, 269, 241
+leg right man 1
+	bounds: 858, 601, 415, 158
+	rotate: 90
+shadow vagina
+	bounds: 479, 206, 97, 147
+sperma_1
+	bounds: 2, 4, 138, 110
+taz
+	bounds: 2, 359, 331, 258
+taz 2
+	bounds: 2, 619, 535, 397
+vagina
+	bounds: 539, 629, 122, 190
+	rotate: 90

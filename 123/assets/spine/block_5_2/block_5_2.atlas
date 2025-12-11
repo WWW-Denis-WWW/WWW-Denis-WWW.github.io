@@ -1,0 +1,76 @@
+block_5_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_lips 2
+	bounds: 404, 492, 29, 30
+accessories
+	bounds: 291, 206, 65, 50
+belok 1
+	bounds: 2020, 2016, 29, 25
+	rotate: 90
+brow 1
+	bounds: 1345, 1564, 38, 27
+brush left
+	bounds: 590, 1483, 51, 115
+	rotate: 90
+brush right 1
+	bounds: 404, 524, 84, 99
+chest left
+	bounds: 291, 372, 87, 113
+chest right
+	bounds: 291, 487, 111, 136
+eggs
+	bounds: 291, 258, 67, 112
+face 1
+	bounds: 590, 1536, 286, 426
+	rotate: 90
+forearm left 1
+	bounds: 503, 740, 98, 161
+	rotate: 90
+forearm right 1
+	bounds: 2, 27, 158, 209
+	rotate: 90
+forearm right 2
+	bounds: 1654, 1604, 158, 209
+hand man
+	bounds: 503, 840, 191, 154
+	rotate: 90
+leg left
+	bounds: 327, 722, 174, 746
+leg left 2
+	bounds: 1397, 1815, 391, 230
+leg right
+	bounds: 590, 1824, 221, 805
+	rotate: 90
+leg right 2
+	bounds: 2, 1470, 586, 575
+lips 1
+	bounds: 1814, 1618, 33, 27
+pants 1
+	bounds: 2, 651, 323, 817
+penis
+	bounds: 1345, 1593, 307, 220
+pupil 1
+	bounds: 2001, 1809, 12, 12
+pursing I
+	bounds: 2, 11, 13, 14
+shadow shoulder
+	bounds: 213, 46, 139, 97
+	rotate: 90
+shadow tors
+	bounds: 503, 1234, 234, 114
+	rotate: 90
+shoulder left 1
+	bounds: 1814, 1647, 185, 174
+shoulder right 1
+	bounds: 1790, 1823, 228, 222
+stopa left
+	bounds: 327, 625, 173, 95
+stopa right
+	bounds: 503, 1033, 199, 158
+	rotate: 90
+tors
+	bounds: 2, 187, 287, 462
+tors 1
+	bounds: 1018, 1549, 273, 325
+	rotate: 90

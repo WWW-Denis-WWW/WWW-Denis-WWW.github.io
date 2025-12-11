@@ -1,0 +1,179 @@
+pose_03.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+balls_ver_2
+	bounds: 2, 22, 230, 301
+	rotate: 90
+belok left 1 faza
+	bounds: 2007, 1974, 72, 39
+	rotate: 90
+belok left 2 faza
+	bounds: 1996, 897, 72, 41
+	rotate: 90
+belok left 3 faza
+	bounds: 861, 3, 72, 45
+belok right 1 faza
+	bounds: 2011, 428, 40, 30
+	rotate: 90
+belok right 2 faza
+	bounds: 1962, 353, 40, 33
+belok right 3 faza
+	bounds: 1990, 470, 40, 38
+bg
+	bounds: 2, 966, 1920, 1080
+brow right
+	bounds: 771, 110, 47, 21
+comp_1
+	bounds: 1915, 388, 94, 80
+comp_2
+	bounds: 1915, 470, 133, 73
+	rotate: 90
+ear
+	bounds: 771, 2, 106, 88
+	rotate: 90
+face
+	bounds: 1736, 38, 299, 311
+leg
+	bounds: 948, 30, 319, 786
+	rotate: 90
+lips 3 faza
+	bounds: 1823, 351, 69, 78
+	rotate: 90
+popa 1
+	bounds: 2, 254, 944, 710
+popa 2
+	bounds: 948, 351, 873, 613
+pupil left 2 faza
+	bounds: 935, 2, 26, 25
+	rotate: 90
+pupil right 2 faza
+	bounds: 2024, 1557, 24, 22
+	rotate: 90
+semen
+	bounds: 1823, 605, 172, 130
+	rotate: 90
+semen 1
+	bounds: 844, 110, 142, 88
+	rotate: 90
+shadow chest
+	bounds: 1924, 1755, 81, 291
+shadow penis
+	bounds: 1955, 637, 71, 140
+shadow tors
+	bounds: 1823, 422, 181, 90
+	rotate: 90
+sperma_1
+	bounds: 2007, 1870, 37, 102
+sperma_11
+	bounds: 2026, 1738, 20, 25
+sperma_12
+	bounds: 2007, 1808, 29, 60
+sperma_13
+	bounds: 861, 50, 85, 58
+sperma_14
+	bounds: 2032, 487, 14, 21
+sperma_15
+	bounds: 1972, 610, 16, 25
+sperma_16
+	bounds: 1955, 605, 15, 30
+sperma_17
+	bounds: 36, 2, 18, 25
+	rotate: 90
+sperma_2
+	bounds: 2019, 1351, 27, 69
+sperma_3
+	bounds: 2019, 1308, 17, 41
+sperma_4
+	bounds: 1924, 971, 138, 116
+	rotate: 90
+sperma_5
+	bounds: 1903, 355, 31, 57
+	rotate: 90
+sperma_7
+	bounds: 587, 15, 182, 116
+vagina
+	bounds: 1823, 779, 185, 171
+	rotate: 90
+veko 1 closed
+	bounds: 2007, 1765, 41, 37
+	rotate: 90
+veko 2 closed
+	bounds: 1996, 835, 60, 44
+	rotate: 90
+veko L
+	bounds: 1996, 788, 45, 37
+	rotate: 90
+veko R
+	bounds: 2, 2, 32, 18
+wrist_0
+	bounds: 305, 16, 236, 280
+	rotate: 90
+wrist_1
+	bounds: 1924, 1422, 98, 159
+wrist_1_sh
+	bounds: 587, 133, 255, 119
+wrist_2
+	bounds: 1924, 1111, 148, 105
+	rotate: 90
+wrist_2_sh
+	bounds: 1924, 1261, 159, 93
+	rotate: 90
+wrist_3
+	bounds: 1924, 1583, 170, 100
+	rotate: 90
+wrist_4
+	bounds: 1990, 510, 125, 55
+	rotate: 90
+
+pose_03_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+brow left
+	bounds: 829, 905, 62, 55
+chest
+	bounds: 723, 962, 399, 323
+comp_3
+	bounds: 1953, 1916, 125, 62
+	rotate: 90
+hair
+	bounds: 437, 537, 328, 318
+	rotate: 90
+hand_1_ver_2
+	bounds: 2, 168, 559, 344
+hand_2_ver_2
+	bounds: 622, 1287, 360, 596
+	rotate: 90
+leg man ver 2
+	bounds: 1284, 1704, 337, 667
+	rotate: 90
+legs_pecks_1
+	bounds: 622, 1649, 660, 392
+lips 1 faza
+	bounds: 1284, 1651, 100, 51
+lips 2 faza
+	bounds: 1220, 1548, 99, 57
+	rotate: 90
+nose
+	bounds: 128, 76, 77, 90
+penis
+	bounds: 2, 514, 756, 433
+	rotate: 90
+sperma_10
+	bounds: 1953, 1843, 71, 54
+	rotate: 90
+sperma_6
+	bounds: 2, 2, 59, 71
+	rotate: 90
+sperma_8
+	bounds: 1124, 1090, 67, 90
+sperma_9
+	bounds: 723, 880, 80, 104
+	rotate: 90
+tors
+	bounds: 437, 867, 284, 403
+tors man ver 2
+	bounds: 2, 1272, 618, 769
+wrist_3_sh
+	bounds: 2, 63, 124, 103
+wrist_4_sh
+	bounds: 1124, 1182, 94, 103

@@ -1,0 +1,142 @@
+block_8_7.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_jacket
+	bounds: 635, 161, 458, 678
+	rotate: 90
+accessories
+	bounds: 1315, 574, 45, 132
+	rotate: 90
+accessories 2
+	bounds: 599, 26, 133, 362
+	rotate: 90
+accessories 3
+	bounds: 1480, 534, 430, 480
+	rotate: 90
+belok
+	bounds: 2, 2, 25, 20
+	rotate: 90
+bg
+	bounds: 2, 966, 1920, 1080
+brow
+	bounds: 1938, 481, 51, 22
+	rotate: 90
+brush right
+	bounds: 963, 5, 242, 154
+chest 11
+	bounds: 1315, 18, 621, 514
+lashes
+	bounds: 1449, 583, 36, 29
+	rotate: 90
+lips
+	bounds: 599, 349, 31, 48
+pupil
+	bounds: 1961, 1795, 11, 16
+shadow accessories
+	bounds: 1924, 1720, 35, 91
+shadow hair
+	bounds: 1924, 1813, 51, 233
+t_belok
+	bounds: 1449, 549, 32, 29
+	rotate: 90
+t_brow
+	bounds: 1977, 2009, 41, 37
+t_hair
+	bounds: 1207, 21, 138, 99
+	rotate: 90
+t_hand right
+	bounds: 635, 621, 843, 343
+t_handkerchief
+	bounds: 507, 108, 90, 289
+t_hat
+	bounds: 2, 29, 503, 368
+t_lips
+	bounds: 507, 61, 48, 45
+t_pupil
+	bounds: 1207, 7, 12, 16
+	rotate: 90
+t_veko
+	bounds: 507, 32, 30, 27
+t_veko closed
+	bounds: 1924, 1683, 35, 35
+tomahawk (2)
+	bounds: 2, 399, 631, 565
+veko closed
+	bounds: 2020, 2003, 43, 26
+	rotate: 90
+
+block_8_7_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+1_neck
+	bounds: 277, 1065, 141, 144
+accessories 1
+	bounds: 795, 1347, 302, 255
+	rotate: 90
+brush left
+	bounds: 1015, 706, 316, 164
+	rotate: 90
+face
+	bounds: 795, 1024, 321, 284
+	rotate: 90
+fire_10
+	bounds: 478, 1349, 315, 300
+fire_11
+	bounds: 478, 1047, 315, 300
+fire_12
+	bounds: 381, 745, 315, 300
+fire_13
+	bounds: 698, 722, 315, 300
+fire_14
+	bounds: 381, 443, 315, 300
+fire_15
+	bounds: 698, 420, 315, 300
+fire_16
+	bounds: 172, 141, 315, 300
+fire_17
+	bounds: 657, 118, 315, 300
+fire_18
+	bounds: 1015, 404, 315, 300
+fire_19
+	bounds: 974, 102, 315, 300
+fire_20
+	bounds: 1291, 102, 315, 300
+fire_21
+	bounds: 1088, 1567, 315, 300
+fire_22
+	bounds: 1405, 1504, 315, 300
+fire_23
+	bounds: 1722, 1504, 315, 300
+fire_24
+	bounds: 1081, 1265, 315, 300
+hair
+	bounds: 418, 1850, 196, 668
+	rotate: 90
+hand left 1
+	bounds: 489, 132, 309, 166
+	rotate: 90
+hand left 2
+	bounds: 2, 2, 450, 168
+	rotate: 90
+hand right 1
+	bounds: 1547, 1806, 398, 240
+hand right 2
+	bounds: 2, 1588, 414, 458
+neck
+	bounds: 418, 1651, 197, 534
+	rotate: 90
+shadow hand left
+	bounds: 1088, 1869, 457, 177
+t_collar
+	bounds: 277, 1211, 199, 375
+t_face
+	bounds: 1398, 1246, 256, 315
+	rotate: 90
+t_hand left
+	bounds: 2, 993, 273, 593
+t_revolver
+	bounds: 204, 649, 342, 175
+	rotate: 90
+taz
+	bounds: 2, 454, 537, 200
+	rotate: 90

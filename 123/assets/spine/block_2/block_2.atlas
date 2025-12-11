@@ -1,0 +1,29 @@
+block_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+2_brow
+	bounds: 1759, 1966, 17, 12
+2_eye
+	bounds: 242, 526, 14, 13
+2_face
+	bounds: 2, 2, 201, 257
+2_hair
+	bounds: 946, 1418, 249, 249
+2_tors
+	bounds: 2, 1227, 485, 751
+2_veko
+	bounds: 465, 1207, 12, 18
+hair
+	bounds: 2, 261, 238, 278
+hand left
+	bounds: 946, 1811, 167, 811
+	rotate: 90
+hand right
+	bounds: 946, 1669, 140, 797
+	rotate: 90
+neck
+	bounds: 489, 1312, 202, 103
+tors
+	bounds: 2, 541, 461, 684
+trousers_1
+	bounds: 489, 1417, 455, 561

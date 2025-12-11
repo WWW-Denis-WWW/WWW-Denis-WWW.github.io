@@ -1,0 +1,117 @@
+block_1_1.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+belok
+	bounds: 1615, 787, 21, 14
+brow
+	bounds: 509, 67, 26, 12
+brush left
+	bounds: 1815, 803, 79, 87
+	rotate: 90
+brush right
+	bounds: 1815, 884, 86, 88
+chain
+	bounds: 2, 44, 505, 330
+face
+	bounds: 1912, 1126, 116, 152
+fire_001
+	bounds: 2, 1212, 1072, 834
+fire_002
+	bounds: 2, 376, 1072, 834
+fire_003
+	bounds: 1076, 974, 1072, 834
+	rotate: 90
+hair
+	bounds: 1912, 1280, 168, 131
+	rotate: 90
+hammer
+	bounds: 1076, 779, 537, 193
+hand 1 right
+	bounds: 1912, 971, 115, 153
+hand left 1
+	bounds: 1435, 443, 99, 133
+	rotate: 90
+hand left 2
+	bounds: 1912, 1913, 133, 134
+	rotate: 90
+hand left 3
+	bounds: 1912, 1450, 104, 218
+hand right 2
+	bounds: 1912, 1670, 92, 241
+leg left 1
+	bounds: 509, 81, 289, 293
+leg left 2
+	bounds: 1435, 544, 119, 233
+leg left 3
+	bounds: 1003, 177, 197, 143
+	rotate: 90
+leg right 1
+	bounds: 800, 63, 201, 311
+leg right 2
+	bounds: 1615, 803, 198, 169
+leg right 3
+	bounds: 1003, 78, 137, 97
+lips
+	bounds: 2, 23, 29, 19
+pupil
+	bounds: 2006, 1903, 11, 8
+tors
+	bounds: 1076, 445, 357, 332
+
+block_1_1_2.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+fire_004
+	bounds: 2, 1076, 1072, 834
+fire_005
+	bounds: 2, 240, 1072, 834
+fire_006
+	bounds: 1076, 838, 1072, 834
+	rotate: 90
+
+block_1_1_3.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+fire_007
+	bounds: 2, 1076, 1072, 834
+fire_008
+	bounds: 2, 240, 1072, 834
+fire_009
+	bounds: 1076, 838, 1072, 834
+	rotate: 90
+
+block_1_1_4.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+fire_010
+	bounds: 2, 1076, 1072, 834
+fire_011
+	bounds: 2, 240, 1072, 834
+fire_012
+	bounds: 1076, 838, 1072, 834
+	rotate: 90
+
+block_1_1_5.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+fire_013
+	bounds: 2, 1076, 1072, 834
+fire_014
+	bounds: 2, 240, 1072, 834
+fire_015
+	bounds: 1076, 838, 1072, 834
+	rotate: 90
+
+block_1_1_6.webp
+	size: 2048, 2048
+	filter: Linear, Linear
+fire_016
+	bounds: 2, 1076, 1072, 834
+fire_017
+	bounds: 1076, 838, 1072, 834
+	rotate: 90
+fire_018
+	bounds: 2, 2, 1072, 834
+	rotate: 90
+fire_019
+	bounds: 838, 2, 1072, 834

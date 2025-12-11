@@ -1,0 +1,64 @@
+block_3_2.webp
+	size: 1024, 1024
+	filter: Linear, Linear
+2_belok left
+	bounds: 422, 257, 34, 20
+2_belok right
+	bounds: 77, 2, 35, 22
+	rotate: 90
+2_brow left
+	bounds: 422, 302, 42, 25
+2_brow right
+	bounds: 355, 269, 42, 25
+2_face
+	bounds: 590, 335, 164, 206
+	rotate: 90
+2_lips
+	bounds: 2, 2, 54, 31
+	rotate: 90
+2_pupil left
+	bounds: 121, 39, 17, 16
+	rotate: 90
+2_pupil right
+	bounds: 122, 21, 15, 16
+belok left
+	bounds: 355, 228, 36, 20
+belok right
+	bounds: 101, 3, 34, 19
+	rotate: 90
+brow left
+	bounds: 77, 39, 42, 17
+brow right
+	bounds: 355, 250, 42, 17
+face
+	bounds: 798, 293, 164, 206
+hair
+	bounds: 865, 507, 180, 142
+	rotate: 90
+hand left
+	bounds: 355, 329, 119, 693
+hand right
+	bounds: 476, 327, 112, 695
+legs L
+	bounds: 2, 58, 156, 344
+	rotate: 90
+legs R
+	bounds: 865, 689, 157, 333
+lips
+	bounds: 355, 296, 65, 31
+nose
+	bounds: 35, 11, 40, 45
+pants
+	bounds: 2, 216, 351, 806
+pupil left
+	bounds: 122, 2, 17, 14
+	rotate: 90
+pupil right
+	bounds: 139, 42, 16, 14
+tors
+	bounds: 590, 501, 273, 521
+veko 1
+	bounds: 399, 258, 36, 21
+	rotate: 90
+veko 2
+	bounds: 422, 279, 36, 21
