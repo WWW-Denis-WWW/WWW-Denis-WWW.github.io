@@ -1,0 +1,39 @@
+#scenes {
+  width: 100%;
+  height: 100%;
+  transition:
+    scale 2s linear,
+    transformOrigin 0s linear;
+
+  &.fastZoom {
+    transition: scale 0s linear;
+  }
+
+  &.smooth {
+    transition: all 2s linear;
+  }
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  background: #000;
+
+  &__background,
+  &__characters,
+  &__spine {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.background-scene,
+.characters-scene,
+.spine-scene {
+  &__item {
+    position: absolute;
+  }
+}

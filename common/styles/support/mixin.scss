@@ -1,0 +1,76 @@
+@use "sass:math";
+@use "vars" as *;
+// адаптивное свойство
+@mixin adaptive_value($property, $max, $min, $second: 0, $important: 0) {
+  $addsize: $max - $min;
+  $max-width: $maxwidth_layout - 320;
+  @if $important == 0 {
+    @if $second == 0 {
+      #{$property}: calc(
+        #{$min +
+          px} +
+          #{$addsize} *
+          ((100vw - #{$mobilewidth_layout + px}) / #{$max-width})
+      );
+    } @else if $second == 1 {
+      #{$property}: 0
+        calc(
+          #{$min +
+            px} +
+            #{$addsize} *
+            ((100vw - #{$mobilewidth_layout + px}) / #{$max-width})
+        );
+    } @else if $second ==2 {
+      #{$property}: calc(
+          #{$min +
+            px} +
+            #{$addsize} *
+            ((100vw - #{$mobilewidth_layout + px}) / #{$max-width})
+        )
+        0;
+    }
+  } @else {
+    @if $second == 0 {
+      #{$property}: calc(
+        #{$min +
+          px} +
+          #{$addsize} *
+          ((100vw - #{$mobilewidth_layout + px}) / #{$max-width})
+      ) !important;
+    } @else if $second == 1 {
+      #{$property}: 0
+        calc(
+          #{$min +
+            px} +
+            #{$addsize} *
+            ((100vw - #{$mobilewidth_layout + px}) / #{$max-width})
+        ) !important;
+    } @else if $second ==2 {
+      #{$property}: calc(
+          #{$min +
+            px} +
+            #{$addsize} *
+            ((100vw - #{$mobilewidth_layout + px}) / #{$max-width})
+        )
+        0 !important;
+    }
+  }
+}
+
+// procents
+@mixin procent($property, $this_container_width, $width_element) {
+  $procent: math.div($width_element, $this_container_width) * 100;
+  #{$property}: #{$procent + "%"};
+}
+// rem()
+@function stripUnit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+@function rem($pxValue) {
+  @return #{math.div(stripUnit($pxValue), stripUnit($html-font-size))}rem;
+}
+// em()
+@function em($pixels, $context: $browser-context) {
+  @return #{math.div($pixels, $context)}em;
+}
+// container styles

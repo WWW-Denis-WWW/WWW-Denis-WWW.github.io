@@ -1,0 +1,27 @@
+#spines {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 201;
+
+  .spines__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    canvas {
+      transition: scale 2s linear;
+
+      &.fastZoom {
+        transition: scale 0s linear;
+      }
+      &.smooth {
+        transition: all 2s linear;
+      }
+    }
+  }
+}

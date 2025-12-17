@@ -1,0 +1,93 @@
+@use "../support/vars" as *;
+@use "../support/mixin" as *;
+.settings {
+  position: fixed;
+  z-index: 700;
+  @include adaptive_value("font-size", 50, 25);
+  top: 0.4em;
+  right: 0.4em;
+  display: flex;
+  gap: 0.4em;
+
+  .fullscreen,
+  .sound {
+    display: block;
+    @include adaptive_value("width", 65, 25);
+    @include adaptive_value("height", 65, 25);
+    background: $pink;
+    padding: 0.15em;
+    border-radius: 0.2em;
+    position: relative;
+    cursor: pointer;
+    @media only screen and (max-width: 768px) {
+      &:active::before {
+        transform: translate(-50%, -50%) scale(1.1) !important;
+        width: 99%;
+        height: 99%;
+      }
+    }
+    @media only screen and (min-width: 768px) {
+      &:hover::before {
+        transform: translate(-50%, -50%) scale(1.1) !important;
+        width: 99%;
+        height: 99%;
+      }
+    }
+  }
+
+  .fullscreen {
+    padding: 0.2em;
+  }
+
+  .sound {
+    &__on,
+    &__off {
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      & object,
+      & img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__off {
+      display: block;
+    }
+
+    &__on {
+      display: none;
+    }
+
+    &.on .sound__off {
+      display: none !important;
+    }
+
+    &.on .sound__on {
+      display: block !important;
+    }
+  }
+
+  .fullscreen {
+    &__icon {
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      & object {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

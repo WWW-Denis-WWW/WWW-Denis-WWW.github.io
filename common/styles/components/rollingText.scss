@@ -1,0 +1,26 @@
+@use "../support/vars" as *;
+#rollingText {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 601;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c22be1;
+  font-size: 3.35em;
+  top: 0;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+  text-align: center;
+
+  p {
+    font-family: $Muller;
+  }
+
+  &.show {
+    opacity: 1;
+  }
+}

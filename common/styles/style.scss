@@ -1,0 +1,118 @@
+@use "support/vars" as *;
+@use "fonts";
+@use "mainBlocks/preloader";
+@use "mainBlocks/scene";
+@use "mainBlocks/spines";
+@use "components/talk";
+@use "components/next-btn";
+@use "mainBlocks/warn";
+@use "mainBlocks/play";
+@use "components/fade";
+@use "components/map-btn";
+@use "components/lightening";
+@use "components/interface";
+@use "components/settings";
+@use "components/watermark";
+@use "components/clickedItem";
+@use "components/menuPause";
+@use "components/onSpine";
+@use "components/blinkingEffect";
+@use "components/rollingText";
+@use "ui/button.scss";
+@use "mainBlocks/endScreen";
+@use "mainBlocks/phoneRotate";
+@use "mainBlocks/startBlock";
+@use "mainBlocks/audioAlert";
+@use "mainBlocks/demoAlert";
+@import "~normalize.css";
+// main scss
+:root {
+  font-family: Roboto, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --pink: #{$pink};
+  --Muller: #{$Muller};
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  touch-action: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+body.touch {
+  .btn-hover::before,
+  .pink-btn::before,
+  .baseBtn::before,
+  .continue-btn *::before,
+  .next-btn *::before,
+  .next-btn::before,
+  .btn-hover::after,
+  .pink-btn::after,
+  .baseBtn::after,
+  .continue-btn *::after,
+  .next-btn *::after,
+  .next-btn::after {
+    display: none;
+  }
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.preloadImg {
+  width: 0;
+  height: 0;
+}
+
+.img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    object-position: center;
+  }
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+#goog-gt-tt {
+  display: none;
+}

@@ -1,0 +1,148 @@
+
+.demoAlert {
+  position: fixed;
+  z-index: 699;
+  width: 100%;
+  height: 100%;
+
+
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &__bg {
+    object-fit: cover;
+    object-position: top;
+    position: absolute !important;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  &.show &__toBeContinued {
+    animation: animToBe 1s linear 0s forwards;
+  }
+
+  &.show &__bg {
+    transition: opacity 0s linear 0.5s;
+    opacity: 1;
+
+  }
+
+  &.show &__content {
+    transition: opacity 0s ease 0.7s;
+    opacity: 1;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__content {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .5em;
+    position: relative;
+    z-index: 1;
+
+
+  }
+
+  &__text {
+    //color: $dark-pink;
+    font-family: Muller, sans-serif;
+    width: 70%;
+    max-width: min(650px, 30em);
+    line-height: 130%;
+    margin-bottom: 1.5em;
+    font-size: min(1.5em, 22px);
+    text-align: center;
+    color: #fff;
+
+    .fl {
+      font-family: Muller, sans-serif;
+
+    }
+
+    //.fl:first-letter {
+    //  color: $light-pink;
+    //}
+  }
+
+  &__contentBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    background: #17202F;
+    padding: 2em 0;
+    border-radius: 1em;
+  }
+
+  &__toBeContinued {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+
+    img {
+      width: 40%;
+      pointer-events: none;
+      display: none;
+    }
+  }
+
+  &__logo {
+    width: 7.1em;
+    height: 3.99em;
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  &__playAgain {
+    font-size: min(1.6em, 25px);
+    z-index: 1;
+    &::before {
+      z-index: 0;
+    }
+  }
+
+  &__premium {
+    position: relative;
+    z-index: 1;
+    padding-top: 0.7em !important;
+    display: block;
+    text-decoration: none;
+
+    font-family: Muller, sans-serif;
+  }
+}
+
+@keyframes animToBe {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+  }
+}

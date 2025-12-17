@@ -1,0 +1,26 @@
+@use "../support/vars" as *;
+@use "../support/mixin" as *;
+.menu-pause_root {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.63);
+
+  .menu-pause_button {
+    position: relative;
+    background: $pink;
+    font-family: $Muller;
+    font-size: 3em;
+
+    span {
+      position: relative;
+      top: 0.1em;
+    }
+  }
+}

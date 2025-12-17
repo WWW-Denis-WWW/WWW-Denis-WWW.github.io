@@ -1,0 +1,66 @@
+@use "../support/vars" as *;
+@use "../support/mixin" as *;
+.baseBtn {
+  font-family: $Muller;
+  @include adaptive_value("font-size", 24, 18);
+  padding-top: 0.7em !important;
+}
+
+.gray-btn {
+  background: #5e5e5e;
+  border-radius: 0.2em;
+  padding: 0.5em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.pink-btn {
+  background: $pink;
+  border-radius: 0.2em;
+  padding: 0.5em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #5d1b6a;
+    pointer-events: none;
+  }
+}
+
+.btn-hover {
+  position: relative;
+
+  &::before {
+    border-radius: 0.2em;
+    position: absolute;
+    content: "";
+    width: 98%;
+    height: 98%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background: #fff;
+    transition: all 0.3s;
+    z-index: -1;
+  }
+
+  @media only screen and (max-width: 768px) {
+    &:active::before {
+      width: calc(99% + 0.35em);
+      height: calc(99% + 0.35em);
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    &:hover::before {
+      width: calc(99% + 0.35em);
+      height: calc(99% + 0.35em);
+    }
+  }
+}

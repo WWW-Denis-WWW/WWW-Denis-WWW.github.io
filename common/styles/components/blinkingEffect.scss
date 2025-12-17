@@ -1,0 +1,57 @@
+.blinkingEffect {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 600;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 1s ease-in-out;
+
+  &.hide {
+    opacity: 0;
+  }
+
+  &.close {
+    .blinkingEffect__top {
+      transform: translateY(28%);
+    }
+
+    .blinkingEffect__bottom {
+      transform: translateY(-28%);
+    }
+  }
+
+  &.open {
+    .blinkingEffect__top {
+      transform: translateY(-34%);
+    }
+
+    .blinkingEffect__bottom {
+      transform: translateY(34%);
+    }
+  }
+
+  &__top,
+  &__bottom {
+    transition: inherit;
+    width: 105%;
+    height: 100%;
+    background: #000;
+  }
+
+  &__top {
+    --c: 10em;
+    aspect-ratio: 3/2;
+    mask: radial-gradient(60% var(--c) at bottom, #0000 calc(100% - 2px), #000);
+  }
+
+  &__bottom {
+    --c: 10em;
+    aspect-ratio: 3/2;
+    mask: radial-gradient(60% var(--c) at top, #0000 calc(100% - 2px), #000);
+  }
+}

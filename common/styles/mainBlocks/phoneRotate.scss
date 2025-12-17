@@ -1,0 +1,52 @@
+@use "../support/vars" as *;
+
+.phoneRotateWarn.show {
+  display: flex;
+}
+.phoneRotateWarn {
+  display: none;
+  position: fixed;
+  z-index: 99999999;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  align-items: center;
+
+  &__container {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  &__icon {
+    height: 12em;
+    width: 10em;
+    margin-bottom: 2em;
+
+    img {
+      object-fit: contain !important;
+    }
+  }
+
+  &__text {
+    max-width: 26em;
+    text-align: center;
+    font-size: 2em;
+  }
+
+  &__text p {
+    line-height: 130%;
+    font-family: $Muller;
+    color: #fff;
+  }
+  &__btn{
+    font-family: $Muller;
+    font-size: 2em;
+    padding-top: .7em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+}

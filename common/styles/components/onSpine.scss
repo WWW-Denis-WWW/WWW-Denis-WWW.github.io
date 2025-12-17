@@ -1,0 +1,40 @@
+#onSpine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 202;
+
+  .onSpine__box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition:
+      scale 2s linear,
+      transformOrigin 0s linear;
+
+    &.fastZoom {
+      transition: scale 0s linear;
+    }
+
+    &.smooth {
+      transition: all 2s linear;
+    }
+    .background-scene__item,
+    .ligth1 {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+    .div__item {
+      display: none;
+
+      &.show {
+        display: flex;
+      }
+    }
+  }
+}
