@@ -1,0 +1,1 @@
+tg://proxy?server=23.229.92.78&port=443&secret=7l-GaxZsdKHqeFj9BxiDvWB5YS5ydQ
